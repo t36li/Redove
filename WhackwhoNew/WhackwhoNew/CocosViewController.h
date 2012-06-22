@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  CocosViewController.h
 //  WhackwhoNew
 //
 //  Created by Bob Li on 12-06-22.
@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "cocos2d.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
+@interface CocosViewController : UIViewController <CCDirectorDelegate>
 
 @end

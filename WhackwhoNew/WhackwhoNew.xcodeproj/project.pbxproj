@@ -129,9 +129,10 @@
 		C14717F91594ACD20002FF21 /* vec3.c in Sources */ = {isa = PBXBuildFile; fileRef = C14717F81594ACD20002FF21 /* vec3.c */; };
 		C14717FB1594ACD20002FF21 /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = C14717FA1594ACD20002FF21 /* vec4.c */; };
 		C14718001594ACD20002FF21 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C14717FF1594ACD20002FF21 /* main.m */; };
-		C14718031594ACD20002FF21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C14718021594ACD20002FF21 /* AppDelegate.m */; };
-		C14718061594ACD20002FF21 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C14718051594ACD20002FF21 /* HelloWorldLayer.m */; };
 		C147181C1594AF1E0002FF21 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C147181B1594AF1E0002FF21 /* Storyboard.storyboard */; };
+		C14718551594F0AE0002FF21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C14718541594F0AE0002FF21 /* AppDelegate.m */; };
+		C14718581594F0FB0002FF21 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C14718571594F0FB0002FF21 /* ViewController.m */; };
+		C147185B1594F1AF0002FF21 /* CocosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C147185A1594F1AF0002FF21 /* CocosViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -390,11 +391,13 @@
 		C14717FC1594ACD20002FF21 /* LICENSE_Kazmath.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE_Kazmath.txt; path = libs/LICENSE_Kazmath.txt; sourceTree = "<group>"; };
 		C14717FE1594ACD20002FF21 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		C14717FF1594ACD20002FF21 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C14718011594ACD20002FF21 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C14718021594ACD20002FF21 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C14718041594ACD20002FF21 /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		C14718051594ACD20002FF21 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		C147181B1594AF1E0002FF21 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		C14718531594F0AE0002FF21 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C14718541594F0AE0002FF21 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C14718561594F0FB0002FF21 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C14718571594F0FB0002FF21 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C14718591594F1AF0002FF21 /* CocosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosViewController.h; sourceTree = "<group>"; };
+		C147185A1594F1AF0002FF21 /* CocosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocosViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -454,10 +457,12 @@
 		C147168B1594ACCA0002FF21 /* WhackwhoNew */ = {
 			isa = PBXGroup;
 			children = (
-				C14718011594ACD20002FF21 /* AppDelegate.h */,
-				C14718021594ACD20002FF21 /* AppDelegate.m */,
-				C14718041594ACD20002FF21 /* HelloWorldLayer.h */,
-				C14718051594ACD20002FF21 /* HelloWorldLayer.m */,
+				C14718531594F0AE0002FF21 /* AppDelegate.h */,
+				C14718541594F0AE0002FF21 /* AppDelegate.m */,
+				C14718591594F1AF0002FF21 /* CocosViewController.h */,
+				C147185A1594F1AF0002FF21 /* CocosViewController.m */,
+				C14718561594F0FB0002FF21 /* ViewController.h */,
+				C14718571594F0FB0002FF21 /* ViewController.m */,
 				C147168C1594ACCA0002FF21 /* Resources */,
 				C14716A41594ACCA0002FF21 /* libs */,
 				C14717FD1594ACD20002FF21 /* Supporting Files */,
@@ -1002,8 +1007,9 @@
 				C14717F91594ACD20002FF21 /* vec3.c in Sources */,
 				C14717FB1594ACD20002FF21 /* vec4.c in Sources */,
 				C14718001594ACD20002FF21 /* main.m in Sources */,
-				C14718031594ACD20002FF21 /* AppDelegate.m in Sources */,
-				C14718061594ACD20002FF21 /* HelloWorldLayer.m in Sources */,
+				C14718551594F0AE0002FF21 /* AppDelegate.m in Sources */,
+				C14718581594F0FB0002FF21 /* ViewController.m in Sources */,
+				C147185B1594F1AF0002FF21 /* CocosViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
