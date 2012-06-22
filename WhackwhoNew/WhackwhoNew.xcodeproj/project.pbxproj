@@ -133,16 +133,16 @@
 		C14718551594F0AE0002FF21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C14718541594F0AE0002FF21 /* AppDelegate.m */; };
 		C14718581594F0FB0002FF21 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C14718571594F0FB0002FF21 /* ViewController.m */; };
 		C147185B1594F1AF0002FF21 /* CocosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C147185A1594F1AF0002FF21 /* CocosViewController.m */; };
-		C1B439701595176900D62C2B /* Email Envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B4396E1595176800D62C2B /* Email Envelope.png */; };
-		C1B439711595176900D62C2B /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B4396F1595176800D62C2B /* facebook.png */; };
-		C1B4397515951AD300D62C2B /* bob1.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B4397415951AD300D62C2B /* bob1.png */; };
-		C1B4397915951AEE00D62C2B /* bob2.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B4397715951AED00D62C2B /* bob2.png */; };
-		C1B4397A15951AEE00D62C2B /* bob3.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B4397815951AEE00D62C2B /* bob3.png */; };
 		C1B4397D15951B4100D62C2B /* StatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B4397C15951B4100D62C2B /* StatusBarController.m */; };
-		C1B4398015951CA700D62C2B /* Inv_hammer_unique_sulfuras.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B4397E15951CA600D62C2B /* Inv_hammer_unique_sulfuras.png */; };
-		C1B4398315951D2800D62C2B /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B4398215951D2800D62C2B /* lock.png */; };
-		C1B43986159526F600D62C2B /* zach1.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B43985159526F600D62C2B /* zach1.png */; };
-		C1B43988159526FD00D62C2B /* wensen1.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B43987159526FD00D62C2B /* wensen1.png */; };
+		C1CBDFE115952D2B00A35E24 /* wensen1.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFE015952D2B00A35E24 /* wensen1.png */; };
+		C1CBDFE315952D3600A35E24 /* zach1.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFE215952D3600A35E24 /* zach1.png */; };
+		C1CBDFE715952D4900A35E24 /* bob1.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFE415952D4900A35E24 /* bob1.png */; };
+		C1CBDFE815952D4900A35E24 /* bob2.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFE515952D4900A35E24 /* bob2.png */; };
+		C1CBDFE915952D4900A35E24 /* bob3.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFE615952D4900A35E24 /* bob3.png */; };
+		C1CBDFEC15952D9900A35E24 /* Inv_hammer_unique_sulfuras.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEA15952D9900A35E24 /* Inv_hammer_unique_sulfuras.png */; };
+		C1CBDFED15952D9900A35E24 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEB15952D9900A35E24 /* lock.png */; };
+		C1CBDFF015952DC100A35E24 /* Email Envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEE15952DC100A35E24 /* Email Envelope.png */; };
+		C1CBDFF115952DC100A35E24 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEF15952DC100A35E24 /* facebook.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -408,17 +408,17 @@
 		C14718571594F0FB0002FF21 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C14718591594F1AF0002FF21 /* CocosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosViewController.h; sourceTree = "<group>"; };
 		C147185A1594F1AF0002FF21 /* CocosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocosViewController.m; sourceTree = "<group>"; };
-		C1B4396E1595176800D62C2B /* Email Envelope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Email Envelope.png"; path = "../../../../../../Dropbox/Project X/WhackWho/Email Envelope.png"; sourceTree = "<group>"; };
-		C1B4396F1595176800D62C2B /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = facebook.png; path = "../../../../../../Dropbox/Project X/WhackWho/facebook.png"; sourceTree = "<group>"; };
-		C1B4397415951AD300D62C2B /* bob1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bob1.png; path = "../../../../../../Dropbox/Project X/WhackWho/bob1.png"; sourceTree = "<group>"; };
-		C1B4397715951AED00D62C2B /* bob2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bob2.png; path = "../../../../../../Dropbox/Project X/WhackWho/bob2.png"; sourceTree = "<group>"; };
-		C1B4397815951AEE00D62C2B /* bob3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bob3.png; path = "../../../../../../Dropbox/Project X/WhackWho/bob3.png"; sourceTree = "<group>"; };
 		C1B4397B15951B4100D62C2B /* StatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusBarController.h; path = ../StatusBarController.h; sourceTree = "<group>"; };
 		C1B4397C15951B4100D62C2B /* StatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusBarController.m; path = ../StatusBarController.m; sourceTree = "<group>"; };
-		C1B4397E15951CA600D62C2B /* Inv_hammer_unique_sulfuras.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Inv_hammer_unique_sulfuras.png; path = "../../../../../../Dropbox/Project X/WhackWho/Inv_hammer_unique_sulfuras.png"; sourceTree = "<group>"; };
-		C1B4398215951D2800D62C2B /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lock.png; path = "../../../../../../Dropbox/Project X/WhackWho/lock.png"; sourceTree = "<group>"; };
-		C1B43985159526F600D62C2B /* zach1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zach1.png; path = "../../../../../../Dropbox/Project X/WhackWho/zach1.png"; sourceTree = "<group>"; };
-		C1B43987159526FD00D62C2B /* wensen1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wensen1.png; path = "../../../../../../Dropbox/Project X/WhackWho/wensen1.png"; sourceTree = "<group>"; };
+		C1CBDFE015952D2B00A35E24 /* wensen1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wensen1.png; sourceTree = "<group>"; };
+		C1CBDFE215952D3600A35E24 /* zach1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zach1.png; sourceTree = "<group>"; };
+		C1CBDFE415952D4900A35E24 /* bob1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bob1.png; sourceTree = "<group>"; };
+		C1CBDFE515952D4900A35E24 /* bob2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bob2.png; sourceTree = "<group>"; };
+		C1CBDFE615952D4900A35E24 /* bob3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bob3.png; sourceTree = "<group>"; };
+		C1CBDFEA15952D9900A35E24 /* Inv_hammer_unique_sulfuras.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Inv_hammer_unique_sulfuras.png; sourceTree = "<group>"; };
+		C1CBDFEB15952D9900A35E24 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
+		C1CBDFEE15952DC100A35E24 /* Email Envelope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Email Envelope.png"; sourceTree = "<group>"; };
+		C1CBDFEF15952DC100A35E24 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -851,8 +851,8 @@
 		C1B439721595177E00D62C2B /* Facebook Scene */ = {
 			isa = PBXGroup;
 			children = (
-				C1B4396E1595176800D62C2B /* Email Envelope.png */,
-				C1B4396F1595176800D62C2B /* facebook.png */,
+				C1CBDFEE15952DC100A35E24 /* Email Envelope.png */,
+				C1CBDFEF15952DC100A35E24 /* facebook.png */,
 			);
 			name = "Facebook Scene";
 			sourceTree = "<group>";
@@ -878,11 +878,11 @@
 		C1B4397615951AD600D62C2B /* Status Scene */ = {
 			isa = PBXGroup;
 			children = (
-				C1B4397415951AD300D62C2B /* bob1.png */,
-				C1B4397715951AED00D62C2B /* bob2.png */,
-				C1B4397815951AEE00D62C2B /* bob3.png */,
-				C1B4397E15951CA600D62C2B /* Inv_hammer_unique_sulfuras.png */,
-				C1B4398215951D2800D62C2B /* lock.png */,
+				C1CBDFE415952D4900A35E24 /* bob1.png */,
+				C1CBDFE515952D4900A35E24 /* bob2.png */,
+				C1CBDFE615952D4900A35E24 /* bob3.png */,
+				C1CBDFEA15952D9900A35E24 /* Inv_hammer_unique_sulfuras.png */,
+				C1CBDFEB15952D9900A35E24 /* lock.png */,
 			);
 			name = "Status Scene";
 			sourceTree = "<group>";
@@ -890,8 +890,8 @@
 		C1B43984159526E400D62C2B /* Choose Scene */ = {
 			isa = PBXGroup;
 			children = (
-				C1B43985159526F600D62C2B /* zach1.png */,
-				C1B43987159526FD00D62C2B /* wensen1.png */,
+				C1CBDFE015952D2B00A35E24 /* wensen1.png */,
+				C1CBDFE215952D3600A35E24 /* zach1.png */,
 			);
 			name = "Choose Scene";
 			sourceTree = "<group>";
@@ -960,15 +960,15 @@
 				C14716A31594ACCA0002FF21 /* iTunesArtwork in Resources */,
 				C14717E11594ACD10002FF21 /* ChangeLog in Resources */,
 				C147181C1594AF1E0002FF21 /* Storyboard.storyboard in Resources */,
-				C1B439701595176900D62C2B /* Email Envelope.png in Resources */,
-				C1B439711595176900D62C2B /* facebook.png in Resources */,
-				C1B4397515951AD300D62C2B /* bob1.png in Resources */,
-				C1B4397915951AEE00D62C2B /* bob2.png in Resources */,
-				C1B4397A15951AEE00D62C2B /* bob3.png in Resources */,
-				C1B4398015951CA700D62C2B /* Inv_hammer_unique_sulfuras.png in Resources */,
-				C1B4398315951D2800D62C2B /* lock.png in Resources */,
-				C1B43986159526F600D62C2B /* zach1.png in Resources */,
-				C1B43988159526FD00D62C2B /* wensen1.png in Resources */,
+				C1CBDFE115952D2B00A35E24 /* wensen1.png in Resources */,
+				C1CBDFE315952D3600A35E24 /* zach1.png in Resources */,
+				C1CBDFE715952D4900A35E24 /* bob1.png in Resources */,
+				C1CBDFE815952D4900A35E24 /* bob2.png in Resources */,
+				C1CBDFE915952D4900A35E24 /* bob3.png in Resources */,
+				C1CBDFEC15952D9900A35E24 /* Inv_hammer_unique_sulfuras.png in Resources */,
+				C1CBDFED15952D9900A35E24 /* lock.png in Resources */,
+				C1CBDFF015952DC100A35E24 /* Email Envelope.png in Resources */,
+				C1CBDFF115952DC100A35E24 /* facebook.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
