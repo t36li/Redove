@@ -143,6 +143,9 @@
 		C1CBDFED15952D9900A35E24 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEB15952D9900A35E24 /* lock.png */; };
 		C1CBDFF015952DC100A35E24 /* Email Envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEE15952DC100A35E24 /* Email Envelope.png */; };
 		C1CBDFF115952DC100A35E24 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEF15952DC100A35E24 /* facebook.png */; };
+		D0D7C84615955D3400F51C6E /* AvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D7C84515955D3400F51C6E /* AvatarViewController.m */; };
+		D0D7C84915956E3D00F51C6E /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D7C84815956E3D00F51C6E /* GameViewController.m */; };
+		D0D7C84C15956F8D00F51C6E /* GameOverScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D7C84B15956F8D00F51C6E /* GameOverScreenController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -419,6 +422,12 @@
 		C1CBDFEB15952D9900A35E24 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		C1CBDFEE15952DC100A35E24 /* Email Envelope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Email Envelope.png"; sourceTree = "<group>"; };
 		C1CBDFEF15952DC100A35E24 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
+		D0D7C84415955D3400F51C6E /* AvatarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarViewController.h; sourceTree = "<group>"; };
+		D0D7C84515955D3400F51C6E /* AvatarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarViewController.m; sourceTree = "<group>"; };
+		D0D7C84715956E3D00F51C6E /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		D0D7C84815956E3D00F51C6E /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		D0D7C84A15956F8D00F51C6E /* GameOverScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScreenController.h; sourceTree = "<group>"; };
+		D0D7C84B15956F8D00F51C6E /* GameOverScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverScreenController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -482,10 +491,16 @@
 				C14718541594F0AE0002FF21 /* AppDelegate.m */,
 				C14718591594F1AF0002FF21 /* CocosViewController.h */,
 				C147185A1594F1AF0002FF21 /* CocosViewController.m */,
+				D0D7C84415955D3400F51C6E /* AvatarViewController.h */,
+				D0D7C84515955D3400F51C6E /* AvatarViewController.m */,
 				C1B4397B15951B4100D62C2B /* StatusBarController.h */,
 				C1B4397C15951B4100D62C2B /* StatusBarController.m */,
 				C14718561594F0FB0002FF21 /* ViewController.h */,
 				C14718571594F0FB0002FF21 /* ViewController.m */,
+				D0D7C84A15956F8D00F51C6E /* GameOverScreenController.h */,
+				D0D7C84B15956F8D00F51C6E /* GameOverScreenController.m */,
+				D0D7C84715956E3D00F51C6E /* GameViewController.h */,
+				D0D7C84815956E3D00F51C6E /* GameViewController.m */,
 				C14716A11594ACCA0002FF21 /* Info.plist */,
 				C147168C1594ACCA0002FF21 /* Resources */,
 				C14716A41594ACCA0002FF21 /* libs */,
@@ -1084,6 +1099,9 @@
 				C14718581594F0FB0002FF21 /* ViewController.m in Sources */,
 				C147185B1594F1AF0002FF21 /* CocosViewController.m in Sources */,
 				C1B4397D15951B4100D62C2B /* StatusBarController.m in Sources */,
+				D0D7C84615955D3400F51C6E /* AvatarViewController.m in Sources */,
+				D0D7C84915956E3D00F51C6E /* GameViewController.m in Sources */,
+				D0D7C84C15956F8D00F51C6E /* GameOverScreenController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1105,7 +1123,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1124,7 +1142,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

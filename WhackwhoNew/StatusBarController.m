@@ -48,4 +48,8 @@
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    self.navigationController.navigationBarHidden = YES;
+}
+
 @end
