@@ -143,6 +143,8 @@
 		C1CBDFED15952D9900A35E24 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEB15952D9900A35E24 /* lock.png */; };
 		C1CBDFF015952DC100A35E24 /* Email Envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEE15952DC100A35E24 /* Email Envelope.png */; };
 		C1CBDFF115952DC100A35E24 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEF15952DC100A35E24 /* facebook.png */; };
+		D07F6FED159943FB0085DF2B /* facedetectionpic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D07F6FEC159943FB0085DF2B /* facedetectionpic.jpg */; };
+		D07F6FF01599463A0085DF2B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F6FEF1599463A0085DF2B /* CoreImage.framework */; };
 		D0D7C84615955D3400F51C6E /* AvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D7C84515955D3400F51C6E /* AvatarViewController.m */; };
 		D0D7C84915956E3D00F51C6E /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D7C84815956E3D00F51C6E /* GameViewController.m */; };
 		D0D7C84C15956F8D00F51C6E /* GameOverScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D7C84B15956F8D00F51C6E /* GameOverScreenController.m */; };
@@ -422,6 +424,8 @@
 		C1CBDFEB15952D9900A35E24 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		C1CBDFEE15952DC100A35E24 /* Email Envelope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Email Envelope.png"; sourceTree = "<group>"; };
 		C1CBDFEF15952DC100A35E24 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
+		D07F6FEC159943FB0085DF2B /* facedetectionpic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = facedetectionpic.jpg; sourceTree = "<group>"; };
+		D07F6FEF1599463A0085DF2B /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		D0D7C84415955D3400F51C6E /* AvatarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarViewController.h; sourceTree = "<group>"; };
 		D0D7C84515955D3400F51C6E /* AvatarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarViewController.m; sourceTree = "<group>"; };
 		D0D7C84715956E3D00F51C6E /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
@@ -435,6 +439,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D07F6FF01599463A0085DF2B /* CoreImage.framework in Frameworks */,
 				C147167A1594ACCA0002FF21 /* QuartzCore.framework in Frameworks */,
 				C147167C1594ACCA0002FF21 /* OpenGLES.framework in Frameworks */,
 				C147167E1594ACCA0002FF21 /* OpenAL.framework in Frameworks */,
@@ -453,6 +458,7 @@
 		C147166A1594ACCA0002FF21 = {
 			isa = PBXGroup;
 			children = (
+				D07F6FEF1599463A0085DF2B /* CoreImage.framework */,
 				C147181B1594AF1E0002FF21 /* Storyboard.storyboard */,
 				C147168B1594ACCA0002FF21 /* WhackwhoNew */,
 				C14716781594ACCA0002FF21 /* Frameworks */,
@@ -487,6 +493,7 @@
 		C147168B1594ACCA0002FF21 /* WhackwhoNew */ = {
 			isa = PBXGroup;
 			children = (
+				D07F6FEC159943FB0085DF2B /* facedetectionpic.jpg */,
 				C14718531594F0AE0002FF21 /* AppDelegate.h */,
 				C14718541594F0AE0002FF21 /* AppDelegate.m */,
 				C14718591594F1AF0002FF21 /* CocosViewController.h */,
@@ -984,6 +991,7 @@
 				C1CBDFED15952D9900A35E24 /* lock.png in Resources */,
 				C1CBDFF015952DC100A35E24 /* Email Envelope.png in Resources */,
 				C1CBDFF115952DC100A35E24 /* facebook.png in Resources */,
+				D07F6FED159943FB0085DF2B /* facedetectionpic.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

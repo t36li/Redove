@@ -10,11 +10,14 @@
 
 @interface AvatarViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
     
-    IBOutlet UIImageView *imageView;
+    UIImageView *imageView;
+    IBOutlet UIView *photoView;
     UIImagePickerController *cameraController;
 }
 
-@property (nonatomic, retain) IBOutlet UIImageView *imageView;
+@property (nonatomic, retain) UIImageView *imageView;
+@property (nonatomic, retain) IBOutlet UIView *photoView;
+
 @property (nonatomic, retain) UIImagePickerController *cameraController;
 
 -(IBAction) startCamera:(id)sender;
