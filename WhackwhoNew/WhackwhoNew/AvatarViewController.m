@@ -44,6 +44,8 @@
     }
     
     [cameraController setDelegate:self];
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.navigationController.navigationBarHidden = NO;
 }
 
 - (void)viewDidUnload
@@ -59,34 +61,16 @@
 
 -(IBAction) startCamera:(id)sender {
     [self presentModalViewController:cameraController animated:YES];
-    [self.imageView removeFromSuperview];
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    self.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"facedetectionpic.jpg"]];
-    
-    [photoView addSubview:imageView];
-    
-    // Execute the method used to markFaces in background
-    [self performSelectorInBackground:@selector(markFaces:) withObject:imageView];
-    
-    // flip image on y-axis to match coordinate system used by core image
-    [imageView setTransform:CGAffineTransformMakeScale(1, -1)];
-    
-    // flip the entire window to make everything right side up
-    [photoView setTransform:CGAffineTransformMakeScale(1, -1)];
-    
-    [self dismissModalViewControllerAnimated:YES];
-    
-    
     [self dismissModalViewControllerAnimated:YES];
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo {
     //[self.imageView setImage:image];
     
-    
-    self.imageView = [[UIImageView alloc] initWithImage:image];    
+    self.imageView.image = image;
     
     // Execute the method used to markFaces in background
     [self performSelectorInBackground:@selector(markFaces:) withObject:imageView];

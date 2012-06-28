@@ -29,7 +29,7 @@
     NSLog(@"Main page background image imported.");
     
     //buttons
-    
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

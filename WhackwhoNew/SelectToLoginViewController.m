@@ -43,4 +43,8 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+-(IBAction)FBClicked:(id)sender {
+    
+}
+
 @end
