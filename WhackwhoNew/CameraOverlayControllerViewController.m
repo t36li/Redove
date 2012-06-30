@@ -1,0 +1,240 @@
+//
+//  CameraOverlayControllerViewController.m
+//  WhackwhoNew
+//
+//  Created by ShaoCheng Xu on 12-06-29.
+//  Copyright (c) 2012 Waterloo. All rights reserved.
+//
+
+#import "CameraOverlayControllerViewController.h"
+#import "QuartzCore/QuartzCore.h"
+#import "AvatarViewController.h"
+
+@interface CameraOverlayControllerViewController ()
+
+@end
+
+@implementation CameraOverlayControllerViewController
+
+@synthesize switchCameraBtn, takeBtn, pickerReference, containerView, closePreviewBtn, idView, acceptPreviewBtn;
+@synthesize validPhoto, delegate;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
+    
+    CGFloat width = MIN(screenWidth, screenHeight);
+    CGFloat height = MAX(screenWidth, screenHeight);
+    
+    CGFloat x_offset = width * 0.05;
+    CGFloat y_offset = height * 0.05;
+    
+    UIView *frameView = [[UIView alloc] initWithFrame:CGRectMake(x_offset, y_offset, width - 2*x_offset, height - 3*y_offset)];
+    frameView.layer.borderColor = [UIColor redColor].CGColor;
+    frameView.layer.borderWidth = 3.0f;
+    [self.view addSubview:frameView];
+    
+    containerView.contentMode = UIViewContentModeScaleAspectFit;
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [pickerReference dismissModalViewControllerAnimated:YES];
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo {        
+
+    
+    
+    // flip image on y-axis to match coordinate system used by core image
+    //[containerView setTransform:CGAffineTransformMakeScale(1, -1)];
+    
+    // flip the entire window to make everything right side up
+    [idView setTransform:CGAffineTransformMakeScale(1, -1)];
+    
+    
+    CGFloat x_factor = idView.frame.size.width / image.size.width;
+    CGFloat y_factor = idView.frame.size.height / image.size.height;
+    CGFloat factor = MIN(x_factor, y_factor);
+    
+    UIGraphicsBeginImageContext( idView.frame.size);
+    [image drawInRect:CGRectMake(0,0, factor*image.size.width, factor*image.size.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:newImage];
+    imgView.frame = containerView.frame;
+    [containerView addSubview:imgView];
+    
+    [self markFaces:imgView];
+    
+    self.containerView.hidden = NO;
+    [self.view bringSubviewToFront:containerView];
+    [containerView bringSubviewToFront:idView];
+    [containerView bringSubviewToFront:closePreviewBtn];
+}
+
+-(IBAction)takePicture:(id)sender {
+    [pickerReference takePicture];
+}
+
+-(IBAction)switchCamera:(id)sender {
+    if (pickerReference.cameraDevice == UIImagePickerControllerCameraDeviceRear)
+        pickerReference.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+    else {
+        pickerReference.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+    }
+}
+
+-(void)markFaces:(UIImageView *)facePicture
+{
+    // draw a CI image with the previously loaded face detection picture
+    CIImage* image = [CIImage imageWithCGImage:facePicture.image.CGImage]; // create a face detector - since speed is not an issue we'll use a high accuracy
+    // detector
+    CIDetector* detector = [CIDetector detectorOfType:CIDetectorTypeFace
+                                              context:nil options:[NSDictionary dictionaryWithObject:CIDetectorAccuracyHigh forKey:CIDetectorAccuracy]];
+    
+    // create an array containing all the detected faces from the detector
+    NSArray* features = [detector featuresInImage:image];
+    // we'll iterate through every detected face. CIFaceFeature provides us
+    // with the width for the entire face, and the coordinates of each eye
+    // and the mouth if detected. Also provided are BOOL's for the eye's and
+    // mouth so we can check if they already exist.
+    for(CIFaceFeature* faceFeature in features)
+    {
+        // get the width of the face
+        CGFloat faceWidth = faceFeature.bounds.size.width;
+        
+        // create a UIView using the bounds of the face
+        UIView* faceView = [[UIView alloc] initWithFrame:faceFeature.bounds];
+        
+        // add a border around the newly created UIView
+        faceView.layer.borderWidth = 1;
+        faceView.layer.borderColor = [[UIColor redColor] CGColor];
+
+        
+        // add the new view to create a box around the face
+        [idView addSubview:faceView];
+        
+        
+        if(faceFeature.hasLeftEyePosition)
+        {
+            // create a UIView with a size based on the width of the face
+            UIView* leftEyeView = [[UIView alloc] initWithFrame:CGRectMake(faceFeature.leftEyePosition.x-faceWidth*0.15, faceFeature.leftEyePosition.y-faceWidth*0.15, faceWidth*0.3, faceWidth*0.3)];
+            // change the background color of the eye view
+            [leftEyeView setBackgroundColor:[[UIColor blueColor] colorWithAlphaComponent:0.3]];
+            // set the position of the leftEyeView based on the face
+            [leftEyeView setCenter:faceFeature.leftEyePosition];
+            // round the corners
+            leftEyeView.layer.cornerRadius = faceWidth*0.15;
+            // add the view to the window
+            [idView addSubview:leftEyeView];
+        }
+        
+        if(faceFeature.hasRightEyePosition)
+        {
+            // create a UIView with a size based on the width of the face
+            UIView* leftEye = [[UIView alloc] initWithFrame:CGRectMake(faceFeature.rightEyePosition.x-faceWidth*0.15, faceFeature.rightEyePosition.y-faceWidth*0.15, faceWidth*0.3, faceWidth*0.3)];
+            // change the background color of the eye view
+            [leftEye setBackgroundColor:[[UIColor blueColor] colorWithAlphaComponent:0.3]];
+            // set the position of the rightEyeView based on the face
+            [leftEye setCenter:faceFeature.rightEyePosition];
+            // round the corners
+            leftEye.layer.cornerRadius = faceWidth*0.15;
+            // add the new view to the window
+            [idView addSubview:leftEye];
+        }
+        if(faceFeature.hasMouthPosition)
+        {
+            // create a UIView with a size based on the width of the face
+            UIView* mouth = [[UIView alloc] initWithFrame:CGRectMake(faceFeature.mouthPosition.x-faceWidth*0.2, faceFeature.mouthPosition.y-faceWidth*0.2, faceWidth*0.4, faceWidth*0.4)];
+            // change the background color for the mouth to green
+            [mouth setBackgroundColor:[[UIColor greenColor] colorWithAlphaComponent:0.3]];
+            // set the position of the mouthView based on the face
+            [mouth setCenter:faceFeature.mouthPosition];
+            // round the corners
+            mouth.layer.cornerRadius = faceWidth*0.2;
+            // add the new view to the window
+            [idView addSubview:mouth];
+        }
+    }
+    // options:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:6] forKey:CIDetectorImageOrientation
+    /*
+    if (features.count > 0) {
+        
+        idView.layer.anchorPoint = CGPointMake(0, 0);
+        CGRect frame = idView.frame;
+    
+        frame.origin.x = 0;
+        frame.origin.y = 0;
+        idView.frame = frame;
+        //faceView.layer.anchorPoint =faceView.frame.origin;
+        //faceView.center = CGPointMake(CGRectGetWidth(self.view.bounds), 0.0);
+    
+        // Rotate 90 degrees to hide it off screen
+        CGAffineTransform rotationTransform = CGAffineTransformIdentity;
+        rotationTransform = CGAffineTransformRotate(rotationTransform, M_PI_2);
+        rotationTransform = CGAffineTransformTranslate(rotationTransform, 0, -idView.frame.size.width);
+        //rotationTransform = CGAffineTransformScale(rotationTransform, factor, factor);
+        idView.transform = rotationTransform;
+        CGRect frame2 = idView.frame;
+        int i = 0;
+    }
+     */
+    
+    if (features.count > 0) {
+        self.validPhoto = facePicture.image;
+        acceptPreviewBtn.hidden = NO;
+    } else {
+        acceptPreviewBtn.hidden = YES;
+    }
+}
+
+-(IBAction)closePreview:(id)sender {
+    [UIView animateWithDuration:0.5f animations:^(void) {
+        CGRect frame = containerView.frame;
+        frame.origin.y += containerView.frame.size.height;
+        containerView.frame = frame;
+    }completion:^(BOOL finished) {
+        CGRect frame = containerView.frame;
+        frame.origin.y = 0;
+        containerView.frame = frame;
+        containerView.hidden = YES;
+        for (UIView *view in idView.subviews) {
+            if (view != acceptPreviewBtn && view != closePreviewBtn)
+                [view removeFromSuperview];
+        }
+        //idView.frame = containerView.frame;
+        [idView setTransform:CGAffineTransformMakeScale(1, -1)];
+    }];
+}
+
+-(IBAction)acceptPreview:(id)sender {
+    [self.delegate validImageCaptured:validPhoto];
+    [self.pickerReference dismissModalViewControllerAnimated:YES];
+}
+@end

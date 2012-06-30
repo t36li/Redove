@@ -7,17 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CameraOverlayControllerViewController.h"
 
-@interface AvatarViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
+@interface AvatarViewController : UIViewController <CameraOverlayControllerViewControllerDelegate> {
     
     IBOutlet UIImageView *imageView;
-    IBOutlet UIView *photoView;
+    CameraOverlayControllerViewController *overlay;
+    UIImage *validPhoto;
     UIImagePickerController *cameraController;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
-@property (nonatomic, retain) IBOutlet UIView *photoView;
 
+@property (nonatomic, retain) CameraOverlayControllerViewController *overlay;
+@property (nonatomic, retain) UIImage *validPhoto;
 @property (nonatomic, retain) UIImagePickerController *cameraController;
 
 -(IBAction) startCamera:(id)sender;

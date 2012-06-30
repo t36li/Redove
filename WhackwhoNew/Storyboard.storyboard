@@ -330,7 +330,6 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="imageView" destination="pgX-tW-Vte" id="0vv-hf-Z2X"/>
-                        <outlet property="photoView" destination="CYb-br-Le2" id="ZKv-zK-eos"/>
                     </connections>
                 </viewController>
             </objects>
@@ -731,7 +730,6 @@
             <relationships>
                 <relationship kind="action" name="startCamera:"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="photoView" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="GameOverScreenController" superclassName="GameViewController">
