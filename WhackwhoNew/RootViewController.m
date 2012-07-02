@@ -15,9 +15,7 @@
 @implementation RootViewController
 
 -(void) viewDidLoad
-{
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    
+{    
     //background
     /*
     UIImage *bg = [UIImage imageNamed:MainPage_bg];

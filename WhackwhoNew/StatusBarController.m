@@ -7,6 +7,7 @@
 //
 
 #import "StatusBarController.h"
+#import "UserInfo.h"
 
 
 @implementation StatusBarController
@@ -50,6 +51,11 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
+    UserInfo *usr = [UserInfo sharedInstance];
+    if (usr.usrImg != nil) {
+        Bobhead.image = usr.croppedImage;
+        [Bobhead stopAnimating];
+    }
 }
 
 @end

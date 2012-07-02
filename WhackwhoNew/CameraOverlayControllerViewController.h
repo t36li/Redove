@@ -12,7 +12,7 @@
 
 @interface CameraOverlayControllerViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
     UIImagePickerController *pickerReference;
-    UIImage *validPhoto;
+    UIImage *validPhoto, *croppedImage;
 
     IBOutlet UIButton *switchCameraBtn, *takeBtn, *closePreviewBtn, *acceptPreviewBtn;
     
@@ -24,7 +24,7 @@
 @property (nonatomic, retain) UIImagePickerController *pickerReference;
 @property (nonatomic, retain) IBOutlet UIButton *switchCameraBtn, *takeBtn, *closePreviewBtn, *acceptPreviewBtn;
 @property (nonatomic, retain) IBOutlet UIView *containerView, *idView; 
-@property (nonatomic, retain) UIImage *validPhoto;
+@property (nonatomic, retain) UIImage *validPhoto, *croppedImage;
 @property (nonatomic, retain) id<CameraOverlayControllerViewControllerDelegate> delegate;
 
 -(IBAction)takePicture:(id)sender;

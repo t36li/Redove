@@ -17,7 +17,7 @@
 @implementation CameraOverlayControllerViewController
 
 @synthesize switchCameraBtn, takeBtn, pickerReference, containerView, closePreviewBtn, idView, acceptPreviewBtn;
-@synthesize validPhoto, delegate;
+@synthesize validPhoto, delegate, croppedImage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -132,6 +132,11 @@
         // create a UIView using the bounds of the face
         UIView* faceView = [[UIView alloc] initWithFrame:faceFeature.bounds];
         
+        CGImageRef imageRef = CGImageCreateWithImageInRect([facePicture.image CGImage], faceView.frame);
+        UIImage *croppedImg = [UIImage imageWithCGImage:imageRef]; 
+        CGImageRelease(imageRef);
+        self.croppedImage = croppedImg;
+        
         // add a border around the newly created UIView
         faceView.layer.borderWidth = 1;
         faceView.layer.borderColor = [[UIColor redColor] CGColor];
@@ -234,7 +239,7 @@
 }
 
 -(IBAction)acceptPreview:(id)sender {
-    [self.delegate validImageCaptured:validPhoto];
+    [self.delegate validImageCaptured:validPhoto croppedImage:croppedImage];
     [self.pickerReference dismissModalViewControllerAnimated:YES];
 }
 @end

@@ -10,11 +10,13 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
+@synthesize window = _window, usr;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    usr = [UserInfo sharedInstance];
     return YES;
 }
 

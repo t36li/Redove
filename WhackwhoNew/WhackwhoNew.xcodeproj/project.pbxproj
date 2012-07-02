@@ -155,6 +155,7 @@
 		C1CBDFF115952DC100A35E24 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEF15952DC100A35E24 /* facebook.png */; };
 		D07F6FED159943FB0085DF2B /* facedetectionpic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D07F6FEC159943FB0085DF2B /* facedetectionpic.jpg */; };
 		D07F6FF01599463A0085DF2B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F6FEF1599463A0085DF2B /* CoreImage.framework */; };
+		D090C63815A238CF0051AA12 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D090C63715A238CF0051AA12 /* UserInfo.m */; };
 		D09FD5DD159E4EB60079231D /* CameraOverlayControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09FD5DB159E4EB60079231D /* CameraOverlayControllerViewController.m */; };
 		D09FD5DE159E4EB60079231D /* CameraOverlayControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D09FD5DC159E4EB60079231D /* CameraOverlayControllerViewController.xib */; };
 		D0B9EECD159E6F0D005D2460 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0B9EECC159E6F0D005D2460 /* MobileCoreServices.framework */; };
@@ -467,6 +468,8 @@
 		C1CBDFEF15952DC100A35E24 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
 		D07F6FEC159943FB0085DF2B /* facedetectionpic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = facedetectionpic.jpg; path = WhackwhoNew/facedetectionpic.jpg; sourceTree = "<group>"; };
 		D07F6FEF1599463A0085DF2B /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		D090C63615A238CE0051AA12 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		D090C63715A238CF0051AA12 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		D09FD5DA159E4EB60079231D /* CameraOverlayControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraOverlayControllerViewController.h; sourceTree = "<group>"; };
 		D09FD5DB159E4EB60079231D /* CameraOverlayControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraOverlayControllerViewController.m; sourceTree = "<group>"; };
 		D09FD5DC159E4EB60079231D /* CameraOverlayControllerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlayControllerViewController.xib; path = ../CameraOverlayControllerViewController.xib; sourceTree = "<group>"; };
@@ -560,6 +563,8 @@
 			children = (
 				C14718531594F0AE0002FF21 /* AppDelegate.h */,
 				C14718541594F0AE0002FF21 /* AppDelegate.m */,
+				D090C63615A238CE0051AA12 /* UserInfo.h */,
+				D090C63715A238CF0051AA12 /* UserInfo.m */,
 				C14717FE1594ACD20002FF21 /* Prefix.pch */,
 				C14717FF1594ACD20002FF21 /* main.m */,
 				69C95E8C159A4AAC009966DA /* RootViewController.h */,
@@ -1319,6 +1324,7 @@
 				69C95E8E159A4AAC009966DA /* RootViewController.m in Sources */,
 				69C95EAD159B63A9009966DA /* SelectToLoginViewController.m in Sources */,
 				D09FD5DD159E4EB60079231D /* CameraOverlayControllerViewController.m in Sources */,
+				D090C63815A238CF0051AA12 /* UserInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,5 +10,5 @@
 
 @protocol CameraOverlayControllerViewControllerDelegate <NSObject>
 
--(void)validImageCaptured:(UIImage *)image;
+-(void)validImageCaptured:(UIImage *)image croppedImage:(UIImage*)croppedImg;
 @end

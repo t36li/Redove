@@ -9,6 +9,7 @@
 #import "AvatarViewController.h"
 #import "QuartzCore/QuartzCore.h"
 #import <CoreImage/CoreImage.h>
+#import "UserInfo.h"
 
 
 @interface AvatarViewController ()
@@ -80,8 +81,12 @@
     [self presentModalViewController:cameraController animated:NO];
 }
 
--(void)validImageCaptured:(UIImage *)image {
+-(void)validImageCaptured:(UIImage *)image croppedImage:(UIImage *)croppedImg{
     self.validPhoto = image;
     self.imageView.image = image;
+    UserInfo *usr = [UserInfo sharedInstance];
+    usr.usrImg = image;
+    usr.croppedImage = croppedImg;
 }
+
 @end
