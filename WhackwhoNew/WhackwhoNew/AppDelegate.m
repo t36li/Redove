@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "FBSingleton.h"
 
 @implementation AppDelegate
 
@@ -18,6 +19,18 @@
     
     usr = [UserInfo sharedInstance];
     return YES;
+}
+
+//facebook connection
+//pre 4.2 support
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return [[[FBSingleton sharedInstance] facebook] handleOpenURL:url];
+}
+
+// For 4.2+ support
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [[[FBSingleton sharedInstance] facebook] handleOpenURL:url];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

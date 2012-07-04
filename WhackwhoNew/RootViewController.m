@@ -7,27 +7,35 @@
 //
 
 #import "RootViewController.h"
+#import "FBSingleton.h"
 
 @interface RootViewController ()
 
 @end
 
 @implementation RootViewController
+@synthesize LoginAccountImageView;
+
+ 
 
 -(void) viewDidLoad
-{    
-    //background
-    /*
-    UIImage *bg = [UIImage imageNamed:MainPage_bg];
-    UIImageView *bgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.height, screenRect.size.width)];
-    bgView.image = bg;
-    bgView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.view addSubview:bgView];
-     */
-    NSLog(@"Main page background image imported.");
-    
-    //buttons
-    self.navigationController.navigationBarHidden = YES;
+{
+    NSLog(@"RootViewController viewDidLoad");
+    [[FBSingleton sharedInstance] setDelegate:self];
+    [super viewDidLoad];
+}
+
+-(void) viewDidAppear:(BOOL)animated{
+    if ([[FBSingleton sharedInstance] isLogin]){
+        [[FBSingleton sharedInstance] RequestMeProfileImage];
+    }
+    else {
+        LoginAccountImageView.image = nil;
+    }
+}
+
+-(void) FBProfilePictureLoaded:(UIImage *)img{
+    LoginAccountImageView.image = img;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -38,6 +46,3 @@
 
 
 @end
-
-
-

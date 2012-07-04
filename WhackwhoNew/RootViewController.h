@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FBSingletonDelegate.h"
 
-@interface RootViewController : UIViewController
+@interface RootViewController : UIViewController<FBSingletonDelegate> {
+    IBOutlet UIImageView *LoginAccountImageView; //Facebook Profile Image, Renren Profile Image or Gmail
+    
+}
+@property (nonatomic, retain) IBOutlet UIImageView *LoginAccountImageView; 
 
 @end

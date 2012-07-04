@@ -426,6 +426,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="NTr-i6-5X2">
+                                <rect key="frame" x="10" y="10" width="35" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="DMo-2k-A4n">
                                 <rect key="frame" x="20" y="228" width="168" height="98"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -471,8 +475,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="iw1-ym-ZsU"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="LoginAccountImageView" destination="NTr-i6-5X2" id="lAd-1L-DNZ"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="-91" y="-1115"/>
@@ -709,8 +717,9 @@
         <scene sceneID="wqU-4g-KWS">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K0D-3X-nIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="LoW-BH-uCB" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="LoW-BH-uCB" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="fXP-XM-Umg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
