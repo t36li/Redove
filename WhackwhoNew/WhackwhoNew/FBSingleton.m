@@ -38,7 +38,7 @@ static FBSingleton *singletonDelegate = nil;
         _facebook = [[Facebook alloc] initWithAppId:kAppId andDelegate:self];
         
         // Check and retrieve authorization information
-        
+
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         if ([defaults objectForKey:@"FBAccessTokenKey"] && [defaults objectForKey:@"FBExpirationDateKey"]) {
             _facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
@@ -133,10 +133,7 @@ static FBSingleton *singletonDelegate = nil;
 -(void) postToWallWithDialogNewHighscore:(int)highscore {
     score = highscore;
     
-    if (![_facebook isSessionValid]) {
-        [_facebook authorize:_permissions];
-    }
-    else {
+    if ([_facebook isSessionValid]) {
         [self postToWallWithDialogNewHighscore];
     }
 }
@@ -145,12 +142,10 @@ static FBSingleton *singletonDelegate = nil;
     // Check if there is a valid session
     if (![_facebook isSessionValid]) {
         [_facebook authorize:nil];
-        
-        
     }
-    else {
-        [_facebook requestWithGraphPath:@"me" andDelegate:self];
-    }
+    //else {
+    //    [_facebook requestWithGraphPath:@"me" andDelegate:self];
+    //}
     
     //[self postToWallWithDialogNewHighscore];
 }
@@ -165,9 +160,7 @@ static FBSingleton *singletonDelegate = nil;
 }
 
 -(void) logout{
-    [_facebook logout];
-    
-    
+    [_facebook logout]; 
 }
 
 /*
@@ -183,11 +176,8 @@ static FBSingleton *singletonDelegate = nil;
 
 -(void) RequestMeProfileImage{
     // Check if there is a valid session
-    if (![_facebook isSessionValid]){
-        [self login];
-    }
-    //apiGraphMe
-    else {
+    if ([_facebook isSessionValid]){
+        
         currentAPICall = kAPIGraphMe;
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        @"name,picture",  @"fields",
@@ -205,6 +195,8 @@ static FBSingleton *singletonDelegate = nil;
     [[NSUserDefaults standardUserDefaults] setObject:_facebook.accessToken forKey:@"AccessToken"];
     [[NSUserDefaults standardUserDefaults] setObject:_facebook.expirationDate forKey:@"ExpirationDate"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [delegate FBSingletonDidLogin];
     
     NSLog(@" FB set AccessToken and Expiration Date");
 }
@@ -227,6 +219,8 @@ static FBSingleton *singletonDelegate = nil;
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"AccessToken"];
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"ExpirationDate"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [delegate FBSingletonDidLogout];
     NSLog(@"Set Profile Image data as nil");
     
 }

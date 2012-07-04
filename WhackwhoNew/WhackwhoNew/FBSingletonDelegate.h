@@ -12,4 +12,5 @@
 
 -(void)FBProfilePictureLoaded:(UIImage *)img;
 -(void)FBSingletonDidLogout;
+-(void)FBSingletonDidLogin;
 @end
