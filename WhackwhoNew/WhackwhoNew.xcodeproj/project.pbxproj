@@ -10,6 +10,7 @@
 		696F17BB15A3CA8D00DC849F /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 696F17AE15A3CA8D00DC849F /* FBDialog.bundle */; };
 		696F17BC15A3CA8D00DC849F /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 696F17B415A3CA8D00DC849F /* libfacebook_ios_sdk.a */; };
 		696F17C215A3D58D00DC849F /* FBSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 696F17C115A3D58D00DC849F /* FBSingleton.m */; };
+		696F17FC15A4A81000DC849F /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 696F17FB15A4A81000DC849F /* OptionsViewController.m */; };
 		69C95E8E159A4AAC009966DA /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C95E8D159A4AAC009966DA /* RootViewController.m */; };
 		69C95E97159A5223009966DA /* GameMode_grass_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C95E96159A5223009966DA /* GameMode_grass_bg.png */; };
 		69C95E9C159B4E21009966DA /* MainPage_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C95E9B159B4E21009966DA /* MainPage_bg.png */; };
@@ -201,6 +202,8 @@
 		696F17C015A3D58D00DC849F /* FBSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSingleton.h; sourceTree = "<group>"; };
 		696F17C115A3D58D00DC849F /* FBSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSingleton.m; sourceTree = "<group>"; };
 		696F17C315A3D6A500DC849F /* FBSingletonDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBSingletonDelegate.h; sourceTree = "<group>"; };
+		696F17FA15A4A81000DC849F /* OptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsViewController.h; sourceTree = "<group>"; };
+		696F17FB15A4A81000DC849F /* OptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsViewController.m; sourceTree = "<group>"; };
 		69C95E8C159A4AAC009966DA /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		69C95E8D159A4AAC009966DA /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		69C95E96159A5223009966DA /* GameMode_grass_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GameMode_grass_bg.png; sourceTree = "<group>"; };
@@ -648,6 +651,8 @@
 				69C95EAC159B63A9009966DA /* SelectToLoginViewController.m */,
 				69C95E8C159A4AAC009966DA /* RootViewController.h */,
 				69C95E8D159A4AAC009966DA /* RootViewController.m */,
+				696F17FA15A4A81000DC849F /* OptionsViewController.h */,
+				696F17FB15A4A81000DC849F /* OptionsViewController.m */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -1383,6 +1388,7 @@
 				D09FD5DD159E4EB60079231D /* CameraOverlayControllerViewController.m in Sources */,
 				D090C63815A238CF0051AA12 /* UserInfo.m in Sources */,
 				696F17C215A3D58D00DC849F /* FBSingleton.m in Sources */,
+				696F17FC15A4A81000DC849F /* OptionsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
