@@ -140,7 +140,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1028" y="-583"/>
+            <point key="canvasLocation" x="-902" y="-310"/>
         </scene>
         <!--Game View Controller - Main Game Screen-->
         <scene sceneID="rZj-jY-lho">
@@ -433,6 +433,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="logout_touched:" destination="sqy-Cf-B9P" eventType="touchUpInside" id="dfx-gb-QL9"/>
+                                </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="PzO-RV-9ko">
                                 <rect key="frame" x="381" y="146" width="79" height="27"/>
@@ -469,7 +472,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="back_clicked:" destination="sqy-Cf-B9P" eventType="touchUpInside" id="SNr-Um-9Hn"/>
+                                    <action selector="back_touched:" destination="sqy-Cf-B9P" eventType="touchUpInside" id="Hy7-XQ-jae"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -478,11 +481,12 @@
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="back" destination="gIU-Dd-Vc9" id="mib-FF-n5R"/>
+                        <outlet property="back" destination="gIU-Dd-Vc9" id="gIG-bI-ONb"/>
+                        <outlet property="logout_but" destination="lbw-xa-q6i" id="U9n-KZ-ZOy"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-107" y="-992"/>
+            <point key="canvasLocation" x="-1583" y="-1108"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="2kV-1f-EPW">
@@ -525,7 +529,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Y2f-Ky-VQq" kind="push" id="jkx-ct-8Ii"/>
+                                    <action selector="play_touched:" destination="Nsl-EU-HzN" eventType="touchUpInside" id="ebu-fd-LjA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="PsZ-Aj-cWx">
@@ -554,16 +558,19 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="LoginAccountImageView" destination="NTr-i6-5X2" id="lAd-1L-DNZ"/>
+                        <outlet property="play_but" destination="uv1-mf-JIH" id="NKP-ur-UDi"/>
+                        <segue destination="Y2f-Ky-VQq" kind="push" identifier="PlayToSelectLogInSegue" id="4Qh-8x-51I"/>
+                        <segue destination="vVV-bT-q6I" kind="push" identifier="PlayToStatusSegue" id="xFH-vp-meh"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-115" y="-547"/>
+            <point key="canvasLocation" x="-1507" y="-423"/>
         </scene>
-        <!--Select To Login View Controller - Facebook-->
+        <!--Select To Login View Controller - SelectToLogin-->
         <scene sceneID="WAf-pU-lOc">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mVC-ww-vrf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="" title="Facebook" id="Y2f-Ky-VQq" customClass="SelectToLoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectToLoginVC" title="SelectToLogin" id="Y2f-Ky-VQq" customClass="SelectToLoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="veC-eQ-gEd">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -592,7 +599,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="567" y="-1425"/>
+            <point key="canvasLocation" x="-931" y="-771"/>
         </scene>
         <!--Game View Controller - Difficulty Selection-->
         <scene sceneID="Cex-y9-cMJ">
@@ -804,7 +811,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-825" y="-539"/>
+            <point key="canvasLocation" x="-2043" y="-423"/>
         </scene>
     </scenes>
     <resources>
@@ -842,14 +849,18 @@
         <class className="OptionsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OptionsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="back_clicked:"/>
+                <relationship kind="action" name="back_touched:"/>
+                <relationship kind="action" name="logout_touched:"/>
                 <relationship kind="outlet" name="back" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="logout_but" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="RootViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
             <relationships>
+                <relationship kind="action" name="play_touched:"/>
                 <relationship kind="outlet" name="LoginAccountImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="play_but" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="SelectToLoginViewController" superclassName="UIViewController">
@@ -877,9 +888,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="c4H-8l-g68"/>
-        <segue reference="AIJ-Ql-yc1"/>
-        <segue reference="Sho-Ty-3d1"/>
+        <segue reference="xFH-vp-meh"/>
+        <segue reference="gff-oY-V5c"/>
+        <segue reference="IFv-5p-SI3"/>
         <segue reference="l9S-hg-zri"/>
     </inferredMetricsTieBreakers>
 </document>

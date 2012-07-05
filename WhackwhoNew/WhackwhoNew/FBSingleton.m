@@ -7,14 +7,9 @@
 //
 
 #import "FBSingleton.h"
+#import "Constants.h"
 
 static NSString* kAppId = @"442728025757863"; // Facebook app ID here
-
-#define kAppName        @"Whack Who"
-#define kCustomMessage  @"I just got a score of %d in %@, an iPhone/iPod Touch game by me!"
-#define kServerLink     @"http://indiedevstories.com"
-#define kImageSrc       @"http://indiedevstories.files.wordpress.com/2011/08/newsokoban_icon.png"
-
 
 @implementation FBSingleton
 @synthesize facebook = _facebook;
@@ -33,16 +28,16 @@ static FBSingleton *singletonDelegate = nil;
         return nil;
     }
     if ((self = [super init])) {
-        
         // Initialize Facebook
         _facebook = [[Facebook alloc] initWithAppId:kAppId andDelegate:self];
         
         // Check and retrieve authorization information
 
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        if ([defaults objectForKey:@"FBAccessTokenKey"] && [defaults objectForKey:@"FBExpirationDateKey"]) {
-            _facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
-            _facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
+        
+        if ([defaults objectForKey:FBAccessToken] && [defaults objectForKey:FBExpirationDateKey] && [defaults integerForKey:LogInAs] == LogInFacebook) {
+            _facebook.accessToken = [defaults objectForKey:FBAccessToken];
+            _facebook.expirationDate = [defaults objectForKey:FBExpirationDateKey];
         }
         
         
@@ -192,8 +187,9 @@ static FBSingleton *singletonDelegate = nil;
     NSLog(@"FB login OK");
     
     // Store session info.
-    [[NSUserDefaults standardUserDefaults] setObject:_facebook.accessToken forKey:@"AccessToken"];
-    [[NSUserDefaults standardUserDefaults] setObject:_facebook.expirationDate forKey:@"ExpirationDate"];
+    [[NSUserDefaults standardUserDefaults] setObject:_facebook.accessToken forKey:FBAccessToken];
+    [[NSUserDefaults standardUserDefaults] setObject:_facebook.expirationDate forKey:FBExpirationDateKey];
+    [[NSUserDefaults standardUserDefaults] setInteger:LogInFacebook forKey:LogInAs];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [delegate FBSingletonDidLogin];
@@ -216,8 +212,9 @@ static FBSingleton *singletonDelegate = nil;
     NSLog(@"FB logout OK");
     
     // Release stored session.
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"AccessToken"];
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"ExpirationDate"];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:FBAccessToken];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:FBExpirationDateKey];
+    [[NSUserDefaults standardUserDefaults] setInteger:NotLogIn forKey:LogInAs];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [delegate FBSingletonDidLogout];

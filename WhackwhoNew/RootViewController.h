@@ -11,8 +11,12 @@
 
 @interface RootViewController : UIViewController<FBSingletonDelegate> {
     IBOutlet UIImageView *LoginAccountImageView; //Facebook Profile Image, Renren Profile Image or Gmail
-    
+    UIButton *play_but;
+    int currentLogInType;
 }
 @property (nonatomic, retain) IBOutlet UIImageView *LoginAccountImageView; 
+@property (nonatomic, retain) IBOutlet UIButton *play_but;
+
+-(IBAction)play_touched:(id)sender;
 
 @end

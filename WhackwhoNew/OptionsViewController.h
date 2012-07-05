@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FBSingletonDelegate.h"
 
-@interface OptionsViewController : UIViewController{
+@interface OptionsViewController : UIViewController <FBSingletonDelegate>{
     UIButton *back;
+    UIButton *logout_but;
 }
 @property (nonatomic, retain) IBOutlet UIButton *back;
+@property (nonatomic, retain) IBOutlet UIButton *logout_but;
 
--(IBAction)back_clicked:(id)sender;
+-(IBAction)back_touched:(id)sender;
+-(IBAction)logout_touched:(id)sender;
 @end

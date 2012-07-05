@@ -36,6 +36,7 @@ typedef enum apiCall {
     kAPIGraphUserVideosPost,
 } apiCall;
 
+
 @interface FBSingleton : NSObject<FBRequestDelegate, FBDialogDelegate, FBSessionDelegate> {
     int currentAPICall;
     Facebook* _facebook;
@@ -56,4 +57,4 @@ typedef enum apiCall {
 -(void) login;
 -(BOOL) isLogin;
 
-@end
+@end 

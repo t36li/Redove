@@ -204,6 +204,7 @@
 		696F17C315A3D6A500DC849F /* FBSingletonDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBSingletonDelegate.h; sourceTree = "<group>"; };
 		696F17FA15A4A81000DC849F /* OptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsViewController.h; sourceTree = "<group>"; };
 		696F17FB15A4A81000DC849F /* OptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsViewController.m; sourceTree = "<group>"; };
+		696F17FF15A4E30A00DC849F /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		69C95E8C159A4AAC009966DA /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		69C95E8D159A4AAC009966DA /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		69C95E96159A5223009966DA /* GameMode_grass_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GameMode_grass_bg.png; sourceTree = "<group>"; };
@@ -653,6 +654,7 @@
 				69C95E8D159A4AAC009966DA /* RootViewController.m */,
 				696F17FA15A4A81000DC849F /* OptionsViewController.h */,
 				696F17FB15A4A81000DC849F /* OptionsViewController.m */,
+				696F17FF15A4E30A00DC849F /* Constants.h */,
 			);
 			name = Game;
 			sourceTree = "<group>";
