@@ -7,16 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FBSingletonDelegate.h"
 
-@interface SelectToLoginViewController : UIViewController{
-    IBOutlet UIButton *LogonFB_But;
-    IBOutlet UIButton *LogonRenren_But;
-    IBOutlet UIButton *LogonEmail_But;
+@interface SelectToLoginViewController : UIViewController<FBSingletonDelegate>{
+    UIButton *FBBut;
+    UIButton *RRBut;
+    UIButton *EMBut;
 }
-@property (nonatomic, retain) IBOutlet UIButton *LogonFB_But;
-@property (nonatomic, retain) IBOutlet UIButton *LogonRenren_But;
-@property (nonatomic, retain) IBOutlet UIButton *LogonEmail_But;
+@property (nonatomic, retain) IBOutlet UIButton *FBBut;
+@property (nonatomic, retain) IBOutlet UIButton *RRBut;
+@property (nonatomic, retain) IBOutlet UIButton *EMBut;
 
--(IBAction)FBClicked:(id)sender;
+-(IBAction)FBTouched:(id)sender;
+-(IBAction)RRTouched:(id)sender;
+-(IBAction)EMTouched:(id)sender;
 
 @end

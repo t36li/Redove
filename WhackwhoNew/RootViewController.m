@@ -11,6 +11,8 @@
 #import "Constants.h"
 #import "StatusBarController.h"
 #import "SelectToLoginViewController.h"
+#import "GlobalMethods.h"
+#import "OptionsViewController.h"
 
 #define PlayToSelectLogInSegue @"PlayToSelectLogInSegue"
 #define PlayToStatusSegue @"PlayToStatusSegue"
@@ -23,21 +25,47 @@
 
 @implementation RootViewController
 @synthesize LoginAccountImageView;
-@synthesize play_but;
+@synthesize play_but,opt_but;
+
+
+
+
+-(void) viewDidLoad
+{
+    NSLog(@"RootViewController viewDidLoad");
+    [super viewDidLoad];
+    GlobalMethods *gmethods = [[GlobalMethods alloc] init];
+    [gmethods setViewBackground:MainPage_bg viewSender:self.view];
+    
+    //[[NSUserDefaults standardUserDefaults] setInteger:nil forKey:LogInAs]; 
+    
+}
+
+-(void) viewWillAppear:(BOOL)animated{
+    [[FBSingleton sharedInstance] setDelegate:self];
+    //currentLogInType = [[NSUserDefaults standardUserDefaults] integerForKey:LogInAs];
+
+    if ([[FBSingleton sharedInstance] isLogin]){
+        [[FBSingleton sharedInstance] RequestMeProfileImage];
+    }
+    else {
+        LoginAccountImageView.image = nil;
+    }
+}
 
 -(IBAction)play_touched:(id)sender{
     NSLog(@"Play Button Touched");
     
-    switch (currentLogInType) {
+    switch ((int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs]) {
         case NotLogIn:{
             [self performSegueWithIdentifier:PlayToSelectLogInSegue sender:sender];
             break;
         }
         case LogInFacebook:{
             if([[FBSingleton sharedInstance] isLogin]){
-                //!!!!!!!!!!!!!When Databases knick in, check if it is a registered user.
-                //current status, use all facebook users as registered users
-                [self performSegueWithIdentifier:PlayToStatusSegue sender:self];
+            //!!!!!!!!!!!!!When Databases knick in, check if it is a registered user.
+            //current status, use all facebook users as registered users
+            [self performSegueWithIdentifier:PlayToStatusSegue sender:self];
             }
             break;
         }  
@@ -48,37 +76,34 @@
             break;
         }
         default:{
-            SelectToLoginViewController *selectLoginVC = [[SelectToLoginViewController alloc] initWithNibName:nil bundle:nil];
-            [self.navigationController pushViewController:selectLoginVC animated:YES];
+            //[self performSegueWithIdentifier:PlayToSelectLogInSegue sender:sender];
             break;
         }
     }
 }
 
+-(IBAction)opt_touched:(id)sender{
 
--(void) viewDidLoad
-{
-    NSLog(@"RootViewController viewDidLoad");
-    [super viewDidLoad];
-    [[FBSingleton sharedInstance] setDelegate:self];
-    //[[NSUserDefaults standardUserDefaults] setInteger:nil forKey:LogInAs];
-    currentLogInType = [[NSUserDefaults standardUserDefaults] integerForKey:LogInAs];
 }
 
--(void) viewDidAppear:(BOOL)animated{
-    if ([[FBSingleton sharedInstance] isLogin]){
-        [[FBSingleton sharedInstance] RequestMeProfileImage];
-    }
-    else {
-        LoginAccountImageView.image = nil;
-    }
-}
+//FBSingleton Delegate:
 
 -(void) FBProfilePictureLoaded:(UIImage *)img{
     LoginAccountImageView.image = img;
+    NSLog(@"profilepictureloaded profileimage: %@",LoginAccountImageView.image);
+}
+
+-(void)FBSingletonDidLogout {
+    self.LoginAccountImageView.image = nil;
+    
+}
+
+-(void)FBSingletonDidLogin {
+    [[FBSingleton sharedInstance] RequestMeProfileImage];
 }
 
 
+///////////////////////////
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:PlayToSelectLogInSegue]){
     }
@@ -90,6 +115,9 @@
 {
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
+
+
+
 
 
 

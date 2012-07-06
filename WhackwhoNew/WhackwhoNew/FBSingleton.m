@@ -38,6 +38,7 @@ static FBSingleton *singletonDelegate = nil;
         if ([defaults objectForKey:FBAccessToken] && [defaults objectForKey:FBExpirationDateKey] && [defaults integerForKey:LogInAs] == LogInFacebook) {
             _facebook.accessToken = [defaults objectForKey:FBAccessToken];
             _facebook.expirationDate = [defaults objectForKey:FBExpirationDateKey];
+            NSLog(@"FB AccessToken and EDate Initialized: '%@' and '%@'",_facebook.accessToken,_facebook.expirationDate);
         }
         
         
@@ -171,7 +172,7 @@ static FBSingleton *singletonDelegate = nil;
 
 -(void) RequestMeProfileImage{
     // Check if there is a valid session
-    if ([_facebook isSessionValid]){
+    if ([self isLogin]){
         
         currentAPICall = kAPIGraphMe;
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -191,6 +192,7 @@ static FBSingleton *singletonDelegate = nil;
     [[NSUserDefaults standardUserDefaults] setObject:_facebook.expirationDate forKey:FBExpirationDateKey];
     [[NSUserDefaults standardUserDefaults] setInteger:LogInFacebook forKey:LogInAs];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    NSLog(@"FBDidLogin AccessToken and EDate: '%@' and '%@'",_facebook.accessToken, _facebook.expirationDate);
     
     [delegate FBSingletonDidLogin];
     
@@ -212,13 +214,15 @@ static FBSingleton *singletonDelegate = nil;
     NSLog(@"FB logout OK");
     
     // Release stored session.
+    
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:FBAccessToken];
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:FBExpirationDateKey];
     [[NSUserDefaults standardUserDefaults] setInteger:NotLogIn forKey:LogInAs];
     [[NSUserDefaults standardUserDefaults] synchronize];
+     
+    NSLog(@"FBDidLogout AccessToken and EDate: '%@' and '%@'",_facebook.accessToken, _facebook.expirationDate);
     
     [delegate FBSingletonDidLogout];
-    NSLog(@"Set Profile Image data as nil");
     
 }
 

@@ -8,6 +8,7 @@
 
 #import "OptionsViewController.h"
 #import "FBSingleton.h"
+#import "RootViewController.h"
 
 
 @interface OptionsViewController ()
@@ -17,19 +18,9 @@
 @implementation OptionsViewController
 @synthesize back, logout_but;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[FBSingleton sharedInstance] setDelegate:self];
 	// Do any additional setup after loading the view.
 }
 
@@ -48,20 +39,16 @@
     }
 }
 
-
-
 -(IBAction)back_touched:(id)sender{
     [self dismissModalViewControllerAnimated:YES];
 }
 
 -(IBAction)logout_touched:(id)sender{
     if ([[FBSingleton sharedInstance] isLogin]){
-    [[FBSingleton sharedInstance] logout];
+        [[FBSingleton sharedInstance] logout];
     }
-}
+    [self dismissModalViewControllerAnimated:YES];
 
--(void)FBSingletonDidLogout{
-    [back sendActionsForControlEvents:UIControlEventTouchUpInside];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

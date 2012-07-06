@@ -140,7 +140,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-902" y="-310"/>
+            <point key="canvasLocation" x="-2678" y="186"/>
         </scene>
         <!--Game View Controller - Main Game Screen-->
         <scene sceneID="rZj-jY-lho">
@@ -486,7 +486,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-1583" y="-1108"/>
+            <point key="canvasLocation" x="-3425" y="-1052"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="2kV-1f-EPW">
@@ -497,10 +497,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="MainPage_bg.png" id="ydb-CK-vBR">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="NTr-i6-5X2">
                                 <rect key="frame" x="10" y="10" width="35" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -544,6 +540,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="opt_touched:" destination="Nsl-EU-HzN" eventType="touchUpInside" id="3In-ef-0eK"/>
                                     <segue destination="sqy-Cf-B9P" kind="modal" modalTransitionStyle="partialCurl" id="ikB-xU-5mO"/>
                                 </connections>
                             </button>
@@ -557,14 +554,15 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="LoginAccountImageView" destination="NTr-i6-5X2" id="lAd-1L-DNZ"/>
+                        <outlet property="LoginAccountImageView" destination="NTr-i6-5X2" id="Tr7-fz-9FB"/>
+                        <outlet property="opt_but" destination="PsZ-Aj-cWx" id="Rju-rZ-6a7"/>
                         <outlet property="play_but" destination="uv1-mf-JIH" id="NKP-ur-UDi"/>
                         <segue destination="Y2f-Ky-VQq" kind="push" identifier="PlayToSelectLogInSegue" id="4Qh-8x-51I"/>
                         <segue destination="vVV-bT-q6I" kind="push" identifier="PlayToStatusSegue" id="xFH-vp-meh"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-1507" y="-423"/>
+            <point key="canvasLocation" x="-3483" y="-363"/>
         </scene>
         <!--Select To Login View Controller - SelectToLogin-->
         <scene sceneID="WAf-pU-lOc">
@@ -576,7 +574,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iiV-eE-LVi">
-                                <rect key="frame" x="212" y="79" width="56" height="43"/>
+                                <rect key="frame" x="404" y="20" width="56" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="facebook.png">
@@ -587,8 +585,52 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="FBClicked:" destination="Y2f-Ky-VQq" eventType="touchUpInside" id="ymz-HN-Ft7"/>
                                     <segue destination="gRh-5I-zoN" kind="push" id="rxA-W0-CzX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1oX-5I-yhA">
+                                <rect key="frame" x="171" y="85" width="154" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="FacebookButton30x34.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="FBTouched:" destination="Y2f-Ky-VQq" eventType="touchUpInside" id="BGX-29-GvQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nUp-dI-AfC">
+                                <rect key="frame" x="158" y="171" width="180" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="RenRen_Login150X30.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="RRTouched:" destination="Y2f-Ky-VQq" eventType="touchUpInside" id="unQ-cg-7Su"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3Jb-EX-f8z">
+                                <rect key="frame" x="171" y="237" width="154" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Email">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="EMTouched:" destination="Y2f-Ky-VQq" eventType="touchUpInside" id="OVh-zE-oWM"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -597,9 +639,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="vG0-XF-6ED"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="EMBut" destination="3Jb-EX-f8z" id="SSp-fd-d8J"/>
+                        <outlet property="FBBut" destination="1oX-5I-yhA" id="G2n-7Z-DeD"/>
+                        <outlet property="RRBut" destination="nUp-dI-AfC" id="ejF-yB-3op"/>
+                    </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-931" y="-771"/>
+            <point key="canvasLocation" x="-2633" y="-675"/>
         </scene>
         <!--Game View Controller - Difficulty Selection-->
         <scene sceneID="Cex-y9-cMJ">
@@ -811,12 +858,13 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-2043" y="-423"/>
+            <point key="canvasLocation" x="-4275" y="-371"/>
         </scene>
     </scenes>
     <resources>
+        <image name="FacebookButton30x34.png" width="176" height="31"/>
         <image name="Inv_hammer_unique_sulfuras.png" width="64" height="64"/>
-        <image name="MainPage_bg.png" width="960" height="640"/>
+        <image name="RenRen_Login150X30.png" width="150" height="30"/>
         <image name="bob1.png" width="500" height="667"/>
         <image name="facebook.png" width="256" height="256"/>
         <image name="friend b.png" width="333" height="186"/>
@@ -858,18 +906,22 @@
         <class className="RootViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
             <relationships>
+                <relationship kind="action" name="opt_touched:"/>
                 <relationship kind="action" name="play_touched:"/>
                 <relationship kind="outlet" name="LoginAccountImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="opt_but" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="play_but" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="SelectToLoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectToLoginViewController.h"/>
             <relationships>
-                <relationship kind="action" name="FBClicked:"/>
-                <relationship kind="outlet" name="LogonEmail_But" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="LogonFB_But" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="LogonRenren_But" candidateClass="UIButton"/>
+                <relationship kind="action" name="EMTouched:"/>
+                <relationship kind="action" name="FBTouched:"/>
+                <relationship kind="action" name="RRTouched:"/>
+                <relationship kind="outlet" name="EMBut" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="FBBut" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="RRBut" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="StatusBarController" superclassName="UIViewController">
