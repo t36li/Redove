@@ -21,6 +21,7 @@
 #define PlayToFriendSegue @"PlayToFriendSegue"
 
 static NSMutableArray *FriendsData = nil;
+static BOOL isFBlogin;
 
 @interface RootViewController ()
 
@@ -45,8 +46,9 @@ static NSMutableArray *FriendsData = nil;
 -(void) viewWillAppear:(BOOL)animated{
     [[FBSingleton sharedInstance] setDelegate:self];
     //currentLogInType = [[NSUserDefaults standardUserDefaults] integerForKey:LogInAs];
+    isFBlogin = [[FBSingleton sharedInstance] isLogin];
 
-    if ([[FBSingleton sharedInstance] isLogin]){
+    if (isFBlogin){
         [[FBSingleton sharedInstance] RequestMeProfileImage];
     }
     else {
@@ -71,7 +73,7 @@ static NSMutableArray *FriendsData = nil;
             break;
         }
         case LogInFacebook:{
-            if([[FBSingleton sharedInstance] isLogin]){
+            if(isFBlogin){
             //!!!!!!!!!!!!!When Databases knick in, check if it is a registered user.
             //current status, use all facebook users as registered users
             [self performSegueWithIdentifier:PlayToStatusSegue sender:self];
@@ -96,7 +98,7 @@ static NSMutableArray *FriendsData = nil;
 }
 
 -(IBAction)Friend_touched:(id)sender{
-    if ([[FBSingleton sharedInstance] isLogin]){
+    if (isFBlogin){
     [[FBSingleton sharedInstance] RequestFriendList];
     
     }
