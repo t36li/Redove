@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		694F34A615A6756F009BA1C5 /* SelectToLogIn_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 694F34A515A6756F009BA1C5 /* SelectToLogIn_bg.png */; };
+		694F34AD15A68355009BA1C5 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 694F34AC15A68355009BA1C5 /* FriendsViewController.m */; };
+		694F34AF15A756F5009BA1C5 /* FriendsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 694F34AE15A756F5009BA1C5 /* FriendsTableCell.xib */; };
+		694F34B215A76006009BA1C5 /* FriendsTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 694F34B115A76006009BA1C5 /* FriendsTableCell.m */; };
 		696F17BB15A3CA8D00DC849F /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 696F17AE15A3CA8D00DC849F /* FBDialog.bundle */; };
 		696F17BC15A3CA8D00DC849F /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 696F17B415A3CA8D00DC849F /* libfacebook_ios_sdk.a */; };
 		696F17C215A3D58D00DC849F /* FBSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 696F17C115A3D58D00DC849F /* FBSingleton.m */; };
@@ -189,6 +192,11 @@
 
 /* Begin PBXFileReference section */
 		694F34A515A6756F009BA1C5 /* SelectToLogIn_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SelectToLogIn_bg.png; sourceTree = "<group>"; };
+		694F34AB15A68355009BA1C5 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = FriendsViewController.h; sourceTree = "<group>"; };
+		694F34AC15A68355009BA1C5 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
+		694F34AE15A756F5009BA1C5 /* FriendsTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsTableCell.xib; sourceTree = "<group>"; };
+		694F34B015A76005009BA1C5 /* FriendsTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsTableCell.h; sourceTree = "<group>"; };
+		694F34B115A76006009BA1C5 /* FriendsTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsTableCell.m; sourceTree = "<group>"; };
 		696F17AC15A3CA8D00DC849F /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		696F17AD15A3CA8D00DC849F /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
 		696F17AE15A3CA8D00DC849F /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBDialog.bundle; sourceTree = "<group>"; };
@@ -572,6 +580,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		694F34B315A7775E009BA1C5 /* Mainpage Scene */ = {
+			isa = PBXGroup;
+			children = (
+				69C95E8C159A4AAC009966DA /* RootViewController.h */,
+				69C95E8D159A4AAC009966DA /* RootViewController.m */,
+				696F17FA15A4A81000DC849F /* OptionsViewController.h */,
+				696F17FB15A4A81000DC849F /* OptionsViewController.m */,
+				694F34AB15A68355009BA1C5 /* FriendsViewController.h */,
+				694F34AC15A68355009BA1C5 /* FriendsViewController.m */,
+				694F34B015A76005009BA1C5 /* FriendsTableCell.h */,
+				694F34B115A76006009BA1C5 /* FriendsTableCell.m */,
+				694F34AE15A756F5009BA1C5 /* FriendsTableCell.xib */,
+			);
+			name = "Mainpage Scene";
+			sourceTree = "<group>";
+		};
 		696F17AA15A3CA5700DC849F /* Facebook */ = {
 			isa = PBXGroup;
 			children = (
@@ -659,10 +683,7 @@
 				D0D7C84815956E3D00F51C6E /* GameViewController.m */,
 				69C95EAB159B63A9009966DA /* SelectToLoginViewController.h */,
 				69C95EAC159B63A9009966DA /* SelectToLoginViewController.m */,
-				69C95E8C159A4AAC009966DA /* RootViewController.h */,
-				69C95E8D159A4AAC009966DA /* RootViewController.m */,
-				696F17FA15A4A81000DC849F /* OptionsViewController.h */,
-				696F17FB15A4A81000DC849F /* OptionsViewController.m */,
+				694F34B315A7775E009BA1C5 /* Mainpage Scene */,
 				696F17FF15A4E30A00DC849F /* Constants.h */,
 				696F180415A52EF000DC849F /* GlobalMethods.h */,
 				696F180515A52EF000DC849F /* GlobalMethods.m */,
@@ -1284,6 +1305,7 @@
 				696F180115A52A3600DC849F /* FacebookButton30x34.png in Resources */,
 				696F180315A52AFF00DC849F /* RenRen_Login150X30.png in Resources */,
 				694F34A615A6756F009BA1C5 /* SelectToLogIn_bg.png in Resources */,
+				694F34AF15A756F5009BA1C5 /* FriendsTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1409,6 +1431,8 @@
 				696F17C215A3D58D00DC849F /* FBSingleton.m in Sources */,
 				696F17FC15A4A81000DC849F /* OptionsViewController.m in Sources */,
 				696F180615A52EF000DC849F /* GlobalMethods.m in Sources */,
+				694F34AD15A68355009BA1C5 /* FriendsViewController.m in Sources */,
+				694F34B215A76006009BA1C5 /* FriendsTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

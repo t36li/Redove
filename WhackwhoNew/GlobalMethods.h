@@ -13,5 +13,6 @@
 }
 
 -(void) setViewBackground:(NSString *)BackgroundImage viewSender:(id)sender;
+- (UIImage *)imageForObject:(NSString *)objectID;
 
 @end

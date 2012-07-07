@@ -13,11 +13,14 @@
 #import "SelectToLoginViewController.h"
 #import "GlobalMethods.h"
 #import "OptionsViewController.h"
+#import "FriendsViewController.h"
 
 #define PlayToSelectLogInSegue @"PlayToSelectLogInSegue"
 #define PlayToStatusSegue @"PlayToStatusSegue"
 #define PlayToSegue @"PlayToSegue"
+#define PlayToFriendSegue @"PlayToFriendSegue"
 
+static NSMutableArray *FriendsData = nil;
 
 @interface RootViewController ()
 
@@ -26,8 +29,6 @@
 @implementation RootViewController
 @synthesize LoginAccountImageView;
 @synthesize play_but,opt_but;
-
-
 
 
 -(void) viewDidLoad
@@ -52,6 +53,14 @@
         LoginAccountImageView.image = nil;
     }
 }
+
+- (void)didReceiveMemoryWarning {
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc that aren't in use.
+}
+
 
 -(IBAction)play_touched:(id)sender{
     NSLog(@"Play Button Touched");
@@ -86,6 +95,14 @@
 
 }
 
+-(IBAction)Friend_touched:(id)sender{
+    if ([[FBSingleton sharedInstance] isLogin]){
+    [[FBSingleton sharedInstance] RequestFriendList];
+    
+    }
+}
+        
+
 //FBSingleton Delegate:
 
 -(void) FBProfilePictureLoaded:(UIImage *)img{
@@ -102,6 +119,11 @@
     [[FBSingleton sharedInstance] RequestMeProfileImage];
 }
 
+-(void) FBSIngletonUserFriendsDidLoaded:(NSMutableArray *)friends{
+    FriendsData = [[NSMutableArray alloc] initWithArray:friends copyItems:YES];
+    [self performSegueWithIdentifier:PlayToFriendSegue sender:friend_but];
+    
+}
 
 ///////////////////////////
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -109,16 +131,16 @@
     }
     else if ([segue.identifier isEqualToString:PlayToStatusSegue]){
     }
+    else if ([segue.identifier isEqualToString:PlayToFriendSegue]){
+        [(FriendsViewController *)segue.destinationViewController   setResultData:FriendsData];
+        //FriendsViewController *fvc = (FriendsViewController *)segue.destinationViewController;
+        //fvc.resultData = [[NSMutableArray alloc] initWithArray:FriendsData copyItems:YES];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
-
-
-
-
-
 
 @end

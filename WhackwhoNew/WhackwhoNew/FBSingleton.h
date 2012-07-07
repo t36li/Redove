@@ -53,6 +53,7 @@ typedef enum apiCall {
 #pragma mark - Public Methods
 -(void) postToWallWithDialogNewHighscore:(int)highscore;
 -(void) RequestMeProfileImage;
+-(void) RequestFriendList;
 -(void) logout;
 -(void) login;
 -(BOOL) isLogin;

@@ -182,6 +182,14 @@ static FBSingleton *singletonDelegate = nil;
     }
 }
 
+-(void) RequestFriendList{
+    // Check if there is a valid session
+    if ([self isLogin]){
+        currentAPICall = kAPIGraphUserFriends;
+        [_facebook requestWithGraphPath:@"me/friends" andDelegate:self];
+    }
+}
+
 #pragma mark - FBDelegate Methods
 
 - (void)fbDidLogin {
@@ -263,7 +271,7 @@ static FBSingleton *singletonDelegate = nil;
     }
     switch (currentAPICall) {
             
-        case kAPIGraphMe:
+        case kAPIGraphMe:{
             //show profile result;
             NSLog(@"Me result for requestMeProfileImage ");
             NSString *nameID = [[NSString alloc] initWithFormat: @"%@ (%@)", 
@@ -277,9 +285,26 @@ static FBSingleton *singletonDelegate = nil;
                                          nil], nil];
             [[userData objectAtIndex:0] objectForKey:@"details"];
             [delegate FBProfilePictureLoaded:[self imageForObject:[result objectForKey:@"id"]]];
-            //_FBAPIResultVC = [[FBAPIResultViewController alloc] initWithTitle:@"MeProfileImage" data:userData action:nil];
+            break;
+        }
+        case kAPIGraphUserFriends:{
+            
+            NSMutableArray *friends = [[NSMutableArray alloc] initWithCapacity:1];
+            NSArray *resultData = [result objectForKey:@"data"];
+            if ([resultData count] > 0) {
+                for (NSUInteger i=0; i<[resultData count] /*&& i < 25*/; i++) {
+                    [friends addObject:[resultData objectAtIndex:i]];
+                }
+                // Show the friend information in a new view controller with FBSingleton Delegate
+                [delegate FBSIngletonUserFriendsDidLoaded:friends];
+            } else {
+                [delegate FBSIngletonUserFriendsDidLoaded:nil];
+            }
+            break;
+        }
     }
 }
+
 
 /**
  * Called when an error prevents the Facebook API request from completing

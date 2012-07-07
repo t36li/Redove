@@ -10,7 +10,10 @@
 
 @protocol FBSingletonDelegate <NSObject>
 
+@optional
 -(void)FBProfilePictureLoaded:(UIImage *)img;
 -(void)FBSingletonDidLogout;
 -(void)FBSingletonDidLogin;
+-(void)FBSIngletonUserFriendsDidLoaded:(NSMutableArray *) friends;
+
 @end
