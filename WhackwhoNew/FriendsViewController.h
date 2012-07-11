@@ -18,6 +18,7 @@
 @property (nonatomic, retain) NSString *resultAction;
 @property (nonatomic, assign) IBOutlet UITableViewCell *tableCell;
 @property (nonatomic, assign) IBOutlet UITableView *friendTable;
+- (IBAction)back_Touched:(id)sender;
 
 
 

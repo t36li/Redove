@@ -17,7 +17,7 @@
 #define kImageSrc       @"http://indiedevstories.files.wordpress.com/2011/08/newsokoban_icon.png"
 
 typedef enum LogInType {
-    NotLogIn,
+    NotLogIn = 1,
     LogInFacebook,
     LogInRenren,
     LogInEmail

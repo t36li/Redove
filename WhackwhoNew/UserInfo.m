@@ -10,7 +10,8 @@
 
 @implementation UserInfo
 
-@synthesize usrImg, croppedImage;
+@synthesize usrImg, croppedImage, userName, userId, currentLogInType;
+@synthesize delegate;
 
 static UserInfo *sharedInstance = nil;
 
@@ -21,6 +22,15 @@ static UserInfo *sharedInstance = nil;
         }
     }
     return sharedInstance;
+}
+
+-(void) clearUserInfo{
+    [self setCurrentLogInType:NotLogIn];
+    [self setUserId:nil];
+    [self setUserName:nil];
+    [self setUsrImg:nil];
+    [self setCroppedImage:nil];
+    [delegate userInfoUpdated];
 }
 
 @end

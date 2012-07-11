@@ -9,6 +9,7 @@
 #import "OptionsViewController.h"
 #import "FBSingleton.h"
 #import "RootViewController.h"
+#import "UserInfo.h"
 
 
 @interface OptionsViewController ()
@@ -31,7 +32,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    if ([[FBSingleton sharedInstance] isLogin]) {
+    if ((int)[[UserInfo sharedInstance] currentLogInType] != NotLogIn) {
         logout_but.hidden = NO;
     }
     else {
@@ -39,21 +40,27 @@
     }
 }
 
+-(void)FBSingletonDidLogout{
+    [[UserInfo sharedInstance] clearUserInfo];
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 -(IBAction)back_touched:(id)sender{
     [self dismissModalViewControllerAnimated:YES];
 }
 
 -(IBAction)logout_touched:(id)sender{
-    if ([[FBSingleton sharedInstance] isLogin]){
+    if ([[FBSingleton sharedInstance] isLogIn]){
+        [[FBSingleton sharedInstance] setDelegate:self];
         [[FBSingleton sharedInstance] logout];
     }
-    [self dismissModalViewControllerAnimated:YES];
-
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
+
+
 
 @end

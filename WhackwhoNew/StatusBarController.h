@@ -14,5 +14,6 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView *Bobhead;
+- (IBAction)Back_Touched:(id)sender;
 
 @end

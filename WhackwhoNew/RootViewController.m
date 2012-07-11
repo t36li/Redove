@@ -14,6 +14,7 @@
 #import "GlobalMethods.h"
 #import "OptionsViewController.h"
 #import "FriendsViewController.h"
+#import "UserInfo.h"
 
 #define PlayToSelectLogInSegue @"PlayToSelectLogInSegue"
 #define PlayToStatusSegue @"PlayToStatusSegue"
@@ -21,35 +22,65 @@
 #define PlayToFriendSegue @"PlayToFriendSegue"
 
 static NSMutableArray *FriendsData = nil;
-static BOOL isFBlogin;
 
-@interface RootViewController ()
 
+@interface RootViewController (){
+    @private
+    UserInfo *usr;
+    FBSingleton *fbs;
+    GlobalMethods *gmethods;
+}
 @end
 
 @implementation RootViewController
 @synthesize LoginAccountImageView;
 @synthesize play_but,opt_but;
 
-
 -(void) viewDidLoad
 {
     NSLog(@"RootViewController viewDidLoad");
     [super viewDidLoad];
-    GlobalMethods *gmethods = [[GlobalMethods alloc] init];
+    
+    NSLog(@"Load/set currentLogInType");
+    gmethods = [[GlobalMethods alloc] init];
+    [[UserInfo sharedInstance] setDelegate:self];
+    usr = [UserInfo sharedInstance];
+    
+    if ((int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs]>0){
+        [usr setCurrentLogInType:(int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs]];
+    }else{
+        [usr setCurrentLogInType:NotLogIn];
+        [[NSUserDefaults standardUserDefaults] setInteger:NotLogIn forKey:LogInAs];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    NSLog(@"update UserInfo");
+    switch ((int)[usr currentLogInType]) {
+        case LogInFacebook:
+            [[FBSingleton sharedInstance] setDelegate:self];
+            fbs = [FBSingleton sharedInstance];
+            if ([fbs isLogIn]){
+                [fbs RequestMe];
+            }
+            else {
+                [usr setCurrentLogInType:NotLogIn];
+                [[NSUserDefaults standardUserDefaults] setInteger:NotLogIn forKey:LogInAs];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }
+            break;
+            
+        default:
+            break;
+    }
+    
+    NSLog(@"update Background");
     [gmethods setViewBackground:MainPage_bg viewSender:self.view];
-    
-    //[[NSUserDefaults standardUserDefaults] setInteger:nil forKey:LogInAs]; 
-    
 }
 
--(void) viewWillAppear:(BOOL)animated{
+-(void) viewDidAppear:(BOOL)animated{
     [[FBSingleton sharedInstance] setDelegate:self];
-    //currentLogInType = [[NSUserDefaults standardUserDefaults] integerForKey:LogInAs];
-    isFBlogin = [[FBSingleton sharedInstance] isLogin];
-
-    if (isFBlogin){
-        [[FBSingleton sharedInstance] RequestMeProfileImage];
+    if ((int)usr.currentLogInType != NotLogIn){
+        LoginAccountImageView.image = [gmethods imageForObject:usr.userId];
     }
     else {
         LoginAccountImageView.image = nil;
@@ -67,27 +98,24 @@ static BOOL isFBlogin;
 -(IBAction)play_touched:(id)sender{
     NSLog(@"Play Button Touched");
     
-    switch ((int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs]) {
+    switch (usr.currentLogInType) {
         case NotLogIn:{
             [self performSegueWithIdentifier:PlayToSelectLogInSegue sender:sender];
             break;
         }
         case LogInFacebook:{
-            if(isFBlogin){
+            if([fbs isLogIn]){
             //!!!!!!!!!!!!!When Databases knick in, check if it is a registered user.
             //current status, use all facebook users as registered users
-            [self performSegueWithIdentifier:PlayToStatusSegue sender:self];
+            [self performSegueWithIdentifier:PlayToStatusSegue sender:sender];
             }
-            break;
-        }  
-        case LogInRenren:{
             break;
         }
         case LogInEmail:{
             break;
         }
         default:{
-            //[self performSegueWithIdentifier:PlayToSelectLogInSegue sender:sender];
+            [self performSegueWithIdentifier:PlayToSelectLogInSegue sender:sender];
             break;
         }
     }
@@ -98,9 +126,8 @@ static BOOL isFBlogin;
 }
 
 -(IBAction)Friend_touched:(id)sender{
-    if (isFBlogin){
-    [[FBSingleton sharedInstance] RequestFriendList];
-    
+    if ([fbs isLogIn]){
+        [[FBSingleton sharedInstance] RequestFriendList];
     }
 }
         
@@ -118,13 +145,29 @@ static BOOL isFBlogin;
 }
 
 -(void)FBSingletonDidLogin {
-    [[FBSingleton sharedInstance] RequestMeProfileImage];
+    //[[FBSingleton sharedInstance] RequestMeProfileImage];
 }
 
 -(void) FBSIngletonUserFriendsDidLoaded:(NSMutableArray *)friends{
     FriendsData = [[NSMutableArray alloc] initWithArray:friends copyItems:YES];
     [self performSegueWithIdentifier:PlayToFriendSegue sender:friend_but];
     
+}
+
+
+-(void) FbMeLoaded:(NSString *)userId :(NSString *)userName{
+    if (userId != nil){
+        [usr setUserId:userId];
+        [usr setUserName:userName];
+        LoginAccountImageView.image = [gmethods imageForObject:userId];
+    }
+}
+
+//UserInfo Deleagate:
+
+-(void)userInfoUpdated{
+    LoginAccountImageView.image = [gmethods imageForObject:usr.userId];
+    [[FBSingleton sharedInstance] setDelegate:self];
 }
 
 ///////////////////////////
@@ -135,6 +178,7 @@ static BOOL isFBlogin;
     }
     else if ([segue.identifier isEqualToString:PlayToFriendSegue]){
         [(FriendsViewController *)segue.destinationViewController   setResultData:FriendsData];
+        FriendsData = nil;
         //FriendsViewController *fvc = (FriendsViewController *)segue.destinationViewController;
         //fvc.resultData = [[NSMutableArray alloc] initWithArray:FriendsData copyItems:YES];
     }
