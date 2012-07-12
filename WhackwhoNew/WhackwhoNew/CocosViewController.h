@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
+#import "ChooseWhoLayer.h"
 
 @interface CocosViewController : UIViewController <CCDirectorDelegate>
 

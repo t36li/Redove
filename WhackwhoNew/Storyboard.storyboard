@@ -157,11 +157,11 @@
             </objects>
             <point key="canvasLocation" x="-2619" y="-69"/>
         </scene>
-        <!--Game View Controller - Main Game Screen-->
+        <!--Cocos View Controller - Main Game Screen-->
         <scene sceneID="rZj-jY-lho">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sMe-Oa-IUB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="" title="Main Game Screen" id="pLt-Tc-cty" customClass="GameViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="" title="Main Game Screen" id="pLt-Tc-cty" customClass="CocosViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZRY-HB-eTo">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

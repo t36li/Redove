@@ -157,6 +157,10 @@
 		C14718551594F0AE0002FF21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C14718541594F0AE0002FF21 /* AppDelegate.m */; };
 		C14718581594F0FB0002FF21 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C14718571594F0FB0002FF21 /* ViewController.m */; };
 		C147185B1594F1AF0002FF21 /* CocosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C147185A1594F1AF0002FF21 /* CocosViewController.m */; };
+		C14B63B715AF5C3700376C91 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = C14B63B615AF5C3700376C91 /* Game.m */; };
+		C14B63BA15AF5C9200376C91 /* ChooseWhoLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C14B63B915AF5C9200376C91 /* ChooseWhoLayer.m */; };
+		C14B63BD15AF5CE000376C91 /* LevelOneLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C14B63BC15AF5CE000376C91 /* LevelOneLayer.m */; };
+		C14B63C015AF5D3200376C91 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = C14B63BF15AF5D3100376C91 /* Character.m */; };
 		C1B4397D15951B4100D62C2B /* StatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B4397C15951B4100D62C2B /* StatusBarController.m */; };
 		C1CBDFE115952D2B00A35E24 /* wensen1.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFE015952D2B00A35E24 /* wensen1.png */; };
 		C1CBDFE315952D3600A35E24 /* zach1.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFE215952D3600A35E24 /* zach1.png */; };
@@ -504,6 +508,14 @@
 		C14718571594F0FB0002FF21 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = WhackwhoNew/ViewController.m; sourceTree = "<group>"; };
 		C14718591594F1AF0002FF21 /* CocosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocosViewController.h; path = WhackwhoNew/CocosViewController.h; sourceTree = "<group>"; };
 		C147185A1594F1AF0002FF21 /* CocosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CocosViewController.m; path = WhackwhoNew/CocosViewController.m; sourceTree = "<group>"; };
+		C14B63B515AF5C3700376C91 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		C14B63B615AF5C3700376C91 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		C14B63B815AF5C9200376C91 /* ChooseWhoLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseWhoLayer.h; sourceTree = "<group>"; };
+		C14B63B915AF5C9200376C91 /* ChooseWhoLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseWhoLayer.m; sourceTree = "<group>"; };
+		C14B63BB15AF5CE000376C91 /* LevelOneLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelOneLayer.h; sourceTree = "<group>"; };
+		C14B63BC15AF5CE000376C91 /* LevelOneLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelOneLayer.m; sourceTree = "<group>"; };
+		C14B63BE15AF5D3100376C91 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
+		C14B63BF15AF5D3100376C91 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
 		C1B4397B15951B4100D62C2B /* StatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarController.h; sourceTree = "<group>"; };
 		C1B4397C15951B4100D62C2B /* StatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarController.m; sourceTree = "<group>"; };
 		C1CBDFE015952D2B00A35E24 /* wensen1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wensen1.png; sourceTree = "<group>"; };
@@ -682,11 +694,10 @@
 			name = System;
 			sourceTree = "<group>";
 		};
-		69C95E8B159A4A15009966DA /* Game */ = {
+		69C95E8B159A4A15009966DA /* Main Shit */ = {
 			isa = PBXGroup;
 			children = (
-				C14718591594F1AF0002FF21 /* CocosViewController.h */,
-				C147185A1594F1AF0002FF21 /* CocosViewController.m */,
+				C14B63B015AF5B5400376C91 /* Actual Game Scene(Cocos2d) */,
 				D0D7C84415955D3400F51C6E /* AvatarViewController.h */,
 				D0D7C84515955D3400F51C6E /* AvatarViewController.m */,
 				D09FD5DA159E4EB60079231D /* CameraOverlayControllerViewController.h */,
@@ -707,7 +718,7 @@
 				696F180415A52EF000DC849F /* GlobalMethods.h */,
 				696F180515A52EF000DC849F /* GlobalMethods.m */,
 			);
-			name = Game;
+			name = "Main Shit";
 			sourceTree = "<group>";
 		};
 		69C95E94159A51E0009966DA /* Background */ = {
@@ -740,7 +751,7 @@
 			children = (
 				C147181B1594AF1E0002FF21 /* Storyboard.storyboard */,
 				D0E30674159E4B2E0080D845 /* WEPopover */,
-				69C95E8B159A4A15009966DA /* Game */,
+				69C95E8B159A4A15009966DA /* Main Shit */,
 				69C95E86159A461A009966DA /* Graphics */,
 				69C95E88159A462A009966DA /* Audio */,
 				C147168C1594ACCA0002FF21 /* Resources */,
@@ -1135,6 +1146,23 @@
 			name = GL;
 			sourceTree = "<group>";
 		};
+		C14B63B015AF5B5400376C91 /* Actual Game Scene(Cocos2d) */ = {
+			isa = PBXGroup;
+			children = (
+				C14718591594F1AF0002FF21 /* CocosViewController.h */,
+				C147185A1594F1AF0002FF21 /* CocosViewController.m */,
+				C14B63B515AF5C3700376C91 /* Game.h */,
+				C14B63B615AF5C3700376C91 /* Game.m */,
+				C14B63B815AF5C9200376C91 /* ChooseWhoLayer.h */,
+				C14B63B915AF5C9200376C91 /* ChooseWhoLayer.m */,
+				C14B63BB15AF5CE000376C91 /* LevelOneLayer.h */,
+				C14B63BC15AF5CE000376C91 /* LevelOneLayer.m */,
+				C14B63BE15AF5D3100376C91 /* Character.h */,
+				C14B63BF15AF5D3100376C91 /* Character.m */,
+			);
+			name = "Actual Game Scene(Cocos2d)";
+			sourceTree = "<group>";
+		};
 		C1B439721595177E00D62C2B /* Facebook Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -1455,6 +1483,10 @@
 				696F180615A52EF000DC849F /* GlobalMethods.m in Sources */,
 				694F34AD15A68355009BA1C5 /* FriendsViewController.m in Sources */,
 				694F34B215A76006009BA1C5 /* FriendsTableCell.m in Sources */,
+				C14B63B715AF5C3700376C91 /* Game.m in Sources */,
+				C14B63BA15AF5C9200376C91 /* ChooseWhoLayer.m in Sources */,
+				C14B63BD15AF5CE000376C91 /* LevelOneLayer.m in Sources */,
+				C14B63C015AF5D3200376C91 /* Character.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

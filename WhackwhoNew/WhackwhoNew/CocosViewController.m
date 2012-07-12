@@ -58,10 +58,10 @@
     [director didMoveToParentViewController:self];
     
     // Run whatever scene we'd like to run here.
-    //if(director.runningScene)
-      //  [director replaceScene:[MyScene scene]];
-    //else
-      //  [director runWithScene:[MyScene scene]];
+    if(director.runningScene)
+        [director replaceScene:[ChooseWhoLayer scene]];
+    else
+        [director runWithScene:[ChooseWhoLayer scene]];
 }
 
 - (void)viewDidUnload
