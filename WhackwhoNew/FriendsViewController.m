@@ -21,6 +21,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[GlobalMethods alloc] setViewBackground:FriendList_bg viewSender:self.view];
     if (resultData){
         //NSLog(@"%@",resultData);
         friendsTable.dataSource = self;
@@ -62,6 +64,7 @@
         cell = [nib objectAtIndex:0];
     }
     
+    cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:FriendListCell]];
     cell.name.text = (NSString *)[[resultData objectAtIndex:indexPath.row] objectForKey:@"name"];
     cell.name.lineBreakMode  = UILineBreakModeWordWrap;
     cell.profileImageView.image = [[GlobalMethods alloc] imageForObject:[[resultData objectAtIndex:indexPath.row] objectForKey:@"id"]];
