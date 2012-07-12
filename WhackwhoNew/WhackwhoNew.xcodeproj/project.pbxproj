@@ -10,6 +10,8 @@
 		690D418A15AE13FF00472F82 /* monk.png in Resources */ = {isa = PBXBuildFile; fileRef = 690D418915AE13FF00472F82 /* monk.png */; };
 		690D418C15AE6F6600472F82 /* vald.png in Resources */ = {isa = PBXBuildFile; fileRef = 690D418B15AE6F6600472F82 /* vald.png */; };
 		690D418E15AE6F6F00472F82 /* olaf.png in Resources */ = {isa = PBXBuildFile; fileRef = 690D418D15AE6F6F00472F82 /* olaf.png */; };
+		690D419115AF5EC900472F82 /* friend list (background).png in Resources */ = {isa = PBXBuildFile; fileRef = 690D419015AF5EC900472F82 /* friend list (background).png */; };
+		690D419515AF5F5600472F82 /* friend list (cell).png in Resources */ = {isa = PBXBuildFile; fileRef = 690D419415AF5F5600472F82 /* friend list (cell).png */; };
 		694F34A615A6756F009BA1C5 /* SelectToLogIn_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 694F34A515A6756F009BA1C5 /* SelectToLogIn_bg.png */; };
 		694F34AD15A68355009BA1C5 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 694F34AC15A68355009BA1C5 /* FriendsViewController.m */; };
 		694F34AF15A756F5009BA1C5 /* FriendsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 694F34AE15A756F5009BA1C5 /* FriendsTableCell.xib */; };
@@ -198,6 +200,8 @@
 		690D418915AE13FF00472F82 /* monk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monk.png; sourceTree = "<group>"; };
 		690D418B15AE6F6600472F82 /* vald.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vald.png; sourceTree = "<group>"; };
 		690D418D15AE6F6F00472F82 /* olaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = olaf.png; sourceTree = "<group>"; };
+		690D419015AF5EC900472F82 /* friend list (background).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend list (background).png"; sourceTree = "<group>"; };
+		690D419415AF5F5600472F82 /* friend list (cell).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend list (cell).png"; sourceTree = "<group>"; };
 		694F34A515A6756F009BA1C5 /* SelectToLogIn_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SelectToLogIn_bg.png; sourceTree = "<group>"; };
 		694F34AB15A68355009BA1C5 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
 		694F34AC15A68355009BA1C5 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
@@ -597,6 +601,14 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		690D418F15AF5E9000472F82 /* Frames */ = {
+			isa = PBXGroup;
+			children = (
+				690D419415AF5F5600472F82 /* friend list (cell).png */,
+			);
+			name = Frames;
+			sourceTree = "<group>";
+		};
 		694F34B315A7775E009BA1C5 /* Mainpage Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -649,8 +661,9 @@
 		69C95E86159A461A009966DA /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
-				690D418815AE115A00472F82 /* Models */,
+				690D418F15AF5E9000472F82 /* Frames */,
 				69C95E9A159A53B2009966DA /* ImageConstants.h */,
+				690D418815AE115A00472F82 /* Models */,
 				69C95E95159A51EF009966DA /* Buttons */,
 				69C95E94159A51E0009966DA /* Background */,
 				D07F6FEC159943FB0085DF2B /* facedetectionpic.jpg */,
@@ -713,6 +726,7 @@
 		69C95E94159A51E0009966DA /* Background */ = {
 			isa = PBXGroup;
 			children = (
+				690D419015AF5EC900472F82 /* friend list (background).png */,
 				694F34A515A6756F009BA1C5 /* SelectToLogIn_bg.png */,
 				69C95E9B159B4E21009966DA /* MainPage_bg.png */,
 				69C95E96159A5223009966DA /* GameMode_grass_bg.png */,
@@ -1328,6 +1342,8 @@
 				690D418A15AE13FF00472F82 /* monk.png in Resources */,
 				690D418C15AE6F6600472F82 /* vald.png in Resources */,
 				690D418E15AE6F6F00472F82 /* olaf.png in Resources */,
+				690D419115AF5EC900472F82 /* friend list (background).png in Resources */,
+				690D419515AF5F5600472F82 /* friend list (cell).png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
