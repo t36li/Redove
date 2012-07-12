@@ -295,7 +295,7 @@ static FBSingleton *singletonDelegate = nil;
             NSMutableArray *friends = [[NSMutableArray alloc] initWithCapacity:1];
             NSArray *resultData = [result objectForKey:@"data"];
             if ([resultData count] > 0) {
-                for (NSUInteger i=0; i<[resultData count] && i < 100; i++) {
+                for (NSUInteger i=0; i<[resultData count] && i < 25; i++) {
                     [friends addObject:[resultData objectAtIndex:i]];
                 }
                 // Show the friend information in a new view controller with FBSingleton Delegate

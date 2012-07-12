@@ -224,7 +224,7 @@
 
 /* Begin PBXFileReference section */
 		690D418615AD360C00472F82 /* UserInfoDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoDelegate.h; sourceTree = "<group>"; };
-		690D419015AF5EC900472F82 /* friend list (background).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "friend list (background).png"; path = "../friend list (background).png"; sourceTree = "<group>"; };
+		690D419015AF5EC900472F82 /* friend list (background).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend list (background).png"; sourceTree = "<group>"; };
 		690D419415AF5F5600472F82 /* friend list (cell).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend list (cell).png"; sourceTree = "<group>"; };
 		694F34A515A6756F009BA1C5 /* SelectToLogIn_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SelectToLogIn_bg.png; path = ../SelectToLogIn_bg.png; sourceTree = "<group>"; };
 		694F34AB15A68355009BA1C5 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
@@ -749,7 +749,7 @@
 			name = System;
 			sourceTree = "<group>";
 		};
-		69C95E8B159A4A15009966DA /* Main Shit */ = {
+		69C95E8B159A4A15009966DA /* Main Game */ = {
 			isa = PBXGroup;
 			children = (
 				C14B63B015AF5B5400376C91 /* Actual Game Scene(Cocos2d) */,
@@ -775,12 +775,13 @@
 				696F180415A52EF000DC849F /* GlobalMethods.h */,
 				696F180515A52EF000DC849F /* GlobalMethods.m */,
 			);
-			name = "Main Shit";
+			name = "Main Game";
 			sourceTree = "<group>";
 		};
 		69C95E94159A51E0009966DA /* Background */ = {
 			isa = PBXGroup;
 			children = (
+				690D419015AF5EC900472F82 /* friend list (background).png */,
 				C1FE253F15AF66CB00DAF258 /* flower.png */,
 				C1FE254015AF66CB00DAF258 /* scoreboard.png */,
 				C1FE253C15AF667B00DAF258 /* rainbow4.png */,
@@ -818,7 +819,7 @@
 			children = (
 				C147181B1594AF1E0002FF21 /* Storyboard.storyboard */,
 				D0E30674159E4B2E0080D845 /* WEPopover */,
-				69C95E8B159A4A15009966DA /* Main Shit */,
+				69C95E8B159A4A15009966DA /* Main Game */,
 				69C95E86159A461A009966DA /* Graphics */,
 				69C95E88159A462A009966DA /* Audio */,
 				C147168C1594ACCA0002FF21 /* Resources */,
@@ -1236,7 +1237,6 @@
 		C1B439721595177E00D62C2B /* Facebook Scene */ = {
 			isa = PBXGroup;
 			children = (
-				690D419015AF5EC900472F82 /* friend list (background).png */,
 				694F34A515A6756F009BA1C5 /* SelectToLogIn_bg.png */,
 				C1CBDFEE15952DC100A35E24 /* Email Envelope.png */,
 				C1CBDFEF15952DC100A35E24 /* facebook.png */,
