@@ -8,10 +8,11 @@
 
 //Define all the Images names as constants, including backgrounds, icons, etc.
 
+//backgrounds
 #define MainPage_bg @"MainPage_bg"
 #define GameMode_grass_bg @"GameMode_grass_bg"
 #define SelectToLogIn_bg @"SelectToLogIn_bg.png"
-
+#define FriendList_bg @"friend list (background).png"
 
 //buttons
 #define Play_but @"play s.png"
@@ -26,7 +27,14 @@
 #define AccessRenrenIcon_HL @"RenRen_Login150X30.png"
 
 
-//Models
+//Sprites
 #define Monk @"monk.png"
 #define Vald @"vald.png"
 #define Olaf @"olaf.png"
+#define Baby @"baby.png"
+#define Mice @"mice.png"
+#define Pinky @"pinky.png"
+#define Blue @"blue.png"
+
+//Frames
+#define FriendListCell @"friend list (cell).png"
