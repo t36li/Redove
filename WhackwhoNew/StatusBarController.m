@@ -12,16 +12,7 @@
 
 @implementation StatusBarController
 
-@synthesize Bobhead;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize Bobhead, headView;
 
 - (void)viewDidLoad
 {
@@ -29,13 +20,9 @@
 	// Do any additional setup after loading the view.
     [self.view setBackgroundColor:[UIColor whiteColor]];
 	// Do any additional setup after loading the view, typically from a nib.
-    Bobhead.animationImages = [NSArray arrayWithObjects:[UIImage imageNamed:@"bob1.png"], [UIImage imageNamed:@"bob2.png"], [UIImage imageNamed:@"bob3.png"], nil];
-    Bobhead.animationDuration = 0.5;
-    Bobhead.animationRepeatCount = 0;
-    
+
     [Bobhead setContentMode:UIViewContentModeScaleAspectFit];
     [Bobhead setBackgroundColor:[UIColor clearColor]];
-    [Bobhead startAnimating];
 }
 
 - (void)viewDidUnload
@@ -53,8 +40,7 @@
     self.navigationController.navigationBarHidden = YES;
     UserInfo *usr = [UserInfo sharedInstance];
     if (usr.usrImg != nil) {
-        Bobhead.image = usr.croppedImage;
-        [Bobhead stopAnimating];
+        headView.image = usr.croppedImage;
     }
 }
 

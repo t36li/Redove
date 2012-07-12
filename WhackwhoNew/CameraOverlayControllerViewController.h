@@ -7,28 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import "CameraOverlayControllerViewControllerDelegate.h"
+#import "AvatarBaseController.h"
 
-@interface CameraOverlayControllerViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
+@interface CameraOverlayControllerViewController : AvatarBaseController <UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
     UIImagePickerController *pickerReference;
     UIImage *validPhoto, *croppedImage;
-
-    IBOutlet UIButton *switchCameraBtn, *takeBtn, *closePreviewBtn, *acceptPreviewBtn;
     
-    IBOutlet UIView *containerView, *idView;
-    
+    IBOutlet UIView *outfitView;    
     id<CameraOverlayControllerViewControllerDelegate> delegate;
 }
 
 @property (nonatomic, retain) UIImagePickerController *pickerReference;
-@property (nonatomic, retain) IBOutlet UIButton *switchCameraBtn, *takeBtn, *closePreviewBtn, *acceptPreviewBtn;
-@property (nonatomic, retain) IBOutlet UIView *containerView, *idView; 
+@property (nonatomic, retain) IBOutlet UIView *outfitView;
 @property (nonatomic, retain) UIImage *validPhoto, *croppedImage;
 @property (nonatomic, retain) id<CameraOverlayControllerViewControllerDelegate> delegate;
 
 -(IBAction)takePicture:(id)sender;
 -(IBAction)switchCamera:(id)sender;
--(IBAction)closePreview:(id)sender;
--(IBAction)acceptPreview:(id)sender;
 @end
