@@ -86,4 +86,7 @@
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
+- (IBAction)back_Touched:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 @end

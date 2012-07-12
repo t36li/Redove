@@ -12,8 +12,9 @@
 
 @optional
 -(void)FBProfilePictureLoaded:(UIImage *)img;
+-(void)FbMeLoaded:(NSString *)userId: (NSString *) userName;
 -(void)FBSingletonDidLogout;
--(void)FBSingletonDidLogin;
+-(void)FBSingletonDidLogin:(NSString *)userId: (NSString *) userName;
 -(void)FBSIngletonUserFriendsDidLoaded:(NSMutableArray *) friends;
 
 @end

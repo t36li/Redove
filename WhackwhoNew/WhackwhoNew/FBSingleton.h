@@ -26,6 +26,7 @@ typedef enum apiCall {
     kDialogFeedFriend,
     kAPIGraphUserPermissions,
     kAPIGraphMe,
+    kAPIGraphMeLogIn,
     kAPIGraphUserFriends,
     kDialogPermissionsCheckin,
     kDialogPermissionsCheckinForRecent,
@@ -41,21 +42,23 @@ typedef enum apiCall {
     int currentAPICall;
     Facebook* _facebook;
     NSArray* _permissions;
+    BOOL isLogIn;
     id<FBSingletonDelegate> delegate;
     // Internal state
     int score;
 }
 @property(readonly) Facebook *facebook;
 @property(nonatomic, retain) id<FBSingletonDelegate> delegate;
+@property (nonatomic, readwrite) BOOL isLogIn;
 
 + (FBSingleton *) sharedInstance;
 
+
 #pragma mark - Public Methods
 -(void) postToWallWithDialogNewHighscore:(int)highscore;
--(void) RequestMeProfileImage;
+-(void) RequestMe;
 -(void) RequestFriendList;
 -(void) logout;
 -(void) login;
--(BOOL) isLogin;
 
 @end 

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		690D418A15AE13FF00472F82 /* monk.png in Resources */ = {isa = PBXBuildFile; fileRef = 690D418915AE13FF00472F82 /* monk.png */; };
+		690D418C15AE6F6600472F82 /* vald.png in Resources */ = {isa = PBXBuildFile; fileRef = 690D418B15AE6F6600472F82 /* vald.png */; };
+		690D418E15AE6F6F00472F82 /* olaf.png in Resources */ = {isa = PBXBuildFile; fileRef = 690D418D15AE6F6F00472F82 /* olaf.png */; };
 		694F34A615A6756F009BA1C5 /* SelectToLogIn_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 694F34A515A6756F009BA1C5 /* SelectToLogIn_bg.png */; };
 		694F34AD15A68355009BA1C5 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 694F34AC15A68355009BA1C5 /* FriendsViewController.m */; };
 		694F34AF15A756F5009BA1C5 /* FriendsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 694F34AE15A756F5009BA1C5 /* FriendsTableCell.xib */; };
@@ -196,6 +199,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		690D418615AD360C00472F82 /* UserInfoDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoDelegate.h; sourceTree = "<group>"; };
+		690D418915AE13FF00472F82 /* monk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monk.png; sourceTree = "<group>"; };
+		690D418B15AE6F6600472F82 /* vald.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vald.png; sourceTree = "<group>"; };
+		690D418D15AE6F6F00472F82 /* olaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = olaf.png; sourceTree = "<group>"; };
 		694F34A515A6756F009BA1C5 /* SelectToLogIn_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SelectToLogIn_bg.png; sourceTree = "<group>"; };
 		694F34AB15A68355009BA1C5 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
 		694F34AC15A68355009BA1C5 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
@@ -592,6 +599,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		690D418815AE115A00472F82 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				690D418D15AE6F6F00472F82 /* olaf.png */,
+				690D418B15AE6F6600472F82 /* vald.png */,
+				690D418915AE13FF00472F82 /* monk.png */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		694F34B315A7775E009BA1C5 /* Mainpage Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -644,6 +661,7 @@
 		69C95E86159A461A009966DA /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				690D418815AE115A00472F82 /* Models */,
 				69C95E9A159A53B2009966DA /* ImageConstants.h */,
 				69C95E95159A51EF009966DA /* Buttons */,
 				69C95E94159A51E0009966DA /* Background */,
@@ -671,6 +689,7 @@
 				C14718541594F0AE0002FF21 /* AppDelegate.m */,
 				D090C63615A238CE0051AA12 /* UserInfo.h */,
 				D090C63715A238CF0051AA12 /* UserInfo.m */,
+				690D418615AD360C00472F82 /* UserInfoDelegate.h */,
 				C14717FE1594ACD20002FF21 /* Prefix.pch */,
 				C14717FF1594ACD20002FF21 /* main.m */,
 			);

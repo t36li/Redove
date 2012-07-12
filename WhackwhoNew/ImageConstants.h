@@ -24,3 +24,9 @@
 #define AccessFacebookIcon_HL @"FacebookButton30x34.png"
 #define AccessRenrenIcon @"RenRen_Login150X30.png"
 #define AccessRenrenIcon_HL @"RenRen_Login150X30.png"
+
+
+//Models
+#define Monk @"monk.png"
+#define Vald @"vald.png"
+#define Olaf @"olaf.png"

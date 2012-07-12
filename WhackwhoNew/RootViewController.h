@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "FBSingletonDelegate.h"
+#import "UserInfoDelegate.h"
 
-@interface RootViewController : UIViewController<FBSingletonDelegate> {
+@interface RootViewController : UIViewController<FBSingletonDelegate, UserInfoDelegate> {
     UIImageView *LoginAccountImageView; //Facebook Profile Image, Renren Profile Image or Gmail
     UIButton *play_but;
     UIButton *opt_but;
-    int currentLogInType;
 }
 @property (nonatomic, retain) IBOutlet UIImageView *LoginAccountImageView; 
 @property (nonatomic, retain) IBOutlet UIButton *play_but;

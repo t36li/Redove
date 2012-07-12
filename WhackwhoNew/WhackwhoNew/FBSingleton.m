@@ -7,13 +7,14 @@
 //
 
 #import "FBSingleton.h"
-#import "Constants.h"
+#import "UserInfo.h"
+
 
 static NSString* kAppId = @"442728025757863"; // Facebook app ID here
 
 @implementation FBSingleton
 @synthesize facebook = _facebook;
-@synthesize delegate;
+@synthesize delegate, isLogIn;
 
 #pragma mark -
 #pragma mark Singleton Variables
@@ -47,11 +48,11 @@ static FBSingleton *singletonDelegate = nil;
         
         //_permissions =  [NSArray arrayWithObjects:@"publish_stream", nil];
         
-        //request for profile image data (login):
-        //[self login];
-        //if(![self isLogin]){
-        //  [_facebook authorize:nil];
-        //}
+        if ([_facebook isSessionValid]){
+            [self setIsLogIn:YES];
+        }else {
+            [self setIsLogIn:NO];
+        }
     }
     
     return self;
@@ -65,6 +66,7 @@ static FBSingleton *singletonDelegate = nil;
 	}
 	return singletonDelegate;
 }
+
 
 + (id)allocWithZone:(NSZone *)zone {
 	@synchronized(self) {
@@ -136,7 +138,7 @@ static FBSingleton *singletonDelegate = nil;
 
 -(void) login {
     // Check if there is a valid session
-    if (![_facebook isSessionValid]) {
+    if (!self.isLogIn) {
         [_facebook authorize:nil];
     }
     //else {
@@ -144,15 +146,6 @@ static FBSingleton *singletonDelegate = nil;
     //}
     
     //[self postToWallWithDialogNewHighscore];
-}
-
--(BOOL) isLogin {
-    if ([_facebook isSessionValid]){
-        return YES;
-    }
-    else {
-        return NO;
-    }
 }
 
 -(void) logout{
@@ -170,9 +163,9 @@ static FBSingleton *singletonDelegate = nil;
  */
 
 
--(void) RequestMeProfileImage{
+-(void) RequestMe{
     // Check if there is a valid session
-    if ([self isLogin]){
+    if (self.isLogIn){
         
         currentAPICall = kAPIGraphMe;
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -182,9 +175,19 @@ static FBSingleton *singletonDelegate = nil;
     }
 }
 
+-(void) RequestMeLogIn{
+    if (self.isLogIn){
+        currentAPICall = kAPIGraphMeLogIn;
+        NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                       @"name,picture",  @"fields",
+                                       nil];
+        [_facebook requestWithGraphPath:@"me" andParams:params andDelegate:self];
+    }
+}
+
 -(void) RequestFriendList{
     // Check if there is a valid session
-    if ([self isLogin]){
+    if (self.isLogIn){
         currentAPICall = kAPIGraphUserFriends;
         [_facebook requestWithGraphPath:@"me/friends" andDelegate:self];
     }
@@ -200,9 +203,11 @@ static FBSingleton *singletonDelegate = nil;
     [[NSUserDefaults standardUserDefaults] setObject:_facebook.expirationDate forKey:FBExpirationDateKey];
     [[NSUserDefaults standardUserDefaults] setInteger:LogInFacebook forKey:LogInAs];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    [self setIsLogIn:YES];
+    [[UserInfo sharedInstance] setCurrentLogInType:LogInFacebook];
     NSLog(@"FBDidLogin AccessToken and EDate: '%@' and '%@'",_facebook.accessToken, _facebook.expirationDate);
     
-    [delegate FBSingletonDidLogin];
+    [self RequestMeLogIn];
     
     NSLog(@" FB set AccessToken and Expiration Date");
 }
@@ -227,7 +232,9 @@ static FBSingleton *singletonDelegate = nil;
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:FBExpirationDateKey];
     [[NSUserDefaults standardUserDefaults] setInteger:NotLogIn forKey:LogInAs];
     [[NSUserDefaults standardUserDefaults] synchronize];
-     
+    [self setIsLogIn:NO];
+    
+    
     NSLog(@"FBDidLogout AccessToken and EDate: '%@' and '%@'",_facebook.accessToken, _facebook.expirationDate);
     
     [delegate FBSingletonDidLogout];
@@ -273,26 +280,22 @@ static FBSingleton *singletonDelegate = nil;
             
         case kAPIGraphMe:{
             //show profile result;
-            NSLog(@"Me result for requestMeProfileImage ");
-            NSString *nameID = [[NSString alloc] initWithFormat: @"%@ (%@)", 
-                                [result objectForKey:@"name"], 
-                                [result objectForKey:@"id"]];
-            NSMutableArray *userData = [[NSMutableArray alloc] initWithObjects:
-                                        [NSDictionary dictionaryWithObjectsAndKeys:
-                                         [result objectForKey:@"id"], @"id",
-                                         nameID, @"name",
-                                         [result objectForKey:@"picture"], @"details",
-                                         nil], nil];
-            [[userData objectAtIndex:0] objectForKey:@"details"];
-            [delegate FBProfilePictureLoaded:[self imageForObject:[result objectForKey:@"id"]]];
-            break;
+            NSLog(@"Me result loaded ");
+            [delegate FbMeLoaded:[result objectForKey:@"id"]:[result objectForKey:@"name"]];
+            break;       
+        }
+        case kAPIGraphMeLogIn:{
+            //show profile result;
+            NSLog(@"Me LogIn result loaded ");
+            [delegate FBSingletonDidLogin:[result objectForKey:@"id"]:[result objectForKey:@"name"]];
+            break;       
         }
         case kAPIGraphUserFriends:{
             
             NSMutableArray *friends = [[NSMutableArray alloc] initWithCapacity:1];
             NSArray *resultData = [result objectForKey:@"data"];
             if ([resultData count] > 0) {
-                for (NSUInteger i=0; i<[resultData count] /*&& i < 25*/; i++) {
+                for (NSUInteger i=0; i<[resultData count] && i < 100; i++) {
                     [friends addObject:[resultData objectAtIndex:i]];
                 }
                 // Show the friend information in a new view controller with FBSingleton Delegate

@@ -134,6 +134,21 @@
                                     <segue destination="wZI-0E-4pI" kind="push" id="gff-oY-V5c"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4yy-Bj-8Dh">
+                                <rect key="frame" x="2" y="12" width="72" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="Back_Touched:" destination="vVV-bT-q6I" eventType="touchUpInside" id="5zg-H3-ZHN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -579,7 +594,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="MoA-Ji-0iU">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                                <rect key="frame" x="190" y="0.0" width="290" height="320"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -587,6 +602,21 @@
                                     <outlet property="delegate" destination="muy-dF-9KG" id="G4M-4A-BNz"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0eb-Hv-7XB">
+                                <rect key="frame" x="20" y="263" width="72" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="back_Touched:" destination="muy-dF-9KG" eventType="touchUpInside" id="Haa-Gz-BSd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -598,7 +628,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-3488" y="111"/>
+            <point key="canvasLocation" x="-3171" y="200"/>
         </scene>
         <!--Select To Login View Controller - SelectToLogin-->
         <scene sceneID="WAf-pU-lOc">
@@ -639,23 +669,8 @@
                                     <action selector="FBTouched:" destination="Y2f-Ky-VQq" eventType="touchUpInside" id="BGX-29-GvQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nUp-dI-AfC">
-                                <rect key="frame" x="158" y="171" width="180" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="RenRen_Login150X30.png">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="RRTouched:" destination="Y2f-Ky-VQq" eventType="touchUpInside" id="unQ-cg-7Su"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3Jb-EX-f8z">
-                                <rect key="frame" x="171" y="237" width="154" height="37"/>
+                                <rect key="frame" x="171" y="188" width="154" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Email">
@@ -678,11 +693,10 @@
                     <connections>
                         <outlet property="EMBut" destination="3Jb-EX-f8z" id="SSp-fd-d8J"/>
                         <outlet property="FBBut" destination="1oX-5I-yhA" id="G2n-7Z-DeD"/>
-                        <outlet property="RRBut" destination="nUp-dI-AfC" id="ejF-yB-3op"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-1929" y="-1243"/>
+            <point key="canvasLocation" x="-2737" y="-875"/>
         </scene>
         <!--Game View Controller - Difficulty Selection-->
         <scene sceneID="Cex-y9-cMJ">
@@ -900,7 +914,6 @@
     <resources>
         <image name="FacebookButton30x34.png" width="176" height="31"/>
         <image name="Inv_hammer_unique_sulfuras.png" width="64" height="64"/>
-        <image name="RenRen_Login150X30.png" width="150" height="30"/>
         <image name="bob1.png" width="500" height="667"/>
         <image name="facebook.png" width="256" height="256"/>
         <image name="friend b.png" width="333" height="186"/>
