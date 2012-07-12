@@ -30,3 +30,7 @@
 #define Monk @"monk.png"
 #define Vald @"vald.png"
 #define Olaf @"olaf.png"
+#define Baby @"baby.png"
+#define Mice @"mice.png"
+#define Pinky @"pinky.png"
+#define Blue @"blue.png"

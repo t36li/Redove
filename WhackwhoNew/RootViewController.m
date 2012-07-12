@@ -131,7 +131,7 @@ static NSMutableArray *FriendsData = nil;
         }
         case LogInFacebook:{
             if([fbs isLogIn]){
-            //!!!!!!!!!!!!!When Databases knick in, check if it is a registered user.
+            //!!!!!!!!!!!!!When Databases kick in, check if it is a registered user.
             //current status, use all facebook users as registered users
             [self performSegueWithIdentifier:PlayToStatusSegue sender:sender];
             }

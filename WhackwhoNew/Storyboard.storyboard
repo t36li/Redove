@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="LoW-BH-uCB">
     <dependencies>
-        <deployment version="1296" defaultVersion="1296" identifier="iOS"/>
+        <deployment version="1296" identifier="iOS"/>
         <development version="4300" defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
@@ -707,11 +707,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Gmp-eW-Uvg">
-                                <rect key="frame" x="42" y="117" width="105" height="86"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="mode selection.png" id="OPF-hJ-iT6">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iQ3-uM-aMB">
+                                <rect key="frame" x="388" y="263" width="72" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Easy">
+                                <state key="normal" title="Next">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -719,37 +723,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ibk-L6-0c7" kind="push" id="Sho-Ty-3d1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ElR-Vu-e83">
-                                <rect key="frame" x="189" y="117" width="105" height="86"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Medium">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="ibk-L6-0c7" kind="push" id="m3q-5G-yIT"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tOJ-FA-kiF">
-                                <rect key="frame" x="336" y="117" width="105" height="86"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Hard">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="ibk-L6-0c7" kind="push" id="IFv-5p-SI3"/>
+                                    <segue destination="ibk-L6-0c7" kind="push" id="tfZ-rK-SLz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -771,58 +745,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Choose Who?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Dw2-se-2Nu">
-                                <rect key="frame" x="117" y="27" width="246" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fTY-WS-lbb">
-                                <rect key="frame" x="20" y="93" width="138" height="179"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="bob1.png">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="pLt-Tc-cty" kind="push" id="YJ2-NU-ZaM"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iac-aG-HPM">
-                                <rect key="frame" x="171" y="93" width="138" height="179"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="wensen1.png">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="pLt-Tc-cty" kind="push" id="l9S-hg-zri"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HYw-7A-xST">
-                                <rect key="frame" x="322" y="93" width="138" height="179"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="zach1.png">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="pLt-Tc-cty" kind="push" id="3lR-No-YHI"/>
-                                </connections>
-                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Choose Scene.png" id="0jI-jh-KrE">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -912,20 +838,19 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Choose Scene.png" width="960" height="640"/>
         <image name="FacebookButton30x34.png" width="176" height="31"/>
         <image name="Inv_hammer_unique_sulfuras.png" width="64" height="64"/>
-        <image name="bob1.png" width="500" height="667"/>
         <image name="facebook.png" width="256" height="256"/>
         <image name="friend b.png" width="333" height="186"/>
         <image name="friend s.png" width="333" height="186"/>
         <image name="lock.png" width="128" height="128"/>
+        <image name="mode selection.png" width="960" height="640"/>
         <image name="option b.png" width="360" height="218"/>
         <image name="option s.png" width="360" height="218"/>
         <image name="peter head.png" width="1368" height="1485"/>
         <image name="play b.png" width="334" height="203"/>
         <image name="play s.png" width="334" height="203"/>
-        <image name="wensen1.png" width="480" height="640"/>
-        <image name="zach1.png" width="600" height="800"/>
     </resources>
     <classes>
         <class className="AvatarBaseController" superclassName="UIViewController">
@@ -938,9 +863,13 @@
                 <relationship kind="outlet" name="imageView" candidateClass="UIView"/>
             </relationships>
         </class>
+        <class className="CocosViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CocosViewController.h"/>
+        </class>
         <class className="FriendsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="back_Touched:"/>
                 <relationship kind="outlet" name="friendTable" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="tableCell" candidateClass="UITableViewCell"/>
             </relationships>
@@ -978,15 +907,14 @@
             <relationships>
                 <relationship kind="action" name="EMTouched:"/>
                 <relationship kind="action" name="FBTouched:"/>
-                <relationship kind="action" name="RRTouched:"/>
                 <relationship kind="outlet" name="EMBut" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="FBBut" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="RRBut" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="StatusBarController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StatusBarController.h"/>
             <relationships>
+                <relationship kind="action" name="Back_Touched:"/>
                 <relationship kind="outlet" name="Bobhead" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="headView" candidateClass="UIImageView"/>
             </relationships>
@@ -1003,7 +931,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="c4H-8l-g68"/>
         <segue reference="AIJ-Ql-yc1"/>
-        <segue reference="IFv-5p-SI3"/>
-        <segue reference="l9S-hg-zri"/>
     </inferredMetricsTieBreakers>
 </document>
