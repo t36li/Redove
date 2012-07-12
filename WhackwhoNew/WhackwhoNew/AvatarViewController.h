@@ -14,7 +14,6 @@
     
     IBOutlet UIView *imageView;
     CameraOverlayControllerViewController *overlay;
-    UIImage *validPhoto;
     //IBOutlet AvatarView *avatarView;
     UIImagePickerController *cameraController;
 }
@@ -22,7 +21,6 @@
 @property (nonatomic, retain) IBOutlet UIView *imageView;
 
 @property (nonatomic, retain) CameraOverlayControllerViewController *overlay;
-@property (nonatomic, retain) UIImage *validPhoto;
 @property (nonatomic, retain) UIImagePickerController *cameraController;
 //@property (nonatomic, retain) IBOutlet AvatarView *avatarView;
 

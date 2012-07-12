@@ -76,4 +76,14 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
++(UIImage *)resizeImage:(UIImage *)img toSize:(CGSize)size {
+    UIImageView *tempView = [[UIImageView alloc] initWithImage:img];
+    UIGraphicsBeginImageContext( size );
+    [img drawInRect:CGRectMake(0,0, tempView.frame.size.width, tempView.frame.size.height)];
+    UIImage* newImage2 = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage2;
+}
+
 @end

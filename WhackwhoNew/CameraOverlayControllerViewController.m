@@ -59,9 +59,8 @@
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo {        
-
     
-    
+    avatarView.backgroundColor = [UIColor blackColor];
     // flip image on y-axis to match coordinate system used by core image
     //[containerView setTransform:CGAffineTransformMakeScale(1, -1)];
     
@@ -78,23 +77,20 @@
     UIGraphicsEndImageContext();
     */
     
-    UIImageView *tempView = [[UIImageView alloc] initWithImage:image];
-    UIGraphicsBeginImageContext( tempView.frame.size);
-    [image drawInRect:CGRectMake(0,0, outfitView.frame.size.width, outfitView.frame.size.height)];
-    UIImage* newImage2 = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
+    //UIImage *newImage2 = [AvatarBaseController resizeImage:image toSize:outfitView.frame.size];
     
-    photoView.image = newImage2;
-    
-    CGImageRef imageRef = CGImageCreateWithImageInRect([photoView.image CGImage], headView.frame);
+    //CGRect frame = outfitView.frame;
+    UIImage *newImage = [AvatarBaseController resizeImage:image toSize:outfitView.frame.size];
+    CGImageRef imageRef = CGImageCreateWithImageInRect([newImage CGImage], headView.frame);
     UIImage *croppedImg = [UIImage imageWithCGImage:imageRef]; 
     CGImageRelease(imageRef);
-    self.croppedImage = croppedImg;
-    self.validPhoto = newImage2;
+    //self.croppedImage = croppedImg;
+    //self.validPhoto = newImage2;
+    //CGRect frame2 = headView.frame;
     
-    headView.image = croppedImg;
-    
-    [self.delegate validImageCaptured:validPhoto croppedImage:croppedImage];
+    photoView.image = image;
+    //photoView.image = image;
+    [self.delegate validImageCaptured:image croppedImage:croppedImg];
     [self.pickerReference dismissModalViewControllerAnimated:YES];
     //UIImageView *imgView = [[UIImageView alloc] initWithImage:newImage];
     //imgView.frame = containerView.frame;    
