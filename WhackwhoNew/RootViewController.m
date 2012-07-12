@@ -8,13 +8,13 @@
 
 #import "RootViewController.h"
 #import "FBSingleton.h"
-#import "Constants.h"
 #import "StatusBarController.h"
 #import "SelectToLoginViewController.h"
 #import "GlobalMethods.h"
 #import "OptionsViewController.h"
 #import "FriendsViewController.h"
 #import "UserInfo.h"
+#import "cocos2d.h"
 
 #define PlayToSelectLogInSegue @"PlayToSelectLogInSegue"
 #define PlayToStatusSegue @"PlayToStatusSegue"
@@ -40,6 +40,32 @@ static NSMutableArray *FriendsData = nil;
 {
     NSLog(@"RootViewController viewDidLoad");
     [super viewDidLoad];
+    
+    //Progression Anamation:
+
+    
+    UIImageView *myImageView =[[UIImageView alloc] initWithImage:
+                               [UIImage imageNamed:Vald]];    
+    myImageView.frame = CGRectMake(0, self.view.frame.size.height/2, 40, 40); 
+    
+    [self.view addSubview:myImageView];
+    NSMutableArray *myArray = [[NSMutableArray alloc] init];
+    [myArray addObject:myImageView];
+    
+    [UIView animateWithDuration:20 
+                          delay:0 
+                        options:(UIViewAnimationOptionAllowUserInteraction) // | something here?)
+                     animations:^{
+                         myImageView.frame = CGRectOffset(myImageView.frame, 500, 0);    
+                     }
+                     completion:^(BOOL finished){
+                         //[myArray removeObject:myImageView];
+                         //[myImageView removeFromSuperview];
+                         //[myImageView release];
+                     }
+     ];
+    
+    
     
     NSLog(@"Load/set currentLogInType");
     gmethods = [[GlobalMethods alloc] init];
