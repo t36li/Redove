@@ -31,13 +31,10 @@
 #define Monk @"monk.png"
 #define Vald @"vald.png"
 #define Olaf @"olaf.png"
-<<<<<<< HEAD
 #define Baby @"baby.png"
 #define Mice @"mice.png"
 #define Pinky @"pinky.png"
 #define Blue @"blue.png"
-=======
 
 //Frames
 #define FriendListCell @"friend list (cell).png"
->>>>>>> 911f1044ac0d330615eacf35364ccfefe21b7367
