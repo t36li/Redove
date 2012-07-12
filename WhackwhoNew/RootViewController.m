@@ -144,7 +144,7 @@ static NSMutableArray *FriendsData = nil;
             [self performSegueWithIdentifier:PlayToSelectLogInSegue sender:sender];
             break;
         }
-    }*/
+    }
 }
 
 -(IBAction)opt_touched:(id)sender{
