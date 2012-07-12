@@ -748,7 +748,7 @@
 			name = System;
 			sourceTree = "<group>";
 		};
-		69C95E8B159A4A15009966DA /* Main Shit */ = {
+		69C95E8B159A4A15009966DA /* Main Game */ = {
 			isa = PBXGroup;
 			children = (
 				C14B63B015AF5B5400376C91 /* Actual Game Scene(Cocos2d) */,
@@ -774,7 +774,7 @@
 				696F180415A52EF000DC849F /* GlobalMethods.h */,
 				696F180515A52EF000DC849F /* GlobalMethods.m */,
 			);
-			name = "Main Shit";
+			name = "Main Game";
 			sourceTree = "<group>";
 		};
 		69C95E94159A51E0009966DA /* Background */ = {
@@ -817,7 +817,7 @@
 			children = (
 				C147181B1594AF1E0002FF21 /* Storyboard.storyboard */,
 				D0E30674159E4B2E0080D845 /* WEPopover */,
-				69C95E8B159A4A15009966DA /* Main Shit */,
+				69C95E8B159A4A15009966DA /* Main Game */,
 				69C95E86159A461A009966DA /* Graphics */,
 				69C95E88159A462A009966DA /* Audio */,
 				C147168C1594ACCA0002FF21 /* Resources */,
