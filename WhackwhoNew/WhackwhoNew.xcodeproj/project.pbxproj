@@ -167,7 +167,6 @@
 		D07F6FED159943FB0085DF2B /* facedetectionpic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D07F6FEC159943FB0085DF2B /* facedetectionpic.jpg */; };
 		D07F6FF01599463A0085DF2B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F6FEF1599463A0085DF2B /* CoreImage.framework */; };
 		D090C63815A238CF0051AA12 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D090C63715A238CF0051AA12 /* UserInfo.m */; };
-		D0948D3815AB6E7800429477 /* AvatarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0948D3715AB6E7700429477 /* AvatarView.m */; };
 		D0948D4115ADFF0E00429477 /* AvatarBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0948D4015ADFF0E00429477 /* AvatarBaseController.m */; };
 		D09FD5DD159E4EB60079231D /* CameraOverlayControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09FD5DB159E4EB60079231D /* CameraOverlayControllerViewController.m */; };
 		D09FD5DE159E4EB60079231D /* CameraOverlayControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D09FD5DC159E4EB60079231D /* CameraOverlayControllerViewController.xib */; };
@@ -523,8 +522,6 @@
 		D090C63715A238CF0051AA12 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		D0948D3115AB5D5700429477 /* peter head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "peter head.png"; sourceTree = "<group>"; };
 		D0948D3215AB5D5700429477 /* pinky head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pinky head.png"; sourceTree = "<group>"; };
-		D0948D3615AB6E7700429477 /* AvatarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarView.h; sourceTree = "<group>"; };
-		D0948D3715AB6E7700429477 /* AvatarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarView.m; sourceTree = "<group>"; };
 		D0948D3915AB6E9A00429477 /* AvatarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AvatarView.xib; path = ../AvatarView.xib; sourceTree = "<group>"; };
 		D0948D3F15ADFF0E00429477 /* AvatarBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarBaseController.h; sourceTree = "<group>"; };
 		D0948D4015ADFF0E00429477 /* AvatarBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarBaseController.m; sourceTree = "<group>"; };
@@ -704,8 +701,6 @@
 				D0948D4015ADFF0E00429477 /* AvatarBaseController.m */,
 				D09FD5DA159E4EB60079231D /* CameraOverlayControllerViewController.h */,
 				D09FD5DB159E4EB60079231D /* CameraOverlayControllerViewController.m */,
-				D0948D3615AB6E7700429477 /* AvatarView.h */,
-				D0948D3715AB6E7700429477 /* AvatarView.m */,
 				D0B9EECF159EA9D4005D2460 /* CameraOverlayControllerViewControllerDelegate.h */,
 				C1B4397B15951B4100D62C2B /* StatusBarController.h */,
 				C1B4397C15951B4100D62C2B /* StatusBarController.m */,
@@ -1471,7 +1466,6 @@
 				696F180615A52EF000DC849F /* GlobalMethods.m in Sources */,
 				694F34AD15A68355009BA1C5 /* FriendsViewController.m in Sources */,
 				694F34B215A76006009BA1C5 /* FriendsTableCell.m in Sources */,
-				D0948D3815AB6E7800429477 /* AvatarView.m in Sources */,
 				D0948D4115ADFF0E00429477 /* AvatarBaseController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
