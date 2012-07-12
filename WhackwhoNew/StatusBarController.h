@@ -11,9 +11,9 @@
 
 @interface StatusBarController : UIViewController {
     IBOutlet UIImageView *Bobhead;
+    IBOutlet UIImageView *headView;
 }
 
-@property (nonatomic, retain) IBOutlet UIImageView *Bobhead;
+@property (nonatomic, retain) IBOutlet UIImageView *Bobhead, *headView;
 - (IBAction)Back_Touched:(id)sender;
-
 @end

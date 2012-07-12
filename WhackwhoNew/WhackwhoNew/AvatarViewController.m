@@ -20,12 +20,11 @@
 
 @synthesize imageView, overlay, validPhoto, cameraController;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super initWithCoder:aDecoder])) {
+        // initialize what you need here
     }
+    
     return self;
 }
 
@@ -49,21 +48,26 @@
     {
         cameraController.sourceType = UIImagePickerControllerSourceTypeCamera;
         cameraController.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
+        cameraController.showsCameraControls = YES;
 
         if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
             cameraController.cameraDevice = UIImagePickerControllerCameraDeviceFront;
-            self.overlay.switchCameraBtn.hidden = YES;
         } else
             cameraController.cameraDevice = UIImagePickerControllerCameraDeviceRear;
-        cameraController.showsCameraControls = NO;
         cameraController.cameraOverlayView = self.overlay.view;
 
     } else {
         [cameraController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     }
     
-    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     self.navigationController.navigationBarHidden = NO;
+    
+    //avatarView.frame = imageView.bounds;
+    [self.imageView addSubview:avatarView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    self.avatarView.frame = imageView.bounds;
 }
 
 - (void)viewDidUnload
@@ -83,7 +87,8 @@
 
 -(void)validImageCaptured:(UIImage *)image croppedImage:(UIImage *)croppedImg{
     self.validPhoto = image;
-    self.imageView.image = image;
+    photoView.image = image;
+    //self.imageView.image = image;
     UserInfo *usr = [UserInfo sharedInstance];
     usr.usrImg = image;
     usr.croppedImage = croppedImg;
