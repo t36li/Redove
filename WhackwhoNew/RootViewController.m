@@ -123,9 +123,8 @@ static NSMutableArray *FriendsData = nil;
 
 -(IBAction)play_touched:(id)sender{
     NSLog(@"Play Button Touched");
-    [self performSegueWithIdentifier:PlayToStatusSegue sender:self];
-    /*
-    switch ((int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs]) {
+    
+    switch (usr.currentLogInType) {
         case NotLogIn:{
             [self performSegueWithIdentifier:PlayToSelectLogInSegue sender:sender];
             break;

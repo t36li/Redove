@@ -1347,6 +1347,9 @@
 				D0948D3315AB5D5700429477 /* peter head.png in Resources */,
 				D0948D3415AB5D5700429477 /* pinky head.png in Resources */,
 				D0948D3A15AB6E9A00429477 /* AvatarView.xib in Resources */,
+				D0948D3315AB5D5700429477 /* peter head.png in Resources */,
+				D0948D3415AB5D5700429477 /* pinky head.png in Resources */,
+				D0948D3A15AB6E9A00429477 /* AvatarView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
