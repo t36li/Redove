@@ -16,14 +16,15 @@
 
 @implementation CameraOverlayControllerViewController
 
-@synthesize switchCameraBtn, takeBtn, pickerReference, containerView, closePreviewBtn, idView, acceptPreviewBtn;
-@synthesize validPhoto, delegate, croppedImage;
+@synthesize pickerReference;
+@synthesize validPhoto, delegate, croppedImage, outfitView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
@@ -32,24 +33,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
-    CGFloat screenHeight = screenRect.size.height;
     
-    CGFloat width = MIN(screenWidth, screenHeight);
-    CGFloat height = MAX(screenWidth, screenHeight);
+    outfitView.layer.borderColor = [UIColor yellowColor].CGColor;
+    outfitView.layer.borderWidth = 2;
+    outfitView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.outfitView addSubview:avatarView];
     
-    CGFloat x_offset = width * 0.05;
-    CGFloat y_offset = height * 0.05;
-    
-    UIView *frameView = [[UIView alloc] initWithFrame:CGRectMake(x_offset, y_offset, width - 2*x_offset, height - 3*y_offset)];
-    frameView.layer.borderColor = [UIColor redColor].CGColor;
-    frameView.layer.borderWidth = 3.0f;
-    [self.view addSubview:frameView];
-    
-    containerView.contentMode = UIViewContentModeScaleAspectFit;
+    avatarView.frame = outfitView.frame;
 }
-
+    
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -74,8 +66,7 @@
     //[containerView setTransform:CGAffineTransformMakeScale(1, -1)];
     
     // flip the entire window to make everything right side up
-    [idView setTransform:CGAffineTransformMakeScale(1, -1)];
-    
+    /*
     
     CGFloat x_factor = idView.frame.size.width / image.size.width;
     CGFloat y_factor = idView.frame.size.height / image.size.height;
@@ -85,17 +76,29 @@
     [image drawInRect:CGRectMake(0,0, factor*image.size.width, factor*image.size.height)];
     UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+    */
     
-    UIImageView *imgView = [[UIImageView alloc] initWithImage:newImage];
-    imgView.frame = containerView.frame;
-    [containerView addSubview:imgView];
+    UIImageView *tempView = [[UIImageView alloc] initWithImage:image];
+    UIGraphicsBeginImageContext( tempView.frame.size);
+    [image drawInRect:CGRectMake(0,0, outfitView.frame.size.width, outfitView.frame.size.height)];
+    UIImage* newImage2 = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
     
-    [self markFaces:imgView];
+    photoView.image = newImage2;
     
-    self.containerView.hidden = NO;
-    [self.view bringSubviewToFront:containerView];
-    [containerView bringSubviewToFront:idView];
-    [containerView bringSubviewToFront:closePreviewBtn];
+    CGImageRef imageRef = CGImageCreateWithImageInRect([photoView.image CGImage], headView.frame);
+    UIImage *croppedImg = [UIImage imageWithCGImage:imageRef]; 
+    CGImageRelease(imageRef);
+    self.croppedImage = croppedImg;
+    self.validPhoto = newImage2;
+    
+    headView.image = croppedImg;
+    
+    [self.delegate validImageCaptured:validPhoto croppedImage:croppedImage];
+    [self.pickerReference dismissModalViewControllerAnimated:YES];
+    //UIImageView *imgView = [[UIImageView alloc] initWithImage:newImage];
+    //imgView.frame = containerView.frame;    
+    //[self markFaces:imgView];
 }
 
 -(IBAction)takePicture:(id)sender {
@@ -109,7 +112,7 @@
         pickerReference.cameraDevice = UIImagePickerControllerCameraDeviceRear;
     }
 }
-
+/*
 -(void)markFaces:(UIImageView *)facePicture
 {
     // draw a CI image with the previously loaded face detection picture
@@ -187,29 +190,6 @@
             [idView addSubview:mouth];
         }
     }
-    // options:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:6] forKey:CIDetectorImageOrientation
-    /*
-    if (features.count > 0) {
-        
-        idView.layer.anchorPoint = CGPointMake(0, 0);
-        CGRect frame = idView.frame;
-    
-        frame.origin.x = 0;
-        frame.origin.y = 0;
-        idView.frame = frame;
-        //faceView.layer.anchorPoint =faceView.frame.origin;
-        //faceView.center = CGPointMake(CGRectGetWidth(self.view.bounds), 0.0);
-    
-        // Rotate 90 degrees to hide it off screen
-        CGAffineTransform rotationTransform = CGAffineTransformIdentity;
-        rotationTransform = CGAffineTransformRotate(rotationTransform, M_PI_2);
-        rotationTransform = CGAffineTransformTranslate(rotationTransform, 0, -idView.frame.size.width);
-        //rotationTransform = CGAffineTransformScale(rotationTransform, factor, factor);
-        idView.transform = rotationTransform;
-        CGRect frame2 = idView.frame;
-        int i = 0;
-    }
-     */
     
     if (features.count > 0) {
         self.validPhoto = facePicture.image;
@@ -218,7 +198,8 @@
         acceptPreviewBtn.hidden = YES;
     }
 }
-
+*/
+/*
 -(IBAction)closePreview:(id)sender {
     [UIView animateWithDuration:0.5f animations:^(void) {
         CGRect frame = containerView.frame;
@@ -237,9 +218,5 @@
         [idView setTransform:CGAffineTransformMakeScale(1, -1)];
     }];
 }
-
--(IBAction)acceptPreview:(id)sender {
-    [self.delegate validImageCaptured:validPhoto croppedImage:croppedImage];
-    [self.pickerReference dismissModalViewControllerAnimated:YES];
-}
+*/
 @end

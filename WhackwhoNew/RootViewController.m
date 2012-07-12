@@ -66,7 +66,8 @@ static BOOL isFBlogin;
 
 -(IBAction)play_touched:(id)sender{
     NSLog(@"Play Button Touched");
-    
+    [self performSegueWithIdentifier:PlayToStatusSegue sender:self];
+    /*
     switch ((int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs]) {
         case NotLogIn:{
             [self performSegueWithIdentifier:PlayToSelectLogInSegue sender:sender];
@@ -90,7 +91,7 @@ static BOOL isFBlogin;
             //[self performSegueWithIdentifier:PlayToSelectLogInSegue sender:sender];
             break;
         }
-    }
+    }*/
 }
 
 -(IBAction)opt_touched:(id)sender{
