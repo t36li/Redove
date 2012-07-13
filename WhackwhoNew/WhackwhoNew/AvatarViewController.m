@@ -18,7 +18,7 @@
 
 @implementation AvatarViewController
 
-@synthesize imageView, overlay, validPhoto, cameraController;
+@synthesize imageView, overlay, cameraController;
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) {
@@ -67,7 +67,18 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    CGRect frame = imageView.bounds;
+    CGRect frame2 = avatarView.frame;
+    CGRect frame3 = headView.frame;
     self.avatarView.frame = imageView.bounds;
+    UserInfo *usr = [UserInfo sharedInstance];
+    if (usr.croppedImage != nil) {
+        //headView.image = usr.croppedImage;
+        photoView.image = usr.usrImg;
+    }
+    CGRect frame4 = imageView.bounds;
+    CGRect frame5 = avatarView.frame;
+    CGRect frame6 = headView.frame;
 }
 
 - (void)viewDidUnload
@@ -86,8 +97,7 @@
 }
 
 -(void)validImageCaptured:(UIImage *)image croppedImage:(UIImage *)croppedImg{
-    self.validPhoto = image;
-    photoView.image = image;
+    //photoView.image = image;
     //self.imageView.image = image;
     UserInfo *usr = [UserInfo sharedInstance];
     usr.usrImg = image;

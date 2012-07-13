@@ -18,4 +18,6 @@
 @property (nonatomic, retain) UIImageView *backgroundView, *headView, *photoView;
 @property (nonatomic, retain) UIView *avatarView;
 
++(UIImage *)resizeImage:(UIImage *)img toSize:(CGSize)rect;
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "RootViewController.h"
+#import "FBSingleton.h"
 #import "StatusBarController.h"
 #import "SelectToLoginViewController.h"
 #import "GlobalMethods.h"
