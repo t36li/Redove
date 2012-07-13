@@ -46,7 +46,9 @@
         [selectedHeads removeAllObjects];
         
         //set background color to white
-        glClearColor(255, 255, 255, 1);
+        CCSprite *bg1 = [CCSprite spriteWithFile:FriendList_bg];
+        bg1.position = ccp(s.width/2, s.height/2);
+        [self addChild:bg1];
         
         //set an instruction label
         CCLabelTTF *instruction = [CCLabelTTF labelWithString:@"Choose the Evil MOLE!" fontName:@"chalkduster" fontSize:40];

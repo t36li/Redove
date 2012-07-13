@@ -39,6 +39,8 @@ typedef enum apiCall {
 
 
 @interface FBSingleton : NSObject<FBRequestDelegate, FBDialogDelegate, FBSessionDelegate> {
+@public
+    
     int currentAPICall;
     Facebook* _facebook;
     NSArray* _permissions;
@@ -47,9 +49,9 @@ typedef enum apiCall {
     // Internal state
     int score;
 }
-@property(readonly) Facebook *facebook;
-@property(nonatomic, retain) id<FBSingletonDelegate> delegate;
-@property (nonatomic, readwrite) BOOL isLogIn;
+@property (readonly) Facebook *facebook;
+@property (nonatomic, retain) id<FBSingletonDelegate> delegate;
+@property (nonatomic, assign) BOOL isLogIn;
 
 + (FBSingleton *) sharedInstance;
 

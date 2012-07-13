@@ -49,9 +49,9 @@ static FBSingleton *singletonDelegate = nil;
         //_permissions =  [NSArray arrayWithObjects:@"publish_stream", nil];
         
         if ([_facebook isSessionValid]){
-            [self setIsLogIn:YES];
+            isLogIn = YES;
         }else {
-            [self setIsLogIn:NO];
+            isLogIn = NO;
         }
     }
     
@@ -138,7 +138,7 @@ static FBSingleton *singletonDelegate = nil;
 
 -(void) login {
     // Check if there is a valid session
-    if (!self.isLogIn) {
+    if (!isLogIn) {
         [_facebook authorize:nil];
     }
     //else {
@@ -165,7 +165,7 @@ static FBSingleton *singletonDelegate = nil;
 
 -(void) RequestMe{
     // Check if there is a valid session
-    if (self.isLogIn){
+    if (isLogIn){
         
         currentAPICall = kAPIGraphMe;
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -176,7 +176,7 @@ static FBSingleton *singletonDelegate = nil;
 }
 
 -(void) RequestMeLogIn{
-    if (self.isLogIn){
+    if (isLogIn){
         currentAPICall = kAPIGraphMeLogIn;
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        @"name,picture",  @"fields",
@@ -187,7 +187,7 @@ static FBSingleton *singletonDelegate = nil;
 
 -(void) RequestFriendList{
     // Check if there is a valid session
-    if (self.isLogIn){
+    if (isLogIn){
         currentAPICall = kAPIGraphUserFriends;
         [_facebook requestWithGraphPath:@"me/friends" andDelegate:self];
     }
@@ -204,7 +204,6 @@ static FBSingleton *singletonDelegate = nil;
     [[NSUserDefaults standardUserDefaults] setInteger:LogInFacebook forKey:LogInAs];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self setIsLogIn:YES];
-    [[UserInfo sharedInstance] setCurrentLogInType:LogInFacebook];
     NSLog(@"FBDidLogin AccessToken and EDate: '%@' and '%@'",_facebook.accessToken, _facebook.expirationDate);
     
     [self RequestMeLogIn];

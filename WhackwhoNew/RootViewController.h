@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FBSingletonDelegate.h"
 #import "UserInfoDelegate.h"
+#import "FBSingleton.h"
 
 @interface RootViewController : UIViewController<FBSingletonDelegate, UserInfoDelegate> {
     UIImageView *LoginAccountImageView; //Facebook Profile Image, Renren Profile Image or Gmail

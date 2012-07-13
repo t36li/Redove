@@ -52,6 +52,7 @@
 }
 
 -(void)FBSingletonDidLogin:(NSString *)userId :(NSString *)userName{
+    [[UserInfo sharedInstance] setCurrentLogInType:LogInFacebook];
     [[UserInfo sharedInstance] setUserId:userId];
     [[UserInfo sharedInstance] setUserName:userName];
     [self.navigationController popViewControllerAnimated:YES];

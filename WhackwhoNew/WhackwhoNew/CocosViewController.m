@@ -59,9 +59,9 @@
     
     // Run whatever scene we'd like to run here.
     if(director.runningScene)
-        [director replaceScene:[ChooseWhoLayer scene]];
+        [director replaceScene:[CCTransitionJumpZoom transitionWithDuration:0.5 scene:[ChooseWhoLayer scene]]];
     else
-        [director runWithScene:[ChooseWhoLayer scene]];
+        [director runWithScene:[CCTransitionJumpZoom transitionWithDuration:0.5 scene:[ChooseWhoLayer scene]]];
 }
 
 - (void)viewDidUnload

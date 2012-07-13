@@ -463,7 +463,7 @@
         [self schedule:@selector(tryPopheads) interval:speed];
     } else if (consecHits % 5 == 0){
         //show rainbows every 5 hit combos
-        BOOL runLoop = FALSE;
+        //BOOL runLoop = FALSE;
         //check if all rainbows showing, if yes don't run next loop
         /*       for (CCSprite *temp in rainbows) {
          if (!temp.visible) {
@@ -496,7 +496,8 @@
     Character *head = (Character *) sender;
     //CGSize s = [[CCDirector sharedDirector] winSize];
     
-    /*occupied = FALSE;
+    /* random location code
+     occupied = FALSE;
      int maxX = s.width - 40 - 100;
      int maxY = s.height * 0.5;
      int randX = arc4random() % maxX+40;

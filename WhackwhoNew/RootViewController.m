@@ -7,7 +7,6 @@
 //
 
 #import "RootViewController.h"
-#import "FBSingleton.h"
 #import "StatusBarController.h"
 #import "SelectToLoginViewController.h"
 #import "GlobalMethods.h"
@@ -124,13 +123,13 @@ static NSMutableArray *FriendsData = nil;
 -(IBAction)play_touched:(id)sender{
     NSLog(@"Play Button Touched");
     
-    switch (usr.currentLogInType) {
+    switch ((int)[usr currentLogInType]) {
         case NotLogIn:{
             [self performSegueWithIdentifier:PlayToSelectLogInSegue sender:sender];
             break;
         }
         case LogInFacebook:{
-            if([fbs isLogIn]){
+            if([[FBSingleton sharedInstance] isLogIn] ){
             //!!!!!!!!!!!!!When Databases kick in, check if it is a registered user.
             //current status, use all facebook users as registered users
             [self performSegueWithIdentifier:PlayToStatusSegue sender:sender];
