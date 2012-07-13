@@ -46,10 +46,7 @@
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) ) {
-        
-        //hp1 = 100;
-        //hp2 = 100;
-        //hp3 = 100;
+
         comboHits = 0;
         consecHits = 0;
         totalTime = 30;
@@ -59,36 +56,11 @@
         ts = 0;
         diff = 0;
         
-        //testing to see if random works
-        //numHitOccur = 0;
-        //numBombOccur = 0;
-        
         _hud = hud;
         self.isTouchEnabled = YES;
         gameOver = FALSE;
         gamePaused = FALSE;
         CGSize s = [[CCDirector sharedDirector] winSize];
-        
-        //totalScore = [[Game sharedGame] score];
-        
-        /*tempDifficulty = [[Game sharedGame] difficulty];
-         //determine base score
-         switch (tempDifficulty) {
-         case 1:
-         multiplier = 1;
-         break;
-         case 2:
-         multiplier = 1.5;
-         break;
-         case 3:
-         multiplier = 2;
-         break;
-         }*/
-        //tempDifficulty = [[Game sharedGame] difficulty];
-        //popups = 7;
-        
-        //CCSprite *spContainer = [(CCSprite*)[CCSprite alloc] init];
-        //spContainer.position = ccp(s.width/2, s.height/2);
         
         //add background this is for retina display
         [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
@@ -102,7 +74,7 @@
         CCSprite *bg7 = [CCSprite spriteWithFile:@"hills_L7.png"];
         [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
         CCSprite *bg8 = [CCSprite spriteWithFile:@"hills_L8_new.png"];
-        CCSprite *bg9 = [CCSprite spriteWithFile:@"hills_L9_new.png"];
+        CCSprite *bg9 = [CCSprite spriteWithFile:@"hills_L99.png"];
         
         
         bg9.position = ccp(s.width/2, s.height/2);
@@ -115,16 +87,6 @@
         bg2.position = ccp(s.width/2, s.height/2);
         bg1.position = ccp(s.width/2, s.height/2);
         
-        // [spContainer addChild:bg1 z:-30];
-        // [spContainer addChild:bg2 z:-40];
-        // [spContainer addChild:bg3 z:-50];
-        // [spContainer addChild:bg4 z:-60];
-        // [spContainer addChild:bg5 z:-70];
-        //[spContainer addChild:bg6 z:-80];
-        //[spContainer addChild:bg7 z:-90];
-        //[spContainer addChild:bg8 z:-100];
-        //[spContainer addChild:bg9 z:-110];
-        
         [self addChild:bg1 z:-30];
         [self addChild:bg2 z:-40];
         [self addChild:bg3 z:-50];
@@ -134,7 +96,6 @@
         [self addChild:bg7 z:-90];
         [self addChild:bg8 z:-100];
         [self addChild:bg9 z:-110];
-        //[self addChild:spContainer];
         
         //add timer label
         timeLabel = [CCLabelTTF labelWithString:@"0:0" fontName:@"chalkduster" fontSize:40];
@@ -176,25 +137,6 @@
             [hearts addObject:life];
             [self addChild:life z:10];
         }
-        
-        //add "hp" labels
-        /*hpBar1 = [CCLabelTTF labelWithString:@"Hp 1: 0" fontName:@"Arial" fontSize:20];
-         hpBar1.color = ccc3(0,0,0);
-         hpBar1.anchorPoint = ccp(1,1);
-         hpBar1.position = ccp(s.width - margin, s.height - lifeLabel.contentSize.height);
-         [self addChild:hpBar1 z:10];
-         
-         hpBar2 = [CCLabelTTF labelWithString:@"Hp 2: 0" fontName:@"Arial" fontSize:20];
-         hpBar2.color = ccc3(0,0,0);
-         hpBar2.anchorPoint = ccp(1,1);
-         hpBar2.position = ccp(s.width - margin, s.height - 2*lifeLabel.contentSize.height);
-         [self addChild:hpBar2 z:10];
-         
-         hpBar3 = [CCLabelTTF labelWithString:@"Hp 3: 0" fontName:@"Arial" fontSize:20];
-         hpBar3.color = ccc3(0,0,0);
-         hpBar3.anchorPoint = ccp(1,1);
-         hpBar3.position = ccp(s.width - margin, s.height - 3*lifeLabel.contentSize.height);
-         [self addChild:hpBar3 z:10];*/
         
         //add "rainbows"
         rainbows = [[NSMutableArray alloc] init];
@@ -683,35 +625,6 @@
         }
     }
 }
-
-/*-(CCAnimation *) laughAnimation {
- 
- NSString *plistPath = [[NSBundle mainBundle] pathForResource:animPlist ofType:@"plist"];
- NSArray *animImages = [NSArray arrayWithContentsOfFile:plistPath];
- NSMutableArray *animFrames = [NSMutableArray array];
- for (NSString *animImage in animImages) {
- [animFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:animImage]];
- }
- 
- NSMutableArray *animImages =[[NSMutableArray alloc] init];
- [animImages addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"mole_1.png"]];
- [animImages addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"mole_laugh1.png"]];
- [animImages addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"mole_laugh2.png"]];
- [animImages addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"mole_laugh3.png"]];
- [animImages addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"mole_laugh2.png"]];
- [animImages addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"mole_laugh1.png"]];
- 
- //laugh animations
- CCAnimation *a = [CCAnimation animationWithSpriteFrames:animImages delay:1.0f/6.0f];
- //CCAnimate* animate = [CCAnimate actionWithAnimation:a];
- //CCRepeatForever *laugh = [CCRepeatForever actionWithAction: animate];
- return a;
- //return [CCAnimation animationWithSpriteFrames:animImages delay:delay];
- }
- 
- -(void) registerWithTouchDispatcher {
- [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:kCCMenuHandlerPriority swallowsTouches:NO];
- }*/
 
 -(void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     

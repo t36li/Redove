@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
 #import "HelloWorldLayer.h"
+#import "ChooseWhoLayer.h"
 
 
-@interface CocosViewController : UIViewController <CCDirectorDelegate>
+@interface CocosViewController : UIViewController <CCDirectorDelegate> 
+
+
 
 @end

@@ -10,6 +10,7 @@
 
 @implementation CocosViewController
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -28,14 +29,15 @@
     if([director isViewLoaded] == NO)
     {
         // Create the OpenGL view that Cocos2D will render to.
-        CCGLView *glView = [CCGLView viewWithFrame:[[[UIApplication sharedApplication] keyWindow] bounds]
-                                       pixelFormat:kCCTexture2DPixelFormat_RGBA8888
+        CCGLView *glView = [CCGLView viewWithFrame:CGRectMake(0, 0, 480, 320)
+                                       pixelFormat:kEAGLColorFormatRGB565
                                        depthFormat:0
                                 preserveBackbuffer:NO
                                         sharegroup:nil
                                      multiSampling:NO
                                    numberOfSamples:0];
         
+        [glView setMultipleTouchEnabled:YES];
         // Assign the view to the director.
         director.view = glView;
         
@@ -58,11 +60,10 @@
     [director didMoveToParentViewController:self];
     
     // Run whatever scene we'd like to run here.
-    /*if(director.runningScene)
-        [director replaceScene:[CCTransitionJumpZoom transitionWithDuration:0.5 scene:[HelloWorldLayer scene]]];
+    if(director.runningScene)
+        [director replaceScene:[ChooseWhoLayer scene]];
     else
-        [director runWithScene:[CCTransitionJumpZoom transitionWithDuration:0.5 scene:[HelloWorldLayer scene]]];*/
-    [director pushScene:[HelloWorldLayer scene]];
+        [director runWithScene:[ChooseWhoLayer scene]];
 }
 
 - (void)viewDidUnload
@@ -74,7 +75,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
 @end
