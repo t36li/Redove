@@ -29,7 +29,7 @@
     {
         // Create the OpenGL view that Cocos2D will render to.
         CCGLView *glView = [CCGLView viewWithFrame:[[[UIApplication sharedApplication] keyWindow] bounds]
-                                       pixelFormat:kEAGLColorFormatRGB565
+                                       pixelFormat:kCCTexture2DPixelFormat_RGBA8888
                                        depthFormat:0
                                 preserveBackbuffer:NO
                                         sharegroup:nil
@@ -58,10 +58,11 @@
     [director didMoveToParentViewController:self];
     
     // Run whatever scene we'd like to run here.
-    if(director.runningScene)
-        [director replaceScene:[CCTransitionJumpZoom transitionWithDuration:0.5 scene:[ChooseWhoLayer scene]]];
+    /*if(director.runningScene)
+        [director replaceScene:[CCTransitionJumpZoom transitionWithDuration:0.5 scene:[HelloWorldLayer scene]]];
     else
-        [director runWithScene:[CCTransitionJumpZoom transitionWithDuration:0.5 scene:[ChooseWhoLayer scene]]];
+        [director runWithScene:[CCTransitionJumpZoom transitionWithDuration:0.5 scene:[HelloWorldLayer scene]]];*/
+    [director pushScene:[HelloWorldLayer scene]];
 }
 
 - (void)viewDidUnload
@@ -73,7 +74,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
 @end

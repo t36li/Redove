@@ -10,9 +10,10 @@
 
 //backgrounds
 #define MainPage_bg @"MainPage_bg"
-#define GameMode_grass_bg @"GameMode_grass_bg"
+#define GameMode_grass_bg @"hills_finalView.png"
 #define SelectToLogIn_bg @"SelectToLogIn_bg.png"
 #define FriendList_bg @"friend list (background).png"
+#define OceanMode_bg @"background 2.png"
 
 //buttons
 #define Play_but @"play s.png"

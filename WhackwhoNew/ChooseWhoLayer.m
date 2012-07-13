@@ -7,7 +7,7 @@
 //
 
 #import "ChooseWhoLayer.h"
-#import "LevelOneLayer.h"
+#import "HelloWorldLayer.h"
 
 @implementation ChooseWhoLayer
 
