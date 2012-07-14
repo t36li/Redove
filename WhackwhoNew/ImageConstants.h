@@ -14,6 +14,7 @@
 #define SelectToLogIn_bg @"SelectToLogIn_bg.png"
 #define FriendList_bg @"friend list (background).png"
 #define OceanMode_bg @"background 2.png"
+#define hills_l1 @"hills_L1.png"
 
 //buttons
 #define Play_but @"play s.png"

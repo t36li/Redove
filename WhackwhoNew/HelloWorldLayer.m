@@ -68,7 +68,7 @@
         //set background color to white
         glClearColor(255, 255, 255, 255);
         
-        CCSprite *bg1 = [CCSprite spriteWithFile:@"hills_L1.png"];
+        CCSprite *bg1 = [CCSprite spriteWithFile:hills_l1];
         CCSprite *bg2 = [CCSprite spriteWithFile:@"hills_L2.png"];
         CCSprite *bg3 = [CCSprite spriteWithFile:@"hills_L3.png"];
         CCSprite *bg4 = [CCSprite spriteWithFile:@"hills_L4.png"];

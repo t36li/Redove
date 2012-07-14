@@ -25,7 +25,7 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
+    //add some shit here to handle touches
     // Configure the view for the selected state
 }
 
