@@ -65,7 +65,10 @@
         //add background this is for retina display
         [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
         
-        CCSprite *bg1 = [CCSprite spriteWithFile:@"hills_L1.png"];
+        //set background color to white
+        glClearColor(255, 255, 255, 255);
+        
+        CCSprite *bg1 = [CCSprite spriteWithFile:hills_l1];
         CCSprite *bg2 = [CCSprite spriteWithFile:@"hills_L2.png"];
         CCSprite *bg3 = [CCSprite spriteWithFile:@"hills_L3.png"];
         CCSprite *bg4 = [CCSprite spriteWithFile:@"hills_L4.png"];
@@ -74,8 +77,7 @@
         CCSprite *bg7 = [CCSprite spriteWithFile:@"hills_L7.png"];
         [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
         CCSprite *bg8 = [CCSprite spriteWithFile:@"hills_L8_new.png"];
-        CCSprite *bg9 = [CCSprite spriteWithFile:@"hills_L99.png"];
-        
+        CCSprite *bg9 = [CCSprite spriteWithFile:@"cloud background.png"];
         
         bg9.position = ccp(s.width/2, s.height/2);
         bg8.position = ccp(s.width/2, s.height/2);
@@ -395,11 +397,11 @@
     if (consecHits == 0) {
         //consecHits = 0;
         //set all rainbows to not visible
-        /*      for (CCSprite *temp in rainbows) {
-         CCFadeOut *fadeOut = [CCFadeOut actionWithDuration:1.5];
-         [temp runAction:fadeOut];
-         temp.visible = FALSE;
-         }*/
+        for (CCSprite *temp in rainbows) {
+            CCFadeOut *fadeOut = [CCFadeOut actionWithDuration:1.5];
+            [temp runAction:fadeOut];
+            temp.visible = FALSE;
+        }
         speed = 1.5;
         [self unschedule:@selector(tryPopheads)];
         [self schedule:@selector(tryPopheads) interval:speed];
@@ -708,7 +710,7 @@
             //CCFadeTo *fadeOut = [CCFadeTo actionWithDuration:0.3 opacity:0];
             CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
             CCMoveBy *movedown = [CCMoveBy actionWithDuration:0.5 position:ccp(0,-head.contentSize.height)];
-            CCEaseInOut *easeMoveDown = [CCEaseInOut actionWithAction:movedown rate:2.0];
+            CCEaseInOut *easeMoveDown = [CCEaseInOut actionWithAction:movedown rate:3.0];
             CCMoveBy *moveLeft = [CCMoveBy actionWithDuration:0.5 position:ccp(-head.contentSize.width/2, -head.contentSize.height/2)];
             CCEaseInOut *easeMoveLeft = [CCEaseInOut actionWithAction:moveLeft rate:3.0];
             
@@ -716,9 +718,9 @@
             // keep the tapping "bug" for testing purposes
             //[head runAction:[CCSequence actions: fadeOut, checkCombo, nil]];
             if (head.sideWaysMove) {
-                [head runAction:[CCSequence actions: checkCombo, easeMoveLeft, nil]];
+                [head runAction:[CCSequence actions: easeMoveLeft, checkCombo, nil]];
             } else {
-                [head runAction:[CCSequence actions: checkCombo, easeMoveDown, nil]];
+                [head runAction:[CCSequence actions: easeMoveDown, checkCombo, nil]];
             }
         }
     } //end heads loop

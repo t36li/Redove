@@ -49,6 +49,8 @@
     // Set the view controller as the director's delegate, so we can respond to certain events.
     director.delegate = self;
     
+    [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
+    
     // Add the director as a child view controller of this view controller.
     [self addChildViewController:director];
     

@@ -153,7 +153,6 @@
 		C14718001594ACD20002FF21 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C14717FF1594ACD20002FF21 /* main.m */; };
 		C147181C1594AF1E0002FF21 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C147181B1594AF1E0002FF21 /* Storyboard.storyboard */; };
 		C14718551594F0AE0002FF21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C14718541594F0AE0002FF21 /* AppDelegate.m */; };
-		C14718581594F0FB0002FF21 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C14718571594F0FB0002FF21 /* ViewController.m */; };
 		C147185B1594F1AF0002FF21 /* CocosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C147185A1594F1AF0002FF21 /* CocosViewController.m */; };
 		C14B63B715AF5C3700376C91 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = C14B63B615AF5C3700376C91 /* Game.m */; };
 		C14B63BA15AF5C9200376C91 /* ChooseWhoLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C14B63B915AF5C9200376C91 /* ChooseWhoLayer.m */; };
@@ -172,8 +171,15 @@
 		C169200715AFC4DA00F081AF /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = C169200015AFC4DA00F081AF /* pin.png */; };
 		C169200815AFC4DA00F081AF /* random icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C169200115AFC4DA00F081AF /* random icon.png */; };
 		C169200915AFC4DA00F081AF /* yes mark.png in Resources */ = {isa = PBXBuildFile; fileRef = C169200215AFC4DA00F081AF /* yes mark.png */; };
-		C169200C15AFC7A800F081AF /* ModeSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C169200B15AFC7A700F081AF /* ModeSelectionViewController.m */; };
-		C16921B515AFD6A400F081AF /* hills_L99.png in Resources */ = {isa = PBXBuildFile; fileRef = C16921B415AFD6A400F081AF /* hills_L99.png */; };
+		C169200C15AFC7A800F081AF /* HitWhoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C169200B15AFC7A700F081AF /* HitWhoViewController.m */; };
+		C16921C015B129BF00F081AF /* cloud background.png in Resources */ = {isa = PBXBuildFile; fileRef = C16921BF15B129BE00F081AF /* cloud background.png */; };
+		C16921C715B204BA00F081AF /* hammer.png in Resources */ = {isa = PBXBuildFile; fileRef = C16921C615B204BA00F081AF /* hammer.png */; };
+		C16921C915B204C600F081AF /* string1.png in Resources */ = {isa = PBXBuildFile; fileRef = C16921C815B204C600F081AF /* string1.png */; };
+		C16921CB15B20A3900F081AF /* zach_resized.png in Resources */ = {isa = PBXBuildFile; fileRef = C16921CA15B20A3900F081AF /* zach_resized.png */; };
+		C16921DD15B2122800F081AF /* left arm.png in Resources */ = {isa = PBXBuildFile; fileRef = C16921D915B2122800F081AF /* left arm.png */; };
+		C16921DE15B2122800F081AF /* pen body.png in Resources */ = {isa = PBXBuildFile; fileRef = C16921DA15B2122800F081AF /* pen body.png */; };
+		C16921DF15B2122800F081AF /* pen head.png in Resources */ = {isa = PBXBuildFile; fileRef = C16921DB15B2122800F081AF /* pen head.png */; };
+		C16921E015B2122800F081AF /* right arm.png in Resources */ = {isa = PBXBuildFile; fileRef = C16921DC15B2122800F081AF /* right arm.png */; };
 		C1B4397D15951B4100D62C2B /* StatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B4397C15951B4100D62C2B /* StatusBarController.m */; };
 		C1CBDFE715952D4900A35E24 /* bob1.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFE415952D4900A35E24 /* bob1.png */; };
 		C1CBDFE815952D4900A35E24 /* bob2.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFE515952D4900A35E24 /* bob2.png */; };
@@ -216,8 +222,7 @@
 		D0A3F72615AF5E9A0027EFF9 /* peter head.png in Resources */ = {isa = PBXBuildFile; fileRef = D0948D3115AB5D5700429477 /* peter head.png */; };
 		D0B9EECD159E6F0D005D2460 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0B9EECC159E6F0D005D2460 /* MobileCoreServices.framework */; };
 		D0D7C84615955D3400F51C6E /* AvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D7C84515955D3400F51C6E /* AvatarViewController.m */; };
-		D0D7C84915956E3D00F51C6E /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D7C84815956E3D00F51C6E /* GameViewController.m */; };
-		D0D7C84C15956F8D00F51C6E /* GameOverScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D7C84B15956F8D00F51C6E /* GameOverScreenController.m */; };
+		D0D7C84915956E3D00F51C6E /* ModeSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D7C84815956E3D00F51C6E /* ModeSelectionViewController.m */; };
 		D0E30664159E4B1B0080D845 /* popoverArrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E30655159E4B1B0080D845 /* popoverArrowDown.png */; };
 		D0E30665159E4B1B0080D845 /* popoverArrowDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E30656159E4B1B0080D845 /* popoverArrowDown@2x.png */; };
 		D0E30666159E4B1B0080D845 /* popoverArrowDownSimple.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E30657159E4B1B0080D845 /* popoverArrowDownSimple.png */; };
@@ -540,8 +545,6 @@
 		C147181B1594AF1E0002FF21 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		C14718531594F0AE0002FF21 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = WhackwhoNew/AppDelegate.h; sourceTree = "<group>"; };
 		C14718541594F0AE0002FF21 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = WhackwhoNew/AppDelegate.m; sourceTree = "<group>"; };
-		C14718561594F0FB0002FF21 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = WhackwhoNew/ViewController.h; sourceTree = "<group>"; };
-		C14718571594F0FB0002FF21 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = WhackwhoNew/ViewController.m; sourceTree = "<group>"; };
 		C14718591594F1AF0002FF21 /* CocosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocosViewController.h; path = WhackwhoNew/CocosViewController.h; sourceTree = "<group>"; };
 		C147185A1594F1AF0002FF21 /* CocosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CocosViewController.m; path = WhackwhoNew/CocosViewController.m; sourceTree = "<group>"; };
 		C14B63B515AF5C3700376C91 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
@@ -565,9 +568,16 @@
 		C169200015AFC4DA00F081AF /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
 		C169200115AFC4DA00F081AF /* random icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "random icon.png"; sourceTree = "<group>"; };
 		C169200215AFC4DA00F081AF /* yes mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yes mark.png"; sourceTree = "<group>"; };
-		C169200A15AFC7A600F081AF /* ModeSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModeSelectionViewController.h; sourceTree = "<group>"; };
-		C169200B15AFC7A700F081AF /* ModeSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModeSelectionViewController.m; sourceTree = "<group>"; };
-		C16921B415AFD6A400F081AF /* hills_L99.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hills_L99.png; sourceTree = "<group>"; };
+		C169200A15AFC7A600F081AF /* HitWhoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HitWhoViewController.h; sourceTree = "<group>"; };
+		C169200B15AFC7A700F081AF /* HitWhoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HitWhoViewController.m; sourceTree = "<group>"; };
+		C16921BF15B129BE00F081AF /* cloud background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloud background.png"; sourceTree = "<group>"; };
+		C16921C615B204BA00F081AF /* hammer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hammer.png; sourceTree = "<group>"; };
+		C16921C815B204C600F081AF /* string1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = string1.png; sourceTree = "<group>"; };
+		C16921CA15B20A3900F081AF /* zach_resized.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zach_resized.png; sourceTree = "<group>"; };
+		C16921D915B2122800F081AF /* left arm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left arm.png"; sourceTree = "<group>"; };
+		C16921DA15B2122800F081AF /* pen body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pen body.png"; sourceTree = "<group>"; };
+		C16921DB15B2122800F081AF /* pen head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pen head.png"; sourceTree = "<group>"; };
+		C16921DC15B2122800F081AF /* right arm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right arm.png"; sourceTree = "<group>"; };
 		C1B4397B15951B4100D62C2B /* StatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarController.h; sourceTree = "<group>"; };
 		C1B4397C15951B4100D62C2B /* StatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarController.m; sourceTree = "<group>"; };
 		C1CBDFE415952D4900A35E24 /* bob1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bob1.png; sourceTree = "<group>"; };
@@ -617,10 +627,8 @@
 		D0B9EECF159EA9D4005D2460 /* CameraOverlayControllerViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraOverlayControllerViewControllerDelegate.h; sourceTree = "<group>"; };
 		D0D7C84415955D3400F51C6E /* AvatarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AvatarViewController.h; path = WhackwhoNew/AvatarViewController.h; sourceTree = "<group>"; };
 		D0D7C84515955D3400F51C6E /* AvatarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AvatarViewController.m; path = WhackwhoNew/AvatarViewController.m; sourceTree = "<group>"; };
-		D0D7C84715956E3D00F51C6E /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameViewController.h; path = WhackwhoNew/GameViewController.h; sourceTree = "<group>"; };
-		D0D7C84815956E3D00F51C6E /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameViewController.m; path = WhackwhoNew/GameViewController.m; sourceTree = "<group>"; };
-		D0D7C84A15956F8D00F51C6E /* GameOverScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameOverScreenController.h; path = WhackwhoNew/GameOverScreenController.h; sourceTree = "<group>"; };
-		D0D7C84B15956F8D00F51C6E /* GameOverScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameOverScreenController.m; path = WhackwhoNew/GameOverScreenController.m; sourceTree = "<group>"; };
+		D0D7C84715956E3D00F51C6E /* ModeSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModeSelectionViewController.h; path = WhackwhoNew/ModeSelectionViewController.h; sourceTree = "<group>"; };
+		D0D7C84815956E3D00F51C6E /* ModeSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModeSelectionViewController.m; path = WhackwhoNew/ModeSelectionViewController.m; sourceTree = "<group>"; };
 		D0E30655159E4B1B0080D845 /* popoverArrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowDown.png; sourceTree = "<group>"; };
 		D0E30656159E4B1B0080D845 /* popoverArrowDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverArrowDown@2x.png"; sourceTree = "<group>"; };
 		D0E30657159E4B1B0080D845 /* popoverArrowDownSimple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowDownSimple.png; sourceTree = "<group>"; };
@@ -687,7 +695,7 @@
 			name = Frames;
 			sourceTree = "<group>";
 		};
-		694F34B315A7775E009BA1C5 /* Mainpage Scene */ = {
+		694F34B315A7775E009BA1C5 /* Mainpage Views */ = {
 			isa = PBXGroup;
 			children = (
 				69C95E8C159A4AAC009966DA /* RootViewController.h */,
@@ -700,7 +708,7 @@
 				694F34B115A76006009BA1C5 /* FriendsTableCell.m */,
 				694F34AE15A756F5009BA1C5 /* FriendsTableCell.xib */,
 			);
-			name = "Mainpage Scene";
+			name = "Mainpage Views";
 			sourceTree = "<group>";
 		};
 		696F17AA15A3CA5700DC849F /* Facebook */ = {
@@ -739,7 +747,10 @@
 		69C95E86159A461A009966DA /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
-				69C95E9A159A53B2009966DA /* ImageConstants.h */,
+				C16921CC15B20ABA00F081AF /* Test Animations */,
+				C16921CA15B20A3900F081AF /* zach_resized.png */,
+				C16921C615B204BA00F081AF /* hammer.png */,
+				C16921C815B204C600F081AF /* string1.png */,
 				C1FE252515AF65EF00DAF258 /* heart.png */,
 				C1FE252615AF65EF00DAF258 /* pause.png */,
 				D07F6FEC159943FB0085DF2B /* facedetectionpic.jpg */,
@@ -780,7 +791,6 @@
 		69C95E8B159A4A15009966DA /* Main Game */ = {
 			isa = PBXGroup;
 			children = (
-				C14B63B015AF5B5400376C91 /* Actual Game Scene(Cocos2d) */,
 				D0D7C84415955D3400F51C6E /* AvatarViewController.h */,
 				D0D7C84515955D3400F51C6E /* AvatarViewController.m */,
 				D0948D3F15ADFF0E00429477 /* AvatarBaseController.h */,
@@ -790,18 +800,16 @@
 				D0B9EECF159EA9D4005D2460 /* CameraOverlayControllerViewControllerDelegate.h */,
 				C1B4397B15951B4100D62C2B /* StatusBarController.h */,
 				C1B4397C15951B4100D62C2B /* StatusBarController.m */,
-				C14718561594F0FB0002FF21 /* ViewController.h */,
-				C14718571594F0FB0002FF21 /* ViewController.m */,
-				D0D7C84A15956F8D00F51C6E /* GameOverScreenController.h */,
-				D0D7C84B15956F8D00F51C6E /* GameOverScreenController.m */,
-				D0D7C84715956E3D00F51C6E /* GameViewController.h */,
-				D0D7C84815956E3D00F51C6E /* GameViewController.m */,
-				C169200A15AFC7A600F081AF /* ModeSelectionViewController.h */,
-				C169200B15AFC7A700F081AF /* ModeSelectionViewController.m */,
+				D0D7C84715956E3D00F51C6E /* ModeSelectionViewController.h */,
+				D0D7C84815956E3D00F51C6E /* ModeSelectionViewController.m */,
+				C169200A15AFC7A600F081AF /* HitWhoViewController.h */,
+				C169200B15AFC7A700F081AF /* HitWhoViewController.m */,
 				69C95EAB159B63A9009966DA /* SelectToLoginViewController.h */,
 				69C95EAC159B63A9009966DA /* SelectToLoginViewController.m */,
-				694F34B315A7775E009BA1C5 /* Mainpage Scene */,
+				C14B63B015AF5B5400376C91 /* Actual Game Scene(Cocos2d) */,
+				694F34B315A7775E009BA1C5 /* Mainpage Views */,
 				696F17FF15A4E30A00DC849F /* Constants.h */,
+				69C95E9A159A53B2009966DA /* ImageConstants.h */,
 				696F180415A52EF000DC849F /* GlobalMethods.h */,
 				696F180515A52EF000DC849F /* GlobalMethods.m */,
 			);
@@ -811,13 +819,13 @@
 		69C95E94159A51E0009966DA /* Background */ = {
 			isa = PBXGroup;
 			children = (
+				C16921BF15B129BE00F081AF /* cloud background.png */,
 				690D419015AF5EC900472F82 /* friend list (background).png */,
 				C1FE253F15AF66CB00DAF258 /* flower.png */,
 				C1FE254515AF66D700DAF258 /* hills_finalView.png */,
 				C1691FF615AFC0BB00F081AF /* background 2.png */,
 				C1FE254015AF66CB00DAF258 /* scoreboard.png */,
 				C1FE253C15AF667B00DAF258 /* rainbow4.png */,
-				C16921B415AFD6A400F081AF /* hills_L99.png */,
 				C1FE254415AF66D700DAF258 /* hills_L8_new.png */,
 				C1FE254615AF66D700DAF258 /* hills_L7.png */,
 				C1FE254715AF66D700DAF258 /* hills_L6.png */,
@@ -1265,6 +1273,17 @@
 			name = "Actual Game Scene(Cocos2d)";
 			sourceTree = "<group>";
 		};
+		C16921CC15B20ABA00F081AF /* Test Animations */ = {
+			isa = PBXGroup;
+			children = (
+				C16921D915B2122800F081AF /* left arm.png */,
+				C16921DA15B2122800F081AF /* pen body.png */,
+				C16921DB15B2122800F081AF /* pen head.png */,
+				C16921DC15B2122800F081AF /* right arm.png */,
+			);
+			name = "Test Animations";
+			sourceTree = "<group>";
+		};
 		C1B439721595177E00D62C2B /* Facebook Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -1534,7 +1553,14 @@
 				C169200715AFC4DA00F081AF /* pin.png in Resources */,
 				C169200815AFC4DA00F081AF /* random icon.png in Resources */,
 				C169200915AFC4DA00F081AF /* yes mark.png in Resources */,
-				C16921B515AFD6A400F081AF /* hills_L99.png in Resources */,
+				C16921C015B129BF00F081AF /* cloud background.png in Resources */,
+				C16921C715B204BA00F081AF /* hammer.png in Resources */,
+				C16921C915B204C600F081AF /* string1.png in Resources */,
+				C16921CB15B20A3900F081AF /* zach_resized.png in Resources */,
+				C16921DD15B2122800F081AF /* left arm.png in Resources */,
+				C16921DE15B2122800F081AF /* pen body.png in Resources */,
+				C16921DF15B2122800F081AF /* pen head.png in Resources */,
+				C16921E015B2122800F081AF /* right arm.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1647,12 +1673,10 @@
 				C14717FB1594ACD20002FF21 /* vec4.c in Sources */,
 				C14718001594ACD20002FF21 /* main.m in Sources */,
 				C14718551594F0AE0002FF21 /* AppDelegate.m in Sources */,
-				C14718581594F0FB0002FF21 /* ViewController.m in Sources */,
 				C147185B1594F1AF0002FF21 /* CocosViewController.m in Sources */,
 				C1B4397D15951B4100D62C2B /* StatusBarController.m in Sources */,
 				D0D7C84615955D3400F51C6E /* AvatarViewController.m in Sources */,
-				D0D7C84915956E3D00F51C6E /* GameViewController.m in Sources */,
-				D0D7C84C15956F8D00F51C6E /* GameOverScreenController.m in Sources */,
+				D0D7C84915956E3D00F51C6E /* ModeSelectionViewController.m in Sources */,
 				69C95E8E159A4AAC009966DA /* RootViewController.m in Sources */,
 				69C95EAD159B63A9009966DA /* SelectToLoginViewController.m in Sources */,
 				D09FD5DD159E4EB60079231D /* CameraOverlayControllerViewController.m in Sources */,
@@ -1668,7 +1692,7 @@
 				C14B63C015AF5D3200376C91 /* Character.m in Sources */,
 				D0948D4115ADFF0E00429477 /* AvatarBaseController.m in Sources */,
 				C1FE252315AF656E00DAF258 /* HUDLayer.m in Sources */,
-				C169200C15AFC7A800F081AF /* ModeSelectionViewController.m in Sources */,
+				C169200C15AFC7A800F081AF /* HitWhoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

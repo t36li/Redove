@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 Waterloo. All rights reserved.
 //
 
-#import "GameViewController.h"
+#import "ModeSelectionViewController.h"
 
-@implementation GameViewController
+@implementation ModeSelectionViewController
 
 @synthesize leftButton, rightButton, background, bg_list;
 
@@ -40,15 +40,15 @@
 - (IBAction)leftButton_touched:(id)sender {
     index--;
     if (index < 0 ) {
-        index = 0;
+        index = [bg_list count] - 1;
     }
     background.image = [UIImage imageNamed:[bg_list objectAtIndex:index]];
 }
 
 - (IBAction)rightButton_touched:(id)sender {
     index++;
-    if (index >= 1 ) {
-        index = 1;
+    if (index > ([bg_list count] - 1) ) {
+        index = 0;
     }
     background.image = [UIImage imageNamed:[bg_list objectAtIndex:index]];
 }

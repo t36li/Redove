@@ -10,11 +10,9 @@
 
 //backgrounds
 #define MainPage_bg @"MainPage_bg"
-#define GameMode_grass_bg @"hills_finalView.png"
+#define GameMode_grass_bg @"GameMode_grass_bg"
 #define SelectToLogIn_bg @"SelectToLogIn_bg.png"
 #define FriendList_bg @"friend list (background).png"
-#define OceanMode_bg @"background 2.png"
-#define hills_l1 @"hills_L1.png"
 
 //buttons
 #define Play_but @"play s.png"
@@ -33,10 +31,13 @@
 #define Monk @"monk.png"
 #define Vald @"vald.png"
 #define Olaf @"olaf.png"
+<<<<<<< HEAD
 #define Baby @"baby.png"
 #define Mice @"mice.png"
 #define Pinky @"pinky.png"
 #define Blue @"blue.png"
+=======
 
 //Frames
 #define FriendListCell @"friend list (cell).png"
+>>>>>>> 911f1044ac0d330615eacf35364ccfefe21b7367

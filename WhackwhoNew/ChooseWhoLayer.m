@@ -29,7 +29,7 @@
 -(id) init {
     
     if ((self = [super init])) {
-        //tempDifficulty = [[Game sharedGame] difficulty];
+        /*      //tempDifficulty = [[Game sharedGame] difficulty];
         CGSize s = [[CCDirector sharedDirector] winSize];
         //popups = 2*tempDifficulty + 1;
         
@@ -97,31 +97,53 @@
                 popups -= 1;
                 [finalFriendList addObject:friend];
             }
-        } while (popups > 0);
+        } while (popups > 0);*/
         
-        /*
-         CCMenuItemImage *person1 = [CCMenuItemImage itemWithNormalImage:@"bob_resized.png" selectedImage:@"bob_resized.png" target:self selector:@selector(nextScene:)];
-         person1.tag = 1;
-         CCMenu *menu = [CCMenu menuWithItems:person1, nil];
-         menu.position = ccp(60,150);
-         [self addChild:menu];
-         
-         CCMenuItemImage *person2 = [CCMenuItemImage itemWithNormalImage:@"zach_resized.png" selectedImage:@"zach_resized.png" target:self selector:@selector(nextScene:)];
-         person2.tag = 2;
-         CCMenu *menu1 = [CCMenu menuWithItems:person2, nil];
-         menu1.position = ccp(200,150);
-         [self addChild:menu1];
-         
-         CCMenuItemImage *person3 = [CCMenuItemImage itemWithNormalImage:@"wensen_resized.png" selectedImage:@"wensen_resized.png" target:self selector:@selector(nextScene:)];
-         person3.tag = 3;
-         CCMenu *menu2 = [CCMenu menuWithItems:person3, nil];
-         menu2.position = ccp(340,150);
-         [self addChild:menu2];*/
+        glClearColor(255, 255, 255, 255);
+
+        CGSize s = [[CCDirector sharedDirector] winSize];
+        
+        CCSprite *body = [CCSprite spriteWithFile:@"pen body.png"];
+        CCSprite *head = [CCSprite spriteWithFile:@"pen head.png"];
+        CCSprite *left_arm = [CCSprite spriteWithFile:@"left arm.png"];
+        CCSprite *right_arm = [CCSprite spriteWithFile:@"right arm.png"];
+        CCSprite *zach = [CCSprite spriteWithFile:@"zach_resized.png"];
+
+        //position body in center
+        body.position = ccp(s.width/2, s.height/2);
+        head.position = ccp(46, 33);
+        left_arm.position = ccp(46, 33);
+        right_arm.position = ccp(46, 33);
+        zach.position = ccp(head.contentSize.width/2, head.contentSize.height/2);
+        
+        //add child
+        [self addChild:body z:0];
+        [body addChild:head z:10];
+        [body addChild:left_arm z:15];
+        [body addChild:right_arm z:20];
+        [head addChild:zach];
+        
+        body.anchorPoint = ccp(0.471, 0.245);
+        head.anchorPoint = ccp(0.467, 0.286);
+        left_arm.anchorPoint = ccp(0.344, 0.256);
+        right_arm.anchorPoint = ccp(0.595, 0.256);
+        
+        CCRotateBy *upSwing = [CCRotateBy actionWithDuration:1.5 angle:45];
+        CCRotateBy *downSwing = [CCRotateBy actionWithDuration:1.5 angle:-45];
+        CCMoveBy *moveUp = [CCMoveBy actionWithDuration:1.5 position:ccp(0,10)];
+        CCMoveBy *moveDown = [CCMoveBy actionWithDuration:1.5 position:ccp(0,-10)];
+        CCRepeatForever *repeat = [CCRepeatForever actionWithAction:[CCSequence actionOne:upSwing two:downSwing]];
+        CCRepeatForever *repeat2 = [CCRepeatForever actionWithAction:[CCSequence actionOne:moveDown two:moveUp]];
+        CCRepeatForever *repeat3 = [CCRepeatForever actionWithAction:[CCSequence actionOne:downSwing two:upSwing]];
+        
+        [head runAction:repeat2];
+        [left_arm runAction:repeat];
+        
     }
     return self;
 }
 
--(void) nextScene: (id) sender {
+/*-(void) nextScene: (id) sender {
     CCMenuItem *itm = (CCMenuItem *) sender;
     
     int index = itm.tag;
@@ -144,11 +166,9 @@
     } else {
         CCLOG(@"already selected!");
     }
-}
+}*/
 
 - (void) dealloc {
-    //[finalFriendList release];
-    //[selectedHeads release];
     [super dealloc];
 }
 
