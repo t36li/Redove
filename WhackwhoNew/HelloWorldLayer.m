@@ -708,7 +708,7 @@
             //CCFadeTo *fadeOut = [CCFadeTo actionWithDuration:0.3 opacity:0];
             CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
             CCMoveBy *movedown = [CCMoveBy actionWithDuration:0.5 position:ccp(0,-head.contentSize.height)];
-            CCEaseInOut *easeMoveDown = [CCEaseInOut actionWithAction:movedown rate:2.0];
+            CCEaseInOut *easeMoveDown = [CCEaseInOut actionWithAction:movedown rate:3.0];
             CCMoveBy *moveLeft = [CCMoveBy actionWithDuration:0.5 position:ccp(-head.contentSize.width/2, -head.contentSize.height/2)];
             CCEaseInOut *easeMoveLeft = [CCEaseInOut actionWithAction:moveLeft rate:3.0];
             
@@ -716,9 +716,9 @@
             // keep the tapping "bug" for testing purposes
             //[head runAction:[CCSequence actions: fadeOut, checkCombo, nil]];
             if (head.sideWaysMove) {
-                [head runAction:[CCSequence actions: checkCombo, easeMoveLeft, nil]];
+                [head runAction:[CCSequence actions: easeMoveLeft, checkCombo, nil]];
             } else {
-                [head runAction:[CCSequence actions: checkCombo, easeMoveDown, nil]];
+                [head runAction:[CCSequence actions: easeMoveDown, checkCombo, nil]];
             }
         }
     } //end heads loop
