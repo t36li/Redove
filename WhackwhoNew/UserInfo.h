@@ -14,13 +14,14 @@
     int currentLogInType;
     NSString *userName;
     NSString *userId;
+    NSString *gender;
     UIImage *croppedImage;
     UIImage *usrImg;
     id<UserInfoDelegate> delegate;
 }
 
 @property (nonatomic, retain) UIImage *usrImg, *croppedImage;
-@property (nonatomic, retain) NSString *userId, *userName;
+@property (nonatomic, retain) NSString *userId, *userName, *gender;
 @property (nonatomic, readwrite) int currentLogInType;
 @property(nonatomic, retain) id<UserInfoDelegate> delegate;
 

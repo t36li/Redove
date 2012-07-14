@@ -41,7 +41,7 @@
 
 #pragma mark - UITableView Datasource and Delegate Methods
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80.0;
+    return 70;
 }
 
 // Customize the number of sections in the table view.
@@ -69,6 +69,7 @@
     
     cell.name.text = (NSString *)[[resultData objectAtIndex:indexPath.row] objectForKey:@"name"];
     cell.name.lineBreakMode  = UILineBreakModeWordWrap;
+    cell.gender.text = (NSString *)[[resultData objectAtIndex:indexPath.row] objectForKey:@"gender"];
     cell.profileImageView.image = [[GlobalMethods alloc] imageForObject:[[resultData objectAtIndex:indexPath.row] objectForKey:@"id"]];
     
     return cell;

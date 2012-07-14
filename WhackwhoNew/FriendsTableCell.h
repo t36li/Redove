@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface FriendsTableCell : UITableViewCell{
-    IBOutlet UILabel *name;
+    UILabel *name;
+    UILabel *gender;
     IBOutlet UIImageView *profileImageView;
 }
-@property (nonatomic, retain) IBOutlet UILabel *name;
+@property (nonatomic, retain) IBOutlet UILabel *name, *gender;
 @property (nonatomic, readonly) IBOutlet UIImageView *profileImageView;
 
 @end

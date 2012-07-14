@@ -10,6 +10,7 @@
 
 @implementation FriendsTableCell
 @synthesize name = _nameLabel;
+@synthesize gender;
 @synthesize profileImageView = _profileImageView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
