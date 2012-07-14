@@ -60,11 +60,13 @@
     
     if (!cell)
     {
+        
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"FriendsTableCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
+        cell = (FriendsTableCell *)[nib objectAtIndex:0];
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:FriendListCell]];
+        [cell setContentMode:UIViewContentModeScaleAspectFit];
     }
     
-    cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:FriendListCell]];
     cell.name.text = (NSString *)[[resultData objectAtIndex:indexPath.row] objectForKey:@"name"];
     cell.name.lineBreakMode  = UILineBreakModeWordWrap;
     cell.profileImageView.image = [[GlobalMethods alloc] imageForObject:[[resultData objectAtIndex:indexPath.row] objectForKey:@"id"]];
