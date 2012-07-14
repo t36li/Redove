@@ -65,6 +65,9 @@
         //add background this is for retina display
         [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
         
+        //set background color to white
+        glClearColor(255, 255, 255, 255);
+        
         CCSprite *bg1 = [CCSprite spriteWithFile:@"hills_L1.png"];
         CCSprite *bg2 = [CCSprite spriteWithFile:@"hills_L2.png"];
         CCSprite *bg3 = [CCSprite spriteWithFile:@"hills_L3.png"];
@@ -74,8 +77,7 @@
         CCSprite *bg7 = [CCSprite spriteWithFile:@"hills_L7.png"];
         [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
         CCSprite *bg8 = [CCSprite spriteWithFile:@"hills_L8_new.png"];
-        CCSprite *bg9 = [CCSprite spriteWithFile:@"hills_L99.png"];
-        
+        CCSprite *bg9 = [CCSprite spriteWithFile:@"cloud background.png"];
         
         bg9.position = ccp(s.width/2, s.height/2);
         bg8.position = ccp(s.width/2, s.height/2);
@@ -395,11 +397,11 @@
     if (consecHits == 0) {
         //consecHits = 0;
         //set all rainbows to not visible
-        /*      for (CCSprite *temp in rainbows) {
-         CCFadeOut *fadeOut = [CCFadeOut actionWithDuration:1.5];
-         [temp runAction:fadeOut];
-         temp.visible = FALSE;
-         }*/
+        for (CCSprite *temp in rainbows) {
+            CCFadeOut *fadeOut = [CCFadeOut actionWithDuration:1.5];
+            [temp runAction:fadeOut];
+            temp.visible = FALSE;
+        }
         speed = 1.5;
         [self unschedule:@selector(tryPopheads)];
         [self schedule:@selector(tryPopheads) interval:speed];
