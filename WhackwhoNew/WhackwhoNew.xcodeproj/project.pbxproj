@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		690D419115AF5EC900472F82 /* friend list (background).png in Resources */ = {isa = PBXBuildFile; fileRef = 690D419015AF5EC900472F82 /* friend list (background).png */; };
 		690D419515AF5F5600472F82 /* friend list (cell).png in Resources */ = {isa = PBXBuildFile; fileRef = 690D419415AF5F5600472F82 /* friend list (cell).png */; };
+		692AC3A615B24C0D001E4858 /* hitFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 692AC3A515B24C0D001E4858 /* hitFriendCell.m */; };
+		692AC3A815B24C2A001E4858 /* hitFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 692AC3A715B24C2A001E4858 /* hitFriendCell.xib */; };
 		694F34A615A6756F009BA1C5 /* SelectToLogIn_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 694F34A515A6756F009BA1C5 /* SelectToLogIn_bg.png */; };
 		694F34AD15A68355009BA1C5 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 694F34AC15A68355009BA1C5 /* FriendsViewController.m */; };
 		694F34AF15A756F5009BA1C5 /* FriendsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 694F34AE15A756F5009BA1C5 /* FriendsTableCell.xib */; };
@@ -244,6 +246,9 @@
 		690D418615AD360C00472F82 /* UserInfoDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoDelegate.h; sourceTree = "<group>"; };
 		690D419015AF5EC900472F82 /* friend list (background).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend list (background).png"; sourceTree = "<group>"; };
 		690D419415AF5F5600472F82 /* friend list (cell).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend list (cell).png"; sourceTree = "<group>"; };
+		692AC3A415B24C0D001E4858 /* hitFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hitFriendCell.h; sourceTree = "<group>"; };
+		692AC3A515B24C0D001E4858 /* hitFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hitFriendCell.m; sourceTree = "<group>"; };
+		692AC3A715B24C2A001E4858 /* hitFriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = hitFriendCell.xib; sourceTree = "<group>"; };
 		694F34A515A6756F009BA1C5 /* SelectToLogIn_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SelectToLogIn_bg.png; path = ../SelectToLogIn_bg.png; sourceTree = "<group>"; };
 		694F34AB15A68355009BA1C5 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
 		694F34AC15A68355009BA1C5 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
@@ -695,6 +700,18 @@
 			name = Frames;
 			sourceTree = "<group>";
 		};
+		692AC3A215B24BB0001E4858 /* HitWhoGroup */ = {
+			isa = PBXGroup;
+			children = (
+				C169200A15AFC7A600F081AF /* HitWhoViewController.h */,
+				C169200B15AFC7A700F081AF /* HitWhoViewController.m */,
+				692AC3A415B24C0D001E4858 /* hitFriendCell.h */,
+				692AC3A515B24C0D001E4858 /* hitFriendCell.m */,
+				692AC3A715B24C2A001E4858 /* hitFriendCell.xib */,
+			);
+			name = HitWhoGroup;
+			sourceTree = "<group>";
+		};
 		694F34B315A7775E009BA1C5 /* Mainpage Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -791,6 +808,7 @@
 		69C95E8B159A4A15009966DA /* Main Game */ = {
 			isa = PBXGroup;
 			children = (
+				692AC3A215B24BB0001E4858 /* HitWhoGroup */,
 				D0D7C84415955D3400F51C6E /* AvatarViewController.h */,
 				D0D7C84515955D3400F51C6E /* AvatarViewController.m */,
 				D0948D3F15ADFF0E00429477 /* AvatarBaseController.h */,
@@ -802,8 +820,6 @@
 				C1B4397C15951B4100D62C2B /* StatusBarController.m */,
 				D0D7C84715956E3D00F51C6E /* ModeSelectionViewController.h */,
 				D0D7C84815956E3D00F51C6E /* ModeSelectionViewController.m */,
-				C169200A15AFC7A600F081AF /* HitWhoViewController.h */,
-				C169200B15AFC7A700F081AF /* HitWhoViewController.m */,
 				69C95EAB159B63A9009966DA /* SelectToLoginViewController.h */,
 				69C95EAC159B63A9009966DA /* SelectToLoginViewController.m */,
 				C14B63B015AF5B5400376C91 /* Actual Game Scene(Cocos2d) */,
@@ -1561,6 +1577,7 @@
 				C16921DE15B2122800F081AF /* pen body.png in Resources */,
 				C16921DF15B2122800F081AF /* pen head.png in Resources */,
 				C16921E015B2122800F081AF /* right arm.png in Resources */,
+				692AC3A815B24C2A001E4858 /* hitFriendCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1693,6 +1710,7 @@
 				D0948D4115ADFF0E00429477 /* AvatarBaseController.m in Sources */,
 				C1FE252315AF656E00DAF258 /* HUDLayer.m in Sources */,
 				C169200C15AFC7A800F081AF /* HitWhoViewController.m in Sources */,
+				692AC3A615B24C0D001E4858 /* hitFriendCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

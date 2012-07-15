@@ -45,6 +45,7 @@ typedef enum apiCall {
     Facebook* _facebook;
     NSArray* _permissions;
     BOOL isLogIn;
+    NSArray *savedAPIResult;
     id<FBSingletonDelegate> delegate;
     // Internal state
     int score;
@@ -62,5 +63,6 @@ typedef enum apiCall {
 -(void) RequestFriendList;
 -(void) logout;
 -(void) login;
+-(void) RequestFriendsNotUsing;
 
 @end 
