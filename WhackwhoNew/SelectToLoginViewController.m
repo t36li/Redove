@@ -51,10 +51,11 @@
     
 }
 
--(void)FBSingletonDidLogin:(NSString *)userId :(NSString *)userName{
+-(void)FBSingletonDidLogin:(NSString *)userId :(NSString *)userName :(NSString *) gender{
     [[UserInfo sharedInstance] setCurrentLogInType:LogInFacebook];
     [[UserInfo sharedInstance] setUserId:userId];
     [[UserInfo sharedInstance] setUserName:userName];
+    [[UserInfo sharedInstance] setGender:gender];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

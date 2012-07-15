@@ -169,9 +169,9 @@ static FBSingleton *singletonDelegate = nil;
         
         currentAPICall = kAPIGraphMe;
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                       @"name,picture",  @"fields",
+                                       @"name,picture,gender",  @"fields",
                                        nil];
-        [_facebook requestWithGraphPath:@"me" andParams:params andDelegate:self];
+        [_facebook requestWithGraphPath:@"me" andDelegate:self];
     }
 }
 
@@ -179,7 +179,7 @@ static FBSingleton *singletonDelegate = nil;
     if (isLogIn){
         currentAPICall = kAPIGraphMeLogIn;
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                       @"name,picture",  @"fields",
+                                       @"name,picture,gender",  @"fields",
                                        nil];
         [_facebook requestWithGraphPath:@"me" andParams:params andDelegate:self];
     }
@@ -189,7 +189,10 @@ static FBSingleton *singletonDelegate = nil;
     // Check if there is a valid session
     if (isLogIn){
         currentAPICall = kAPIGraphUserFriends;
-        [_facebook requestWithGraphPath:@"me/friends" andDelegate:self];
+        NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                       @"id,name,picture,gender",  @"fields",
+                                       nil];
+        [_facebook requestWithGraphPath:@"me/friends" andParams:params andDelegate:self];
     }
 }
 
@@ -280,13 +283,14 @@ static FBSingleton *singletonDelegate = nil;
         case kAPIGraphMe:{
             //show profile result;
             NSLog(@"Me result loaded ");
-            [delegate FbMeLoaded:[result objectForKey:@"id"]:[result objectForKey:@"name"]];
+            NSLog(@"%@",[result objectForKey:@"gender"]);
+            [delegate FbMeLoaded:[result objectForKey:@"id"]:[result objectForKey:@"name"]:[result objectForKey:@"gender"]];
             break;       
         }
         case kAPIGraphMeLogIn:{
             //show profile result;
             NSLog(@"Me LogIn result loaded ");
-            [delegate FBSingletonDidLogin:[result objectForKey:@"id"]:[result objectForKey:@"name"]];
+            [delegate FBSingletonDidLogin:[result objectForKey:@"id"]:[result objectForKey:@"name"]:[result objectForKey:@"gender"]];
             break;       
         }
         case kAPIGraphUserFriends:{

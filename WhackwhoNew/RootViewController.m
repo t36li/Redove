@@ -181,10 +181,11 @@ static NSMutableArray *FriendsData = nil;
 }
 
 
--(void) FbMeLoaded:(NSString *)userId :(NSString *)userName{
+-(void) FbMeLoaded:(NSString *)userId :(NSString *)userName : (NSString *)gender{
     if (userId != nil){
         [usr setUserId:userId];
         [usr setUserName:userName];
+        [usr setGender:gender];
         LoginAccountImageView.image = [gmethods imageForObject:userId];
     }
 }
