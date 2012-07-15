@@ -12,6 +12,7 @@
 
 @synthesize selectedHits;
 @synthesize hit1, hit2, hit3;
+@synthesize portrait;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,7 +33,23 @@
     for (UIImageView *temp in selectedHits) {
         temp.userInteractionEnabled = YES;
     }
-
+    
+   /* CCGLView *glview = [CCGLView viewWithFrame:CGRectMake(0, 0, 160,200)];
+    [portrait addSubview:glview];
+    
+    CCDirector *director = [CCDirector sharedDirector];
+    [director setView:glview];
+    
+    // 'scene' is an autorelease object.
+	CCScene *scene = [CCScene node];
+	
+	// 'layer' is an autorelease object.
+	ChooseWhoLayer *layer = [ChooseWhoLayer node];
+    
+	// add layer as a child to scene
+	[scene addChild: layer z:0];
+    
+    [director runWithScene:scene];*/
 }
 
 - (void)viewDidUnload
@@ -46,13 +63,26 @@
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
--(void) handleTapOnFriend: (NSString *) hit {
+-(void) handleTapOnFriend: (NSString *) friend {
     //int indexOfLast = [selectedHits count] - 1;
     
+    UIImage *tempImage = [UIImage imageNamed:friend];
     BOOL allImageViewOccupied = TRUE;
     for (UIImageView *temp in selectedHits) {
         if ([temp.image isEqual:nil]) {
-            temp.image = [UIImage imageNamed:hit];
+            
+            //set little circle image
+            temp.image = tempImage;
+            
+            //set up big portraint image glview
+            //chooseWholayer has to obtain image from Game.h
+            // do something like [[game sharedgame] setHead: tempImage];
+            
+            //add swipe to cancel gesture (little cancel mark)
+            UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeOnImage:)];
+            [recognizer setNumberOfTouchesRequired:1];
+            [temp addGestureRecognizer:recognizer];
+            
             allImageViewOccupied = FALSE;
         }
     }
@@ -65,9 +95,9 @@
 
 }
 
--(void) handleTapOnImage: (UITapGestureRecognizer *) tap {
+-(void) handleSwipeOnImage: (UISwipeGestureRecognizer *) swipe {
     //first set the image of the imageview tapped to nil
-    UIImageView *temp = (UIImageView *) tap;
+    UIImageView *temp = (UIImageView *) swipe;
     temp.image = nil;
 
 }

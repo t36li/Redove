@@ -100,8 +100,6 @@
         } while (popups > 0);*/
         
         glClearColor(255, 255, 255, 255);
-
-        CGSize s = [[CCDirector sharedDirector] winSize];
         
         CCSprite *body = [CCSprite spriteWithFile:@"pen body.png"];
         CCSprite *head = [CCSprite spriteWithFile:@"pen head.png"];
@@ -110,7 +108,7 @@
         CCSprite *zach = [CCSprite spriteWithFile:@"zach_resized.png"];
 
         //position body in center
-        body.position = ccp(s.width/2, s.height/2);
+        body.position = ccp(80, 100);
         head.position = ccp(46, 33);
         left_arm.position = ccp(46, 33);
         right_arm.position = ccp(46, 33);

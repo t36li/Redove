@@ -12,6 +12,7 @@
     IBOutlet UIButton *leftButton;
     IBOutlet UIButton *rightButton;
     IBOutlet UIImageView *background;
+    IBOutlet UIImageView *wholeView;
     NSMutableArray *bg_list;
     int index;
 }
