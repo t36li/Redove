@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CameraOverlayControllerViewController.h"
 #import "AvatarBaseController.h"
+#import "SpinnerView.h"
 
 @interface AvatarViewController : AvatarBaseController <CameraOverlayControllerViewControllerDelegate> {
     
@@ -16,9 +17,13 @@
     CameraOverlayControllerViewController *overlay;
     //IBOutlet AvatarView *avatarView;
     UIImagePickerController *cameraController;
+    BOOL newPhoto;
+    SpinnerView *spinner;
 }
 
 @property (nonatomic, retain) IBOutlet UIView *imageView;
+
+@property (nonatomic, retain) SpinnerView *spinner;
 
 @property (nonatomic, retain) CameraOverlayControllerViewController *overlay;
 @property (nonatomic, retain) UIImagePickerController *cameraController;

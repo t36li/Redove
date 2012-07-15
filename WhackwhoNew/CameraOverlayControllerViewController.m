@@ -59,8 +59,6 @@
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo {        
-    
-    avatarView.backgroundColor = [UIColor blackColor];
     // flip image on y-axis to match coordinate system used by core image
     //[containerView setTransform:CGAffineTransformMakeScale(1, -1)];
     
@@ -87,8 +85,6 @@
     //self.croppedImage = croppedImg;
     //self.validPhoto = newImage2;
     //CGRect frame2 = headView.frame;
-    
-    photoView.image = image;
     //photoView.image = image;
     [self.delegate validImageCaptured:image croppedImage:croppedImg];
     [self.pickerReference dismissModalViewControllerAnimated:YES];
