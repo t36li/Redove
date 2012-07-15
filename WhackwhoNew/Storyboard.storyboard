@@ -690,7 +690,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="aot-oP-MKW">
-                                <rect key="frame" x="149" y="17" width="184" height="124"/>
+                                <rect key="frame" x="149" y="17" width="180" height="125"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -703,6 +703,7 @@
                         <outlet property="background" destination="aot-oP-MKW" id="zH7-43-lbK"/>
                         <outlet property="leftButton" destination="Pfa-au-pUB" id="JNC-OC-Dhy"/>
                         <outlet property="rightButton" destination="8nC-Ai-LQg" id="FtX-Ft-4Zq"/>
+                        <outlet property="wholeView" destination="OPF-hJ-iT6" id="t5S-U8-DhH"/>
                     </connections>
                 </viewController>
             </objects>
@@ -734,7 +735,7 @@
                                 </state>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="head cell.png" id="1ab-WG-QfI">
-                                <rect key="frame" x="15" y="0.0" width="71" height="67"/>
+                                <rect key="frame" x="20" y="0.0" width="71" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="head cell.png" id="WTc-6F-rps">
@@ -811,6 +812,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="eRv-ay-1Nb"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="hit1" destination="1ab-WG-QfI" id="GfU-GS-RZS"/>
+                        <outlet property="hit2" destination="WTc-6F-rps" id="X2q-uz-HYV"/>
+                        <outlet property="hit3" destination="83K-O3-AuJ" id="8i5-sB-PBM"/>
+                        <outlet property="portrait" destination="lHq-nH-m2S" id="vJo-1W-PtR"/>
+                        <outlet property="table" destination="bpn-bO-5RV" id="wkW-1x-Wbk"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="-1026" y="475"/>
@@ -917,84 +925,6 @@
         <image name="right button.png" width="84" height="102"/>
         <image name="yes mark.png" width="134" height="112"/>
     </resources>
-    <classes>
-        <class className="AvatarBaseController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AvatarBaseController.h"/>
-        </class>
-        <class className="AvatarViewController" superclassName="AvatarBaseController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AvatarViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="startCamera:"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="CocosViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CocosViewController.h"/>
-        </class>
-        <class className="FriendsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="back_Touched:"/>
-                <relationship kind="outlet" name="friendTable" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="tableCell" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="HitWhoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HitWhoViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="hit1" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="hit2" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="hit3" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="ModeSelectionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ModeSelectionViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="leftButton_touched:"/>
-                <relationship kind="action" name="rightButton_touched:"/>
-                <relationship kind="outlet" name="background" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="rightButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="OptionsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OptionsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="back_touched:"/>
-                <relationship kind="action" name="logout_touched:"/>
-                <relationship kind="outlet" name="back" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="logout_but" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="RootViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="opt_touched:"/>
-                <relationship kind="action" name="play_touched:"/>
-                <relationship kind="outlet" name="LoginAccountImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="opt_but" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="play_but" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="SelectToLoginViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectToLoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="EMTouched:"/>
-                <relationship kind="action" name="FBTouched:"/>
-                <relationship kind="outlet" name="EMBut" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="FBBut" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="StatusBarController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StatusBarController.h"/>
-            <relationships>
-                <relationship kind="action" name="Back_Touched:"/>
-                <relationship kind="outlet" name="Bobhead" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="headView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation" orientation="landscapeRight"/>

@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "Game.h"
+#import "cocos2d.h"
+#import "ChooseWhoLayer.h"
 
 @interface HitWhoViewController : UIViewController {
     NSMutableArray *selectedHits;
     IBOutlet UIImageView *hit1;
     IBOutlet UIImageView *hit2;
     IBOutlet UIImageView *hit3;
+    IBOutlet UIImageView *portrait;
     IBOutlet UITableView *table;
 
 }
@@ -22,6 +25,6 @@
 @property (nonatomic, retain) IBOutlet UIImageView *hit1;
 @property (nonatomic, retain) IBOutlet UIImageView *hit2;
 @property (nonatomic, retain) IBOutlet UIImageView *hit3;
-
+@property (nonatomic, retain) IBOutlet UIImageView *portrait;
 
 @end
