@@ -12,6 +12,7 @@
 @synthesize name = _nameLabel;
 @synthesize gender;
 @synthesize profileImageView = _profileImageView;
+@synthesize identity;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -27,7 +28,6 @@
 {
     [super setSelected:selected animated:animated];
     //add some shit here to handle touches
-    // Configure the view for the selected state
 }
 
 @end
