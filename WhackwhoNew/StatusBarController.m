@@ -11,8 +11,15 @@
 
 
 @implementation StatusBarController
+@synthesize containerView;
 
-@synthesize Bobhead, headView;
+-(id)initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super initWithCoder:aDecoder])) {
+        // initialize what you need here
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -20,9 +27,9 @@
 	// Do any additional setup after loading the view.
     [self.view setBackgroundColor:[UIColor whiteColor]];
 	// Do any additional setup after loading the view, typically from a nib.
-
-    [Bobhead setContentMode:UIViewContentModeScaleAspectFit];
-    [Bobhead setBackgroundColor:[UIColor clearColor]];
+    
+    avatarView.frame = containerView.bounds;
+    [containerView addSubview:avatarView];
 }
 
 - (void)viewDidUnload
@@ -40,7 +47,7 @@
     self.navigationController.navigationBarHidden = YES;
     UserInfo *usr = [UserInfo sharedInstance];
     if (usr.usrImg != nil) {
-        headView.image = usr.croppedImage;
+        photoView.image = usr.usrImg;
     }
 }
 
