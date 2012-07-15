@@ -16,5 +16,6 @@
 -(void)FBSingletonDidLogout;
 -(void)FBSingletonDidLogin:(NSString *)userId: (NSString *) userName : (NSString *)gender;
 -(void)FBSIngletonUserFriendsDidLoaded:(NSMutableArray *) friends;
+-(void)FBUserFriendsAppNotUsing:(NSMutableArray *) friends;
 
 @end

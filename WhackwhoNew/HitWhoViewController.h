@@ -10,14 +10,16 @@
 #import "Game.h"
 #import "cocos2d.h"
 #import "ChooseWhoLayer.h"
+#import "FBSingletonDelegate.h"
 
-@interface HitWhoViewController : UIViewController {
+@interface HitWhoViewController : UIViewController<FBSingletonDelegate,UITableViewDelegate,UITableViewDataSource> {
     NSMutableArray *selectedHits;
     IBOutlet UIImageView *hit1;
     IBOutlet UIImageView *hit2;
     IBOutlet UIImageView *hit3;
     IBOutlet UIImageView *portrait;
-    IBOutlet UITableView *table;
+    UITableView *table;
+    NSMutableArray *resultFriends;
 
 }
 
@@ -26,5 +28,6 @@
 @property (nonatomic, retain) IBOutlet UIImageView *hit2;
 @property (nonatomic, retain) IBOutlet UIImageView *hit3;
 @property (nonatomic, retain) IBOutlet UIImageView *portrait;
+@property (nonatomic, retain) IBOutlet UITableView *table;
 
 @end

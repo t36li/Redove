@@ -7,12 +7,16 @@
 //
 
 #import "HitWhoViewController.h"
+#import "FBSingleton.h"
+#import "hitFriendCell.h"
+#import "GlobalMethods.h"
 
 @implementation HitWhoViewController
 
 @synthesize selectedHits;
 @synthesize hit1, hit2, hit3;
 @synthesize portrait;
+@synthesize table;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,6 +54,13 @@
 	[scene addChild: layer z:0];
     
     [director runWithScene:scene];*/
+    
+    [[FBSingleton sharedInstance] RequestFriendsNotUsing];
+    
+}
+
+-(void) viewWillAppear:(BOOL)animated{
+    [[FBSingleton sharedInstance] setDelegate:self];
 }
 
 - (void)viewDidUnload
@@ -101,6 +112,66 @@
     temp.image = nil;
 
 }
+
+-(void) FBUserFriendsAppNotUsing:(NSMutableArray *)friends{
+    resultFriends = friends;
+    if (resultFriends){
+        table.delegate = self;
+        table.dataSource = self;
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            [self.table reloadData];
+        }); 
+    }
+}
+
+#pragma mark - UITableView Datasource and Delegate Methods
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 70;
+}
+
+// Customize the number of sections in the table view.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [resultFriends count];
+}
+// Customize the appearance of table view cells.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"hitFriendCell";
+    
+    hitFriendCell *cell = (hitFriendCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (!cell)
+    {
+        
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"hitFriendCell" owner:self options:nil];
+        cell = (hitFriendCell *)[nib objectAtIndex:0];
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:FriendListCell]];
+        [cell setContentMode:UIViewContentModeScaleAspectFit];
+    }
+    
+    cell.name.text = (NSString *)[[resultFriends objectAtIndex:indexPath.row] objectForKey:@"name"];
+    cell.name.lineBreakMode  = UILineBreakModeWordWrap;
+    cell.gender.text = (NSString *)[[resultFriends objectAtIndex:indexPath.row] objectForKey:@"gender"];
+    cell.profileImage.image = [[GlobalMethods alloc] imageForObject:[[resultFriends objectAtIndex:indexPath.row] objectForKey:@"id"]];
+    
+    return cell;
+}
+/*
+ - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Only handle taps if the view is related to showing nearby places that
+ // the user can check-in to.
+ 
+ if ([self.myAction isEqualToString:@"places"]) {
+ [self apiGraphUserCheckins:indexPath.row];
+ }
+ 
+ //[tableView deselectRowAtIndexPath:indexPath animated:NO];
+ }
+ */
+
 
 //-(void) scrollview method... {
     // .... add the friend name to the list of strings

@@ -854,6 +854,10 @@
                                 <rect key="frame" x="289" y="0.0" width="191" height="282"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ibk-L6-0c7" id="hY3-rP-doX"/>
+                                    <outlet property="delegate" destination="ibk-L6-0c7" id="nMG-cQ-zQ7"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -866,7 +870,7 @@
                         <outlet property="hit2" destination="WTc-6F-rps" id="X2q-uz-HYV"/>
                         <outlet property="hit3" destination="83K-O3-AuJ" id="8i5-sB-PBM"/>
                         <outlet property="portrait" destination="lHq-nH-m2S" id="vJo-1W-PtR"/>
-                        <outlet property="table" destination="bpn-bO-5RV" id="wkW-1x-Wbk"/>
+                        <outlet property="table" destination="bpn-bO-5RV" id="HWZ-14-k52"/>
                     </connections>
                 </viewController>
             </objects>
