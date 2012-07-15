@@ -67,18 +67,22 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    /*
     CGRect frame = imageView.bounds;
     CGRect frame2 = avatarView.frame;
     CGRect frame3 = headView.frame;
+     */
     self.avatarView.frame = imageView.bounds;
     UserInfo *usr = [UserInfo sharedInstance];
     if (usr.croppedImage != nil) {
         //headView.image = usr.croppedImage;
         photoView.image = usr.usrImg;
     }
+    /*
     CGRect frame4 = imageView.bounds;
     CGRect frame5 = avatarView.frame;
     CGRect frame6 = headView.frame;
+     */
 }
 
 - (void)viewDidUnload
