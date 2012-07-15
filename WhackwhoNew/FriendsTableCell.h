@@ -11,9 +11,11 @@
 @interface FriendsTableCell : UITableViewCell{
     UILabel *name;
     UILabel *gender;
+    NSString *identity;
     IBOutlet UIImageView *profileImageView;
 }
 @property (nonatomic, retain) IBOutlet UILabel *name, *gender;
 @property (nonatomic, readonly) IBOutlet UIImageView *profileImageView;
+@property (nonatomic, retain) NSString *identity;
 
 @end

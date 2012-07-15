@@ -15,8 +15,11 @@
 @end
 
 @implementation FriendsViewController
+
 @synthesize resultData, resultAction;
 @synthesize tableCell,friendTable;
+@synthesize selectedHits;
+@synthesize hit1, hit2, hit3;
 
 - (void)viewDidLoad
 {
@@ -28,6 +31,9 @@
         friendsTable.dataSource = self;
         friendsTable.delegate = self;
         friendsTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        
+        selectedHits = [[NSMutableArray alloc] initWithObjects:hit1, hit2, hit3, nil];
+        selectedHitsNames = [[NSMutableArray alloc] init];
     }
 
 }
@@ -52,6 +58,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [resultData count];
 }
+
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"FriendsTableCell";
@@ -67,6 +74,7 @@
         [cell setContentMode:UIViewContentModeScaleAspectFit];
     }
     
+    cell.identity = [[resultData objectAtIndex:indexPath.row] objectForKey:@"id"];
     cell.name.text = (NSString *)[[resultData objectAtIndex:indexPath.row] objectForKey:@"name"];
     cell.name.lineBreakMode  = UILineBreakModeWordWrap;
     cell.gender.text = (NSString *)[[resultData objectAtIndex:indexPath.row] objectForKey:@"gender"];
@@ -74,18 +82,50 @@
     
     return cell;
 }
-/*
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Only handle taps if the view is related to showing nearby places that
     // the user can check-in to.
     
-    if ([self.myAction isEqualToString:@"places"]) {
-        [self apiGraphUserCheckins:indexPath.row];
+    FriendsTableCell *cell = (FriendsTableCell *) [tableView cellForRowAtIndexPath:indexPath];
+    
+    UIImage *tempImage = cell.profileImageView.image;
+    NSString *usrId = cell.identity;
+    
+    for (UIImageView *temp in selectedHits) {
+        if (temp.image == nil) {
+            
+            //set little circle image, check if already occupied
+            if ([selectedHitsNames containsObject:usrId]) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Already Picked!" message:@"Press the button to..." delegate:self cancelButtonTitle:@"Resume" otherButtonTitles:nil];
+                [alert show];
+                return;
+            }
+            //if not, 
+            temp.image = tempImage;
+            [selectedHitsNames addObject:usrId];
+            
+            //set up big portraint image glview
+            //chooseWholayer has to obtain image from Game.h
+            // do something like [[game sharedgame] setHead: tempImage];
+            
+            //add swipe to cancel gesture (little cancel mark)
+            UISwipeGestureRecognizer *gesture = [[UISwipeGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnImage:)];
+            gesture.numberOfTouchesRequired = 1;
+            temp.userInteractionEnabled = YES;
+            [temp addGestureRecognizer:gesture];
+            
+            break;
+        }
     }
-     
-    //[tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-*/
+
+- (void) handleTapOnImage:(id)sender {
+    UISwipeGestureRecognizer *tap = (UISwipeGestureRecognizer *)sender;
+    ((UIImageView *)(tap.view)).image = nil;
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
