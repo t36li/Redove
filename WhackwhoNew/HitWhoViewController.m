@@ -146,11 +146,11 @@
     if (!cell)
     {
         
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"hitFriendCell" owner:self options:nil];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"hitFriendCell" owner:nil options:nil];
         cell = (hitFriendCell *)[nib objectAtIndex:0];
         cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:FriendListCell]];
         [cell setContentMode:UIViewContentModeScaleAspectFit];
-    }
+    } 
     
     cell.name.text = (NSString *)[[resultFriends objectAtIndex:indexPath.row] objectForKey:@"name"];
     cell.name.lineBreakMode  = UILineBreakModeWordWrap;

@@ -13,8 +13,8 @@
     UILabel *name;
     UILabel *gender;
 }
-@property (nonatomic, retain) IBOutlet UIImageView *profileImage;
-@property (nonatomic, retain) IBOutlet UILabel *name;
-@property (nonatomic, retain) IBOutlet UILabel *gender;
+@property (nonatomic, retain) UIImageView *profileImage;
+@property (nonatomic, retain) UILabel *name;
+@property (nonatomic, retain) UILabel *gender;
 
 @end
