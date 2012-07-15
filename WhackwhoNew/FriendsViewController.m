@@ -33,7 +33,7 @@
         friendsTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         
         selectedHits = [[NSMutableArray alloc] initWithObjects:hit1, hit2, hit3, nil];
-        selectedHitsNames = [[NSMutableArray alloc] init];
+        selectedHitsNames = [[NSMutableArray alloc] initWithObjects:@"test", @"test", @"test", nil];
     }
 
 }
@@ -91,23 +91,27 @@
     
     UIImage *tempImage = cell.profileImageView.image;
     NSString *usrId = cell.identity;
+    int index = 0;
     
     for (UIImageView *temp in selectedHits) {
-        if (temp.image == nil) {
+        if (temp.image == nil) { //if no image there
             
-            //set little circle image, check if already occupied
+            //set little circle image, check if already picked
             if ([selectedHitsNames containsObject:usrId]) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Already Picked!" message:@"Press the button to..." delegate:self cancelButtonTitle:@"Resume" otherButtonTitles:nil];
                 [alert show];
                 return;
             }
-            //if not, 
+            //if not picked, 
             temp.image = tempImage;
-            [selectedHitsNames addObject:usrId];
+            temp.tag = index;
+            [selectedHitsNames replaceObjectAtIndex:index withObject:usrId];
             
             //set up big portraint image glview
             //chooseWholayer has to obtain image from Game.h
             // do something like [[game sharedgame] setHead: tempImage];
+            
+            //add tap gesture (to view the glview)
             
             //add swipe to cancel gesture (little cancel mark)
             UISwipeGestureRecognizer *gesture = [[UISwipeGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnImage:)];
@@ -117,7 +121,8 @@
             
             break;
         }
-    }
+        index++;
+    }//ends for loop
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -125,6 +130,10 @@
 - (void) handleTapOnImage:(id)sender {
     UISwipeGestureRecognizer *tap = (UISwipeGestureRecognizer *)sender;
     ((UIImageView *)(tap.view)).image = nil;
+    
+    //remove the object from the "taken" array
+    int index = ((UIImageView *)(tap.view)).tag;
+    [selectedHitsNames replaceObjectAtIndex:index withObject:@"test"];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
