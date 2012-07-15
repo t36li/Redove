@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AvatarBaseController.h"
 
-
-@interface StatusBarController : UIViewController {
-    IBOutlet UIImageView *Bobhead;
-    IBOutlet UIImageView *headView;
+@interface StatusBarController : AvatarBaseController {
+    IBOutlet UIView *containerView;
 }
 
-@property (nonatomic, retain) IBOutlet UIImageView *Bobhead, *headView;
+@property (nonatomic, retain) IBOutlet UIView *containerView;
+
 - (IBAction)Back_Touched:(id)sender;
 @end

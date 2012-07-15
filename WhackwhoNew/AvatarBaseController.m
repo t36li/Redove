@@ -49,14 +49,14 @@
     UIImage *img = headView.image;
     UIImage *img2 = backgroundView.image;
     UIImage *img3 = photoView.image;
-     */
-    
+     
     photoView.layer.borderColor = [UIColor blueColor].CGColor;
     photoView.layer.borderWidth = 15;
     headView.layer.borderColor = [UIColor redColor].CGColor;
     headView.layer.borderWidth = 15;
     backgroundView.layer.borderColor = [UIColor purpleColor].CGColor;
     backgroundView.layer.borderWidth = 10;
+     */
 }
 
 - (void)viewDidLoad

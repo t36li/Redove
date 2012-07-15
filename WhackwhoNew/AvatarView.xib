@@ -71,6 +71,7 @@
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="519498054"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<reference key="IBUIBackgroundColor" ref="921712126"/>
 						<int key="IBUITag">1</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
