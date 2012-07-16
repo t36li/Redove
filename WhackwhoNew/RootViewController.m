@@ -154,6 +154,7 @@ static NSMutableArray *FriendsData = nil;
 -(IBAction)Friend_touched:(id)sender{
     if ([fbs isLogIn]){
         [[FBSingleton sharedInstance] RequestFriendList];
+        [self performSegueWithIdentifier:PlayToFriendSegue sender:friend_but];
     }
 }
         
@@ -176,8 +177,9 @@ static NSMutableArray *FriendsData = nil;
 
 -(void) FBSIngletonUserFriendsDidLoaded:(NSMutableArray *)friends{
     FriendsData = [[NSMutableArray alloc] initWithArray:friends copyItems:YES];
-    [self performSegueWithIdentifier:PlayToFriendSegue sender:friend_but];
-    
+    friendVC.resultData = FriendsData;
+    [friendVC.friendTable reloadData];
+    [friendVC.spinner removeSpinner];
 }
 
 
@@ -204,7 +206,8 @@ static NSMutableArray *FriendsData = nil;
     else if ([segue.identifier isEqualToString:PlayToStatusSegue]){
     }
     else if ([segue.identifier isEqualToString:PlayToFriendSegue]){
-        [(FriendsViewController *)segue.destinationViewController   setResultData:FriendsData];
+        friendVC = segue.destinationViewController;
+        //[(FriendsViewController *)segue.destinationViewController   setResultData:FriendsData];
         FriendsData = nil;
         //FriendsViewController *fvc = (FriendsViewController *)segue.destinationViewController;
         //fvc.resultData = [[NSMutableArray alloc] initWithArray:FriendsData copyItems:YES];

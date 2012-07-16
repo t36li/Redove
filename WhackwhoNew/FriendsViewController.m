@@ -17,20 +17,18 @@
 @implementation FriendsViewController
 
 @synthesize resultData, resultAction;
-@synthesize tableCell,friendTable;
+@synthesize tableCell,friendTable, spinner, loadingView;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     [[GlobalMethods alloc] setViewBackground:FriendList_bg viewSender:self.view];
-    if (resultData){
-        //NSLog(@"%@",resultData);
-        friendsTable.dataSource = self;
-        friendsTable.delegate = self;
-        friendsTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        
-    }
+    friendsTable.dataSource = self;
+    friendsTable.delegate = self;
+    friendsTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    spinner = [SpinnerView loadSpinnerIntoView:loadingView];
 }
 
 - (void)viewDidUnload

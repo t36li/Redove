@@ -58,7 +58,7 @@
     // Start it spinning! Don't miss this step
     [indicator startAnimating];
 	// Just to show we've done something, let's make the background black
-	spinnerView.backgroundColor = [UIColor blackColor];
+	//spinnerView.backgroundColor = [UIColor blackColor];
 	// Add the spinner view to the superView. Boom.
 	[superView addSubview:spinnerView];
     
@@ -100,6 +100,14 @@
     UIGraphicsEndImageContext();
 	// … obvious.
     return image;
+}
+
+- (void)setBackgroundColor {
+    [backgroundView removeFromSuperview];
+    backgroundView = [[UIImageView alloc] initWithImage:[self addBackground]];
+    // Make a little bit of the superView show through
+    backgroundView.alpha = 0.7;
+    [self addSubview:backgroundView];
 }
 
 -(void)removeSpinner{
