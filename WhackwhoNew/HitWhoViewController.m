@@ -18,6 +18,7 @@
 @synthesize noHit1, noHit2, noHit3, noHit4;
 @synthesize portrait;
 @synthesize table;
+@synthesize spinner, loadingView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -57,6 +58,10 @@
     
     [[FBSingleton sharedInstance] RequestFriendsNotUsing];
     
+    table.delegate = self;
+    table.dataSource = self;
+    
+    spinner = [SpinnerView loadSpinnerIntoView:loadingView];
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -77,11 +82,8 @@
 -(void) FBUserFriendsAppNotUsing:(NSMutableArray *)friends{
     resultFriends = friends;
     if (resultFriends){
-        table.delegate = self;
-        table.dataSource = self;
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            [self.table reloadData];
-        }); 
+        [self.table reloadData];
+        [spinner removeSpinner];
     }
 }
 

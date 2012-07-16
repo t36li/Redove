@@ -17,5 +17,6 @@
 +(SpinnerView *)loadSpinnerIntoView:(UIView *)superView;
 -(void)removeSpinner;
 - (UIImage *)addBackground;
+- (void)setBackgroundColor;
 
 @end
