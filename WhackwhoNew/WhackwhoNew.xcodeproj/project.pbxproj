@@ -254,7 +254,7 @@
 		694F34A515A6756F009BA1C5 /* SelectToLogIn_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SelectToLogIn_bg.png; path = ../SelectToLogIn_bg.png; sourceTree = "<group>"; };
 		694F34AB15A68355009BA1C5 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
 		694F34AC15A68355009BA1C5 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
-		694F34AE15A756F5009BA1C5 /* FriendsTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsTableCell.xib; sourceTree = "<group>"; };
+		694F34AE15A756F5009BA1C5 /* FriendsTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendsTableCell.xib; path = ../FriendsTableCell.xib; sourceTree = "<group>"; };
 		694F34B015A76005009BA1C5 /* FriendsTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsTableCell.h; sourceTree = "<group>"; };
 		694F34B115A76006009BA1C5 /* FriendsTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsTableCell.m; sourceTree = "<group>"; };
 		696F17AC15A3CA8D00DC849F /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
@@ -717,7 +717,6 @@
 				C169200B15AFC7A700F081AF /* HitWhoViewController.m */,
 				692AC3A415B24C0D001E4858 /* hitFriendCell.h */,
 				692AC3A515B24C0D001E4858 /* hitFriendCell.m */,
-				692AC3A715B24C2A001E4858 /* hitFriendCell.xib */,
 			);
 			name = HitWhoGroup;
 			sourceTree = "<group>";
@@ -733,7 +732,6 @@
 				694F34AC15A68355009BA1C5 /* FriendsViewController.m */,
 				694F34B015A76005009BA1C5 /* FriendsTableCell.h */,
 				694F34B115A76006009BA1C5 /* FriendsTableCell.m */,
-				694F34AE15A756F5009BA1C5 /* FriendsTableCell.xib */,
 			);
 			name = "Mainpage Views";
 			sourceTree = "<group>";
@@ -930,6 +928,8 @@
 			children = (
 				D0948D3915AB6E9A00429477 /* AvatarView.xib */,
 				D09FD5DC159E4EB60079231D /* CameraOverlayControllerViewController.xib */,
+				692AC3A715B24C2A001E4858 /* hitFriendCell.xib */,
+				694F34AE15A756F5009BA1C5 /* FriendsTableCell.xib */,
 				C147168D1594ACCA0002FF21 /* Default.png */,
 				C147168F1594ACCA0002FF21 /* fps_images.png */,
 				C14716911594ACCA0002FF21 /* fps_images-hd.png */,

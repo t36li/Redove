@@ -114,11 +114,25 @@
 -(void)viewDidAppear:(BOOL)animated {
     if (newPhoto) {
         // Create a new image view, from the image made by our gradient metho
-        spinner = [SpinnerView loadSpinnerIntoView:avatarView];
-       [self performSelectorInBackground:@selector(markFaces:) withObject:photoView];
+        //spinner = [SpinnerView loadSpinnerIntoView:avatarView];
+        [self performSelectorInBackground:@selector(markFaces:) withObject:photoView];
+        
+        UserInfo *usr = [UserInfo sharedInstance];
+        usr.bigHeadImg = [self screenshot];
         
         newPhoto = NO;
     }
+}
+
+
+- (UIImage*)screenshot 
+{
+    UIGraphicsBeginImageContextWithOptions(avatarView.frame.size, NO, 1.0);
+    [avatarView.layer renderInContext: UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 -(void)markFaces:(UIImageView *)facePicture
@@ -143,7 +157,8 @@
         [alertView show];
     }
     /*
-    
+    //we need to capture the coordinates of the eyes and mouth
+     
     for(CIFaceFeature* faceFeature in features)
     {
         // get the width of the face
