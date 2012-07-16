@@ -19,6 +19,7 @@ static Game *sharedGame = nil;
 @synthesize multiplier, timeBonus, consecHits, baseScore;
 @synthesize friendList;
 @synthesize selectedHeads;
+@synthesize head;
 
 #pragma mark -
 /////////////////////

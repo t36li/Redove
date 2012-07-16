@@ -19,6 +19,7 @@
     bg_list = [[NSMutableArray alloc] initWithObjects: @"hills_finalView.png", @"background 2.png", nil];
     index = 0;
     background.image = [UIImage imageNamed:[bg_list objectAtIndex:index]];
+    //[self.view bringSubviewToFront:wholeView];
     
 }
 

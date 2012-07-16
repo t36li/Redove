@@ -106,7 +106,7 @@
         CCSprite *left_arm = [CCSprite spriteWithFile:@"left arm.png"];
         CCSprite *right_arm = [CCSprite spriteWithFile:@"right arm.png"];
         CCSprite *zach = [CCSprite spriteWithFile:@"zach_resized.png"];
-
+        
         //position body in center
         body.position = ccp(80, 100);
         head.position = ccp(46, 33);
@@ -132,7 +132,7 @@
         CCMoveBy *moveDown = [CCMoveBy actionWithDuration:1.5 position:ccp(0,-10)];
         CCRepeatForever *repeat = [CCRepeatForever actionWithAction:[CCSequence actionOne:upSwing two:downSwing]];
         CCRepeatForever *repeat2 = [CCRepeatForever actionWithAction:[CCSequence actionOne:moveDown two:moveUp]];
-        CCRepeatForever *repeat3 = [CCRepeatForever actionWithAction:[CCSequence actionOne:downSwing two:upSwing]];
+        //CCRepeatForever *repeat3 = [CCRepeatForever actionWithAction:[CCSequence actionOne:downSwing two:upSwing]];
         
         [head runAction:repeat2];
         [left_arm runAction:repeat];

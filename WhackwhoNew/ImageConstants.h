@@ -15,6 +15,7 @@
 #define FriendList_bg @"friend list (background).png"
 #define OceanMode_bg @"background 2.png"
 #define hills_l1 @"hills_L1.png"
+#define champ_select_bg @"loading page background.png"
 
 //buttons
 #define Play_but @"play s.png"

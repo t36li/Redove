@@ -18,8 +18,6 @@
 
 @synthesize resultData, resultAction;
 @synthesize tableCell,friendTable;
-@synthesize selectedHits;
-@synthesize hit1, hit2, hit3;
 
 - (void)viewDidLoad
 {
@@ -32,10 +30,7 @@
         friendsTable.delegate = self;
         friendsTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         
-        selectedHits = [[NSMutableArray alloc] initWithObjects:hit1, hit2, hit3, nil];
-        selectedHitsNames = [[NSMutableArray alloc] initWithObjects:@"test", @"test", @"test", nil];
     }
-
 }
 
 - (void)viewDidUnload
@@ -74,7 +69,6 @@
         [cell setContentMode:UIViewContentModeScaleAspectFit];
     }
     
-    cell.identity = [[resultData objectAtIndex:indexPath.row] objectForKey:@"id"];
     cell.name.text = (NSString *)[[resultData objectAtIndex:indexPath.row] objectForKey:@"name"];
     cell.name.lineBreakMode  = UILineBreakModeWordWrap;
     cell.gender.text = (NSString *)[[resultData objectAtIndex:indexPath.row] objectForKey:@"gender"];
@@ -83,58 +77,6 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Only handle taps if the view is related to showing nearby places that
-    // the user can check-in to.
-    
-    FriendsTableCell *cell = (FriendsTableCell *) [tableView cellForRowAtIndexPath:indexPath];
-    
-    UIImage *tempImage = cell.profileImageView.image;
-    NSString *usrId = cell.identity;
-    int index = 0;
-    
-    for (UIImageView *temp in selectedHits) {
-        if (temp.image == nil) { //if no image there
-            
-            //set little circle image, check if already picked
-            if ([selectedHitsNames containsObject:usrId]) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Already Picked!" message:@"Press the button to..." delegate:self cancelButtonTitle:@"Resume" otherButtonTitles:nil];
-                [alert show];
-                return;
-            }
-            //if not picked, 
-            temp.image = tempImage;
-            temp.tag = index;
-            [selectedHitsNames replaceObjectAtIndex:index withObject:usrId];
-            
-            //set up big portraint image glview
-            //chooseWholayer has to obtain image from Game.h
-            // do something like [[game sharedgame] setHead: tempImage];
-            
-            //add tap gesture (to view the glview)
-            
-            //add swipe to cancel gesture (little cancel mark)
-            UISwipeGestureRecognizer *gesture = [[UISwipeGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnImage:)];
-            gesture.numberOfTouchesRequired = 1;
-            temp.userInteractionEnabled = YES;
-            [temp addGestureRecognizer:gesture];
-            
-            break;
-        }
-        index++;
-    }//ends for loop
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-- (void) handleTapOnImage:(id)sender {
-    UISwipeGestureRecognizer *tap = (UISwipeGestureRecognizer *)sender;
-    ((UIImageView *)(tap.view)).image = nil;
-    
-    //remove the object from the "taken" array
-    int index = ((UIImageView *)(tap.view)).tag;
-    [selectedHitsNames replaceObjectAtIndex:index withObject:@"test"];
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

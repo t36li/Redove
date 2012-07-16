@@ -9,7 +9,10 @@
 #import "hitFriendCell.h"
 
 @implementation hitFriendCell
+
 @synthesize gender, name, profileImage;
+@synthesize identity;
+
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

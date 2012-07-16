@@ -16,6 +16,7 @@
     int difficulty;
     int multiplier, timeBonus, consecHits, baseScore;
     NSMutableArray *friendList, *selectedHeads;
+    UIImage *head;
 }
 
 @property (nonatomic, readwrite) BOOL isGameOver;
@@ -28,6 +29,7 @@
 @property (nonatomic, readwrite) int baseScore;
 @property (nonatomic, retain) NSMutableArray *friendList;
 @property (nonatomic, retain) NSMutableArray *selectedHeads;
+@property (nonatomic, retain) UIImage *head;
 
 
 + (Game *) sharedGame;

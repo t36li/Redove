@@ -12,7 +12,6 @@
 @synthesize name = _nameLabel;
 @synthesize gender;
 @synthesize profileImageView = _profileImageView;
-@synthesize identity;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

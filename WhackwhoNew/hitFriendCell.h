@@ -12,9 +12,11 @@
     UIImageView *profileImage;
     UILabel *name;
     UILabel *gender;
+    NSString *identity;
 }
 @property (nonatomic, retain) UIImageView *profileImage;
 @property (nonatomic, retain) UILabel *name;
 @property (nonatomic, retain) UILabel *gender;
+@property (nonatomic, retain) NSString *identity;
 
 @end
