@@ -110,8 +110,9 @@
         
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"hitFriendCell" owner:nil options:nil];
         cell = (hitFriendCell *)[nib objectAtIndex:0];
-        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:FriendListCell]];
-        [cell setContentMode:UIViewContentModeScaleAspectFit];
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:FriendListBWCell]];
+        [cell.backgroundView setClipsToBounds:YES];
+        [cell.backgroundView setContentMode:UIViewContentModeScaleAspectFill];
     } 
     
     cell.identity = [[resultFriends objectAtIndex:indexPath.row] objectForKey:@"id"];
@@ -119,6 +120,8 @@
     cell.name.lineBreakMode  = UILineBreakModeWordWrap;
     cell.gender.text = (NSString *)[[resultFriends objectAtIndex:indexPath.row] objectForKey:@"gender"];
     cell.profileImage.image = [[GlobalMethods alloc] imageForObject:[[resultFriends objectAtIndex:indexPath.row] objectForKey:@"id"]];
+    [cell.profileImage setClipsToBounds:YES];
+    [cell.profileImage setContentMode:UIViewContentModeScaleAspectFill];
     
     return cell;
 }
@@ -152,12 +155,14 @@
             // do something like [[game sharedgame] setHead: tempImage];
             
             //add tap gesture (to view the glview)
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnImage:)];
+            tap.numberOfTapsRequired = 1;
+            [temp addGestureRecognizer:tap];
             
             //add swipe to cancel gesture (little cancel mark)
-            UISwipeGestureRecognizer *gesture = [[UISwipeGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnImage:)];
-            gesture.numberOfTouchesRequired = 1;
-            temp.userInteractionEnabled = YES;
-            [temp addGestureRecognizer:gesture];
+            UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget: self action:@selector(handleSwipeOnImage:)];
+            swipe.numberOfTouchesRequired = 1;
+            [temp addGestureRecognizer:swipe];
             
             break;
         }
@@ -167,12 +172,21 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (void) handleTapOnImage:(id)sender {
-    UISwipeGestureRecognizer *tap = (UISwipeGestureRecognizer *)sender;
-    ((UIImageView *)(tap.view)).image = nil;
+-(void) handleTapOnImage:(id)sender {
+    UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
+    UIImage *tempImage = ((UIImageView *)(tap.view)).image;
+    
+    portrait.image = tempImage;
+    [portrait setContentMode:UIViewContentModeScaleAspectFill];
+
+}
+
+- (void) handleSwipeOnImage:(id)sender {
+    UISwipeGestureRecognizer *swipe = (UISwipeGestureRecognizer *)sender;
+    ((UIImageView *)(swipe.view)).image = nil;
     
     //remove the object from the "taken" array
-    int index = ((UIImageView *)(tap.view)).tag;
+    int index = ((UIImageView *)(swipe.view)).tag;
     [selectedHitsNames replaceObjectAtIndex:index withObject:@"test"];
 }
 

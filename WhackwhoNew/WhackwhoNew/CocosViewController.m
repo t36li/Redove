@@ -63,9 +63,9 @@
     
     // Run whatever scene we'd like to run here.
     if(director.runningScene)
-        [director replaceScene:[ChooseWhoLayer scene]];
+        [director replaceScene:[HelloWorldLayer scene]];
     else
-        [director runWithScene:[ChooseWhoLayer scene]];
+        [director runWithScene:[HelloWorldLayer scene]];
 }
 
 - (void)viewDidUnload

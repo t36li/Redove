@@ -41,3 +41,4 @@
 
 //Frames
 #define FriendListCell @"friend list (cell).png"
+#define FriendListBWCell @"cell.png"
