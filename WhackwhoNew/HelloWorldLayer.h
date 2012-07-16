@@ -15,6 +15,7 @@
 #import "HUDLayer.h"
 #import "Game.h"
 #import "ChooseWhoLayer.h"
+#import "GlobalMethods.h"
 
 // HelloWorldLayer
 @interface HelloWorldLayer : CCLayer

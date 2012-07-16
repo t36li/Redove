@@ -9,6 +9,8 @@
 #import "HitWhoViewController.h"
 #import "FBSingleton.h"
 
+#define ChooseToGame @"chooseToGame"
+
 @implementation HitWhoViewController
 
 @synthesize selectedHits;
@@ -34,10 +36,7 @@
     selectedHits = [[NSMutableArray alloc] initWithObjects:hit1, hit2, hit3, nil];
     selectedHitsNames = [[NSMutableArray alloc] initWithObjects:@"test", @"test", @"test", nil];
     noHits = [[NSMutableArray alloc] initWithObjects:noHit1, noHit2, noHit3, noHit4, nil];
-    
-    for (UIImageView *temp in selectedHits) {
-        temp.userInteractionEnabled = YES;
-    }
+    noHitsNames = [[NSMutableArray alloc] init];
     
     /* CCGLView *glview = [CCGLView viewWithFrame:CGRectMake(0, 0, 160,200)];
     [portrait addSubview:glview];
@@ -139,14 +138,15 @@
     for (UIImageView *temp in selectedHits) {
         if (temp.image == nil) { //if no image there
             
-            //set little circle image, check if already picked
-            if ([selectedHitsNames containsObject:usrId]) {
+            //set little circle image, check if already picked or randomed
+            if ([selectedHitsNames containsObject:usrId] || [noHitsNames containsObject:usrId] ) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Already Picked!" message:@"Press the button to..." delegate:self cancelButtonTitle:@"Resume" otherButtonTitles:nil];
                 [alert show];
                 return;
             }
             //if not picked, 
             temp.image = tempImage;
+            portrait.image = tempImage;
             temp.tag = index;
             [selectedHitsNames replaceObjectAtIndex:index withObject:usrId];
             
@@ -154,6 +154,8 @@
             //chooseWholayer has to obtain image from Game.h
             // do something like [[game sharedgame] setHead: tempImage];
             
+            temp.userInteractionEnabled = YES;
+
             //add tap gesture (to view the glview)
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnImage:)];
             tap.numberOfTapsRequired = 1;
@@ -183,6 +185,10 @@
 
 - (void) handleSwipeOnImage:(id)sender {
     UISwipeGestureRecognizer *swipe = (UISwipeGestureRecognizer *)sender;
+    if (portrait.image == ((UIImageView *)(swipe.view)).image) {
+        portrait.image = nil;
+    }
+    
     ((UIImageView *)(swipe.view)).image = nil;
     
     //remove the object from the "taken" array
@@ -191,18 +197,62 @@
 }
 
 -(IBAction) handleRandomButton:(id)sender {
+    //first remove all previous names from the NameArray
+    [noHitsNames removeAllObjects];
+    
     for (UIImageView *temp in noHits) {
         //if (temp.image == nil) {
+        NSString *tempName;
+        // do not generate if already selected
+        while (TRUE) {
             int randFriend = arc4random() % [resultFriends count];
-            UIImage *tempImage = [[GlobalMethods alloc] imageForObject:[[resultFriends objectAtIndex:randFriend] objectForKey:@"id"]];
-            
-            temp.image = tempImage;
+            tempName = [[resultFriends objectAtIndex:randFriend] objectForKey:@"id"];
+            if (![selectedHitsNames containsObject:tempName]) {
+                break;
+            }
+        }
+        
+        UIImage *tempImage = [[GlobalMethods alloc] imageForObject:tempName];
+        [noHitsNames addObject:tempName];
+        
+        temp.userInteractionEnabled = YES;
+        
+        //add tap gesture (to view the glview)
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnImage:)];
+        tap.numberOfTapsRequired = 1;
+        [temp addGestureRecognizer:tap];
+        
+        temp.image = tempImage;
         //}
     }
 }
 
+-(IBAction) nextTouched:(id)sender {
+    //if did not select all hits or did not press random
+    if ([selectedHitsNames containsObject:@"test"] || [noHitsNames count] < 1) {
+        //display alert showing must select all b4 game
+        return;
+    } else {
+    
+    NSMutableArray *tempArray = [[NSMutableArray alloc] init];
+    
+    for (NSString *temp in selectedHitsNames) {
+        [tempArray addObject:temp];
+    }
+    for (NSString *temp in noHitsNames) {
+        [tempArray addObject:temp];
+    }
+    
+    [[Game sharedGame] setFriendList:tempArray];
+    [[Game sharedGame] setSelectedHeads:selectedHitsNames];
+    
+    [self performSegueWithIdentifier:ChooseToGame sender:sender];
+    }
+}
+
 //-(void) scrollview method... {
-    // .... add the friend name to the list of strings
+    // .... need to pass Helloworldlayer the bigfriendlist and selectedheadslist
+    //bigfriendslist = all 7 possible popups
 //}
 
 @end

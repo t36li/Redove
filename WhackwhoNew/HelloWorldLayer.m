@@ -178,9 +178,9 @@
         scoreLabel.position = ccp(scoreboard.contentSize.width/2, scoreboard.contentSize.height/2);
         [scoreboard addChild:scoreLabel z:10];
         
-        //place heads on the screen        
+        //2 arrays containing the @"ids"        
         heads = [[NSMutableArray alloc] init];
-        NSArray *bigList = [[Game sharedGame] friendList];
+       // NSArray *bigList = [[Game sharedGame] friendList];
         NSArray *selectedHeads = [[Game sharedGame] selectedHeads];
         
         //set all positions to not taken (i.e. = 0)
@@ -188,8 +188,21 @@
             pos[i] = 0;
         }
         
-        for (NSString *friend in bigList) {
-            Character *head = [Character spriteWithFile:friend];
+        //NSString * = [[resultFriends objectAtIndex:randFriend] objectForKey:@"id"];
+        
+        //UIImage *tempImage = [[GlobalMethods alloc] imageForObject:[bigList objectAtIndex:0]];
+        //Character *head = [Character spriteWithCGImage:[tempImage CGImage] key:[bigList objectAtIndex:0]];
+        //head.position = ccp(300, 300);
+        //[self addChild:head z:100];
+        
+        //testing:
+        NSArray *testbigList = [NSArray arrayWithObjects:@"baby.png", @"olaf.png", @"vlad.png", @"mice.png", @"pinky.png", @"monk.png", @"blue.png",nil];
+        
+        for (NSString *friend in testbigList) {
+            //get the friend portrait image...once database kicks in, we will grab the big head
+            //UIImage *tempImage = [[GlobalMethods alloc] imageForObject:friend];
+            UIImage *tempImage = [UIImage imageNamed:friend];
+            Character *head = [Character spriteWithCGImage:[tempImage CGImage] key:friend];
             [head setTappable:FALSE];
             //[head setImageName:friend];
             head.sideWaysMove = FALSE;
@@ -316,15 +329,9 @@
     //check is game is over
     if (myTime <= 0 || lives <= 0) {
         [self unscheduleAllSelectors];
-        //CCLOG(@"numHitOccur: %d", numHitOccur);
-        //CCLOG(@"numBombOccur: %d", numBombOccur);
         [[Game sharedGame] setBaseScore:baseScore];
         [[Game sharedGame] setConsecHits:consecHits];
-        //[[Game sharedGame] setTimeBonus: (myTime%60)];
-        //[[Game sharedGame] resetGameState];
         [_hud showRestartMenu:NO];
-        
-        //CCLabelTTF *gameOverLabel = [CCLabelTTF labelWithString:@"GAME OVER!" fontName:@"Arial" fontSize:40];
         
         gameOver = TRUE;
         return;
@@ -338,7 +345,6 @@
     //[self performSelector:@selector(checkGameState)];
     
     //should remove the head from the array if head.hp == 0?
-    //arc4random() % 3 randomly pops 0,1,2
     
     for (Character *head in heads) {
         if (head.numberOfRunningActions == 0) {
@@ -487,9 +493,6 @@
      
      }*/
     
-    //appear randomly in 1 of the 7 spots, if the position is taken (i.e. == 1) 
-    //then, do nothing
-    //else, set that position to be occupied
     int randPos = arc4random() % 17;
     if (pos[randPos] == 1) {
         [head stopAllActions];

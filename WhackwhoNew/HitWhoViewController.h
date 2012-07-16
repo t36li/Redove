@@ -19,6 +19,7 @@
     NSMutableArray *selectedHits;
     NSMutableArray *selectedHitsNames;
     NSMutableArray *noHits;
+    NSMutableArray *noHitsNames;
     IBOutlet UIImageView *hit1;
     IBOutlet UIImageView *hit2;
     IBOutlet UIImageView *hit3;
@@ -44,5 +45,6 @@
 @property (nonatomic, retain) IBOutlet UITableView *table;
 
 -(IBAction) handleRandomButton:(id)sender;
+-(IBAction) nextTouched:(id)sender;
 
 @end
