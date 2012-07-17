@@ -15,6 +15,8 @@
 #import "hitFriendCell.h"
 #import "GlobalMethods.h"
 #import "SpinnerView.h"
+#import "Friend.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HitWhoViewController : UIViewController<FBSingletonDelegate,UITableViewDelegate,UITableViewDataSource> {
     NSMutableArray *selectedHits;
@@ -30,7 +32,7 @@
     IBOutlet UIImageView *noHit4;
     IBOutlet UIImageView *portrait;
     UITableView *table;
-    NSMutableArray *resultFriends;
+    NSArray *resultFriends;
     SpinnerView *spinner;
     IBOutlet UIView *loadingView;
 
@@ -48,6 +50,7 @@
 @property (nonatomic, retain) IBOutlet UITableView *table;
 @property (nonatomic, retain) SpinnerView *spinner;
 @property (nonatomic, retain) IBOutlet UIView *loadingView;
+@property (nonatomic, retain) NSArray *resultFriends;
 
 -(IBAction) handleRandomButton:(id)sender;
 -(IBAction) nextTouched:(id)sender;

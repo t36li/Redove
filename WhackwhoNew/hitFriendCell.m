@@ -11,7 +11,7 @@
 @implementation hitFriendCell
 
 @synthesize gender, name, profileImage;
-@synthesize identity;
+@synthesize identity, containerView, spinner;
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -19,6 +19,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        loadingImage = NO;
     }
     return self;
 }
@@ -28,6 +29,20 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void)addSpinner {
+    if (!loadingImage) {
+        spinner = [SpinnerView loadSpinnerIntoView:containerView];
+        loadingImage = YES;
+    }
+}
+
+-(void)removeSpinner {
+    if (loadingImage) {
+        [spinner removeSpinner];
+        loadingImage = NO;
+    }
 }
 
 @end

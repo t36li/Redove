@@ -22,6 +22,7 @@
 @property (nonatomic, retain) IBOutlet UIImageView *LoginAccountImageView; 
 @property (nonatomic, retain) IBOutlet UIButton *play_but;
 @property (nonatomic, retain) IBOutlet UIButton *opt_but;
+@property (nonatomic, retain) FriendsViewController *friendVC;
 
 -(IBAction)play_touched:(id)sender;
 -(IBAction)opt_touched:(id)sender;

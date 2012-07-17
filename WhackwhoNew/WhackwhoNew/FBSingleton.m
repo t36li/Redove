@@ -170,9 +170,7 @@ static FBSingleton *singletonDelegate = nil;
     if (isLogIn){
         
         currentAPICall = kAPIGraphMe;
-        NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                       @"name,picture,gender",  @"fields",
-                                       nil];
+        //NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"name,picture,gender",  @"fields", nil];
         [_facebook requestWithGraphPath:@"me" andDelegate:self];
     }
 }
@@ -354,7 +352,21 @@ static FBSingleton *singletonDelegate = nil;
             else {
                 NSArray *resultData = [result objectForKey:@"data"];
                 if ([resultData count]){
-                    NSMutableArray *friendsWithoutApp = [[NSMutableArray alloc] initWithCapacity:1];
+                    //NSMutableArray *friendsWithoutApp = [[NSMutableArray alloc] initWithCapacity:1];
+                    [self parseFriendList:resultData];
+                    
+                    NSMutableArray *friendsWithApp = [[NSMutableArray alloc] init];
+                    for (NSString *friendObject in savedAPIResult) {
+                        Friend *friend = [friendsDictionary objectForKey:friendObject];
+                        if (friend) {
+                            friend.isPlayer = YES;
+                            [friendsWithApp addObject:friend.user_id];
+                        }
+                    }
+                    NSMutableDictionary *friendsWithoutAppDictionary = [[NSMutableDictionary alloc] initWithDictionary:friendsDictionary ];
+                    [friendsWithoutAppDictionary removeObjectsForKeys:friendsWithApp];
+                    
+                    /*
                     for (NSDictionary *friendObject in resultData){
                         BOOL foundFriend = NO;
                         for (NSString *friendWithApp in savedAPIResult){
@@ -366,9 +378,9 @@ static FBSingleton *singletonDelegate = nil;
                         if (!foundFriend) {
                             [friendsWithoutApp addObject:friendObject];
                         }
-                    }
-                    if ([friendsWithoutApp count] > 0) {
-                        [delegate FBUserFriendsAppNotUsing:friendsWithoutApp];
+                    }*/
+                    if ([friendsWithoutAppDictionary count] > 0) {
+                        [delegate FBUserFriendsAppNotUsing:[friendsWithoutAppDictionary allValues]];
                     }
                     else {
                         [delegate FBUserFriendsAppNotUsing:nil];

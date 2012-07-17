@@ -34,7 +34,7 @@
 
 @implementation RootViewController
 @synthesize LoginAccountImageView;
-@synthesize play_but,opt_but;
+@synthesize play_but,opt_but, friendVC;
 
 -(void) viewDidLoad
 {
@@ -185,7 +185,8 @@
 
 -(void) FBSIngletonUserFriendsDidLoaded:(NSArray *)friends{
     friendVC.resultData = friends;
-    [friendVC.spinner removeSpinner];
+    if (friendVC.spinner.superview != nil)
+        [friendVC.spinner removeSpinner];
     [friendVC.friendTable reloadData];
 }
 
@@ -209,7 +210,7 @@
     else if ([segue.identifier isEqualToString:PlayToStatusSegue]){
     }
     else if ([segue.identifier isEqualToString:PlayToFriendSegue]){
-        friendVC = segue.destinationViewController;
+        self.friendVC = segue.destinationViewController;
         //[(FriendsViewController *)segue.destinationViewController   setResultData:FriendsData];
         //FriendsData = nil;
         //FriendsViewController *fvc = (FriendsViewController *)segue.destinationViewController;

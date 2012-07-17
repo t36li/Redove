@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 
 
-@interface Friend : NSObject {
+@interface Friend : NSObject<NSCopying> {
     NSString *user_id;
     NSString *name;
     NSString *gender;
+    BOOL isPlayer;
 }
 
 @property (nonatomic, retain) NSString *user_id, *name, *gender;
+@property (nonatomic, assign) BOOL isPlayer;
 
 @end
