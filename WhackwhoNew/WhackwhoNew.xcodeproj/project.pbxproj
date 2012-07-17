@@ -162,6 +162,17 @@
 		C159285E15B35083009B7955 /* loading page background.png in Resources */ = {isa = PBXBuildFile; fileRef = C159285D15B35083009B7955 /* loading page background.png */; };
 		C159285F15B356FA009B7955 /* hitFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 692AC3A515B24C0D001E4858 /* hitFriendCell.m */; };
 		C159286015B357EF009B7955 /* hitFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 692AC3A715B24C2A001E4858 /* hitFriendCell.xib */; };
+		C159287515B4E2DE009B7955 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C159287415B4E2DD009B7955 /* libz.dylib */; };
+		C159325815B5DE52009B7955 /* TBXML+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = C159325115B5DE52009B7955 /* TBXML+Compression.m */; };
+		C159325915B5DE52009B7955 /* TBXML+HTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = C159325315B5DE52009B7955 /* TBXML+HTTP.m */; };
+		C159325A15B5DE52009B7955 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = C159325715B5DE52009B7955 /* TBXML.m */; };
+		C159326A15B5DE5A009B7955 /* FTCAnimationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C159325D15B5DE5A009B7955 /* FTCAnimationInfo.m */; };
+		C159326B15B5DE5A009B7955 /* FTCAnimEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C159325F15B5DE5A009B7955 /* FTCAnimEvent.m */; };
+		C159326C15B5DE5A009B7955 /* FTCCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = C159326115B5DE5A009B7955 /* FTCCharacter.m */; };
+		C159326D15B5DE5A009B7955 /* FTCEventInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C159326315B5DE5A009B7955 /* FTCEventInfo.m */; };
+		C159326E15B5DE5A009B7955 /* FTCFrameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C159326515B5DE5A009B7955 /* FTCFrameInfo.m */; };
+		C159326F15B5DE5A009B7955 /* FTCParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C159326715B5DE5A009B7955 /* FTCParser.m */; };
+		C159327015B5DE5A009B7955 /* FTCSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = C159326915B5DE5A009B7955 /* FTCSprite.m */; };
 		C1691FF015AFB86D00F081AF /* right button.png in Resources */ = {isa = PBXBuildFile; fileRef = C1691FEF15AFB86D00F081AF /* right button.png */; };
 		C1691FF215AFB8F500F081AF /* mode_layer1.png in Resources */ = {isa = PBXBuildFile; fileRef = C1691FF115AFB8F500F081AF /* mode_layer1.png */; };
 		C1691FF415AFB95100F081AF /* left button.png in Resources */ = {isa = PBXBuildFile; fileRef = C1691FF315AFB95100F081AF /* left button.png */; };
@@ -563,6 +574,29 @@
 		C14B63BE15AF5D3100376C91 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
 		C14B63BF15AF5D3100376C91 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
 		C159285D15B35083009B7955 /* loading page background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading page background.png"; sourceTree = "<group>"; };
+		C159287415B4E2DD009B7955 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		C159325015B5DE52009B7955 /* TBXML+Compression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBXML+Compression.h"; sourceTree = "<group>"; };
+		C159325115B5DE52009B7955 /* TBXML+Compression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TBXML+Compression.m"; sourceTree = "<group>"; };
+		C159325215B5DE52009B7955 /* TBXML+HTTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBXML+HTTP.h"; sourceTree = "<group>"; };
+		C159325315B5DE52009B7955 /* TBXML+HTTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TBXML+HTTP.m"; sourceTree = "<group>"; };
+		C159325415B5DE52009B7955 /* TBXML-iOS-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBXML-iOS-Prefix.pch"; sourceTree = "<group>"; };
+		C159325515B5DE52009B7955 /* TBXML-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBXML-Prefix.pch"; sourceTree = "<group>"; };
+		C159325615B5DE52009B7955 /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
+		C159325715B5DE52009B7955 /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXML.m; sourceTree = "<group>"; };
+		C159325C15B5DE5A009B7955 /* FTCAnimationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTCAnimationInfo.h; sourceTree = "<group>"; };
+		C159325D15B5DE5A009B7955 /* FTCAnimationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTCAnimationInfo.m; sourceTree = "<group>"; };
+		C159325E15B5DE5A009B7955 /* FTCAnimEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTCAnimEvent.h; sourceTree = "<group>"; };
+		C159325F15B5DE5A009B7955 /* FTCAnimEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTCAnimEvent.m; sourceTree = "<group>"; };
+		C159326015B5DE5A009B7955 /* FTCCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTCCharacter.h; sourceTree = "<group>"; };
+		C159326115B5DE5A009B7955 /* FTCCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTCCharacter.m; sourceTree = "<group>"; };
+		C159326215B5DE5A009B7955 /* FTCEventInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTCEventInfo.h; sourceTree = "<group>"; };
+		C159326315B5DE5A009B7955 /* FTCEventInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTCEventInfo.m; sourceTree = "<group>"; };
+		C159326415B5DE5A009B7955 /* FTCFrameInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTCFrameInfo.h; sourceTree = "<group>"; };
+		C159326515B5DE5A009B7955 /* FTCFrameInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTCFrameInfo.m; sourceTree = "<group>"; };
+		C159326615B5DE5A009B7955 /* FTCParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTCParser.h; sourceTree = "<group>"; };
+		C159326715B5DE5A009B7955 /* FTCParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTCParser.m; sourceTree = "<group>"; };
+		C159326815B5DE5A009B7955 /* FTCSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTCSprite.h; sourceTree = "<group>"; };
+		C159326915B5DE5A009B7955 /* FTCSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTCSprite.m; sourceTree = "<group>"; };
 		C1691FEF15AFB86D00F081AF /* right button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right button.png"; sourceTree = "<group>"; };
 		C1691FF115AFB8F500F081AF /* mode_layer1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_layer1.png; sourceTree = "<group>"; };
 		C1691FF315AFB95100F081AF /* left button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left button.png"; sourceTree = "<group>"; };
@@ -678,6 +712,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C159287515B4E2DE009B7955 /* libz.dylib in Frameworks */,
 				D0B9EECD159E6F0D005D2460 /* MobileCoreServices.framework in Frameworks */,
 				D07F6FF01599463A0085DF2B /* CoreImage.framework in Frameworks */,
 				C147167A1594ACCA0002FF21 /* QuartzCore.framework in Frameworks */,
@@ -884,7 +919,10 @@
 		C147166A1594ACCA0002FF21 = {
 			isa = PBXGroup;
 			children = (
+				C159287415B4E2DD009B7955 /* libz.dylib */,
 				C147181B1594AF1E0002FF21 /* Storyboard.storyboard */,
+				C159325B15B5DE5A009B7955 /* FlashToCocosARC */,
+				C159324F15B5DE51009B7955 /* TBXML */,
 				D0E30674159E4B2E0080D845 /* WEPopover */,
 				69C95E8B159A4A15009966DA /* Main Game */,
 				69C95E86159A461A009966DA /* Graphics */,
@@ -1303,6 +1341,42 @@
 			name = "Actual Game Scene(Cocos2d)";
 			sourceTree = "<group>";
 		};
+		C159324F15B5DE51009B7955 /* TBXML */ = {
+			isa = PBXGroup;
+			children = (
+				C159325015B5DE52009B7955 /* TBXML+Compression.h */,
+				C159325115B5DE52009B7955 /* TBXML+Compression.m */,
+				C159325215B5DE52009B7955 /* TBXML+HTTP.h */,
+				C159325315B5DE52009B7955 /* TBXML+HTTP.m */,
+				C159325415B5DE52009B7955 /* TBXML-iOS-Prefix.pch */,
+				C159325515B5DE52009B7955 /* TBXML-Prefix.pch */,
+				C159325615B5DE52009B7955 /* TBXML.h */,
+				C159325715B5DE52009B7955 /* TBXML.m */,
+			);
+			path = TBXML;
+			sourceTree = "<group>";
+		};
+		C159325B15B5DE5A009B7955 /* FlashToCocosARC */ = {
+			isa = PBXGroup;
+			children = (
+				C159325C15B5DE5A009B7955 /* FTCAnimationInfo.h */,
+				C159325D15B5DE5A009B7955 /* FTCAnimationInfo.m */,
+				C159325E15B5DE5A009B7955 /* FTCAnimEvent.h */,
+				C159325F15B5DE5A009B7955 /* FTCAnimEvent.m */,
+				C159326015B5DE5A009B7955 /* FTCCharacter.h */,
+				C159326115B5DE5A009B7955 /* FTCCharacter.m */,
+				C159326215B5DE5A009B7955 /* FTCEventInfo.h */,
+				C159326315B5DE5A009B7955 /* FTCEventInfo.m */,
+				C159326415B5DE5A009B7955 /* FTCFrameInfo.h */,
+				C159326515B5DE5A009B7955 /* FTCFrameInfo.m */,
+				C159326615B5DE5A009B7955 /* FTCParser.h */,
+				C159326715B5DE5A009B7955 /* FTCParser.m */,
+				C159326815B5DE5A009B7955 /* FTCSprite.h */,
+				C159326915B5DE5A009B7955 /* FTCSprite.m */,
+			);
+			path = FlashToCocosARC;
+			sourceTree = "<group>";
+		};
 		C16921CC15B20ABA00F081AF /* Test Animations */ = {
 			isa = PBXGroup;
 			children = (
@@ -1696,6 +1770,16 @@
 				C169200C15AFC7A800F081AF /* HitWhoViewController.m in Sources */,
 				D0A3F74715B266330027EFF9 /* SpinnerView.m in Sources */,
 				C159285F15B356FA009B7955 /* hitFriendCell.m in Sources */,
+				C159325815B5DE52009B7955 /* TBXML+Compression.m in Sources */,
+				C159325915B5DE52009B7955 /* TBXML+HTTP.m in Sources */,
+				C159325A15B5DE52009B7955 /* TBXML.m in Sources */,
+				C159326A15B5DE5A009B7955 /* FTCAnimationInfo.m in Sources */,
+				C159326B15B5DE5A009B7955 /* FTCAnimEvent.m in Sources */,
+				C159326C15B5DE5A009B7955 /* FTCCharacter.m in Sources */,
+				C159326D15B5DE5A009B7955 /* FTCEventInfo.m in Sources */,
+				C159326E15B5DE5A009B7955 /* FTCFrameInfo.m in Sources */,
+				C159326F15B5DE5A009B7955 /* FTCParser.m in Sources */,
+				C159327015B5DE5A009B7955 /* FTCSprite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

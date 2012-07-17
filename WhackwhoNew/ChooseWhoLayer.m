@@ -8,6 +8,7 @@
 
 #import "ChooseWhoLayer.h"
 #import "HelloWorldLayer.h"
+#import "TBXML.h"
 
 @implementation ChooseWhoLayer
 
@@ -101,6 +102,7 @@
         
         glClearColor(255, 255, 255, 255);
         
+        /*//crude animations testing
         CCSprite *body = [CCSprite spriteWithFile:@"pen body.png"];
         CCSprite *head = [CCSprite spriteWithFile:@"pen head.png"];
         CCSprite *left_arm = [CCSprite spriteWithFile:@"left arm.png"];
@@ -135,7 +137,7 @@
         //CCRepeatForever *repeat3 = [CCRepeatForever actionWithAction:[CCSequence actionOne:downSwing two:upSwing]];
         
         [head runAction:repeat2];
-        [left_arm runAction:repeat];
+        [left_arm runAction:repeat];*/
         
     }
     return self;
