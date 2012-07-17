@@ -19,6 +19,7 @@
 @synthesize portrait;
 @synthesize table;
 @synthesize spinner, loadingView;
+@synthesize resultFriends;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -79,8 +80,8 @@
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
--(void) FBUserFriendsAppNotUsing:(NSMutableArray *)friends{
-    resultFriends = friends;
+-(void) FBUserFriendsAppNotUsing:(NSArray *)friends{
+    self.resultFriends = friends;
     if (resultFriends){
         [self.table reloadData];
         [spinner removeSpinner];
@@ -114,17 +115,32 @@
         cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:FriendListBWCell]];
         [cell.backgroundView setClipsToBounds:YES];
         [cell.backgroundView setContentMode:UIViewContentModeScaleAspectFill];
-    } 
-    
-    cell.identity = [[resultFriends objectAtIndex:indexPath.row] objectForKey:@"id"];
-    cell.name.text = (NSString *)[[resultFriends objectAtIndex:indexPath.row] objectForKey:@"name"];
+        cell.spinner = [[SpinnerView alloc] initWithFrame:cell.containerView.bounds];
+    }
+        
+    Friend *friend = [resultFriends objectAtIndex:indexPath.row];
+    cell.identity = friend.user_id;
+    cell.name.text = (NSString *)friend.name;
     cell.name.lineBreakMode  = UILineBreakModeWordWrap;
-    cell.gender.text = (NSString *)[[resultFriends objectAtIndex:indexPath.row] objectForKey:@"gender"];
-    cell.profileImage.image = [[GlobalMethods alloc] imageForObject:[[resultFriends objectAtIndex:indexPath.row] objectForKey:@"id"]];
+    cell.gender.text = friend.gender;
+    NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", friend.user_id];
+    
+    [cell.profileImage setImageWithURL:[NSURL URLWithString:formatting] success:^(UIImage *image) {
+        [cell.spinner removeSpinner];
+    }failure:^(NSError *error) {
+        [cell.spinner removeSpinner];
+    }];
+
     [cell.profileImage setClipsToBounds:YES];
     [cell.profileImage setContentMode:UIViewContentModeScaleAspectFill];
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    hitFriendCell *celler = (hitFriendCell *)cell;
+    if (celler.profileImage.image == nil)
+        [celler.spinner startSpinnerInView:celler.containerView];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

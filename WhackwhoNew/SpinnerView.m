@@ -10,7 +10,7 @@
 #import "QuartzCore/QuartzCore.h"
 
 @implementation SpinnerView
-@synthesize backgroundView;
+@synthesize backgroundView, superView, indicator;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -22,6 +22,24 @@
         // Make a little bit of the superView show through
         backgroundView.alpha = 0.7;
         [self addSubview:backgroundView];
+        
+        
+        indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleWhiteLarge];
+        // Set the resizing mask so it's not stretched
+        indicator.autoresizingMask =
+        UIViewAutoresizingFlexibleTopMargin |
+        UIViewAutoresizingFlexibleRightMargin |
+        UIViewAutoresizingFlexibleBottomMargin |
+        UIViewAutoresizingFlexibleLeftMargin;
+        // Place it in the middle of the view
+        indicator.center = superView.center;
+        // Add it into the spinnerView
+        [self addSubview:indicator];
+        // Start it spinning! Don't miss this step
+        [indicator startAnimating];
+        // Just to show we've done something, let's make the background black
+        //spinnerView.backgroundColor = [UIColor blackColor];
+        // Add the spinner view to the superView. Boom.
     }
     return self;
 }
@@ -35,31 +53,33 @@
 }
 */
 
+- (void)startSpinnerInView:(UIView *)containerView {    
+    if (self.superView != nil)
+        return;
+    
+    self.superView = containerView;
+    
+	[containerView addSubview:self];
+    
+    self.indicator.center = containerView.center;
+    
+    // Create a new animation
+    CATransition *animation = [CATransition animation];
+	// Set the type to a nice wee fade
+	[animation setType:kCATransitionFade];
+	// Add it to the superView
+	[[self.superView layer] addAnimation:animation forKey:@"layerAnimation"];
+}
+
 +(SpinnerView *)loadSpinnerIntoView:(UIView *)superView{
 	// Create a new view with the same frame size as the superView
 	SpinnerView *spinnerView = [[[SpinnerView alloc] initWithFrame:superView.bounds] autorelease];
-	// If something's gone wrong, abort!
-	if(!spinnerView)
+    
+    if (spinnerView == nil)
         return nil;
-    // This is the new stuff here ;)
-    UIActivityIndicatorView *indicator =
-    [[[UIActivityIndicatorView alloc]
-     initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleWhiteLarge] autorelease];
-    // Set the resizing mask so it's not stretched
-    indicator.autoresizingMask =
-    UIViewAutoresizingFlexibleTopMargin |
-    UIViewAutoresizingFlexibleRightMargin |
-    UIViewAutoresizingFlexibleBottomMargin |
-    UIViewAutoresizingFlexibleLeftMargin;
-    // Place it in the middle of the view
-    indicator.center = superView.center;
-    // Add it into the spinnerView
-    [spinnerView addSubview:indicator];
-    // Start it spinning! Don't miss this step
-    [indicator startAnimating];
-	// Just to show we've done something, let's make the background black
-	//spinnerView.backgroundColor = [UIColor blackColor];
-	// Add the spinner view to the superView. Boom.
+    
+    spinnerView.superView = superView;
+    
 	[superView addSubview:spinnerView];
     
     
@@ -111,6 +131,9 @@
 }
 
 -(void)removeSpinner{
+    if (self.superView == nil)
+        return;
+    
 // Take me the hells out of the superView!
     // Add this in at the top of the method. If you place it after you've remove the view from the superView it won't work!
     
@@ -119,6 +142,7 @@
 	[[[self superview] layer] addAnimation:animation forKey:@"layerAnimation"];
     
     [super removeFromSuperview];
+    self.superView = nil;
 }
 
 @end

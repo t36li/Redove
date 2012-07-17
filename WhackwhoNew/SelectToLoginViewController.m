@@ -33,10 +33,6 @@
     //[FBBut setImage:[UIImage imageNamed:AccessFacebookIcon forState:UIControlStateNormal]];
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    [[FBSingleton sharedInstance] setDelegate:self];
-}
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];

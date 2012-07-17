@@ -14,7 +14,7 @@ static NSString* kAppId = @"442728025757863"; // Facebook app ID here
 
 @implementation FBSingleton
 @synthesize facebook = _facebook;
-@synthesize delegate, isLogIn;
+@synthesize delegate, isLogIn, friendsDictionary;
 
 #pragma mark -
 #pragma mark Singleton Variables
@@ -29,6 +29,8 @@ static FBSingleton *singletonDelegate = nil;
         return nil;
     }
     if ((self = [super init])) {
+        friendsDictionary = [[NSMutableDictionary alloc] init];
+        
         // Initialize Facebook
         _facebook = [[Facebook alloc] initWithAppId:kAppId andDelegate:self];
         
@@ -168,9 +170,7 @@ static FBSingleton *singletonDelegate = nil;
     if (isLogIn){
         
         currentAPICall = kAPIGraphMe;
-        NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                       @"name,picture,gender",  @"fields",
-                                       nil];
+        //NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"name,picture,gender",  @"fields", nil];
         [_facebook requestWithGraphPath:@"me" andDelegate:self];
     }
 }
@@ -193,6 +193,9 @@ static FBSingleton *singletonDelegate = nil;
                                        @"id,name,picture,gender",  @"fields",
                                        nil];
         [_facebook requestWithGraphPath:@"me/friends" andParams:params andDelegate:self];
+        if (friendsDictionary.count) {
+            [delegate FBSIngletonUserFriendsDidLoaded:[friendsDictionary allValues]];
+        }
     }
 }
 
@@ -277,6 +280,22 @@ static FBSingleton *singletonDelegate = nil;
     
 }
 
+
+- (void)parseFriendList:(NSArray *)resultData {
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+    for (NSDictionary *diction in resultData) {
+        NSString *userID = (NSString *)[diction objectForKey:@"id"];
+        NSString *name = (NSString *)[diction objectForKey:@"name"];
+        NSString *gender = (NSString *)[diction objectForKey:@"gender"];
+        Friend *friend = [[Friend alloc] init];
+        friend.user_id = userID;
+        friend.name = name;
+        friend.gender = gender;
+        [dictionary setObject:friend forKey:userID];
+    }
+    [friendsDictionary addEntriesFromDictionary:dictionary];
+}
+
 /**
  * Called when a request returns and its response has been parsed into
  * an object.
@@ -305,14 +324,17 @@ static FBSingleton *singletonDelegate = nil;
         }
         case kAPIGraphUserFriends:{
             
-            NSMutableArray *friends = [[NSMutableArray alloc] initWithCapacity:1];
             NSArray *resultData = [result objectForKey:@"data"];
             if ([resultData count] > 0) {
+                [self parseFriendList:resultData];
+                [delegate FBSIngletonUserFriendsDidLoaded:[friendsDictionary allValues]];
+                /*
                 for (NSUInteger i=0; i<[resultData count] && i < 25; i++) {
                     [friends addObject:[resultData objectAtIndex:i]];
                 }
                 // Show the friend information in a new view controller with FBSingleton Delegate
                 [delegate FBSIngletonUserFriendsDidLoaded:friends];
+                 */
             } else {
                 [delegate FBSIngletonUserFriendsDidLoaded:nil];
             }
@@ -333,7 +355,21 @@ static FBSingleton *singletonDelegate = nil;
             else {
                 NSArray *resultData = [result objectForKey:@"data"];
                 if ([resultData count]){
-                    NSMutableArray *friendsWithoutApp = [[NSMutableArray alloc] initWithCapacity:1];
+                    //NSMutableArray *friendsWithoutApp = [[NSMutableArray alloc] initWithCapacity:1];
+                    [self parseFriendList:resultData];
+                    
+                    NSMutableArray *friendsWithApp = [[NSMutableArray alloc] init];
+                    for (NSString *friendObject in savedAPIResult) {
+                        Friend *friend = [friendsDictionary objectForKey:friendObject];
+                        if (friend) {
+                            friend.isPlayer = YES;
+                            [friendsWithApp addObject:friend.user_id];
+                        }
+                    }
+                    NSMutableDictionary *friendsWithoutAppDictionary = [[NSMutableDictionary alloc] initWithDictionary:friendsDictionary ];
+                    [friendsWithoutAppDictionary removeObjectsForKeys:friendsWithApp];
+                    
+                    /*
                     for (NSDictionary *friendObject in resultData){
                         BOOL foundFriend = NO;
                         for (NSString *friendWithApp in savedAPIResult){
@@ -345,9 +381,9 @@ static FBSingleton *singletonDelegate = nil;
                         if (!foundFriend) {
                             [friendsWithoutApp addObject:friendObject];
                         }
-                    }
-                    if ([friendsWithoutApp count] > 0) {
-                        [delegate FBUserFriendsAppNotUsing:friendsWithoutApp];
+                    }*/
+                    if ([friendsWithoutAppDictionary count] > 0) {
+                        [delegate FBUserFriendsAppNotUsing:[friendsWithoutAppDictionary allValues]];
                     }
                     else {
                         [delegate FBUserFriendsAppNotUsing:nil];

@@ -21,7 +21,7 @@
 #define PlayToSegue @"PlayToSegue"
 #define PlayToFriendSegue @"PlayToFriendSegue"
 
-static NSMutableArray *FriendsData = nil;
+//static NSArray *FriendsData = nil;
 
 
 @interface RootViewController (){
@@ -34,7 +34,7 @@ static NSMutableArray *FriendsData = nil;
 
 @implementation RootViewController
 @synthesize LoginAccountImageView;
-@synthesize play_but,opt_but;
+@synthesize play_but,opt_but, friendVC;
 
 -(void) viewDidLoad
 {
@@ -69,7 +69,6 @@ static NSMutableArray *FriendsData = nil;
     
     NSLog(@"Load/set currentLogInType");
     gmethods = [[GlobalMethods alloc] init];
-    [[UserInfo sharedInstance] setDelegate:self];
     usr = [UserInfo sharedInstance];
     
     if ((int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs]>0){
@@ -105,12 +104,14 @@ static NSMutableArray *FriendsData = nil;
 
 -(void) viewDidAppear:(BOOL)animated{
     [[FBSingleton sharedInstance] setDelegate:self];
+    /*
     if ((int)usr.currentLogInType != NotLogIn){
         LoginAccountImageView.image = [gmethods imageForObject:usr.userId];
     }
     else {
         LoginAccountImageView.image = nil;
     }
+     */
 }
 
 - (void)didReceiveMemoryWarning {
@@ -168,18 +169,24 @@ static NSMutableArray *FriendsData = nil;
 
 -(void)FBSingletonDidLogout {
     self.LoginAccountImageView.image = nil;
-    
+    [self dismissModalViewControllerAnimated:YES];
+    [[UserInfo sharedInstance] setCurrentLogInType:NotLogIn];
 }
 
--(void)FBSingletonDidLogin {
+-(void)FBSingletonDidLogin:(NSString *)userId :(NSString *)userName :(NSString *)gender {
     //[[FBSingleton sharedInstance] RequestMeProfileImage];
+    [[UserInfo sharedInstance] setCurrentLogInType:LogInFacebook];
+    [[UserInfo sharedInstance] setUserId:userId];
+    [[UserInfo sharedInstance] setUserName:userName];
+    [[UserInfo sharedInstance] setGender:gender];
+    [self.navigationController popViewControllerAnimated:YES];
+    [[FBSingleton sharedInstance] RequestMe];
 }
 
--(void) FBSIngletonUserFriendsDidLoaded:(NSMutableArray *)friends{
-    FriendsData = [[NSMutableArray alloc] initWithArray:friends copyItems:YES];
-    friendVC.resultData = FriendsData;
-    [friendVC.friendTable reloadData];
+-(void) FBSIngletonUserFriendsDidLoaded:(NSArray *)friends{
+    friendVC.resultData = friends;
     [friendVC.spinner removeSpinner];
+    [friendVC.friendTable reloadData];
 }
 
 
@@ -188,15 +195,11 @@ static NSMutableArray *FriendsData = nil;
         [usr setUserId:userId];
         [usr setUserName:userName];
         [usr setGender:gender];
-        LoginAccountImageView.image = [gmethods imageForObject:userId];
+        
+        NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", userId];   
+        [LoginAccountImageView setImageWithURL:[NSURL URLWithString:formatting]];
+        //LoginAccountImageView.image = [gmethods imageForObject:userId];
     }
-}
-
-//UserInfo Deleagate:
-
--(void)userInfoUpdated{
-    LoginAccountImageView.image = [gmethods imageForObject:usr.userId];
-    [[FBSingleton sharedInstance] setDelegate:self];
 }
 
 ///////////////////////////
@@ -206,9 +209,9 @@ static NSMutableArray *FriendsData = nil;
     else if ([segue.identifier isEqualToString:PlayToStatusSegue]){
     }
     else if ([segue.identifier isEqualToString:PlayToFriendSegue]){
-        friendVC = segue.destinationViewController;
+        self.friendVC = segue.destinationViewController;
         //[(FriendsViewController *)segue.destinationViewController   setResultData:FriendsData];
-        FriendsData = nil;
+        //FriendsData = nil;
         //FriendsViewController *fvc = (FriendsViewController *)segue.destinationViewController;
         //fvc.resultData = [[NSMutableArray alloc] initWithArray:FriendsData copyItems:YES];
     }

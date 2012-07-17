@@ -12,13 +12,14 @@
 @synthesize name = _nameLabel;
 @synthesize gender;
 @synthesize profileImageView = _profileImageView;
+@synthesize containerView;
+@synthesize spinner;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        
     }
     return self;
 }

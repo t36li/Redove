@@ -9,10 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @interface GlobalMethods : NSObject{
-    
 }
 
+@property (nonatomic, retain) NSMutableData *responseData;
+
+
 -(void) setViewBackground:(NSString *)BackgroundImage viewSender:(id)sender;
-- (UIImage *)imageForObject:(NSString *)objectID;
+//+ (UIImage *)imageForObject:(NSString *)objectID;
+-(void) RequestProfilePic:(NSString *)profileID;
 
 @end
+

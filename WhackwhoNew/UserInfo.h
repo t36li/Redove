@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UserInfoDelegate.h"
 
 @interface UserInfo : NSObject {
     @public
@@ -18,13 +17,11 @@
     UIImage *croppedImage;
     UIImage *usrImg;
     UIImage *bigHeadImg;
-    id<UserInfoDelegate> delegate;
 }
 
 @property (nonatomic, retain) UIImage *usrImg, *croppedImage, *bigHeadImg;
 @property (nonatomic, retain) NSString *userId, *userName, *gender;
 @property (nonatomic, readwrite) int currentLogInType;
-@property(nonatomic, retain) id<UserInfoDelegate> delegate;
 
 +(id)sharedInstance;
 

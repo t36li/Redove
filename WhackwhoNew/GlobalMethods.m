@@ -10,6 +10,8 @@
 
 @implementation GlobalMethods
 
+@synthesize responseData;
+
 -(void) setViewBackground:(NSString *)BackgroundImage viewSender:(id)sender{
     UIView *theView = sender;
     int width;
@@ -37,10 +39,14 @@
  * Helper method to return the picture endpoint for a given Facebook
  * object. Useful for displaying user, friend, or location pictures.
  */
-- (UIImage *)imageForObject:(NSString *)objectID {
+
+/*
++ (UIImage *)imageForObject:(NSString *)objectID {
     // Get the object image
     NSString *url = [[NSString alloc] initWithFormat:@"https://graph.facebook.com/%@/picture",objectID];
     UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
     return image;
 }
+*/
+
 @end

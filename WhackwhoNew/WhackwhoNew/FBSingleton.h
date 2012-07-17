@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FBConnect.h"
 #import "FBSingletonDelegate.h"
+#import "Friend.h"
 
 typedef enum apiCall {
     kAPILogout,
@@ -47,12 +48,14 @@ typedef enum apiCall {
     BOOL isLogIn;
     NSArray *savedAPIResult;
     id<FBSingletonDelegate> delegate;
+    NSMutableDictionary *friendsDictionary;
     // Internal state
     int score;
 }
 @property (readonly) Facebook *facebook;
 @property (nonatomic, retain) id<FBSingletonDelegate> delegate;
 @property (nonatomic, assign) BOOL isLogIn;
+@property (nonatomic, retain) NSMutableDictionary *friendsDictionary;
 
 + (FBSingleton *) sharedInstance;
 

@@ -11,7 +11,7 @@
 @implementation hitFriendCell
 
 @synthesize gender, name, profileImage;
-@synthesize identity;
+@synthesize identity, containerView, spinner;
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

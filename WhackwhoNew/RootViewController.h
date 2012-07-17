@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "FBSingletonDelegate.h"
-#import "UserInfoDelegate.h"
 #import "FBSingleton.h"
 #import "FriendsViewController.h"
 #import "SpinnerView.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
-@interface RootViewController : UIViewController<FBSingletonDelegate, UserInfoDelegate> {
+@interface RootViewController : UIViewController<FBSingletonDelegate> {
     UIImageView *LoginAccountImageView; //Facebook Profile Image, Renren Profile Image or Gmail
     UIButton *play_but;
     UIButton *opt_but;
@@ -22,6 +22,7 @@
 @property (nonatomic, retain) IBOutlet UIImageView *LoginAccountImageView; 
 @property (nonatomic, retain) IBOutlet UIButton *play_but;
 @property (nonatomic, retain) IBOutlet UIButton *opt_but;
+@property (nonatomic, retain) FriendsViewController *friendVC;
 
 -(IBAction)play_touched:(id)sender;
 -(IBAction)opt_touched:(id)sender;
