@@ -67,10 +67,19 @@
         [cell setContentMode:UIViewContentModeScaleAspectFit];
     }
     
-    cell.name.text = (NSString *)[[resultData objectAtIndex:indexPath.row] objectForKey:@"name"];
+    Friend *friend = [resultData objectAtIndex:indexPath.row];
+    
+    cell.name.text = friend.name;
     cell.name.lineBreakMode  = UILineBreakModeWordWrap;
-    cell.gender.text = (NSString *)[[resultData objectAtIndex:indexPath.row] objectForKey:@"gender"];
-    cell.profileImageView.image = [[GlobalMethods alloc] imageForObject:[[resultData objectAtIndex:indexPath.row] objectForKey:@"id"]];
+    cell.gender.text = friend.gender;
+    NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", friend.user_id];
+
+    [cell addSpinner];
+    [cell.profileImageView setImageWithURL:[NSURL URLWithString:formatting] success:^(UIImage *image) {
+        [cell removeSpinner];
+    }failure:^(NSError *error) {
+        [cell removeSpinner];
+    }];
     
     return cell;
 }

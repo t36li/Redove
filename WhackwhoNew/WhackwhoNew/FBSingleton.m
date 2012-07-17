@@ -14,7 +14,7 @@ static NSString* kAppId = @"442728025757863"; // Facebook app ID here
 
 @implementation FBSingleton
 @synthesize facebook = _facebook;
-@synthesize delegate, isLogIn;
+@synthesize delegate, isLogIn, responseData, friendsDictionary;
 
 #pragma mark -
 #pragma mark Singleton Variables
@@ -29,6 +29,8 @@ static FBSingleton *singletonDelegate = nil;
         return nil;
     }
     if ((self = [super init])) {
+        friendsDictionary = [[NSMutableDictionary alloc] init];
+        
         // Initialize Facebook
         _facebook = [[Facebook alloc] initWithAppId:kAppId andDelegate:self];
         
@@ -207,6 +209,71 @@ static FBSingleton *singletonDelegate = nil;
     }
 }
 
+-(void) RequestProfilePic:(NSString *)profileID
+ {
+    if (isLogIn) {
+        NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", profileID];        
+        NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:formatting] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+        // create the connection with the request
+        // and start loading the data
+        NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+        if (theConnection) {
+            // Create the NSMutableData that will hold
+            // the received data
+            // receivedData is declared as a method instance elsewhere
+            responseData=[[NSMutableData data] retain];
+        } else {
+            // inform the user that the download could not be made
+        }
+    }
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    // This method is called when the server has determined that it
+    // has enough information to create the NSURLResponse.
+    
+    // It can be called multiple times, for example in the case of a
+    // redirect, so each time we reset the data.
+    
+    // receivedData is an instance variable declared elsewhere.
+    [responseData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    // Append the new data to receivedData.
+    // receivedData is an instance variable declared elsewhere.
+    [responseData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection
+  didFailWithError:(NSError *)error
+{
+    // release the connection, and the data object
+    [connection release];
+    // receivedData is declared as a method instance elsewhere
+    [responseData release];
+    
+    // inform the user
+    NSLog(@"Connection failed! Error - %@ %@",
+          [error localizedDescription],
+          [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    // do something with the data
+    // receivedData is declared as a method instance elsewhere
+    NSLog(@"Succeeded! Received %d bytes of data",[responseData length]);
+    
+    UIImage *image = [UIImage imageWithData:responseData];
+    [delegate FBProfilePictureLoaded:image];
+    // release the connection, and the data object
+    [connection release];
+    [responseData release];
+}
+
 #pragma mark - FBDelegate Methods
 
 - (void)fbDidLogin {
@@ -277,6 +344,22 @@ static FBSingleton *singletonDelegate = nil;
     
 }
 
+
+- (void)parseFriendList:(NSArray *)resultData {
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+    for (NSDictionary *diction in resultData) {
+        NSString *userID = (NSString *)[diction objectForKey:@"id"];
+        NSString *name = (NSString *)[diction objectForKey:@"name"];
+        NSString *gender = (NSString *)[diction objectForKey:@"gender"];
+        Friend *friend = [[Friend alloc] init];
+        friend.user_id = userID;
+        friend.name = name;
+        friend.gender = gender;
+        [dictionary setObject:friend forKey:userID];
+    }
+    [friendsDictionary addEntriesFromDictionary:dictionary];
+}
+
 /**
  * Called when a request returns and its response has been parsed into
  * an object.
@@ -305,14 +388,17 @@ static FBSingleton *singletonDelegate = nil;
         }
         case kAPIGraphUserFriends:{
             
-            NSMutableArray *friends = [[NSMutableArray alloc] initWithCapacity:1];
             NSArray *resultData = [result objectForKey:@"data"];
             if ([resultData count] > 0) {
+                [self parseFriendList:resultData];
+                [delegate FBSIngletonUserFriendsDidLoaded:[friendsDictionary allValues]];
+                /*
                 for (NSUInteger i=0; i<[resultData count] && i < 25; i++) {
                     [friends addObject:[resultData objectAtIndex:i]];
                 }
                 // Show the friend information in a new view controller with FBSingleton Delegate
                 [delegate FBSIngletonUserFriendsDidLoaded:friends];
+                 */
             } else {
                 [delegate FBSIngletonUserFriendsDidLoaded:nil];
             }

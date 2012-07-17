@@ -21,7 +21,7 @@
 #define PlayToSegue @"PlayToSegue"
 #define PlayToFriendSegue @"PlayToFriendSegue"
 
-static NSMutableArray *FriendsData = nil;
+//static NSArray *FriendsData = nil;
 
 
 @interface RootViewController (){
@@ -105,12 +105,14 @@ static NSMutableArray *FriendsData = nil;
 
 -(void) viewDidAppear:(BOOL)animated{
     [[FBSingleton sharedInstance] setDelegate:self];
+    /*
     if ((int)usr.currentLogInType != NotLogIn){
         LoginAccountImageView.image = [gmethods imageForObject:usr.userId];
     }
     else {
         LoginAccountImageView.image = nil;
     }
+     */
 }
 
 - (void)didReceiveMemoryWarning {
@@ -175,11 +177,10 @@ static NSMutableArray *FriendsData = nil;
     //[[FBSingleton sharedInstance] RequestMeProfileImage];
 }
 
--(void) FBSIngletonUserFriendsDidLoaded:(NSMutableArray *)friends{
-    FriendsData = [[NSMutableArray alloc] initWithArray:friends copyItems:YES];
-    friendVC.resultData = FriendsData;
-    [friendVC.friendTable reloadData];
+-(void) FBSIngletonUserFriendsDidLoaded:(NSArray *)friends{
+    friendVC.resultData = friends;
     [friendVC.spinner removeSpinner];
+    [friendVC.friendTable reloadData];
 }
 
 
@@ -188,14 +189,15 @@ static NSMutableArray *FriendsData = nil;
         [usr setUserId:userId];
         [usr setUserName:userName];
         [usr setGender:gender];
-        LoginAccountImageView.image = [gmethods imageForObject:userId];
+        [fbs RequestProfilePic:usr.userId];
+        //LoginAccountImageView.image = [gmethods imageForObject:userId];
     }
 }
 
 //UserInfo Deleagate:
 
 -(void)userInfoUpdated{
-    LoginAccountImageView.image = [gmethods imageForObject:usr.userId];
+    //LoginAccountImageView.image = [gmethods imageForObject:usr.userId];
     [[FBSingleton sharedInstance] setDelegate:self];
 }
 
@@ -208,7 +210,7 @@ static NSMutableArray *FriendsData = nil;
     else if ([segue.identifier isEqualToString:PlayToFriendSegue]){
         friendVC = segue.destinationViewController;
         //[(FriendsViewController *)segue.destinationViewController   setResultData:FriendsData];
-        FriendsData = nil;
+        //FriendsData = nil;
         //FriendsViewController *fvc = (FriendsViewController *)segue.destinationViewController;
         //fvc.resultData = [[NSMutableArray alloc] initWithArray:FriendsData copyItems:YES];
     }

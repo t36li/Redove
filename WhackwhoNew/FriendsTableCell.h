@@ -7,13 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GlobalMethods.h"
+#import "SpinnerView.h"
 
-@interface FriendsTableCell : UITableViewCell{
+@interface FriendsTableCell : UITableViewCell {
     UILabel *name;
     UILabel *gender;
     IBOutlet UIImageView *profileImageView;
+    IBOutlet UIView *containerView;
+    SpinnerView *spinner;
+    BOOL loadingImage;
 }
+
+-(void)addSpinner;
+-(void)removeSpinner;
+
 @property (nonatomic, retain) IBOutlet UILabel *name, *gender;
 @property (nonatomic, readonly) IBOutlet UIImageView *profileImageView;
+@property (nonatomic, retain) IBOutlet UIView *containerView;
+@property (nonatomic, retain) SpinnerView *spinner;
+
 
 @end

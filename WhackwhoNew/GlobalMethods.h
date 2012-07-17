@@ -8,11 +8,26 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GlobalMethods : NSObject{
-    
-}
+@protocol GlobalMethodsDelegate <NSObject>
 
--(void) setViewBackground:(NSString *)BackgroundImage viewSender:(id)sender;
-- (UIImage *)imageForObject:(NSString *)objectID;
+@optional
+-(void)profilePicLoaded:(UIImage *)img;
 
 @end
+
+
+@interface GlobalMethods : NSObject<NSURLConnectionDelegate>{
+    NSMutableData *responseData;
+    id<GlobalMethodsDelegate> delegate;
+}
+
+@property (nonatomic, retain) NSMutableData *responseData;
+@property (nonatomic, retain) id<GlobalMethodsDelegate> delegate;
+
+
+-(void) setViewBackground:(NSString *)BackgroundImage viewSender:(id)sender;
+//+ (UIImage *)imageForObject:(NSString *)objectID;
+-(void) RequestProfilePic:(NSString *)profileID;
+
+@end
+

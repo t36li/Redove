@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FBConnect.h"
 #import "FBSingletonDelegate.h"
+#import "Friend.h"
 
 typedef enum apiCall {
     kAPILogout,
@@ -38,7 +39,7 @@ typedef enum apiCall {
 } apiCall;
 
 
-@interface FBSingleton : NSObject<FBRequestDelegate, FBDialogDelegate, FBSessionDelegate> {
+@interface FBSingleton : NSObject<FBRequestDelegate, FBDialogDelegate, FBSessionDelegate, NSURLConnectionDelegate> {
 @public
     
     int currentAPICall;
@@ -47,12 +48,16 @@ typedef enum apiCall {
     BOOL isLogIn;
     NSArray *savedAPIResult;
     id<FBSingletonDelegate> delegate;
+    NSMutableData *responseData;
+    NSMutableDictionary *friendsDictionary;
     // Internal state
     int score;
 }
 @property (readonly) Facebook *facebook;
 @property (nonatomic, retain) id<FBSingletonDelegate> delegate;
 @property (nonatomic, assign) BOOL isLogIn;
+@property (nonatomic, retain) NSMutableData *responseData;
+@property (nonatomic, retain) NSMutableDictionary *friendsDictionary;
 
 + (FBSingleton *) sharedInstance;
 
@@ -60,6 +65,7 @@ typedef enum apiCall {
 #pragma mark - Public Methods
 -(void) postToWallWithDialogNewHighscore:(int)highscore;
 -(void) RequestMe;
+-(void) RequestProfilePic:(NSString *)profileID;
 -(void) RequestFriendList;
 -(void) logout;
 -(void) login;
