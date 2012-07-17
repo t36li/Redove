@@ -188,15 +188,21 @@
             pos[i] = 0;
         }
         
-        //NSString * = [[resultFriends objectAtIndex:randFriend] objectForKey:@"id"];
+        //testing UserInfo image taken from camera
+        UserInfo *usr = [UserInfo sharedInstance];
+        UIImage *tempImage = usr.bigHeadImg;
         
+        
+        //testing passing string arrays from UIKIT
+        //NSString * = [[resultFriends objectAtIndex:randFriend] objectForKey:@"id"];
         //UIImage *tempImage = [[GlobalMethods alloc] imageForObject:[bigList objectAtIndex:0]];
-        //Character *head = [Character spriteWithCGImage:[tempImage CGImage] key:[bigList objectAtIndex:0]];
-        //head.position = ccp(300, 300);
-        //[self addChild:head z:100];
+        
+        Character *head = [Character spriteWithCGImage:[tempImage CGImage] key:@"test"];
+        head.position = ccp(50, 50);
+        [self addChild:head z:100];
         
         //testing:
-        NSArray *testbigList = [NSArray arrayWithObjects:@"baby.png", @"olaf.png", @"vlad.png", @"mice.png", @"pinky.png", @"monk.png", @"blue.png",nil];
+      /*  NSArray *testbigList = [NSArray arrayWithObjects:@"baby.png", @"olaf.png", @"vlad.png", @"mice.png", @"pinky.png", @"monk.png", @"blue.png",nil];
         
         for (NSString *friend in testbigList) {
             //get the friend portrait image...once database kicks in, we will grab the big head
@@ -220,7 +226,7 @@
         
         [self schedule:@selector(tryPopheads) interval:1.5];
         [self schedule:@selector(checkGameState) interval:0.1];
-        [self schedule:@selector(timerUpdate:) interval:0.001];
+        [self schedule:@selector(timerUpdate:) interval:0.001];*/
         
         //set laughAnimations variables
         //laughAnim = [self laughAnimation];
