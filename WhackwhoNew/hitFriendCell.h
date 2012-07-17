@@ -15,12 +15,8 @@
     UILabel *name;
     UILabel *gender;
     NSString *identity;
-    BOOL loadingImage;
     SpinnerView *spinner;
 }
-
--(void)addSpinner;
--(void)removeSpinner;
 
 @property (nonatomic, retain) UIImageView *profileImage;
 @property (nonatomic, retain) UILabel *name;

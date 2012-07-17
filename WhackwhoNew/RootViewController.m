@@ -185,8 +185,7 @@
 
 -(void) FBSIngletonUserFriendsDidLoaded:(NSArray *)friends{
     friendVC.resultData = friends;
-    if (friendVC.spinner.superview != nil)
-        [friendVC.spinner removeSpinner];
+    [friendVC.spinner removeSpinner];
     [friendVC.friendTable reloadData];
 }
 

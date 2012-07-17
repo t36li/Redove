@@ -115,10 +115,9 @@
         cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:FriendListBWCell]];
         [cell.backgroundView setClipsToBounds:YES];
         [cell.backgroundView setContentMode:UIViewContentModeScaleAspectFill];
+        cell.spinner = [[SpinnerView alloc] initWithFrame:cell.containerView.bounds];
     }
-    
-    NSInteger row = indexPath.row;
-    
+        
     Friend *friend = [resultFriends objectAtIndex:indexPath.row];
     cell.identity = friend.user_id;
     cell.name.text = (NSString *)friend.name;
@@ -126,17 +125,22 @@
     cell.gender.text = friend.gender;
     NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", friend.user_id];
     
-    [cell addSpinner];
     [cell.profileImage setImageWithURL:[NSURL URLWithString:formatting] success:^(UIImage *image) {
-        [cell removeSpinner];
+        [cell.spinner removeSpinner];
     }failure:^(NSError *error) {
-        [cell removeSpinner];
+        [cell.spinner removeSpinner];
     }];
 
     [cell.profileImage setClipsToBounds:YES];
     [cell.profileImage setContentMode:UIViewContentModeScaleAspectFill];
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    hitFriendCell *celler = (hitFriendCell *)cell;
+    if (celler.profileImage.image == nil)
+        [celler.spinner startSpinnerInView:celler.containerView];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

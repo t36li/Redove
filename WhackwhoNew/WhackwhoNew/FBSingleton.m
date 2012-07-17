@@ -193,6 +193,9 @@ static FBSingleton *singletonDelegate = nil;
                                        @"id,name,picture,gender",  @"fields",
                                        nil];
         [_facebook requestWithGraphPath:@"me/friends" andParams:params andDelegate:self];
+        if (friendsDictionary.count) {
+            [delegate FBSIngletonUserFriendsDidLoaded:[friendsDictionary allValues]];
+        }
     }
 }
 

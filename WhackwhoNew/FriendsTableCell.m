@@ -20,7 +20,6 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        loadingImage = NO;
     }
     return self;
 }
@@ -29,20 +28,6 @@
 {
     [super setSelected:selected animated:animated];
     //add some shit here to handle touches
-}
-
--(void)addSpinner {
-    if (!loadingImage) {
-        spinner = [SpinnerView loadSpinnerIntoView:containerView];
-        loadingImage = YES;
-    }
-}
-
--(void)removeSpinner {
-    if (loadingImage) {
-        [spinner removeSpinner];
-        loadingImage = NO;
-    }
 }
 
 @end

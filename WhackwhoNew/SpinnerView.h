@@ -10,13 +10,18 @@
 
 @interface SpinnerView : UIView {
     UIImageView *backgroundView;
+    UIView *superView;
+    UIActivityIndicatorView *indicator;
 }
 
 @property (nonatomic, retain) UIImageView *backgroundView;
+@property (nonatomic, retain) UIView *superView;
+@property (nonatomic, retain) UIActivityIndicatorView *indicator;
 
-+(SpinnerView *)loadSpinnerIntoView:(UIView *)superView;
++(SpinnerView *)loadSpinnerIntoView:(UIView *)containerView;
 -(void)removeSpinner;
 - (UIImage *)addBackground;
 - (void)setBackgroundColor;
+- (void)startSpinnerInView:(UIView *)superView;
 
 @end

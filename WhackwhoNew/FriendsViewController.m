@@ -28,7 +28,12 @@
     friendsTable.delegate = self;
     friendsTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
-    spinner = [SpinnerView loadSpinnerIntoView:loadingView];
+    spinner = [[SpinnerView alloc] initWithFrame:loadingView.bounds];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    if (!resultData.count)
+        [spinner startSpinnerInView:loadingView];
 }
 
 - (void)viewDidUnload
@@ -65,6 +70,7 @@
         cell = (FriendsTableCell *)[nib objectAtIndex:0];
         cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:FriendListCell]];
         [cell setContentMode:UIViewContentModeScaleAspectFit];
+        cell.spinner = [[SpinnerView alloc] initWithFrame:cell.containerView.bounds];   
     }
     
     Friend *friend = [resultData objectAtIndex:indexPath.row];
@@ -74,14 +80,19 @@
     cell.gender.text = friend.gender;
     NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", friend.user_id];
 
-    [cell addSpinner];
     [cell.profileImageView setImageWithURL:[NSURL URLWithString:formatting] success:^(UIImage *image) {
-        [cell removeSpinner];
+        [cell.spinner removeSpinner];
     }failure:^(NSError *error) {
-        [cell removeSpinner];
+        [cell.spinner removeSpinner];
     }];
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    FriendsTableCell *celler = (FriendsTableCell *)cell;
+    if (celler.profileImageView.image == nil)
+        [celler.spinner startSpinnerInView:celler.containerView];
 }
 
 

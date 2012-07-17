@@ -16,11 +16,7 @@
     IBOutlet UIImageView *profileImageView;
     IBOutlet UIView *containerView;
     SpinnerView *spinner;
-    BOOL loadingImage;
 }
-
--(void)addSpinner;
--(void)removeSpinner;
 
 @property (nonatomic, retain) IBOutlet UILabel *name, *gender;
 @property (nonatomic, readonly) IBOutlet UIImageView *profileImageView;
