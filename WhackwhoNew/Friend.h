@@ -16,7 +16,7 @@
     BOOL isPlayer;
 }
 
-@property (nonatomic, retain) NSString *user_id, *name, *gender;
+@property (nonatomic) NSString *user_id, *name, *gender;
 @property (nonatomic, assign) BOOL isPlayer;
 
 @end

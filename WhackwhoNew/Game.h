@@ -27,9 +27,9 @@
 @property (nonatomic, readwrite) int timeBonus;
 @property (nonatomic, readwrite) int consecHits;
 @property (nonatomic, readwrite) int baseScore;
-@property (nonatomic, retain) NSMutableArray *friendList;
-@property (nonatomic, retain) NSMutableArray *selectedHeads;
-@property (nonatomic, retain) UIImage *head;
+@property (nonatomic) NSMutableArray *friendList;
+@property (nonatomic) NSMutableArray *selectedHeads;
+@property (nonatomic) UIImage *head;
 
 
 + (Game *) sharedGame;

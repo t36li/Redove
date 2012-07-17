@@ -18,12 +18,12 @@
     SpinnerView *spinner;
     IBOutlet UIView *loadingView;
 }
-@property (nonatomic, retain) NSArray *resultData;
-@property (nonatomic, retain) NSString *resultAction;
-@property (nonatomic, assign) IBOutlet UITableViewCell *tableCell;
-@property (nonatomic, assign) IBOutlet UITableView *friendTable;
-@property (nonatomic, retain) SpinnerView *spinner;
-@property (nonatomic, retain) IBOutlet UIView *loadingView;
+@property (nonatomic) NSArray *resultData;
+@property (nonatomic) NSString *resultAction;
+@property (nonatomic, weak) IBOutlet UITableViewCell *tableCell;
+@property (nonatomic, weak) IBOutlet UITableView *friendTable;
+@property (nonatomic) SpinnerView *spinner;
+@property (nonatomic) IBOutlet UIView *loadingView;
 
 - (IBAction)back_Touched:(id)sender;
 

@@ -14,6 +14,6 @@
 }
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic, retain) UserInfo *usr;
+@property (nonatomic) UserInfo *usr;
 
 @end

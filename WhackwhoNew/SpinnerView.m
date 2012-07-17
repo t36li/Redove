@@ -73,7 +73,7 @@
 
 +(SpinnerView *)loadSpinnerIntoView:(UIView *)superView{
 	// Create a new view with the same frame size as the superView
-	SpinnerView *spinnerView = [[[SpinnerView alloc] initWithFrame:superView.bounds] autorelease];
+	SpinnerView *spinnerView = [[SpinnerView alloc] initWithFrame:superView.bounds];
     
     if (spinnerView == nil)
         return nil;

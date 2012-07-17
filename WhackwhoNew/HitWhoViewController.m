@@ -216,7 +216,7 @@
 
 -(IBAction) handleRandomButton:(id)sender {
     //first remove all previous names from the NameArray
-    [noHitsNames removeAllObjects];
+  /*  [noHitsNames removeAllObjects];
     
     for (UIImageView *temp in noHits) {
         //if (temp.image == nil) {
@@ -242,12 +242,12 @@
         
         temp.image = tempImage;
         //}
-    }
+    }*/
 }
 
 -(IBAction) nextTouched:(id)sender {
     //if did not select all hits or did not press random
-    if ([selectedHitsNames containsObject:@"test"] || [noHitsNames count] < 1) {
+   /* if ([selectedHitsNames containsObject:@"test"] || [noHitsNames count] < 1) {
         //display alert showing must select all b4 game
         return;
     } else {
@@ -265,7 +265,9 @@
     [[Game sharedGame] setSelectedHeads:selectedHitsNames];
     
     [self performSegueWithIdentifier:ChooseToGame sender:sender];
-    }
+    }*/
+    [self performSegueWithIdentifier:ChooseToGame sender:sender];
+
 }
 
 //-(void) scrollview method... {

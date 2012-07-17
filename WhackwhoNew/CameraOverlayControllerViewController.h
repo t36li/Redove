@@ -18,10 +18,10 @@
     id<CameraOverlayControllerViewControllerDelegate> delegate;
 }
 
-@property (nonatomic, retain) UIImagePickerController *pickerReference;
-@property (nonatomic, retain) IBOutlet UIView *outfitView;
-@property (nonatomic, retain) UIImage *validPhoto, *croppedImage;
-@property (nonatomic, retain) id<CameraOverlayControllerViewControllerDelegate> delegate;
+@property (nonatomic) UIImagePickerController *pickerReference;
+@property (nonatomic) IBOutlet UIView *outfitView;
+@property (nonatomic) UIImage *validPhoto, *croppedImage;
+@property (nonatomic) id<CameraOverlayControllerViewControllerDelegate> delegate;
 
 -(IBAction)takePicture:(id)sender;
 -(IBAction)switchCamera:(id)sender;

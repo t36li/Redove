@@ -28,6 +28,6 @@
 @property (nonatomic) BOOL didMiss;
 @property (nonatomic) BOOL sideWaysMove;
 @property (nonatomic) int posOccupied;
-@property (nonatomic, retain) NSString *imageName;
+@property (nonatomic) NSString *imageName;
 
 @end

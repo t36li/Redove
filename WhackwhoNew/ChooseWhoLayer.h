@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "Game.h"
+#import "CCRobot.h"
 
 @interface ChooseWhoLayer : CCLayer {
     //int counter, theData;
     int tempDifficulty;
     int popups;
+    CCRobot *robot;
 }
 
 

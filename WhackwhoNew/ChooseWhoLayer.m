@@ -100,7 +100,7 @@
             }
         } while (popups > 0);*/
         
-        glClearColor(255, 255, 255, 255);
+        //glClearColor(255, 255, 255, 255);
         
         /*//crude animations testing
         CCSprite *body = [CCSprite spriteWithFile:@"pen body.png"];
@@ -138,10 +138,71 @@
         
         [head runAction:repeat2];
         [left_arm runAction:repeat];*/
+        robot = [[CCRobot alloc] init];        
+        [robot setPosition:ccp(250, 50)];
+        [self addChild:robot];
+        
+        NSArray *arr =  [[robot animationEventsTable] allKeys];
+        CCMenu *starMenu = [CCMenu menuWithItems: nil];        
+        [starMenu setPosition:ccp(10, 200)];
+        
+        CCMenuItemLabel *gotoBut = [CCMenuItemLabel itemWithLabel:[CCLabelTTF labelWithString:@"FRAME 5 ANIM MOVING" fontName:@"Verdana" fontSize:12] target:self selector:@selector(gotoFrame)];
+        [gotoBut setAnchorPoint:ccp(0, 0.5f)];
+        [starMenu addChild:gotoBut];
+        
+        CCMenuItemLabel *pauseBut = [CCMenuItemLabel itemWithLabel:[CCLabelTTF labelWithString:@"PAUSE" fontName:@"Verdana" fontSize:12] target:self selector:@selector(pause)];
+        [pauseBut setAnchorPoint:ccp(0, 0.5f)];
+        [starMenu addChild:pauseBut];
+        
+        
+        
+        CCMenuItemLabel *resumeBut = [CCMenuItemLabel itemWithLabel:[CCLabelTTF labelWithString:@"RESUME" fontName:@"Verdana" fontSize:12] target:self selector:@selector(resume)];
+        [resumeBut setAnchorPoint:ccp(0, 0.5f)];
+        [starMenu addChild:resumeBut];
+        
+        
+        [arr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            CCMenuItemLabel *labelBut = [CCMenuItemLabel itemWithLabel:[CCLabelTTF labelWithString:obj fontName:@"Verdana" fontSize:12] target:self selector:@selector(doPlay:)];
+            labelBut.tag = idx;
+            [labelBut setAnchorPoint:ccp(0, 0.5f)];
+            [starMenu addChild:labelBut];
+        }];
+        
+        
+        [starMenu alignItemsVertically];
+        [self addChild:starMenu];
         
     }
     return self;
 }
+
+-(void) gotoFrame
+{
+    [robot playFrame:4 fromAnimation:@"moving"];
+}
+
+-(void) pause
+{
+    [robot pauseAnimation];
+}
+
+-(void) resume
+{
+    [robot resumeAnimation];
+}
+
+-(void) doPlay:(CCMenuItemLabel *)item
+{
+    NSArray *arr = [[robot animationEventsTable] allKeys];
+    
+    NSString *animationStr = [arr objectAtIndex:item.tag];
+    
+    // to determine if the animation should loop we check if it ends in "ing"
+    BOOL doesLoop = [animationStr hasSuffix:@"ing"];    
+    
+    [robot playAnimation:[arr objectAtIndex:item.tag] loop:doesLoop wait:NO];
+}
+
 
 /*-(void) nextScene: (id) sender {
     CCMenuItem *itm = (CCMenuItem *) sender;
@@ -168,8 +229,5 @@
     }
 }*/
 
-- (void) dealloc {
-    [super dealloc];
-}
 
 @end

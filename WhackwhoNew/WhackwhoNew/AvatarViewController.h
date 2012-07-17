@@ -21,12 +21,12 @@
     SpinnerView *spinner;
 }
 
-@property (nonatomic, retain) IBOutlet UIView *imageView;
+@property (nonatomic) IBOutlet UIView *imageView;
 
-@property (nonatomic, retain) SpinnerView *spinner;
+@property (nonatomic) SpinnerView *spinner;
 
-@property (nonatomic, retain) CameraOverlayControllerViewController *overlay;
-@property (nonatomic, retain) UIImagePickerController *cameraController;
+@property (nonatomic, strong) CameraOverlayControllerViewController *overlay;
+@property (nonatomic) UIImagePickerController *cameraController;
 //@property (nonatomic, retain) IBOutlet AvatarView *avatarView;
 
 -(IBAction) startCamera:(id)sender;

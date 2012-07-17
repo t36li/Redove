@@ -38,19 +38,19 @@
 
 }
 
-@property (nonatomic, retain) NSMutableArray *selectedHits;
-@property (nonatomic, retain) IBOutlet UIImageView *hit1;
-@property (nonatomic, retain) IBOutlet UIImageView *hit2;
-@property (nonatomic, retain) IBOutlet UIImageView *hit3;
-@property (nonatomic, retain) IBOutlet UIImageView *noHit1;
-@property (nonatomic, retain) IBOutlet UIImageView *noHit2;
-@property (nonatomic, retain) IBOutlet UIImageView *noHit3;
-@property (nonatomic, retain) IBOutlet UIImageView *noHit4;
-@property (nonatomic, retain) IBOutlet UIImageView *portrait;
-@property (nonatomic, retain) IBOutlet UITableView *table;
-@property (nonatomic, retain) SpinnerView *spinner;
-@property (nonatomic, retain) IBOutlet UIView *loadingView;
-@property (nonatomic, retain) NSArray *resultFriends;
+@property (nonatomic) NSMutableArray *selectedHits;
+@property (nonatomic) IBOutlet UIImageView *hit1;
+@property (nonatomic) IBOutlet UIImageView *hit2;
+@property (nonatomic) IBOutlet UIImageView *hit3;
+@property (nonatomic) IBOutlet UIImageView *noHit1;
+@property (nonatomic) IBOutlet UIImageView *noHit2;
+@property (nonatomic) IBOutlet UIImageView *noHit3;
+@property (nonatomic) IBOutlet UIImageView *noHit4;
+@property (nonatomic) IBOutlet UIImageView *portrait;
+@property (nonatomic) IBOutlet UITableView *table;
+@property (nonatomic) SpinnerView *spinner;
+@property (nonatomic) IBOutlet UIView *loadingView;
+@property (nonatomic) NSArray *resultFriends;
 
 -(IBAction) handleRandomButton:(id)sender;
 -(IBAction) nextTouched:(id)sender;

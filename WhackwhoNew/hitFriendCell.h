@@ -18,12 +18,12 @@
     SpinnerView *spinner;
 }
 
-@property (nonatomic, retain) UIImageView *profileImage;
-@property (nonatomic, retain) UILabel *name;
-@property (nonatomic, retain) UILabel *gender;
-@property (nonatomic, retain) NSString *identity;
-@property (nonatomic, retain) IBOutlet UIView *containerView;
-@property (nonatomic, retain) SpinnerView *spinner;
+@property (nonatomic) UIImageView *profileImage;
+@property (nonatomic) UILabel *name;
+@property (nonatomic) UILabel *gender;
+@property (nonatomic) NSString *identity;
+@property (nonatomic) IBOutlet UIView *containerView;
+@property (nonatomic, strong) SpinnerView *spinner;
 
 
 @end

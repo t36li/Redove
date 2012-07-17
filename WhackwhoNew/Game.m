@@ -42,12 +42,6 @@ static Game *sharedGame = nil;
     return self;
 }
 
-- (void)dealloc {
-    // TODO: Dealloc
-    [friendList release];
-    [selectedHeads release];
-    [super dealloc];
-}
 
 #pragma mark -
 /////////////////////
@@ -62,14 +56,14 @@ static Game *sharedGame = nil;
 }
 
 + (id)allocWithZone:(NSZone *)zone {
-    return [[self sharedGame] retain];
+    return [self sharedGame];
 }
 
 - (id)copyWithZone:(NSZone *)zone {
     return self;
 }
 
-- (id)retain {
+/*- (id)retain {
     return self;
 }
 
@@ -79,7 +73,7 @@ static Game *sharedGame = nil;
 
 - (id)autorelease {
     return self;
-}
+}*/
 
 #pragma mark -
 /////////////////////

@@ -53,9 +53,9 @@ typedef enum apiCall {
     int score;
 }
 @property (readonly) Facebook *facebook;
-@property (nonatomic, retain) id<FBSingletonDelegate> delegate;
+@property (nonatomic) id<FBSingletonDelegate> delegate;
 @property (nonatomic, assign) BOOL isLogIn;
-@property (nonatomic, retain) NSMutableDictionary *friendsDictionary;
+@property (nonatomic) NSMutableDictionary *friendsDictionary;
 
 + (FBSingleton *) sharedInstance;
 

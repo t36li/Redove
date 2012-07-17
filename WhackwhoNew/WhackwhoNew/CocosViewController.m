@@ -62,10 +62,11 @@
     [director didMoveToParentViewController:self];
     
     // Run whatever scene we'd like to run here.
-    if(director.runningScene)
-        [director replaceScene:[HelloWorldLayer scene]];
-    else
-        [director runWithScene:[HelloWorldLayer scene]];
+    //if(director.runningScene)
+    //    [director replaceScene:[HelloWorldLayer scene]];
+    //else
+    //    [director runWithScene:[HelloWorldLayer scene]];
+    [director runWithScene:[ChooseWhoLayer scene]];
 }
 
 - (void)viewDidUnload

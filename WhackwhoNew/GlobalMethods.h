@@ -11,7 +11,7 @@
 @interface GlobalMethods : NSObject{
 }
 
-@property (nonatomic, retain) NSMutableData *responseData;
+@property (nonatomic) NSMutableData *responseData;
 
 
 -(void) setViewBackground:(NSString *)BackgroundImage viewSender:(id)sender;

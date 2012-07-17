@@ -15,8 +15,8 @@
     UIImageView *backgroundView, *headView, *photoView;
 }
 
-@property (nonatomic, retain) UIImageView *backgroundView, *headView, *photoView;
-@property (nonatomic, retain) UIView *avatarView;
+@property (nonatomic) UIImageView *backgroundView, *headView, *photoView;
+@property (nonatomic) UIView *avatarView;
 
 +(UIImage *)resizeImage:(UIImage *)img toSize:(CGSize)rect;
 

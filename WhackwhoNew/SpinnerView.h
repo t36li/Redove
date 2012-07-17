@@ -14,9 +14,9 @@
     UIActivityIndicatorView *indicator;
 }
 
-@property (nonatomic, retain) UIImageView *backgroundView;
-@property (nonatomic, retain) UIView *superView;
-@property (nonatomic, retain) UIActivityIndicatorView *indicator;
+@property (nonatomic) UIImageView *backgroundView;
+@property (nonatomic) UIView *superView;
+@property (nonatomic) UIActivityIndicatorView *indicator;
 
 +(SpinnerView *)loadSpinnerIntoView:(UIView *)containerView;
 -(void)removeSpinner;

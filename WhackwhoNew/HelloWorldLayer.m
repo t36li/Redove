@@ -31,7 +31,7 @@
     [scene addChild:hud z:10];
     
 	// 'layer' is an autorelease object.
-	HelloWorldLayer *layer = [[[HelloWorldLayer alloc] initWithHUD:hud] autorelease];;
+	HelloWorldLayer *layer = [[HelloWorldLayer alloc] initWithHUD:hud];;
     
 	// add layer as a child to scene
 	[scene addChild: layer];
@@ -744,19 +744,5 @@
 }
 
 // on "dealloc" you need to release all your retained objects
-- (void) dealloc
-{
-	// in case you have something to dealloc, do it in this method
-	// in this particular example nothing needs to be released.
-	// cocos2d will automatically release all the children (Label)
-	
-	// don't forget to call "super dealloc"
-    [heads release];
-    [hearts release];
-    [rainbows release];
-    //[selectedHeads release];
-    //[bigList release];
-	[super dealloc];
-}
 
 @end

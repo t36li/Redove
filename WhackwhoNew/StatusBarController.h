@@ -13,7 +13,7 @@
     IBOutlet UIView *containerView;
 }
 
-@property (nonatomic, retain) IBOutlet UIView *containerView;
+@property (nonatomic) IBOutlet UIView *containerView;
 
 - (IBAction)Back_Touched:(id)sender;
 @end

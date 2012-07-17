@@ -13,8 +13,8 @@
     UIButton *back;
     UIButton *logout_but;
 }
-@property (nonatomic, retain) IBOutlet UIButton *back;
-@property (nonatomic, retain) IBOutlet UIButton *logout_but;
+@property (nonatomic) IBOutlet UIButton *back;
+@property (nonatomic) IBOutlet UIButton *logout_but;
 
 -(IBAction)back_touched:(id)sender;
 -(IBAction)logout_touched:(id)sender;

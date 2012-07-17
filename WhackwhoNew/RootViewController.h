@@ -19,10 +19,10 @@
     UIButton *opt_but;
     FriendsViewController *friendVC;
 }
-@property (nonatomic, retain) IBOutlet UIImageView *LoginAccountImageView; 
-@property (nonatomic, retain) IBOutlet UIButton *play_but;
-@property (nonatomic, retain) IBOutlet UIButton *opt_but;
-@property (nonatomic, retain) FriendsViewController *friendVC;
+@property (nonatomic) IBOutlet UIImageView *LoginAccountImageView; 
+@property (nonatomic) IBOutlet UIButton *play_but;
+@property (nonatomic) IBOutlet UIButton *opt_but;
+@property (nonatomic) FriendsViewController *friendVC;
 
 -(IBAction)play_touched:(id)sender;
 -(IBAction)opt_touched:(id)sender;

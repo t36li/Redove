@@ -19,8 +19,8 @@
     UIImage *bigHeadImg;
 }
 
-@property (nonatomic, retain) UIImage *usrImg, *croppedImage, *bigHeadImg;
-@property (nonatomic, retain) NSString *userId, *userName, *gender;
+@property (nonatomic) UIImage *usrImg, *croppedImage, *bigHeadImg;
+@property (nonatomic) NSString *userId, *userName, *gender;
 @property (nonatomic, readwrite) int currentLogInType;
 
 +(id)sharedInstance;
