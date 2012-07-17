@@ -11,7 +11,6 @@
 @protocol FBSingletonDelegate <NSObject>
 
 @optional
--(void)FBProfilePictureLoaded:(UIImage *)img;
 -(void)FbMeLoaded:(NSString *)userId :(NSString *)userName : (NSString *)gender;
 -(void)FBSingletonDidLogout;
 -(void)FBSingletonDidLogin:(NSString *)userId: (NSString *) userName : (NSString *)gender;

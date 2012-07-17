@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "FBSingletonDelegate.h"
-#import "UserInfoDelegate.h"
 #import "FBSingleton.h"
 #import "FriendsViewController.h"
 #import "SpinnerView.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
-@interface RootViewController : UIViewController<FBSingletonDelegate, UserInfoDelegate> {
+@interface RootViewController : UIViewController<FBSingletonDelegate> {
     UIImageView *LoginAccountImageView; //Facebook Profile Image, Renren Profile Image or Gmail
     UIButton *play_but;
     UIButton *opt_but;

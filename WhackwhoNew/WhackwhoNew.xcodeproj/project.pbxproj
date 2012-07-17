@@ -279,7 +279,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		690D418615AD360C00472F82 /* UserInfoDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoDelegate.h; sourceTree = "<group>"; };
 		690D419015AF5EC900472F82 /* friend list (background).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend list (background).png"; sourceTree = "<group>"; };
 		690D419415AF5F5600472F82 /* friend list (cell).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend list (cell).png"; sourceTree = "<group>"; };
 		692AC3A415B24C0D001E4858 /* hitFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hitFriendCell.h; sourceTree = "<group>"; };
@@ -844,7 +843,6 @@
 				C14718541594F0AE0002FF21 /* AppDelegate.m */,
 				D090C63615A238CE0051AA12 /* UserInfo.h */,
 				D090C63715A238CF0051AA12 /* UserInfo.m */,
-				690D418615AD360C00472F82 /* UserInfoDelegate.h */,
 				C14717FE1594ACD20002FF21 /* Prefix.pch */,
 				C14717FF1594ACD20002FF21 /* main.m */,
 				D006F6A715B4FB7D0079626F /* Friend.h */,

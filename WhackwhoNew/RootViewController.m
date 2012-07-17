@@ -69,7 +69,6 @@
     
     NSLog(@"Load/set currentLogInType");
     gmethods = [[GlobalMethods alloc] init];
-    [[UserInfo sharedInstance] setDelegate:self];
     usr = [UserInfo sharedInstance];
     
     if ((int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs]>0){
@@ -170,11 +169,18 @@
 
 -(void)FBSingletonDidLogout {
     self.LoginAccountImageView.image = nil;
-    
+    [self dismissModalViewControllerAnimated:YES];
+    [[UserInfo sharedInstance] setCurrentLogInType:NotLogIn];
 }
 
--(void)FBSingletonDidLogin {
+-(void)FBSingletonDidLogin:(NSString *)userId :(NSString *)userName :(NSString *)gender {
     //[[FBSingleton sharedInstance] RequestMeProfileImage];
+    [[UserInfo sharedInstance] setCurrentLogInType:LogInFacebook];
+    [[UserInfo sharedInstance] setUserId:userId];
+    [[UserInfo sharedInstance] setUserName:userName];
+    [[UserInfo sharedInstance] setGender:gender];
+    [self.navigationController popViewControllerAnimated:YES];
+    [[FBSingleton sharedInstance] RequestMe];
 }
 
 -(void) FBSIngletonUserFriendsDidLoaded:(NSArray *)friends{
@@ -189,16 +195,11 @@
         [usr setUserId:userId];
         [usr setUserName:userName];
         [usr setGender:gender];
-        [fbs RequestProfilePic:usr.userId];
+        
+        NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", userId];   
+        [LoginAccountImageView setImageWithURL:[NSURL URLWithString:formatting]];
         //LoginAccountImageView.image = [gmethods imageForObject:userId];
     }
-}
-
-//UserInfo Deleagate:
-
--(void)userInfoUpdated{
-    //LoginAccountImageView.image = [gmethods imageForObject:usr.userId];
-    [[FBSingleton sharedInstance] setDelegate:self];
 }
 
 ///////////////////////////

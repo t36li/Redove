@@ -11,7 +11,6 @@
 @implementation UserInfo
 
 @synthesize usrImg, croppedImage, userName, userId, currentLogInType, gender, bigHeadImg;
-@synthesize delegate;
 
 static UserInfo *sharedInstance = nil;
 
@@ -31,7 +30,6 @@ static UserInfo *sharedInstance = nil;
     [self setUsrImg:nil];
     [self setCroppedImage:nil];
     [self setGender:nil];
-    [delegate userInfoUpdated];
 }
 
 @end

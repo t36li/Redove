@@ -51,7 +51,7 @@
 
 -(IBAction)logout_touched:(id)sender{
     if ([[FBSingleton sharedInstance] isLogIn]){
-        [[FBSingleton sharedInstance] setDelegate:self];
+        //[[FBSingleton sharedInstance] setDelegate:self];
         [[FBSingleton sharedInstance] logout];
     }
 }
