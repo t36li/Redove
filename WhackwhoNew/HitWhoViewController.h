@@ -18,6 +18,9 @@
 #import "Friend.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
+#define MAX_HITTABLE 3
+#define MAX_NO_HITTABLE 4
+
 @interface HitWhoViewController : UIViewController<FBSingletonDelegate,UITableViewDelegate,UITableViewDataSource> {
     NSMutableArray *selectedHits;
     NSMutableArray *selectedHitsNames;
