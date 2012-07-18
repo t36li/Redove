@@ -36,7 +36,7 @@
 	// Do any additional setup after loading the view.
 
     selectedHits = [[NSMutableArray alloc] initWithObjects:hit1, hit2, hit3, nil];
-    selectedHitsNames = [[NSMutableArray alloc] initWithObjects:@"test", @"test", @"test", nil];
+    selectedHitsNames = [[NSMutableArray alloc] init];
     noHits = [[NSMutableArray alloc] initWithObjects:noHit1, noHit2, noHit3, noHit4, nil];
     noHitsNames = [[NSMutableArray alloc] init];
     
@@ -147,48 +147,56 @@
     // Only handle taps if the view is related to showing nearby places that
     // the user can check-in to.
     
+    if (! [resultFriends count])
+        return;
+    
     hitFriendCell *cell = (hitFriendCell *) [tableView cellForRowAtIndexPath:indexPath];
     
     UIImage *tempImage = cell.profileImage.image;
     NSString *usrId = cell.identity;
     int index = 0;
-    
-    for (UIImageView *temp in selectedHits) {
-        if (temp.image == nil) { //if no image there
-            
-            //set little circle image, check if already picked or randomed
-            if ([selectedHitsNames containsObject:usrId] || [noHitsNames containsObject:usrId] ) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Already Picked!" message:@"Press the button to..." delegate:self cancelButtonTitle:@"Resume" otherButtonTitles:nil];
-                [alert show];
-                return;
-            }
-            //if not picked, 
-            temp.image = tempImage;
-            portrait.image = tempImage;
-            temp.tag = index;
-            [selectedHitsNames replaceObjectAtIndex:index withObject:usrId];
-            
-            //set up big portraint image glview
-            //chooseWholayer has to obtain image from Game.h
-            // do something like [[game sharedgame] setHead: tempImage];
-            
-            temp.userInteractionEnabled = YES;
-
-            //add tap gesture (to view the glview)
-            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnImage:)];
-            tap.numberOfTapsRequired = 1;
-            [temp addGestureRecognizer:tap];
-            
-            //add swipe to cancel gesture (little cancel mark)
-            UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget: self action:@selector(handleSwipeOnImage:)];
-            swipe.numberOfTouchesRequired = 1;
-            [temp addGestureRecognizer:swipe];
-            
+    Friend *friend;
+    for (Friend *frd in resultFriends) {
+        if (frd.user_id == usrId) {
+            friend = frd;
             break;
         }
-        index++;
-    }//ends for loop
+    }
     
+    if (!([selectedHitsNames containsObject:friend] || [noHitsNames containsObject:friend])) {
+        if (selectedHitsNames.count < MAX_HITTABLE) {
+            [selectedHitsNames addObject:friend];
+            
+            for (UIImageView *temp in selectedHits) {
+                if (temp.image == nil) {
+                    temp.image = tempImage;
+                    portrait.image = tempImage;
+                    temp.tag = index;
+                    
+                    //set up big portraint image glview
+                    //chooseWholayer has to obtain image from Game.h
+                    // do something like [[game sharedgame] setHead: tempImage];
+                    
+                    temp.userInteractionEnabled = YES;
+                    
+                    //add tap gesture (to view the glview)
+                    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnImage:)];
+                    tap.numberOfTapsRequired = 1;
+                    [temp addGestureRecognizer:tap];
+                    
+                    //add swipe to cancel gesture (little cancel mark)
+                    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget: self action:@selector(handleSwipeOnImage:)];
+                    swipe.numberOfTouchesRequired = 1;
+                    [temp addGestureRecognizer:swipe];
+                    break;
+                }
+                index++;
+            }
+            
+            
+            
+        }
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -211,61 +219,58 @@
     
     //remove the object from the "taken" array
     int index = ((UIImageView *)(swipe.view)).tag;
-    [selectedHitsNames replaceObjectAtIndex:index withObject:@"test"];
+    
+    [selectedHitsNames removeObjectAtIndex:index];
 }
 
 -(IBAction) handleRandomButton:(id)sender {
     //first remove all previous names from the NameArray
-  /*  [noHitsNames removeAllObjects];
+    if (!resultFriends.count)
+        return;
     
+    [noHitsNames removeAllObjects];
+
     for (UIImageView *temp in noHits) {
         //if (temp.image == nil) {
         NSString *tempName;
         // do not generate if already selected
         while (TRUE) {
             int randFriend = arc4random() % [resultFriends count];
-            tempName = [[resultFriends objectAtIndex:randFriend] objectForKey:@"id"];
-            if (![selectedHitsNames containsObject:tempName]) {
+            Friend *friend = [resultFriends objectAtIndex:randFriend];
+            tempName = friend.user_id;
+            if (![noHitsNames containsObject:friend]) {
+                [noHitsNames addObject:friend];
+                NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", friend.user_id];
+                [temp setImageWithURL:[NSURL URLWithString:formatting]];
                 break;
+                
+                temp.userInteractionEnabled = YES;
+                
+                //add tap gesture (to view the glview)
+                UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnImage:)];
+                tap.numberOfTapsRequired = 1;
+                [temp addGestureRecognizer:tap];
             }
         }
-        
-        UIImage *tempImage = [[GlobalMethods alloc] imageForObject:tempName];
-        [noHitsNames addObject:tempName];
-        
-        temp.userInteractionEnabled = YES;
-        
-        //add tap gesture (to view the glview)
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnImage:)];
-        tap.numberOfTapsRequired = 1;
-        [temp addGestureRecognizer:tap];
-        
-        temp.image = tempImage;
-        //}
-    }*/
+    }
 }
 
 -(IBAction) nextTouched:(id)sender {
     //if did not select all hits or did not press random
-   /* if ([selectedHitsNames containsObject:@"test"] || [noHitsNames count] < 1) {
+    if ([selectedHitsNames containsObject:@"test"] || [noHitsNames count] < 1) {
         //display alert showing must select all b4 game
         return;
     } else {
     
-    NSMutableArray *tempArray = [[NSMutableArray alloc] init];
-    
-    for (NSString *temp in selectedHitsNames) {
-        [tempArray addObject:temp];
+        NSMutableArray *tempArray = [[NSMutableArray alloc] init];
+        [tempArray addObjectsFromArray:selectedHitsNames];
+        [tempArray addObjectsFromArray:noHitsNames];
+        
+        [[Game sharedGame] setFriendList:tempArray];
+        [[Game sharedGame] setSelectedHeads:selectedHitsNames];
+        
+        [self performSegueWithIdentifier:ChooseToGame sender:sender];
     }
-    for (NSString *temp in noHitsNames) {
-        [tempArray addObject:temp];
-    }
-    
-    [[Game sharedGame] setFriendList:tempArray];
-    [[Game sharedGame] setSelectedHeads:selectedHitsNames];
-    
-    [self performSegueWithIdentifier:ChooseToGame sender:sender];
-    }*/
     [self performSegueWithIdentifier:ChooseToGame sender:sender];
 
 }

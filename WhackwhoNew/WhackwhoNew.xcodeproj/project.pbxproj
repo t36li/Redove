@@ -2432,6 +2432,7 @@
 				C159329915B60186009B7955 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
