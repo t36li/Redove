@@ -9,16 +9,32 @@
 #import "ChooseWhoLayer.h"
 #import "HelloWorldLayer.h"
 #import "TBXML.h"
+#import "StatusBarController.h"
 
 @implementation ChooseWhoLayer
 
-+(CCScene *) scene
+@synthesize gameOverDelegate;
++(CCScene *) scene {
+    // 'scene' is an autorelease object.
+	CCScene *scene = [CCScene node];
+	
+	// 'layer' is an autorelease object.
+	ChooseWhoLayer *layer = [ChooseWhoLayer node];
+    
+	// add layer as a child to scene
+	[scene addChild: layer z:0];
+    
+	// return the scene
+	return scene;
+}
++(CCScene *) sceneWithDelegate:(id<GameOverDelegate>)delegate
 {
 	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
 	
 	// 'layer' is an autorelease object.
 	ChooseWhoLayer *layer = [ChooseWhoLayer node];
+    layer.gameOverDelegate = delegate;
     
 	// add layer as a child to scene
 	[scene addChild: layer z:0];
@@ -168,12 +184,19 @@
             [starMenu addChild:labelBut];
         }];
         
+        CCMenuItemLabel *mainMenuBut = [CCMenuItemLabel itemWithLabel:[CCLabelTTF labelWithString:@"Main Menu" fontName:@"Verdana" fontSize:12] target:self selector:@selector(mainMenu)];
+        [resumeBut setAnchorPoint:ccp(0, 0.5f)];
+        [starMenu addChild:mainMenuBut];
         
         [starMenu alignItemsVertically];
         [self addChild:starMenu];
         
     }
     return self;
+}
+
+-(void) mainMenu {
+    [gameOverDelegate returnToMenu];
 }
 
 -(void) gotoFrame

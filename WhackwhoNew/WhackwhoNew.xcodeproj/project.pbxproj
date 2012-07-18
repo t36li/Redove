@@ -317,6 +317,11 @@
 		C159349615B60DC2009B7955 /* robotcharactermc_ShoulderL.png in Resources */ = {isa = PBXBuildFile; fileRef = C159348615B60DC2009B7955 /* robotcharactermc_ShoulderL.png */; };
 		C159349715B60DC2009B7955 /* robotcharactermc_ShoulderR.png in Resources */ = {isa = PBXBuildFile; fileRef = C159348715B60DC2009B7955 /* robotcharactermc_ShoulderR.png */; };
 		C159349815B60DC2009B7955 /* robotcharactermc_Wheel.png in Resources */ = {isa = PBXBuildFile; fileRef = C159348815B60DC2009B7955 /* robotcharactermc_Wheel.png */; };
+		C159349B15B6599A009B7955 /* person status layer1.png in Resources */ = {isa = PBXBuildFile; fileRef = C159349A15B6599A009B7955 /* person status layer1.png */; };
+		C15934A015B659B7009B7955 /* circle window.png in Resources */ = {isa = PBXBuildFile; fileRef = C159349C15B659B7009B7955 /* circle window.png */; };
+		C15934A115B659B7009B7955 /* inventory box.png in Resources */ = {isa = PBXBuildFile; fileRef = C159349D15B659B7009B7955 /* inventory box.png */; };
+		C15934A215B659B7009B7955 /* personal item box.png in Resources */ = {isa = PBXBuildFile; fileRef = C159349E15B659B7009B7955 /* personal item box.png */; };
+		C15934A315B659B7009B7955 /* personal main frame.png in Resources */ = {isa = PBXBuildFile; fileRef = C159349F15B659B7009B7955 /* personal main frame.png */; };
 		C1691FF015AFB86D00F081AF /* right button.png in Resources */ = {isa = PBXBuildFile; fileRef = C1691FEF15AFB86D00F081AF /* right button.png */; };
 		C1691FF215AFB8F500F081AF /* mode_layer1.png in Resources */ = {isa = PBXBuildFile; fileRef = C1691FF115AFB8F500F081AF /* mode_layer1.png */; };
 		C1691FF415AFB95100F081AF /* left button.png in Resources */ = {isa = PBXBuildFile; fileRef = C1691FF315AFB95100F081AF /* left button.png */; };
@@ -772,9 +777,9 @@
 		C159338815B604D6009B7955 /* vec2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vec2.c; sourceTree = "<group>"; };
 		C159338915B604D6009B7955 /* vec3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vec3.c; sourceTree = "<group>"; };
 		C159338A15B604D6009B7955 /* vec4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vec4.c; sourceTree = "<group>"; };
-		C159338B15B604D6009B7955 /* LICENSE_cocos2d.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE_cocos2d.txt; path = WhackwhoNew/libs/LICENSE_cocos2d.txt; sourceTree = "<group>"; };
-		C159338C15B604D6009B7955 /* LICENSE_CocosDenshion.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE_CocosDenshion.txt; path = WhackwhoNew/libs/LICENSE_CocosDenshion.txt; sourceTree = "<group>"; };
-		C159338D15B604D6009B7955 /* LICENSE_Kazmath.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE_Kazmath.txt; path = WhackwhoNew/libs/LICENSE_Kazmath.txt; sourceTree = "<group>"; };
+		C159338B15B604D6009B7955 /* LICENSE_cocos2d.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE_cocos2d.txt; path = libs/LICENSE_cocos2d.txt; sourceTree = "<group>"; };
+		C159338C15B604D6009B7955 /* LICENSE_CocosDenshion.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE_CocosDenshion.txt; path = libs/LICENSE_CocosDenshion.txt; sourceTree = "<group>"; };
+		C159338D15B604D6009B7955 /* LICENSE_Kazmath.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE_Kazmath.txt; path = libs/LICENSE_Kazmath.txt; sourceTree = "<group>"; };
 		C159347415B60B07009B7955 /* CCRobot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCRobot.h; sourceTree = "<group>"; };
 		C159347515B60B08009B7955 /* CCRobot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCRobot.m; sourceTree = "<group>"; };
 		C159347915B60DC2009B7955 /* robot_animations.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = robot_animations.xml; sourceTree = "<group>"; };
@@ -793,6 +798,12 @@
 		C159348615B60DC2009B7955 /* robotcharactermc_ShoulderL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = robotcharactermc_ShoulderL.png; sourceTree = "<group>"; };
 		C159348715B60DC2009B7955 /* robotcharactermc_ShoulderR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = robotcharactermc_ShoulderR.png; sourceTree = "<group>"; };
 		C159348815B60DC2009B7955 /* robotcharactermc_Wheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = robotcharactermc_Wheel.png; sourceTree = "<group>"; };
+		C159349915B64988009B7955 /* GameOverDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameOverDelegate.h; sourceTree = "<group>"; };
+		C159349A15B6599A009B7955 /* person status layer1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "person status layer1.png"; sourceTree = "<group>"; };
+		C159349C15B659B7009B7955 /* circle window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle window.png"; sourceTree = "<group>"; };
+		C159349D15B659B7009B7955 /* inventory box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inventory box.png"; sourceTree = "<group>"; };
+		C159349E15B659B7009B7955 /* personal item box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personal item box.png"; sourceTree = "<group>"; };
+		C159349F15B659B7009B7955 /* personal main frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personal main frame.png"; sourceTree = "<group>"; };
 		C1691FEF15AFB86D00F081AF /* right button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right button.png"; sourceTree = "<group>"; };
 		C1691FF115AFB8F500F081AF /* mode_layer1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_layer1.png; sourceTree = "<group>"; };
 		C1691FF315AFB95100F081AF /* left button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left button.png"; sourceTree = "<group>"; };
@@ -945,6 +956,10 @@
 		690D418F15AF5E9000472F82 /* Frames */ = {
 			isa = PBXGroup;
 			children = (
+				C159349C15B659B7009B7955 /* circle window.png */,
+				C159349D15B659B7009B7955 /* inventory box.png */,
+				C159349E15B659B7009B7955 /* personal item box.png */,
+				C159349F15B659B7009B7955 /* personal main frame.png */,
 				690D419415AF5F5600472F82 /* friend list (cell).png */,
 				C1691FF815AFC4C100F081AF /* cell.png */,
 				C16921FF15B34D5C00F081AF /* choose main portrait.png */,
@@ -1090,6 +1105,7 @@
 		69C95E94159A51E0009966DA /* Background */ = {
 			isa = PBXGroup;
 			children = (
+				C159349A15B6599A009B7955 /* person status layer1.png */,
 				C159285D15B35083009B7955 /* loading page background.png */,
 				C1691FF115AFB8F500F081AF /* mode_layer1.png */,
 				C16921BF15B129BE00F081AF /* cloud background.png */,
@@ -1131,12 +1147,6 @@
 		C147166A1594ACCA0002FF21 = {
 			isa = PBXGroup;
 			children = (
-				C159329B15B604D5009B7955 /* cocos2d */,
-				C159335E15B604D6009B7955 /* CocosDenshion */,
-				C159336815B604D6009B7955 /* kazmath */,
-				C159338B15B604D6009B7955 /* LICENSE_cocos2d.txt */,
-				C159338C15B604D6009B7955 /* LICENSE_CocosDenshion.txt */,
-				C159338D15B604D6009B7955 /* LICENSE_Kazmath.txt */,
 				D006009515B5F29A0079626F /* SDWebImage.xcodeproj */,
 				D006FCE515B51DC10079626F /* ImageIO.framework */,
 				C159287415B4E2DD009B7955 /* libz.dylib */,
@@ -1210,6 +1220,12 @@
 		C14716A41594ACCA0002FF21 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				C159329B15B604D5009B7955 /* cocos2d */,
+				C159335E15B604D6009B7955 /* CocosDenshion */,
+				C159336815B604D6009B7955 /* kazmath */,
+				C159338B15B604D6009B7955 /* LICENSE_cocos2d.txt */,
+				C159338C15B604D6009B7955 /* LICENSE_CocosDenshion.txt */,
+				C159338D15B604D6009B7955 /* LICENSE_Kazmath.txt */,
 				696F17AA15A3CA5700DC849F /* Facebook */,
 			);
 			name = libs;
@@ -1225,6 +1241,7 @@
 				C147185A1594F1AF0002FF21 /* CocosViewController.m */,
 				C14B63B515AF5C3700376C91 /* Game.h */,
 				C14B63B615AF5C3700376C91 /* Game.m */,
+				C159349915B64988009B7955 /* GameOverDelegate.h */,
 				C14B63B815AF5C9200376C91 /* ChooseWhoLayer.h */,
 				C14B63B915AF5C9200376C91 /* ChooseWhoLayer.m */,
 				C1691FF515AFBA7C00F081AF /* HelloWorldLayer.h */,
@@ -1421,7 +1438,7 @@
 				C159334215B604D6009B7955 /* Support */,
 			);
 			name = cocos2d;
-			path = WhackwhoNew/libs/cocos2d;
+			path = libs/cocos2d;
 			sourceTree = "<group>";
 		};
 		C159332915B604D6009B7955 /* Platforms */ = {
@@ -1517,7 +1534,7 @@
 				C159336715B604D6009B7955 /* SimpleAudioEngine.m */,
 			);
 			name = CocosDenshion;
-			path = WhackwhoNew/libs/CocosDenshion;
+			path = libs/CocosDenshion;
 			sourceTree = "<group>";
 		};
 		C159336815B604D6009B7955 /* kazmath */ = {
@@ -1527,7 +1544,7 @@
 				C159337A15B604D6009B7955 /* src */,
 			);
 			name = kazmath;
-			path = WhackwhoNew/libs/kazmath;
+			path = libs/kazmath;
 			sourceTree = "<group>";
 		};
 		C159336915B604D6009B7955 /* include */ = {
@@ -2098,6 +2115,11 @@
 				C159349615B60DC2009B7955 /* robotcharactermc_ShoulderL.png in Resources */,
 				C159349715B60DC2009B7955 /* robotcharactermc_ShoulderR.png in Resources */,
 				C159349815B60DC2009B7955 /* robotcharactermc_Wheel.png in Resources */,
+				C159349B15B6599A009B7955 /* person status layer1.png in Resources */,
+				C15934A015B659B7009B7955 /* circle window.png in Resources */,
+				C15934A115B659B7009B7955 /* inventory box.png in Resources */,
+				C15934A215B659B7009B7955 /* personal item box.png in Resources */,
+				C15934A315B659B7009B7955 /* personal main frame.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

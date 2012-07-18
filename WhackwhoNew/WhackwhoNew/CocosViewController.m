@@ -24,6 +24,8 @@
 {
     [super viewDidLoad];
     
+    //mainMenu.hidden = YES;
+    
     CCDirector *director = [CCDirector sharedDirector];
     
     if([director isViewLoaded] == NO)
@@ -66,7 +68,14 @@
     //    [director replaceScene:[HelloWorldLayer scene]];
     //else
     //    [director runWithScene:[HelloWorldLayer scene]];
-    [director runWithScene:[ChooseWhoLayer scene]];
+    [director runWithScene:[ChooseWhoLayer sceneWithDelegate:self]];
+    
+}
+
+-(void)returnToMenu {
+    UINavigationController *nav = self.navigationController;
+    [self.navigationController popViewControllerAnimated:YES];
+    [[CCDirector sharedDirector] end];
 }
 
 - (void)viewDidUnload
