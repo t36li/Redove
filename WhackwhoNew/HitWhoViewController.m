@@ -257,7 +257,7 @@
 
 -(IBAction) nextTouched:(id)sender {
     //if did not select all hits or did not press random
-    if ([selectedHitsNames containsObject:@"test"] || [noHitsNames count] < 1) {
+   /* if ([selectedHitsNames containsObject:@"test"] || [noHitsNames count] < 1) {
         //display alert showing must select all b4 game
         return;
     } else {
@@ -270,7 +270,7 @@
         [[Game sharedGame] setSelectedHeads:selectedHitsNames];
         
         [self performSegueWithIdentifier:ChooseToGame sender:sender];
-    }
+    }*/
     [self performSegueWithIdentifier:ChooseToGame sender:sender];
 
 }

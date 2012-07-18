@@ -185,7 +185,7 @@
         }];
         
         CCMenuItemLabel *mainMenuBut = [CCMenuItemLabel itemWithLabel:[CCLabelTTF labelWithString:@"Main Menu" fontName:@"Verdana" fontSize:12] target:self selector:@selector(mainMenu)];
-        [resumeBut setAnchorPoint:ccp(0, 0.5f)];
+        [mainMenuBut setAnchorPoint:ccp(0, 0.5f)];
         [starMenu addChild:mainMenuBut];
         
         [starMenu alignItemsVertically];

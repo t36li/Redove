@@ -10,16 +10,19 @@
 #import "CameraOverlayControllerViewController.h"
 #import "AvatarBaseController.h"
 #import "SpinnerView.h"
+#import "GlobalMethods.h"
 
 @interface AvatarViewController : AvatarBaseController <CameraOverlayControllerViewControllerDelegate> {
     
     IBOutlet UIView *imageView;
+    IBOutlet UIView *wtfView;
     CameraOverlayControllerViewController *overlay;
     //IBOutlet AvatarView *avatarView;
     UIImagePickerController *cameraController;
     BOOL newPhoto;
     SpinnerView *spinner;
 }
+@property (nonatomic) IBOutlet UIView *wtfView;
 
 @property (nonatomic) IBOutlet UIView *imageView;
 

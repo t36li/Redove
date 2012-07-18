@@ -17,7 +17,7 @@
 
 @implementation AvatarViewController
 
-@synthesize imageView, overlay, cameraController, spinner;
+@synthesize imageView, overlay, cameraController, spinner, wtfView;
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) {
@@ -33,6 +33,10 @@
 	// Do any additional setup after loading the view.
     
     newPhoto = NO;
+    
+    //set up background image
+    GlobalMethods *gmethods = [[GlobalMethods alloc] init];
+    [gmethods setViewBackground:FriendList_bg viewSender:self.view];
     
     cameraController = [[UIImagePickerController alloc] init];
     self.overlay = [[CameraOverlayControllerViewController alloc] initWithNibName:@"CameraOverlayControllerViewController" bundle:nil];
@@ -62,8 +66,8 @@
     }
     
     self.navigationController.navigationBarHidden = NO;
-    
     //avatarView.frame = imageView.bounds;
+    self.wtfView.backgroundColor = [UIColor clearColor];
     [self.imageView addSubview:avatarView];
 }
 

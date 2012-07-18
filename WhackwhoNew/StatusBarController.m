@@ -30,6 +30,7 @@
     
     avatarView.frame = containerView.bounds;
     [containerView addSubview:avatarView];
+    //[containerView setBackgroundColor:[UIColor clearColor]];
 }
 
 - (void)viewDidUnload

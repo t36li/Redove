@@ -68,14 +68,14 @@
     //    [director replaceScene:[HelloWorldLayer scene]];
     //else
     //    [director runWithScene:[HelloWorldLayer scene]];
-    [director runWithScene:[ChooseWhoLayer sceneWithDelegate:self]];
+    [director runWithScene:[HelloWorldLayer sceneWithDelegate:self]];
     
 }
 
 -(void)returnToMenu {
-    UINavigationController *nav = self.navigationController;
+    //UINavigationController *nav = self.navigationController;
     [self.navigationController popViewControllerAnimated:YES];
-    [[CCDirector sharedDirector] end];
+    //[[CCDirector sharedDirector] end];
 }
 
 - (void)viewDidUnload

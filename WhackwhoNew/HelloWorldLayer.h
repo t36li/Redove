@@ -41,10 +41,14 @@
     ccTime totalTime;
     BOOL gameOver, occupied, gamePaused;
     HUDLayer * _hud;
+    id<GameOverDelegate> gameOverDelegate;
 }
+
+@property (nonatomic, retain) id<GameOverDelegate> gameOverDelegate;
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
 +(CCScene *) scene;
++(CCScene *) sceneWithDelegate:(id<GameOverDelegate>)delegate;
 - (id)initWithHUD:(HUDLayer *)hud;
 
 

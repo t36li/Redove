@@ -35,7 +35,7 @@
     
     //self.isTouchEnabled = NO;
     baseScore = [[Game sharedGame] baseScore];
-    consecHits = [[Game sharedGame] consecHits];
+   // consecHits = [[Game sharedGame] consecHits];
     
     CCLayerColor *colorLayer = [CCLayerColor layerWithColor:ccc4(0, 0, 0, 80)];
     //[colorLayer setOpacity:80];

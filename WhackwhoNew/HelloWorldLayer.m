@@ -20,6 +20,7 @@
 // HelloWorldLayer implementation
 @implementation HelloWorldLayer
 
+@synthesize gameOverDelegate;
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
 +(CCScene *) scene
 {
@@ -31,11 +32,31 @@
     [scene addChild:hud z:10];
     
 	// 'layer' is an autorelease object.
-	HelloWorldLayer *layer = [[HelloWorldLayer alloc] initWithHUD:hud];;
+	HelloWorldLayer *layer = [[HelloWorldLayer alloc] initWithHUD:hud];
     
 	// add layer as a child to scene
 	[scene addChild: layer];
 	
+	// return the scene
+	return scene;
+}
+
++(CCScene *) sceneWithDelegate:(id<GameOverDelegate>)delegate
+{
+	// 'scene' is an autorelease object.
+	CCScene *scene = [CCScene node];
+    
+    // 'hud' is the restart object
+    HUDLayer *hud = [HUDLayer node];
+    [scene addChild:hud z:10];
+	
+	// 'layer' is an autorelease object.
+	HelloWorldLayer *layer = [[HelloWorldLayer alloc] initWithHUD:hud];
+    layer.gameOverDelegate = delegate;
+    
+	// add layer as a child to scene
+	[scene addChild: layer z:0];
+    
 	// return the scene
 	return scene;
 }
@@ -115,11 +136,11 @@
         [self addChild:hitsLabel z:10];
         
         //add "combo" label
-        comboLabel = [CCLabelTTF labelWithString:@"  HIT COMBO" fontName:@"chalkduster" fontSize:20];
-        comboLabel.color = ccc3(255, 249, 0);
-        comboLabel.anchorPoint = ccp(0.5,1);
-        comboLabel.position = ccp(s.width/2, s.height - 30);
-        [self addChild:comboLabel z:10];
+       // comboLabel = [CCLabelTTF labelWithString:@"  HIT COMBO" fontName:@"chalkduster" fontSize:20];
+       // comboLabel.color = ccc3(255, 249, 0);
+       // comboLabel.anchorPoint = ccp(0.5,1);
+       // comboLabel.position = ccp(s.width/2, s.height - 30);
+       // [self addChild:comboLabel z:10];
         
         //add "pause" label
         CCMenuItemImage *pause = [CCMenuItemImage itemWithNormalImage:@"pause.png" selectedImage:@"pause.png" target:self selector:@selector(pauseGame)];
@@ -141,7 +162,7 @@
         }
         
         //add "rainbows"
-        rainbows = [[NSMutableArray alloc] init];
+      /*  rainbows = [[NSMutableArray alloc] init];
         CCSprite *rainbow = [CCSprite spriteWithFile:@"rainbow4.png"];
         rainbow.position = ccp(156, 192);
         rainbow.visible = FALSE;
@@ -164,7 +185,7 @@
         [self addChild:rainbow4 z:-95];
         [self addChild:rainbow3 z:-95];
         [self addChild:rainbow2 z:-95];
-        [self addChild:rainbow z:-95];
+        [self addChild:rainbow z:-95];*/
         
         //add "Scoreboard and flowers"
         CCSprite *scoreboard = [CCSprite spriteWithFile:@"scoreboard.png"];
@@ -172,6 +193,7 @@
         scoreboard.position = ccp(s.width/2 + 10, -10);
         scoreboard.scale = 0.8;
         [self addChild:scoreboard z:10];
+        
         //add "score" label
         scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"chalkduster" fontSize:50];
         scoreLabel.color = ccc3(255, 200, 0);
@@ -181,7 +203,7 @@
         //2 arrays containing the @"ids"        
         heads = [[NSMutableArray alloc] init];
        // NSArray *bigList = [[Game sharedGame] friendList];
-        NSArray *selectedHeads = [[Game sharedGame] selectedHeads];
+       // NSArray *selectedHeads = [[Game sharedGame] selectedHeads];
         
         //set all positions to not taken (i.e. = 0)
         for (int i = 0; i < 17; i++) {
@@ -189,50 +211,55 @@
         }
         
         //testing UserInfo image taken from camera
-        UserInfo *usr = [UserInfo sharedInstance];
-        UIImage *tempImage = usr.bigHeadImg;
+        //UserInfo *usr = [UserInfo sharedInstance];
+        //UIImage *helmetImage = usr.bigHeadImg;
         
-        
-        //testing passing string arrays from UIKIT
-        //NSString * = [[resultFriends objectAtIndex:randFriend] objectForKey:@"id"];
-        //UIImage *tempImage = [[GlobalMethods alloc] imageForObject:[bigList objectAtIndex:0]];
-        
-        Character *head = [Character spriteWithCGImage:[tempImage CGImage] key:@"test"];
-        head.position = ccp(50, 50);
-        [self addChild:head z:100];
+        //Character *head = [Character spriteWithCGImage:[tempImage CGImage] key:@"test"];
+        //head.position = ccp(50, 50);
+        //[self addChild:head z:100];
         
         //testing:
-      /*  NSArray *testbigList = [NSArray arrayWithObjects:@"baby.png", @"olaf.png", @"vlad.png", @"mice.png", @"pinky.png", @"monk.png", @"blue.png",nil];
-        
+        NSArray *testbigList = [NSArray arrayWithObjects:@"baby.png", @"olaf.png", @"vlad.png", @"mice.png", @"pinky.png", @"monk.png", @"blue.png",nil];
+        //for (NSString *friend in bigList)
+        int index = 1;
         for (NSString *friend in testbigList) {
             //get the friend portrait image...once database kicks in, we will grab the big head
             //UIImage *tempImage = [[GlobalMethods alloc] imageForObject:friend];
             UIImage *tempImage = [UIImage imageNamed:friend];
-            Character *head = [Character spriteWithCGImage:[tempImage CGImage] key:friend];
+            Character *head = [Character spriteWithCGImage:[tempImage CGImage] key:[NSString stringWithFormat:@"head_frame%i", index]];
             [head setTappable:FALSE];
-            //[head setImageName:friend];
             head.sideWaysMove = FALSE;
             head.anchorPoint = ccp(0,0);
             head.scale = 1;
-            if ([selectedHeads containsObject:friend]) {
-                head.isSelectedHit = FALSE;
-            } else {
-                head.isSelectedHit = TRUE;
-            }
+            head.isSelectedHit = TRUE;
             head.visible = FALSE;
+            //CCSprite *helmet = [CCSprite spriteWithCGImage:[helmetImage CGImage] key:[NSString stringWithFormat:@"helmet_frame%i", index]];
+            CCSprite *helmet = [CCSprite spriteWithFile:@"peter head.png"];
+            
+            //[head setImageName:friend];
+            
+            //if ([selectedHeads containsObject:friend]) {
+            //    head.isSelectedHit = FALSE;
+            //} else {
+            //    head.isSelectedHit = TRUE;
+            //}
+            helmet.position = ccp(head.contentSize.width/2, head.contentSize.height/2);
+            helmet.scale = 0.05;
+            
+            [head addChild:helmet];
             [self addChild:head];
             [heads addObject:head];
+            index++;
         }
         
         [self schedule:@selector(tryPopheads) interval:1.5];
         [self schedule:@selector(checkGameState) interval:0.1];
-        [self schedule:@selector(timerUpdate:) interval:0.001];*/
+        [self schedule:@selector(timerUpdate:) interval:0.001];
         
         //set laughAnimations variables
         //laughAnim = [self laughAnimation];
         //laughAnim = [self animationFromPlist:@"laughAnim" delay:0.5];
         //[[CCAnimationCache sharedAnimationCache] addAnimation:laughAnim name:@"laughAnim"];
-        
 	}
     
 	return self;
@@ -252,9 +279,10 @@
     } else if (buttonIndex == 1) {
         gameOver = TRUE;
         [[CCDirector sharedDirector] resume];
-        CCScene *scene = [ChooseWhoLayer scene];
+        //CCScene *scene = [ChooseWhoLayer scene];
         [[Game sharedGame] resetGameState];
-        [[CCDirector sharedDirector] replaceScene:[CCTransitionZoomFlipX transitionWithDuration:0.5 scene:scene]];
+        [gameOverDelegate returnToMenu];
+        //[[CCDirector sharedDirector] replaceScene:[CCTransitionZoomFlipX transitionWithDuration:0.5 scene:scene]];
     }
     
 }
@@ -336,7 +364,7 @@
     if (myTime <= 0 || lives <= 0) {
         [self unscheduleAllSelectors];
         [[Game sharedGame] setBaseScore:baseScore];
-        [[Game sharedGame] setConsecHits:consecHits];
+        //[[Game sharedGame] setConsecHits:consecHits];
         [_hud showRestartMenu:NO];
         
         gameOver = TRUE;
@@ -351,10 +379,10 @@
     //[self performSelector:@selector(checkGameState)];
     
     //should remove the head from the array if head.hp == 0?
-    
+    //changed to 50% chance to pop for testing purposes
     for (Character *head in heads) {
         if (head.numberOfRunningActions == 0) {
-            if (arc4random() % 100 < 90) {
+            if (arc4random() % 100 < 50) {
                 //pop the selected heads
                 if (head.isSelectedHit == TRUE) {
                     //numHitOccur++;
@@ -381,71 +409,6 @@
     CCCallFuncN *setOccupied = [CCCallFuncN actionWithTarget:self selector:@selector(setOccupied:)];
     [head runAction:[CCSequence actions:setOccupied, nil]];
     
-}
-
--(void) setTappable: (id) sender {
-    Character *head = (Character *) sender;
-    [head setTappable:TRUE];
-}
-
--(void) unSetTappable: (id) sender {
-    Character *head = (Character *) sender;
-    [head setTappable:FALSE];
-}
-
--(void) checkCombo: (id) sender {
-    Character *head = (Character *) sender;
-    int position = head.posOccupied;
-    pos[position] = 0;
-    head.rotation = 0;
-    head.sideWaysMove = FALSE;
-    head.scale = 1;
-    head.visible = FALSE;
-    if (head.didMiss && head.isSelectedHit) {
-        consecHits = 0;
-    }
-    
-    //display rainbows according to hit streaks
-    if (consecHits == 0) {
-        //consecHits = 0;
-        //set all rainbows to not visible
-        for (CCSprite *temp in rainbows) {
-            CCFadeOut *fadeOut = [CCFadeOut actionWithDuration:1.5];
-            [temp runAction:fadeOut];
-            temp.visible = FALSE;
-        }
-        speed = 1.5;
-        [self unschedule:@selector(tryPopheads)];
-        [self schedule:@selector(tryPopheads) interval:speed];
-    } else if (consecHits % 5 == 0){
-        //show rainbows every 5 hit combos
-        //BOOL runLoop = FALSE;
-        //check if all rainbows showing, if yes don't run next loop
-        /*       for (CCSprite *temp in rainbows) {
-         if (!temp.visible) {
-         runLoop = TRUE;
-         break;
-         }
-         }
-         
-         while (runLoop) {
-         int randRainbow = arc4random() % 4;
-         CCSprite *temp = [rainbows objectAtIndex:randRainbow];
-         if (!temp.visible) {
-         temp.visible = TRUE;
-         CCFadeTo *fadeOut = [CCFadeTo actionWithDuration:0.5 opacity:80];
-         CCFadeTo *fadeIn = [CCFadeTo actionWithDuration:0.5 opacity:255];
-         CCRepeatForever *repeat = [CCRepeatForever actionWithAction:[CCSequence actionOne:fadeOut two:fadeIn]];
-         [temp runAction:repeat];
-         break;
-         }
-         } */
-        
-        //update speed accordingly with combo times
-        speed *= 0.5;
-        [self unschedule:@selector(tryPopheads)];
-        [self schedule:@selector(tryPopheads) interval:speed];
-    }
 }
 
 -(void) setOccupied: (id) sender {
@@ -625,7 +588,7 @@
         CCCallFuncN *unsetTappable = [CCCallFuncN actionWithTarget:self selector:@selector(unSetTappable:)];
         CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
         //CCAnimate *laugh = [CCAnimate actionWithAnimation:laughAnim];
-        CCDelayTime *delay = [CCDelayTime actionWithDuration:2.0];
+        CCDelayTime *delay = [CCDelayTime actionWithDuration:4.0];
         
         //to fix "bug" put unsetTappble infront of fadeout
         //[head runAction:[CCSequence actions:setTappable, fadeIn, delay, fadeOut, unsetTappable, delay, checkCombo, nil]];
@@ -637,17 +600,87 @@
     }
 }
 
+-(void) setTappable: (id) sender {
+    Character *head = (Character *) sender;
+    [head setTappable:TRUE];
+}
+
+-(void) unSetTappable: (id) sender {
+    Character *head = (Character *) sender;
+    [head setTappable:FALSE];
+}
+
+-(void) checkCombo: (id) sender {
+    Character *head = (Character *) sender;
+    int position = head.posOccupied;
+    pos[position] = 0;
+    head.rotation = 0;
+    head.sideWaysMove = FALSE;
+    head.scale = 1;
+    head.visible = FALSE;
+    if (head.didMiss && head.isSelectedHit) {
+        //play add score animation
+        baseScore += consecHits;
+        consecHits = 0;
+    }
+    
+    //display rainbows according to hit streaks
+    if (consecHits == 0) {
+        //consecHits = 0;
+        //set all rainbows to not visible
+        //for (CCSprite *temp in rainbows) {
+        //    CCFadeOut *fadeOut = [CCFadeOut actionWithDuration:1.5];
+        //    [temp runAction:fadeOut];
+        //    temp.visible = FALSE;
+        //}
+        speed = 1.5;
+        [self unschedule:@selector(tryPopheads)];
+        [self schedule:@selector(tryPopheads) interval:speed];
+    } else if (consecHits % 5 == 0){
+        //show rainbows every 5 hit combos
+        //BOOL runLoop = FALSE;
+        //check if all rainbows showing, if yes don't run next loop
+        /*       for (CCSprite *temp in rainbows) {
+         if (!temp.visible) {
+         runLoop = TRUE;
+         break;
+         }
+         }
+         
+         while (runLoop) {
+         int randRainbow = arc4random() % 4;
+         CCSprite *temp = [rainbows objectAtIndex:randRainbow];
+         if (!temp.visible) {
+         temp.visible = TRUE;
+         CCFadeTo *fadeOut = [CCFadeTo actionWithDuration:0.5 opacity:80];
+         CCFadeTo *fadeIn = [CCFadeTo actionWithDuration:0.5 opacity:255];
+         CCRepeatForever *repeat = [CCRepeatForever actionWithAction:[CCSequence actionOne:fadeOut two:fadeIn]];
+         [temp runAction:repeat];
+         break;
+         }
+         } */
+        
+        //update speed accordingly with combo times
+        speed *= 0.5;
+        [self unschedule:@selector(tryPopheads)];
+        [self schedule:@selector(tryPopheads) interval:speed];
+    }
+}
+
+
 -(void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     if (gamePaused) return; 
     
-    
+    //remove simultaneous touch element of gamemode
+    //add various other animations (e.g. fall out from sky, throw bomb, etc..)
     // treat 2 separate touches that are 0.2 seconds apart as simultaneous
     // if (true simultaneous touch)
     // else two really short touches - add combo count
     // else normal
     if ([[touches allObjects] count] >= 2) {
         //true simultaneous touch
+        
         comboHits = 0;
         CCLOG(@"simultaneous touch!");
         for (UITouch *touch in [touches allObjects]) {
@@ -694,7 +727,7 @@
             head.didMiss = FALSE;
             if (head.isSelectedHit) {
                 //head.hp -= 10;
-                comboHits++;
+                //comboHits++;
                 consecHits++;
                 //update hit streak label
                 if (consecHits > 1) {
@@ -706,6 +739,8 @@
                 baseScore += 10;
             } else {
                 lives -= 1;
+                //play score adding animation
+                baseScore += consecHits;
                 consecHits = 0;
                 //update lives
                 if ([hearts count] > 0) {
@@ -736,7 +771,7 @@
     
     //where to update the combo hits...
     //update how many combo hits
-    [comboLabel setString:[NSString stringWithFormat:@"%d HIT COMBO", comboHits]];
+   // [comboLabel setString:[NSString stringWithFormat:@"%d HIT COMBO", comboHits]];
     //CCFadeTo *fadeIn = [CCFadeTo actionWithDuration:0.5 opacity:255];
     //CCFadeTo *fadeOut = [CCFadeTo actionWithDuration:0.5 opacity:0];
     //[comboLabel runAction:[CCSequence actions:fadeIn, fadeOut, nil]];
