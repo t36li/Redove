@@ -322,6 +322,9 @@
 		C15934A215B659B7009B7955 /* personal item box.png in Resources */ = {isa = PBXBuildFile; fileRef = C159349E15B659B7009B7955 /* personal item box.png */; };
 		C15934A315B659B7009B7955 /* personal main frame.png in Resources */ = {isa = PBXBuildFile; fileRef = C159349F15B659B7009B7955 /* personal main frame.png */; };
 		C15934B415B7716D009B7955 /* person status background transperent png.png in Resources */ = {isa = PBXBuildFile; fileRef = C15934B315B7716D009B7955 /* person status background transperent png.png */; };
+		C15934B715B782B6009B7955 /* peter head c.png in Resources */ = {isa = PBXBuildFile; fileRef = C15934B515B782B5009B7955 /* peter head c.png */; };
+		C15934B815B782B6009B7955 /* peter body.png in Resources */ = {isa = PBXBuildFile; fileRef = C15934B615B782B6009B7955 /* peter body.png */; };
+		C15934BA15B78884009B7955 /* score paper.png in Resources */ = {isa = PBXBuildFile; fileRef = C15934B915B78884009B7955 /* score paper.png */; };
 		C1691FF015AFB86D00F081AF /* right button.png in Resources */ = {isa = PBXBuildFile; fileRef = C1691FEF15AFB86D00F081AF /* right button.png */; };
 		C1691FF215AFB8F500F081AF /* mode_layer1.png in Resources */ = {isa = PBXBuildFile; fileRef = C1691FF115AFB8F500F081AF /* mode_layer1.png */; };
 		C1691FF415AFB95100F081AF /* left button.png in Resources */ = {isa = PBXBuildFile; fileRef = C1691FF315AFB95100F081AF /* left button.png */; };
@@ -352,6 +355,8 @@
 		C1CBDFED15952D9900A35E24 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEB15952D9900A35E24 /* lock.png */; };
 		C1CBDFF015952DC100A35E24 /* Email Envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEE15952DC100A35E24 /* Email Envelope.png */; };
 		C1CBDFF115952DC100A35E24 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEF15952DC100A35E24 /* facebook.png */; };
+		C1CDF56815B8ABB70002085B /* play again key.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CDF56615B8ABB60002085B /* play again key.png */; };
+		C1CDF56915B8ABB70002085B /* home key.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CDF56715B8ABB60002085B /* home key.png */; };
 		C1FE252315AF656E00DAF258 /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE252215AF656E00DAF258 /* HUDLayer.m */; };
 		C1FE252715AF65EF00DAF258 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE252515AF65EF00DAF258 /* heart.png */; };
 		C1FE252815AF65EF00DAF258 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE252615AF65EF00DAF258 /* pause.png */; };
@@ -804,6 +809,9 @@
 		C159349E15B659B7009B7955 /* personal item box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personal item box.png"; sourceTree = "<group>"; };
 		C159349F15B659B7009B7955 /* personal main frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personal main frame.png"; sourceTree = "<group>"; };
 		C15934B315B7716D009B7955 /* person status background transperent png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "person status background transperent png.png"; sourceTree = "<group>"; };
+		C15934B515B782B5009B7955 /* peter head c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "peter head c.png"; sourceTree = "<group>"; };
+		C15934B615B782B6009B7955 /* peter body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "peter body.png"; sourceTree = "<group>"; };
+		C15934B915B78884009B7955 /* score paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "score paper.png"; sourceTree = "<group>"; };
 		C1691FEF15AFB86D00F081AF /* right button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right button.png"; sourceTree = "<group>"; };
 		C1691FF115AFB8F500F081AF /* mode_layer1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_layer1.png; sourceTree = "<group>"; };
 		C1691FF315AFB95100F081AF /* left button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left button.png"; sourceTree = "<group>"; };
@@ -837,6 +845,8 @@
 		C1CBDFEB15952D9900A35E24 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		C1CBDFEE15952DC100A35E24 /* Email Envelope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Email Envelope.png"; sourceTree = "<group>"; };
 		C1CBDFEF15952DC100A35E24 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
+		C1CDF56615B8ABB60002085B /* play again key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play again key.png"; sourceTree = "<group>"; };
+		C1CDF56715B8ABB60002085B /* home key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home key.png"; sourceTree = "<group>"; };
 		C1FE252115AF656E00DAF258 /* HUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDLayer.h; sourceTree = "<group>"; };
 		C1FE252215AF656E00DAF258 /* HUDLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDLayer.m; sourceTree = "<group>"; };
 		C1FE252515AF65EF00DAF258 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
@@ -1105,6 +1115,7 @@
 		69C95E94159A51E0009966DA /* Background */ = {
 			isa = PBXGroup;
 			children = (
+				C15934B915B78884009B7955 /* score paper.png */,
 				C15934B315B7716D009B7955 /* person status background transperent png.png */,
 				C159285D15B35083009B7955 /* loading page background.png */,
 				C1691FF115AFB8F500F081AF /* mode_layer1.png */,
@@ -1127,6 +1138,8 @@
 		69C95E95159A51EF009966DA /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				C1CDF56615B8ABB60002085B /* play again key.png */,
+				C1CDF56715B8ABB60002085B /* home key.png */,
 				C1691FF315AFB95100F081AF /* left button.png */,
 				C1691FEF15AFB86D00F081AF /* right button.png */,
 				696F180015A52A3600DC849F /* FacebookButton30x34.png */,
@@ -1685,6 +1698,8 @@
 		C1FE252915AF661200DAF258 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				C15934B515B782B5009B7955 /* peter head c.png */,
+				C15934B615B782B6009B7955 /* peter body.png */,
 				C1FE253F15AF66CB00DAF258 /* flower.png */,
 				C1FE255715AF688700DAF258 /* baby.png */,
 				C1FE255815AF688700DAF258 /* olaf.png */,
@@ -2120,6 +2135,11 @@
 				C15934A215B659B7009B7955 /* personal item box.png in Resources */,
 				C15934A315B659B7009B7955 /* personal main frame.png in Resources */,
 				C15934B415B7716D009B7955 /* person status background transperent png.png in Resources */,
+				C15934B715B782B6009B7955 /* peter head c.png in Resources */,
+				C15934B815B782B6009B7955 /* peter body.png in Resources */,
+				C15934BA15B78884009B7955 /* score paper.png in Resources */,
+				C1CDF56815B8ABB70002085B /* play again key.png in Resources */,
+				C1CDF56915B8ABB70002085B /* home key.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

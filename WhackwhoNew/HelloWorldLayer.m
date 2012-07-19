@@ -70,7 +70,7 @@
 
         comboHits = 0;
         consecHits = 0;
-        totalTime = 30;
+        totalTime = 1;
         myTime = (int)totalTime;
         baseScore = 0;
         speed = 1.5;
@@ -219,22 +219,28 @@
         //[self addChild:head z:100];
         
         //testing:
-        NSArray *testbigList = [NSArray arrayWithObjects:@"baby.png", @"olaf.png", @"vlad.png", @"mice.png", @"pinky.png", @"monk.png", @"blue.png",nil];
         //for (NSString *friend in bigList)
+        //NSArray *testbigList = [NSArray arrayWithObjects:@"baby.png", @"olaf.png", @"vlad.png", @"mice.png", @"pinky.png", @"monk.png", @"blue.png",nil];
+        
+        //testing the upper and lower body piece-together
+        UIImage *lowerBody = [UIImage imageNamed:@"peter body.png"];
+        UIImage *bigHead = [UIImage imageNamed:@"peter head c.png"];
         int index = 1;
-        for (NSString *friend in testbigList) {
+        for (int i = 0; i < 7; i++) {
             //get the friend portrait image...once database kicks in, we will grab the big head
-            //UIImage *tempImage = [[GlobalMethods alloc] imageForObject:friend];
-            UIImage *tempImage = [UIImage imageNamed:friend];
-            Character *head = [Character spriteWithCGImage:[tempImage CGImage] key:[NSString stringWithFormat:@"head_frame%i", index]];
+            //belonging to each user... then piece-wise this to the lower body part...
+            Character *head = [Character spriteWithCGImage:[bigHead CGImage] key:[NSString stringWithFormat:@"body_frame%i", index]];
             [head setTappable:FALSE];
             head.sideWaysMove = FALSE;
             head.anchorPoint = ccp(0,0);
-            head.scale = 1;
+            head.scale = 0.3;
             head.isSelectedHit = TRUE;
             head.visible = FALSE;
+            //int width = head.contentSize.width;
+            //int height = head.contentSize.height;
+            
             //CCSprite *helmet = [CCSprite spriteWithCGImage:[helmetImage CGImage] key:[NSString stringWithFormat:@"helmet_frame%i", index]];
-            CCSprite *helmet = [CCSprite spriteWithFile:@"peter head.png"];
+            //CCSprite *body = [CCSprite spriteWithCGImage:[lowerBody CGImage] key:[NSString stringWithFormat:@"head_frame%i", index]];
             
             //[head setImageName:friend];
             
@@ -243,15 +249,28 @@
             //} else {
             //    head.isSelectedHit = TRUE;
             //}
-            helmet.position = ccp(head.contentSize.width/2, head.contentSize.height/2);
-            helmet.scale = 0.05;
+            //[head addChild:body z:-10];
+            //body.anchorPoint = ccp(0.5, 0.8);
+            //body.position = ccp(125, 10);
+            //body.scale = 1;
             
-            [head addChild:helmet];
             [self addChild:head];
             [heads addObject:head];
             index++;
         }
+        Character *tempHead1 = (Character *) [heads objectAtIndex:0];
+        Character *tempHead2 = (Character *) [heads objectAtIndex:1];
+        tempHead1.visible = TRUE;
+        tempHead2.visible = TRUE;
         
+        tempHead1.position = ccp(10,10);
+        tempHead2.position = ccp(50,50);
+        CGRect absrect1 = CGRectMake(tempHead1.position.x, tempHead1.position.y, [tempHead1 boundingBox].size.width, [tempHead1 boundingBox].size.height);
+        CGRect absrect2 = CGRectMake(tempHead2.position.x, tempHead2.position.y, [tempHead2 boundingBox].size.width, [tempHead2 boundingBox].size.height);
+        
+        if (CGRectIntersectsRect(absrect1, absrect2)) {
+            CCLOG(@"intersected!");
+        }
         [self schedule:@selector(tryPopheads) interval:1.5];
         [self schedule:@selector(checkGameState) interval:0.1];
         [self schedule:@selector(timerUpdate:) interval:0.001];
@@ -266,15 +285,18 @@
 }
 
 -(void) pauseGame {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Paused" message:@"Press the button to..." delegate:self cancelButtonTitle:@"Resume" otherButtonTitles:@"Restart", nil];
-    [alert show];
-    gamePaused = TRUE;
-    [[CCDirector sharedDirector] pause];
+    if (self.isTouchEnabled) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Paused" message:@"Press the button to..." delegate:self cancelButtonTitle:@"Resume" otherButtonTitles:@"Restart", nil];
+        [alert show];
+        gamePaused = TRUE;
+        [[CCDirector sharedDirector] pause];
+    }
 }
 
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     
     if (buttonIndex == 0) {
+        gamePaused = FALSE;
         [[CCDirector sharedDirector] resume];
     } else if (buttonIndex == 1) {
         gameOver = TRUE;
@@ -363,6 +385,7 @@
     //check is game is over
     if (myTime <= 0 || lives <= 0) {
         [self unscheduleAllSelectors];
+        self.isTouchEnabled = NO;
         [[Game sharedGame] setBaseScore:baseScore];
         //[[Game sharedGame] setConsecHits:consecHits];
         [_hud showRestartMenu:NO];
@@ -414,7 +437,8 @@
 -(void) setOccupied: (id) sender {
     Character *head = (Character *) sender;
     //CGSize s = [[CCDirector sharedDirector] winSize];
-    
+    int width_now = head.contentSize.width * head.scaleX;
+    int height_now = head.contentSize.height * head.scaleY;
     /* random location code
      occupied = FALSE;
      int maxX = s.width - 40 - 100;
@@ -473,114 +497,117 @@
         head.visible = TRUE;
         switch (randPos) {
             case 0:
-                head.position = ccp(15, 140-50);
+                head.position = ccp(15, 140 - height_now);
                 head.rotation = 20;
                 [head setZOrder:-35];
                 break;
-            case 1:
-                head.position = ccp(90-25, 116-25); //sideways move
+            /*case 1:
+                head.position = ccp(90-width_now/2, 116-height_now/2); //sideways move
                 //reset the rotation at unsetOccupied
                 head.sideWaysMove = TRUE;
                 head.rotation = 45;
                 [head setZOrder:-35];
                 break;
             case 2:
-                head.position = ccp(135-25, 35-25); //sideways move
+                head.position = ccp(135-width_now/2, 35-height_now/2); //sideways move
                 head.sideWaysMove = TRUE;
                 head.rotation = 55;
                 [head setZOrder:-35];
-                break;
+                break;*/
             case 3:
-                head.position = ccp(165, 57-50); //up nd down
+                head.position = ccp(165, 57 - height_now); //up nd down
                 head.rotation = -20;
                 head.scale *= 0.9;
                 [head setZOrder:-45];
                 break;
-            case 4:
-                head.position = ccp(258, 88-50); //up nd down
-                head.scale *= 0.9;
-                [head setZOrder:-45];
-                break;
+            //case 4:
+              //  head.position = ccp(258, 88 - height_now); //up nd down
+                //head.scale *= 0.9;
+                //[head setZOrder:-45];
+                //break;
             case 5:
-                head.position = ccp(407, 75-50); //up nd down
+                head.position = ccp(407, 75 - height_now); //up nd down
                 head.rotation = 20;
                 head.scale *= 0.9;
                 [head setZOrder:-45];
                 break;
             case 6:
-                head.position = ccp(100, 153-50); //up nd down
+                head.position = ccp(100, 153 - height_now); //up nd down
                 head.rotation = -20;
                 head.scale *= 0.8;
                 [head setZOrder:-55];
                 break;
-            case 7:
-                head.position = ccp(200, 153-50); //up nd down
-                head.rotation = 40;
-                head.scale *= 0.8;
-                [head setZOrder:-55];
-                break;
-            case 8:
-                head.position = ccp(276, 154-50); //up nd down
+            //case 7:
+              //  head.position = ccp(200, 153 - height_now); //up nd down
+               // head.rotation = 40;
+               // head.scale *= 0.8;
+               // [head setZOrder:-55];
+               // break;
+           /* case 8:
+                head.position = ccp(276, 154 - height_now); //up nd down
                 head.rotation = -20;
                 head.scale *= 0.7;
                 [head setZOrder:-65];
                 break;
             case 9:
-                head.position = ccp(355, 186-50); //up nd down
+                head.position = ccp(355, 186 - height_now); //up nd down
                 head.scale *= 0.7;
                 [head setZOrder:-65];
                 break;
-            case 10:
-                head.position = ccp(428, 185-50); //up nd down
-                head.scale *= 0.7;
-                head.rotation = 20;
-                [head setZOrder:-65];
-                break;
+            //case 10:
+             //   head.position = ccp(428, 185 - height_now); //up nd down
+             //   head.scale *= 0.7;
+              //  head.rotation = 20;
+              //  [head setZOrder:-65];
+              //  break;
             case 11:
-                head.position = ccp(170, 197-50);
+                head.position = ccp(170, 197 - height_now);
                 head.rotation = -30;
                 //needs to rescale to normal after
                 head.scale *= 0.6;
                 [head setZOrder:-75];
                 break;
-            case 12:
-                head.position = ccp(273, 233-50);
-                head.scale *= 0.6;
-                [head setZOrder:-75];
-                break;
+            //case 12:
+             //   head.position = ccp(273, 233 - height_now);
+             //   head.scale *= 0.6;
+             //   [head setZOrder:-75];
+             //   break;
             case 13:
-                head.position = ccp(335, 225-50);
+                head.position = ccp(335, 225 - height_now);
                 head.rotation = 30;
                 head.scale *= 0.6;
                 [head setZOrder:-75];
                 break;
             case 14:
-                head.position = ccp(21, 236-50);
+                head.position = ccp(21, 236 - height_now);
                 //head.rotation = 30;
                 head.scale *= 0.6;
                 [head setZOrder:-85];
                 break;
             case 15:
-                head.position = ccp(116, 198-50);
+                head.position = ccp(116, 198 - height_now);
                 head.rotation = 40;
                 head.scale *= 0.6;
                 [head setZOrder:-85];
                 break;
             case 16:
-                head.position = ccp(452, 230-50);
+                head.position = ccp(452, 230 - height_now);
                 //head.rotation = 30;
                 head.scale *= 0.6;
                 [head setZOrder:-95];
+                break;*/
+            default:
+                head.visible = FALSE;
                 break;
         }
         
         //Appear animations and tasks
         
-        CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp(0,head.contentSize.height)];
-        CCEaseInOut *easeMoveUp = [CCEaseInOut actionWithAction:moveUp rate:3.0];
+        CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp(0,height_now)];
+        CCEaseInOut *easeMoveUp = [CCEaseInOut actionWithAction:moveUp rate:4.0];
         CCAction *easeMoveDown = [easeMoveUp reverse];
-        CCMoveBy *moveRight = [CCMoveBy actionWithDuration:0.5 position:ccp(head.contentSize.width/2, head.contentSize.height/2)];
-        CCEaseInOut *easeMoveRight = [CCEaseInOut actionWithAction:moveRight rate:3.0];
+        CCMoveBy *moveRight = [CCMoveBy actionWithDuration:0.5 position:ccp(width_now/2, height_now/2)];
+        CCEaseInOut *easeMoveRight = [CCEaseInOut actionWithAction:moveRight rate:4.0];
         CCAction *easeMoveLeft = [easeMoveRight reverse];
         //CCFadeTo *fadeOut = [CCFadeTo actionWithDuration:0.5 opacity:0];
         //CCFadeTo *fadeIn = [CCFadeTo actionWithDuration:0.5 opacity:255];
@@ -616,7 +643,7 @@
     pos[position] = 0;
     head.rotation = 0;
     head.sideWaysMove = FALSE;
-    head.scale = 1;
+    head.scale = 0.5;
     head.visible = FALSE;
     if (head.didMiss && head.isSelectedHit) {
         //play add score animation
@@ -749,14 +776,16 @@
                 }
             }
             
+            int width_now = head.contentSize.width * head.scaleX;
+            int height_now = head.contentSize.height * head.scaleY;
             //play go down animation
             head.tappable = FALSE;
             //CCFadeTo *fadeOut = [CCFadeTo actionWithDuration:0.3 opacity:0];
             CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
-            CCMoveBy *movedown = [CCMoveBy actionWithDuration:0.5 position:ccp(0,-head.contentSize.height)];
-            CCEaseInOut *easeMoveDown = [CCEaseInOut actionWithAction:movedown rate:3.0];
-            CCMoveBy *moveLeft = [CCMoveBy actionWithDuration:0.5 position:ccp(-head.contentSize.width/2, -head.contentSize.height/2)];
-            CCEaseInOut *easeMoveLeft = [CCEaseInOut actionWithAction:moveLeft rate:3.0];
+            CCMoveBy *movedown = [CCMoveBy actionWithDuration:0.5 position:ccp(0,-height_now)];
+            CCEaseInOut *easeMoveDown = [CCEaseInOut actionWithAction:movedown rate:4.0];
+            CCMoveBy *moveLeft = [CCMoveBy actionWithDuration:0.5 position:ccp(-width_now/2, -height_now)];
+            CCEaseInOut *easeMoveLeft = [CCEaseInOut actionWithAction:moveLeft rate:4.0];
             
             [head stopAllActions];
             // keep the tapping "bug" for testing purposes
