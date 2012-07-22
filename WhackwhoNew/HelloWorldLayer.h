@@ -42,6 +42,7 @@
     BOOL gameOver, occupied, gamePaused;
     HUDLayer * _hud;
     id<GameOverDelegate> gameOverDelegate;
+    NSArray *myCGPts;
 }
 
 @property (nonatomic, retain) id<GameOverDelegate> gameOverDelegate;

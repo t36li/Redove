@@ -77,6 +77,15 @@
         ts = 0;
         diff = 0;
         
+        //testing: hard-code 5 points
+        myCGPts = [[NSArray alloc] initWithObjects:
+                   [NSValue valueWithCGPoint:CGPointMake(32/2, 320 - 348/2)],
+                   [NSValue valueWithCGPoint:CGPointMake(126/2, 320 - 369/2)],
+                   [NSValue valueWithCGPoint:CGPointMake(211/2, 320 - 418/2)],
+                   [NSValue valueWithCGPoint:CGPointMake(270/2, 320 - 483/2)],
+                   [NSValue valueWithCGPoint:CGPointMake(303/2, 320 - 552/2)],
+                   nil];
+        
         _hud = hud;
         self.isTouchEnabled = YES;
         gameOver = FALSE;
@@ -162,7 +171,7 @@
         }
         
         //add "rainbows"
-      /*  rainbows = [[NSMutableArray alloc] init];
+        /*  rainbows = [[NSMutableArray alloc] init];
         CCSprite *rainbow = [CCSprite spriteWithFile:@"rainbow4.png"];
         rainbow.position = ccp(156, 192);
         rainbow.visible = FALSE;
@@ -206,9 +215,9 @@
        // NSArray *selectedHeads = [[Game sharedGame] selectedHeads];
         
         //set all positions to not taken (i.e. = 0)
-        for (int i = 0; i < 17; i++) {
-            pos[i] = 0;
-        }
+        //for (int i = 0; i < 17; i++) {
+        //    pos[i] = 0;
+        //}
         
         //testing UserInfo image taken from camera
         //UserInfo *usr = [UserInfo sharedInstance];
@@ -218,9 +227,8 @@
         //head.position = ccp(50, 50);
         //[self addChild:head z:100];
         
-        //testing:
-        //for (NSString *friend in bigList)
-        //NSArray *testbigList = [NSArray arrayWithObjects:@"baby.png", @"olaf.png", @"vlad.png", @"mice.png", @"pinky.png", @"monk.png", @"blue.png",nil];
+        //the number of total heads to include in the heads array should be relative to the difficulty level chosen previously... max will be 10 ATM...this should be a loop that fast-enumerates through all the chosen names array from the previous view
+        //for testing purposes, set to 7
         
         //testing the upper and lower body piece-together
         UIImage *lowerBody = [UIImage imageNamed:@"peter body.png"];
@@ -231,11 +239,13 @@
             //belonging to each user... then piece-wise this to the lower body part...
             Character *head = [Character spriteWithCGImage:[bigHead CGImage] key:[NSString stringWithFormat:@"body_frame%i", index]];
             [head setTappable:FALSE];
-            head.sideWaysMove = FALSE;
+            //head.sideWaysMove = FALSE;
             head.anchorPoint = ccp(0,0);
             head.scale = 0.3;
             head.isSelectedHit = TRUE;
             head.visible = FALSE;
+            
+            head.position = ccp(0,0);
             //int width = head.contentSize.width;
             //int height = head.contentSize.height;
             
@@ -258,19 +268,7 @@
             [heads addObject:head];
             index++;
         }
-        Character *tempHead1 = (Character *) [heads objectAtIndex:0];
-        Character *tempHead2 = (Character *) [heads objectAtIndex:1];
-        tempHead1.visible = TRUE;
-        tempHead2.visible = TRUE;
-        
-        tempHead1.position = ccp(10,10);
-        tempHead2.position = ccp(50,50);
-        CGRect absrect1 = CGRectMake(tempHead1.position.x, tempHead1.position.y, [tempHead1 boundingBox].size.width, [tempHead1 boundingBox].size.height);
-        CGRect absrect2 = CGRectMake(tempHead2.position.x, tempHead2.position.y, [tempHead2 boundingBox].size.width, [tempHead2 boundingBox].size.height);
-        
-        if (CGRectIntersectsRect(absrect1, absrect2)) {
-            CCLOG(@"intersected!");
-        }
+
         [self schedule:@selector(tryPopheads) interval:1.5];
         [self schedule:@selector(checkGameState) interval:0.1];
         [self schedule:@selector(timerUpdate:) interval:0.001];
@@ -405,7 +403,7 @@
     //changed to 50% chance to pop for testing purposes
     for (Character *head in heads) {
         if (head.numberOfRunningActions == 0) {
-            if (arc4random() % 100 < 50) {
+            if (arc4random() % 100 < 33) {
                 //pop the selected heads
                 if (head.isSelectedHit == TRUE) {
                     //numHitOccur++;
@@ -429,16 +427,14 @@
     //    return;
     // }
     
-    CCCallFuncN *setOccupied = [CCCallFuncN actionWithTarget:self selector:@selector(setOccupied:)];
-    [head runAction:[CCSequence actions:setOccupied, nil]];
+    //CCCallFuncN *setOccupied = [CCCallFuncN actionWithTarget:self selector:@selector(setOccupied:)];
+    //[head runAction:[CCSequence actions:setOccupied, nil]];
+    //Character *head = (Character *) sender;
     
-}
-
--(void) setOccupied: (id) sender {
-    Character *head = (Character *) sender;
     //CGSize s = [[CCDirector sharedDirector] winSize];
-    int width_now = head.contentSize.width * head.scaleX;
-    int height_now = head.contentSize.height * head.scaleY;
+    //int width_now = head.contentSize.width * head.scaleX;
+    float height_now = head.contentSize.height * head.scaleY;
+    CCLOG(@"%f", sinf(90));
     /* random location code
      occupied = FALSE;
      int maxX = s.width - 40 - 100;
@@ -485,147 +481,130 @@
      [head runAction:[CCSequence actions:setTappable, fadeIn, delay, fadeOut, unsetTappable, delay, checkCombo, nil]];
      
      }*/
+    //testing CGRectIntersection
+    /*Character *tempHead1 = (Character *) [heads objectAtIndex:0];
+    Character *tempHead2 = (Character *) [heads objectAtIndex:1];
+    tempHead1.visible = TRUE;
+    tempHead2.visible = TRUE;
     
-    int randPos = arc4random() % 17;
-    if (pos[randPos] == 1) {
-        [head stopAllActions];
+    CGRect absrect1 = CGRectMake(tempHead1.position.x, tempHead1.position.y, [tempHead1 boundingBox].size.width, [tempHead1 boundingBox].size.height);
+    CGRect absrect2 = CGRectMake(tempHead2.position.x, tempHead2.position.y, [tempHead2 boundingBox].size.width, [tempHead2 boundingBox].size.height);
+    
+    if (CGRectIntersectsRect(absrect1, absrect2)) {
+        CCLOG(@"intersected!");
+    }*/
+    
+    //testing with 5 hard-coded cgpoints -> 5 pts = only 4 possible locations
+    int randPos = arc4random() % 4;
+    //return if it's the last point in the array
+    if (randPos == 4) {
         return;
-    } else {
-        head.posOccupied = randPos;
-        pos[randPos] = 1;
-        head.didMiss = TRUE;
-        head.visible = TRUE;
-        switch (randPos) {
-            case 0:
-                head.position = ccp(15, 140 - height_now);
-                head.rotation = 20;
-                [head setZOrder:-35];
-                break;
-            /*case 1:
-                head.position = ccp(90-width_now/2, 116-height_now/2); //sideways move
-                //reset the rotation at unsetOccupied
-                head.sideWaysMove = TRUE;
-                head.rotation = 45;
-                [head setZOrder:-35];
-                break;
-            case 2:
-                head.position = ccp(135-width_now/2, 35-height_now/2); //sideways move
-                head.sideWaysMove = TRUE;
-                head.rotation = 55;
-                [head setZOrder:-35];
-                break;*/
-            case 3:
-                head.position = ccp(165, 57 - height_now); //up nd down
-                head.rotation = -20;
-                head.scale *= 0.9;
-                [head setZOrder:-45];
-                break;
-            //case 4:
-              //  head.position = ccp(258, 88 - height_now); //up nd down
-                //head.scale *= 0.9;
-                //[head setZOrder:-45];
-                //break;
-            case 5:
-                head.position = ccp(407, 75 - height_now); //up nd down
-                head.rotation = 20;
-                head.scale *= 0.9;
-                [head setZOrder:-45];
-                break;
-            case 6:
-                head.position = ccp(100, 153 - height_now); //up nd down
-                head.rotation = -20;
-                head.scale *= 0.8;
-                [head setZOrder:-55];
-                break;
-            //case 7:
-              //  head.position = ccp(200, 153 - height_now); //up nd down
-               // head.rotation = 40;
-               // head.scale *= 0.8;
-               // [head setZOrder:-55];
-               // break;
-           /* case 8:
-                head.position = ccp(276, 154 - height_now); //up nd down
-                head.rotation = -20;
-                head.scale *= 0.7;
-                [head setZOrder:-65];
-                break;
-            case 9:
-                head.position = ccp(355, 186 - height_now); //up nd down
-                head.scale *= 0.7;
-                [head setZOrder:-65];
-                break;
-            //case 10:
-             //   head.position = ccp(428, 185 - height_now); //up nd down
-             //   head.scale *= 0.7;
-              //  head.rotation = 20;
-              //  [head setZOrder:-65];
-              //  break;
-            case 11:
-                head.position = ccp(170, 197 - height_now);
-                head.rotation = -30;
-                //needs to rescale to normal after
-                head.scale *= 0.6;
-                [head setZOrder:-75];
-                break;
-            //case 12:
-             //   head.position = ccp(273, 233 - height_now);
-             //   head.scale *= 0.6;
-             //   [head setZOrder:-75];
-             //   break;
-            case 13:
-                head.position = ccp(335, 225 - height_now);
-                head.rotation = 30;
-                head.scale *= 0.6;
-                [head setZOrder:-75];
-                break;
-            case 14:
-                head.position = ccp(21, 236 - height_now);
-                //head.rotation = 30;
-                head.scale *= 0.6;
-                [head setZOrder:-85];
-                break;
-            case 15:
-                head.position = ccp(116, 198 - height_now);
-                head.rotation = 40;
-                head.scale *= 0.6;
-                [head setZOrder:-85];
-                break;
-            case 16:
-                head.position = ccp(452, 230 - height_now);
-                //head.rotation = 30;
-                head.scale *= 0.6;
-                [head setZOrder:-95];
-                break;*/
-            default:
-                head.visible = FALSE;
-                break;
+    }
+    
+    //get a random location
+    CGPoint myPos = [[myCGPts objectAtIndex:randPos] CGPointValue];
+    CGPoint myPosTwo = [[myCGPts objectAtIndex:randPos + 1] CGPointValue];
+    head.position = myPos;
+    head.visible = TRUE;
+    //check if collides with all other heads ... problem is dunno which index this head is in...
+    //int index = (int) [heads indexOfObject:head];
+    CGRect absrect1, absrect2;
+    absrect1 = CGRectMake(head.position.x, head.position.y, [head boundingBox].size.width*head.scaleX, [head boundingBox].size.height*head.scaleY);
+    for (Character *head2 in heads) {
+        //if this is itself, then skip it
+        if (head.position.x == head2.position.x && head.position.y == head2.position.y ) {
+            continue;
+        } else {
+            //check for collision (i.e. overlap)
+            //Character *head2 = [heads objectAtIndex:i];
+            
+            absrect2 = CGRectMake(head2.position.x, head2.position.y, [head2 boundingBox].size.width*head2.scaleX, [head2 boundingBox].size.height*head2.scaleY);
+            if (CGRectIntersectsRect(absrect1, absrect2)) {
+                CCLOG(@"intersected!");
+                [head stopAllActions];
+                return;
+            }
         }
+    }
+    
+    //now, this gets executed if no collission is detected....
+    
+    //if (pos[randPos] == 1) {
+    //    [head stopAllActions];
+    //    return;
+    //} else {
+    //    head.posOccupied = randPos;
+    //    pos[randPos] = 1;
+    
+    //obtain rotation angle.... from method
+    
+    float rotationAngle = [self getAngleWithPts:myPos andPointTwo:myPosTwo];
+    
+    //trig in objective-c uses radians
+    // radian = degree * pi/180
+    
+    float rotationAngleRad = rotationAngle * M_PI / 180;
+
+    head.rotation = rotationAngle;
+    head.position = ccp(head.position.x - height_now * sin(rotationAngleRad), head.position.y - height_now * cos(rotationAngleRad));
+    [head setZOrder:-35];
+    head.didMiss = TRUE;
+    //offset head by y = h * cos(theta), x = h*sin(theta)
+    
+    //init all the actions
+    //CCMoveBy *moveDown = [CCMoveBy actionWithDuration:0.5 position:ccp(height_now * sin(rotationAngle), height_now * cos(rotationAngle))];
+    //CCEaseInOut *easeMoveDown = [CCEaseInOut actionWithAction:moveDown rate:3.5f];
+    //CCAction *easeMoveUp = [easeMoveDown reverse];
+    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:1.0 position:ccp(0,height_now)];
+    CCEaseInOut *easeMoveUp = [CCEaseInOut actionWithAction:moveUp rate:4.0];
+    CCAction *easeMoveDown = [easeMoveUp reverse];
+    
+    CCCallFuncN *setTappable = [CCCallFuncN actionWithTarget:self selector:@selector(setTappable:)];
+    CCCallFuncN *unsetTappable = [CCCallFuncN actionWithTarget:self selector:@selector(unSetTappable:)];
+    CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
+    CCDelayTime *delay = [CCDelayTime actionWithDuration:4.0];
+    
+    //first move down the head and set to visible
+    //[head runAction:easeMoveDown];
+    head.visible = TRUE;
+
+    [head runAction:[CCSequence actions: setTappable, easeMoveUp, delay, easeMoveDown,unsetTappable, checkCombo, nil]];
+
+
+      //  switch (randPos) {
+      //      default:
+      //          head.visible = FALSE;
+      //          break;
+      //  }
         
         //Appear animations and tasks
         
-        CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp(0,height_now)];
-        CCEaseInOut *easeMoveUp = [CCEaseInOut actionWithAction:moveUp rate:4.0];
-        CCAction *easeMoveDown = [easeMoveUp reverse];
-        CCMoveBy *moveRight = [CCMoveBy actionWithDuration:0.5 position:ccp(width_now/2, height_now/2)];
-        CCEaseInOut *easeMoveRight = [CCEaseInOut actionWithAction:moveRight rate:4.0];
-        CCAction *easeMoveLeft = [easeMoveRight reverse];
+        //CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp(0,height_now)];
+        //CCEaseInOut *easeMoveUp = [CCEaseInOut actionWithAction:moveUp rate:4.0];
+        //CCAction *easeMoveDown = [easeMoveUp reverse];
+        //CCMoveBy *moveRight = [CCMoveBy actionWithDuration:0.5 position:ccp(width_now/2, height_now/2)];
+        //CCEaseInOut *easeMoveRight = [CCEaseInOut actionWithAction:moveRight rate:4.0];
+        //CCAction *easeMoveLeft = [easeMoveRight reverse];
         //CCFadeTo *fadeOut = [CCFadeTo actionWithDuration:0.5 opacity:0];
         //CCFadeTo *fadeIn = [CCFadeTo actionWithDuration:0.5 opacity:255];
-        CCCallFuncN *setTappable = [CCCallFuncN actionWithTarget:self selector:@selector(setTappable:)];
-        CCCallFuncN *unsetTappable = [CCCallFuncN actionWithTarget:self selector:@selector(unSetTappable:)];
-        CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
         //CCAnimate *laugh = [CCAnimate actionWithAnimation:laughAnim];
-        CCDelayTime *delay = [CCDelayTime actionWithDuration:4.0];
         
         //to fix "bug" put unsetTappble infront of fadeout
         //[head runAction:[CCSequence actions:setTappable, fadeIn, delay, fadeOut, unsetTappable, delay, checkCombo, nil]];
-        if (head.sideWaysMove) {
-            [head runAction:[CCSequence actions:setTappable, easeMoveRight, delay, easeMoveLeft,unsetTappable, checkCombo, nil]];
-        } else {
-            [head runAction:[CCSequence actions:setTappable, easeMoveUp, delay, easeMoveDown,unsetTappable, checkCombo, nil]];
-        }
-    }
+        //if (head.sideWaysMove) {
+        //    [head runAction:[CCSequence actions:setTappable, easeMoveRight, delay, easeMoveLeft,unsetTappable, checkCombo, nil]];
+        //} else {
+        //    [head runAction:[CCSequence actions:setTappable, easeMoveUp, delay, easeMoveDown,unsetTappable, checkCombo, nil]];
+        //}
+    //} 
 }
+
+-(float) getAngleWithPts: (CGPoint) pt1 andPointTwo: (CGPoint) pt2 {
+    return 10 * atanf(fabs(pt2.y - pt1.y)/fabs(pt2.x - pt1.x));
+}
+
+//-(void) setOccupied: (id) sender {
+//}
 
 -(void) setTappable: (id) sender {
     Character *head = (Character *) sender;
@@ -639,11 +618,12 @@
 
 -(void) checkCombo: (id) sender {
     Character *head = (Character *) sender;
-    int position = head.posOccupied;
-    pos[position] = 0;
+    //int position = head.posOccupied;
+    //pos[position] = 0;
     head.rotation = 0;
-    head.sideWaysMove = FALSE;
-    head.scale = 0.5;
+    //head.sideWaysMove = FALSE;
+    head.position = ccp(0,0);
+    head.scale = 0.3;
     head.visible = FALSE;
     if (head.didMiss && head.isSelectedHit) {
         //play add score animation
@@ -784,17 +764,17 @@
             CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
             CCMoveBy *movedown = [CCMoveBy actionWithDuration:0.5 position:ccp(0,-height_now)];
             CCEaseInOut *easeMoveDown = [CCEaseInOut actionWithAction:movedown rate:4.0];
-            CCMoveBy *moveLeft = [CCMoveBy actionWithDuration:0.5 position:ccp(-width_now/2, -height_now)];
-            CCEaseInOut *easeMoveLeft = [CCEaseInOut actionWithAction:moveLeft rate:4.0];
+            //CCMoveBy *moveLeft = [CCMoveBy actionWithDuration:0.5 position:ccp(-width_now/2, -height_now)];
+            //CCEaseInOut *easeMoveLeft = [CCEaseInOut actionWithAction:moveLeft rate:4.0];
             
             [head stopAllActions];
             // keep the tapping "bug" for testing purposes
             //[head runAction:[CCSequence actions: fadeOut, checkCombo, nil]];
-            if (head.sideWaysMove) {
-                [head runAction:[CCSequence actions: easeMoveLeft, checkCombo, nil]];
-            } else {
+            //if (head.sideWaysMove) {
                 [head runAction:[CCSequence actions: easeMoveDown, checkCombo, nil]];
-            }
+            //} else {
+            //    [head runAction:[CCSequence actions: easeMoveDown, checkCombo, nil]];
+            //}
         }
     } //end heads loop
     
