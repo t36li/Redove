@@ -70,7 +70,7 @@
 
         comboHits = 0;
         consecHits = 0;
-        totalTime = 1;
+        totalTime = 100;
         myTime = (int)totalTime;
         baseScore = 0;
         speed = 1.5;
@@ -79,11 +79,11 @@
         
         //testing: hard-code 5 points
         myCGPts = [[NSArray alloc] initWithObjects:
-                   [NSValue valueWithCGPoint:CGPointMake(32/2, 320 - 348/2)],
-                   [NSValue valueWithCGPoint:CGPointMake(126/2, 320 - 369/2)],
-                   [NSValue valueWithCGPoint:CGPointMake(211/2, 320 - 418/2)],
-                   [NSValue valueWithCGPoint:CGPointMake(270/2, 320 - 483/2)],
-                   [NSValue valueWithCGPoint:CGPointMake(303/2, 320 - 552/2)],
+                   [NSValue valueWithCGPoint:CGPointMake(16, 146)],
+                   [NSValue valueWithCGPoint:CGPointMake(63, 135.5)],
+                   [NSValue valueWithCGPoint:CGPointMake(105.5, 111)],
+                   [NSValue valueWithCGPoint:CGPointMake(135, 78.5)],
+                   [NSValue valueWithCGPoint:CGPointMake(151.5, 44)],
                    nil];
         
         _hud = hud;
@@ -432,9 +432,11 @@
     //Character *head = (Character *) sender;
     
     //CGSize s = [[CCDirector sharedDirector] winSize];
-    //int width_now = head.contentSize.width * head.scaleX;
-    float height_now = head.contentSize.height * head.scaleY;
-    CCLOG(@"%f", sinf(90));
+    //float width_now = head.contentSize.width * head.scaleX;
+    float height_now = head.contentSize.height * head.scaleY; //76.5
+    //float height = head.contentSize.height; //255
+    //CCLOG(@"%f", height_now);
+    //CCLOG(@"%f", height);
     /* random location code
      occupied = FALSE;
      int maxX = s.width - 40 - 100;
@@ -496,6 +498,7 @@
     
     //testing with 5 hard-coded cgpoints -> 5 pts = only 4 possible locations
     int randPos = arc4random() % 4;
+    //randPos = 3;
     //return if it's the last point in the array
     if (randPos == 4) {
         return;
@@ -503,24 +506,27 @@
     
     //get a random location
     CGPoint myPos = [[myCGPts objectAtIndex:randPos] CGPointValue];
-    CGPoint myPosTwo = [[myCGPts objectAtIndex:randPos + 1] CGPointValue];
+    CGPoint myPosTwo = [[myCGPts objectAtIndex:(randPos + 1)] CGPointValue];
     head.position = myPos;
     head.visible = TRUE;
     //check if collides with all other heads ... problem is dunno which index this head is in...
     //int index = (int) [heads indexOfObject:head];
     CGRect absrect1, absrect2;
-    absrect1 = CGRectMake(head.position.x, head.position.y, [head boundingBox].size.width*head.scaleX, [head boundingBox].size.height*head.scaleY);
+    absrect1 = CGRectMake(head.position.x, head.position.y, [head boundingBox].size.width, [head boundingBox].size.height);
     for (Character *head2 in heads) {
         //if this is itself, then skip it
-        if (head.position.x == head2.position.x && head.position.y == head2.position.y ) {
+        if ([head2 isEqual:head]) {
             continue;
         } else {
             //check for collision (i.e. overlap)
             //Character *head2 = [heads objectAtIndex:i];
             
-            absrect2 = CGRectMake(head2.position.x, head2.position.y, [head2 boundingBox].size.width*head2.scaleX, [head2 boundingBox].size.height*head2.scaleY);
+            absrect2 = CGRectMake(head2.position.x, head2.position.y, [head2 boundingBox].size.width, [head2 boundingBox].size.height);
             if (CGRectIntersectsRect(absrect1, absrect2)) {
                 CCLOG(@"intersected!");
+                head.position = ccp(0,0);
+                head.scale = 0.3;
+                head.visible = FALSE;
                 [head stopAllActions];
                 return;
             }
@@ -529,78 +535,49 @@
     
     //now, this gets executed if no collission is detected....
     
-    //if (pos[randPos] == 1) {
-    //    [head stopAllActions];
-    //    return;
-    //} else {
-    //    head.posOccupied = randPos;
-    //    pos[randPos] = 1;
-    
     //obtain rotation angle.... from method
     
+    //angel is in radians already
     float rotationAngle = [self getAngleWithPts:myPos andPointTwo:myPosTwo];
     
-    //trig in objective-c uses radians
-    // radian = degree * pi/180
-    
-    float rotationAngleRad = rotationAngle * M_PI / 180;
-
-    head.rotation = rotationAngle;
-    head.position = ccp(head.position.x - height_now * sin(rotationAngleRad), head.position.y - height_now * cos(rotationAngleRad));
+    head.rotation = CC_RADIANS_TO_DEGREES(rotationAngle);
     [head setZOrder:-35];
     head.didMiss = TRUE;
     //offset head by y = h * cos(theta), x = h*sin(theta)
+    head.visible = TRUE;
+
+    head.position = ccp(head.position.x - height_now * sin(rotationAngle), head.position.y - height_now * cos(rotationAngle));
     
     //init all the actions
-    //CCMoveBy *moveDown = [CCMoveBy actionWithDuration:0.5 position:ccp(height_now * sin(rotationAngle), height_now * cos(rotationAngle))];
-    //CCEaseInOut *easeMoveDown = [CCEaseInOut actionWithAction:moveDown rate:3.5f];
-    //CCAction *easeMoveUp = [easeMoveDown reverse];
-    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:1.0 position:ccp(0,height_now)];
-    CCEaseInOut *easeMoveUp = [CCEaseInOut actionWithAction:moveUp rate:4.0];
+    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp(height_now * sin(rotationAngle), height_now * cos(rotationAngle))];
+    CCMoveBy *easeMoveUp = [CCEaseInOut actionWithAction:moveUp rate:10];
     CCAction *easeMoveDown = [easeMoveUp reverse];
-    
+
+    //CCMoveBy *moveUp = [CCMoveBy actionWithDuration:1.0 position:ccp(0,height_now)];
+    //CCEaseInOut *easeMoveUp = [CCEaseInOut actionWithAction:moveUp rate:4.0];
+    //CCAction *easeMoveDown = [easeMoveUp reverse];
     CCCallFuncN *setTappable = [CCCallFuncN actionWithTarget:self selector:@selector(setTappable:)];
     CCCallFuncN *unsetTappable = [CCCallFuncN actionWithTarget:self selector:@selector(unSetTappable:)];
     CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
-    CCDelayTime *delay = [CCDelayTime actionWithDuration:4.0];
-    
-    //first move down the head and set to visible
-    //[head runAction:easeMoveDown];
-    head.visible = TRUE;
+    CCDelayTime *delay = [CCDelayTime actionWithDuration:3.0];
 
+    
+    
     [head runAction:[CCSequence actions: setTappable, easeMoveUp, delay, easeMoveDown,unsetTappable, checkCombo, nil]];
 
-
-      //  switch (randPos) {
-      //      default:
-      //          head.visible = FALSE;
-      //          break;
-      //  }
         
-        //Appear animations and tasks
-        
-        //CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp(0,height_now)];
-        //CCEaseInOut *easeMoveUp = [CCEaseInOut actionWithAction:moveUp rate:4.0];
-        //CCAction *easeMoveDown = [easeMoveUp reverse];
-        //CCMoveBy *moveRight = [CCMoveBy actionWithDuration:0.5 position:ccp(width_now/2, height_now/2)];
-        //CCEaseInOut *easeMoveRight = [CCEaseInOut actionWithAction:moveRight rate:4.0];
-        //CCAction *easeMoveLeft = [easeMoveRight reverse];
         //CCFadeTo *fadeOut = [CCFadeTo actionWithDuration:0.5 opacity:0];
         //CCFadeTo *fadeIn = [CCFadeTo actionWithDuration:0.5 opacity:255];
         //CCAnimate *laugh = [CCAnimate actionWithAnimation:laughAnim];
         
-        //to fix "bug" put unsetTappble infront of fadeout
-        //[head runAction:[CCSequence actions:setTappable, fadeIn, delay, fadeOut, unsetTappable, delay, checkCombo, nil]];
-        //if (head.sideWaysMove) {
-        //    [head runAction:[CCSequence actions:setTappable, easeMoveRight, delay, easeMoveLeft,unsetTappable, checkCombo, nil]];
-        //} else {
-        //    [head runAction:[CCSequence actions:setTappable, easeMoveUp, delay, easeMoveDown,unsetTappable, checkCombo, nil]];
-        //}
-    //} 
 }
 
 -(float) getAngleWithPts: (CGPoint) pt1 andPointTwo: (CGPoint) pt2 {
-    return 10 * atanf(fabs(pt2.y - pt1.y)/fabs(pt2.x - pt1.x));
+    float rise = fabsf(pt2.y - pt1.y);
+    float run = fabsf(pt2.x - pt1.x);
+    float angel = atanf(rise/run);
+    CCLOG(@"%d", angel);
+    return angel;
 }
 
 //-(void) setOccupied: (id) sender {
