@@ -18,6 +18,14 @@ static UserInfo *sharedInstance = nil;
     @synchronized(self) {
         if (sharedInstance == nil) {
             sharedInstance = [[self alloc] init];
+            
+            NSFileManager *fileMgr = [NSFileManager defaultManager];
+            NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+            NSString *pngFilePath = [NSString stringWithFormat:@"%@/avatar.png",docDir];
+
+            if ([fileMgr fileExistsAtPath:pngFilePath]) {
+                [sharedInstance setGameImage:[UIImage imageWithContentsOfFile:pngFilePath]];
+            }
         }
     }
     return sharedInstance;
@@ -188,6 +196,24 @@ static UserInfo *sharedInstance = nil;
 
 -(UIImage *)getCroppedImage {
     return [UIImage imageWithCGImage:croppedImage.CGImage];
+}
+
+-(void) setGameImage:(UIImage *)img {
+    gameImage = [UIImage imageWithCGImage:img.CGImage];
+    
+    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    
+	// If you go to the folder below, you will find those pictures
+	NSLog(@"%@",docDir);
+    
+	NSLog(@"saving png");
+	NSString *pngFilePath = [NSString stringWithFormat:@"%@/avatar.png",docDir];
+	NSData *data1 = [NSData dataWithData:UIImagePNGRepresentation(gameImage)];
+	[data1 writeToFile:pngFilePath atomically:YES];
+}
+
+-(UIImage *) exportImage {
+    return gameImage;
 }
 
 /*

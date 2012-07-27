@@ -22,6 +22,7 @@
 @property (nonatomic) UIView *avatarView, *markingView;
 
 +(UIImage *)resizeImage:(UIImage *)img toSize:(CGSize)rect;
++(UIImage *)cropImage:(UIImage *)image inRect:(CGRect)rect;
 -(void)markFaces:(UIImageView *)facePicture;
 
 @end

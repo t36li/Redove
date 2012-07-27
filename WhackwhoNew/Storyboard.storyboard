@@ -316,7 +316,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="c7m-xV-fz6">
-                                        <rect key="frame" x="94" y="223" width="122" height="37"/>
+                                        <rect key="frame" x="0.0" y="81" width="122" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Take Picture">
@@ -331,12 +331,12 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleAspectFit" id="CYb-br-Le2">
-                                        <rect key="frame" x="94" y="20" width="302" height="195"/>
+                                        <rect key="frame" x="165" y="20" width="231" height="256"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aZo-d4-V0b">
-                                        <rect key="frame" x="268" y="223" width="135" height="37"/>
+                                        <rect key="frame" x="0.0" y="126" width="135" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Choose Picture">
@@ -1069,6 +1069,7 @@
         <class className="AvatarViewController" superclassName="AvatarBaseController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AvatarViewController.h"/>
             <relationships>
+                <relationship kind="action" name="addPicture:"/>
                 <relationship kind="action" name="startCamera:"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="wtfView" candidateClass="UIView"/>

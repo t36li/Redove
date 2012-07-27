@@ -107,7 +107,9 @@
     
     if (image != nil) {
         //photoView.image = image;
-        [usr setUserPicture:image];
+        //[usr setUserPicture:image];
+        //headView.image = croppedImg;
+        backgroundView.image = usr.exportImage;
         newPhoto = YES;
     }
 
@@ -123,6 +125,7 @@
 }
 
 -(IBAction) addPicture:(id)sender {
-    headView.image = [[UserInfo sharedInstance] getCroppedImage];
+    //headView.image = [[UserInfo sharedInstance] getCroppedImage];
+    backgroundView.image = [[UserInfo sharedInstance] exportImage];
 }
 @end

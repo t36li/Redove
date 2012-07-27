@@ -33,7 +33,7 @@ NSString *const UserChinPosition = @"ChinPosition";
     @private
     UIImage *croppedImage;
     UIImage *usrImg;
-    
+    UIImage *gameImage;
     CGPoint leftEyePosition, rightEyePosition, mouthPosition;
     CGRect faceRect;
 }
@@ -48,6 +48,8 @@ NSString *const UserChinPosition = @"ChinPosition";
 -(void) clearUserInfo;
 -(void) setUserPicture:(UIImage *)img;
 -(UIImage *)getCroppedImage;
+-(void) setGameImage:(UIImage *)img;
+-(UIImage *) exportImage;
 //-(UIImage *)getAvatarImage;
 
 @end

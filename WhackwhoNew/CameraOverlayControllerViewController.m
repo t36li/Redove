@@ -65,7 +65,19 @@
     UIImage *croppedImg = [UIImage imageWithCGImage:imageRef]; 
     CGImageRelease(imageRef);
     */
-    [self.delegate validImageCaptured:[image fixOrientation] croppedImage:nil];
+    
+    UIImage *img = [image fixOrientation];
+    UIImage *resizedImage = [AvatarBaseController resizeImage:img toSize:avatarView.frame.size];
+    UIImage *croppedImg = [AvatarBaseController cropImage:resizedImage inRect:headView.frame];
+    headView.image = croppedImg;
+    UIGraphicsBeginImageContextWithOptions(avatarView.bounds.size, NO, [[UIScreen mainScreen] scale]);
+    [avatarView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *finalImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    [[UserInfo sharedInstance] setGameImage:finalImage];
+    
+    [self.delegate validImageCaptured:img croppedImage:croppedImg];
     [self.pickerReference dismissModalViewControllerAnimated:YES];
 }
 

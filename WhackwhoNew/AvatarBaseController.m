@@ -78,6 +78,14 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
++(UIImage *)cropImage:(UIImage *)image inRect:(CGRect)rect {
+    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], rect);
+    // or use the UIImage wherever you like
+    UIImage *img = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    return img;
+}
+
 +(UIImage *)resizeImage:(UIImage *)image toSize:(CGSize)newSize {
     UIGraphicsBeginImageContext( newSize );
     [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
