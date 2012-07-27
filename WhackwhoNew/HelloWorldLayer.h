@@ -25,24 +25,19 @@
     NSMutableArray *heads;
     NSMutableArray *hearts;
     NSMutableArray *rainbows;
-    NSInteger pos[17];
-    //Character *head1, *head2, *head3;
     //CCAnimation *laughAnim;
     CCLabelTTF *hitsLabel, *timeLabel, *scoreLabel, *comboLabel;
+    ccTime totalTime;
     int myTime, lives;
-    int comboHits, consecHits, baseScore;
+    int consecHits, baseScore;
     //int numHitOccur, numBombOccur;
     float speed;
-    double ts;
-    double diff;
-    //int hp1, hp2, hp3;
-    //int popups;
-    //int tempDifficulty;
-    ccTime totalTime;
     BOOL gameOver, occupied, gamePaused;
     HUDLayer * _hud;
     id<GameOverDelegate> gameOverDelegate;
-    NSArray *myCGPts;
+    NSArray *botLeft, *botRight, *midLeft, *midRight, *topLeft, *topMid, *topRight;
+    //float body_height_now, body_bounding_width, body_bounding_height;
+    //CCParticleExplosion *emitter;
 }
 
 @property (nonatomic, retain) id<GameOverDelegate> gameOverDelegate;
