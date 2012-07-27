@@ -14,11 +14,17 @@
 
 static UserInfo *sharedInstance = nil;
 
+-(id) init {
+    if (self = [super init]) {
+        self.userId = @"12345678";
+    }
+    return self;
+}
+
 +(UserInfo *)sharedInstance {
     @synchronized(self) {
         if (sharedInstance == nil) {
             sharedInstance = [[self alloc] init];
-            sharedInstance.userId = @"12345678";
         }
     }
     return sharedInstance;
@@ -189,6 +195,19 @@ static UserInfo *sharedInstance = nil;
 
 -(UIImage *)getCroppedImage {
     return [UIImage imageWithCGImage:croppedImage.CGImage];
+}
+
+-(UIImage *)getAvatarImage {
+    if (croppedImage == nil)
+        return nil;
+    baseController = [[AvatarBaseController alloc] initWithNibName:@"AvatarView" bundle:nil];
+    baseController.headView.image = croppedImage;
+    UIView *view = baseController.avatarView;
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, [[UIScreen mainScreen] scale]);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return img;
 }
 
 

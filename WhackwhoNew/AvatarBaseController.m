@@ -91,9 +91,6 @@
 -(void)markFaces:(UIImageView *)facePicture
 {
     UIImage *tempImage = [AvatarBaseController resizeImage:[UIImage imageWithCGImage:facePicture.image.CGImage] toSize:markingView.frame.size];
-    CGRect frame = markingView.frame;
-    CGSize imagesize = tempImage.size;
-    UIImageOrientation orient = tempImage.imageOrientation;
     
     //UIImageView *tempView = [[UIImageView alloc] initWithImage:tempImage];
     //[tempView setTransform:CGAffineTransformMakeScale(1, -1)];
