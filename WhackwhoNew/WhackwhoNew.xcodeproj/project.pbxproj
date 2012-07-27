@@ -392,6 +392,7 @@
 		D0A3F72515AF5E9A0027EFF9 /* AvatarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0948D3915AB6E9A00429477 /* AvatarView.xib */; };
 		D0A3F72615AF5E9A0027EFF9 /* peter head.png in Resources */ = {isa = PBXBuildFile; fileRef = D0948D3115AB5D5700429477 /* peter head.png */; };
 		D0A3F74715B266330027EFF9 /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A3F74615B266330027EFF9 /* SpinnerView.m */; };
+		D0B2477015C204C300C206BA /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2476F15C204C300C206BA /* UIImage+fixOrientation.m */; };
 		D0B9EECD159E6F0D005D2460 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0B9EECC159E6F0D005D2460 /* MobileCoreServices.framework */; };
 		D0D7C84615955D3400F51C6E /* AvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D7C84515955D3400F51C6E /* AvatarViewController.m */; };
 		D0D7C84915956E3D00F51C6E /* ModeSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D7C84815956E3D00F51C6E /* ModeSelectionViewController.m */; };
@@ -888,6 +889,8 @@
 		D09FD5DC159E4EB60079231D /* CameraOverlayControllerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlayControllerViewController.xib; path = ../CameraOverlayControllerViewController.xib; sourceTree = "<group>"; };
 		D0A3F74515B266330027EFF9 /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
 		D0A3F74615B266330027EFF9 /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
+		D0B2476E15C204C300C206BA /* UIImage+fixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+fixOrientation.h"; sourceTree = "<group>"; };
+		D0B2476F15C204C300C206BA /* UIImage+fixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+fixOrientation.m"; sourceTree = "<group>"; };
 		D0B9EECC159E6F0D005D2460 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		D0B9EECF159EA9D4005D2460 /* CameraOverlayControllerViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraOverlayControllerViewControllerDelegate.h; sourceTree = "<group>"; };
 		D0D7C84415955D3400F51C6E /* AvatarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AvatarViewController.h; path = WhackwhoNew/AvatarViewController.h; sourceTree = "<group>"; };
@@ -1096,6 +1099,8 @@
 				D09FD5DA159E4EB60079231D /* CameraOverlayControllerViewController.h */,
 				D09FD5DB159E4EB60079231D /* CameraOverlayControllerViewController.m */,
 				D0B9EECF159EA9D4005D2460 /* CameraOverlayControllerViewControllerDelegate.h */,
+				D0B2476E15C204C300C206BA /* UIImage+fixOrientation.h */,
+				D0B2476F15C204C300C206BA /* UIImage+fixOrientation.m */,
 				C1B4397B15951B4100D62C2B /* StatusBarController.h */,
 				C1B4397C15951B4100D62C2B /* StatusBarController.m */,
 				D0D7C84715956E3D00F51C6E /* ModeSelectionViewController.h */,
@@ -2186,6 +2191,7 @@
 				C159326F15B5DE5A009B7955 /* FTCParser.m in Sources */,
 				C159327015B5DE5A009B7955 /* FTCSprite.m in Sources */,
 				C159347615B60B09009B7955 /* CCRobot.m in Sources */,
+				D0B2477015C204C300C206BA /* UIImage+fixOrientation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

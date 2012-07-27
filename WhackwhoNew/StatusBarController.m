@@ -46,10 +46,12 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
-    UserInfo *usr = [UserInfo sharedInstance];
+    //UserInfo *usr = [UserInfo sharedInstance];
+    /*
     if (usr.usrImg != nil) {
         photoView.image = usr.usrImg;
     }
+     */
 }
 
 - (IBAction)Back_Touched:(id)sender {

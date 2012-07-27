@@ -8,16 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import "UIImage+fixOrientation.h"
+#import "UserInfo.h"
 
 @interface AvatarBaseController : UIViewController
 {
-    UIView *avatarView;
+    UIView *avatarView, *markingView;
     UIImageView *backgroundView, *headView, *photoView;
+    CGPoint leftEyePos, rightEyePos, mouthPos;
 }
 
 @property (nonatomic) UIImageView *backgroundView, *headView, *photoView;
-@property (nonatomic) UIView *avatarView;
+@property (nonatomic) UIView *avatarView, *markingView;
 
 +(UIImage *)resizeImage:(UIImage *)img toSize:(CGSize)rect;
+-(void)markFaces:(UIImageView *)facePicture;
 
 @end

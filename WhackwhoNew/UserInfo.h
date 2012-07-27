@@ -7,6 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+
+NSString *const UserLeftEyePosition = @"LeftEyePosition";
+NSString *const UserRightEyePosition = @"RightEyePosition";
+NSString *const UserMouthPosition = @"MouthPosition";
+NSString *const UserLeftCheekPosition = @"LeftCheekPosition";
+NSString *const UserRightCheekPosition = @"RightCheekPosition";
+NSString *const UserNosePosition = @"NosePosition";
+NSString *const UserChinPosition = @"ChinPosition";
+
+
 
 @interface UserInfo : NSObject {
     @public
@@ -14,17 +25,28 @@
     NSString *userName;
     NSString *userId;
     NSString *gender;
+    
+    
+    // Avatar stuff
+    
+    
+    @private
     UIImage *croppedImage;
     UIImage *usrImg;
-    UIImage *bigHeadImg;
+    
+    CGPoint leftEyePosition, rightEyePosition, mouthPosition;
+    CGRect faceRect;
 }
 
-@property (nonatomic) UIImage *usrImg, *croppedImage, *bigHeadImg;
-@property (nonatomic) NSString *userId, *userName, *gender;
+@property (nonatomic, retain) NSString *userId, *userName, *gender;
 @property (nonatomic, readwrite) int currentLogInType;
+@property (nonatomic, assign) CGPoint leftEyePosition, rightEyePosition, mouthPosition;;
+@property (nonatomic, assign) CGRect faceRect;
+
 
 +(id)sharedInstance;
-
 -(void) clearUserInfo;
+-(void) setUserPicture:(UIImage *)img;
+-(UIImage *)getCroppedImage;
 
 @end

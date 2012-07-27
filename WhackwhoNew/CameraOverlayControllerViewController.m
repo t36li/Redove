@@ -58,39 +58,17 @@
     [pickerReference dismissModalViewControllerAnimated:YES];
 }
 
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo {        
-    // flip image on y-axis to match coordinate system used by core image
-    //[containerView setTransform:CGAffineTransformMakeScale(1, -1)];
-    
-    // flip the entire window to make everything right side up
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo {
     /*
-    
-    CGFloat x_factor = idView.frame.size.width / image.size.width;
-    CGFloat y_factor = idView.frame.size.height / image.size.height;
-    CGFloat factor = MIN(x_factor, y_factor);
-    
-    UIGraphicsBeginImageContext( idView.frame.size);
-    [image drawInRect:CGRectMake(0,0, factor*image.size.width, factor*image.size.height)];
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    */
-    
-    //UIImage *newImage2 = [AvatarBaseController resizeImage:image toSize:outfitView.frame.size];
-    
-    //CGRect frame = outfitView.frame;
     UIImage *newImage = [AvatarBaseController resizeImage:image toSize:outfitView.frame.size];
+
+
     CGImageRef imageRef = CGImageCreateWithImageInRect([newImage CGImage], headView.frame);
     UIImage *croppedImg = [UIImage imageWithCGImage:imageRef]; 
     CGImageRelease(imageRef);
-    //self.croppedImage = croppedImg;
-    //self.validPhoto = newImage2;
-    //CGRect frame2 = headView.frame;
-    //photoView.image = image;
-    [self.delegate validImageCaptured:image croppedImage:croppedImg];
+    */
+    [self.delegate validImageCaptured:[image fixOrientation] croppedImage:nil];
     [self.pickerReference dismissModalViewControllerAnimated:YES];
-    //UIImageView *imgView = [[UIImageView alloc] initWithImage:newImage];
-    //imgView.frame = containerView.frame;    
-    //[self markFaces:imgView];
 }
 
 -(IBAction)takePicture:(id)sender {
