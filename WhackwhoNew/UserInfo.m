@@ -14,13 +14,6 @@
 
 static UserInfo *sharedInstance = nil;
 
--(id) init {
-    if (self = [super init]) {
-        self.userId = @"12345678";
-    }
-    return self;
-}
-
 +(UserInfo *)sharedInstance {
     @synchronized(self) {
         if (sharedInstance == nil) {
@@ -197,6 +190,7 @@ static UserInfo *sharedInstance = nil;
     return [UIImage imageWithCGImage:croppedImage.CGImage];
 }
 
+/*
 -(UIImage *)getAvatarImage {
     if (croppedImage == nil)
         return nil;
@@ -209,6 +203,6 @@ static UserInfo *sharedInstance = nil;
     UIGraphicsEndImageContext();
     return img;
 }
-
+*/
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "AvatarBaseController.h"
-#import "QuartzCore/QuartzCore.h"
 
 @interface AvatarBaseController ()
 

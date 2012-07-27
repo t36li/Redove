@@ -10,6 +10,8 @@
 #import "CameraOverlayControllerViewController.h"
 #import "AvatarBaseController.h"
 #import "GlobalMethods.h"
+#import "QuartzCore/QuartzCore.h"
+#import <CoreImage/CoreImage.h>
 
 @interface AvatarViewController : AvatarBaseController <CameraOverlayControllerViewControllerDelegate> {
     

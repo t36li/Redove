@@ -7,8 +7,6 @@
 //
 
 #import "CameraOverlayControllerViewController.h"
-#import "QuartzCore/QuartzCore.h"
-#import "AvatarViewController.h"
 
 @interface CameraOverlayControllerViewController ()
 

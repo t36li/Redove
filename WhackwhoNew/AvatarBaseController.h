@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
 #import "UIImage+fixOrientation.h"
 #import "UserInfo.h"
+#import "QuartzCore/QuartzCore.h"
 
 @interface AvatarBaseController : UIViewController
 {

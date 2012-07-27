@@ -7,8 +7,6 @@
 //
 
 #import "AvatarViewController.h"
-#import "QuartzCore/QuartzCore.h"
-#import <CoreImage/CoreImage.h>
 
 @interface AvatarViewController ()
 

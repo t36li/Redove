@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
-#import "AvatarBaseController.h"
-
+/*
 NSString *const UserLeftEyePosition = @"LeftEyePosition";
 NSString *const UserRightEyePosition = @"RightEyePosition";
 NSString *const UserMouthPosition = @"MouthPosition";
@@ -17,7 +16,7 @@ NSString *const UserLeftCheekPosition = @"LeftCheekPosition";
 NSString *const UserRightCheekPosition = @"RightCheekPosition";
 NSString *const UserNosePosition = @"NosePosition";
 NSString *const UserChinPosition = @"ChinPosition";
-
+*/
 
 
 @interface UserInfo : NSObject {
@@ -37,8 +36,6 @@ NSString *const UserChinPosition = @"ChinPosition";
     
     CGPoint leftEyePosition, rightEyePosition, mouthPosition;
     CGRect faceRect;
-    
-    AvatarBaseController *baseController;
 }
 
 @property (nonatomic, retain) NSString *userId, *userName, *gender;
@@ -51,6 +48,6 @@ NSString *const UserChinPosition = @"ChinPosition";
 -(void) clearUserInfo;
 -(void) setUserPicture:(UIImage *)img;
 -(UIImage *)getCroppedImage;
--(UIImage *)getAvatarImage;
+//-(UIImage *)getAvatarImage;
 
 @end

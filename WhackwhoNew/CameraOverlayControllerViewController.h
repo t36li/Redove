@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CameraOverlayControllerViewControllerDelegate.h"
 #import "AvatarBaseController.h"
-#import "UserInfo.h"
+#import "QuartzCore/QuartzCore.h"
 
 @interface CameraOverlayControllerViewController : AvatarBaseController <UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
     UIImagePickerController *pickerReference;
