@@ -46,6 +46,7 @@
         // Initialize other director settings.
         [director setAnimationInterval:1.0f/60.0f];
         [director enableRetinaDisplay:YES];
+        [director setDisplayStats:YES];
     }
     
     // Set the view controller as the director's delegate, so we can respond to certain events.
@@ -59,6 +60,7 @@
     // Add the director's OpenGL view as a subview so we can see it.
     [self.view addSubview:director.view];
     [self.view sendSubviewToBack:director.view];
+    
     
     // Finish up our view controller containment responsibilities.
     [director didMoveToParentViewController:self];

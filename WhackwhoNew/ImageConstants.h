@@ -15,6 +15,14 @@
 #define FriendList_bg @"friend list (background).png"
 #define OceanMode_bg @"background 2.png"
 #define hills_l1 @"hills_L1.png"
+#define hills_l2 @"hills_L2.png"
+#define hills_l3 @"hills_L3.png"
+#define hills_l4 @"hills_L4.png"
+#define hills_l5 @"hills_L5.png"
+#define hills_l6 @"hills_L6.png"
+#define hills_l7 @"hills_L7.png"
+#define hills_l8 @"hills_L8_new.png"
+#define hills_l9 @"cloud background.png"
 #define champ_select_bg @"loading page background.png"
 
 //buttons

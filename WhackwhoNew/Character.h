@@ -12,22 +12,24 @@
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
 @interface Character : CCSprite {
-    int hp;
-    int posOccupied;
+    //int hp;
+    //int posOccupied;
     BOOL tappable;
     BOOL isSelectedHit;
     BOOL didMiss;
-    BOOL sideWaysMove;
-    NSString *imageName;
+    CCSprite *body;
+    //BOOL sideWaysMove;
+    //NSString *imageName;
     
 }
 //@property (nonatomic, retain) CCSprite *sprite;
-@property (nonatomic) int hp;
+//@property (nonatomic) int hp;
 @property (nonatomic) BOOL tappable;
 @property (nonatomic) BOOL isSelectedHit;
 @property (nonatomic) BOOL didMiss;
-@property (nonatomic) BOOL sideWaysMove;
-@property (nonatomic) int posOccupied;
-@property (nonatomic) NSString *imageName;
+@property (nonatomic) CCSprite *body;
+//@property (nonatomic) BOOL sideWaysMove;
+//@property (nonatomic) int posOccupied;
+//@property (nonatomic) NSString *imageName;
 
 @end
