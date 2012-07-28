@@ -107,7 +107,7 @@
     
     if (image != nil) {
         //photoView.image = image;
-        //[usr setUserPicture:image];
+        [usr setUserPicture:image];
         //headView.image = croppedImg;
         backgroundView.image = usr.exportImage;
         newPhoto = YES;

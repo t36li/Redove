@@ -16,9 +16,11 @@
 #define kServerLink     @"http://indiedevstories.com"
 #define kImageSrc       @"http://indiedevstories.files.wordpress.com/2011/08/newsokoban_icon.png"
 
-typedef enum LogInType {
-    NotLogIn = 1,
-    LogInFacebook,
-    LogInRenren,
+typedef enum LogInType { //!!!!resistent with Database MediaTypes
+    NotLogIn = 0,
+    LogInFacebook = 1,
+    LogInRenren = 2,
+    LogInGmail = 3,
+    LogInWeibo = 4,
     LogInEmail
 } LogInType;

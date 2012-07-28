@@ -38,6 +38,14 @@
     [self.outfitView addSubview:avatarView];
     
     avatarView.frame = outfitView.frame;
+    
+    UserInfo *usr = [UserInfo sharedInstance];
+    
+    if ([usr.gender isEqualToString:@"male"]) {
+        backgroundView.image = [UIImage imageNamed:@"standard blue.png"];
+    } else {
+        backgroundView.image = [UIImage imageNamed:@"standard pink.png"];
+    }
 }
     
 - (void)viewDidUnload
@@ -69,13 +77,17 @@
     UIImage *img = [image fixOrientation];
     UIImage *resizedImage = [AvatarBaseController resizeImage:img toSize:avatarView.frame.size];
     UIImage *croppedImg = [AvatarBaseController cropImage:resizedImage inRect:headView.frame];
+    
     headView.image = croppedImg;
+    
     UIGraphicsBeginImageContextWithOptions(avatarView.bounds.size, NO, [[UIScreen mainScreen] scale]);
     [avatarView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *finalImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
     [[UserInfo sharedInstance] setGameImage:finalImage];
+    
+    photoView.image = nil;
     
     [self.delegate validImageCaptured:img croppedImage:croppedImg];
     [self.pickerReference dismissModalViewControllerAnimated:YES];
