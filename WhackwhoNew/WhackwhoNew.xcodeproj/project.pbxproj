@@ -412,6 +412,8 @@
 		D0E30670159E4B1B0080D845 /* popoverBg.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E30661159E4B1B0080D845 /* popoverBg.png */; };
 		D0E30671159E4B1B0080D845 /* popoverBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E30662159E4B1B0080D845 /* popoverBg@2x.png */; };
 		D0E30672159E4B1B0080D845 /* popoverBgSimple.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E30663159E4B1B0080D845 /* popoverBgSimple.png */; };
+		D0F8785D15C362AA00163EC8 /* standard blue.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F8785B15C362AA00163EC8 /* standard blue.png */; };
+		D0F8785E15C362AA00163EC8 /* standard pink.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F8785C15C362AA00163EC8 /* standard pink.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -931,6 +933,8 @@
 		D0E30684159E4B4C0080D845 /* WEPopoverTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WEPopoverTableViewController.m; sourceTree = "<group>"; };
 		D0E30685159E4B4C0080D845 /* WEPopoverViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WEPopoverViewController.h; sourceTree = "<group>"; };
 		D0E30686159E4B4C0080D845 /* WEPopoverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WEPopoverViewController.m; sourceTree = "<group>"; };
+		D0F8785B15C362AA00163EC8 /* standard blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "standard blue.png"; sourceTree = "<group>"; };
+		D0F8785C15C362AA00163EC8 /* standard pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "standard pink.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1706,6 +1710,8 @@
 			isa = PBXGroup;
 			children = (
 				C1CDF59115C0ECDF0002085B /* fire.png */,
+				D0F8785B15C362AA00163EC8 /* standard blue.png */,
+				D0F8785C15C362AA00163EC8 /* standard pink.png */,
 				C15934B515B782B5009B7955 /* peter head c.png */,
 				C15934B615B782B6009B7955 /* peter body.png */,
 				C1FE253F15AF66CB00DAF258 /* flower.png */,
@@ -2149,6 +2155,8 @@
 				C1CDF56815B8ABB70002085B /* play again key.png in Resources */,
 				C1CDF56915B8ABB70002085B /* home key.png in Resources */,
 				C1CDF59215C0ECDF0002085B /* fire.png in Resources */,
+				D0F8785D15C362AA00163EC8 /* standard blue.png in Resources */,
+				D0F8785E15C362AA00163EC8 /* standard pink.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
