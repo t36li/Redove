@@ -2276,6 +2276,8 @@
 				C1CDF56815B8ABB70002085B /* play again key.png in Resources */,
 				C1CDF56915B8ABB70002085B /* home key.png in Resources */,
 				C1CDF59215C0ECDF0002085B /* fire.png in Resources */,
+				D0F8785D15C362AA00163EC8 /* standard blue.png in Resources */,
+				D0F8785E15C362AA00163EC8 /* standard pink.png in Resources */,
 				C151791C15C36D3E00A4378F /* hit effect.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
