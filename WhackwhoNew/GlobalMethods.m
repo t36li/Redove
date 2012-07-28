@@ -6,7 +6,9 @@
 //  Copyright (c) 2012 Waterloo. All rights reserved.
 //
 
+#import <RestKit/RestKit.h>
 #import "GlobalMethods.h"
+#import "UserInfo.h"
 
 @implementation GlobalMethods
 
@@ -48,5 +50,22 @@
     return image;
 }
 */
+
+
+
+-(void)RKInit{
+    RKURL *baseURL = [RKURL URLWithBaseURLString:@"http://localhost/PhpProject1/rest"];
+    RKObjectManager *objectManager = [RKObjectManager objectManagerWithBaseURL:baseURL];
+    objectManager.client.baseURL = baseURL;
+    //objectManager.client.requestQueue.delegate = self;
+    //objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
+    
+    RKObjectMapping *userInfoMapping = [RKObjectMapping mappingForClass:[UserInfo class]];
+    [userInfoMapping mapKeyPath:@"ID" toAttribute:@""];
+    
+    
+    [objectManager.mappingProvider setMapping:userInfoMapping forKeyPath:@""];
+
+}
 
 @end
