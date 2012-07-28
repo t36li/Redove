@@ -58,6 +58,7 @@
 		C14B63BA15AF5C9200376C91 /* ChooseWhoLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C14B63B915AF5C9200376C91 /* ChooseWhoLayer.m */; };
 		C14B63BD15AF5CE000376C91 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C14B63BC15AF5CE000376C91 /* HelloWorldLayer.m */; };
 		C14B63C015AF5D3200376C91 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = C14B63BF15AF5D3100376C91 /* Character.m */; };
+		C151791C15C36D3E00A4378F /* hit effect.png in Resources */ = {isa = PBXBuildFile; fileRef = C151791B15C36D3E00A4378F /* hit effect.png */; };
 		C159285E15B35083009B7955 /* loading page background.png in Resources */ = {isa = PBXBuildFile; fileRef = C159285D15B35083009B7955 /* loading page background.png */; };
 		C159285F15B356FA009B7955 /* hitFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 692AC3A515B24C0D001E4858 /* hitFriendCell.m */; };
 		C159286015B357EF009B7955 /* hitFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 692AC3A715B24C2A001E4858 /* hitFriendCell.xib */; };
@@ -531,6 +532,7 @@
 		C14B63BC15AF5CE000376C91 /* HelloWorldLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		C14B63BE15AF5D3100376C91 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
 		C14B63BF15AF5D3100376C91 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
+		C151791B15C36D3E00A4378F /* hit effect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hit effect.png"; sourceTree = "<group>"; };
 		C159285D15B35083009B7955 /* loading page background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading page background.png"; sourceTree = "<group>"; };
 		C159287415B4E2DD009B7955 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C159325015B5DE52009B7955 /* TBXML+Compression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBXML+Compression.h"; sourceTree = "<group>"; };
@@ -1050,6 +1052,7 @@
 			children = (
 				C16921CC15B20ABA00F081AF /* Test Animations */,
 				C16921CA15B20A3900F081AF /* zach_resized.png */,
+				C151791B15C36D3E00A4378F /* hit effect.png */,
 				C16921E515B24B7C00F081AF /* store interface.png */,
 				C1FE252515AF65EF00DAF258 /* heart.png */,
 				C1FE252615AF65EF00DAF258 /* pause.png */,
@@ -2149,6 +2152,7 @@
 				C1CDF56815B8ABB70002085B /* play again key.png in Resources */,
 				C1CDF56915B8ABB70002085B /* home key.png in Resources */,
 				C1CDF59215C0ECDF0002085B /* fire.png in Resources */,
+				C151791C15C36D3E00A4378F /* hit effect.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

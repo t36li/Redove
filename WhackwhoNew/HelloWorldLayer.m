@@ -128,7 +128,7 @@
                    [NSValue valueWithCGPoint:CGPointMake(804/2, 320-213/2)],
                    [NSValue valueWithCGPoint:CGPointMake(843/2, 320-196/2)],
                    [NSValue valueWithCGPoint:CGPointMake(897/2, 320-176/2)],
-                   [NSValue valueWithCGPoint:CGPointMake(938/2, 320-169/2)],
+                   //[NSValue valueWithCGPoint:CGPointMake(938/2, 320-169/2)],
                    nil];
         
         //add background this is for retina display
@@ -264,19 +264,17 @@
         //}
         
         //testing UserInfo image taken from camera
-        //UserInfo *usr = [UserInfo sharedInstance];
-        //UIImage *helmetImage = usr.bigHeadImg;
+        UserInfo *usr = [UserInfo sharedInstance];
+        UIImage *bigHead = usr.exportImage; //640 x 852 : 64 x 85.2
         
-        //Character *head = [Character spriteWithCGImage:[tempImage CGImage] key:@"test"];
-        //head.position = ccp(50, 50);
-        //[self addChild:head z:100];
+        // Old big head contentSize: 73.5 x 76.5
         
         //the number of total heads to include in the heads array should be relative to the difficulty level chosen previously... max will be 10 ATM...this should be a loop that fast-enumerates through all the chosen names array from the previous view
         //for testing purposes, set to 7
         
         //testing the upper and lower body piece-together
         UIImage *lowerBody = [UIImage imageNamed:@"peter body.png"];
-        UIImage *bigHead = [UIImage imageNamed:@"peter head c.png"];
+        //UIImage *bigHead = [UIImage imageNamed:@"peter head c.png"];
         int index = 1;
         for (int i = 0; i < 7; i++) {
             //get the friend portrait image...once database kicks in, we will grab the big head
@@ -286,12 +284,12 @@
             //head.sideWaysMove = FALSE;
             //body: 43 x 100
             head.anchorPoint = ccp(0,0);
-            head.scale = 0.3;
+            head.scale = 0.2;
             head.isSelectedHit = TRUE;
             head.visible = FALSE;
             head.position = ccp(0,0);
             
-            //CCSprite *body = [CCSprite spriteWithCGImage:[bigHead CGImage] key:[NSString stringWithFormat:@"body_frame%i", index]];
+            CCSprite *body = [CCSprite spriteWithCGImage:[lowerBody CGImage] key:[NSString stringWithFormat:@"body_frame%i", index]];
                         
             //if ([selectedHeads containsObject:friend]) {
             //    head.isSelectedHit = FALSE;
@@ -299,16 +297,16 @@
             //    head.isSelectedHit = TRUE;
             //}
             
-            //[head addChild:body];
-            
-            //head.body = body;
+            [head addChild:body];
+            body.anchorPoint = ccp(0.5, 0.75); //90 x 31 -> 182 x 120
+            body.position = ccp(160,10);
+            body.scale = 1.4;
             //body_height_now = body.contentSize.height * body.scaleY;
             //body_bounding_width = body.boundingBox.size.width;
             //body_bounding_height = body.boundingBox.size.height;
             
             //body.anchorPoint = ccp(0.5, 0.05); //88 x 35
             //body.position = ccp(44, 45);
-            //body.scale = 1;
 
             [self addChild:head];
             [heads addObject:head];
@@ -613,7 +611,7 @@
             if (CGRectIntersectsRect(absrect1, absrect2)) {
                 CCLOG(@"intersected!");
                 head.position = ccp(0,0);
-                head.scale = 0.3;
+                head.scale = 0.2;
                 head.visible = FALSE;
                 [head stopAllActions];
                 return;
@@ -681,7 +679,7 @@
     head.rotation = 0;
     //head.sideWaysMove = FALSE;
     head.position = ccp(0,0);
-    head.scale = 0.3;
+    head.scale = 0.2;
     head.visible = FALSE;
     if (head.didMiss && head.isSelectedHit) {
         //play add score animation
@@ -787,6 +785,16 @@
 
         //CGRect temp = CGRectMake(head.position.x, head.position.y, head.boundingBox.size.width+body_bounding_width, head.boundingBox.size.height+body_bounding_height);
         if (CGRectContainsPoint(head.boundingBox, location)) {
+            
+            CCSprite *hitEffect = [CCSprite spriteWithFile:@"hit effect.png"];
+            hitEffect.scale = 0.1;
+            hitEffect.position = ccp(location.x, location.y);
+            [self addChild:hitEffect];
+            
+            CCScaleBy *scaleUp = [CCScaleBy actionWithDuration:0.2 scale:1.5];
+            CCScaleBy *scaleDown = [CCScaleBy actionWithDuration:0.2 scale:0.01];
+            [hitEffect runAction:[CCSequence actions:scaleUp, scaleDown, nil]];
+            
             head.didMiss = FALSE;
             if (head.isSelectedHit) {
                 //head.hp -= 10;
@@ -820,12 +828,12 @@
             CCMoveBy *moveDown = [CCMoveBy actionWithDuration:0.5 position:ccp(-height_now * sin(rotation), -height_now * cos(rotation))];
             CCMoveBy *easeMoveDown = [CCEaseInOut actionWithAction:moveDown rate:3.0];
             CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
+            //CCCallFuncN *removeHitEffect = [CCCallFuncN actionWithTarget:self selector:@selector(removeHitEffect:)];
             [head runAction:[CCSequence actions: easeMoveDown, checkCombo, nil]];
-            
+            //[self removeChild:hitEffect cleanup:YES];
         }
     } //end heads loop
 }
-
 
 //-(void) doShit: (CGPoint)location {
     //return if paused
