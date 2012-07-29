@@ -25,6 +25,7 @@
     NSMutableArray *heads;
     NSMutableArray *hearts;
     NSMutableArray *rainbows;
+    NSMutableArray *coins;
     //CCAnimation *laughAnim;
     CCLabelTTF *hitsLabel, *timeLabel, *scoreLabel, *comboLabel;
     ccTime totalTime;
