@@ -70,7 +70,7 @@
         
         //init retard variables
         consecHits = 0;
-        totalTime = 100;
+        totalTime = 30;
         myTime = (int)totalTime;
         baseScore = 0;
         speed = 1.5;
@@ -138,7 +138,7 @@
         //set background color to white
         glClearColor(255, 255, 255, 255);
         
-        /*CCSprite *bg1 = [CCSprite spriteWithFile:hills_l1];
+        CCSprite *bg1 = [CCSprite spriteWithFile:hills_l1];
         CCSprite *bg2 = [CCSprite spriteWithFile:hills_l2];
         CCSprite *bg3 = [CCSprite spriteWithFile:hills_l3];
         CCSprite *bg4 = [CCSprite spriteWithFile:hills_l4];
@@ -167,7 +167,7 @@
         [self addChild:bg6 z:-80];
         [self addChild:bg7 z:-90];
         [self addChild:bg8 z:-100];
-        [self addChild:bg9 z:-110];*/
+        [self addChild:bg9 z:-110];
         
         //add particle emitter
         //emitter = [[CCParticleExplosion alloc] init];
@@ -265,11 +265,11 @@
         //}
         
         //testing UserInfo image taken from camera
-        //UserInfo *usr = [UserInfo sharedInstance];
-        //UIImage *bigHead = usr.exportImage; //640 x 852 : 64 x 85.2
+        UserInfo *usr = [UserInfo sharedInstance];
+        UIImage *bigHead = usr.exportImage; //640 x 852 : 64 x 85.2
         
         // Old big head contentSize: 73.5 x 76.5
-        UIImage *bigHead = [UIImage imageNamed:@"peter head c.png"];
+        //UIImage *bigHead = [UIImage imageNamed:@"peter head c.png"];
 
         //the number of total heads to include in the heads array should be relative to the difficulty level chosen previously... max will be 10 ATM...this should be a loop that fast-enumerates through all the chosen names array from the previous view
         //for testing purposes, set to 7
@@ -298,7 +298,7 @@
             //    head.isSelectedHit = TRUE;
             //}
             
-            [head addChild:body z:0 tag:1];
+            [head addChild:body];
             body.anchorPoint = ccp(0.5, 0.75); //90 x 31 -> 182 x 120
             body.position = ccp(160,20);
             body.scale = 1.4;
@@ -681,6 +681,7 @@
     head.position = ccp(0,0);
     head.scale = 0.2;
     head.visible = FALSE;
+    //[head removeAllChildrenWithCleanup:YES];
     //[head removeChildByTag:2 cleanup:YES];
     //[head removeChildByTag:3 cleanup:YES];
     if (head.didMiss && head.isSelectedHit) {
@@ -866,10 +867,26 @@
             CCMoveBy *moveDown = [CCMoveBy actionWithDuration:0.5 position:ccp(-(5+height_now) * sin(rotation), -(height_now+5) * cos(rotation))];
             CCMoveBy *easeMoveDown = [CCEaseOut actionWithAction:moveDown rate:3.0];
             CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
+            //CCCallFuncN *addMouthEffect = [CCCallFuncN actionWithTarget:self selector:@selector(applyMouthEffect:)];
+            //[head runAction:addMouthEffect];
             
             [head runAction:[CCSequence actions: easeMoveDown, checkCombo, nil]];
         }
     } //end heads loop
+}
+
+-(void) applyMouthEffect: (id) sender {
+    Character *head = (Character *)sender;
+    //in the future, must random these effects
+    CCSprite *mouthEffect = [CCSprite spriteWithFile:mouthEffectOne];
+    
+    UserInfo *usr = [UserInfo sharedInstance];
+    CGPoint mouthCenter = usr.mouthPosition;
+    
+    [head addChild:mouthEffect];
+    mouthEffect.scale = 1/0.2;
+    mouthEffect.anchorPoint = ccp(0.5,0.5);
+    mouthEffect.position = ccp(mouthCenter.x/2, mouthCenter.y/2);
 }
 
 -(void) removeHitEffect: (id) sender {
@@ -890,7 +907,6 @@
     [coins removeObject:coin];
     [self removeChild:coin cleanup:YES];
 }
-
 
 // on "dealloc" you need to release all your retained objects
 

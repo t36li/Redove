@@ -50,3 +50,6 @@
 //Frames
 #define FriendListCell @"friend list (cell).png"
 #define FriendListBWCell @"cell.png"
+
+//special effects
+#define mouthEffectOne @"mouth effect test1.png"
