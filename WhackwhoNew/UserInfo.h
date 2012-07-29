@@ -50,6 +50,9 @@ NSString *const UserChinPosition = @"ChinPosition";
 -(UIImage *)getCroppedImage;
 -(void) setGameImage:(UIImage *)img;
 -(UIImage *) exportImage;
+-(CGPoint) getLeftEyePos;
+-(CGPoint) getRightEyePos;
+-(CGPoint) getMouthPos;
 //-(UIImage *)getAvatarImage;
 
 @end

@@ -216,6 +216,18 @@ static UserInfo *sharedInstance = nil;
     return gameImage;
 }
 
+-(CGPoint) getLeftEyePos {
+    return leftEyePosition;
+}
+
+-(CGPoint) getRightEyePos {
+    return rightEyePosition;
+}
+
+-(CGPoint) getMouthPos {
+    return mouthPosition;
+}
+
 /*
 -(UIImage *)getAvatarImage {
     if (croppedImage == nil)
