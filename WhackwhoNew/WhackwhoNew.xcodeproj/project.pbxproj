@@ -2539,7 +2539,7 @@
 					"\"WhackwhoNew/libs/kazmath/include\"",
 					"”$(TARGET_BUILD_DIR)/usr/local/lib/include”",
 					"”$(OBJROOT)/UninstalledProducts/include”",
-					"“$(BUILT_PRODUCTS_DIR)/../../Headers”",
+					"'$(BUILT_PRODUCTS_DIR)/../../Headers'",
 				);
 				INFOPLIST_FILE = WhackwhoNew/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
