@@ -171,6 +171,7 @@
                 if (temp.image == nil) {
                     temp.image = tempImage;
                     portrait.image = tempImage;
+                    [portrait setContentMode:UIViewContentModeScaleAspectFill];
                     temp.tag = index;
                     
                     //set up big portraint image glview
@@ -192,9 +193,6 @@
                 }
                 index++;
             }
-            
-            
-            
         }
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

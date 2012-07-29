@@ -108,27 +108,27 @@
                     [NSValue valueWithCGPoint:CGPointMake(905/2, 320-273/2)],
                     nil];
         topMid = [[NSArray alloc] initWithObjects:
-                  [NSValue valueWithCGPoint:CGPointMake(316/2, 320-262/2)],
-                  [NSValue valueWithCGPoint:CGPointMake(357/2, 320-229/2)],
+                  //[NSValue valueWithCGPoint:CGPointMake(316/2, 320-262/2)],
+                  //[NSValue valueWithCGPoint:CGPointMake(357/2, 320-229/2)],
                   [NSValue valueWithCGPoint:CGPointMake(411/2, 320-195/2)],
                   [NSValue valueWithCGPoint:CGPointMake(466/2, 320-174/2)],
                   [NSValue valueWithCGPoint:CGPointMake(553/2, 320-164/2)],
                   [NSValue valueWithCGPoint:CGPointMake(609/2, 320-167/2)],
                   [NSValue valueWithCGPoint:CGPointMake(672/2, 320-184/2)],
-                  [NSValue valueWithCGPoint:CGPointMake(720/2, 320-202/2)],
-                  [NSValue valueWithCGPoint:CGPointMake(761/2, 320-224/2)],
+                  //[NSValue valueWithCGPoint:CGPointMake(720/2, 320-202/2)],
+                  //[NSValue valueWithCGPoint:CGPointMake(761/2, 320-224/2)],
                   nil];
         topLeft = [[NSArray alloc] initWithObjects:
                    [NSValue valueWithCGPoint:CGPointMake(30/2, 320-153/2)],
                    [NSValue valueWithCGPoint:CGPointMake(85/2, 320-151/2)],
                    [NSValue valueWithCGPoint:CGPointMake(133/2, 320-166/2)],
-                   [NSValue valueWithCGPoint:CGPointMake(188/2, 320-189/2)],
-                   [NSValue valueWithCGPoint:CGPointMake(247/2, 320-233/2)],
+                   //[NSValue valueWithCGPoint:CGPointMake(188/2, 320-189/2)],
+                   //[NSValue valueWithCGPoint:CGPointMake(247/2, 320-233/2)],
                    nil];
         topRight = [[NSArray alloc] initWithObjects:
-                   [NSValue valueWithCGPoint:CGPointMake(804/2, 320-213/2)],
+                   //[NSValue valueWithCGPoint:CGPointMake(804/2, 320-213/2)],
                    [NSValue valueWithCGPoint:CGPointMake(843/2, 320-196/2)],
-                   //[NSValue valueWithCGPoint:CGPointMake(897/2, 320-176/2)],
+                   [NSValue valueWithCGPoint:CGPointMake(897/2, 320-176/2)],
                    //[NSValue valueWithCGPoint:CGPointMake(938/2, 320-169/2)],
                    nil];
         
@@ -138,7 +138,7 @@
         //set background color to white
         glClearColor(255, 255, 255, 255);
         
-        CCSprite *bg1 = [CCSprite spriteWithFile:hills_l1];
+        /*CCSprite *bg1 = [CCSprite spriteWithFile:hills_l1];
         CCSprite *bg2 = [CCSprite spriteWithFile:hills_l2];
         CCSprite *bg3 = [CCSprite spriteWithFile:hills_l3];
         CCSprite *bg4 = [CCSprite spriteWithFile:hills_l4];
@@ -167,7 +167,7 @@
         [self addChild:bg6 z:-80];
         [self addChild:bg7 z:-90];
         [self addChild:bg8 z:-100];
-        [self addChild:bg9 z:-110];
+        [self addChild:bg9 z:-110];*/
         
         //add particle emitter
         //emitter = [[CCParticleExplosion alloc] init];
@@ -265,11 +265,11 @@
         //}
         
         //testing UserInfo image taken from camera
-        UserInfo *usr = [UserInfo sharedInstance];
-        UIImage *bigHead = usr.exportImage; //640 x 852 : 64 x 85.2
+        //UserInfo *usr = [UserInfo sharedInstance];
+        //UIImage *bigHead = usr.exportImage; //640 x 852 : 64 x 85.2
         
         // Old big head contentSize: 73.5 x 76.5
-        //UIImage *bigHead = [UIImage imageNamed:@"peter head c.png"];
+        UIImage *bigHead = [UIImage imageNamed:@"peter head c.png"];
 
         //the number of total heads to include in the heads array should be relative to the difficulty level chosen previously... max will be 10 ATM...this should be a loop that fast-enumerates through all the chosen names array from the previous view
         //for testing purposes, set to 7
@@ -313,7 +313,6 @@
             [heads addObject:head];
             index++;
         }
-
 
         [self schedule:@selector(tryPopheads) interval:1.5];
         [self schedule:@selector(checkGameState) interval:0.1];
@@ -636,7 +635,7 @@
     
     //init all the actions
     //add the height of the body * 0.3 to the move: 59.5 * 0.3
-    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp((height_now+10) * sin(rotationAngle), (height_now+10) * cos(rotationAngle))];
+    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp((height_now+5) * sin(rotationAngle), (height_now+5) * cos(rotationAngle))];
     CCMoveBy *easeMoveUp = [CCEaseIn actionWithAction:moveUp rate:3.0];
     CCAction *easeMoveDown = [easeMoveUp reverse];
     CCCallFuncN *setTappable = [CCCallFuncN actionWithTarget:self selector:@selector(setTappable:)];
@@ -786,9 +785,11 @@
             [coin stopAllActions];
             CCLOG(@"got coin!");
             baseScore += 100;
-            CCRotateBy *rotateCoin = [CCRotateBy actionWithDuration:1.0 angle:(360*5)];
+            CCScaleBy *scaleCoinUp = [CCScaleBy actionWithDuration:0.2 scale:2];
+            CCAction *scaleCoinDown = [scaleCoinUp reverse];
             CCCallFuncN *removeCoin = [CCCallFuncN actionWithTarget:self selector:@selector(removeCoin:)];
-            [coin runAction:[CCSequence actions:rotateCoin, removeCoin, nil]];
+            [coin runAction:[CCSequence actions:scaleCoinUp, scaleCoinDown, removeCoin, nil]];
+            break;
             //[self removeChild:coin cleanup:YES];
             //[coins removeObject:coin];
         }
@@ -802,17 +803,22 @@
         //CGRect temp = CGRectMake(head.position.x, head.position.y, head.boundingBox.size.width+body_bounding_width, head.boundingBox.size.height+body_bounding_height);
         if (CGRectContainsPoint(head.boundingBox, location)) {
             
+            [head stopAllActions];
+            head.didMiss = FALSE;
+            head.tappable = FALSE;
+            
             //need to remove hiteffect sprite just like the coins
-           /* CCSprite *hitEffect = [CCSprite spriteWithFile:@"hit effect.png"];
-            hitEffect.scale = 0.1;
-            hitEffect.position = ccp(location.x, location.y);
-            [self addChild:hitEffect z:0 tag:10];
-            CCScaleBy *scaleUp = [CCScaleBy actionWithDuration:0.1 scale:4.5];
-            CCScaleBy *scaleDown = [CCScaleBy actionWithDuration:0.1 scale:0.01];
-            [hitEffect runAction:[CCSequence actions:scaleUp, scaleDown, nil]];*/
+            CCSprite *hitEffect = [CCSprite spriteWithFile:@"hit effect.png"];
+            hitEffect.scale = 0.01;
+            hitEffect.position = ccp(head.position.x + head.contentSize.width * head.scaleX/2, head.position.y);
+            [self addChild:hitEffect];
+            CCScaleTo *scaleUp = [CCScaleTo actionWithDuration:0.1 scale:1.0];
+            CCScaleTo *scaleDown = [CCScaleTo actionWithDuration:0.1 scale:0.01];
+            CCCallFuncN *removeHitEffect = [CCCallFuncN actionWithTarget:self selector:@selector(removeHitEffect:)];
+            [hitEffect runAction:[CCSequence actions:scaleUp, scaleDown, removeHitEffect, nil]];
             
             CCSprite *testObj = [CCSprite spriteWithFile:@"coin front.png"];
-            testObj.position = ccp(location.x, location.y);
+            testObj.position = ccp(head.position.x + head.contentSize.width * head.scaleX/2, head.position.y);
             testObj.scale = 0.4;
             [self addChild:testObj];
             [coins addObject:testObj];
@@ -821,13 +827,13 @@
             //id actionUp = [actionDown reverse];
             //CCMoveBy *popUpCoin = [CCMoveBy actionWithDuration:0.1 position:ccp(0,50)];
             //CCMoveBy *easePopUpcoin = [CCEaseIn actionWithAction:popUpCoin rate:3.0];
-            CCMoveBy *dropCoin = [CCMoveTo actionWithDuration:1.9 position:ccp(160,0)];
-            CCMoveBy *easeDropCoin = [CCEaseIn actionWithAction:dropCoin rate:1.5];
+            //CCMoveBy *dropCoin = [CCMoveTo actionWithDuration:1.9 position:ccp(160,0)];
+            //CCMoveBy *easeDropCoin = [CCEaseIn actionWithAction:dropCoin rate:1.5];
+            CCRotateBy *rotateCoin = [CCRotateBy actionWithDuration:1.9 angle:(360*7)];
             CCCallFuncN *removeCoin = [CCCallFuncN actionWithTarget:self selector:@selector(removeCoin:)];
            // [testObj runAction:[CCSequence actions:actionDown, actionUp, actionDown, actionUp, removeCoin, nil]];
-            [testObj runAction:[CCSequence actions: easeDropCoin, removeCoin, nil]];
+            [testObj runAction:[CCSequence actions: rotateCoin, removeCoin, nil]];
 
-            head.didMiss = FALSE;
             if (head.isSelectedHit) {
                 //head.hp -= 10;
                 //comboHits++;
@@ -853,12 +859,11 @@
                 }
             }
             
-            [head stopAllActions];
             //int width_now = head.contentSize.width * head.scaleX;
             float height_now = head.contentSize.height * head.scaleY;
-            head.tappable = FALSE;
+            
             float rotation = CC_DEGREES_TO_RADIANS(head.rotation);
-            CCMoveBy *moveDown = [CCMoveBy actionWithDuration:0.5 position:ccp(-(10+height_now) * sin(rotation), -(height_now + 10) * cos(rotation))];
+            CCMoveBy *moveDown = [CCMoveBy actionWithDuration:0.5 position:ccp(-(5+height_now) * sin(rotation), -(height_now+5) * cos(rotation))];
             CCMoveBy *easeMoveDown = [CCEaseOut actionWithAction:moveDown rate:3.0];
             CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
             
@@ -867,10 +872,23 @@
     } //end heads loop
 }
 
+-(void) removeHitEffect: (id) sender {
+    CCSprite *hitEffect = (CCSprite *) sender;
+    [self removeChild:hitEffect cleanup:YES];
+}
+
 -(void) removeCoin: (id) sender {
     CCSprite *coin = (CCSprite *) sender;
-    [self removeChild:coin cleanup:YES];
+    
+    /*NSArray *coinsCopy = [coins copy];
+    for (CCSprite *coin2 in coinsCopy) {
+        if ([coin2 isEqual:coin]) {
+            [coins removeObject:coin];
+            break;
+        }
+    }*/
     [coins removeObject:coin];
+    [self removeChild:coin cleanup:YES];
 }
 
 
