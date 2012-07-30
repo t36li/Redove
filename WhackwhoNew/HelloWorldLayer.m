@@ -13,7 +13,7 @@
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
 #import <Foundation/Foundation.h>
-
+#import "CocosViewController.h"
 
 #pragma mark - HelloWorldLayer
 
@@ -70,7 +70,7 @@
         
         //init retard variables
         consecHits = 0;
-        totalTime = 30;
+        totalTime = 5;
         myTime = (int)totalTime;
         baseScore = 0;
         speed = 1.5;
@@ -329,7 +329,7 @@
 
 -(void) pauseGame {
     if (self.isTouchEnabled) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Paused" message:@"Press the button to..." delegate:self cancelButtonTitle:@"Resume" otherButtonTitles:@"Restart", nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Paused" message:@"Press the button to..." delegate:self cancelButtonTitle:@"Resume" otherButtonTitles:@"Back Home", nil];
         [alert show];
         gamePaused = TRUE;
         [[CCDirector sharedDirector] pause];
@@ -431,7 +431,9 @@
         self.isTouchEnabled = NO;
         [[Game sharedGame] setBaseScore:baseScore];
         //[[Game sharedGame] setConsecHits:consecHits];
-        [_hud showRestartMenu:NO];
+        //CocosViewController *vc = [[CocosViewController alloc] init];
+
+        [_hud showRestartMenu:YES :gameOverDelegate];
         
         gameOver = TRUE;
         return;
@@ -818,23 +820,27 @@
             CCCallFuncN *removeHitEffect = [CCCallFuncN actionWithTarget:self selector:@selector(removeHitEffect:)];
             [hitEffect runAction:[CCSequence actions:scaleUp, scaleDown, removeHitEffect, nil]];
             
-            CCSprite *testObj = [CCSprite spriteWithFile:@"coin front.png"];
-            testObj.position = ccp(head.position.x + head.contentSize.width * head.scaleX/2, head.position.y);
-            testObj.scale = 0.4;
-            [self addChild:testObj];
-            [coins addObject:testObj];
-            //id bounceDown = [CCMoveBy actionWithDuration:0.5 position:ccp(0,-30)];
-            //id actionDown = [CCEaseBounceOut actionWithAction:bounceDown];
-            //id actionUp = [actionDown reverse];
-            //CCMoveBy *popUpCoin = [CCMoveBy actionWithDuration:0.1 position:ccp(0,50)];
-            //CCMoveBy *easePopUpcoin = [CCEaseIn actionWithAction:popUpCoin rate:3.0];
-            //CCMoveBy *dropCoin = [CCMoveTo actionWithDuration:1.9 position:ccp(160,0)];
-            //CCMoveBy *easeDropCoin = [CCEaseIn actionWithAction:dropCoin rate:1.5];
-            CCRotateBy *rotateCoin = [CCRotateBy actionWithDuration:1.9 angle:(360*7)];
-            CCCallFuncN *removeCoin = [CCCallFuncN actionWithTarget:self selector:@selector(removeCoin:)];
-           // [testObj runAction:[CCSequence actions:actionDown, actionUp, actionDown, actionUp, removeCoin, nil]];
-            [testObj runAction:[CCSequence actions: rotateCoin, removeCoin, nil]];
+            //10% chance for a coin to popup
+            if (arc4random() % 100 < 10) {
+                CCSprite *testObj = [CCSprite spriteWithFile:@"coin front.png"];
+                testObj.position = ccp(head.position.x + head.contentSize.width * head.scaleX/2, head.position.y);
+                testObj.scale = 0.4;
+                [self addChild:testObj];
+                [coins addObject:testObj];
+                //id bounceDown = [CCMoveBy actionWithDuration:0.5 position:ccp(0,-30)];
+                //id actionDown = [CCEaseBounceOut actionWithAction:bounceDown];
+                //id actionUp = [actionDown reverse];
+                //CCMoveBy *popUpCoin = [CCMoveBy actionWithDuration:0.1 position:ccp(0,50)];
+                //CCMoveBy *easePopUpcoin = [CCEaseIn actionWithAction:popUpCoin rate:3.0];
+                //CCMoveBy *dropCoin = [CCMoveTo actionWithDuration:1.9 position:ccp(160,0)];
+                //CCMoveBy *easeDropCoin = [CCEaseIn actionWithAction:dropCoin rate:1.5];
+                CCRotateBy *rotateCoin = [CCRotateBy actionWithDuration:1.9 angle:(360*7)];
+                CCCallFuncN *removeCoin = [CCCallFuncN actionWithTarget:self selector:@selector(removeCoin:)];
+                // [testObj runAction:[CCSequence actions:actionDown, actionUp, actionDown, actionUp, removeCoin, nil]];
+                [testObj runAction:[CCSequence actions: rotateCoin, removeCoin, nil]];
 
+            }
+            
             if (head.isSelectedHit) {
                 //head.hp -= 10;
                 //comboHits++;

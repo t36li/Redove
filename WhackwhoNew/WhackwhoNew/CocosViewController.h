@@ -12,7 +12,6 @@
 #import "ChooseWhoLayer.h"
 #import "GameOverDelegate.h"
 
-
 @interface CocosViewController : UIViewController <CCDirectorDelegate, GameOverDelegate> {
 }
 

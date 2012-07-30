@@ -7,11 +7,15 @@
 //
 
 #import "cocos2d.h"
+#import "GameOverDelegate.h"
 
 @interface HUDLayer : CCLayer {
     int baseScore, multiplier, consecHits, timeBonus, totalScore;
+    id<GameOverDelegate> gameOverDelegate;
+
 }
 
-- (void)showRestartMenu:(BOOL)won;
+- (void)showRestartMenu:(BOOL)won:(id<GameOverDelegate>)delegate;
+@property (nonatomic, retain) id<GameOverDelegate> gameOverDelegate;
 
 @end
