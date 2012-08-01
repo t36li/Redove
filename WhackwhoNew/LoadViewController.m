@@ -70,10 +70,14 @@
     //    [director replaceScene:[HelloWorldLayer scene]];
     //else
     //    [director runWithScene:[HelloWorldLayer scene]];
-    [director runWithScene:[LoadLayer scene]];
+    [director runWithScene:[LoadLayer sceneWithDelegate:self]];
     
 }
 
+-(void) goToMenu {
+    
+    [self performSegueWithIdentifier:@"GoToMenuSegue" sender:nil];
+}
 
 - (void)viewDidUnload
 {

@@ -577,6 +577,7 @@
 		C14385B015C8C2DF008D9AE7 /* NSThread+BlockExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSThread+BlockExtensions.m"; sourceTree = "<group>"; };
 		C14385B115C8C2DF008D9AE7 /* ResourcesLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourcesLoader.h; sourceTree = "<group>"; };
 		C14385B215C8C2DF008D9AE7 /* ResourcesLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourcesLoader.m; sourceTree = "<group>"; };
+		C14385B915C8C7C0008D9AE7 /* MainMenuDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuDelegate.h; sourceTree = "<group>"; };
 		C14716751594ACCA0002FF21 /* WhackwhoNew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhackwhoNew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C14716791594ACCA0002FF21 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C147167B1594ACCA0002FF21 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1283,6 +1284,7 @@
 				C14385B015C8C2DF008D9AE7 /* NSThread+BlockExtensions.m */,
 				C14385B115C8C2DF008D9AE7 /* ResourcesLoader.h */,
 				C14385B215C8C2DF008D9AE7 /* ResourcesLoader.m */,
+				C14385B915C8C7C0008D9AE7 /* MainMenuDelegate.h */,
 			);
 			name = "Load Scene";
 			sourceTree = "<group>";

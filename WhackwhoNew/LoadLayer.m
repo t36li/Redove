@@ -11,6 +11,7 @@
 @implementation LoadLayer
 
 @synthesize filename;
+@synthesize menuDelegate;
 
 +(id) scene
 {
@@ -20,6 +21,24 @@
 	// 'layer' is an autorelease object.
 	LoadLayer *layer = [LoadLayer node];
 	
+	// add layer as a child to scene
+	[scene addChild: layer];
+	
+	// return the scene
+	return scene;
+}
+
++(id) sceneWithDelegate: (id<MainMenuDelegate>) delegate
+{
+	// 'scene' is an autorelease object.
+	CCScene *scene = [CCScene node];
+	
+	// 'layer' is an autorelease object.
+	LoadLayer *layer = [LoadLayer node];
+	
+    // set the layer delegate
+    layer.menuDelegate = delegate;
+    
 	// add layer as a child to scene
 	[scene addChild: layer];
 	
@@ -60,9 +79,18 @@
 		
 		// load it async
 		[loader loadResources:self];
+        
+       /* [CCSprite spriteWithFile:hills_l1];
+        [CCSprite spriteWithFile:hills_l2];
+        [CCSprite spriteWithFile:hills_l3];
+        [CCSprite spriteWithFile:hills_l4];
+        [CCSprite spriteWithFile:hills_l5];
+        [CCSprite spriteWithFile:hills_l6];*/
+
 	}
 	return self;
 }
+
 
 - (void) didReachProgressMark:(CGFloat)progressPercentage
 {
@@ -70,6 +98,7 @@
 	
 	if (progressPercentage == 1.0f) {
 		[_loadingLabel setString:@"Loading complete"];
+        [menuDelegate goToMenu];
         //[[CCDirector sharedDirector] replaceScene:[helloworldlayer scene]];
 	}
 }
