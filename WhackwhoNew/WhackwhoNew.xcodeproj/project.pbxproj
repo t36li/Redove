@@ -47,6 +47,10 @@
 		C13D5F0515C5F08B006F716C /* main window2.png in Resources */ = {isa = PBXBuildFile; fileRef = C13D5F0015C5F08A006F716C /* main window2.png */; };
 		C13D5F0615C5F08B006F716C /* gold window.png in Resources */ = {isa = PBXBuildFile; fileRef = C13D5F0115C5F08A006F716C /* gold window.png */; };
 		C13D5F0A15C5FA43006F716C /* person status background transperent2.png in Resources */ = {isa = PBXBuildFile; fileRef = C13D5F0915C5FA42006F716C /* person status background transperent2.png */; };
+		C14385AB15C8C15A008D9AE7 /* LoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C14385AA15C8C15A008D9AE7 /* LoadViewController.m */; };
+		C14385AE15C8C1EA008D9AE7 /* LoadLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C14385AD15C8C1EA008D9AE7 /* LoadLayer.m */; };
+		C14385B315C8C2DF008D9AE7 /* NSThread+BlockExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C14385B015C8C2DF008D9AE7 /* NSThread+BlockExtensions.m */; };
+		C14385B415C8C2DF008D9AE7 /* ResourcesLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C14385B215C8C2DF008D9AE7 /* ResourcesLoader.m */; };
 		C147167A1594ACCA0002FF21 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14716791594ACCA0002FF21 /* QuartzCore.framework */; };
 		C147167C1594ACCA0002FF21 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C147167B1594ACCA0002FF21 /* OpenGLES.framework */; };
 		C147167E1594ACCA0002FF21 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C147167D1594ACCA0002FF21 /* OpenAL.framework */; };
@@ -565,6 +569,14 @@
 		C13D5F0015C5F08A006F716C /* main window2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main window2.png"; sourceTree = "<group>"; };
 		C13D5F0115C5F08A006F716C /* gold window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gold window.png"; sourceTree = "<group>"; };
 		C13D5F0915C5FA42006F716C /* person status background transperent2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "person status background transperent2.png"; sourceTree = "<group>"; };
+		C14385A915C8C15A008D9AE7 /* LoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadViewController.h; sourceTree = "<group>"; };
+		C14385AA15C8C15A008D9AE7 /* LoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadViewController.m; sourceTree = "<group>"; };
+		C14385AC15C8C1EA008D9AE7 /* LoadLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadLayer.h; sourceTree = "<group>"; };
+		C14385AD15C8C1EA008D9AE7 /* LoadLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadLayer.m; sourceTree = "<group>"; };
+		C14385AF15C8C2DF008D9AE7 /* NSThread+BlockExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSThread+BlockExtensions.h"; sourceTree = "<group>"; };
+		C14385B015C8C2DF008D9AE7 /* NSThread+BlockExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSThread+BlockExtensions.m"; sourceTree = "<group>"; };
+		C14385B115C8C2DF008D9AE7 /* ResourcesLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourcesLoader.h; sourceTree = "<group>"; };
+		C14385B215C8C2DF008D9AE7 /* ResourcesLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourcesLoader.m; sourceTree = "<group>"; };
 		C14716751594ACCA0002FF21 /* WhackwhoNew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhackwhoNew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C14716791594ACCA0002FF21 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C147167B1594ACCA0002FF21 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1260,12 +1272,28 @@
 			name = "Special Effects";
 			sourceTree = "<group>";
 		};
+		C14385A815C8C13C008D9AE7 /* Load Scene */ = {
+			isa = PBXGroup;
+			children = (
+				C14385A915C8C15A008D9AE7 /* LoadViewController.h */,
+				C14385AA15C8C15A008D9AE7 /* LoadViewController.m */,
+				C14385AC15C8C1EA008D9AE7 /* LoadLayer.h */,
+				C14385AD15C8C1EA008D9AE7 /* LoadLayer.m */,
+				C14385AF15C8C2DF008D9AE7 /* NSThread+BlockExtensions.h */,
+				C14385B015C8C2DF008D9AE7 /* NSThread+BlockExtensions.m */,
+				C14385B115C8C2DF008D9AE7 /* ResourcesLoader.h */,
+				C14385B215C8C2DF008D9AE7 /* ResourcesLoader.m */,
+			);
+			name = "Load Scene";
+			sourceTree = "<group>";
+		};
 		C147166A1594ACCA0002FF21 = {
 			isa = PBXGroup;
 			children = (
 				69A1964A15C356670079DC99 /* RestKit.xcodeproj */,
 				D006009515B5F29A0079626F /* SDWebImage.xcodeproj */,
 				C147181B1594AF1E0002FF21 /* Storyboard.storyboard */,
+				C14385A815C8C13C008D9AE7 /* Load Scene */,
 				C159325B15B5DE5A009B7955 /* FlashToCocosARC */,
 				C159324F15B5DE51009B7955 /* TBXML */,
 				D0E30674159E4B2E0080D845 /* WEPopover */,
@@ -2333,6 +2361,10 @@
 				C159327015B5DE5A009B7955 /* FTCSprite.m in Sources */,
 				C159347615B60B09009B7955 /* CCRobot.m in Sources */,
 				D0B2477015C204C300C206BA /* UIImage+fixOrientation.m in Sources */,
+				C14385AB15C8C15A008D9AE7 /* LoadViewController.m in Sources */,
+				C14385AE15C8C1EA008D9AE7 /* LoadLayer.m in Sources */,
+				C14385B315C8C2DF008D9AE7 /* NSThread+BlockExtensions.m in Sources */,
+				C14385B415C8C2DF008D9AE7 /* ResourcesLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
