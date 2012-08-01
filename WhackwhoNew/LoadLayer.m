@@ -7,6 +7,7 @@
 //
 
 #import "LoadLayer.h"
+#import "TestLayer.h"
 
 @implementation LoadLayer
 
@@ -98,8 +99,8 @@
 	
 	if (progressPercentage == 1.0f) {
 		[_loadingLabel setString:@"Loading complete"];
-        [menuDelegate goToMenu];
-        //[[CCDirector sharedDirector] replaceScene:[helloworldlayer scene]];
+        //[menuDelegate goToMenu];
+        [[CCDirector sharedDirector] replaceScene:[TestLayer scene]];
 	}
 }
 
