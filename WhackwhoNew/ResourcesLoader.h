@@ -13,15 +13,18 @@
 
 @interface ResourcesLoader : NSObject {
 	NSMutableSet *_resources;
+    NSMutableArray *resourceList;
 	NSDictionary *_loaders;
 	NSInteger _loadedResources;
 	NSLock *_lock;
 }
 
+@property (nonatomic, retain) NSMutableArray *resourceList;
 @property (nonatomic, retain) NSMutableSet *resources;
 @property (nonatomic, retain) NSDictionary *loaders;
 
 + (id)sharedLoader;
+- (void)addResourcesList: (NSString *) resource;
 - (void)addResources:(id)firstResource, ... NS_REQUIRES_NIL_TERMINATION;
 - (void)loadResources:(id<ResourceLoaderDelegate>)delegate;
 

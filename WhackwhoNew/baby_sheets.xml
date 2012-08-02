@@ -1,0 +1,11 @@
+<Textures>
+  <TextureSheet name="sheet">
+    <Texture name="baby1" width="126" height="135" path="baby1.png" registrationPointX="2.00" registrationPointY="-16.00"/>
+    <Texture name="baby2" width="114" height="138" path="baby2.png" registrationPointX="-9.00" registrationPointY="-16.00"/>
+    <Texture name="baby3" width="100" height="142" path="baby3.png" registrationPointX="-11.00" registrationPointY="-19.00"/>
+    <Texture name="baby4" width="110" height="148" path="baby4.png" registrationPointX="-11.00" registrationPointY="-15.00"/>
+    <Texture name="baby5" width="114" height="140" path="baby5.png" registrationPointX="-10.00" registrationPointY="-21.00"/>
+    <Texture name="baby6" width="105" height="141" path="baby6.png" registrationPointX="-10.00" registrationPointY="-15.00"/>
+    <Texture name="baby7" width="126" height="135" path="baby7.png" registrationPointX="2.00" registrationPointY="-16.00"/>
+  </TextureSheet>
+</Textures>

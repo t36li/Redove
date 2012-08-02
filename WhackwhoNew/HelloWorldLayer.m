@@ -70,7 +70,7 @@
         
         //init retard variables
         consecHits = 0;
-        totalTime = 5;
+        totalTime = 25;
         myTime = (int)totalTime;
         baseScore = 0;
         speed = 1.5;
@@ -80,6 +80,12 @@
         gamePaused = FALSE;
         CGSize s = [[CCDirector sharedDirector] winSize];
         coins = [[NSMutableArray alloc] init];
+        
+        //CCSprite *test = [CCSprite spriteWithFile:@"hills_finalView.png"];
+        //test.scale = 0.5;
+        //test.anchorPoint = ccp(0.5,0.5);
+        //test.position = ccp(s.width/2, s.height/2);
+        //[self addChild:test];
         
         //testing: hard-code 5 points
         botLeft = [[NSArray alloc] initWithObjects:
@@ -145,7 +151,6 @@
         CCSprite *bg5 = [CCSprite spriteWithFile:hills_l5];
         CCSprite *bg6 = [CCSprite spriteWithFile:hills_l6];
         CCSprite *bg7 = [CCSprite spriteWithFile:hills_l7];
-        [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
         CCSprite *bg8 = [CCSprite spriteWithFile:hills_l8];
         CCSprite *bg9 = [CCSprite spriteWithFile:hills_l9];
         
@@ -168,7 +173,9 @@
         [self addChild:bg7 z:-90];
         [self addChild:bg8 z:-100];
         [self addChild:bg9 z:-110];
-        
+        [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
+
+       
         //add particle emitter
         //emitter = [[CCParticleExplosion alloc] init];
         //emitter.visible = FALSE;
@@ -215,8 +222,8 @@
             [self addChild:life z:10];
         }
         
-        //add "rainbows"
-        /*  rainbows = [[NSMutableArray alloc] init];
+        /*//add "rainbows"
+        rainbows = [[NSMutableArray alloc] init];
         CCSprite *rainbow = [CCSprite spriteWithFile:@"rainbow4.png"];
         rainbow.position = ccp(156, 192);
         rainbow.visible = FALSE;
@@ -784,9 +791,13 @@
     location = [[CCDirector sharedDirector] convertToGL:location];
 
     for (CCSprite *coin in coins) {
+        if (coin.tag == 1) {
+            continue;
+        }
         if (CGRectContainsPoint(coin.boundingBox, location)) {
+            coin.tag = 1;
             [coin stopAllActions];
-            CCLOG(@"got coin!");
+            //CCLOG(@"got coin!");
             baseScore += 100;
             CCScaleBy *scaleCoinUp = [CCScaleBy actionWithDuration:0.2 scale:2];
             CCAction *scaleCoinDown = [scaleCoinUp reverse];
@@ -825,6 +836,7 @@
                 CCSprite *testObj = [CCSprite spriteWithFile:@"coin front.png"];
                 testObj.position = ccp(head.position.x + head.contentSize.width * head.scaleX/2, head.position.y);
                 testObj.scale = 0.4;
+                testObj.tag = 0;
                 [self addChild:testObj];
                 [coins addObject:testObj];
                 //id bounceDown = [CCMoveBy actionWithDuration:0.5 position:ccp(0,-30)];

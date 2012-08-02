@@ -46,6 +46,12 @@
 -(id) init {
     
     if ((self = [super init])) {
+        
+        baby = [[CCRobot alloc] init];
+        baby.position = ccp(100,100);
+        [self addChild:baby];
+        
+        [baby playAnimation:@"start" loop:NO wait:NO];
         /*      //tempDifficulty = [[Game sharedGame] difficulty];
         CGSize s = [[CCDirector sharedDirector] winSize];
         //popups = 2*tempDifficulty + 1;
@@ -154,7 +160,9 @@
         
         [head runAction:repeat2];
         [left_arm runAction:repeat];*/
-        robot = [[CCRobot alloc] init];        
+        
+        //sample robot animations
+        /* robot = [[CCRobot alloc] init];
         [robot setPosition:ccp(250, 50)];
         [self addChild:robot];
         
@@ -189,13 +197,15 @@
         [starMenu addChild:mainMenuBut];
         
         [starMenu alignItemsVertically];
-        [self addChild:starMenu];
-        
+        [self addChild:starMenu];*/
     }
     return self;
 }
 
--(void) mainMenu {
+
+
+
+/*-(void) mainMenu {
     [gameOverDelegate returnToMenu];
 }
 

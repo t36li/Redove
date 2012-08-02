@@ -66,17 +66,17 @@
     [director didMoveToParentViewController:self];
     
     // Run whatever scene we'd like to run here.
-    //if(director.runningScene)
-    //    [director replaceScene:[HelloWorldLayer scene]];
-    //else
-    //    [director runWithScene:[HelloWorldLayer scene]];
-    [director runWithScene:[HelloWorldLayer sceneWithDelegate:self]];
+    if(director.runningScene)
+        [director replaceScene:[HelloWorldLayer sceneWithDelegate:self]];
+    else
+       [director runWithScene:[HelloWorldLayer sceneWithDelegate:self]];
+    //[director runWithScene:[HelloWorldLayer sceneWithDelegate:self]];
     
 }
 
 -(void)returnToMenu {
     //UINavigationController *nav = self.navigationController;
-    [self.navigationController popViewControllerAnimated:YES];
+    [self performSegueWithIdentifier:@"BackToStatusSegue" sender:nil];
     //[[CCDirector sharedDirector] end];
 }
 

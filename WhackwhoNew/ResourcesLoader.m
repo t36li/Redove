@@ -17,6 +17,7 @@
 static id _sharedLoader = nil;
 
 @synthesize resources = _resources, loaders = _loaders;
+@synthesize resourceList;
 
 + (id)sharedLoader
 {
@@ -32,6 +33,7 @@ static id _sharedLoader = nil;
 	if ((self = [super init])) {
 		_lock = [[NSLock alloc] init];
 		
+        self.resourceList = [[NSMutableArray alloc] init];
 		self.resources = [NSMutableSet set];
 		self.loaders = [NSDictionary dictionaryWithObjectsAndKeys:
 						[TextureLoader loader], @"png",
@@ -41,7 +43,11 @@ static id _sharedLoader = nil;
 	return self;
 }
 
-- (void)addResources:(NSString *)firstResource, ...
+- (void)addResourcesList: (NSString *) resource {
+    [self.resourceList addObject:resource];
+}
+
+- (void)addResources:(NSString *)firstResource, ... NS_REQUIRES_NIL_TERMINATION
 {
 	if (firstResource)
 	{
@@ -61,10 +67,22 @@ static id _sharedLoader = nil;
 
 - (void)loadResources:(id<ResourceLoaderDelegate>)delegate
 {
-	_loadedResources = 0;
+    /*_loadedResources = 0;
+	for (NSString *resource in self.resourceList) {
+        NSString *key = [resource pathExtension];
+        id<ResourceLoader> loader = [self.loaders objectForKey:key];
+        [loader loadResource:resource];
+        _loadedResources++;
+        float progress = (float)_loadedResources / [self.resourceList count];
+        if (progress == 1.0) {
+            [delegate didReachProgressMark:progress];
+        }
+    }*/
+    
+    _loadedResources = 0;
 	NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 	
-	for (NSString *resource in self.resources) {
+	for (NSString *resource in self.resourceList) {
 		NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
 			NSString *key = [resource pathExtension];
 			id<ResourceLoader> loader = [self.loaders objectForKey:key];
@@ -73,14 +91,14 @@ static id _sharedLoader = nil;
 			[_lock lock];
 			@try {
 				_loadedResources++;
-				float progress = (float)_loadedResources / [self.resources count];		
+				float progress = (float)_loadedResources / [self.resourceList count];
 				
 				[[NSThread mainThread] performBlock:^ {
 					[delegate didReachProgressMark:progress];
 				} waitUntilDone:NO];
 				
-				if (_loadedResources == [self.resources count]) {
-					[self.resources removeAllObjects];
+				if (_loadedResources == [self.resourceList count]) {
+					[self.resourceList removeAllObjects];
 				}
 			}
 			@finally {
@@ -101,6 +119,7 @@ static id _sharedLoader = nil;
 {
 	self.resources = nil;
 	self.loaders = nil;
+    //self.resourceList = nil;
 	//[_lock release];
 	
 	_sharedLoader = nil;
@@ -128,7 +147,8 @@ static id _sharedLoader = nil;
 
 - (void)loadResource:(NSString *)path
 {
-	if (![NSThread isMainThread]) {
+    //[CCSprite spriteWithFile:path];
+    if (![NSThread isMainThread]) {
 		[_lock lock];
 		
 		if(_auxEAGLcontext == nil ) {
@@ -136,15 +156,19 @@ static id _sharedLoader = nil;
 							  initWithAPI:kEAGLRenderingAPIOpenGLES1
 							  sharegroup:[[[[CCDirector sharedDirector] openGLView] context] sharegroup]];
 		}
+        
+        if(_auxEAGLcontext == nil ) NSLog(@"could not create context");
 		
 		[EAGLContext setCurrentContext: _auxEAGLcontext];
 		[[CCTextureCache sharedTextureCache] addImage:path];
+        //[CCSprite spriteWithFile:path];
 		[EAGLContext setCurrentContext:nil];
 		
 		[_lock unlock];
 	}
 	else {
 		[[CCTextureCache sharedTextureCache] addImage:path];
+        //[CCSprite spriteWithFile:path];
 	}
 }
 

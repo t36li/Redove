@@ -41,10 +41,8 @@
     NSLog(@"RootViewController viewDidLoad");
     [super viewDidLoad];
     
-    //Progression Anamation:
-
-    
-    UIImageView *myImageView =[[UIImageView alloc] initWithImage:
+    //Progression Anamation (crude version by Zach):
+    /*UIImageView *myImageView =[[UIImageView alloc] initWithImage:
                                [UIImage imageNamed:Vald]];    
     myImageView.frame = CGRectMake(0, self.view.frame.size.height/2, 40, 40); 
     
@@ -63,7 +61,7 @@
                          //[myImageView removeFromSuperview];
                          //[myImageView release];
                      }
-     ];
+     ];*/
     
     
     

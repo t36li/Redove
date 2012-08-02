@@ -54,7 +54,7 @@
      */
 }
 
-- (IBAction)Back_Touched:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
+//- (IBAction)Back_Touched:(id)sender {
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
 @end

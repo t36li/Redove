@@ -13,11 +13,8 @@
 #import "GameOverDelegate.h"
 
 @interface ChooseWhoLayer : CCLayer {
-    //int counter, theData;
-    int tempDifficulty;
-    int popups;
-    CCRobot *robot;
-    //IBOutlet UIButton *mainMenu;
+    //CCRobot *robot;
+    CCRobot *baby;
     id<GameOverDelegate> gameOverDelegate;
 }
 

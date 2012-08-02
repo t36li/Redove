@@ -102,6 +102,6 @@
 }
 
 - (IBAction)back_Touched:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

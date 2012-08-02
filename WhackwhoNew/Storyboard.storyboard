@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="LoW-BH-uCB">
     <dependencies>
-        <deployment version="1296" defaultVersion="1296" identifier="iOS"/>
+        <deployment version="1296" identifier="iOS"/>
         <development version="4300" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
@@ -135,7 +135,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="Back_Touched:" destination="vVV-bT-q6I" eventType="touchUpInside" id="5zg-H3-ZHN"/>
+                                    <segue destination="Nsl-EU-HzN" kind="push" id="KVK-ft-8kN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WSc-I8-9za">
@@ -255,6 +255,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZjL-1t-UDA"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <segue destination="vVV-bT-q6I" kind="push" identifier="BackToStatusSegue" id="3wa-9X-5QV"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="-385" y="463"/>
@@ -1115,7 +1118,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="Wjc-iC-a8G"/>
         <segue reference="XOp-3W-Rhq"/>
-        <segue reference="xFH-vp-meh"/>
+        <segue reference="3wa-9X-5QV"/>
     </inferredMetricsTieBreakers>
 </document>

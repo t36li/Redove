@@ -8,6 +8,7 @@
 
 #import "LoadViewController.h"
 #import "LoadLayer.h"
+#import "HelloWorldLayer.h"
 
 @implementation LoadViewController
 
@@ -39,7 +40,7 @@
                                      multiSampling:NO
                                    numberOfSamples:0];
         
-        [glView setMultipleTouchEnabled:YES];
+        //[glView setMultipleTouchEnabled:YES];
         // Assign the view to the director.
         director.view = glView;
         
@@ -65,11 +66,7 @@
     // Finish up our view controller containment responsibilities.
     [director didMoveToParentViewController:self];
     
-    // Run whatever scene we'd like to run here.
-    //if(director.runningScene)
-    //    [director replaceScene:[HelloWorldLayer scene]];
-    //else
-    //    [director runWithScene:[HelloWorldLayer scene]];
+    //[director runWithScene:[ChooseWhoLayer scene]];
     [director runWithScene:[LoadLayer sceneWithDelegate:self]];
     
 }
