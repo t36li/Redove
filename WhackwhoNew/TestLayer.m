@@ -28,7 +28,7 @@
 -(id) init {
     if( (self=[super init]) ) {
         
-        CGSize s = [CCDirector sharedDirector].winSize;
+        CGSize s = CGSizeMake(190, 250);
         
         CCSprite *test = [CCSprite spriteWithFile:@"Default.png"];
         test.scale = 0.5;

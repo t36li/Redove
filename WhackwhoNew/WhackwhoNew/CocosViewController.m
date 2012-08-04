@@ -24,30 +24,18 @@
 {
     [super viewDidLoad];
     
-    //mainMenu.hidden = YES;
+    //do anything else that only needs to load once
     
+}
+
+- (void) viewWillAppear:(BOOL)animated {
     CCDirector *director = [CCDirector sharedDirector];
     
-    if([director isViewLoaded] == NO)
-    {
-        // Create the OpenGL view that Cocos2D will render to.
-        CCGLView *glView = [CCGLView viewWithFrame:CGRectMake(0, 0, 480, 320)
-                                       pixelFormat:kEAGLColorFormatRGB565
-                                       depthFormat:0
-                                preserveBackbuffer:NO
-                                        sharegroup:nil
-                                     multiSampling:NO
-                                   numberOfSamples:0];
-        
-        [glView setMultipleTouchEnabled:YES];
-        // Assign the view to the director.
-        director.view = glView;
-        
-        // Initialize other director settings.
-        [director setAnimationInterval:1.0f/60.0f];
-        [director enableRetinaDisplay:YES];
-        [director setDisplayStats:YES];
-    }
+    //already executed in LoadingViewController
+    //[director setAnimationInterval:1.0f/60.0f];
+    //[director enableRetinaDisplay:YES];
+    //[director setDisplayStats:YES];
+    
     
     // Set the view controller as the director's delegate, so we can respond to certain events.
     director.delegate = self;
@@ -59,8 +47,8 @@
     
     // Add the director's OpenGL view as a subview so we can see it.
     [self.view addSubview:director.view];
-    [self.view sendSubviewToBack:director.view];
-    
+    [director.view setFrame:CGRectMake(0, 0, 480, 320)];
+    [self.view bringSubviewToFront:director.view];
     
     // Finish up our view controller containment responsibilities.
     [director didMoveToParentViewController:self];
@@ -69,12 +57,11 @@
     if(director.runningScene)
         [director replaceScene:[HelloWorldLayer sceneWithDelegate:self]];
     else
-       [director runWithScene:[HelloWorldLayer sceneWithDelegate:self]];
+        [director runWithScene:[HelloWorldLayer sceneWithDelegate:self]];
     //[director runWithScene:[HelloWorldLayer sceneWithDelegate:self]];
-    
 }
 
--(void)returnToMenu {
+- (void)returnToMenu {
     //UINavigationController *nav = self.navigationController;
     [self performSegueWithIdentifier:@"BackToStatusSegue" sender:nil];
     //[[CCDirector sharedDirector] end];

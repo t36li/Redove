@@ -55,10 +55,11 @@
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init] )) {
 		// init view
-		CGSize winSize = [[CCDirector sharedDirector] winSize];
+		CGSize winSize = CGSizeMake(480, 320);
 		
 		_progress = [CCProgressTimer progressWithSprite:[CCSprite spriteWithFile:@"Default.png"]];
 		_progress.type = kCCProgressTimerTypeRadial;
+        _progress.anchorPoint = ccp(0.5,0.5);
 		_progress.position = ccp(winSize.width / 2, winSize.height / 2);
 		[self addChild:_progress];
 		
@@ -79,7 +80,7 @@
                 [loader addResourcesList:filename];
 			}
 		}
-        
+        /*
         [CCSprite spriteWithFile:hills_l1];
         [CCSprite spriteWithFile:hills_l2];
         [CCSprite spriteWithFile:hills_l3];
@@ -98,9 +99,8 @@
         [CCSprite spriteWithFile:@"peter head c.png"];
         [CCSprite spriteWithFile:@"score paper.png"];
         [CCSprite spriteWithFile:@"play again key.png"];
-        [CCSprite spriteWithFile:@"home key.png"];
+        [CCSprite spriteWithFile:@"home key.png"];*/
 
-        
 		// load it async
 		[loader loadResources:self];
         
@@ -194,9 +194,13 @@
 	
 	if (progressPercentage == 1.0f) {
 		[_loadingLabel setString:@"Loading complete"];
-        [menuDelegate goToMenu];
+        [self performSelector:@selector(doStuff) withObject:nil afterDelay:1.5];
         //[[CCDirector sharedDirector] replaceScene:[HelloWorldLayer scene]];
 	}
+}
+
+- (void) doStuff {
+    [menuDelegate goToMenu];
 }
 
 
