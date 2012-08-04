@@ -48,6 +48,7 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
+    photoView.image = [[UserInfo sharedInstance] exportImage];
     
     CCDirector *director = [CCDirector sharedDirector];
     
