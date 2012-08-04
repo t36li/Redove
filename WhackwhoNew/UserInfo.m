@@ -26,7 +26,6 @@ static UserInfo *sharedInstance = nil;
             if ([fileMgr fileExistsAtPath:pngFilePath]) {
                 [sharedInstance setGameImage:[UIImage imageWithContentsOfFile:pngFilePath]];
             }
-            
         }
     }
     return sharedInstance;
@@ -243,6 +242,5 @@ static UserInfo *sharedInstance = nil;
     return img;
 }
 */
-
 
 @end

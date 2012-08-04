@@ -10,8 +10,6 @@
 #define FBAccessToken @"AccessToken"
 #define FBExpirationDateKey @"ExpirationDateKey"
 
-#define BaseURLString @"http://localhost/PhpProject1/rest"
-
 
 #define kAppName        @"Whack Who"
 #define kCustomMessage  @"I just got a score of %d in %@, an iPhone/iPod Touch game by me!"

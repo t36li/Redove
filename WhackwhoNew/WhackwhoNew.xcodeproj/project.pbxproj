@@ -13,7 +13,6 @@
 		694F34AD15A68355009BA1C5 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 694F34AC15A68355009BA1C5 /* FriendsViewController.m */; };
 		694F34AF15A756F5009BA1C5 /* FriendsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 694F34AE15A756F5009BA1C5 /* FriendsTableCell.xib */; };
 		694F34B215A76006009BA1C5 /* FriendsTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 694F34B115A76006009BA1C5 /* FriendsTableCell.m */; };
-		696194A515CB5C0700135BDA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 696194A415CB5C0700135BDA /* User.m */; };
 		696F17BB15A3CA8D00DC849F /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 696F17AE15A3CA8D00DC849F /* FBDialog.bundle */; };
 		696F17BC15A3CA8D00DC849F /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 696F17B415A3CA8D00DC849F /* libfacebook_ios_sdk.a */; };
 		696F17C215A3D58D00DC849F /* FBSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 696F17C115A3D58D00DC849F /* FBSingleton.m */; };
@@ -521,8 +520,6 @@
 		694F34AE15A756F5009BA1C5 /* FriendsTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendsTableCell.xib; path = ../FriendsTableCell.xib; sourceTree = "<group>"; };
 		694F34B015A76005009BA1C5 /* FriendsTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsTableCell.h; sourceTree = "<group>"; };
 		694F34B115A76006009BA1C5 /* FriendsTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsTableCell.m; sourceTree = "<group>"; };
-		696194A315CB5C0700135BDA /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		696194A415CB5C0700135BDA /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		696F17AC15A3CA8D00DC849F /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		696F17AD15A3CA8D00DC849F /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
 		696F17AE15A3CA8D00DC849F /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBDialog.bundle; sourceTree = "<group>"; };
@@ -1114,15 +1111,6 @@
 			name = "Mainpage Views";
 			sourceTree = "<group>";
 		};
-		696194A215CB5BD700135BDA /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				696194A315CB5C0700135BDA /* User.h */,
-				696194A415CB5C0700135BDA /* User.m */,
-			);
-			name = Classes;
-			sourceTree = "<group>";
-		};
 		696F17AA15A3CA5700DC849F /* Facebook */ = {
 			isa = PBXGroup;
 			children = (
@@ -1357,7 +1345,6 @@
 				69C95E8B159A4A15009966DA /* Main Game */,
 				69C95E86159A461A009966DA /* Graphics */,
 				69C95E88159A462A009966DA /* Audio */,
-				696194A215CB5BD700135BDA /* Classes */,
 				C147168C1594ACCA0002FF21 /* Resources */,
 				69C95E8A159A468A009966DA /* System */,
 				C14716A41594ACCA0002FF21 /* libs */,
@@ -2423,11 +2410,7 @@
 				C14385B315C8C2DF008D9AE7 /* NSThread+BlockExtensions.m in Sources */,
 				C14385B415C8C2DF008D9AE7 /* ResourcesLoader.m in Sources */,
 				C14385BC15C8CD43008D9AE7 /* TestLayer.m in Sources */,
-<<<<<<< HEAD
-				696194A515CB5C0700135BDA /* User.m in Sources */,
-=======
 				C1DCCBC615CB5143000CD722 /* StatusViewLayer.m in Sources */,
->>>>>>> 949d9dabebb4cb01ee444569911951eb83963547
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
