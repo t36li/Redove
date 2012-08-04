@@ -46,6 +46,7 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
+    photoView.image = [[UserInfo sharedInstance] exportImage];
     //UserInfo *usr = [UserInfo sharedInstance];
     /*
     if (usr.usrImg != nil) {
