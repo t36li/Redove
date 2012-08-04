@@ -22,15 +22,16 @@ NSString *const UserChinPosition = @"ChinPosition";
 @interface UserInfo : NSObject {
     @public
     int currentLogInType;
+    
     NSString *userName;
-    NSString *userId;
+    NSString *userId;//media Key
     NSString *gender;
     
     
     // Avatar stuff
     
     
-    @private
+    
     UIImage *croppedImage;
     UIImage *usrImg;
     UIImage *gameImage;
