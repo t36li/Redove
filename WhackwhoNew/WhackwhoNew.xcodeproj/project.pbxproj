@@ -377,6 +377,7 @@
 		C1CDF56815B8ABB70002085B /* play again key.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CDF56615B8ABB60002085B /* play again key.png */; };
 		C1CDF56915B8ABB70002085B /* home key.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CDF56715B8ABB60002085B /* home key.png */; };
 		C1CDF59215C0ECDF0002085B /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CDF59115C0ECDF0002085B /* fire.png */; };
+		C1DCCBC615CB5143000CD722 /* StatusViewLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DCCBC515CB5143000CD722 /* StatusViewLayer.m */; };
 		C1FE252315AF656E00DAF258 /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE252215AF656E00DAF258 /* HUDLayer.m */; };
 		C1FE252715AF65EF00DAF258 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE252515AF65EF00DAF258 /* heart.png */; };
 		C1FE252815AF65EF00DAF258 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE252615AF65EF00DAF258 /* pause.png */; };
@@ -937,6 +938,8 @@
 		C1CDF56615B8ABB60002085B /* play again key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play again key.png"; sourceTree = "<group>"; };
 		C1CDF56715B8ABB60002085B /* home key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home key.png"; sourceTree = "<group>"; };
 		C1CDF59115C0ECDF0002085B /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
+		C1DCCBC415CB5143000CD722 /* StatusViewLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewLayer.h; sourceTree = "<group>"; };
+		C1DCCBC515CB5143000CD722 /* StatusViewLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewLayer.m; sourceTree = "<group>"; };
 		C1FE252115AF656E00DAF258 /* HUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDLayer.h; sourceTree = "<group>"; };
 		C1FE252215AF656E00DAF258 /* HUDLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDLayer.m; sourceTree = "<group>"; };
 		C1FE252515AF65EF00DAF258 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
@@ -1207,6 +1210,8 @@
 				D0B2476F15C204C300C206BA /* UIImage+fixOrientation.m */,
 				C1B4397B15951B4100D62C2B /* StatusBarController.h */,
 				C1B4397C15951B4100D62C2B /* StatusBarController.m */,
+				C1DCCBC415CB5143000CD722 /* StatusViewLayer.h */,
+				C1DCCBC515CB5143000CD722 /* StatusViewLayer.m */,
 				D0D7C84715956E3D00F51C6E /* ModeSelectionViewController.h */,
 				D0D7C84815956E3D00F51C6E /* ModeSelectionViewController.m */,
 				69C95EAB159B63A9009966DA /* SelectToLoginViewController.h */,
@@ -2405,6 +2410,7 @@
 				C14385B315C8C2DF008D9AE7 /* NSThread+BlockExtensions.m in Sources */,
 				C14385B415C8C2DF008D9AE7 /* ResourcesLoader.m in Sources */,
 				C14385BC15C8CD43008D9AE7 /* TestLayer.m in Sources */,
+				C1DCCBC615CB5143000CD722 /* StatusViewLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

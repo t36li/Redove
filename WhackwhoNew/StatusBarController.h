@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "AvatarBaseController.h"
+#import "cocos2d.h"
 
-@interface StatusBarController : AvatarBaseController {
+@interface StatusBarController : AvatarBaseController <CCDirectorDelegate> {
     IBOutlet UIView *containerView;
 }
 

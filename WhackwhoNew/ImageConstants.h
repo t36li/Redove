@@ -53,3 +53,9 @@
 
 //special effects
 #define mouthEffectOne @"mouth effect test1.png"
+
+//skeleton
+#define standard_blue_head @"standard blue.png"
+#define standard_pink_head @"standard pink.png"
+#define standard_blue_body @"peter body.png"
+//#define standard_pink_body @"standard pink.png"

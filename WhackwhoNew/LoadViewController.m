@@ -32,7 +32,7 @@
     if([director isViewLoaded] == NO)
     {
         // Create the OpenGL view that Cocos2D will render to.
-        CCGLView *glView = [CCGLView viewWithFrame:CGRectMake(0, 0, 480, 320)
+        CCGLView *glView = [CCGLView viewWithFrame:[self.view bounds]
                                        pixelFormat:kEAGLColorFormatRGB565
                                        depthFormat:0
                                 preserveBackbuffer:NO
@@ -68,12 +68,15 @@
     
     //[director runWithScene:[ChooseWhoLayer scene]];
     [director runWithScene:[LoadLayer sceneWithDelegate:self]];
-    
 }
 
 -(void) goToMenu {
     
     [self performSegueWithIdentifier:@"GoToMenuSegue" sender:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    //[[CCDirector sharedDirector] popScene];
 }
 
 - (void)viewDidUnload

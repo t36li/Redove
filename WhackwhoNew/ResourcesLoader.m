@@ -152,9 +152,9 @@ static id _sharedLoader = nil;
 		[_lock lock];
 		
 		if(_auxEAGLcontext == nil ) {
-			_auxEAGLcontext = [[EAGLContext alloc]
-							  initWithAPI:kEAGLRenderingAPIOpenGLES1
-							  sharegroup:[[[[CCDirector sharedDirector] openGLView] context] sharegroup]];
+            CCGLView *view = (CCGLView*)[[CCDirector sharedDirector] view];
+			_auxEAGLcontext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2
+                                                    sharegroup:[[view context] sharegroup]];
 		}
         
         if(_auxEAGLcontext == nil ) NSLog(@"could not create context");

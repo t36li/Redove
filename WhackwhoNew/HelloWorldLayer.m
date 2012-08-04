@@ -78,8 +78,9 @@
         self.isTouchEnabled = YES;
         gameOver = FALSE;
         gamePaused = FALSE;
-        CGSize s = [[CCDirector sharedDirector] winSize];
         coins = [[NSMutableArray alloc] init];
+        
+        CGSize s = CGSizeMake(480, 320);
         
         //CCSprite *test = [CCSprite spriteWithFile:@"hills_finalView.png"];
         //test.scale = 0.5;
@@ -273,16 +274,16 @@
         
         //testing UserInfo image taken from camera
         UserInfo *usr = [UserInfo sharedInstance];
-        UIImage *bigHead = usr.exportImage; //640 x 852 : 64 x 85.2
+        //UIImage *bigHead = usr.exportImage; //640 x 852 : 64 x 85.2
         
         // Old big head contentSize: 73.5 x 76.5
-        //UIImage *bigHead = [UIImage imageNamed:@"peter head c.png"];
+        UIImage *bigHead = [UIImage imageNamed:standard_blue_head];
 
         //the number of total heads to include in the heads array should be relative to the difficulty level chosen previously... max will be 10 ATM...this should be a loop that fast-enumerates through all the chosen names array from the previous view
         //for testing purposes, set to 7
         
         //testing the upper and lower body piece-together
-        UIImage *lowerBody = [UIImage imageNamed:@"peter body.png"];
+        UIImage *lowerBody = [UIImage imageNamed:standard_blue_body];
         int index = 1;
         for (int i = 0; i < 7; i++) {
             //get the friend portrait image...once database kicks in, we will grab the big head
