@@ -10,6 +10,7 @@
 #import "UserInfo.h"
 #import "StatusViewLayer.h"
 #import "TestLayer.h"
+#import "HelloWorldLayer.h"
 
 @implementation StatusBarController
 @synthesize containerView;
@@ -46,14 +47,16 @@
     
     CCDirector *director = [CCDirector sharedDirector];
     
-    //[director resume];
+    if ([director isPaused]) {
+        [director resume];
+    }
     
     //[director.view addSubview:containerView];
     //[director.view bringSubviewToFront:containerView];
     
-    [director.view setFrame:[containerView bounds]];
+    //[director.view setFrame:[containerView bounds]];
     
-    [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
+    //[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
     
     // Set the view controller as the director's delegate, so we can respond to certain events.
     director.delegate = self;
@@ -61,24 +64,22 @@
     // Add the director as a child view controller of this view controller.
     [self addChildViewController:director];
     
-    [self.containerView addSubview:director.view];
+    [self.containerView addSubview: director.view];
     [self.containerView bringSubviewToFront:director.view];
     
     // Finish up our view controller containment responsibilities.
     [director didMoveToParentViewController:self];
     
-    /*if (director.runningScene) {
-     [director replaceScene:[StatusViewLayer scene]];
-     } else {
-     [director runWithScene:[StatusViewLayer scene]];
-     }*/
-    
-    [director runWithScene:[StatusViewLayer scene]];
-
+    //[director.view setFrame:CGRectMake(0, 0, 190, 250)];
+    //[director replaceScene:[StatusViewLayer scene]];
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
-    [[CCDirector sharedDirector] popScene];
+    [[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 480, 320)];
+    [[CCDirector sharedDirector] replaceScene:[HelloWorldLayer sceneWithDelegate:self]];
+    [[CCDirector sharedDirector] pause];
+    [[CCDirector sharedDirector] setDelegate:nil];
+    //[[CCDirector sharedDirector] popScene];
     //[[CCDirector sharedDirector] pause];
 }
 
@@ -99,6 +100,29 @@
     //int totalStacks = [self.navigationController.viewControllers count];
 
     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
-
 }
+
+- (IBAction) Ok_Pressed:(id)sender {
+    [self performSegueWithIdentifier:@"StatusToModeSegue" sender:sender];
+}
+
+- (void)returnToMenu {
+    //UINavigationController *nav = self.navigationController;
+    //if (![CCDirector sharedDirector].isPaused) {
+    // [[CCDirector sharedDirector] pause];
+    //}
+    
+    //[[CCDirector sharedDirector] popScene];
+    int totalStack = [self.navigationController.viewControllers count];
+    
+    if (totalStack == 8) {
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:4] animated:YES];
+    } else {
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:2] animated:YES];
+    }
+    
+    [[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
+    [[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
+}
+
 @end

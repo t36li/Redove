@@ -11,9 +11,10 @@
 #import "HelloWorldLayer.h"
 
 // Needed to obtain the Navigation Controller
-#import "AppDelegate.h"
 #import <Foundation/Foundation.h>
 #import "CocosViewController.h"
+#import "StatusViewLayer.h"
+
 
 #pragma mark - HelloWorldLayer
 
@@ -745,7 +746,9 @@
 
 -(void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    if (gamePaused) return; 
+    if (gamePaused) return;
+    //[[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
+    //[[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
     
     //remove simultaneous touch element of gamemode
     //add various other animations (e.g. fall out from sky, throw bomb, etc..)

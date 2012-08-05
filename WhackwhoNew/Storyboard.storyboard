@@ -165,7 +165,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="NW8-Zr-9Q9" kind="push" id="XOp-3W-Rhq"/>
+                                    <action selector="Ok_Pressed:" destination="vVV-bT-q6I" eventType="touchUpInside" id="QYf-XT-Gpy"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kxo-AP-Z9D">
@@ -200,6 +200,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="containerView" destination="fhO-MD-d75" id="dvh-WX-wbG"/>
+                        <segue destination="NW8-Zr-9Q9" kind="push" identifier="StatusToModeSegue" id="1sR-bf-A58"/>
                     </connections>
                 </viewController>
             </objects>

@@ -7,6 +7,8 @@
 //
 
 #import "ModeSelectionViewController.h"
+#import "cocos2d.h"
+#import "StatusViewLayer.h"
 
 @implementation ModeSelectionViewController
 
@@ -55,6 +57,8 @@
 }
 
 - (IBAction)Back_Touched:(id)sender {
+    [[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
+    [[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

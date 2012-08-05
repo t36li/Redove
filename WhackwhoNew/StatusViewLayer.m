@@ -7,6 +7,7 @@
 //
 
 #import "StatusViewLayer.h"
+#import "HelloWorldLayer.h"
 #import "UserInfo.h"
 
 @implementation StatusViewLayer
@@ -35,24 +36,25 @@
         
         CGSize s = CGSizeMake(190, 250); //this is the size of the screen
         
-        //UIImage *face = [[UserInfo sharedInstance] exportImage];
+        UIImage *face = [[UserInfo sharedInstance] exportImage];
         
-        CCSprite *head = [CCSprite spriteWithFile:standard_blue_head];
+        CCSprite *head;// = [CCSprite spriteWithFile:standard_blue_head];
         
-      /*  if (face == nil) {
-            head = [CCSprite spriteWithFile:standard_blue_head];
+        if ([face CGImage] != nil) {
+            head = [CCSprite spriteWithCGImage:[face CGImage] key:@"hahaha"]; //320 x 426
+            head.scale = 0.4;
         } else {
-            head = [CCSprite spriteWithCGImage:[[[UserInfo sharedInstance] exportImage]CGImage] key:@"hahaha"];
-        }*/
+            head = [CCSprite spriteWithFile:standard_blue_head];
+            head.scale = 0.8;
+        }
         
-        head.scale = 0.8;
         head.anchorPoint = ccp(0.5,1);
         head.position = ccp(s.width/2, s.height-50);
 
         CCSprite *body = [CCSprite spriteWithFile:standard_blue_body];
         body.anchorPoint = ccp(0.5, 0.75);
-        body.position = ccp(head.contentSize.width/2, 5);
-        [head addChild:body];
+        body.position = ccp(s.width/2, s.height/2);
+        [self addChild:body];
     
         [self addChild:head];
         
@@ -65,12 +67,15 @@
 }
 
 - (void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [touches anyObject];
+    //[[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 480, 320)];
+    //[[CCDirector sharedDirector] replaceScene:[HelloWorldLayer scene]];
+    
+    /*UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:[touch view]];
     location = [[CCDirector sharedDirector] convertToGL:location];
     
     CCLOG(@"x: %f", location.x);
-    CCLOG(@"y: %f", location.y);
+    CCLOG(@"y: %f", location.y);*/
 }
 
 @end

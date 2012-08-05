@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
+#import "GameOverDelegate.h"
 
-@interface StatusBarController : UIViewController <CCDirectorDelegate> {
+@interface StatusBarController : UIViewController <CCDirectorDelegate, GameOverDelegate> {
     IBOutlet UIView *containerView;
 }
 
 @property (nonatomic) IBOutlet UIView *containerView;
 
 - (IBAction)Back_Touched:(id)sender;
+- (IBAction)Ok_Pressed:(id)sender;
+
 @end

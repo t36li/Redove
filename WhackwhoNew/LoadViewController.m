@@ -9,6 +9,7 @@
 #import "LoadViewController.h"
 #import "LoadLayer.h"
 #import "HelloWorldLayer.h"
+#import "StatusViewLayer.h"
 
 @implementation LoadViewController
 
@@ -72,11 +73,13 @@
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
+    [[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
+    [[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
+    [[CCDirector sharedDirector] setDelegate:nil];
     //[[CCDirector sharedDirector] pause];
 }
 
 -(void) goToMenu {
-    
     [self performSegueWithIdentifier:@"GoToMenuSegue" sender:nil];
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "CocosViewController.h"
+#import "StatusViewLayer.h"
 
 @implementation CocosViewController
 
@@ -33,12 +34,12 @@
     
     //[director resume];
     
-    [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
+    //[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
     
     // Set the view controller as the director's delegate, so we can respond to certain events.
     director.delegate = self;
     
-    [director.view setFrame:[self.view bounds]];
+    //[director.view setFrame:[self.view bounds]];
     
     // Add the director as a child view controller of this view controller.
     [self addChildViewController:director];
@@ -50,6 +51,10 @@
     // Finish up our view controller containment responsibilities.
     [director didMoveToParentViewController:self];
     
+    if (director.isPaused) {
+        [director resume];
+    }
+    
     // Run whatever scene we'd like to run here.
     //[[CCDirector sharedDirector] resume];
     
@@ -58,18 +63,16 @@
      else
      [director runWithScene:[HelloWorldLayer sceneWithDelegate:self]];*/
     
-    [director runWithScene:[HelloWorldLayer sceneWithDelegate:self]];
-    
+    //[director replaceScene:[HelloWorldLayer sceneWithDelegate:self]];
 }
 
 - (void)returnToMenu {
     //UINavigationController *nav = self.navigationController;
-    if (![CCDirector sharedDirector].isPaused) {
+    //if (![CCDirector sharedDirector].isPaused) {
        // [[CCDirector sharedDirector] pause];
-    }
+    //}
     
-    //[[CCDirector sharedDirector] popScene];
-    
+    //[[CCDirector sharedDirector] popScene];    
     int totalStack = [self.navigationController.viewControllers count];
     
     if (totalStack == 8) {
@@ -77,16 +80,19 @@
     } else {
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:3] animated:YES];
     }
+    
+    //[[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
+    //[[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
 }
 
-- (void) viewWillDisappear:(BOOL)animated {
-    [[CCDirector sharedDirector] popScene];
+- (void) viewDidDisappear:(BOOL)animated {
+    //[[CCDirector sharedDirector] popScene];
+    //[[CCDirector sharedDirector] setDelegate:nil];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    
     [[CCDirector sharedDirector] setDelegate:nil];
 }
 

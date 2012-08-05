@@ -375,6 +375,8 @@ static CCDirector *_sharedDirector = nil;
 -(void) replaceScene: (CCScene*) scene
 {
 	NSAssert( scene != nil, @"Argument must be non-nil");
+    
+    NSLog(@"Scene stack count: %i", [scenesStack_ count]);
 
 	NSUInteger index = [scenesStack_ count];
 
@@ -390,9 +392,6 @@ static CCDirector *_sharedDirector = nil;
 	sendCleanupToScene_ = NO;
 
 	[scenesStack_ addObject: scene];
-    
-    CCLOG(@"Pushed! Scene stack count: %i", [scenesStack_ count]);
-    
 	nextScene_ = scene;	// nextScene_ is a weak ref
 }
 
@@ -401,9 +400,6 @@ static CCDirector *_sharedDirector = nil;
 	NSAssert( runningScene_ != nil, @"A running Scene is needed");
 
 	[scenesStack_ removeLastObject];
-    
-    CCLOG(@"Popped! Scene stack count: %i", [scenesStack_ count]);
-    
 	NSUInteger c = [scenesStack_ count];
 
 	if( c == 0 )
@@ -587,7 +583,7 @@ static CCDirector *_sharedDirector = nil;
 			[FPSLabel_ setString:fpsstr];
 			[fpsstr release];
 			
-			NSString *draws = [[NSString alloc] initWithFormat:@"%4d", __ccNumberOfDraws];
+			NSString *draws = [[NSString alloc] initWithFormat:@"%4lu", (unsigned long)__ccNumberOfDraws];
 			[drawsLabel_ setString:draws];
 			[draws release];
 		}
