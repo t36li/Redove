@@ -31,6 +31,8 @@
     
     newPhoto = NO;
     
+    self.navigationController.navigationBarHidden = YES;
+    
     //set up background image
     GlobalMethods *gmethods = [[GlobalMethods alloc] init];
     [gmethods setViewBackground:FriendList_bg viewSender:self.view];
@@ -83,6 +85,7 @@
     CGRect frame5 = avatarView.frame;
     CGRect frame6 = headView.frame;
      */
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)viewDidUnload
@@ -127,5 +130,9 @@
 -(IBAction) addPicture:(id)sender {
     //headView.image = [[UserInfo sharedInstance] getCroppedImage];
     backgroundView.image = [[UserInfo sharedInstance] exportImage];
+}
+
+- (IBAction)Back_Touched:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

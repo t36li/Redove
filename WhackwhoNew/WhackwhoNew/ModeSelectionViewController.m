@@ -54,4 +54,8 @@
     background.image = [UIImage imageNamed:[bg_list objectAtIndex:index]];
 }
 
+- (IBAction)Back_Touched:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 @end

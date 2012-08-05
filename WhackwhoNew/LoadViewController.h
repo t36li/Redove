@@ -10,6 +10,8 @@
 #import "cocos2d.h"
 #import "MainMenuDelegate.h"
 
-@interface LoadViewController : UIViewController <CCDirectorDelegate, MainMenuDelegate>
+@interface LoadViewController : UIViewController <CCDirectorDelegate, MainMenuDelegate> {
+    
+}
 
 @end

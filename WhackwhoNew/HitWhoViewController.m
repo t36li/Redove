@@ -273,6 +273,10 @@
 
 }
 
+- (IBAction)Back_Touched:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 //-(void) scrollview method... {
     // .... need to pass Helloworldlayer the bigfriendlist and selectedheadslist
     //bigfriendslist = all 7 possible popups

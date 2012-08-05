@@ -12,6 +12,7 @@
 
 @implementation LoadViewController
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -42,7 +43,7 @@
         
         //[glView setMultipleTouchEnabled:YES];
         // Assign the view to the director.
-        director.view = glView;
+        [director setView:glView];
         
         // Initialize other director settings.
         [director setAnimationInterval:1.0f/60.0f];

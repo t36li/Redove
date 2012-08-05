@@ -57,5 +57,7 @@
 
 -(IBAction) handleRandomButton:(id)sender;
 -(IBAction) nextTouched:(id)sender;
+- (IBAction)Back_Touched:(id)sender;
+
 
 @end

@@ -25,37 +25,10 @@
     [super viewDidLoad];
     
     //do anything else that only needs to load once
-    CCDirector *director = [CCDirector sharedDirector];
-    
-    [director resume];
-    
-    [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
-    
-    // Set the view controller as the director's delegate, so we can respond to certain events.
-    director.delegate = self;
-    
-    // Add the director as a child view controller of this view controller.
-    [self addChildViewController:director];
-    
-    // Add the director's OpenGL view as a subview so we can see it.
-    [self.view addSubview:director.view];
-    [director.view setFrame:CGRectMake(0, 0, 480, 320)];
-    [self.view bringSubviewToFront:director.view];
-    
-    // Finish up our view controller containment responsibilities.
-    [director didMoveToParentViewController:self];
-    
-    // Run whatever scene we'd like to run here.
-    //[[CCDirector sharedDirector] resume];
-    
-    if(director.runningScene)
-        [director replaceScene:[HelloWorldLayer sceneWithDelegate:self]];
-    else
-        [director runWithScene:[HelloWorldLayer sceneWithDelegate:self]];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-    //do anything else that only needs to load once
+    
     CCDirector *director = [CCDirector sharedDirector];
     
     [director resume];
@@ -65,12 +38,13 @@
     // Set the view controller as the director's delegate, so we can respond to certain events.
     director.delegate = self;
     
+    [director.view setFrame:CGRectMake(0, 0, 480, 320)];
+    
     // Add the director as a child view controller of this view controller.
     [self addChildViewController:director];
     
     // Add the director's OpenGL view as a subview so we can see it.
     [self.view addSubview:director.view];
-    [director.view setFrame:CGRectMake(0, 0, 480, 320)];
     [self.view bringSubviewToFront:director.view];
     
     // Finish up our view controller containment responsibilities.
@@ -79,10 +53,13 @@
     // Run whatever scene we'd like to run here.
     //[[CCDirector sharedDirector] resume];
     
-    if(director.runningScene)
-        [director replaceScene:[HelloWorldLayer sceneWithDelegate:self]];
-    else
-        [director runWithScene:[HelloWorldLayer sceneWithDelegate:self]];
+    /*if(director.runningScene)
+     [director replaceScene:[HelloWorldLayer sceneWithDelegate:self]];
+     else
+     [director runWithScene:[HelloWorldLayer sceneWithDelegate:self]];*/
+    
+    [director pushScene:[HelloWorldLayer sceneWithDelegate:self]];
+    
 }
 
 - (void)returnToMenu {
@@ -90,14 +67,18 @@
     if (![CCDirector sharedDirector].isPaused) {
         [[CCDirector sharedDirector] pause];
     }
-    [self performSegueWithIdentifier:@"CocosToSelectionSegue" sender:nil];
+    int totalStack = [self.navigationController.viewControllers count];
+    
+    if (totalStack == 8) {
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:4] animated:YES];
+    } else {
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:2] animated:YES];
+    }
 }
 
-/*- (void) viewWillDisappear:(BOOL)animated {
-    if (![CCDirector sharedDirector].isPaused) {
-        [[CCDirector sharedDirector] pause];
-    }
-}*/
+- (void) viewWillDisappear:(BOOL)animated {
+    [[CCDirector sharedDirector] popScene];
+}
 
 - (void)viewDidUnload
 {

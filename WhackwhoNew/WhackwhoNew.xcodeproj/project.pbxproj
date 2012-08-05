@@ -371,6 +371,7 @@
 		C169220215B34D5C00F081AF /* choose main portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = C16921FF15B34D5C00F081AF /* choose main portrait.png */; };
 		C169220315B34D5C00F081AF /* hit window.png in Resources */ = {isa = PBXBuildFile; fileRef = C169220015B34D5C00F081AF /* hit window.png */; };
 		C169220415B34D5C00F081AF /* no hit window.png in Resources */ = {isa = PBXBuildFile; fileRef = C169220115B34D5C00F081AF /* no hit window.png */; };
+		C1692E9115CE282C00C7D4C7 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1692E9015CE282C00C7D4C7 /* StoreViewController.m */; };
 		C1B4397D15951B4100D62C2B /* StatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B4397C15951B4100D62C2B /* StatusBarController.m */; };
 		C1CBDFED15952D9900A35E24 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEB15952D9900A35E24 /* lock.png */; };
 		C1CBDFF015952DC100A35E24 /* Email Envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEE15952DC100A35E24 /* Email Envelope.png */; };
@@ -932,6 +933,8 @@
 		C16921FF15B34D5C00F081AF /* choose main portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "choose main portrait.png"; sourceTree = "<group>"; };
 		C169220015B34D5C00F081AF /* hit window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hit window.png"; sourceTree = "<group>"; };
 		C169220115B34D5C00F081AF /* no hit window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no hit window.png"; sourceTree = "<group>"; };
+		C1692E8F15CE282B00C7D4C7 /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
+		C1692E9015CE282C00C7D4C7 /* StoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
 		C1B4397B15951B4100D62C2B /* StatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarController.h; sourceTree = "<group>"; };
 		C1B4397C15951B4100D62C2B /* StatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarController.m; sourceTree = "<group>"; };
 		C1CBDFEB15952D9900A35E24 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lock.png; path = WhackwhoNew/lock.png; sourceTree = "<group>"; };
@@ -1219,6 +1222,8 @@
 				D0D7C84815956E3D00F51C6E /* ModeSelectionViewController.m */,
 				69C95EAB159B63A9009966DA /* SelectToLoginViewController.h */,
 				69C95EAC159B63A9009966DA /* SelectToLoginViewController.m */,
+				C1692E8F15CE282B00C7D4C7 /* StoreViewController.h */,
+				C1692E9015CE282C00C7D4C7 /* StoreViewController.m */,
 				C14B63B015AF5B5400376C91 /* Actual Game Scene(Cocos2d) */,
 				694F34B315A7775E009BA1C5 /* Mainpage Views */,
 				696F17FF15A4E30A00DC849F /* Constants.h */,
@@ -2414,6 +2419,7 @@
 				C14385BC15C8CD43008D9AE7 /* TestLayer.m in Sources */,
 				C1DCCBC615CB5143000CD722 /* StatusViewLayer.m in Sources */,
 				69FB54F515CDE60F00C42912 /* User.m in Sources */,
+				C1692E9115CE282C00C7D4C7 /* StoreViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
