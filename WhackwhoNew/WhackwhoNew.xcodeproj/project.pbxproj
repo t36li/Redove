@@ -1196,6 +1196,7 @@
 		69C95E8B159A4A15009966DA /* Main Game */ = {
 			isa = PBXGroup;
 			children = (
+				C14385A815C8C13C008D9AE7 /* Load Scene */,
 				692AC3A215B24BB0001E4858 /* HitWhoGroup */,
 				D0D7C84415955D3400F51C6E /* AvatarViewController.h */,
 				D0D7C84515955D3400F51C6E /* AvatarViewController.m */,
@@ -1338,7 +1339,6 @@
 				69A1964A15C356670079DC99 /* RestKit.xcodeproj */,
 				D006009515B5F29A0079626F /* SDWebImage.xcodeproj */,
 				C147181B1594AF1E0002FF21 /* Storyboard.storyboard */,
-				C14385A815C8C13C008D9AE7 /* Load Scene */,
 				C159325B15B5DE5A009B7955 /* FlashToCocosARC */,
 				C159324F15B5DE51009B7955 /* TBXML */,
 				D0E30674159E4B2E0080D845 /* WEPopover */,

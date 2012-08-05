@@ -70,13 +70,13 @@
     [director runWithScene:[LoadLayer sceneWithDelegate:self]];
 }
 
+- (void) viewDidDisappear:(BOOL)animated {
+    [[CCDirector sharedDirector] pause];
+}
+
 -(void) goToMenu {
     
     [self performSegueWithIdentifier:@"GoToMenuSegue" sender:nil];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    //[[CCDirector sharedDirector] popScene];
 }
 
 - (void)viewDidUnload

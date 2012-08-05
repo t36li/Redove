@@ -7,6 +7,7 @@
 //
 
 #import "StatusViewLayer.h"
+#import "UserInfo.h"
 
 @implementation StatusViewLayer
 
@@ -34,10 +35,19 @@
         
         CGSize s = CGSizeMake(190, 250); //this is the size of the screen
         
+        //UIImage *face = [[UserInfo sharedInstance] exportImage];
+        
         CCSprite *head = [CCSprite spriteWithFile:standard_blue_head];
+        
+      /*  if (face == nil) {
+            head = [CCSprite spriteWithFile:standard_blue_head];
+        } else {
+            head = [CCSprite spriteWithCGImage:[[[UserInfo sharedInstance] exportImage]CGImage] key:@"hahaha"];
+        }*/
+        
         head.scale = 0.8;
         head.anchorPoint = ccp(0.5,1);
-        head.position = ccp(s.width/2, s.height-20);
+        head.position = ccp(s.width/2, s.height-50);
 
         CCSprite *body = [CCSprite spriteWithFile:standard_blue_body];
         body.anchorPoint = ccp(0.5, 0.75);

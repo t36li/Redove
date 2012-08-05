@@ -273,7 +273,7 @@
         //}
         
         //testing UserInfo image taken from camera
-        UserInfo *usr = [UserInfo sharedInstance];
+        //UserInfo *usr = [UserInfo sharedInstance];
         //UIImage *bigHead = usr.exportImage; //640 x 852 : 64 x 85.2
         
         // Old big head contentSize: 73.5 x 76.5
@@ -351,8 +351,6 @@
         [[CCDirector sharedDirector] resume];
     } else if (buttonIndex == 1) {
         gameOver = TRUE;
-        [[CCDirector sharedDirector] resume];
-        //CCScene *scene = [ChooseWhoLayer scene];
         [[Game sharedGame] resetGameState];
         [gameOverDelegate returnToMenu];
         //[[CCDirector sharedDirector] replaceScene:[CCTransitionZoomFlipX transitionWithDuration:0.5 scene:scene]];

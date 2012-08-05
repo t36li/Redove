@@ -35,9 +35,6 @@
 {
 	if( (self=[super init]) ) {
 		CGSize s = [[CCDirector sharedDirector] winSize];
-        if (s.width == 190 && s.height == 250) {
-            s = CGSizeMake(480, 320);
-        }
 		self.ignoreAnchorPointForPosition = YES;
 		anchorPoint_ = ccp(0.5f, 0.5f);
 		[self setContentSize:s];
