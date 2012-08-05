@@ -565,7 +565,6 @@
 		69C95EAB159B63A9009966DA /* SelectToLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectToLoginViewController.h; sourceTree = "<group>"; };
 		69C95EAC159B63A9009966DA /* SelectToLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectToLoginViewController.m; sourceTree = "<group>"; };
 		69F3DC7D15B35CB2000079EE /* champ selection second trail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "champ selection second trail.png"; sourceTree = "<group>"; };
-		69FB54F315CDE60F00C42912 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		69FB54F415CDE60F00C42912 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		C13D5EF315C5CEA0006F716C /* mouth effect test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mouth effect test1.png"; sourceTree = "<group>"; };
 		C13D5EF515C5EF85006F716C /* redo icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redo icon.png"; sourceTree = "<group>"; };
@@ -1282,15 +1281,6 @@
 				C13D5EF815C5EF87006F716C /* store icon.png */,
 			);
 			name = Buttons;
-			sourceTree = "<group>";
-		};
-		69FB54F215CDE58000C42912 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				69FB54F315CDE60F00C42912 /* User.h */,
-				69FB54F415CDE60F00C42912 /* User.m */,
-			);
-			name = Classes;
 			sourceTree = "<group>";
 		};
 		C13D5EF215C5CE8C006F716C /* Special Effects */ = {
