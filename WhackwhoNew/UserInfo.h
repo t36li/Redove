@@ -30,7 +30,7 @@ NSString *const UserChinPosition = @"ChinPosition";
     // Avatar stuff
     
     
-    @private
+    //@private
     UIImage *croppedImage;
     UIImage *usrImg;
     UIImage *gameImage;
