@@ -46,12 +46,12 @@
     
     CCDirector *director = [CCDirector sharedDirector];
     
-    [director resume];
+    //[director resume];
     
     //[director.view addSubview:containerView];
     //[director.view bringSubviewToFront:containerView];
     
-    [director.view setFrame:CGRectMake(0, 0, 190, 250)];
+    [director.view setFrame:[containerView bounds]];
     
     [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
     
@@ -73,13 +73,13 @@
      [director runWithScene:[StatusViewLayer scene]];
      }*/
     
-    [director pushScene:[StatusViewLayer scene]];
+    [director runWithScene:[StatusViewLayer scene]];
 
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
     [[CCDirector sharedDirector] popScene];
-    [[CCDirector sharedDirector] pause];
+    //[[CCDirector sharedDirector] pause];
 }
 
 - (void)viewDidUnload

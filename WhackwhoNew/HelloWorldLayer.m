@@ -352,6 +352,7 @@
     } else if (buttonIndex == 1) {
         gameOver = TRUE;
         [[Game sharedGame] resetGameState];
+        [[CCDirector sharedDirector] resume];
         [gameOverDelegate returnToMenu];
         //[[CCDirector sharedDirector] replaceScene:[CCTransitionZoomFlipX transitionWithDuration:0.5 scene:scene]];
     }

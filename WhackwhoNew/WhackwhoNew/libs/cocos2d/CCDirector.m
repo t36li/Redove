@@ -390,6 +390,9 @@ static CCDirector *_sharedDirector = nil;
 	sendCleanupToScene_ = NO;
 
 	[scenesStack_ addObject: scene];
+    
+    CCLOG(@"Pushed! Scene stack count: %i", [scenesStack_ count]);
+    
 	nextScene_ = scene;	// nextScene_ is a weak ref
 }
 
@@ -398,6 +401,9 @@ static CCDirector *_sharedDirector = nil;
 	NSAssert( runningScene_ != nil, @"A running Scene is needed");
 
 	[scenesStack_ removeLastObject];
+    
+    CCLOG(@"Popped! Scene stack count: %i", [scenesStack_ count]);
+    
 	NSUInteger c = [scenesStack_ count];
 
 	if( c == 0 )

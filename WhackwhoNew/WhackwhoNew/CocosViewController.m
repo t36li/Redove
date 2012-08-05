@@ -31,14 +31,14 @@
     
     CCDirector *director = [CCDirector sharedDirector];
     
-    [director resume];
+    //[director resume];
     
     [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
     
     // Set the view controller as the director's delegate, so we can respond to certain events.
     director.delegate = self;
     
-    [director.view setFrame:CGRectMake(0, 0, 480, 320)];
+    [director.view setFrame:[self.view bounds]];
     
     // Add the director as a child view controller of this view controller.
     [self addChildViewController:director];
@@ -58,21 +58,24 @@
      else
      [director runWithScene:[HelloWorldLayer sceneWithDelegate:self]];*/
     
-    [director pushScene:[HelloWorldLayer sceneWithDelegate:self]];
+    [director runWithScene:[HelloWorldLayer sceneWithDelegate:self]];
     
 }
 
 - (void)returnToMenu {
     //UINavigationController *nav = self.navigationController;
     if (![CCDirector sharedDirector].isPaused) {
-        [[CCDirector sharedDirector] pause];
+       // [[CCDirector sharedDirector] pause];
     }
+    
+    //[[CCDirector sharedDirector] popScene];
+    
     int totalStack = [self.navigationController.viewControllers count];
     
     if (totalStack == 8) {
-        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:4] animated:YES];
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:5] animated:YES];
     } else {
-        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:2] animated:YES];
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:3] animated:YES];
     }
 }
 

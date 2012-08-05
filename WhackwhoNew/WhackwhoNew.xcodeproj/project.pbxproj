@@ -35,7 +35,6 @@
 		69C95EA7159B51C9009966DA /* play b.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C95EA1159B51C9009966DA /* play b.png */; };
 		69C95EA8159B51C9009966DA /* play s.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C95EA2159B51C9009966DA /* play s.png */; };
 		69C95EAD159B63A9009966DA /* SelectToLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C95EAC159B63A9009966DA /* SelectToLoginViewController.m */; };
-		69F3DC7E15B35CB2000079EE /* champ selection second trail.png in Resources */ = {isa = PBXBuildFile; fileRef = 69F3DC7D15B35CB2000079EE /* champ selection second trail.png */; };
 		69FB54F515CDE60F00C42912 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FB54F415CDE60F00C42912 /* User.m */; };
 		C13D5EF415C5CEA0006F716C /* mouth effect test1.png in Resources */ = {isa = PBXBuildFile; fileRef = C13D5EF315C5CEA0006F716C /* mouth effect test1.png */; };
 		C13D5EF915C5EF89006F716C /* redo icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C13D5EF515C5EF85006F716C /* redo icon.png */; };
@@ -565,7 +564,6 @@
 		69C95EA2159B51C9009966DA /* play s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play s.png"; sourceTree = "<group>"; };
 		69C95EAB159B63A9009966DA /* SelectToLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectToLoginViewController.h; sourceTree = "<group>"; };
 		69C95EAC159B63A9009966DA /* SelectToLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectToLoginViewController.m; sourceTree = "<group>"; };
-		69F3DC7D15B35CB2000079EE /* champ selection second trail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "champ selection second trail.png"; sourceTree = "<group>"; };
 		69FB54F415CDE60F00C42912 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		C13D5EF315C5CEA0006F716C /* mouth effect test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mouth effect test1.png"; sourceTree = "<group>"; };
 		C13D5EF515C5EF85006F716C /* redo icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redo icon.png"; sourceTree = "<group>"; };
@@ -1239,7 +1237,6 @@
 			children = (
 				C16921E515B24B7C00F081AF /* store interface.png */,
 				69C95E9B159B4E21009966DA /* MainPage_bg.png */,
-				69F3DC7D15B35CB2000079EE /* champ selection second trail.png */,
 				C15934B915B78884009B7955 /* score paper.png */,
 				C13D5F0915C5FA42006F716C /* person status background transperent2.png */,
 				C159285D15B35083009B7955 /* loading page background.png */,
@@ -2317,7 +2314,6 @@
 				C169220415B34D5C00F081AF /* no hit window.png in Resources */,
 				C159285E15B35083009B7955 /* loading page background.png in Resources */,
 				C159286015B357EF009B7955 /* hitFriendCell.xib in Resources */,
-				69F3DC7E15B35CB2000079EE /* champ selection second trail.png in Resources */,
 				C159348915B60DC2009B7955 /* robot_animations.xml in Resources */,
 				C159348A15B60DC2009B7955 /* robot_sheets.xml in Resources */,
 				C159348B15B60DC2009B7955 /* robotcharactermc_ArmL.png in Resources */,

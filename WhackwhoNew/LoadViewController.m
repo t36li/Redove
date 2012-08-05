@@ -72,7 +72,7 @@
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
-    [[CCDirector sharedDirector] pause];
+    //[[CCDirector sharedDirector] pause];
 }
 
 -(void) goToMenu {
