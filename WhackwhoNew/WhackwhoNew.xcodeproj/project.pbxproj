@@ -371,6 +371,7 @@
 		C198EE1315CF114B004D170C /* vec2.c in Sources */ = {isa = PBXBuildFile; fileRef = C198ED3115CF114B004D170C /* vec2.c */; };
 		C198EE1415CF114B004D170C /* vec3.c in Sources */ = {isa = PBXBuildFile; fileRef = C198ED3215CF114B004D170C /* vec3.c */; };
 		C198EE1515CF114B004D170C /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = C198ED3315CF114B004D170C /* vec4.c */; };
+		C198EE2B15CF7889004D170C /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C198EE2A15CF7889004D170C /* EmailViewController.m */; };
 		C1B4397D15951B4100D62C2B /* StatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B4397C15951B4100D62C2B /* StatusBarController.m */; };
 		C1CBDFED15952D9900A35E24 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEB15952D9900A35E24 /* lock.png */; };
 		C1CBDFF015952DC100A35E24 /* Email Envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEE15952DC100A35E24 /* Email Envelope.png */; };
@@ -930,6 +931,8 @@
 		C198ED3115CF114B004D170C /* vec2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vec2.c; sourceTree = "<group>"; };
 		C198ED3215CF114B004D170C /* vec3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vec3.c; sourceTree = "<group>"; };
 		C198ED3315CF114B004D170C /* vec4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vec4.c; sourceTree = "<group>"; };
+		C198EE2915CF7888004D170C /* EmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailViewController.h; sourceTree = "<group>"; };
+		C198EE2A15CF7889004D170C /* EmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailViewController.m; sourceTree = "<group>"; };
 		C1B4397B15951B4100D62C2B /* StatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarController.h; sourceTree = "<group>"; };
 		C1B4397C15951B4100D62C2B /* StatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarController.m; sourceTree = "<group>"; };
 		C1CBDFEB15952D9900A35E24 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lock.png; path = WhackwhoNew/lock.png; sourceTree = "<group>"; };
@@ -1202,6 +1205,8 @@
 				D0D7C84515955D3400F51C6E /* AvatarViewController.m */,
 				D0948D3F15ADFF0E00429477 /* AvatarBaseController.h */,
 				D0948D4015ADFF0E00429477 /* AvatarBaseController.m */,
+				C198EE2915CF7888004D170C /* EmailViewController.h */,
+				C198EE2A15CF7889004D170C /* EmailViewController.m */,
 				D0A3F74515B266330027EFF9 /* SpinnerView.h */,
 				D0A3F74615B266330027EFF9 /* SpinnerView.m */,
 				D09FD5DA159E4EB60079231D /* CameraOverlayControllerViewController.h */,
@@ -2410,6 +2415,7 @@
 				C1DCCBC615CB5143000CD722 /* StatusViewLayer.m in Sources */,
 				69FB54F515CDE60F00C42912 /* User.m in Sources */,
 				C1692E9115CE282C00C7D4C7 /* StoreViewController.m in Sources */,
+				C198EE2B15CF7889004D170C /* EmailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

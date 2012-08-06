@@ -135,8 +135,8 @@
 }
 
 - (IBAction)Back_Touched:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
     [[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
     [[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
-    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

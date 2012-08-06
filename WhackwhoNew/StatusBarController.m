@@ -106,6 +106,8 @@
     [self performSegueWithIdentifier:@"StatusToModeSegue" sender:sender];
 }
 
+//delegate method
+
 - (void)returnToMenu {
     //UINavigationController *nav = self.navigationController;
     //if (![CCDirector sharedDirector].isPaused) {

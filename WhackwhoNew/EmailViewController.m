@@ -1,20 +1,20 @@
 //
-//  StoreViewController.m
+//  EmailViewController.m
 //  WhackwhoNew
 //
 //  Created by Bob Li on 2012-08-05.
 //  Copyright (c) 2012 Waterloo. All rights reserved.
 //
 
-#import "StoreViewController.h"
+#import "EmailViewController.h"
 #import "cocos2d.h"
 #import "StatusViewLayer.h"
 
-@interface StoreViewController ()
+@interface EmailViewController ()
 
 @end
 
-@implementation StoreViewController
+@implementation EmailViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,11 +39,11 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)Back_Touched:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+- (IBAction)confirm_pressed:(id)sender {
+    [self performSegueWithIdentifier:@"EmailToStatusSegue" sender:sender];
     [[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
     [[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
 }
