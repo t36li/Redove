@@ -18,18 +18,30 @@
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" id="DEK-jd-gZH" userLabel="helmet">
                                 <rect key="frame" x="333" y="28" width="38" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="helmet">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                             </imageView>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" id="tEL-lv-IZH" userLabel="body gear">
                                 <rect key="frame" x="333" y="92" width="39" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="body gear">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                             </imageView>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" id="db3-wM-wR9" userLabel="right hand">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" id="db3-wM-wR9" userLabel="left hand">
                                 <rect key="frame" x="397" y="91" width="37" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="right hand">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                             </imageView>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" id="fLl-gj-sHb" userLabel="left hand">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" id="fLl-gj-sHb" userLabel="right hand">
                                 <rect key="frame" x="264" y="91" width="38" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="left hand">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                             </imageView>
                             <view contentMode="scaleToFill" id="fhO-MD-d75">
                                 <rect key="frame" x="31" y="35" width="173" height="257"/>
@@ -82,42 +94,72 @@
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" id="Xx4-iT-rqt" userLabel="Item1">
                                 <rect key="frame" x="260" y="164" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView contentMode="scaleAspectFit" id="XEF-db-QBA" userLabel="Item6">
-                                <rect key="frame" x="260" y="198" width="32" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Item1">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                             </imageView>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" id="UuN-uN-syX" userLabel="Item2">
                                 <rect key="frame" x="296" y="164" width="34" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView contentMode="scaleAspectFit" id="Qtt-wd-Est" userLabel="Item7">
-                                <rect key="frame" x="296" y="198" width="34" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Item2">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                             </imageView>
                             <imageView contentMode="scaleAspectFit" id="3DO-MT-vi6" userLabel="Item3">
                                 <rect key="frame" x="335" y="164" width="34" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView contentMode="scaleAspectFit" id="7qP-Kl-fsB" userLabel="Item8">
-                                <rect key="frame" x="335" y="198" width="34" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Item3">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                             </imageView>
                             <imageView contentMode="scaleAspectFit" id="Gly-OZ-M2h" userLabel="Item4">
                                 <rect key="frame" x="374" y="164" width="34" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView contentMode="scaleAspectFit" id="4HE-vV-IK0" userLabel="Item9">
-                                <rect key="frame" x="374" y="198" width="34" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Item4">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                             </imageView>
                             <imageView contentMode="scaleAspectFit" id="i6b-9s-vYu" userLabel="Item5">
                                 <rect key="frame" x="414" y="164" width="34" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Item5">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" id="XEF-db-QBA" userLabel="Item6">
+                                <rect key="frame" x="260" y="198" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Item6">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" id="Qtt-wd-Est" userLabel="Item7">
+                                <rect key="frame" x="296" y="198" width="34" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Item7">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" id="7qP-Kl-fsB" userLabel="Item8">
+                                <rect key="frame" x="335" y="198" width="34" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Item8">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" id="4HE-vV-IK0" userLabel="Item9">
+                                <rect key="frame" x="374" y="198" width="34" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Item9">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                             </imageView>
                             <imageView contentMode="scaleAspectFit" id="vAk-w5-qeM" userLabel="Item10">
                                 <rect key="frame" x="414" y="197" width="34" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Item10">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="main window2.png" id="fFC-Ex-sbF">
                                 <rect key="frame" x="23" y="25" width="189" height="272"/>
@@ -252,8 +294,8 @@
                         <outlet property="item7" destination="Qtt-wd-Est" id="SNo-bz-aHu"/>
                         <outlet property="item8" destination="7qP-Kl-fsB" id="hQh-u1-ced"/>
                         <outlet property="item9" destination="4HE-vV-IK0" id="zYT-ve-haO"/>
-                        <outlet property="left_hand" destination="fLl-gj-sHb" id="DPs-DA-NYV"/>
-                        <outlet property="right_hand" destination="db3-wM-wR9" id="XxN-Wv-N2O"/>
+                        <outlet property="left_hand" destination="db3-wM-wR9" id="qFv-Iu-gzs"/>
+                        <outlet property="right_hand" destination="fLl-gj-sHb" id="z4p-Da-oNJ"/>
                         <segue destination="NW8-Zr-9Q9" kind="push" identifier="StatusToModeSegue" id="1sR-bf-A58"/>
                     </connections>
                 </viewController>

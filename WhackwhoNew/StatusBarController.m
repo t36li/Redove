@@ -24,7 +24,7 @@
 @synthesize helmet, body, left_hand, right_hand;
 @synthesize stashItems;
 @synthesize item1, item2, item3, item4, item5, item6, item7, item8, item9, item10;
-@synthesize cocosDelegate;
+//@synthesize cocosDelegate;
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) {
@@ -45,12 +45,16 @@
     
     equipments = [NSArray arrayWithObjects:helmet, body, left_hand, right_hand, nil];
     
+    orig_item_positions = [[NSMutableDictionary alloc] init];
+    orig_equipment_positions = [[NSMutableDictionary alloc] init];
+    
     //retrieve data from database about user's gears and display them accordingly
     //assume for testing the user has 4 items only...
     //for (int i = 0, i < [useritems count], i++) {
     //    UIImage *item = [useritems objectatindex: int];
     //    [stashItems objectAtIndex:i].image = item;
     //}
+    //will need to set tags for each item as well
     item1.image = [UIImage imageNamed:starting_hammer];
     item1.tag = leftHand_Label;
     item2.image = [UIImage imageNamed:standard_pink_head];
@@ -60,7 +64,14 @@
     item4.image = [UIImage imageNamed:starting_body];
     item4.tag = body_Label;
     
+    //setUp tags for equipments
+    helmet.tag = head_Label;
+    body.tag = body_Label;
+    left_hand.tag = leftHand_Label;
+    right_hand.tag = rightHand_Label;
+    
     //set up touch gestures for stash items
+    int i = 1;
     for (UIImageView *item in stashItems) {
         //add pan gesture (to view the glview)
         UIPanGestureRecognizer *gesture = [[UIPanGestureRecognizer alloc]
@@ -68,12 +79,21 @@
                                             action:@selector(itemDragged:)];
         [item addGestureRecognizer:gesture];
         [item setBackgroundColor:[UIColor blackColor]];
+        [item setAccessibilityLabel:[NSString stringWithFormat:@"Item%i", i]];
+        
+        //add original position to the array
+        //NSLog(@"item accessibility identifier: %@", [item accessibilityIdentifier]);
+        
+        [orig_item_positions setObject:[NSValue valueWithCGPoint:item.center] forKey:[NSString stringWithString:[item accessibilityLabel]]];
+        
         //UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnItemImage:)];
         //tap.numberOfTapsRequired = 1;
         //[item addGestureRecognizer:tap];
+        i++;
     }
     
     //set up touch gestures for equipement items
+    i = 1;
     for (UIImageView *equipment in equipments) {
         //add pan gesture (to view the glview)
         UIPanGestureRecognizer *gesture = [[UIPanGestureRecognizer alloc]
@@ -81,9 +101,17 @@
                                            action:@selector(equipmentDragged:)];
         [equipment addGestureRecognizer:gesture];
         [equipment setBackgroundColor:[UIColor blackColor]];
+        [equipment setAccessibilityLabel:[NSString stringWithFormat:@"Equipment%i", i]];
+
+        //add original position to the array
+        //NSLog(@"equipment accessibility label: %@", [equipment accessibilityLabel]);
+        //NSLog(@"equipment center: x: %f y: %f", equipment.center.x, equipment.center.y);
+        
+        [orig_equipment_positions setObject:[NSValue valueWithCGPoint:equipment.center] forKey:[NSString stringWithString:[equipment accessibilityLabel]]];
         //UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnItemImage:)];
         //tap.numberOfTapsRequired = 1;
         //[item addGestureRecognizer:tap];
+        i++;
     }
 }
 
@@ -114,16 +142,15 @@
     // Finish up our view controller containment responsibilities.
     [director didMoveToParentViewController:self];
     
-    CCScene *scene = [director runningScene];
-    id layer = [scene getChildByTag:10];
-    self.cocosDelegate = layer;
+    //CCScene *scene = [director runningScene];
+    //id layer = [[scene children] objectAtIndex:0]; //returned nil
+    //self.cocosDelegate = layer;
 }
 
 - (void)itemDragged:(UIPanGestureRecognizer *)gesture
 {
 	UIImageView *item = (UIImageView *)gesture.view;
     [self.view bringSubviewToFront:item];
-    CGPoint oldCenter = item.center;
 	CGPoint translation = [gesture translationInView:item];
     
 	// move label
@@ -142,11 +169,11 @@
         newcenter.x = midPointX;
     }
     
-    //if too far up
+    //if too far down
     float midPointY = CGRectGetMidY(item.bounds);
     if (newcenter.y > self.view.bounds.size.height - midPointY) {
         newcenter.y = self.view.bounds.size.height - midPointY;
-     //if too far down...
+     //if too far up...
     } else if (newcenter.y < midPointY) {
         newcenter.y = midPointY;
     }
@@ -162,8 +189,8 @@
             CGPoint snapLoc = equipment.center;
             double distance = sqrt(pow((newcenter.x - snapLoc.x), 2.0) + pow((newcenter.y - snapLoc.y), 2.0));
             
-            //if the box gets in the vincinity of an equipment box
-            if (distance <= sqrt(pow(CGRectGetMidX(equipment.bounds), 2.0) + pow(CGRectGetMidY(equipment.bounds), 2.0))) {
+            //if the box gets in the vincinity of an equipment box AND is correct body part
+            if (distance <= sqrt(pow(CGRectGetMidX(equipment.bounds), 2.0) + pow(CGRectGetMidY(equipment.bounds), 2.0)) && equipment.tag == item.tag) {
                 [UIView animateWithDuration:0.1f
                                       delay:0.f
                                     options:UIViewAnimationOptionCurveEaseInOut
@@ -171,12 +198,26 @@
                                      item.center = snapLoc;
                                  }
                                  completion:nil];
+                
+                //set equipment image to the image being dragged. and item image to nil
                 equipment.image = item.image;
-                item.center = oldCenter;
                 item.image = nil;
-                [cocosDelegate updateCharacterWithImage:equipment.image bodyPart:item.tag];
+                
+                //move the dragbox back to original position
+                NSValue *pt = [orig_item_positions objectForKey:[NSString stringWithString:[item accessibilityLabel]]];
+                item.center = [pt CGPointValue];
+                
+                //call the cocos2d layer to update character
+                CCScene *scene = [[CCDirector sharedDirector] runningScene];
+                id layer = [[scene children] objectAtIndex:0];
+                [layer updateCharacterWithImage:equipment.image bodyPart:item.tag];
                 break;
-            } // ends "if"
+            //if not in vincinity AND invalid gear part
+            } else {
+                //move the dragbox back to original position
+                NSValue *pt = [orig_item_positions objectForKey:[NSString stringWithString:[item accessibilityLabel]]];
+                item.center = [pt CGPointValue];
+            }
         } // ends "for"
     }
     
@@ -188,7 +229,6 @@
 {
 	UIImageView *equipment = (UIImageView *)gesture.view;
     [self.view bringSubviewToFront:equipment];
-    CGPoint oldCenter = equipment.center;
 	CGPoint translation = [gesture translationInView:equipment];
     
 	// move label
@@ -227,7 +267,7 @@
             CGPoint snapLoc = item.center;
             double distance = sqrt(pow((newcenter.x - snapLoc.x), 2.0) + pow((newcenter.y - snapLoc.y), 2.0));
             
-            //if the box gets in the vincinity of an equipment box
+            //if the box gets in the vincinity of an item box, clip it, and update cocos view
             if (distance <= sqrt(pow(CGRectGetMidX(item.bounds), 2.0) + pow(CGRectGetMidY(item.bounds), 2.0))) {
                 [UIView animateWithDuration:0.1f
                                       delay:0.f
@@ -237,10 +277,23 @@
                                  }
                                  completion:nil];
                 item.image = equipment.image;
-                equipment.center = oldCenter;
                 equipment.image = nil;
+                
+                //switch dragbox back to original position
+                NSValue *pt = [orig_equipment_positions objectForKey:[NSString stringWithString:[equipment accessibilityLabel]]];
+                equipment.center = [pt CGPointValue];
+                
+                //call the cocos2d layer to remove the equipment
+                CCScene *scene = [[CCDirector sharedDirector] runningScene];
+                id layer = [[scene children] objectAtIndex:0];
+                [layer updateCharacterWithImage:equipment.image bodyPart:equipment.tag];
                 break;
-            } // ends "if"
+            //if not in vincinity of any item boxes, switch back
+            } else {
+                //switch dragbox back to original position
+                NSValue *pt = [orig_equipment_positions objectForKey:[NSString stringWithString:[equipment accessibilityLabel]]];
+                equipment.center = [pt CGPointValue];
+            }
         } // ends "for"
     }
     
@@ -251,26 +304,6 @@
 /*-(void) handleTapOnItemImage:(id)sender {
     UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
     UIImageView *itemView = ((UIImageView *)(tap.view));
-    
-    int which_gear = itemView.tag;
-    
-    switch (which_gear) {
-        case 1:
-            helmet.image = itemView.image;
-            break;
-        case 2:
-            body.image = itemView.image;
-            break;
-        case 3:
-            left_hand.image = itemView.image;
-            break;
-        case 4:
-            right_hand.image = itemView.image;
-            break;
-        default:
-            NSLog(@"invalid body part!");
-            break;
-    }
 }*/
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

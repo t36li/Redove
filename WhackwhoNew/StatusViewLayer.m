@@ -25,10 +25,10 @@
 	CCScene *scene = [CCScene node];
 
 	// 'layer' is an autorelease object.
-	StatusViewLayer *layer = [[StatusViewLayer alloc] init];
+	StatusViewLayer *layer = [StatusViewLayer node];
     
 	// add layer as a child to scene
-	[scene addChild: layer z:0 tag:10];
+	[scene addChild: layer z:0 tag:2];
 	
 	// return the scene
 	return scene;
@@ -49,9 +49,11 @@
         
         //init face with image from DB, if none exists, give it blank (use pause.png for now)
         if ([face_DB CGImage] != nil) {
+            NSLog(@"Accessibility string: %@", [face_DB accessibilityIdentifier]);
             face = [CCSprite spriteWithCGImage:[face_DB CGImage] key:[face_DB accessibilityIdentifier]]; //320 x 426
         } else {
             face = [CCSprite spriteWithFile:PauseButton];
+            [face setVisible:FALSE];
         }
         face.scale = 0.4;
         face.anchorPoint = ccp(0.5,1);
@@ -64,7 +66,7 @@
         [self addChild:helmet z:5 tag:head_Label];
         //ADD face as child
         face.position = ccp(helmet.boundingBox.size.width/2, helmet.boundingBox.size.height);
-        [helmet addChild:face z:-10 tag:face_label];
+        [helmet addChild:face z:0 tag:face_label];
 
         //init body
         body = [CCSprite spriteWithFile:standard_blue_body];
@@ -73,17 +75,19 @@
         [self addChild:body z:0 tag:body_Label];
         
         //init left_hand
-        left_hand = [CCSprite spriteWithFile:starting_hammer];
+        left_hand = [CCSprite spriteWithFile:PauseButton];
         left_hand.anchorPoint = ccp(0, 0);
         left_hand.scale = 0.9;
         left_hand.position = ccp(s.width/2 + 20, s.height*0.4-10);
+        [left_hand setVisible:FALSE];
         [self addChild:left_hand z:10 tag:leftHand_Label];
         
         //init right_hand
-        right_hand = [CCSprite spriteWithFile:starting_shield];
+        right_hand = [CCSprite spriteWithFile:PauseButton];
         right_hand.anchorPoint = ccp(0.5, 0.5);
-        right_hand.scale = 0.4;
-        right_hand.position = ccp(s.width/2 - 40, s.height*0.4 - 10);
+        //right_hand.scale = 0.9;
+        [right_hand setVisible:FALSE];
+        right_hand.position = ccp(s.width/2 - 45, s.height*0.4 - 10);
         [self addChild:right_hand z:10 tag:rightHand_Label];
         
         //animations
@@ -95,18 +99,41 @@
 }
 
 -(void)updateCharacterWithImage: (UIImage *)img bodyPart: (int) pos {
+    
+    CCTexture2D *newTex = nil;
+    
+    if ([img CGImage] != nil) {
+        newTex = [[CCTextureCache sharedTextureCache] addCGImage:[img CGImage] forKey:[img accessibilityLabel]];
+    }
+    
     switch (pos) {
         case head_Label:
-            
+            if (newTex == nil) 
+                helmet.texture = [[CCTextureCache sharedTextureCache] addImage:standard_blue_head];
+            else 
+                helmet.texture = newTex;
             break;
         case body_Label:
-            
+            if (newTex == nil)
+                body.texture = [[CCTextureCache sharedTextureCache] addImage:standard_blue_body];
+            else
+                body.texture = newTex;
             break;
         case leftHand_Label:
-            
+            if (newTex == nil) {
+                [left_hand setVisible:FALSE];
+            } else {
+                left_hand.texture = newTex;
+                [left_hand setVisible:TRUE];
+            }
             break;
         case rightHand_Label:
-            
+            if (newTex == nil) {
+                [right_hand setVisible:FALSE];
+            } else {
+                right_hand.texture = newTex;
+                [right_hand setVisible:TRUE];
+            }
             break;
         default:
             NSLog(@"invalid body part! Not recognized!");

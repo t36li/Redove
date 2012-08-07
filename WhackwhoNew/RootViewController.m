@@ -135,8 +135,8 @@
                 //current status, use all facebook users as registered users
                 [self performSegueWithIdentifier:PlayToStatusSegue sender:sender];
                 
-                [[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
-                [[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
+                //[[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
+                //[[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
             }
             break;
         }

@@ -21,6 +21,9 @@
     IBOutlet UIImageView *left_hand;
     IBOutlet UIImageView *right_hand;
     
+    //define a dictionary containing all original positions of the above frames
+    NSMutableDictionary *orig_equipment_positions;
+    
     //define the stash
     //make an array that contains all the UIImageViews
     NSArray *stashItems;
@@ -35,17 +38,20 @@
     IBOutlet UIImageView *item9;
     IBOutlet UIImageView *item10;
     
+    //define a dictionary containing all original positions of the above frames
+    NSMutableDictionary *orig_item_positions;
+    
     //UIImageView startPoint
     CGPoint startPoint;
     BOOL touched_item;
     
     //define cocos layer as delegate
-    id<StatusCocosDelegate> cocosDelegate;
+    //id<StatusCocosDelegate> cocosDelegate;
 
 }
 
 //define delegate
-@property (nonatomic, retain) id<StatusCocosDelegate> cocosDelegate;
+//@property (nonatomic, retain) id<StatusCocosDelegate> cocosDelegate;
 
 //define the container view that stores the cocos2d view
 @property (nonatomic) IBOutlet UIView *containerView;
