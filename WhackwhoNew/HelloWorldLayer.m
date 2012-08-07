@@ -528,18 +528,6 @@
      [head runAction:[CCSequence actions:setTappable, fadeIn, delay, fadeOut, unsetTappable, delay, checkCombo, nil]];
      
      }*/
-    //testing CGRectIntersection
-    /*Character *tempHead1 = (Character *) [heads objectAtIndex:0];
-    Character *tempHead2 = (Character *) [heads objectAtIndex:1];
-    tempHead1.visible = TRUE;
-    tempHead2.visible = TRUE;
-    
-    CGRect absrect1 = CGRectMake(tempHead1.position.x, tempHead1.position.y, [tempHead1 boundingBox].size.width, [tempHead1 boundingBox].size.height);
-    CGRect absrect2 = CGRectMake(tempHead2.position.x, tempHead2.position.y, [tempHead2 boundingBox].size.width, [tempHead2 boundingBox].size.height);
-    
-    if (CGRectIntersectsRect(absrect1, absrect2)) {
-        CCLOG(@"intersected!");
-    }*/
     
     // algorithm: random the hill that it will pop up, then need to random the rotation... either left or right
     int randHill = arc4random() % 7;

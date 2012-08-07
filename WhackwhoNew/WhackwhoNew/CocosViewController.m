@@ -11,7 +11,6 @@
 
 @implementation CocosViewController
 
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -62,11 +61,11 @@
      [director replaceScene:[HelloWorldLayer sceneWithDelegate:self]];
      else
      [director runWithScene:[HelloWorldLayer sceneWithDelegate:self]];*/
-    
-    //[director replaceScene:[HelloWorldLayer sceneWithDelegate:self]];
+    //[[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 480, 320)];
+    //[[CCDirector sharedDirector] replaceScene:[HelloWorldLayer sceneWithDelegate:self]];
 }
 
-/*- (void)returnToMenu {
+- (void)returnToMenu {
     //UINavigationController *nav = self.navigationController;
     //if (![CCDirector sharedDirector].isPaused) {
        // [[CCDirector sharedDirector] pause];
@@ -83,7 +82,7 @@
     
     //[[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
     //[[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
-}*/
+}
 
 - (void) viewDidDisappear:(BOOL)animated {
     //[[CCDirector sharedDirector] popScene];

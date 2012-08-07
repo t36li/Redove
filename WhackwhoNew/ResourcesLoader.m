@@ -67,17 +67,6 @@ static id _sharedLoader = nil;
 
 - (void)loadResources:(id<ResourceLoaderDelegate>)delegate
 {
-    /*_loadedResources = 0;
-	for (NSString *resource in self.resourceList) {
-        NSString *key = [resource pathExtension];
-        id<ResourceLoader> loader = [self.loaders objectForKey:key];
-        [loader loadResource:resource];
-        _loadedResources++;
-        float progress = (float)_loadedResources / [self.resourceList count];
-        if (progress == 1.0) {
-            [delegate didReachProgressMark:progress];
-        }
-    }*/
     
     _loadedResources = 0;
 	NSOperationQueue *queue = [[NSOperationQueue alloc] init];

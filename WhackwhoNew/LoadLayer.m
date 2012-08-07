@@ -42,7 +42,7 @@
     layer.menuDelegate = delegate;
 
 	// add layer as a child to scene
-	[scene addChild: layer];
+	[scene addChild: layer z:0 tag:0];
 	
 	// return the scene
 	return scene;

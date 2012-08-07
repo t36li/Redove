@@ -36,6 +36,7 @@
 		69C95EA8159B51C9009966DA /* play s.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C95EA2159B51C9009966DA /* play s.png */; };
 		69C95EAD159B63A9009966DA /* SelectToLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C95EAC159B63A9009966DA /* SelectToLoginViewController.m */; };
 		69FB54F515CDE60F00C42912 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FB54F415CDE60F00C42912 /* User.m */; };
+		C10D2FC215D060A6007B751B /* Dragbox.m in Sources */ = {isa = PBXBuildFile; fileRef = C10D2FC115D060A6007B751B /* Dragbox.m */; };
 		C13D5EF415C5CEA0006F716C /* mouth effect test1.png in Resources */ = {isa = PBXBuildFile; fileRef = C13D5EF315C5CEA0006F716C /* mouth effect test1.png */; };
 		C13D5EF915C5EF89006F716C /* redo icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C13D5EF515C5EF85006F716C /* redo icon.png */; };
 		C13D5EFA15C5EF89006F716C /* ok icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C13D5EF615C5EF86006F716C /* ok icon.png */; };
@@ -372,6 +373,7 @@
 		C198EE1415CF114B004D170C /* vec3.c in Sources */ = {isa = PBXBuildFile; fileRef = C198ED3215CF114B004D170C /* vec3.c */; };
 		C198EE1515CF114B004D170C /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = C198ED3315CF114B004D170C /* vec4.c */; };
 		C198EE2B15CF7889004D170C /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C198EE2A15CF7889004D170C /* EmailViewController.m */; };
+		C198EE2E15D0476E004D170C /* hammer.png in Resources */ = {isa = PBXBuildFile; fileRef = C198EE2D15D0476E004D170C /* hammer.png */; };
 		C1B4397D15951B4100D62C2B /* StatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B4397C15951B4100D62C2B /* StatusBarController.m */; };
 		C1CBDFED15952D9900A35E24 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEB15952D9900A35E24 /* lock.png */; };
 		C1CBDFF015952DC100A35E24 /* Email Envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEE15952DC100A35E24 /* Email Envelope.png */; };
@@ -566,6 +568,9 @@
 		69C95EAB159B63A9009966DA /* SelectToLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectToLoginViewController.h; sourceTree = "<group>"; };
 		69C95EAC159B63A9009966DA /* SelectToLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectToLoginViewController.m; sourceTree = "<group>"; };
 		69FB54F415CDE60F00C42912 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		C10D2FC015D060A6007B751B /* Dragbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dragbox.h; sourceTree = "<group>"; };
+		C10D2FC115D060A6007B751B /* Dragbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dragbox.m; sourceTree = "<group>"; };
+		C10D2FCB15D09625007B751B /* StatusCocosDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatusCocosDelegate.h; sourceTree = "<group>"; };
 		C13D5EF315C5CEA0006F716C /* mouth effect test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mouth effect test1.png"; sourceTree = "<group>"; };
 		C13D5EF515C5EF85006F716C /* redo icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redo icon.png"; sourceTree = "<group>"; };
 		C13D5EF615C5EF86006F716C /* ok icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ok icon.png"; sourceTree = "<group>"; };
@@ -933,6 +938,7 @@
 		C198ED3315CF114B004D170C /* vec4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vec4.c; sourceTree = "<group>"; };
 		C198EE2915CF7888004D170C /* EmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailViewController.h; sourceTree = "<group>"; };
 		C198EE2A15CF7889004D170C /* EmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailViewController.m; sourceTree = "<group>"; };
+		C198EE2D15D0476E004D170C /* hammer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hammer.png; sourceTree = "<group>"; };
 		C1B4397B15951B4100D62C2B /* StatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarController.h; sourceTree = "<group>"; };
 		C1B4397C15951B4100D62C2B /* StatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarController.m; sourceTree = "<group>"; };
 		C1CBDFEB15952D9900A35E24 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lock.png; path = WhackwhoNew/lock.png; sourceTree = "<group>"; };
@@ -1108,6 +1114,8 @@
 				696F17FB15A4A81000DC849F /* OptionsViewController.m */,
 				694F34AB15A68355009BA1C5 /* FriendsViewController.h */,
 				694F34AC15A68355009BA1C5 /* FriendsViewController.m */,
+				69C95EAB159B63A9009966DA /* SelectToLoginViewController.h */,
+				69C95EAC159B63A9009966DA /* SelectToLoginViewController.m */,
 				694F34B015A76005009BA1C5 /* FriendsTableCell.h */,
 				694F34B115A76006009BA1C5 /* FriendsTableCell.m */,
 			);
@@ -1201,6 +1209,7 @@
 			children = (
 				C14385A815C8C13C008D9AE7 /* Load Scene */,
 				692AC3A215B24BB0001E4858 /* HitWhoGroup */,
+				C198EE2C15CF7AEB004D170C /* Personal Status View */,
 				D0D7C84415955D3400F51C6E /* AvatarViewController.h */,
 				D0D7C84515955D3400F51C6E /* AvatarViewController.m */,
 				D0948D3F15ADFF0E00429477 /* AvatarBaseController.h */,
@@ -1214,14 +1223,8 @@
 				D0B9EECF159EA9D4005D2460 /* CameraOverlayControllerViewControllerDelegate.h */,
 				D0B2476E15C204C300C206BA /* UIImage+fixOrientation.h */,
 				D0B2476F15C204C300C206BA /* UIImage+fixOrientation.m */,
-				C1B4397B15951B4100D62C2B /* StatusBarController.h */,
-				C1B4397C15951B4100D62C2B /* StatusBarController.m */,
-				C1DCCBC415CB5143000CD722 /* StatusViewLayer.h */,
-				C1DCCBC515CB5143000CD722 /* StatusViewLayer.m */,
 				D0D7C84715956E3D00F51C6E /* ModeSelectionViewController.h */,
 				D0D7C84815956E3D00F51C6E /* ModeSelectionViewController.m */,
-				69C95EAB159B63A9009966DA /* SelectToLoginViewController.h */,
-				69C95EAC159B63A9009966DA /* SelectToLoginViewController.m */,
 				C1692E8F15CE282B00C7D4C7 /* StoreViewController.h */,
 				C1692E9015CE282C00C7D4C7 /* StoreViewController.m */,
 				C14B63B015AF5B5400376C91 /* Actual Game Scene(Cocos2d) */,
@@ -1851,6 +1854,20 @@
 			path = GL;
 			sourceTree = "<group>";
 		};
+		C198EE2C15CF7AEB004D170C /* Personal Status View */ = {
+			isa = PBXGroup;
+			children = (
+				C10D2FC015D060A6007B751B /* Dragbox.h */,
+				C10D2FC115D060A6007B751B /* Dragbox.m */,
+				C1B4397B15951B4100D62C2B /* StatusBarController.h */,
+				C1B4397C15951B4100D62C2B /* StatusBarController.m */,
+				C1DCCBC415CB5143000CD722 /* StatusViewLayer.h */,
+				C1DCCBC515CB5143000CD722 /* StatusViewLayer.m */,
+				C10D2FCB15D09625007B751B /* StatusCocosDelegate.h */,
+			);
+			name = "Personal Status View";
+			sourceTree = "<group>";
+		};
 		C1B439721595177E00D62C2B /* Facebook Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -1865,6 +1882,7 @@
 		C1FE252915AF661200DAF258 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				C198EE2D15D0476E004D170C /* hammer.png */,
 				C1FE252515AF65EF00DAF258 /* heart.png */,
 				C1CDF59115C0ECDF0002085B /* fire.png */,
 				D0F8785B15C362AA00163EC8 /* standard blue.png */,
@@ -2360,6 +2378,7 @@
 				C14385E815CB2C03008D9AE7 /* baby6.png in Resources */,
 				C14385E915CB2C03008D9AE7 /* baby7.png in Resources */,
 				C14385EB15CB339E008D9AE7 /* baby_animations.xml in Resources */,
+				C198EE2E15D0476E004D170C /* hammer.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2416,6 +2435,7 @@
 				69FB54F515CDE60F00C42912 /* User.m in Sources */,
 				C1692E9115CE282C00C7D4C7 /* StoreViewController.m in Sources */,
 				C198EE2B15CF7889004D170C /* EmailViewController.m in Sources */,
+				C10D2FC215D060A6007B751B /* Dragbox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

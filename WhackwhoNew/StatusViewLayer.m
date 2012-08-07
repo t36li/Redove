@@ -10,6 +10,13 @@
 #import "HelloWorldLayer.h"
 #import "UserInfo.h"
 
+//define tags
+#define head_Label 1
+#define body_Label 2
+#define leftHand_Label 3
+#define rightHand_Label 4
+#define face_label 5
+
 @implementation StatusViewLayer
 
 +(id) scene
@@ -21,7 +28,7 @@
 	StatusViewLayer *layer = [[StatusViewLayer alloc] init];
     
 	// add layer as a child to scene
-	[scene addChild: layer];
+	[scene addChild: layer z:0 tag:10];
 	
 	// return the scene
 	return scene;
@@ -34,48 +41,80 @@
         
         self.isTouchEnabled = YES;
         
+        UIImage *face_DB = [[UserInfo sharedInstance] exportImage];
+        
         CGSize s = CGSizeMake(190, 250); //this is the size of the screen
         
-        UIImage *face = [[UserInfo sharedInstance] exportImage];
+        //we will initialize all body part sprite here, then change the texture
         
-        CCSprite *head;// = [CCSprite spriteWithFile:standard_blue_head];
-        
-        if ([face CGImage] != nil) {
-            head = [CCSprite spriteWithCGImage:[face CGImage] key:@"hahaha"]; //320 x 426
-            head.scale = 0.4;
+        //init face with image from DB, if none exists, give it blank (use pause.png for now)
+        if ([face_DB CGImage] != nil) {
+            face = [CCSprite spriteWithCGImage:[face_DB CGImage] key:[face_DB accessibilityIdentifier]]; //320 x 426
         } else {
-            head = [CCSprite spriteWithFile:standard_blue_head];
-            head.scale = 0.8;
+            face = [CCSprite spriteWithFile:PauseButton];
         }
+        face.scale = 0.4;
+        face.anchorPoint = ccp(0.5,1);
         
-        head.anchorPoint = ccp(0.5,1);
-        head.position = ccp(s.width/2, s.height-50);
+        //init helmet sprite, ADD face as child
+        helmet = [CCSprite spriteWithFile:standard_blue_head];
+        helmet.anchorPoint = ccp(0.5,1);
+        helmet.position = ccp(s.width/2 - 10, s.height-20);
+        helmet.scale = 0.8;
+        [self addChild:helmet z:5 tag:head_Label];
+        //ADD face as child
+        face.position = ccp(helmet.boundingBox.size.width/2, helmet.boundingBox.size.height);
+        [helmet addChild:face z:-10 tag:face_label];
 
-        CCSprite *body = [CCSprite spriteWithFile:standard_blue_body];
+        //init body
+        body = [CCSprite spriteWithFile:standard_blue_body];
         body.anchorPoint = ccp(0.5, 0.75);
-        body.position = ccp(s.width/2, s.height/2);
-        [self addChild:body];
-    
-        [self addChild:head];
+        body.position = ccp(s.width/2 - 10, s.height*0.4);
+        [self addChild:body z:0 tag:body_Label];
+        
+        //init left_hand
+        left_hand = [CCSprite spriteWithFile:starting_hammer];
+        left_hand.anchorPoint = ccp(0, 0);
+        left_hand.scale = 0.9;
+        left_hand.position = ccp(s.width/2 + 20, s.height*0.4-10);
+        [self addChild:left_hand z:10 tag:leftHand_Label];
+        
+        //init right_hand
+        right_hand = [CCSprite spriteWithFile:starting_shield];
+        right_hand.anchorPoint = ccp(0.5, 0.5);
+        right_hand.scale = 0.4;
+        right_hand.position = ccp(s.width/2 - 40, s.height*0.4 - 10);
+        [self addChild:right_hand z:10 tag:rightHand_Label];
         
         //animations
-        CCMoveBy *moveHeadUp = [CCMoveBy actionWithDuration:2.5 position:ccp(0,10)];
-        CCMoveBy *moveHeadDown = [CCMoveBy actionWithDuration:2.5 position:ccp(0,-10)];
-        [head runAction:[CCRepeatForever actionWithAction:[CCSequence actionOne:moveHeadUp two:moveHeadDown]]];
+        //CCMoveBy *moveHeadUp = [CCMoveBy actionWithDuration:2.5 position:ccp(0,10)];
+        //CCMoveBy *moveHeadDown = [CCMoveBy actionWithDuration:2.5 position:ccp(0,-10)];
+        //[head runAction:[CCRepeatForever actionWithAction:[CCSequence actionOne:moveHeadUp two:moveHeadDown]]];
     }
     return self;
 }
 
+-(void)updateCharacterWithImage: (UIImage *)img bodyPart: (int) pos {
+    switch (pos) {
+        case head_Label:
+            
+            break;
+        case body_Label:
+            
+            break;
+        case leftHand_Label:
+            
+            break;
+        case rightHand_Label:
+            
+            break;
+        default:
+            NSLog(@"invalid body part! Not recognized!");
+            break;
+    }
+}
+
 - (void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    //[[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 480, 320)];
-    //[[CCDirector sharedDirector] replaceScene:[HelloWorldLayer scene]];
-    
-    /*UITouch *touch = [touches anyObject];
-    CGPoint location = [touch locationInView:[touch view]];
-    location = [[CCDirector sharedDirector] convertToGL:location];
-    
-    CCLOG(@"x: %f", location.x);
-    CCLOG(@"y: %f", location.y);*/
 }
 
 @end

@@ -16,6 +16,7 @@
     if (self) {
         // Initialization code here.
         [self createCharacterFromXML:@"baby"];
+        //[self createCharacterFromXML:@"robot"];
         [self setDelegate:self];
 
         /*[self playAnimation:@"static" loop:NO wait:NO];

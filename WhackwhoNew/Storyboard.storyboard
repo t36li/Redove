@@ -11,24 +11,24 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D07-jd-mo4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="" title="Status Bar" id="vVV-bT-q6I" customClass="StatusBarController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="oX4-su-2ke">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="oX4-su-2ke">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="DEK-jd-gZH" userLabel="helmet">
-                                <rect key="frame" x="324" y="21" width="57" height="57"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" id="DEK-jd-gZH" userLabel="helmet">
+                                <rect key="frame" x="333" y="28" width="38" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="tEL-lv-IZH" userLabel="body gear">
-                                <rect key="frame" x="324" y="84" width="57" height="57"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" id="tEL-lv-IZH" userLabel="body gear">
+                                <rect key="frame" x="333" y="92" width="39" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="db3-wM-wR9" userLabel="right hand">
-                                <rect key="frame" x="392" y="84" width="53" height="57"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" id="db3-wM-wR9" userLabel="right hand">
+                                <rect key="frame" x="397" y="91" width="37" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="fLl-gj-sHb" userLabel="left hand">
-                                <rect key="frame" x="255" y="84" width="57" height="57"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" id="fLl-gj-sHb" userLabel="left hand">
+                                <rect key="frame" x="264" y="91" width="38" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" id="fhO-MD-d75">
@@ -79,6 +79,46 @@
                                     <segue destination="wS0-Pw-2RC" kind="push" id="Cag-TV-cHf"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" id="Xx4-iT-rqt" userLabel="Item1">
+                                <rect key="frame" x="260" y="164" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" id="XEF-db-QBA" userLabel="Item6">
+                                <rect key="frame" x="260" y="198" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" id="UuN-uN-syX" userLabel="Item2">
+                                <rect key="frame" x="296" y="164" width="34" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" id="Qtt-wd-Est" userLabel="Item7">
+                                <rect key="frame" x="296" y="198" width="34" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" id="3DO-MT-vi6" userLabel="Item3">
+                                <rect key="frame" x="335" y="164" width="34" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" id="7qP-Kl-fsB" userLabel="Item8">
+                                <rect key="frame" x="335" y="198" width="34" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" id="Gly-OZ-M2h" userLabel="Item4">
+                                <rect key="frame" x="374" y="164" width="34" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" id="4HE-vV-IK0" userLabel="Item9">
+                                <rect key="frame" x="374" y="198" width="34" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" id="i6b-9s-vYu" userLabel="Item5">
+                                <rect key="frame" x="414" y="164" width="34" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" id="vAk-w5-qeM" userLabel="Item10">
+                                <rect key="frame" x="414" y="197" width="34" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="main window2.png" id="fFC-Ex-sbF">
                                 <rect key="frame" x="23" y="25" width="189" height="272"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -199,7 +239,21 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="body" destination="tEL-lv-IZH" id="20B-bM-d2Q"/>
                         <outlet property="containerView" destination="fhO-MD-d75" id="dvh-WX-wbG"/>
+                        <outlet property="helmet" destination="DEK-jd-gZH" id="VBl-wc-xMo"/>
+                        <outlet property="item1" destination="Xx4-iT-rqt" id="sW3-It-fvW"/>
+                        <outlet property="item10" destination="vAk-w5-qeM" id="Shw-TG-98v"/>
+                        <outlet property="item2" destination="UuN-uN-syX" id="BFA-6m-79K"/>
+                        <outlet property="item3" destination="3DO-MT-vi6" id="Z9Z-xR-1oF"/>
+                        <outlet property="item4" destination="Gly-OZ-M2h" id="dBL-NH-EG3"/>
+                        <outlet property="item5" destination="i6b-9s-vYu" id="rQB-Pm-RIW"/>
+                        <outlet property="item6" destination="XEF-db-QBA" id="QXK-0R-MVY"/>
+                        <outlet property="item7" destination="Qtt-wd-Est" id="SNo-bz-aHu"/>
+                        <outlet property="item8" destination="7qP-Kl-fsB" id="hQh-u1-ced"/>
+                        <outlet property="item9" destination="4HE-vV-IK0" id="zYT-ve-haO"/>
+                        <outlet property="left_hand" destination="fLl-gj-sHb" id="DPs-DA-NYV"/>
+                        <outlet property="right_hand" destination="db3-wM-wR9" id="XxN-Wv-N2O"/>
                         <segue destination="NW8-Zr-9Q9" kind="push" identifier="StatusToModeSegue" id="1sR-bf-A58"/>
                     </connections>
                 </viewController>
@@ -1132,6 +1186,9 @@
         </class>
         <class className="EmailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EmailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="confirm_pressed:"/>
+            </relationships>
         </class>
         <class className="FriendsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewController.h"/>
@@ -1208,7 +1265,21 @@
             <relationships>
                 <relationship kind="action" name="Back_Touched:"/>
                 <relationship kind="action" name="Ok_Pressed:"/>
+                <relationship kind="outlet" name="body" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="helmet" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item1" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item10" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item2" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item3" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item4" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item5" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item6" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item7" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item8" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item9" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="left_hand" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="right_hand" candidateClass="UIImageView"/>
             </relationships>
         </class>
         <class className="StoreViewController" superclassName="UIViewController">

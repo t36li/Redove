@@ -9,11 +9,22 @@
 #import "StatusBarController.h"
 #import "UserInfo.h"
 #import "StatusViewLayer.h"
-#import "TestLayer.h"
 #import "HelloWorldLayer.h"
+#import "Dragbox.h"
+
+//define tags
+#define head_Label 1
+#define body_Label 2
+#define leftHand_Label 3
+#define rightHand_Label 4
 
 @implementation StatusBarController
+
 @synthesize containerView;
+@synthesize helmet, body, left_hand, right_hand;
+@synthesize stashItems;
+@synthesize item1, item2, item3, item4, item5, item6, item7, item8, item9, item10;
+@synthesize cocosDelegate;
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) {
@@ -29,15 +40,53 @@
 	// Do any additional setup after loading the view.
     //[self.view setBackgroundColor:[UIColor whiteColor]];
 	// Do any additional setup after loading the view, this will only load once.
-        
-    //UserInfo *usr = [UserInfo sharedInstance];
-    /*
-     if (usr.usrImg != nil) {
-     photoView.image = usr.usrImg;
-     }
-     */
     
+    stashItems =  [NSArray arrayWithObjects:item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, nil];
+    
+    equipments = [NSArray arrayWithObjects:helmet, body, left_hand, right_hand, nil];
+    
+    //retrieve data from database about user's gears and display them accordingly
+    //assume for testing the user has 4 items only...
+    //for (int i = 0, i < [useritems count], i++) {
+    //    UIImage *item = [useritems objectatindex: int];
+    //    [stashItems objectAtIndex:i].image = item;
+    //}
+    item1.image = [UIImage imageNamed:starting_hammer];
+    item1.tag = leftHand_Label;
+    item2.image = [UIImage imageNamed:standard_pink_head];
+    item2.tag = head_Label;
+    item3.image = [UIImage imageNamed:starting_shield];
+    item3.tag = rightHand_Label;
+    item4.image = [UIImage imageNamed:starting_body];
+    item4.tag = body_Label;
+    
+    //set up touch gestures for stash items
+    for (UIImageView *item in stashItems) {
+        //add pan gesture (to view the glview)
+        UIPanGestureRecognizer *gesture = [[UIPanGestureRecognizer alloc]
+                                            initWithTarget:self
+                                            action:@selector(itemDragged:)];
+        [item addGestureRecognizer:gesture];
+        [item setBackgroundColor:[UIColor blackColor]];
+        //UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnItemImage:)];
+        //tap.numberOfTapsRequired = 1;
+        //[item addGestureRecognizer:tap];
+    }
+    
+    //set up touch gestures for equipement items
+    for (UIImageView *equipment in equipments) {
+        //add pan gesture (to view the glview)
+        UIPanGestureRecognizer *gesture = [[UIPanGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(equipmentDragged:)];
+        [equipment addGestureRecognizer:gesture];
+        [equipment setBackgroundColor:[UIColor blackColor]];
+        //UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnItemImage:)];
+        //tap.numberOfTapsRequired = 1;
+        //[item addGestureRecognizer:tap];
+    }
 }
+
 
 // viewdidload gets called before this
 -(void)viewWillAppear:(BOOL)animated {
@@ -51,15 +100,10 @@
         [director resume];
     }
     
-    //[director.view addSubview:containerView];
-    //[director.view bringSubviewToFront:containerView];
-    
-    //[director.view setFrame:[containerView bounds]];
-    
-    //[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
-    
     // Set the view controller as the director's delegate, so we can respond to certain events.
     director.delegate = self;
+    
+    [director setDisplayStats:NO];
     
     // Add the director as a child view controller of this view controller.
     [self addChildViewController:director];
@@ -70,8 +114,169 @@
     // Finish up our view controller containment responsibilities.
     [director didMoveToParentViewController:self];
     
-    //[director.view setFrame:CGRectMake(0, 0, 190, 250)];
-    //[director replaceScene:[StatusViewLayer scene]];
+    CCScene *scene = [director runningScene];
+    id layer = [scene getChildByTag:10];
+    self.cocosDelegate = layer;
+}
+
+- (void)itemDragged:(UIPanGestureRecognizer *)gesture
+{
+	UIImageView *item = (UIImageView *)gesture.view;
+    [self.view bringSubviewToFront:item];
+    CGPoint oldCenter = item.center;
+	CGPoint translation = [gesture translationInView:item];
+    
+	// move label
+	item.center = CGPointMake(item.center.x + translation.x,
+                               item.center.y + translation.y);
+    
+    CGPoint newcenter = item.center;
+    
+    //stay within bounds
+    float midPointX = CGRectGetMidX(item.bounds);
+    //if too far right
+    if (newcenter.x > self.view.bounds.size.width- midPointX) {
+        newcenter.x = self.view.bounds.size.width - midPointX;
+    //if too far left
+    } else if (newcenter.x < midPointX) {
+        newcenter.x = midPointX;
+    }
+    
+    //if too far up
+    float midPointY = CGRectGetMidY(item.bounds);
+    if (newcenter.y > self.view.bounds.size.height - midPointY) {
+        newcenter.y = self.view.bounds.size.height - midPointY;
+     //if too far down...
+    } else if (newcenter.y < midPointY) {
+        newcenter.y = midPointY;
+    }
+    
+    item.center = newcenter;
+    
+    if(gesture.state == UIGestureRecognizerStateEnded)
+    {
+        //All fingers are lifted.
+        
+        //check if collides with any equipment boxes after the user has lifted his/her finger
+        for (UIImageView *equipment in equipments) {
+            CGPoint snapLoc = equipment.center;
+            double distance = sqrt(pow((newcenter.x - snapLoc.x), 2.0) + pow((newcenter.y - snapLoc.y), 2.0));
+            
+            //if the box gets in the vincinity of an equipment box
+            if (distance <= sqrt(pow(CGRectGetMidX(equipment.bounds), 2.0) + pow(CGRectGetMidY(equipment.bounds), 2.0))) {
+                [UIView animateWithDuration:0.1f
+                                      delay:0.f
+                                    options:UIViewAnimationOptionCurveEaseInOut
+                                 animations:^{
+                                     item.center = snapLoc;
+                                 }
+                                 completion:nil];
+                equipment.image = item.image;
+                item.center = oldCenter;
+                item.image = nil;
+                [cocosDelegate updateCharacterWithImage:equipment.image bodyPart:item.tag];
+                break;
+            } // ends "if"
+        } // ends "for"
+    }
+    
+	// reset translation: do this last
+	[gesture setTranslation:CGPointZero inView:item];
+}
+
+- (void)equipmentDragged:(UIPanGestureRecognizer *)gesture
+{
+	UIImageView *equipment = (UIImageView *)gesture.view;
+    [self.view bringSubviewToFront:equipment];
+    CGPoint oldCenter = equipment.center;
+	CGPoint translation = [gesture translationInView:equipment];
+    
+	// move label
+	equipment.center = CGPointMake(equipment.center.x + translation.x,
+                              equipment.center.y + translation.y);
+    
+    CGPoint newcenter = equipment.center;
+    
+    //stay within bounds
+    float midPointX = CGRectGetMidX(equipment.bounds);
+    //if too far right
+    if (newcenter.x > self.view.bounds.size.width- midPointX) {
+        newcenter.x = self.view.bounds.size.width - midPointX;
+        //if too far left
+    } else if (newcenter.x < midPointX) {
+        newcenter.x = midPointX;
+    }
+    
+    //if too far up
+    float midPointY = CGRectGetMidY(equipment.bounds);
+    if (newcenter.y > self.view.bounds.size.height - midPointY) {
+        newcenter.y = self.view.bounds.size.height - midPointY;
+        //if too far down...
+    } else if (newcenter.y < midPointY) {
+        newcenter.y = midPointY;
+    }
+    
+    equipment.center = newcenter;
+    
+    if(gesture.state == UIGestureRecognizerStateEnded)
+    {
+        //All fingers are lifted.
+        
+        //check if collides with any equipment boxes after the user has lifted his/her finger
+        for (UIImageView *item in stashItems) {
+            CGPoint snapLoc = item.center;
+            double distance = sqrt(pow((newcenter.x - snapLoc.x), 2.0) + pow((newcenter.y - snapLoc.y), 2.0));
+            
+            //if the box gets in the vincinity of an equipment box
+            if (distance <= sqrt(pow(CGRectGetMidX(item.bounds), 2.0) + pow(CGRectGetMidY(item.bounds), 2.0))) {
+                [UIView animateWithDuration:0.1f
+                                      delay:0.f
+                                    options:UIViewAnimationOptionCurveEaseInOut
+                                 animations:^{
+                                     equipment.center = snapLoc;
+                                 }
+                                 completion:nil];
+                item.image = equipment.image;
+                equipment.center = oldCenter;
+                equipment.image = nil;
+                break;
+            } // ends "if"
+        } // ends "for"
+    }
+    
+	// reset translation: do this last
+	[gesture setTranslation:CGPointZero inView:equipment];
+}
+
+/*-(void) handleTapOnItemImage:(id)sender {
+    UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
+    UIImageView *itemView = ((UIImageView *)(tap.view));
+    
+    int which_gear = itemView.tag;
+    
+    switch (which_gear) {
+        case 1:
+            helmet.image = itemView.image;
+            break;
+        case 2:
+            body.image = itemView.image;
+            break;
+        case 3:
+            left_hand.image = itemView.image;
+            break;
+        case 4:
+            right_hand.image = itemView.image;
+            break;
+        default:
+            NSLog(@"invalid body part!");
+            break;
+    }
+}*/
+
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+}
+
+- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
@@ -106,8 +311,7 @@
     [self performSegueWithIdentifier:@"StatusToModeSegue" sender:sender];
 }
 
-//delegate method
-
+#pragma mark - gameOverDelegate Methods
 - (void)returnToMenu {
     //UINavigationController *nav = self.navigationController;
     //if (![CCDirector sharedDirector].isPaused) {

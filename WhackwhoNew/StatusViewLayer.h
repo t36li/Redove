@@ -8,9 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "StatusCocosDelegate.h"
 
-@interface StatusViewLayer : CCLayer {
-    
+@interface StatusViewLayer : CCLayer<StatusCocosDelegate> {
+    CCSprite *face;
+    CCSprite *helmet;
+    CCSprite *body;
+    CCSprite *left_hand;
+    CCSprite *right_hand;
 }
 +(id) scene;
 

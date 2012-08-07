@@ -51,7 +51,7 @@
         baby.position = ccp(100,100);
         [self addChild:baby];
         
-        [baby playAnimation:@"start" loop:NO wait:NO];
+        [baby playAnimation:@"start" loop:YES wait:NO];
         /*      //tempDifficulty = [[Game sharedGame] difficulty];
         CGSize s = [[CCDirector sharedDirector] winSize];
         //popups = 2*tempDifficulty + 1;
@@ -237,7 +237,7 @@
 }
 
 
-/*-(void) nextScene: (id) sender {
+-(void) nextScene: (id) sender {
     CCMenuItem *itm = (CCMenuItem *) sender;
     
     int index = itm.tag;
