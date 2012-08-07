@@ -78,7 +78,7 @@
                                             initWithTarget:self
                                             action:@selector(itemDragged:)];
         [item addGestureRecognizer:gesture];
-        [item setBackgroundColor:[UIColor blackColor]];
+        //[item setBackgroundColor:[UIColor blackColor]];
         [item setAccessibilityLabel:[NSString stringWithFormat:@"Item%i", i]];
         
         //add original position to the array
@@ -86,7 +86,7 @@
         
         [orig_item_positions setObject:[NSValue valueWithCGPoint:item.center] forKey:[NSString stringWithString:[item accessibilityLabel]]];
         
-        //UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnItemImage:)];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnItemImage:)];
         //tap.numberOfTapsRequired = 1;
         //[item addGestureRecognizer:tap];
         i++;
@@ -96,21 +96,21 @@
     i = 1;
     for (UIImageView *equipment in equipments) {
         //add pan gesture (to view the glview)
-        UIPanGestureRecognizer *gesture = [[UIPanGestureRecognizer alloc]
-                                           initWithTarget:self
-                                           action:@selector(equipmentDragged:)];
-        [equipment addGestureRecognizer:gesture];
-        [equipment setBackgroundColor:[UIColor blackColor]];
+        //UIPanGestureRecognizer *gesture = [[UIPanGestureRecognizer alloc]
+                                           //initWithTarget:self
+                                           //action:@selector(equipmentDragged:)];
+        //[equipment addGestureRecognizer:gesture];
+        //[equipment setBackgroundColor:[UIColor blackColor]];
         [equipment setAccessibilityLabel:[NSString stringWithFormat:@"Equipment%i", i]];
 
         //add original position to the array
         //NSLog(@"equipment accessibility label: %@", [equipment accessibilityLabel]);
         //NSLog(@"equipment center: x: %f y: %f", equipment.center.x, equipment.center.y);
         
-        [orig_equipment_positions setObject:[NSValue valueWithCGPoint:equipment.center] forKey:[NSString stringWithString:[equipment accessibilityLabel]]];
-        //UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnItemImage:)];
-        //tap.numberOfTapsRequired = 1;
-        //[item addGestureRecognizer:tap];
+        //[orig_equipment_positions setObject:[NSValue valueWithCGPoint:equipment.center] forKey:[NSString stringWithString:[equipment accessibilityLabel]]];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnEquipmentImage:)];
+        tap.numberOfTapsRequired = 1;
+        [equipment addGestureRecognizer:tap];
         i++;
     }
 }
@@ -145,6 +145,40 @@
     //CCScene *scene = [director runningScene];
     //id layer = [[scene children] objectAtIndex:0]; //returned nil
     //self.cocosDelegate = layer;
+}
+
+- (void)handleTapOnEquipmentImage: (UITapGestureRecognizer *)gesture {
+    UITapGestureRecognizer *tap = (UITapGestureRecognizer *)gesture;
+    UIImageView *equipment = ((UIImageView *)(tap.view));
+    
+    for (UIImageView *item in stashItems) {
+        
+        if ([item.image CGImage] == nil) {
+            item.tag = equipment.tag;
+            item.image = equipment.image;
+            
+            //call the cocos2d layer to remove the equipment
+            CCScene *scene = [[CCDirector sharedDirector] runningScene];
+            id layer = [[scene children] objectAtIndex:0];
+            [layer updateCharacterWithImage:equipment.image bodyPart:equipment.tag];
+            
+            equipment.image = nil;
+            break;
+        }
+        
+                    
+  /*          //call the cocos2d layer to remove the equipment
+            CCScene *scene = [[CCDirector sharedDirector] runningScene];
+            id layer = [[scene children] objectAtIndex:0];
+            [layer updateCharacterWithImage:equipment.image bodyPart:equipment.tag];
+            break;
+            //if not in vincinity of any item boxes, switch back
+        } else {
+            //switch dragbox back to original position
+            NSValue *pt = [orig_equipment_positions objectForKey:[NSString stringWithString:[equipment accessibilityLabel]]];
+            equipment.center = [pt CGPointValue];
+        }*/
+    } // ends "for"
 }
 
 - (void)itemDragged:(UIPanGestureRecognizer *)gesture
@@ -225,7 +259,7 @@
 	[gesture setTranslation:CGPointZero inView:item];
 }
 
-- (void)equipmentDragged:(UIPanGestureRecognizer *)gesture
+/*- (void)equipmentDragged:(UIPanGestureRecognizer *)gesture
 {
 	UIImageView *equipment = (UIImageView *)gesture.view;
     [self.view bringSubviewToFront:equipment];
@@ -299,7 +333,7 @@
     
 	// reset translation: do this last
 	[gesture setTranslation:CGPointZero inView:equipment];
-}
+}*/
 
 /*-(void) handleTapOnItemImage:(id)sender {
     UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
