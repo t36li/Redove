@@ -7,6 +7,8 @@
 //
 
 #import "AvatarViewController.h"
+#import "cocos2d.h"
+#import "StatusViewLayer.h"
 
 @interface AvatarViewController ()
 
@@ -30,6 +32,8 @@
 	// Do any additional setup after loading the view.
     
     newPhoto = NO;
+    
+    self.navigationController.navigationBarHidden = YES;
     
     //set up background image
     GlobalMethods *gmethods = [[GlobalMethods alloc] init];
@@ -83,6 +87,7 @@
     CGRect frame5 = avatarView.frame;
     CGRect frame6 = headView.frame;
      */
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)viewDidUnload
@@ -127,5 +132,11 @@
 -(IBAction) addPicture:(id)sender {
     //headView.image = [[UserInfo sharedInstance] getCroppedImage];
     backgroundView.image = [[UserInfo sharedInstance] exportImage];
+}
+
+- (IBAction)Back_Touched:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+    [[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
+    [[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
 }
 @end

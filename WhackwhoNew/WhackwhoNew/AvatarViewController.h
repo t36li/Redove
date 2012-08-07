@@ -32,4 +32,6 @@
 
 -(IBAction) startCamera:(id)sender;
 -(IBAction) addPicture:(id)sender;
+- (IBAction)Back_Touched:(id)sender;
+
 @end

@@ -9,8 +9,10 @@
 #import "LoadViewController.h"
 #import "LoadLayer.h"
 #import "HelloWorldLayer.h"
+#import "StatusViewLayer.h"
 
 @implementation LoadViewController
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,7 +44,7 @@
         
         //[glView setMultipleTouchEnabled:YES];
         // Assign the view to the director.
-        director.view = glView;
+        [director setView:glView];
         
         // Initialize other director settings.
         [director setAnimationInterval:1.0f/60.0f];
@@ -70,13 +72,15 @@
     [director runWithScene:[LoadLayer sceneWithDelegate:self]];
 }
 
--(void) goToMenu {
-    
-    [self performSegueWithIdentifier:@"GoToMenuSegue" sender:nil];
+- (void) viewDidDisappear:(BOOL)animated {
+    [[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
+    [[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
+    [[CCDirector sharedDirector] setDelegate:nil];
+    //[[CCDirector sharedDirector] pause];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    //[[CCDirector sharedDirector] popScene];
+-(void) goToMenu {
+    [self performSegueWithIdentifier:@"GoToMenuSegue" sender:nil];
 }
 
 - (void)viewDidUnload

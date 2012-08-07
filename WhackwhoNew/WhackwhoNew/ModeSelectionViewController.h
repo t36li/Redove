@@ -24,5 +24,6 @@
 
 - (IBAction)leftButton_touched:(id)sender;
 - (IBAction)rightButton_touched:(id)sender;
+- (IBAction)Back_Touched:(id)sender;
 
 @end

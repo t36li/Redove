@@ -11,28 +11,40 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D07-jd-mo4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="" title="Status Bar" id="vVV-bT-q6I" customClass="StatusBarController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="oX4-su-2ke">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="oX4-su-2ke">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="DEK-jd-gZH" userLabel="helmet">
-                                <rect key="frame" x="324" y="21" width="57" height="57"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" id="DEK-jd-gZH" userLabel="helmet">
+                                <rect key="frame" x="333" y="28" width="38" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="helmet">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="tEL-lv-IZH" userLabel="body gear">
-                                <rect key="frame" x="324" y="84" width="57" height="57"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" id="tEL-lv-IZH" userLabel="body gear">
+                                <rect key="frame" x="333" y="92" width="39" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="body gear">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="db3-wM-wR9" userLabel="right hand">
-                                <rect key="frame" x="392" y="84" width="53" height="57"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" id="db3-wM-wR9" userLabel="left hand">
+                                <rect key="frame" x="397" y="91" width="37" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="right hand">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="fLl-gj-sHb" userLabel="left hand">
-                                <rect key="frame" x="255" y="84" width="57" height="57"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" id="fLl-gj-sHb" userLabel="right hand">
+                                <rect key="frame" x="264" y="91" width="38" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="left hand">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                             </imageView>
                             <view contentMode="scaleToFill" id="fhO-MD-d75">
-                                <rect key="frame" x="24" y="35" width="190" height="250"/>
+                                <rect key="frame" x="31" y="35" width="173" height="257"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -79,6 +91,76 @@
                                     <segue destination="wS0-Pw-2RC" kind="push" id="Cag-TV-cHf"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" id="Xx4-iT-rqt" userLabel="Item1">
+                                <rect key="frame" x="260" y="164" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Item1">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" id="UuN-uN-syX" userLabel="Item2">
+                                <rect key="frame" x="296" y="164" width="34" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Item2">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" id="3DO-MT-vi6" userLabel="Item3">
+                                <rect key="frame" x="335" y="164" width="34" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Item3">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" id="Gly-OZ-M2h" userLabel="Item4">
+                                <rect key="frame" x="374" y="164" width="34" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Item4">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" id="i6b-9s-vYu" userLabel="Item5">
+                                <rect key="frame" x="414" y="164" width="34" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Item5">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" id="XEF-db-QBA" userLabel="Item6">
+                                <rect key="frame" x="260" y="198" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Item6">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" id="Qtt-wd-Est" userLabel="Item7">
+                                <rect key="frame" x="296" y="198" width="34" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Item7">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" id="7qP-Kl-fsB" userLabel="Item8">
+                                <rect key="frame" x="335" y="198" width="34" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Item8">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" id="4HE-vV-IK0" userLabel="Item9">
+                                <rect key="frame" x="374" y="198" width="34" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Item9">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" id="vAk-w5-qeM" userLabel="Item10">
+                                <rect key="frame" x="414" y="197" width="34" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Item10">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="main window2.png" id="fFC-Ex-sbF">
                                 <rect key="frame" x="23" y="25" width="189" height="272"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -135,7 +217,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Nsl-EU-HzN" kind="push" id="KVK-ft-8kN"/>
+                                    <action selector="Back_Touched:" destination="vVV-bT-q6I" eventType="touchUpInside" id="J3v-Pw-piM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WSc-I8-9za">
@@ -165,7 +247,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="NW8-Zr-9Q9" kind="push" id="XOp-3W-Rhq"/>
+                                    <action selector="Ok_Pressed:" destination="vVV-bT-q6I" eventType="touchUpInside" id="QYf-XT-Gpy"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kxo-AP-Z9D">
@@ -199,17 +281,32 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="body" destination="tEL-lv-IZH" id="20B-bM-d2Q"/>
                         <outlet property="containerView" destination="fhO-MD-d75" id="dvh-WX-wbG"/>
+                        <outlet property="helmet" destination="DEK-jd-gZH" id="VBl-wc-xMo"/>
+                        <outlet property="item1" destination="Xx4-iT-rqt" id="sW3-It-fvW"/>
+                        <outlet property="item10" destination="vAk-w5-qeM" id="Shw-TG-98v"/>
+                        <outlet property="item2" destination="UuN-uN-syX" id="BFA-6m-79K"/>
+                        <outlet property="item3" destination="3DO-MT-vi6" id="Z9Z-xR-1oF"/>
+                        <outlet property="item4" destination="Gly-OZ-M2h" id="dBL-NH-EG3"/>
+                        <outlet property="item5" destination="i6b-9s-vYu" id="rQB-Pm-RIW"/>
+                        <outlet property="item6" destination="XEF-db-QBA" id="QXK-0R-MVY"/>
+                        <outlet property="item7" destination="Qtt-wd-Est" id="SNo-bz-aHu"/>
+                        <outlet property="item8" destination="7qP-Kl-fsB" id="hQh-u1-ced"/>
+                        <outlet property="item9" destination="4HE-vV-IK0" id="zYT-ve-haO"/>
+                        <outlet property="left_hand" destination="db3-wM-wR9" id="qFv-Iu-gzs"/>
+                        <outlet property="right_hand" destination="fLl-gj-sHb" id="z4p-Da-oNJ"/>
+                        <segue destination="NW8-Zr-9Q9" kind="push" identifier="StatusToModeSegue" id="1sR-bf-A58"/>
                     </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="-2687" y="-303"/>
         </scene>
-        <!--View Controller - Store-->
+        <!--Store View Controller - Store-->
         <scene sceneID="2eg-AE-KJX">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABn-0K-zfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController title="Store" id="wS0-Pw-2RC" sceneMemberID="viewController">
+                <viewController title="Store" id="wS0-Pw-2RC" customClass="StoreViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Igm-cX-DUX">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -230,7 +327,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="vVV-bT-q6I" kind="push" id="A4e-il-ume"/>
+                                    <action selector="Back_Touched:" destination="wS0-Pw-2RC" eventType="touchUpInside" id="zXf-wx-KAg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -240,7 +337,7 @@
                     <navigationItem key="navigationItem" id="r5z-vX-J1O"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-2712" y="444"/>
+            <point key="canvasLocation" x="-576" y="212"/>
         </scene>
         <!--Cocos View Controller - Main Game Screen-->
         <scene sceneID="rZj-jY-lho">
@@ -255,12 +352,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZjL-1t-UDA"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <connections>
-                        <segue destination="vVV-bT-q6I" kind="push" identifier="BackToStatusSegue" id="3wa-9X-5QV"/>
-                    </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-385" y="463"/>
+            <point key="canvasLocation" x="1119" y="-343"/>
         </scene>
         <!--View Controller - Main Menu-->
         <scene sceneID="lMF-05-ms5">
@@ -342,7 +436,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="c7m-xV-fz6">
-                                        <rect key="frame" x="0.0" y="81" width="122" height="37"/>
+                                        <rect key="frame" x="20" y="81" width="122" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Take Picture">
@@ -362,7 +456,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aZo-d4-V0b">
-                                        <rect key="frame" x="0.0" y="126" width="135" height="37"/>
+                                        <rect key="frame" x="14" y="119" width="135" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Choose Picture">
@@ -374,6 +468,21 @@
                                         </state>
                                         <connections>
                                             <action selector="addPicture:" destination="wZI-0E-4pI" eventType="touchUpInside" id="uE7-bA-I3g"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="agf-xu-wYb">
+                                        <rect key="frame" x="19" y="157" width="124" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Picture Good!">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="Back_Touched:" destination="wZI-0E-4pI" eventType="touchUpInside" id="dnP-WW-VC5"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -526,7 +635,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-3475" y="-978"/>
+            <point key="canvasLocation" x="-3475" y="-930"/>
         </scene>
         <!--Load View Controller-->
         <scene sceneID="tVA-Ob-2kd">
@@ -545,7 +654,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-4049" y="-371"/>
+            <point key="canvasLocation" x="-4110" y="-371"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="2kV-1f-EPW">
@@ -688,21 +797,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iiV-eE-LVi">
-                                <rect key="frame" x="404" y="20" width="56" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="facebook.png">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="gRh-5I-zoN" kind="push" id="rxA-W0-CzX"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1oX-5I-yhA">
                                 <rect key="frame" x="171" y="85" width="154" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -731,6 +825,7 @@
                                 </state>
                                 <connections>
                                     <action selector="EMTouched:" destination="Y2f-Ky-VQq" eventType="touchUpInside" id="OVh-zE-oWM"/>
+                                    <segue destination="gRh-5I-zoN" kind="push" id="vB9-GZ-A5c"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -773,7 +868,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="vVV-bT-q6I" kind="push" id="d6J-KI-SQZ"/>
+                                    <action selector="Back_Touched:" destination="NW8-Zr-9Q9" eventType="touchUpInside" id="URw-2T-qbv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Pfa-au-pUB">
@@ -839,7 +934,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-1695" y="475"/>
+            <point key="canvasLocation" x="-602" y="-365"/>
         </scene>
         <!--Hit Who View Controller-->
         <scene sceneID="s7l-E3-qJT">
@@ -898,7 +993,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="NW8-Zr-9Q9" kind="push" id="PKo-dJ-gAH"/>
+                                    <action selector="Back_Touched:" destination="Ti9-j0-bAz" eventType="touchUpInside" id="Fue-Dq-hBc"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="choose main portrait.png" id="EYJ-Ma-0b7">
@@ -1001,13 +1096,13 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-997" y="9"/>
+            <point key="canvasLocation" x="251" y="-343"/>
         </scene>
-        <!--View Controller - Email-->
+        <!--Email View Controller - Email-->
         <scene sceneID="T3E-lB-ySk">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VC3-T3-vP3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="" title="Email" id="gRh-5I-zoN" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="" title="Email" id="gRh-5I-zoN" customClass="EmailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j4c-bj-fwc">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1048,7 +1143,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="vVV-bT-q6I" kind="push" id="5O8-LL-6yc"/>
+                                    <action selector="confirm_pressed:" destination="gRh-5I-zoN" eventType="touchUpInside" id="Bdh-Om-O6H"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1057,6 +1152,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="eON-gc-qNa"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <segue destination="vVV-bT-q6I" kind="push" identifier="EmailToStatusSegue" id="Hid-eZ-3Fn"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="-2071" y="-1323"/>
@@ -1085,7 +1183,6 @@
         <image name="FacebookButton30x34.png" width="176" height="31"/>
         <image name="choose main portrait.png" width="306" height="391"/>
         <image name="circle item window.png" width="118" height="110"/>
-        <image name="facebook.png" width="256" height="256"/>
         <image name="friend b.png" width="333" height="186"/>
         <image name="friend s.png" width="333" height="186"/>
         <image name="gold stack.png" width="152" height="170"/>
@@ -1120,6 +1217,7 @@
         <class className="AvatarViewController" superclassName="AvatarBaseController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AvatarViewController.h"/>
             <relationships>
+                <relationship kind="action" name="Back_Touched:"/>
                 <relationship kind="action" name="addPicture:"/>
                 <relationship kind="action" name="startCamera:"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIView"/>
@@ -1128,6 +1226,12 @@
         </class>
         <class className="CocosViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CocosViewController.h"/>
+        </class>
+        <class className="EmailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EmailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="confirm_pressed:"/>
+            </relationships>
         </class>
         <class className="FriendsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewController.h"/>
@@ -1141,6 +1245,7 @@
         <class className="HitWhoViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HitWhoViewController.h"/>
             <relationships>
+                <relationship kind="action" name="Back_Touched:"/>
                 <relationship kind="action" name="handleRandomButton:"/>
                 <relationship kind="action" name="nextTouched:"/>
                 <relationship kind="outlet" name="hit1" candidateClass="UIImageView"/>
@@ -1161,6 +1266,7 @@
         <class className="ModeSelectionViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ModeSelectionViewController.h"/>
             <relationships>
+                <relationship kind="action" name="Back_Touched:"/>
                 <relationship kind="action" name="leftButton_touched:"/>
                 <relationship kind="action" name="rightButton_touched:"/>
                 <relationship kind="outlet" name="background" candidateClass="UIImageView"/>
@@ -1197,10 +1303,32 @@
                 <relationship kind="outlet" name="FBBut" candidateClass="UIButton"/>
             </relationships>
         </class>
-        <class className="StatusBarController" superclassName="AvatarBaseController">
+        <class className="StatusBarController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StatusBarController.h"/>
             <relationships>
+                <relationship kind="action" name="Back_Touched:"/>
+                <relationship kind="action" name="Ok_Pressed:"/>
+                <relationship kind="outlet" name="body" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="helmet" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item1" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item10" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item2" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item3" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item4" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item5" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item6" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item7" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item8" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item9" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="left_hand" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="right_hand" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="StoreViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StoreViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="Back_Touched:"/>
             </relationships>
         </class>
     </classes>

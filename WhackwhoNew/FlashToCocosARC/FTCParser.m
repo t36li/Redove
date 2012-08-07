@@ -87,6 +87,13 @@
         NSString *nImage    = [TBXML valueOfAttributeNamed:@"path" forElement:_texture];
         int     zIndex      = [[TBXML valueOfAttributeNamed:@"zIndex" forElement:_texture] intValue];
         
+        //override nImage here
+       // if ([nImage isEqualToString:@"body.png"]) {
+         //   nImage = @"helmet/sword/shield/etc...";
+            //or just make dummy variable and set [spritewithcgimage...]
+        //}
+        
+        
         // no support for sprite sheets yet
         FTCSprite *_sprite = nil;
         

@@ -7,6 +7,8 @@
 //
 
 #import "ModeSelectionViewController.h"
+#import "cocos2d.h"
+#import "StatusViewLayer.h"
 
 @implementation ModeSelectionViewController
 
@@ -52,6 +54,12 @@
         index = 0;
     }
     background.image = [UIImage imageNamed:[bg_list objectAtIndex:index]];
+}
+
+- (IBAction)Back_Touched:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+    [[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
+    [[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
 }
 
 @end

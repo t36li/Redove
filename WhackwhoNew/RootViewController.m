@@ -17,6 +17,7 @@
 #import "UserInfo.h"
 #import "User.h"
 #import "cocos2d.h"
+#import "StatusViewLayer.h"
 
 #define PlayToSelectLogInSegue @"PlayToSelectLogInSegue"
 #define PlayToStatusSegue @"PlayToStatusSegue"
@@ -133,9 +134,12 @@
         }
         case LogInFacebook:{
             if([[FBSingleton sharedInstance] isLogIn] ){
-            //!!!!!!!!!!!!!When Databases kick in, check if it is a registered user.
-            //current status, use all facebook users as registered users
-            [self performSegueWithIdentifier:PlayToStatusSegue sender:sender];
+                //!!!!!!!!!!!!!When Databases kick in, check if it is a registered user.
+                //current status, use all facebook users as registered users
+                [self performSegueWithIdentifier:PlayToStatusSegue sender:sender];
+                
+                //[[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
+                //[[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
             }
             break;
         }

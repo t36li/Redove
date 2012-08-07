@@ -36,13 +36,13 @@
 	CCScene *scene = [CCScene node];
 	
 	// 'layer' is an autorelease object.
-	LoadLayer *layer = [LoadLayer node];
+	LoadLayer *layer = [[LoadLayer alloc] init];
 	
     // set the layer delegate
     layer.menuDelegate = delegate;
 
 	// add layer as a child to scene
-	[scene addChild: layer];
+	[scene addChild: layer z:0 tag:0];
 	
 	// return the scene
 	return scene;

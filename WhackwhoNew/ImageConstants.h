@@ -36,7 +36,7 @@
 #define AccessFacebookIcon_HL @"FacebookButton30x34.png"
 #define AccessRenrenIcon @"RenRen_Login150X30.png"
 #define AccessRenrenIcon_HL @"RenRen_Login150X30.png"
-
+#define PauseButton @"pause.png"
 
 //Sprites
 #define Monk @"monk.png"
@@ -58,4 +58,11 @@
 #define standard_blue_head @"standard blue.png"
 #define standard_pink_head @"standard pink.png"
 #define standard_blue_body @"peter body.png"
-//#define standard_pink_body @"standard pink.png"
+//#define standard_pink_body @"pink body.png"
+
+//items
+#define starting_hammer @"hammer.png"
+#define starting_shield @"coin front.png"
+#define starting_body @"heart.png"
+
+

@@ -375,6 +375,8 @@ static CCDirector *_sharedDirector = nil;
 -(void) replaceScene: (CCScene*) scene
 {
 	NSAssert( scene != nil, @"Argument must be non-nil");
+    
+    NSLog(@"Scene stack count: %i", [scenesStack_ count]);
 
 	NSUInteger index = [scenesStack_ count];
 
@@ -581,7 +583,7 @@ static CCDirector *_sharedDirector = nil;
 			[FPSLabel_ setString:fpsstr];
 			[fpsstr release];
 			
-			NSString *draws = [[NSString alloc] initWithFormat:@"%4d", __ccNumberOfDraws];
+			NSString *draws = [[NSString alloc] initWithFormat:@"%4lu", (unsigned long)__ccNumberOfDraws];
 			[drawsLabel_ setString:draws];
 			[draws release];
 		}

@@ -11,9 +11,10 @@
 #import "HelloWorldLayer.h"
 
 // Needed to obtain the Navigation Controller
-#import "AppDelegate.h"
 #import <Foundation/Foundation.h>
 #import "CocosViewController.h"
+#import "StatusViewLayer.h"
+
 
 #pragma mark - HelloWorldLayer
 
@@ -273,7 +274,7 @@
         //}
         
         //testing UserInfo image taken from camera
-        UserInfo *usr = [UserInfo sharedInstance];
+        //UserInfo *usr = [UserInfo sharedInstance];
         //UIImage *bigHead = usr.exportImage; //640 x 852 : 64 x 85.2
         
         // Old big head contentSize: 73.5 x 76.5
@@ -351,9 +352,8 @@
         [[CCDirector sharedDirector] resume];
     } else if (buttonIndex == 1) {
         gameOver = TRUE;
-        [[CCDirector sharedDirector] resume];
-        //CCScene *scene = [ChooseWhoLayer scene];
         [[Game sharedGame] resetGameState];
+        [[CCDirector sharedDirector] resume];
         [gameOverDelegate returnToMenu];
         //[[CCDirector sharedDirector] replaceScene:[CCTransitionZoomFlipX transitionWithDuration:0.5 scene:scene]];
     }
@@ -528,18 +528,6 @@
      [head runAction:[CCSequence actions:setTappable, fadeIn, delay, fadeOut, unsetTappable, delay, checkCombo, nil]];
      
      }*/
-    //testing CGRectIntersection
-    /*Character *tempHead1 = (Character *) [heads objectAtIndex:0];
-    Character *tempHead2 = (Character *) [heads objectAtIndex:1];
-    tempHead1.visible = TRUE;
-    tempHead2.visible = TRUE;
-    
-    CGRect absrect1 = CGRectMake(tempHead1.position.x, tempHead1.position.y, [tempHead1 boundingBox].size.width, [tempHead1 boundingBox].size.height);
-    CGRect absrect2 = CGRectMake(tempHead2.position.x, tempHead2.position.y, [tempHead2 boundingBox].size.width, [tempHead2 boundingBox].size.height);
-    
-    if (CGRectIntersectsRect(absrect1, absrect2)) {
-        CCLOG(@"intersected!");
-    }*/
     
     // algorithm: random the hill that it will pop up, then need to random the rotation... either left or right
     int randHill = arc4random() % 7;
@@ -746,7 +734,9 @@
 
 -(void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    if (gamePaused) return; 
+    if (gamePaused) return;
+    //[[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
+    //[[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
     
     //remove simultaneous touch element of gamemode
     //add various other animations (e.g. fall out from sky, throw bomb, etc..)
