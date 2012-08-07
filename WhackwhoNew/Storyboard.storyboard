@@ -43,7 +43,7 @@
                                     <bool key="isElement" value="YES"/>
                                 </accessibility>
                             </imageView>
-                            <view contentMode="scaleToFill" id="fhO-MD-d75">
+                            <view contentMode="scaleToFill" id="fhO-MD-d75" userLabel="Cocos2d View">
                                 <rect key="frame" x="31" y="35" width="173" height="257"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -73,10 +73,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="circle item window.png" id="7u3-vV-hTT" userLabel="ring frame">
-                                <rect key="frame" x="392" y="22" width="59" height="56"/>
+                                <rect key="frame" x="392" y="22" width="63" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aqJ-QH-bsN">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aqJ-QH-bsN" userLabel="Store button">
                                 <rect key="frame" x="250" y="15" width="62" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -205,8 +205,8 @@
                                 <rect key="frame" x="404" y="191" width="58" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4yy-Bj-8Dh">
-                                <rect key="frame" x="0.0" y="0.0" width="48" height="41"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4yy-Bj-8Dh" userLabel="Back Button">
+                                <rect key="frame" x="-9" y="0.0" width="48" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="left button.png">
@@ -220,7 +220,7 @@
                                     <action selector="Back_Touched:" destination="vVV-bT-q6I" eventType="touchUpInside" id="J3v-Pw-piM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WSc-I8-9za">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WSc-I8-9za" userLabel="Camera Button">
                                 <rect key="frame" x="5" y="271" width="72" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -235,7 +235,7 @@
                                     <segue destination="wZI-0E-4pI" kind="push" id="gff-oY-V5c"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uQN-HI-g79">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uQN-HI-g79" userLabel="Ok Button">
                                 <rect key="frame" x="153" y="271" width="74" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -250,7 +250,7 @@
                                     <action selector="Ok_Pressed:" destination="vVV-bT-q6I" eventType="touchUpInside" id="QYf-XT-Gpy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kxo-AP-Z9D">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kxo-AP-Z9D" userLabel="Sell Button">
                                 <rect key="frame" x="255" y="247" width="57" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -261,12 +261,15 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="money_pressed:" destination="vVV-bT-q6I" eventType="touchUpInside" id="QBC-gY-hzh"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="gold window.png" id="vRz-Zk-dbh">
                                 <rect key="frame" x="304" y="253" width="156" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="13000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="3if-J1-b74">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="3if-J1-b74">
                                 <rect key="frame" x="318" y="261" width="127" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="18"/>
@@ -295,6 +298,7 @@
                         <outlet property="item8" destination="7qP-Kl-fsB" id="hQh-u1-ced"/>
                         <outlet property="item9" destination="4HE-vV-IK0" id="zYT-ve-haO"/>
                         <outlet property="left_hand" destination="db3-wM-wR9" id="qFv-Iu-gzs"/>
+                        <outlet property="money" destination="3if-J1-b74" id="I0q-CL-Yab"/>
                         <outlet property="right_hand" destination="fLl-gj-sHb" id="z4p-Da-oNJ"/>
                         <segue destination="NW8-Zr-9Q9" kind="push" identifier="StatusToModeSegue" id="1sR-bf-A58"/>
                     </connections>
@@ -1307,6 +1311,7 @@
             <relationships>
                 <relationship kind="action" name="Back_Touched:"/>
                 <relationship kind="action" name="Ok_Pressed:"/>
+                <relationship kind="action" name="money_pressed:"/>
                 <relationship kind="outlet" name="body" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="helmet" candidateClass="UIImageView"/>
@@ -1321,6 +1326,7 @@
                 <relationship kind="outlet" name="item8" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="item9" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="left_hand" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="money" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="right_hand" candidateClass="UIImageView"/>
             </relationships>
         </class>
@@ -1337,6 +1343,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Hid-eZ-3Fn"/>
+        <segue reference="xFH-vp-meh"/>
     </inferredMetricsTieBreakers>
 </document>
