@@ -300,7 +300,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-2687" y="-303"/>
+            <point key="canvasLocation" x="-1345" y="-355"/>
         </scene>
         <!--Store View Controller - Store-->
         <scene sceneID="2eg-AE-KJX">
@@ -420,7 +420,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-1136" y="-955"/>
+            <point key="canvasLocation" x="-1424" y="1579"/>
         </scene>
         <!--Avatar View Controller - Avatar-->
         <scene sceneID="tah-D5-QYy">
@@ -500,7 +500,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-1939" y="-628"/>
+            <point key="canvasLocation" x="-602" y="-868"/>
         </scene>
         <!--View Controller - Upload Picture-->
         <scene sceneID="Zag-Y7-71F">
@@ -560,7 +560,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-1192" y="-1395"/>
+            <point key="canvasLocation" x="-1424" y="1129"/>
         </scene>
         <!--Options View Controller-->
         <scene sceneID="gWg-BX-wkF">
@@ -841,7 +841,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-2732" y="-1030"/>
+            <point key="canvasLocation" x="-2431" y="293"/>
         </scene>
         <!--Mode Selection View Controller - Difficulty Selection-->
         <scene sceneID="Cex-y9-cMJ">
@@ -1157,7 +1157,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-2071" y="-1323"/>
+            <point key="canvasLocation" x="-2431" y="-771"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wqU-4g-KWS">
@@ -1342,5 +1342,6 @@
         <segue reference="5O8-LL-6yc"/>
         <segue reference="KVK-ft-8kN"/>
         <segue reference="GvG-5e-Obc"/>
+        <segue reference="Hid-eZ-3Fn"/>
     </inferredMetricsTieBreakers>
 </document>

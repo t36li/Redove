@@ -2439,6 +2439,9 @@
 				C1DCCBC615CB5143000CD722 /* StatusViewLayer.m in Sources */,
 				69FB54F515CDE60F00C42912 /* User.m in Sources */,
 				6987538915CF7D0D00181C49 /* objectMappingLoading.m in Sources */,
+				C1692E9115CE282C00C7D4C7 /* StoreViewController.m in Sources */,
+				C198EE2B15CF7889004D170C /* EmailViewController.m in Sources */,
+				C10D2FC215D060A6007B751B /* Dragbox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
