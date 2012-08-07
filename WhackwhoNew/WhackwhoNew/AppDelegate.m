@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "cocos2d.h"
 #import "FBSingleton.h"
+#import <RestKit/RestKit.h>
+#import "objectMappingLoading.h"
 
 @implementation AppDelegate
 
@@ -19,6 +21,15 @@
     // Override point for customization after application launch.
     
     usr = [UserInfo sharedInstance];
+    
+    RKURL *baseURL = [RKURL URLWithBaseURLString:@"http://localhost/PhpProject1/rest"];
+    RKObjectManager *objectManager = [RKObjectManager objectManagerWithBaseURL:baseURL];
+    objectManager.client.baseURL = baseURL;
+    //objectManager.client.requestQueue.delegate = self;
+    objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
+    
+    [[objectMappingLoading alloc] userObjectMappingLoading];
+    
     return YES;
 }
 

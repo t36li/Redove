@@ -18,6 +18,7 @@
     NSString *croppedImgURL;
     NSString *userImgURL;
     NSString *gameImgURL;
+    
     NSString *leftEyePosition;
     NSString *rightEyePosition;
     NSString *mouthPosition;
@@ -31,6 +32,13 @@
 @property (nonatomic, retain) NSString *croppedImgURL, *userImgURL, *gameImgURL;
 @property (nonatomic, retain) NSDate *registeredDate;
 
-+(User *)sharedInstance;
--(void)CopyToUserInfo;
+-(NSString *)croppedImgURL;
+-(NSString *)gameImgURL;
+-(NSString *)userImgURL;
+-(void)setCroppedImgURL:(NSString *)croppedImgURL;
+-(void)setGameImgURL:(NSString *)gameImgURL;
+-(void)setUserImgURL:(NSString *)userImgURL;
+
+-(void)copyToUserInfo;
+-(void)getFromUserInfo;
 @end

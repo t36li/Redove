@@ -9,7 +9,8 @@
 #define LogInAs @"LogInAs" //Four values: Renren, Facebook, Email, nil
 #define FBAccessToken @"AccessToken"
 #define FBExpirationDateKey @"ExpirationDateKey"
-
+#define BaseURL @"http://localhost/PhpProject1/rest"
+#define ImageURL @"http://localhost/PhpProject1/userImages"
 
 #define kAppName        @"Whack Who"
 #define kCustomMessage  @"I just got a score of %d in %@, an iPhone/iPod Touch game by me!"

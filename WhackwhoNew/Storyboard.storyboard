@@ -203,7 +203,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-2713" y="-47"/>
+            <point key="canvasLocation" x="-2687" y="-303"/>
         </scene>
         <!--View Controller - Store-->
         <scene sceneID="2eg-AE-KJX">
@@ -326,7 +326,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-584" y="-661"/>
+            <point key="canvasLocation" x="-1136" y="-955"/>
         </scene>
         <!--Avatar View Controller - Avatar-->
         <scene sceneID="tah-D5-QYy">
@@ -391,7 +391,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-1810" y="-364"/>
+            <point key="canvasLocation" x="-1939" y="-628"/>
         </scene>
         <!--View Controller - Upload Picture-->
         <scene sceneID="Zag-Y7-71F">
@@ -451,7 +451,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-584" y="-1111"/>
+            <point key="canvasLocation" x="-1192" y="-1395"/>
         </scene>
         <!--Options View Controller-->
         <scene sceneID="gWg-BX-wkF">
@@ -625,7 +625,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-3475" y="-371"/>
+            <point key="canvasLocation" x="-3493" y="-409"/>
         </scene>
         <!--Friends View Controller-->
         <scene sceneID="ubQ-k2-43g">
@@ -742,10 +742,11 @@
                     <connections>
                         <outlet property="EMBut" destination="3Jb-EX-f8z" id="SSp-fd-d8J"/>
                         <outlet property="FBBut" destination="1oX-5I-yhA" id="G2n-7Z-DeD"/>
+                        <segue destination="wZI-0E-4pI" kind="push" identifier="SelectToLoginToAvatar" id="GvG-5e-Obc"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-2735" y="-971"/>
+            <point key="canvasLocation" x="-2732" y="-1030"/>
         </scene>
         <!--Mode Selection View Controller - Difficulty Selection-->
         <scene sceneID="Cex-y9-cMJ">
@@ -1058,7 +1059,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-2033" y="-971"/>
+            <point key="canvasLocation" x="-2071" y="-1323"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wqU-4g-KWS">
@@ -1210,7 +1211,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="XOp-3W-Rhq"/>
-        <segue reference="3wa-9X-5QV"/>
+        <segue reference="5O8-LL-6yc"/>
         <segue reference="KVK-ft-8kN"/>
+        <segue reference="GvG-5e-Obc"/>
     </inferredMetricsTieBreakers>
 </document>

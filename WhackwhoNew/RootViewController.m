@@ -10,16 +10,19 @@
 #import "FBSingleton.h"
 #import "StatusBarController.h"
 #import "SelectToLoginViewController.h"
+#import "AvatarViewController.h"
 #import "GlobalMethods.h"
 #import "OptionsViewController.h"
 #import "FriendsViewController.h"
 #import "UserInfo.h"
+#import "User.h"
 #import "cocos2d.h"
 
 #define PlayToSelectLogInSegue @"PlayToSelectLogInSegue"
 #define PlayToStatusSegue @"PlayToStatusSegue"
 #define PlayToSegue @"PlayToSegue"
 #define PlayToFriendSegue @"PlayToFriendSegue"
+#define SelectToLoginToAvatar @"SelectToLoginToAvatar"
 
 //static NSArray *FriendsData = nil;
 
@@ -177,8 +180,10 @@
     [[UserInfo sharedInstance] setUserId:userId];
     [[UserInfo sharedInstance] setUserName:userName];
     [[UserInfo sharedInstance] setGender:gender];
-    [self.navigationController popViewControllerAnimated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
     [[FBSingleton sharedInstance] RequestMe];
+    
+    
 }
 
 -(void) FBSIngletonUserFriendsDidLoaded:(NSArray *)friends{
@@ -190,15 +195,91 @@
 
 -(void) FbMeLoaded:(NSString *)userId :(NSString *)userName : (NSString *)gender{
     if (userId != nil){
-        [usr setUserId:userId];
-        [usr setUserName:userName];
-        [usr setGender:gender];
+        [[UserInfo sharedInstance] setUserId:userId];
+        [[UserInfo sharedInstance] setUserName:userName];
+        [[UserInfo sharedInstance] setGender:gender];
+        
         
         NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", userId];   
         [LoginAccountImageView setImageWithURL:[NSURL URLWithString:formatting]];
-        //LoginAccountImageView.image = [gmethods imageForObject:userId];
+        
+        //get database info
+        [self connToDB];
     }
 }
+
+//////////////////////Database REST:
+
+-(void)connToDB{
+    User *user = [User alloc];
+    [user getFromUserInfo];
+    //[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@""];
+    [[RKObjectManager sharedManager] postObject:user usingBlock:^(RKObjectLoader *loader){
+        loader.targetObject = nil;
+        loader.delegate = self;
+    }];
+    
+}
+
+-(void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response{
+    NSLog(@"request: '%@'",[request HTTPBodyString]);
+    NSLog(@"response code: %d",[response statusCode]);
+    
+    if ([request isGET]) {
+        if ([response isOK]) {
+            NSLog(@"Retrieved JSON:%@",[response bodyAsString]);
+        }
+    }
+    if ([request isPOST]) {
+        if ([response isOK]){
+            NSLog(@"create succeed.");
+            NSLog(@"%@",response.bodyAsString);
+        }
+    }
+    
+}
+
+-(void)request:(RKRequest *)request didFailLoadWithError:(NSError *)error{
+    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"Connection Failed: the new user failed to generate account! [%@]" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [errorAlert show];
+}
+
+-(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object{
+    User *userObject = [User alloc];
+    userObject = object;
+    [userObject copyToUserInfo];
+    NSLog(@"Get back object MediaId:%@",[[UserInfo sharedInstance] userId]);
+    //if([self isGetFTPUserImagesSuccess:userObject] == NO){
+        //[self performSegueWithIdentifier:SelectToLoginToAvatar sender:nil];
+    //}else{
+        //[self.navigationController popViewControllerAnimated:YES];
+    //}
+    //[self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error{
+    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"Connection Failed: the new user failed to generate account! [%@]" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [errorAlert show];
+}
+
+
+-(BOOL) isGetFTPUserImagesSuccess:(User*) user{
+    UserInfo *userInfo = [UserInfo sharedInstance];
+    UIImage *croppedImage = userInfo->croppedImage;
+    UIImage *gameImage = userInfo->gameImage;
+    UIImage *userImage = userInfo->usrImg;
+    if (([croppedImage CGImage] == nil && [croppedImage CIImage] == NULL)
+        || ([gameImage CGImage] == nil && [gameImage CIImage] == NULL)
+        || ([userImage CGImage] == nil && [userImage CIImage] == NULL)){
+        
+        croppedImage = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:user.croppedImgURL]]];
+        gameImage = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:user.gameImgURL]]];
+        userImage = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:user.userImgURL]]];
+    }
+    return ([croppedImage CGImage] == nil && [croppedImage CIImage] == NULL) || ([gameImage CGImage] == nil && [gameImage CIImage] == NULL)|| ([userImage CGImage] == nil && [userImage CIImage] == NULL);
+}
+
+
 
 ///////////////////////////
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -213,6 +294,9 @@
         //FriendsViewController *fvc = (FriendsViewController *)segue.destinationViewController;
         //fvc.resultData = [[NSMutableArray alloc] initWithArray:FriendsData copyItems:YES];
     }
+    else if ([segue.identifier isEqualToString:SelectToLoginToAvatar]){
+    }
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

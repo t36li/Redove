@@ -20,6 +20,7 @@
 		696F180115A52A3600DC849F /* FacebookButton30x34.png in Resources */ = {isa = PBXBuildFile; fileRef = 696F180015A52A3600DC849F /* FacebookButton30x34.png */; };
 		696F180315A52AFF00DC849F /* RenRen_Login150X30.png in Resources */ = {isa = PBXBuildFile; fileRef = 696F180215A52AFF00DC849F /* RenRen_Login150X30.png */; };
 		696F180615A52EF000DC849F /* GlobalMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 696F180515A52EF000DC849F /* GlobalMethods.m */; };
+		6987538915CF7D0D00181C49 /* objectMappingLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 6987538815CF7D0D00181C49 /* objectMappingLoading.m */; };
 		69A1966115C3598E0079DC99 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A1965615C356670079DC99 /* libRestKit.a */; };
 		69A1966315C359A40079DC99 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A1966215C359A40079DC99 /* CFNetwork.framework */; };
 		69A1966515C359B00079DC99 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A1966415C359B00079DC99 /* CoreData.framework */; };
@@ -546,6 +547,8 @@
 		696F180215A52AFF00DC849F /* RenRen_Login150X30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RenRen_Login150X30.png; sourceTree = "<group>"; };
 		696F180415A52EF000DC849F /* GlobalMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalMethods.h; sourceTree = "<group>"; };
 		696F180515A52EF000DC849F /* GlobalMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalMethods.m; sourceTree = "<group>"; };
+		6987538715CF7D0D00181C49 /* objectMappingLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = objectMappingLoading.h; sourceTree = "<group>"; };
+		6987538815CF7D0D00181C49 /* objectMappingLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = objectMappingLoading.m; sourceTree = "<group>"; };
 		69A1964A15C356670079DC99 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = ../RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		69A1966215C359A40079DC99 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		69A1966415C359B00079DC99 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -1316,6 +1319,8 @@
 				C14385B915C8C7C0008D9AE7 /* MainMenuDelegate.h */,
 				C14385BA15C8CD42008D9AE7 /* TestLayer.h */,
 				C14385BB15C8CD42008D9AE7 /* TestLayer.m */,
+				6987538715CF7D0D00181C49 /* objectMappingLoading.h */,
+				6987538815CF7D0D00181C49 /* objectMappingLoading.m */,
 			);
 			name = "Load Scene";
 			sourceTree = "<group>";
@@ -2425,6 +2430,7 @@
 				C14385BC15C8CD43008D9AE7 /* TestLayer.m in Sources */,
 				C1DCCBC615CB5143000CD722 /* StatusViewLayer.m in Sources */,
 				69FB54F515CDE60F00C42912 /* User.m in Sources */,
+				6987538915CF7D0D00181C49 /* objectMappingLoading.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
