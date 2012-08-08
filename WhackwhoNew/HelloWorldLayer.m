@@ -224,7 +224,7 @@
             [self addChild:life z:10];
         }
         
-        /*//add "rainbows"
+        //add "rainbows"
         rainbows = [[NSMutableArray alloc] init];
         CCSprite *rainbow = [CCSprite spriteWithFile:@"rainbow4.png"];
         rainbow.position = ccp(156, 192);
@@ -248,7 +248,7 @@
         [self addChild:rainbow4 z:-95];
         [self addChild:rainbow3 z:-95];
         [self addChild:rainbow2 z:-95];
-        [self addChild:rainbow z:-95];*/
+        [self addChild:rainbow z:-95];
         
         //add "Scoreboard and flowers"
         CCSprite *scoreboard = [CCSprite spriteWithFile:@"scoreboard.png"];
@@ -267,11 +267,6 @@
         heads = [[NSMutableArray alloc] init];
        // NSArray *bigList = [[Game sharedGame] friendList];
        // NSArray *selectedHeads = [[Game sharedGame] selectedHeads];
-        
-        //set all positions to not taken (i.e. = 0)
-        //for (int i = 0; i < 17; i++) {
-        //    pos[i] = 0;
-        //}
         
         //testing UserInfo image taken from camera
         //UserInfo *usr = [UserInfo sharedInstance];
@@ -326,11 +321,6 @@
         [self schedule:@selector(tryPopheads) interval:1.5];
         [self schedule:@selector(checkGameState) interval:0.1];
         [self schedule:@selector(timerUpdate:) interval:0.001];
-        
-        //set laughAnimations variables
-        //laughAnim = [self laughAnimation];
-        //laughAnim = [self animationFromPlist:@"laughAnim" delay:0.5];
-        //[[CCAnimationCache sharedAnimationCache] addAnimation:laughAnim name:@"laughAnim"];
 	}
     
 	return self;
@@ -353,7 +343,6 @@
     } else if (buttonIndex == 1) {
         gameOver = TRUE;
         [[Game sharedGame] resetGameState];
-        [[CCDirector sharedDirector] resume];
         [gameOverDelegate returnToMenu];
         //[[CCDirector sharedDirector] replaceScene:[CCTransitionZoomFlipX transitionWithDuration:0.5 scene:scene]];
     }
@@ -436,6 +425,7 @@
     //check is game is over
     if (myTime <= 0 || lives <= 0) {
         [self unscheduleAllSelectors];
+        [[CCDirector sharedDirector] pause];
         self.isTouchEnabled = NO;
         [[Game sharedGame] setBaseScore:baseScore];
         //[[Game sharedGame] setConsecHits:consecHits];
@@ -672,16 +662,12 @@
 
 -(void) checkCombo: (id) sender {
     Character *head = (Character *) sender;
-    //int position = head.posOccupied;
-    //pos[position] = 0;
+
     head.rotation = 0;
-    //head.sideWaysMove = FALSE;
     head.position = ccp(0,0);
     head.scale = 0.2;
     head.visible = FALSE;
-    //[head removeAllChildrenWithCleanup:YES];
-    //[head removeChildByTag:2 cleanup:YES];
-    //[head removeChildByTag:3 cleanup:YES];
+
     if (head.didMiss && head.isSelectedHit) {
         //play add score animation
         baseScore += consecHits;
@@ -690,44 +676,35 @@
     
     //display rainbows according to hit streaks
     if (consecHits == 0) {
-        //consecHits = 0;
+        
         //set all rainbows to not visible
-        //for (CCSprite *temp in rainbows) {
-        //    CCFadeOut *fadeOut = [CCFadeOut actionWithDuration:1.5];
-        //    [temp runAction:fadeOut];
-        //    temp.visible = FALSE;
-        //}
+        for (CCSprite *rainbow in rainbows) {
+            [rainbow runAction:[CCFadeOut actionWithDuration:0.5]];
+            rainbow.visible = FALSE;
+        }
+        
         speed = 1.5;
         [self unschedule:@selector(tryPopheads)];
         [self schedule:@selector(tryPopheads) interval:speed];
-    } else if (consecHits % 5 == 0){
-        //show rainbows every 5 hit combos
-        //BOOL runLoop = FALSE;
-        //check if all rainbows showing, if yes don't run next loop
-        /*       for (CCSprite *temp in rainbows) {
-         if (!temp.visible) {
-         runLoop = TRUE;
-         break;
-         }
-         }
-         
-         while (runLoop) {
-         int randRainbow = arc4random() % 4;
-         CCSprite *temp = [rainbows objectAtIndex:randRainbow];
-         if (!temp.visible) {
-         temp.visible = TRUE;
-         CCFadeTo *fadeOut = [CCFadeTo actionWithDuration:0.5 opacity:80];
-         CCFadeTo *fadeIn = [CCFadeTo actionWithDuration:0.5 opacity:255];
-         CCRepeatForever *repeat = [CCRepeatForever actionWithAction:[CCSequence actionOne:fadeOut two:fadeIn]];
-         [temp runAction:repeat];
-         break;
-         }
-         } */
         
-        //update speed accordingly with combo times
-        speed *= 0.5;
-        [self unschedule:@selector(tryPopheads)];
-        [self schedule:@selector(tryPopheads) interval:speed];
+    } else if (consecHits % 5 == 0){
+        
+        //show rainbows every 5 hit combos
+        for (CCSprite *rainbow in rainbows) {
+            if (rainbow.visible == FALSE) {
+                [rainbow setVisible:TRUE];
+                CCFadeTo *fadeOut = [CCFadeTo actionWithDuration:0.5 opacity:80];
+                CCFadeTo *fadeIn = [CCFadeTo actionWithDuration:0.5 opacity:255];
+                CCRepeatForever *repeat = [CCRepeatForever actionWithAction:[CCSequence actionOne:fadeOut two:fadeIn]];
+                [rainbow runAction:repeat];
+                
+                //update speed accordingly with combo times
+                speed *= 0.5;
+                [self unschedule:@selector(tryPopheads)];
+                [self schedule:@selector(tryPopheads) interval:speed];
+                return;
+            }
+        }
     }
 }
 
@@ -830,46 +807,39 @@
                 testObj.tag = 0;
                 [self addChild:testObj];
                 [coins addObject:testObj];
-                //id bounceDown = [CCMoveBy actionWithDuration:0.5 position:ccp(0,-30)];
-                //id actionDown = [CCEaseBounceOut actionWithAction:bounceDown];
-                //id actionUp = [actionDown reverse];
-                //CCMoveBy *popUpCoin = [CCMoveBy actionWithDuration:0.1 position:ccp(0,50)];
-                //CCMoveBy *easePopUpcoin = [CCEaseIn actionWithAction:popUpCoin rate:3.0];
-                //CCMoveBy *dropCoin = [CCMoveTo actionWithDuration:1.9 position:ccp(160,0)];
-                //CCMoveBy *easeDropCoin = [CCEaseIn actionWithAction:dropCoin rate:1.5];
+
                 CCRotateBy *rotateCoin = [CCRotateBy actionWithDuration:1.9 angle:(360*7)];
                 CCCallFuncN *removeCoin = [CCCallFuncN actionWithTarget:self selector:@selector(removeCoin:)];
-                // [testObj runAction:[CCSequence actions:actionDown, actionUp, actionDown, actionUp, removeCoin, nil]];
                 [testObj runAction:[CCSequence actions: rotateCoin, removeCoin, nil]];
-
             }
             
+            //if hit the correct "mole"
             if (head.isSelectedHit) {
                 //head.hp -= 10;
                 //comboHits++;
+                
+                //update scores
                 consecHits++;
-                //emitter.position = location;
+                baseScore += 10;
+                
                 //update hit streak label
                 if (consecHits > 1) {
                     [hitsLabel setString:[NSString stringWithFormat:@"%d HIT STREAK!", consecHits]];
-                    //CCScaleTo *scaleUp = [CCScaleTo actionWithDuration:0.5 scale:2.5];
-                    //CCScaleTo *scaleBack = [CCScaleTo actionWithDuration:0.5 scale:0.001];
-                    //[hitsLabel runAction:[CCSequence actions:scaleUp, scaleBack, nil]];
                 }
-                baseScore += 10;
             } else {
-                lives -= 1;
-                //play score adding animation
+                
+                //play score adding animation to indicate combo bonus
                 baseScore += consecHits;
                 consecHits = 0;
+                
                 //update lives
+                lives -= 1;
                 if ([hearts count] > 0) {
                     [self removeChild:[hearts objectAtIndex:[hearts count] - 1] cleanup:YES];
                     [hearts removeLastObject];
                 }
             }
             
-            //int width_now = head.contentSize.width * head.scaleX;
             float height_now = head.contentSize.height * head.scaleY;
             
             float rotation = CC_DEGREES_TO_RADIANS(head.rotation);
@@ -880,6 +850,9 @@
             //[head runAction:addMouthEffect];
             
             [head runAction:[CCSequence actions: easeMoveDown, checkCombo, nil]];
+            
+            //stop the loop as we are not support multi-touch anymore
+            break;
         }
     } //end heads loop
 }
@@ -906,13 +879,6 @@
 -(void) removeCoin: (id) sender {
     CCSprite *coin = (CCSprite *) sender;
     
-    /*NSArray *coinsCopy = [coins copy];
-    for (CCSprite *coin2 in coinsCopy) {
-        if ([coin2 isEqual:coin]) {
-            [coins removeObject:coin];
-            break;
-        }
-    }*/
     [coins removeObject:coin];
     [self removeChild:coin cleanup:YES];
 }

@@ -134,7 +134,7 @@
     // Set the view controller as the director's delegate, so we can respond to certain events.
     director.delegate = self;
     
-    [director setDisplayStats:NO];
+    [director setDisplayStats:YES];
     
     // Add the director as a child view controller of this view controller.
     [self addChildViewController:director];
@@ -144,6 +144,10 @@
     
     // Finish up our view controller containment responsibilities.
     [director didMoveToParentViewController:self];
+    
+    [[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
+    [[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
+    [[CCDirector sharedDirector] setDelegate:nil];
     
     //CCScene *scene = [director runningScene];
     //id layer = [[scene children] objectAtIndex:0]; //returned nil

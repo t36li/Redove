@@ -68,14 +68,14 @@
     // Finish up our view controller containment responsibilities.
     [director didMoveToParentViewController:self];
     
-    //[director runWithScene:[ChooseWhoLayer scene]];
+    //[director runWithScene:[HelloWorldLayer scene]];
     [director runWithScene:[LoadLayer sceneWithDelegate:self]];
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
-    [[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
-    [[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
-    [[CCDirector sharedDirector] setDelegate:nil];
+    //[[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
+    //[[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
+    //[[CCDirector sharedDirector] setDelegate:nil];
     //[[CCDirector sharedDirector] pause];
 }
 

@@ -15,10 +15,9 @@
 
 - (void)restartTapped:(id)sender {
     
-    // Reload the current scene
-    //CocosViewController *cvc = [[CocosViewController alloc] init];
-    
+    // Reload the current scene    
     CCScene *scene = [HelloWorldLayer sceneWithDelegate:gameOverDelegate];
+    [[CCDirector sharedDirector] resume];
     [[Game sharedGame] resetGameState];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.5 scene:scene]];
 }
@@ -28,11 +27,6 @@
     //CCScene *scene = [ChooseWhoLayer scene];
     [[Game sharedGame] resetGameState];
     [gameOverDelegate returnToMenu];
-    
-    // Back to status bar controller
-   // CCScene *scene = [ChooseWhoLayer scene];
-   // [[Game sharedGame] resetGameState];
-   // [[CCDirector sharedDirector] replaceScene:[CCTransitionZoomFlipX transitionWithDuration:0.5 scene:scene]];
 }
 
 - (void)showRestartMenu:(BOOL)won:(id<GameOverDelegate>)delegate {
@@ -40,12 +34,10 @@
     self.gameOverDelegate = delegate;
     
     CGSize winSize = [CCDirector sharedDirector].winSize;
-    //testing
-    //tempDifficulty = 4;
     
     //self.isTouchEnabled = NO;
     baseScore = [[Game sharedGame] baseScore];
-   // consecHits = [[Game sharedGame] consecHits];
+    //consecHits = [[Game sharedGame] consecHits];
     
     CCLayerColor *colorLayer = [CCLayerColor layerWithColor:ccc4(0, 0, 0, 80)];
     //[colorLayer setOpacity:80];
