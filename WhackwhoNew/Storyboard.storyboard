@@ -485,6 +485,21 @@
                                             <action selector="Back_Touched:" destination="wZI-0E-4pI" eventType="touchUpInside" id="dnP-WW-VC5"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FDB-ip-ayo">
+                                        <rect key="frame" x="20" y="14" width="72" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="BACK">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="Back:" destination="wZI-0E-4pI" eventType="touchUpInside" id="L28-fH-FTI"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -731,10 +746,11 @@
                         <segue destination="Y2f-Ky-VQq" kind="push" identifier="PlayToSelectLogInSegue" id="4Qh-8x-51I"/>
                         <segue destination="vVV-bT-q6I" kind="push" identifier="PlayToStatusSegue" id="xFH-vp-meh"/>
                         <segue destination="muy-dF-9KG" kind="push" identifier="PlayToFriendSegue" id="ydD-IN-fvF"/>
+                        <segue destination="wZI-0E-4pI" kind="push" identifier="SelectToLoginToAvatar" id="qj2-gt-JqJ"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-3493" y="-409"/>
+            <point key="canvasLocation" x="-3475" y="-371"/>
         </scene>
         <!--Friends View Controller-->
         <scene sceneID="ubQ-k2-43g">
@@ -837,7 +853,6 @@
                     <connections>
                         <outlet property="EMBut" destination="3Jb-EX-f8z" id="SSp-fd-d8J"/>
                         <outlet property="FBBut" destination="1oX-5I-yhA" id="G2n-7Z-DeD"/>
-                        <segue destination="wZI-0E-4pI" kind="push" identifier="SelectToLoginToAvatar" id="GvG-5e-Obc"/>
                     </connections>
                 </viewController>
             </objects>
@@ -1217,6 +1232,7 @@
         <class className="AvatarViewController" superclassName="AvatarBaseController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AvatarViewController.h"/>
             <relationships>
+                <relationship kind="action" name="Back:"/>
                 <relationship kind="action" name="Back_Touched:"/>
                 <relationship kind="action" name="addPicture:"/>
                 <relationship kind="action" name="startCamera:"/>
@@ -1338,10 +1354,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="XOp-3W-Rhq"/>
-        <segue reference="5O8-LL-6yc"/>
-        <segue reference="KVK-ft-8kN"/>
-        <segue reference="GvG-5e-Obc"/>
-        <segue reference="Hid-eZ-3Fn"/>
+        <segue reference="xFH-vp-meh"/>
+        <segue reference="qj2-gt-JqJ"/>
     </inferredMetricsTieBreakers>
 </document>

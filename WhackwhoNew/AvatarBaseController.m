@@ -194,7 +194,7 @@
             [mouthView setBackgroundColor:[[UIColor greenColor] colorWithAlphaComponent:0.3]];
             // set the position of the mouthView based on the face
             [mouthView setCenter:faceFeature.mouthPosition];
-            // round the corners
+            // round the corners  
             mouthView.layer.cornerRadius = faceWidth*0.2;
             // add the new view to the window
             [markingView addSubview:mouthView];

@@ -12,8 +12,10 @@
 #import "GlobalMethods.h"
 #import "QuartzCore/QuartzCore.h"
 #import <CoreImage/CoreImage.h>
+#import <RestKit/RestKit.h>
+#import "UserInfoDelegate.h"
 
-@interface AvatarViewController : AvatarBaseController <CameraOverlayControllerViewControllerDelegate> {
+@interface AvatarViewController : AvatarBaseController <CameraOverlayControllerViewControllerDelegate,RKObjectLoaderDelegate,UserInfoDelegate> {
     
     IBOutlet UIView *imageView;
     IBOutlet UIView *wtfView;
@@ -30,8 +32,10 @@
 @property (nonatomic) UIImagePickerController *cameraController;
 //@property (nonatomic, retain) IBOutlet AvatarView *avatarView;
 
+
 -(IBAction) startCamera:(id)sender;
 -(IBAction) addPicture:(id)sender;
-- (IBAction)Back_Touched:(id)sender;
+-(IBAction) Back_Touched:(id)sender;
+-(IBAction) Back:(id)sender;
 
 @end

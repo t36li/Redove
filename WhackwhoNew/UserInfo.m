@@ -10,7 +10,7 @@
 
 @implementation UserInfo
 
-@synthesize userName, userId, currentLogInType, gender, leftEyePosition, rightEyePosition, mouthPosition, faceRect;
+@synthesize userName, userId, currentLogInType, headId, whackWhoId, gender, leftEyePosition, rightEyePosition, mouthPosition, faceRect, delegate;
 
 static UserInfo *sharedInstance = nil;
 
@@ -32,10 +32,7 @@ static UserInfo *sharedInstance = nil;
 }
 
 -(void) clearUserInfo{
-    [self setCurrentLogInType:NotLogIn];
-    [self setUserId:nil];
-    [self setUserName:nil];
-    [self setGender:nil];
+    sharedInstance = nil;
 }
 
 + (UIImage *) imageWithView:(UIView *)view
@@ -185,14 +182,17 @@ static UserInfo *sharedInstance = nil;
     }
     
     //[photoView setTransform:CGAffineTransformMakeScale(1, -1)];
+    [delegate setUserPictureCompleted];
 }
 
--(void) setUserPicture:(UIImage *)img {
+-(void) setUserPicture:(UIImage *)img delegate:(id)sender{
     usrImg = [UIImage imageWithCGImage:img.CGImage];
+    [self setDelegate:sender];
     if (usrImg != nil) {
         [self performSelectorInBackground:@selector(markFaces) withObject:nil];
     }
 }
+
 
 -(UIImage *)getCroppedImage {
     return [UIImage imageWithCGImage:croppedImage.CGImage];

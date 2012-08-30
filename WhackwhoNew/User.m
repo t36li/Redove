@@ -10,64 +10,75 @@
 #import "UserInfo.h"
 
 @implementation User
-@synthesize mediaTypeId,whackWhoId,headId,mediaKey,leftEyePosition,rightEyePosition,mouthPosition,faceRect,registeredDate;
+@synthesize mediaTypeId,whackWhoId,headId,mediaKey,leftEyePosition,rightEyePosition,mouthPosition,faceRect,registeredDate, userImgURL;
 
 
--(NSString *)croppedImgURL{
-    return croppedImgURL;
-}
--(NSString *)gameImgURL{
-    return gameImgURL;
-}
--(NSString *)userImgURL{
-    return userImgURL;
-}
--(void)setCroppedImgURL{
-    croppedImgURL = [NSString stringWithFormat:@"%@%@%d%@",ImageURL,@"/croppedImage/",headId,@".png"];
-}
--(void)setGameImgURL{
-    gameImgURL = [NSString stringWithFormat:@"%@%@%d%@",ImageURL,@"/gameImage/",headId,@".png"];
-}
-
--(void)setUserImgURL{
-    userImgURL = [NSString stringWithFormat:@"%@%@%d%@",ImageURL,@"/userImage/",headId,@".png"];
-}
 
 -(void)copyToUserInfo{
     UserInfo *usrInfo = [UserInfo sharedInstance];
-    [usrInfo setCurrentLogInType: mediaTypeId];
-    [usrInfo setUserId:mediaKey];
+    //[usrInfo setCurrentLogInType: mediaTypeId];
+    //[usrInfo setUserId:mediaKey];
+    [usrInfo setWhackWhoId:whackWhoId];
+    [usrInfo setHeadId:headId];
     [usrInfo setLeftEyePosition:CGPointFromString(leftEyePosition)];
     [usrInfo setRightEyePosition:CGPointFromString(rightEyePosition)];
     [usrInfo setMouthPosition:CGPointFromString(mouthPosition)];
     [usrInfo setFaceRect:CGRectFromString(faceRect)];
-    if (croppedImgURL != nil && userImgURL !=nil && & gameImgURL !=nil) {
-        
-        usrInfo->croppedImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:croppedImgURL]]];
-        usrInfo->usrImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:userImgURL]]];
-        usrInfo->gameImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:gameImgURL]]];
+    usrInfo->usrImgURL = userImgURL;
+    
+    int (^loadUserImage)() = ^int(){
+        if (userImgURL != nil){
+            usrInfo->usrImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:userImgURL]]];
+            return 1;
+        }
+        return 0;
+    };
+    
+    if (loadUserImage() == 1){
+        if (usrInfo->usrImg != nil){
+            usrInfo->croppedImage = [UserInfo getCroppedImage:usrInfo->usrImg inRect:[usrInfo faceRect]];
+            [usrInfo setGameImage:usrInfo->usrImg];
+        }
     }
-    /*
-     [cell.profileImageView setImageWithURL:[NSURL URLWithString:formatting] success:^(UIImage *image) {
-     [cell.spinner removeSpinner];
-     }failure:^(NSError *error) {
-     [cell.spinner removeSpinner];
-     }];
-     
-     
-     */
 }
 
 -(void)getFromUserInfo{
     UserInfo *usrInfo = [UserInfo sharedInstance];
     mediaTypeId = usrInfo.currentLogInType;
+    whackWhoId = usrInfo.whackWhoId;
+    headId = usrInfo.headId;
     mediaKey = usrInfo.userId;
     leftEyePosition = NSStringFromCGPoint(usrInfo.leftEyePosition);
     rightEyePosition = NSStringFromCGPoint(usrInfo.rightEyePosition);
     mouthPosition = NSStringFromCGPoint(usrInfo.mouthPosition);
     faceRect = NSStringFromCGRect(usrInfo.faceRect);
+    userImgURL = usrInfo->usrImgURL;
     
 }
+
++(void)objectMappingLoader{
+    RKObjectMapping *userInfoMapping = [RKObjectMapping mappingForClass:[User class]];
+    [userInfoMapping mapKeyPath:@"whackwho_id" toAttribute:@"whackWhoId"];
+    [userInfoMapping mapKeyPath:@"media_key" toAttribute:@"mediaKey"];
+    [userInfoMapping mapKeyPath:@"mediatype_id" toAttribute:@"mediaTypeId"];
+    [userInfoMapping mapKeyPath:@"gen_date" toAttribute:@"registeredDate"];
+    [userInfoMapping mapKeyPath:@"head_id" toAttribute:@"headId"];
+    [userInfoMapping mapKeyPath:@"leftEyePosition" toAttribute:@"leftEyePosition"];
+    [userInfoMapping mapKeyPath:@"rightEyePosition" toAttribute:@"rightEyePosition"];
+    [userInfoMapping mapKeyPath:@"mouthPosition" toAttribute:@"mouthPosition"];
+    [userInfoMapping mapKeyPath:@"faceRect" toAttribute:@"faceRect"];
+    [userInfoMapping mapKeyPath:@"userImgURL" toAttribute:@"userImgURL"];
+    
+    [[RKObjectManager sharedManager].mappingProvider setMapping:userInfoMapping forKeyPath:@""];
+    //[[RKObjectManager sharedManager].mappingProvider registerMapping:userInfoMapping withRootKeyPath:@""];
+    //[[RKObjectManager sharedManager].mappingProvider setSerializationMapping:[userInfoMapping inverseMapping] forClass:[User class]];
+    [RKObjectManager sharedManager].serializationMIMEType = RKMIMETypeJSON;
+    [[RKObjectManager sharedManager].mappingProvider setSerializationMapping:[userInfoMapping inverseMapping] forClass:[User class]];
+    [[RKObjectManager sharedManager].router routeClass:[User class] toResourcePath:@"/user" forMethod:RKRequestMethodPOST];
+    [[RKObjectManager sharedManager].router routeClass:[User class] toResourcePath:@"/user" forMethod:RKRequestMethodPUT];
+}
+
+
 
 
 @end

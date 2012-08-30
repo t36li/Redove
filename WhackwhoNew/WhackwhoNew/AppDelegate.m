@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 #import "FBSingleton.h"
 #import <RestKit/RestKit.h>
-#import "objectMappingLoading.h"
+#import "User.h"
 
 @implementation AppDelegate
 
@@ -22,13 +22,13 @@
     
     usr = [UserInfo sharedInstance];
     
-    RKURL *baseURL = [RKURL URLWithBaseURLString:@"http://localhost/PhpProject1/rest"];
+    RKURL *baseURL = [RKURL URLWithBaseURLString:BaseURL];
     RKObjectManager *objectManager = [RKObjectManager objectManagerWithBaseURL:baseURL];
     objectManager.client.baseURL = baseURL;
     //objectManager.client.requestQueue.delegate = self;
     objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
     
-    [[objectMappingLoading alloc] userObjectMappingLoading];
+    [User objectMappingLoader];
     
     return YES;
 }

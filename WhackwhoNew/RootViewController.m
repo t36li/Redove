@@ -25,6 +25,9 @@
 #define PlayToFriendSegue @"PlayToFriendSegue"
 #define SelectToLoginToAvatar @"SelectToLoginToAvatar"
 
+#define networkErrorAlert 1
+#define newbieAlert 2
+
 //static NSArray *FriendsData = nil;
 
 
@@ -45,62 +48,32 @@
     NSLog(@"RootViewController viewDidLoad");
     [super viewDidLoad];
     
-    //Progression Anamation (crude version by Zach):
-    /*UIImageView *myImageView =[[UIImageView alloc] initWithImage:
-                               [UIImage imageNamed:Vald]];    
-    myImageView.frame = CGRectMake(0, self.view.frame.size.height/2, 40, 40); 
-    
-    [self.view addSubview:myImageView];
-    NSMutableArray *myArray = [[NSMutableArray alloc] init];
-    [myArray addObject:myImageView];
-    
-    [UIView animateWithDuration:20 
-                          delay:0 
-                        options:(UIViewAnimationOptionAllowUserInteraction) // | something here?)
-                     animations:^{
-                         myImageView.frame = CGRectOffset(myImageView.frame, 500, 0);    
-                     }
-                     completion:^(BOOL finished){
-                         //[myArray removeObject:myImageView];
-                         //[myImageView removeFromSuperview];
-                         //[myImageView release];
-                     }
-     ];*/
-    
-    
-    
-    NSLog(@"Load/set currentLogInType");
     gmethods = [[GlobalMethods alloc] init];
     usr = [UserInfo sharedInstance];
     
-    if ((int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs]>0){
-        [usr setCurrentLogInType:(int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs]];
-    }else{
-        [usr setCurrentLogInType:NotLogIn];
+    NSLog(@"Load/set currentLogInType");
+    int loginId =((int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs] == 0)? 0 : (int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs];
+    [usr setCurrentLogInType:loginId];
+    NSLog(@"login type ID: %i", loginId);
+    if (loginId == 0){
         [[NSUserDefaults standardUserDefaults] setInteger:NotLogIn forKey:LogInAs];
         [[NSUserDefaults standardUserDefaults] synchronize];
+        NSLog(@"login type : Not Login");
     }
     
-    NSLog(@"update UserInfo");
+    NSLog(@"load UserInfo");
     switch ((int)[usr currentLogInType]) {
         case LogInFacebook:
             [[FBSingleton sharedInstance] setDelegate:self];
             fbs = [FBSingleton sharedInstance];
-            if ([fbs isLogIn]){
-                [fbs RequestMe];
-            }
-            else {
-                [usr setCurrentLogInType:NotLogIn];
-                [[NSUserDefaults standardUserDefaults] setInteger:NotLogIn forKey:LogInAs];
-                [[NSUserDefaults standardUserDefaults] synchronize];
-            }
+            if ([fbs isLogIn])[fbs RequestMe];
             break;
             
         default:
             break;
     }
     
-    NSLog(@"update Background");
+    NSLog(@"load Background");
     [gmethods setViewBackground:MainPage_bg viewSender:self.view];
 }
 
@@ -202,32 +175,54 @@
         [[UserInfo sharedInstance] setUserId:userId];
         [[UserInfo sharedInstance] setUserName:userName];
         [[UserInfo sharedInstance] setGender:gender];
-        
+        NSLog(@"my Facebook: {ID: %@, Name: %@, gender: %@",userId,userName,gender);
         
         NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", userId];   
         [LoginAccountImageView setImageWithURL:[NSURL URLWithString:formatting]];
+        NSLog(@"Facebook profile picture loaded");
         
-        //get database info
+        NSLog(@"Fetch/Create Database record: starting...");
         [self connToDB];
+        //test upload image
+        //[self testUploadImage];
     }
 }
 
 //////////////////////Database REST:
 
 -(void)connToDB{
+    //User: a static class for loading userInfo
     User *user = [User alloc];
     [user getFromUserInfo];
     //[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@""];
     [[RKObjectManager sharedManager] postObject:user usingBlock:^(RKObjectLoader *loader){
         loader.targetObject = nil;
         loader.delegate = self;
-    }];
-    
+    }];// get if not ...post
 }
+/*
+-(void)testUploadImage{
+    ///////////////////////testing... uploading a picture
+    UIImage *testProfileImage = [UIImage imageNamed:@"hammer.png"];
+    RKParams* params = [RKParams params];
+    
+    NSData* imageData = UIImagePNGRepresentation(testProfileImage);
+    [params setData:imageData MIMEType:@"image/png" forParam:@"image1"];
+    
+    // Log info about the serialization
+    NSLog(@"RKParams HTTPHeaderValueForContentType = %@", [params HTTPHeaderValueForContentType]);
+    
+    // Send it for processing!
+    [[RKObjectManager sharedManager].client post:@"/userImage" params:params delegate:self];
+}
+
+*/
 
 -(void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response{
     NSLog(@"request: '%@'",[request HTTPBodyString]);
+    NSLog(@"request Params: %@", [request params]);
     NSLog(@"response code: %d",[response statusCode]);
+    
     
     if ([request isGET]) {
         if ([response isOK]) {
@@ -244,7 +239,8 @@
 }
 
 -(void)request:(RKRequest *)request didFailLoadWithError:(NSError *)error{
-    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"Connection Failed: the new user failed to generate account! [%@]" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"Network Connection Failed: the new user failed to generate account!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    errorAlert.tag = networkErrorAlert;
     [errorAlert show];
 }
 
@@ -252,35 +248,28 @@
     User *userObject = [User alloc];
     userObject = object;
     [userObject copyToUserInfo];
-    NSLog(@"Get back object MediaId:%@",[[UserInfo sharedInstance] userId]);
-    //if([self isGetFTPUserImagesSuccess:userObject] == NO){
-        //[self performSegueWithIdentifier:SelectToLoginToAvatar sender:nil];
-    //}else{
-        //[self.navigationController popViewControllerAnimated:YES];
-    //}
-    //[self.navigationController popViewControllerAnimated:YES];
+    NSLog(@"User data loaded.");
+    if(usr->usrImg == nil){
+        UIAlertView *takePicAlert = [[UIAlertView alloc] initWithTitle:@"Newbie?" message:@"Take a photo" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        takePicAlert.tag = newbieAlert;
+        [takePicAlert show];
+    }
 }
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error{
-    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"Connection Failed: the new user failed to generate account! [%@]" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Loading Error" message:@"Database Connection Failed: unable to pull out your profile" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [errorAlert show];
 }
 
-
--(BOOL) isGetFTPUserImagesSuccess:(User*) user{
-    UserInfo *userInfo = [UserInfo sharedInstance];
-    UIImage *croppedImage = userInfo->croppedImage;
-    UIImage *gameImage = userInfo->gameImage;
-    UIImage *userImage = userInfo->usrImg;
-    if (([croppedImage CGImage] == nil && [croppedImage CIImage] == NULL)
-        || ([gameImage CGImage] == nil && [gameImage CIImage] == NULL)
-        || ([userImage CGImage] == nil && [userImage CIImage] == NULL)){
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView.tag == networkErrorAlert){
         
-        croppedImage = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:user.croppedImgURL]]];
-        gameImage = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:user.gameImgURL]]];
-        userImage = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:user.userImgURL]]];
     }
-    return ([croppedImage CGImage] == nil && [croppedImage CIImage] == NULL) || ([gameImage CGImage] == nil && [gameImage CIImage] == NULL)|| ([userImage CGImage] == nil && [userImage CIImage] == NULL);
+    else if (alertView.tag == newbieAlert){
+        if (buttonIndex == 0){
+            [self performSegueWithIdentifier:SelectToLoginToAvatar sender:self];
+        }
+    }
 }
 
 

@@ -23,6 +23,7 @@ static FBSingleton *singletonDelegate = nil;
 #pragma mark -
 #pragma mark Singleton Methods
 - (id)init {
+    isLogIn = NO;
     if (!kAppId) {
         NSLog(@"MISSING APP ID!!!");
         exit(1);
@@ -41,7 +42,7 @@ static FBSingleton *singletonDelegate = nil;
         if ([defaults objectForKey:FBAccessToken] && [defaults objectForKey:FBExpirationDateKey] && [defaults integerForKey:LogInAs] == LogInFacebook) {
             _facebook.accessToken = [defaults objectForKey:FBAccessToken];
             _facebook.expirationDate = [defaults objectForKey:FBExpirationDateKey];
-            NSLog(@"FB AccessToken and EDate Initialized: '%@' and '%@'",_facebook.accessToken,_facebook.expirationDate);
+            NSLog(@"FB AccessToken and FB ExpirationDateKey exist");
         }
         
         
@@ -52,8 +53,6 @@ static FBSingleton *singletonDelegate = nil;
         
         if ([_facebook isSessionValid]){
             isLogIn = YES;
-        }else {
-            isLogIn = NO;
         }
     }
     
@@ -168,7 +167,6 @@ static FBSingleton *singletonDelegate = nil;
 -(void) RequestMe{
     // Check if there is a valid session
     if (isLogIn){
-        
         currentAPICall = kAPIGraphMe;
         //NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"name,picture,gender",  @"fields", nil];
         [_facebook requestWithGraphPath:@"me" andDelegate:self];
@@ -312,7 +310,6 @@ static FBSingleton *singletonDelegate = nil;
         case kAPIGraphMe:{
             //show profile result;
             NSLog(@"Me result loaded ");
-            NSLog(@"%@",[result objectForKey:@"gender"]);
             [delegate FbMeLoaded:[result objectForKey:@"id"]:[result objectForKey:@"name"]:[result objectForKey:@"gender"]];
             break;       
         }
@@ -320,7 +317,7 @@ static FBSingleton *singletonDelegate = nil;
             //show profile result;
             NSLog(@"Me LogIn result loaded ");
             [delegate FBSingletonDidLogin:[result objectForKey:@"id"]:[result objectForKey:@"name"]:[result objectForKey:@"gender"]];
-            break;       
+            break;
         }
         case kAPIGraphUserFriends:{
             

@@ -86,11 +86,11 @@
     UIGraphicsEndImageContext();
     
     [[UserInfo sharedInstance] setGameImage:finalImage];
-    
     photoView.image = nil;
     
     [self.delegate validImageCaptured:img croppedImage:croppedImg];
     [self.pickerReference dismissModalViewControllerAnimated:YES];
+
 }
 
 -(IBAction)takePicture:(id)sender {
@@ -104,6 +104,9 @@
         pickerReference.cameraDevice = UIImagePickerControllerCameraDeviceRear;
     }
 }
+
+
+
 /*
 -(void)markFaces:(UIImageView *)facePicture
 {

@@ -43,6 +43,7 @@
 
 -(IBAction)FBTouched:(id)sender{
     [[FBSingleton sharedInstance] login];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 -(IBAction)EMTouched:(id)sender{
     
