@@ -24,6 +24,7 @@
 @synthesize helmet, body, left_hand, right_hand;
 @synthesize stashItems;
 @synthesize item1, item2, item3, item4, item5, item6, item7, item8, item9, item10;
+@synthesize money, totalCash;
 //@synthesize cocosDelegate;
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
@@ -47,6 +48,8 @@
     
     orig_item_positions = [[NSMutableDictionary alloc] init];
     orig_equipment_positions = [[NSMutableDictionary alloc] init];
+    
+    totalCash = 0;
     
     //retrieve data from database about user's gears and display them accordingly
     //assume for testing the user has 4 items only...
@@ -87,8 +90,8 @@
         [orig_item_positions setObject:[NSValue valueWithCGPoint:item.center] forKey:[NSString stringWithString:[item accessibilityLabel]]];
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnItemImage:)];
-        //tap.numberOfTapsRequired = 1;
-        //[item addGestureRecognizer:tap];
+        tap.numberOfTapsRequired = 1;
+        [item addGestureRecognizer:tap];
         i++;
     }
     
@@ -131,7 +134,7 @@
     // Set the view controller as the director's delegate, so we can respond to certain events.
     director.delegate = self;
     
-    [director setDisplayStats:NO];
+    [director setDisplayStats:YES];
     
     // Add the director as a child view controller of this view controller.
     [self addChildViewController:director];
@@ -142,9 +145,29 @@
     // Finish up our view controller containment responsibilities.
     [director didMoveToParentViewController:self];
     
+    [[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
+    [[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
+    [[CCDirector sharedDirector] setDelegate:nil];
+    
     //CCScene *scene = [director runningScene];
     //id layer = [[scene children] objectAtIndex:0]; //returned nil
     //self.cocosDelegate = layer;
+}
+
+- (void)handleTapOnItemImage: (UITapGestureRecognizer *)gesture {
+    UITapGestureRecognizer *tap = (UITapGestureRecognizer *)gesture;
+    UIImageView *item = ((UIImageView *)(tap.view));
+    
+    for (UIImageView *item in stashItems) {
+        if ([item.backgroundColor isEqual:[UIColor blackColor]]) {
+            [item setBackgroundColor:[UIColor clearColor]];
+            break;
+        }
+    }
+    
+    if ([item.image CGImage] != nil) {
+        [item setBackgroundColor:[UIColor blackColor]];
+    }
 }
 
 - (void)handleTapOnEquipmentImage: (UITapGestureRecognizer *)gesture {
@@ -156,29 +179,16 @@
         if ([item.image CGImage] == nil) {
             item.tag = equipment.tag;
             item.image = equipment.image;
-            
+            equipment.image = nil;
+
             //call the cocos2d layer to remove the equipment
             CCScene *scene = [[CCDirector sharedDirector] runningScene];
             id layer = [[scene children] objectAtIndex:0];
             [layer updateCharacterWithImage:equipment.image bodyPart:equipment.tag];
             
-            equipment.image = nil;
             break;
         }
-        
-                    
-  /*          //call the cocos2d layer to remove the equipment
-            CCScene *scene = [[CCDirector sharedDirector] runningScene];
-            id layer = [[scene children] objectAtIndex:0];
-            [layer updateCharacterWithImage:equipment.image bodyPart:equipment.tag];
-            break;
-            //if not in vincinity of any item boxes, switch back
-        } else {
-            //switch dragbox back to original position
-            NSValue *pt = [orig_equipment_positions objectForKey:[NSString stringWithString:[equipment accessibilityLabel]]];
-            equipment.center = [pt CGPointValue];
-        }*/
-    } // ends "for"
+    }
 }
 
 - (void)itemDragged:(UIPanGestureRecognizer *)gesture
@@ -347,10 +357,10 @@
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
-    [[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 480, 320)];
-    [[CCDirector sharedDirector] replaceScene:[HelloWorldLayer sceneWithDelegate:self]];
-    [[CCDirector sharedDirector] pause];
-    [[CCDirector sharedDirector] setDelegate:nil];
+    //[[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 480, 320)];
+    //[[CCDirector sharedDirector] replaceScene:[HelloWorldLayer sceneWithDelegate:self]];
+    //[[CCDirector sharedDirector] pause];
+    //[[CCDirector sharedDirector] setDelegate:nil];
     //[[CCDirector sharedDirector] popScene];
     //[[CCDirector sharedDirector] pause];
 }
@@ -366,6 +376,8 @@
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
+#pragma mark - touch methods
+
 - (IBAction)Back_Touched:(id)sender {
     //if total stacks = 5, came from email..
     //else, came from facebook
@@ -374,8 +386,21 @@
     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
 }
 
-- (IBAction) Ok_Pressed:(id)sender {
+- (IBAction)Ok_Pressed:(id)sender {
     [self performSegueWithIdentifier:@"StatusToModeSegue" sender:sender];
+}
+
+- (IBAction)money_pressed:(id)sender {
+    for (UIImageView *item in stashItems) {
+        if ([item.backgroundColor isEqual:[UIColor blackColor]]) {
+            //database kicks in here, updates... removes the item from the user's profile
+            item.image = nil;
+            totalCash += 100;
+            [money setText:[NSString stringWithFormat:@"%i", totalCash]];
+            [item setBackgroundColor:[UIColor clearColor]];
+            break;
+        }
+    }
 }
 
 #pragma mark - gameOverDelegate Methods

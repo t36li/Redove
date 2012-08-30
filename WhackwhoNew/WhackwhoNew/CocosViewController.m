@@ -31,7 +31,9 @@
     
     CCDirector *director = [CCDirector sharedDirector];
     
-    //[director resume];
+    if (director.isPaused) {
+        [director resume];
+    }
     
     //[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
     
@@ -50,19 +52,9 @@
     // Finish up our view controller containment responsibilities.
     [director didMoveToParentViewController:self];
     
-    if (director.isPaused) {
-        [director resume];
-    }
-    
     // Run whatever scene we'd like to run here.
-    //[[CCDirector sharedDirector] resume];
-    
-    /*if(director.runningScene)
-     [director replaceScene:[HelloWorldLayer sceneWithDelegate:self]];
-     else
-     [director runWithScene:[HelloWorldLayer sceneWithDelegate:self]];*/
-    //[[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 480, 320)];
-    //[[CCDirector sharedDirector] replaceScene:[HelloWorldLayer sceneWithDelegate:self]];
+    [[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 480, 320)];
+    [[CCDirector sharedDirector] replaceScene:[HelloWorldLayer sceneWithDelegate:self]];
 }
 
 - (void)returnToMenu {

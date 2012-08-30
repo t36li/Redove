@@ -47,7 +47,10 @@
     
     //define cocos layer as delegate
     //id<StatusCocosDelegate> cocosDelegate;
-
+    
+    //define money label
+    IBOutlet UILabel *money;
+    int totalCash;
 }
 
 //define delegate
@@ -76,7 +79,12 @@
 @property (nonatomic) IBOutlet UIImageView *item9;
 @property (nonatomic) IBOutlet UIImageView *item10;
 
+//define money
+@property (nonatomic) IBOutlet UILabel *money;
+@property (nonatomic) int totalCash;
+
 - (IBAction)Back_Touched:(id)sender;
 - (IBAction)Ok_Pressed:(id)sender;
+- (IBAction)money_pressed:(id)sender;
 
 @end
