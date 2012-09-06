@@ -9,6 +9,7 @@
 #import "cocos2d.h"
 #import "ResourcesLoader.h"
 #import "MainMenuDelegate.h"
+#import "StatusViewLayer.h"
 
 @interface LoadLayer : CCLayer<ResourceLoaderDelegate>
 {

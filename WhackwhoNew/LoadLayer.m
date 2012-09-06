@@ -188,14 +188,11 @@
 
 - (void) didReachProgressMark:(CGFloat)progressPercentage
 {
-    //[[CCDirector sharedDirector] replaceScene:[HelloWorldLayer scene]];
-
 	[_progress setPercentage:progressPercentage * 100];
 	
 	if (progressPercentage == 1.0f) {
 		[_loadingLabel setString:@"Loading complete"];
         [self performSelector:@selector(doStuff) withObject:nil afterDelay:1.5];
-        //[[CCDirector sharedDirector] replaceScene:[HelloWorldLayer scene]];
 	}
 }
 

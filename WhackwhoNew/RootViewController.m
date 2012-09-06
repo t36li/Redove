@@ -111,8 +111,6 @@
                 //current status, use all facebook users as registered users
                 [self performSegueWithIdentifier:PlayToStatusSegue sender:sender];
                 
-                //[[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
-                //[[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
             }
             break;
         }
@@ -182,6 +180,7 @@
         NSLog(@"Facebook profile picture loaded");
         
         NSLog(@"Fetch/Create Database record: starting...");
+        
         [self connToDB];
         //test upload image
         //[self testUploadImage];

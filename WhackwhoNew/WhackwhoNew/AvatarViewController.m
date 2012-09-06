@@ -136,7 +136,7 @@
     [params setValue:user.rightEyePosition forParam:@"rightEyePosition"];
     [params setValue:user.mouthPosition forParam:@"mouthPosition"];
     [params setValue:user.faceRect forParam:@"faceRect"];
-    UIImage *uploadImage = usrInfo->usrImg;//[UIImage imageNamed:@"pause.png"];//usrInfo->usrImg;
+    UIImage *uploadImage = usrInfo->croppedImage;//[UIImage imageNamed:@"pause.png"];//usrInfo->usrImg;
     NSData* imageData = UIImagePNGRepresentation(uploadImage);
     [params setData:imageData MIMEType:@"image/png" forParam:[NSString stringWithFormat:@"%d",user.headId]];
     
@@ -196,8 +196,6 @@
 
 - (IBAction)Back_Touched:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
-    [[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
-    [[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
 }
 
 - (IBAction) Back:(id)sender{

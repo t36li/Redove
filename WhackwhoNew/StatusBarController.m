@@ -131,27 +131,41 @@
         [director resume];
     }
     
-    // Set the view controller as the director's delegate, so we can respond to certain events.
-    director.delegate = self;
+    CCGLView *glView = [CCGLView viewWithFrame:CGRectMake(0, 0, 190, 250)
+                                   pixelFormat:kEAGLColorFormatRGB565   //kEAGLColorFormatRGBA8
+                                   depthFormat:0    //GL_DEPTH_COMPONENT24_OES
+                            preserveBackbuffer:NO
+                                    sharegroup:nil
+                                 multiSampling:NO
+                               numberOfSamples:0];
     
-    [director setDisplayStats:YES];
+    // HERE YOU CHECK TO SEE IF THERE IS A SCENE RUNNING IN THE DIRECTOR ALREADY
+    if(![director runningScene]){
+        [director setView:glView]; // SET THE DIRECTOR VIEW
+        if( ! [director enableRetinaDisplay:YES] ) // ENABLE RETINA
+            CCLOG(@"Retina Display Not supported");
+        
+        [director runWithScene:[StatusViewLayer scene]]; // RUN THE SCENE
+        
+    } else {
+        // THERE IS A SCENE, START SINCE IT WAS STOPPED AND REPLACE TO RESTART
+        [director startAnimation];
+        [director.view setFrame:CGRectMake(0, 0, 190, 250)];
+        [director replaceScene:[StatusViewLayer scene]];
+    }
+    
+    [director willMoveToParentViewController:nil];
+    [director.view removeFromSuperview];
+    [director removeFromParentViewController];
+    [director willMoveToParentViewController:self];
     
     // Add the director as a child view controller of this view controller.
     [self addChildViewController:director];
-    
     [self.containerView addSubview: director.view];
-    [self.containerView bringSubviewToFront:director.view];
+    [self.containerView sendSubviewToBack:director.view];
     
     // Finish up our view controller containment responsibilities.
     [director didMoveToParentViewController:self];
-    
-    [[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
-    [[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
-    [[CCDirector sharedDirector] setDelegate:nil];
-    
-    //CCScene *scene = [director runningScene];
-    //id layer = [[scene children] objectAtIndex:0]; //returned nil
-    //self.cocosDelegate = layer;
 }
 
 - (void)handleTapOnItemImage: (UITapGestureRecognizer *)gesture {
@@ -357,12 +371,12 @@
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
-    //[[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 480, 320)];
-    //[[CCDirector sharedDirector] replaceScene:[HelloWorldLayer sceneWithDelegate:self]];
-    //[[CCDirector sharedDirector] pause];
-    //[[CCDirector sharedDirector] setDelegate:nil];
-    //[[CCDirector sharedDirector] popScene];
-    //[[CCDirector sharedDirector] pause];
+    CCDirector *director = [CCDirector sharedDirector];
+    [director removeFromParentViewController];
+    [director.view removeFromSuperview];
+    [director didMoveToParentViewController:nil];
+    
+    [director popToRootScene];
 }
 
 - (void)viewDidUnload
@@ -418,9 +432,7 @@
     } else {
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:2] animated:YES];
     }
-    
-    [[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
-    [[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
+
 }
 
 @end

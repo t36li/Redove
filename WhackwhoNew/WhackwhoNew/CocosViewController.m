@@ -31,30 +31,45 @@
     
     CCDirector *director = [CCDirector sharedDirector];
     
-    if (director.isPaused) {
+    if ([director isPaused]) {
         [director resume];
     }
     
-    //[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
+    CCGLView *glView = [CCGLView viewWithFrame:CGRectMake(0, 0, 480, 320)
+                                   pixelFormat:kEAGLColorFormatRGB565   //kEAGLColorFormatRGBA8
+                                   depthFormat:0    //GL_DEPTH_COMPONENT24_OES
+                            preserveBackbuffer:NO
+                                    sharegroup:nil
+                                 multiSampling:NO
+                               numberOfSamples:0];
     
-    // Set the view controller as the director's delegate, so we can respond to certain events.
-    director.delegate = self;
+    // HERE YOU CHECK TO SEE IF THERE IS A SCENE RUNNING IN THE DIRECTOR ALREADY
+    if(![director runningScene]){
+        [director setView:glView]; // SET THE DIRECTOR VIEW
+        if( ! [director enableRetinaDisplay:YES] ) // ENABLE RETINA
+            CCLOG(@"Retina Display Not supported");
+        
+        [director runWithScene:[HelloWorldLayer sceneWithDelegate:self]]; // RUN THE SCENE
+        
+    } else {
+        // THERE IS A SCENE, START SINCE IT WAS STOPPED AND REPLACE TO RESTART
+        [director startAnimation];
+        [director.view setFrame:CGRectMake(0, 0, 480, 320)];
+        [director replaceScene:[HelloWorldLayer sceneWithDelegate:self]];
+    }
     
-    //[director.view setFrame:[self.view bounds]];
+    [director willMoveToParentViewController:nil];
+    [director.view removeFromSuperview];
+    [director removeFromParentViewController];
+    [director willMoveToParentViewController:self];
     
     // Add the director as a child view controller of this view controller.
     [self addChildViewController:director];
-    
-    // Add the director's OpenGL view as a subview so we can see it.
-    [self.view addSubview:director.view];
-    [self.view bringSubviewToFront:director.view];
+    [self.view addSubview: director.view];
+    [self.view sendSubviewToBack:director.view];
     
     // Finish up our view controller containment responsibilities.
     [director didMoveToParentViewController:self];
-    
-    // Run whatever scene we'd like to run here.
-    [[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 480, 320)];
-    [[CCDirector sharedDirector] replaceScene:[HelloWorldLayer sceneWithDelegate:self]];
 }
 
 - (void)returnToMenu {
@@ -79,6 +94,14 @@
 - (void) viewDidDisappear:(BOOL)animated {
     //[[CCDirector sharedDirector] popScene];
     //[[CCDirector sharedDirector] setDelegate:nil];
+    
+    CCDirector *director = [CCDirector sharedDirector];
+    [director removeFromParentViewController];
+    [director.view removeFromSuperview];
+    [director didMoveToParentViewController:nil];
+    
+    [director popToRootScene];
+    director.delegate = nil;
 }
 
 - (void)viewDidUnload
