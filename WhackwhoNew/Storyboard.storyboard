@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="LoW-BH-uCB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12B19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="LoW-BH-uCB">
     <dependencies>
         <deployment version="1296" defaultVersion="1296" identifier="iOS"/>
         <development version="4300" identifier="xcode"/>
@@ -668,12 +668,9 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="JlU-44-bMf"/>
-                    <connections>
-                        <segue destination="Nsl-EU-HzN" kind="push" identifier="GoToMenuSegue" id="Wjc-iC-a8G"/>
-                    </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-4110" y="-371"/>
+            <point key="canvasLocation" x="-4482" y="-891"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="2kV-1f-EPW">
@@ -754,7 +751,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-3475" y="-371"/>
+            <point key="canvasLocation" x="-3995" y="-355"/>
         </scene>
         <!--Friends View Controller-->
         <scene sceneID="ubQ-k2-43g">
@@ -1191,11 +1188,11 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Vj8-SE-OLF" kind="relationship" relationship="rootViewController" id="FZ3-QK-xCq"/>
+                        <segue destination="Nsl-EU-HzN" kind="relationship" relationship="rootViewController" id="qBg-gO-X77"/>
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-4657" y="-371"/>
+            <point key="canvasLocation" x="-5021" y="-303"/>
         </scene>
     </scenes>
     <resources>

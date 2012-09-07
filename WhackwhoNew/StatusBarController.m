@@ -397,7 +397,7 @@
     //else, came from facebook
     //int totalStacks = [self.navigationController.viewControllers count];
 
-    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)Ok_Pressed:(id)sender {

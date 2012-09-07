@@ -181,7 +181,7 @@
         
         NSLog(@"Fetch/Create Database record: starting...");
         
-        [self connToDB];
+        [self performSelectorInBackground:@selector(connToDB) withObject:nil];
         //test upload image
         //[self testUploadImage];
     }
