@@ -7,8 +7,6 @@
 //
 
 #import "LoadLayer.h"
-#import "TestLayer.h"
-#import "HelloWorldLayer.h"
 
 @implementation LoadLayer
 
@@ -197,7 +195,10 @@
 }
 
 - (void) doStuff {
-    [menuDelegate goToMenu];
+    //[menuDelegate goToMenu];
+    
+    CCDirector *director = [CCDirector sharedDirector];
+    [director replaceScene:[HelloWorldLayer sceneWithDelegate:((id<GameOverDelegate>)self.menuDelegate)]];
 }
 
 

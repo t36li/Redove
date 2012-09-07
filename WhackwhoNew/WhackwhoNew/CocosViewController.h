@@ -11,8 +11,11 @@
 #import "HelloWorldLayer.h"
 #import "ChooseWhoLayer.h"
 #import "GameOverDelegate.h"
+#import "MainMenuDelegate.h"
+#import "StatusViewLayer.h"
+#import "LoadLayer.h"
 
-@interface CocosViewController : UIViewController <CCDirectorDelegate, GameOverDelegate> {
+@interface CocosViewController : UIViewController <CCDirectorDelegate, GameOverDelegate, MainMenuDelegate> {
     
 }
 

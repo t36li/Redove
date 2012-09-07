@@ -11,7 +11,6 @@
 #import "MainMenuDelegate.h"
 
 @interface LoadViewController : UIViewController <MainMenuDelegate> {
-    
 }
 
 @end

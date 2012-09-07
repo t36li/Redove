@@ -8,6 +8,8 @@
 
 #import "cocos2d.h"
 #import "ResourcesLoader.h"
+#import "TestLayer.h"
+#import "HelloWorldLayer.h"
 #import "MainMenuDelegate.h"
 #import "StatusViewLayer.h"
 

@@ -7,7 +7,6 @@
 //
 
 #import "CocosViewController.h"
-#import "StatusViewLayer.h"
 
 @implementation CocosViewController
 
@@ -49,13 +48,17 @@
         if( ! [director enableRetinaDisplay:YES] ) // ENABLE RETINA
             CCLOG(@"Retina Display Not supported");
         
-        [director runWithScene:[HelloWorldLayer sceneWithDelegate:self]]; // RUN THE SCENE
+        [director runWithScene:[LoadLayer sceneWithDelegate:self]]; // RUN THE SCENE
+
+        //[director runWithScene:[HelloWorldLayer sceneWithDelegate:self]]; // RUN THE SCENE
         
     } else {
         // THERE IS A SCENE, START SINCE IT WAS STOPPED AND REPLACE TO RESTART
         [director startAnimation];
         [director.view setFrame:CGRectMake(0, 0, 480, 320)];
-        [director replaceScene:[HelloWorldLayer sceneWithDelegate:self]];
+        [director runWithScene:[LoadLayer sceneWithDelegate:self]]; // RUN THE SCENE
+
+        //[director replaceScene:[HelloWorldLayer sceneWithDelegate:self]];
     }
     
     [director willMoveToParentViewController:nil];
@@ -70,6 +73,18 @@
     
     // Finish up our view controller containment responsibilities.
     [director didMoveToParentViewController:self];
+}
+
+-(void) goToMenu {
+    /*
+    [self performSegueWithIdentifier:@"GoToMenuSegue" sender:nil];
+    CCDirector *director = [CCDirector sharedDirector];
+    [director removeFromParentViewController];
+    [director.view removeFromSuperview];
+    [director didMoveToParentViewController:nil];
+    
+    [director popToRootScene];
+     */
 }
 
 - (void)returnToMenu {
@@ -89,19 +104,19 @@
     
     //[[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
     //[[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
-}
-
-- (void) viewDidDisappear:(BOOL)animated {
-    //[[CCDirector sharedDirector] popScene];
-    //[[CCDirector sharedDirector] setDelegate:nil];
     
     CCDirector *director = [CCDirector sharedDirector];
     [director removeFromParentViewController];
     [director.view removeFromSuperview];
     [director didMoveToParentViewController:nil];
     
-    [director popToRootScene];
+    [director end];
     director.delegate = nil;
+}
+
+- (void) viewDidDisappear:(BOOL)animated {
+    //[[CCDirector sharedDirector] popScene];
+    //[[CCDirector sharedDirector] setDelegate:nil];
 }
 
 - (void)viewDidUnload

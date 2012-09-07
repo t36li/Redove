@@ -376,7 +376,7 @@
     [director.view removeFromSuperview];
     [director didMoveToParentViewController:nil];
     
-    [director popToRootScene];
+    [director end];
 }
 
 - (void)viewDidUnload
