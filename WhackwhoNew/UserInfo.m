@@ -213,7 +213,7 @@ static UserInfo *sharedInstance = nil;
 }
 
 -(UIImage *) exportImage {
-    return gameImage;
+    return usrImg;
 }
 
 -(CGPoint) getLeftEyePos {

@@ -48,17 +48,17 @@
         if( ! [director enableRetinaDisplay:YES] ) // ENABLE RETINA
             CCLOG(@"Retina Display Not supported");
         
-        [director runWithScene:[LoadLayer sceneWithDelegate:self]]; // RUN THE SCENE
+        //[director runWithScene:[LoadLayer sceneWithDelegate:self]]; // RUN THE SCENE
 
-        //[director runWithScene:[HelloWorldLayer sceneWithDelegate:self]]; // RUN THE SCENE
+        [director runWithScene:[HelloWorldLayer sceneWithDelegate:self]]; // RUN THE SCENE
         
     } else {
         // THERE IS A SCENE, START SINCE IT WAS STOPPED AND REPLACE TO RESTART
         [director startAnimation];
         [director.view setFrame:CGRectMake(0, 0, 480, 320)];
-        [director runWithScene:[LoadLayer sceneWithDelegate:self]]; // RUN THE SCENE
+        //[director runWithScene:[LoadLayer sceneWithDelegate:self]]; // RUN THE SCENE
 
-        //[director replaceScene:[HelloWorldLayer sceneWithDelegate:self]];
+        [director runWithScene:[HelloWorldLayer sceneWithDelegate:self]];
     }
     
     [director willMoveToParentViewController:nil];
@@ -93,7 +93,16 @@
        // [[CCDirector sharedDirector] pause];
     //}
     
-    //[[CCDirector sharedDirector] popScene];    
+    //[[CCDirector sharedDirector] popScene];
+    
+    CCDirector *director = [CCDirector sharedDirector];
+    [director removeFromParentViewController];
+    [director.view removeFromSuperview];
+    [director didMoveToParentViewController:nil];
+    
+    [director end];
+    director.delegate = nil;
+    
     int totalStack = [self.navigationController.viewControllers count];
     
     if (totalStack == 8) {
@@ -104,14 +113,7 @@
     
     //[[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
     //[[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
-    
-    CCDirector *director = [CCDirector sharedDirector];
-    [director removeFromParentViewController];
-    [director.view removeFromSuperview];
-    [director didMoveToParentViewController:nil];
-    
-    [director end];
-    director.delegate = nil;
+
 }
 
 - (void) viewDidDisappear:(BOOL)animated {

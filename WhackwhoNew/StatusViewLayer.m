@@ -57,7 +57,7 @@
         }
         face.scale = 0.4;
         face.anchorPoint = ccp(0.5,1);
-        /*
+        
         //init body
         body = [CCSprite spriteWithFile:standard_blue_body];
         body.anchorPoint = ccp(0.5, 0.75);
@@ -80,7 +80,6 @@
         right_hand.position = ccp(s.width/2 - 45, s.height*0.4 - 10);
         [self addChild:right_hand z:10 tag:rightHand_Label];
         
-*/
         
         //init helmet sprite, ADD face as child
         helmet = [CCSprite spriteWithFile:standard_blue_head];
@@ -90,9 +89,9 @@
         [self addChild:helmet z:5 tag:head_Label];
         //ADD face as child
         face.position = ccp(helmet.boundingBox.size.width/2, helmet.boundingBox.size.height);
-        [helmet addChild:face z:0 tag:face_label];
+        [helmet addChild:face z:-10 tag:face_label];
 
-                //animations
+        //animations
         CCMoveBy *moveHeadUp = [CCMoveBy actionWithDuration:2.5 position:ccp(0,10)];
         CCMoveBy *moveHeadDown = [CCMoveBy actionWithDuration:2.5 position:ccp(0,-10)];
         [helmet runAction:[CCRepeatForever actionWithAction:[CCSequence actionOne:moveHeadUp two:moveHeadDown]]];

@@ -269,11 +269,11 @@
        // NSArray *selectedHeads = [[Game sharedGame] selectedHeads];
         
         //testing UserInfo image taken from camera
-        //UserInfo *usr = [UserInfo sharedInstance];
-        //UIImage *bigHead = usr.exportImage; //640 x 852 : 64 x 85.2
+        UserInfo *usr = [UserInfo sharedInstance];
+        UIImage *bigHead = usr.exportImage; //640 x 852 : 64 x 85.2
         
         // Old big head contentSize: 73.5 x 76.5
-        UIImage *bigHead = [UIImage imageNamed:standard_blue_head];
+        //UIImage *bigHead = [UIImage imageNamed:standard_blue_head];
 
         //the number of total heads to include in the heads array should be relative to the difficulty level chosen previously... max will be 10 ATM...this should be a loop that fast-enumerates through all the chosen names array from the previous view
         //for testing purposes, set to 7
