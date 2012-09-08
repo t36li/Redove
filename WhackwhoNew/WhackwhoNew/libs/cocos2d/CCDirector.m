@@ -469,7 +469,6 @@ static CCDirector *_sharedDirector = nil;
 	[[CCFileUtils sharedFileUtils] purgeCachedEntries];
 
 	// OpenGL view
-    [view_ release];
 	// Since the director doesn't attach the openglview to the window
 	// it shouldn't remove it from the window too.
 //	[openGLView_ removeFromSuperview];

@@ -9,6 +9,7 @@
 #import "ModeSelectionViewController.h"
 #import "cocos2d.h"
 #import "StatusViewLayer.h"
+#import "Game.h"
 
 @implementation ModeSelectionViewController
 
@@ -38,6 +39,10 @@
 
 -(void) viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
+}
+
+-(void) viewWillDisappear:(BOOL)animated {
+    [[Game sharedGame] setDifficulty:index];
 }
 
 - (IBAction)leftButton_touched:(id)sender {
