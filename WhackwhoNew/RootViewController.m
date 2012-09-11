@@ -268,7 +268,7 @@
     userObject = object;
     [userObject copyToUserInfo];
     NSLog(@"User data loaded.");
-    if(usr->usrImg == nil){
+    if(usr.usrImg == nil){
         UIAlertView *takePicAlert = [[UIAlertView alloc] initWithTitle:@"Newbie?" message:@"Take a photo" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         takePicAlert.tag = newbieAlert;
         [takePicAlert show];

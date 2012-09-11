@@ -28,18 +28,19 @@
     
     int (^loadUserImage)() = ^int(){
         if (userImgURL != nil){
-            usrInfo->usrImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:userImgURL]]];
+            [usrInfo setUsrImg:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:userImgURL]]]];
             return 1;
         }
         return 0;
     };
     
     if (loadUserImage() == 1){
-        if (usrInfo->usrImg != nil){
-            usrInfo->croppedImage = [UserInfo getCroppedImage:usrInfo->usrImg inRect:[usrInfo faceRect]];
-            [usrInfo setGameImage:usrInfo->usrImg];
-        }
+        usrInfo.croppedImage = [UserInfo getCroppedImage:usrInfo.usrImg inRect:[usrInfo faceRect]];
+        NSLog(@"Game Image Loaded.");
+    } else {
+        NSLog(@"Game Image failed to load.");
     }
+     
 }
 
 -(void)getFromUserInfo{

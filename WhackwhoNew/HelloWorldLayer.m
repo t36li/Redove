@@ -167,7 +167,7 @@
         
         //testing UserInfo image taken from camera
         UserInfo *usr = [UserInfo sharedInstance];
-        UIImage *bigHead = usr.exportImage; //640 x 852 : 64 x 85.2
+        UIImage *bigHead = usr.croppedImage; //640 x 852 : 64 x 85.2
         
         // Old big head contentSize: 73.5 x 76.5
         //UIImage *bigHead = [UIImage imageNamed:standard_blue_head];
