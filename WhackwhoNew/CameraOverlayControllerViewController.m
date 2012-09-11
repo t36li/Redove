@@ -79,13 +79,14 @@
     UIImage *croppedImg = [AvatarBaseController cropImage:resizedImage inRect:headView.frame];
     
     headView.image = croppedImg;
-    
+    /*
     UIGraphicsBeginImageContextWithOptions(avatarView.bounds.size, NO, [[UIScreen mainScreen] scale]);
     [avatarView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *finalImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
     [[UserInfo sharedInstance] setGameImage:finalImage];
+     */
     photoView.image = nil;
     
     [self.delegate validImageCaptured:img croppedImage:croppedImg];

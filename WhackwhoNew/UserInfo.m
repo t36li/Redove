@@ -10,7 +10,7 @@
 
 @implementation UserInfo
 
-@synthesize userName, userId, currentLogInType, headId, whackWhoId, gender, leftEyePosition, rightEyePosition, mouthPosition, faceRect, delegate;
+@synthesize userName, userId, currentLogInType, headId, whackWhoId, gender, leftEyePosition, rightEyePosition, mouthPosition, faceRect, delegate, croppedImage, usrImg;
 
 static UserInfo *sharedInstance = nil;
 
@@ -24,7 +24,7 @@ static UserInfo *sharedInstance = nil;
             NSString *pngFilePath = [NSString stringWithFormat:@"%@/avatar.png",docDir];
 
             if ([fileMgr fileExistsAtPath:pngFilePath]) {
-                [sharedInstance setGameImage:[UIImage imageWithContentsOfFile:pngFilePath]];
+                [sharedInstance setUsrImg:[UIImage imageWithContentsOfFile:pngFilePath]];
             }
         }
     }
@@ -197,7 +197,7 @@ static UserInfo *sharedInstance = nil;
 -(UIImage *)getCroppedImage {
     return [UIImage imageWithCGImage:croppedImage.CGImage];
 }
-
+/*
 -(void) setGameImage:(UIImage *)img {
     gameImage = [UIImage imageWithCGImage:img.CGImage];
     
@@ -212,9 +212,9 @@ static UserInfo *sharedInstance = nil;
 	[data1 writeToFile:pngFilePath atomically:YES];
 }
 
--(UIImage *) exportImage {
-    return usrImg;
-}
+-(UIImage *) gameImage {
+    return gameImage;
+}*/
 
 -(CGPoint) getLeftEyePos {
     return leftEyePosition;
