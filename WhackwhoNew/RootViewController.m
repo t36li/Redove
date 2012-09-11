@@ -45,13 +45,14 @@
 
 -(void) viewDidLoad
 {
-    NSLog(@"RootViewController viewDidLoad");
+    //NSLog(@"RootViewController viewDidLoad");
     [super viewDidLoad];
     
     gmethods = [[GlobalMethods alloc] init];
     usr = [UserInfo sharedInstance];
+    fbs = [FBSingleton sharedInstance];
     
-    NSLog(@"Load/set currentLogInType");
+   /* NSLog(@"Load/set currentLogInType");
     int loginId =((int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs] == 0)? 0 : (int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs];
     [usr setCurrentLogInType:loginId];
     NSLog(@"login type ID: %i", loginId);
@@ -71,10 +72,13 @@
             
         default:
             break;
-    }
+    }*/
     
     NSLog(@"load Background");
     [gmethods setViewBackground:MainPage_bg viewSender:self.view];
+    
+    NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", [[UserInfo sharedInstance] userId]];
+    [LoginAccountImageView setImageWithURL:[NSURL URLWithString:formatting]];
 }
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -134,6 +138,26 @@
         [self performSegueWithIdentifier:PlayToFriendSegue sender:friend_but];
     }
 }
+
+-(IBAction)upload_clicked:(id)sender {
+    RKParams* params = [RKParams params];
+   // NSArray *items = [[NSArray alloc] initWithObjects:@"hammer.png", @"pinky head.png", @"bomb.png", nil];
+    
+    //for (NSString *filename in items) {
+        //[params setValue:[NSString stringWithFormat:@"%d",user.whackWhoId] forParam:@"ItemID"];
+        [params setValue:@"bomb" forParam:@"FileName"];
+        [params setValue:[NSString stringWithFormat:@"%d", 200] forParam:@"PropertyID"];
+        [params setValue:[NSString stringWithFormat:@"%d", 20] forParam:@"BodyPartID"];
+        
+        //UIImage *uploadImage = usrInfo->croppedImage;//[UIImage imageNamed:@"pause.png"];//usrInfo->usrImg;
+        //NSData* imageData = UIImagePNGRepresentation(uploadImage);
+        //[params setData:imageData MIMEType:@"image/png" forParam:[NSString stringWithFormat:@"%d",user.headId]];
+        
+        // Log info about the serialization
+        NSLog(@"RKParams HTTPHeaderValueForContentType = %@", [params HTTPHeaderValueForContentType]);
+        
+        [[RKObjectManager sharedManager].client post:@"/uploadImage" params:params delegate:self];
+}
         
 
 //FBSingleton Delegate:
@@ -174,10 +198,6 @@
         [[UserInfo sharedInstance] setUserName:userName];
         [[UserInfo sharedInstance] setGender:gender];
         NSLog(@"my Facebook: {ID: %@, Name: %@, gender: %@",userId,userName,gender);
-        
-        NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", userId];   
-        [LoginAccountImageView setImageWithURL:[NSURL URLWithString:formatting]];
-        NSLog(@"Facebook profile picture loaded");
         
         NSLog(@"Fetch/Create Database record: starting...");
         
@@ -270,8 +290,6 @@
         }
     }
 }
-
-
 
 ///////////////////////////
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

@@ -27,5 +27,6 @@
 
 -(IBAction)play_touched:(id)sender;
 -(IBAction)opt_touched:(id)sender;
+-(IBAction)upload_clicked:(id)sender;
 
 @end
