@@ -24,21 +24,22 @@
     NSLog(@"Load/set currentLogInType");
     int loginId =((int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs] == 0)? 0 : (int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs];
     [usr setCurrentLogInType:loginId];
+    
     NSLog(@"login type ID: %i", loginId);
     if (loginId == 0){
         [[NSUserDefaults standardUserDefaults] setInteger:NotLogIn forKey:LogInAs];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        NSLog(@"login type : Not Login");
+        NSLog(@"login type : Not Logged in!");
+        [self performSegueWithIdentifier:@"LoginToFacebook" sender:nil];
     }
     
-    NSLog(@"load UserInfo");
+    //NSLog(@"load UserInfo");
     switch ((int)[usr currentLogInType]) {
         case LogInFacebook:
             [[FBSingleton sharedInstance] setDelegate:self];
             fbs = [FBSingleton sharedInstance];
-            if ([fbs isLogIn])[fbs RequestMe];
+            if ([fbs isLogIn]) [fbs RequestMe];
             break;
-            
         default:
             break;
     }

@@ -22,15 +22,6 @@
 @synthesize spinner, loadingView;
 @synthesize resultFriends;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -91,6 +82,7 @@
 }
 
 #pragma mark - UITableView Datasource and Delegate Methods
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 70;
 }
@@ -148,7 +140,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Only handle taps if the view is related to showing nearby places that
     // the user can check-in to.
-    
     if (! [resultFriends count])
         return;
     
@@ -158,6 +149,8 @@
     NSString *usrId = cell.identity;
     int index = 0;
     Friend *friend;
+    
+    //Find which friend the user has selected
     for (Friend *frd in resultFriends) {
         if (frd.user_id == usrId) {
             friend = frd;
@@ -165,36 +158,38 @@
         }
     }
     
-    if (!([selectedHitsNames containsObject:friend] || [noHitsNames containsObject:friend])) {
-        if (selectedHitsNames.count < MAX_HITTABLE) {
-            [selectedHitsNames addObject:friend];
-            
-            for (UIImageView *temp in selectedHits) {
-                if (temp.image == nil) {
-                    temp.image = tempImage;
-                    portrait.image = tempImage;
-                    [portrait setContentMode:UIViewContentModeScaleAspectFill];
-                    temp.tag = index;
+    //selectedHitsNames -> an array that stores currently selected friends' names
+    //noHitsNames -> an array that contains names of people not selected
+    if (!([selectedHitsNames containsObject:friend] || [noHitsNames containsObject:friend]) && selectedHitsNames.count < MAX_HITTABLE) {
+        
+        [selectedHitsNames addObject:friend];
+        
+        //selectedHits -> an array of UIImageView
+        for (UIImageView *temp in selectedHits) {
+            if (temp.image == nil) {
+                temp.image = tempImage;
+                portrait.image = tempImage;
+                [portrait setContentMode:UIViewContentModeScaleAspectFill];
+                temp.tag = index;
                     
-                    //set up big portraint image glview
-                    //chooseWholayer has to obtain image from Game.h
-                    // do something like [[game sharedgame] setHead: tempImage];
+                //set up big portraint image glview
+                //chooseWholayer has to obtain image from Game.h
+                //do something like [[game sharedgame] setHead: tempImage];
                     
-                    temp.userInteractionEnabled = YES;
+                temp.userInteractionEnabled = YES;
+                
+                //add tap gesture (to view the glview)
+                UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnImage:)];
+                tap.numberOfTapsRequired = 1;
+                [temp addGestureRecognizer:tap];
                     
-                    //add tap gesture (to view the glview)
-                    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnImage:)];
-                    tap.numberOfTapsRequired = 1;
-                    [temp addGestureRecognizer:tap];
-                    
-                    //add swipe to cancel gesture (little cancel mark)
-                    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget: self action:@selector(handleSwipeOnImage:)];
-                    swipe.numberOfTouchesRequired = 1;
-                    [temp addGestureRecognizer:swipe];
-                    break;
-                }
-                index++;
+                //add swipe to cancel gesture (little cancel mark)
+                UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget: self action:@selector(handleSwipeOnImage:)];
+                swipe.numberOfTouchesRequired = 1;
+                [temp addGestureRecognizer:swipe];
+                break;
             }
+            index++;
         }
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
