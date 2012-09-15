@@ -15,7 +15,7 @@
 #import <RestKit/RestKit.h>
 #import "UserInfoDelegate.h"
 
-@interface AvatarViewController : AvatarBaseController <CameraOverlayControllerViewControllerDelegate,RKObjectLoaderDelegate,UserInfoDelegate> {
+@interface AvatarViewController : AvatarBaseController <CameraOverlayControllerViewControllerDelegate,RKObjectLoaderDelegate,UserInfoDelegate, UIGestureRecognizerDelegate> {
     
     IBOutlet UIView *imageView;
     IBOutlet UIView *wtfView;
@@ -23,6 +23,9 @@
     //IBOutlet AvatarView *avatarView;
     UIImagePickerController *cameraController;
     BOOL newPhoto;
+    
+    CGFloat _xlastScale;
+    CGFloat _ylastScale;
 }
 @property (nonatomic) IBOutlet UIView *wtfView;
 

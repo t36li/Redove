@@ -28,6 +28,25 @@
 
 @synthesize imageView, overlay, cameraController, wtfView;
 
+typedef enum {
+    PinchAxisNone,
+    PinchAxisHorizontal,
+    PinchAxisVertical
+} PinchAxis;
+
+PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
+    if (r.numberOfTouches < 2)
+        return PinchAxisNone;
+    UIView *view = r.view;
+    CGPoint touch0 = [r locationOfTouch:0 inView:view];
+    CGPoint touch1 = [r locationOfTouch:1 inView:view];
+    CGFloat tangent = fabsf((touch1.y - touch0.y) / (touch1.x - touch0.x));
+    return
+    tangent <= 0.2679491924f ? PinchAxisHorizontal // 15 degrees
+    : tangent >= 3.7320508076f ? PinchAxisVertical   // 75 degrees
+    : PinchAxisNone;
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) {
         // initialize what you need here
@@ -40,6 +59,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(scale:)];
+    [pinchRecognizer setDelegate:self];
+    [self.view addGestureRecognizer:pinchRecognizer];
+    
+    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    [panRecognizer setDelegate:self];
+    [self.view addGestureRecognizer:panRecognizer];
     
     newPhoto = NO;
     
@@ -102,6 +129,69 @@
     self.navigationController.navigationBarHidden = YES;
 }
 
+-(void)scale:(id)sender {
+//    UIPinchGestureRecognizer *recognizer = (UIPinchGestureRecognizer *)sender;
+//    photoView.transform = CGAffineTransformScale(recognizer.view.transform, recognizer.scale, recognizer.scale);
+//    recognizer.scale = 1;
+//    if (photoView.frame.size.width > imageView.frame.size.width) {
+//        CGRect frame = photoView.frame;
+//        frame.size.width = imageView.frame.size.width;
+//        photoView.frame = frame;
+//        return;
+//    }
+//    if (photoView.frame.size.height > imageView.frame.size.height) {
+//        CGRect frame = photoView.frame;
+//        frame.size.height = imageView.frame.size.height;
+//        photoView.frame = frame;
+//        return;
+//    }
+    
+    PinchAxis pinch;
+    if([(UIPinchGestureRecognizer*)sender state] == UIGestureRecognizerStateBegan) {
+        _xlastScale = 1.0;
+        _ylastScale = 1.0;
+        pinch = PinchAxisNone;
+    } else if ([(UIPinchGestureRecognizer*)sender state] == UIGestureRecognizerStateChanged) {
+        pinch = pinchGestureRecognizerAxis(sender);
+    }
+    
+    CGFloat xScale = 1;
+    CGFloat yScale = 1;
+    if (pinch == PinchAxisHorizontal) {
+        xScale = 1.0 - (_xlastScale - [(UIPinchGestureRecognizer*)sender scale]);
+        _xlastScale = [(UIPinchGestureRecognizer*)sender scale];
+    } else if (pinch == PinchAxisVertical) {
+        yScale = 1.0 - (_ylastScale - [(UIPinchGestureRecognizer*)sender scale]);
+        _ylastScale = [(UIPinchGestureRecognizer*)sender scale];
+    } else {
+//        xScale = 1.0 - (_xlastScale - [(UIPinchGestureRecognizer*)sender scale]);
+//        yScale = 1.0 - (_ylastScale - [(UIPinchGestureRecognizer*)sender scale]);
+//        _xlastScale = [(UIPinchGestureRecognizer*)sender scale];
+//        _ylastScale = [(UIPinchGestureRecognizer*)sender scale];
+        return;
+    }
+    
+    
+    CGAffineTransform currentTransform = photoView.transform;
+    CGAffineTransform newTransform = CGAffineTransformScale(currentTransform, xScale, yScale);
+    
+    [photoView setTransform:newTransform];
+    
+//    NSLog(@"x = %f, y = %f", photoView.frame.size.width, photoView.frame.size.height);
+}
+
+- (void)handlePan:(UIPanGestureRecognizer *)recognizer {
+    
+//    if (!CGRectContainsRect(imageView.frame, photoView.frame))
+//        return;
+    
+    CGPoint translation = [recognizer translationInView:self.view];
+    photoView.center = CGPointMake(photoView.center.x + translation.x,
+                                         photoView.center.y + translation.y);
+    [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
+    
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -114,6 +204,7 @@
 }
 
 -(IBAction)startCamera:(id)sender {
+    headView.image = nil;
     [self presentModalViewController:cameraController animated:NO];
 }
 
@@ -151,13 +242,14 @@
     //self.imageView.image = image;
     UserInfo *usr = [UserInfo sharedInstance];
     if (image != nil){
-        //photoView.image = image;
+        photoView.image = [AvatarBaseController resizeImage:image toSize:photoView.frame.size];
         //[usr setUserPicture:image];
         [usr setUserPicture:image delegate:self];
         usr.croppedImage = croppedImg;
         //headView.image = croppedImg;
         //headView.image = usr.croppedImage;
         newPhoto = YES;
+        backgroundView.image = [UIImage imageNamed:@"standard big head.png"];
     }
 }
 
@@ -190,7 +282,15 @@
 
 -(IBAction) addPicture:(id)sender {
     //headView.image = [[UserInfo sharedInstance] getCroppedImage];
-    photoView.image = [[UserInfo sharedInstance] usrImg];
+    UserInfo *info = [UserInfo sharedInstance];
+    CGRect newFrame = headView.frame;
+    newFrame.origin.x -= photoView.frame.origin.x;
+    newFrame.origin.y -= photoView.frame.origin.y;
+    UIImage *resizedImage = [AvatarBaseController resizeImage:photoView.image toSize:photoView.frame.size];
+    info.croppedImage = [AvatarBaseController cropImage:resizedImage inRect:newFrame];
+    headView.image = info.croppedImage;
+    
+    backgroundView.image = [UIImage imageNamed:@"standard big head.png"];
 }
 
 - (IBAction)Back_Touched:(id)sender {

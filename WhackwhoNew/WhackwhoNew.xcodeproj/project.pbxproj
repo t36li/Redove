@@ -412,6 +412,7 @@
 		D00600A815B5F3080079626F /* libSDWebImageARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D00600A115B5F29A0079626F /* libSDWebImageARC.a */; };
 		D006F6A915B4FB7D0079626F /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = D006F6A815B4FB7D0079626F /* Friend.m */; };
 		D006FCE615B51DC10079626F /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D006FCE515B51DC10079626F /* ImageIO.framework */; };
+		D02181301605158E008DA57C /* standard big head.png in Resources */ = {isa = PBXBuildFile; fileRef = D021812F1605158E008DA57C /* standard big head.png */; };
 		D07F6FF01599463A0085DF2B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F6FEF1599463A0085DF2B /* CoreImage.framework */; };
 		D090C63815A238CF0051AA12 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D090C63715A238CF0051AA12 /* UserInfo.m */; };
 		D0948D4115ADFF0E00429477 /* AvatarBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0948D4015ADFF0E00429477 /* AvatarBaseController.m */; };
@@ -989,6 +990,7 @@
 		D006F6A715B4FB7D0079626F /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
 		D006F6A815B4FB7D0079626F /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
 		D006FCE515B51DC10079626F /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		D021812F1605158E008DA57C /* standard big head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "standard big head.png"; sourceTree = "<group>"; };
 		D07F6FEF1599463A0085DF2B /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		D090C63615A238CE0051AA12 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		D090C63715A238CF0051AA12 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
@@ -1939,6 +1941,7 @@
 				D0948D3115AB5D5700429477 /* peter head.png */,
 				D0948D3215AB5D5700429477 /* pinky head.png */,
 				C1FE254015AF66CB00DAF258 /* scoreboard.png */,
+				D021812F1605158E008DA57C /* standard big head.png */,
 				C1FE253C15AF667B00DAF258 /* rainbow4.png */,
 			);
 			name = Sprites;
@@ -2422,6 +2425,7 @@
 				69E9EB9B16028E4E00E52D4F /* arrow.png in Resources */,
 				69E9EB9C16028E4E00E52D4F /* arrow@2x.png in Resources */,
 				69E9EB9E16028E4E00E52D4F /* README in Resources */,
+				D02181301605158E008DA57C /* standard big head.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
