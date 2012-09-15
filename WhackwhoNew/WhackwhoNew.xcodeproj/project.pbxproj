@@ -418,7 +418,6 @@
 		D00600A815B5F3080079626F /* libSDWebImageARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D00600A115B5F29A0079626F /* libSDWebImageARC.a */; };
 		D006F6A915B4FB7D0079626F /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = D006F6A815B4FB7D0079626F /* Friend.m */; };
 		D006FCE615B51DC10079626F /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D006FCE515B51DC10079626F /* ImageIO.framework */; };
-		D02181301605158E008DA57C /* standard big head.png in Resources */ = {isa = PBXBuildFile; fileRef = D021812F1605158E008DA57C /* standard big head.png */; };
 		D07F6FF01599463A0085DF2B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F6FEF1599463A0085DF2B /* CoreImage.framework */; };
 		D090C63815A238CF0051AA12 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D090C63715A238CF0051AA12 /* UserInfo.m */; };
 		D0948D4115ADFF0E00429477 /* AvatarBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0948D4015ADFF0E00429477 /* AvatarBaseController.m */; };
@@ -2450,7 +2449,13 @@
 				69E9EB9B16028E4E00E52D4F /* arrow.png in Resources */,
 				69E9EB9C16028E4E00E52D4F /* arrow@2x.png in Resources */,
 				69E9EB9E16028E4E00E52D4F /* README in Resources */,
-				D02181301605158E008DA57C /* standard big head.png in Resources */,
+				692E5BBA1605074D00303A50 /* apple store icon.png in Resources */,
+				692E5BBC1605083800303A50 /* loading page final background.png in Resources */,
+				692E5BBE160508FB00303A50 /* loading icon.png in Resources */,
+				692E5BC016050EF500303A50 /* store background.png in Resources */,
+				692E5BC216050FA200303A50 /* upper shelf.png in Resources */,
+				692E5BC416050FFA00303A50 /* store pin.png in Resources */,
+				692E5BC61605101C00303A50 /* lower shelf.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
