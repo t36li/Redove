@@ -52,27 +52,28 @@
     usr = [UserInfo sharedInstance];
     fbs = [FBSingleton sharedInstance];
     
-   /* NSLog(@"Load/set currentLogInType");
-    int loginId =((int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs] == 0)? 0 : (int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs];
-    [usr setCurrentLogInType:loginId];
-    NSLog(@"login type ID: %i", loginId);
-    if (loginId == 0){
-        [[NSUserDefaults standardUserDefaults] setInteger:NotLogIn forKey:LogInAs];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        NSLog(@"login type : Not Login");
+    if (LoginAccountImageView.image == nil) {
+        NSLog(@"Load/set currentLogInType");
+        int loginId =((int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs] == 0)? 0 : (int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs];
+        [usr setCurrentLogInType:loginId];
+        NSLog(@"login type ID: %i", loginId);
+        if (loginId == 0){
+            [[NSUserDefaults standardUserDefaults] setInteger:NotLogIn forKey:LogInAs];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            NSLog(@"login type : Not Login");
+        }
+        
+        NSLog(@"load UserInfo");
+        switch ((int)[usr currentLogInType]) {
+            case LogInFacebook:
+                [[FBSingleton sharedInstance] setDelegate:self];
+                fbs = [FBSingleton sharedInstance];
+                if ([fbs isLogIn])[fbs RequestMe];
+                break;
+            default:
+                break;
+        }
     }
-    
-    NSLog(@"load UserInfo");
-    switch ((int)[usr currentLogInType]) {
-        case LogInFacebook:
-            [[FBSingleton sharedInstance] setDelegate:self];
-            fbs = [FBSingleton sharedInstance];
-            if ([fbs isLogIn])[fbs RequestMe];
-            break;
-            
-        default:
-            break;
-    }*/
     
     NSLog(@"load Background");
     [gmethods setViewBackground:MainPage_bg viewSender:self.view];
@@ -114,7 +115,6 @@
                 //!!!!!!!!!!!!!When Databases kick in, check if it is a registered user.
                 //current status, use all facebook users as registered users
                 [self performSegueWithIdentifier:PlayToStatusSegue sender:sender];
-                
             }
             break;
         }
@@ -161,7 +161,6 @@
         
 
 //FBSingleton Delegate:
-
 -(void) FBProfilePictureLoaded:(UIImage *)img{
     LoginAccountImageView.image = img;
     NSLog(@"profilepictureloaded profileimage: %@",LoginAccountImageView.image);
@@ -198,6 +197,10 @@
         [[UserInfo sharedInstance] setUserName:userName];
         [[UserInfo sharedInstance] setGender:gender];
         NSLog(@"my Facebook: {ID: %@, Name: %@, gender: %@",userId,userName,gender);
+        
+        NSLog(@"Setting profile picture...");
+        NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", [[UserInfo sharedInstance] userId]];
+        [LoginAccountImageView setImageWithURL:[NSURL URLWithString:formatting]];
         
         NSLog(@"Fetch/Create Database record: starting...");
         

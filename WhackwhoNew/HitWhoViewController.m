@@ -194,6 +194,7 @@
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
 /*********handle database connections:*****************/
 -(void)getFriendDBInfo:(NSArray *) friendUsingAppIDs{
     if (friendUsingAppIDs){
@@ -245,6 +246,7 @@
 }
 
 ///////////////////////////////
+#pragma mark - Touch methods
 -(void) handleTapOnImage:(id)sender {
     UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
     UIImage *tempImage = ((UIImageView *)(tap.view)).image;
@@ -298,6 +300,10 @@
             }
         }
     }
+}
+
+-(IBAction)cancelTouched:(id)sender {
+    
 }
 
 -(IBAction) nextTouched:(id)sender {
