@@ -38,6 +38,8 @@
             fbs = [FBSingleton sharedInstance];
             if ([fbs isLogIn])[fbs RequestMe];
             break;
+        case NotLogIn :
+            
             
         default:
             break;
