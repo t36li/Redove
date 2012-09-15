@@ -11,6 +11,15 @@
 #import "StatusViewLayer.h"
 #import "User.h"
 
+// Transform values for full screen support:
+#define CAMERA_TRANSFORM_X 1
+//#define CAMERA_TRANSFORM_Y 1.12412 //use this is for iOS 3.x
+#define CAMERA_TRANSFORM_Y 1.24299 // use this is for iOS 4.x
+
+// iPhone screen dimensions:
+#define SCREEN_WIDTH  320
+#define SCREEN_HEIGTH 480
+
 @interface AvatarViewController ()
 
 @end
@@ -55,7 +64,9 @@
     {
         cameraController.sourceType = UIImagePickerControllerSourceTypeCamera;
         cameraController.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
-        cameraController.showsCameraControls = YES;
+        cameraController.showsCameraControls = NO;
+        cameraController.wantsFullScreenLayout = YES;
+        cameraController.cameraViewTransform = CGAffineTransformScale(cameraController.cameraViewTransform, CAMERA_TRANSFORM_X, CAMERA_TRANSFORM_Y);
 
         if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
             cameraController.cameraDevice = UIImagePickerControllerCameraDeviceFront;
@@ -131,6 +142,10 @@
      
 }
 
+-(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+    
+}
+
 -(void)validImageCaptured:(UIImage *)image croppedImage:(UIImage *)croppedImg{
     //photoView.image = image;
     //self.imageView.image = image;
@@ -141,7 +156,7 @@
         [usr setUserPicture:image delegate:self];
         usr.croppedImage = croppedImg;
         //headView.image = croppedImg;
-        backgroundView.image = usr.croppedImage;
+        //headView.image = usr.croppedImage;
         newPhoto = YES;
     }
 }
@@ -175,7 +190,7 @@
 
 -(IBAction) addPicture:(id)sender {
     //headView.image = [[UserInfo sharedInstance] getCroppedImage];
-    backgroundView.image = [[UserInfo sharedInstance] usrImg];
+    photoView.image = [[UserInfo sharedInstance] usrImg];
 }
 
 - (IBAction)Back_Touched:(id)sender {
