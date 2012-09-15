@@ -681,10 +681,11 @@
                         <outlet property="myLabel" destination="yNN-57-wew" id="VCc-WM-Pk5"/>
                         <segue destination="Nsl-EU-HzN" kind="push" identifier="GoToMenuSegue" id="TaV-sK-cbs"/>
                         <segue destination="wZI-0E-4pI" kind="push" identifier="LoadToAvatar" id="2de-dV-3w5"/>
+                        <segue destination="Y2f-Ky-VQq" kind="push" identifier="LoginToFacebook" id="4KT-zR-lzO"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-4486" y="-915"/>
+            <point key="canvasLocation" x="-4482" y="-923"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="2kV-1f-EPW">
@@ -773,9 +774,9 @@
                         <outlet property="LoginAccountImageView" destination="NTr-i6-5X2" id="Tr7-fz-9FB"/>
                         <outlet property="opt_but" destination="PsZ-Aj-cWx" id="Rju-rZ-6a7"/>
                         <outlet property="play_but" destination="uv1-mf-JIH" id="NKP-ur-UDi"/>
-                        <segue destination="Y2f-Ky-VQq" kind="push" identifier="PlayToSelectLogInSegue" id="4Qh-8x-51I"/>
                         <segue destination="vVV-bT-q6I" kind="push" identifier="PlayToStatusSegue" id="xFH-vp-meh"/>
                         <segue destination="muy-dF-9KG" kind="push" identifier="PlayToFriendSegue" id="ydD-IN-fvF"/>
+                        <segue destination="Y2f-Ky-VQq" kind="push" identifier="PlayToSelectLogInSegue" id="2Ck-2k-j9S"/>
                     </connections>
                 </viewController>
             </objects>
@@ -1120,6 +1121,18 @@
                                 <rect key="frame" x="127" y="32" width="135" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cancel.png" id="2av-or-C1l">
+                                <rect key="frame" x="88" y="49" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cancel.png" id="q5Z-6g-SKf">
+                                <rect key="frame" x="48" y="122" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cancel.png" id="lNA-yg-gWp">
+                                <rect key="frame" x="88" y="197" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -1225,6 +1238,7 @@
     </scenes>
     <resources>
         <image name="FacebookButton30x34.png" width="176" height="31"/>
+        <image name="cancel.png" width="119" height="109"/>
         <image name="choose main portrait.png" width="306" height="391"/>
         <image name="circle item window.png" width="118" height="110"/>
         <image name="friend b.png" width="333" height="186"/>
@@ -1391,5 +1405,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="xFH-vp-meh"/>
         <segue reference="2de-dV-3w5"/>
+        <segue reference="2Ck-2k-j9S"/>
     </inferredMetricsTieBreakers>
 </document>
