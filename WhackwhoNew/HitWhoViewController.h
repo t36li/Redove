@@ -17,11 +17,13 @@
 #import "SpinnerView.h"
 #import "Friend.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <RestKit/RestKit.h>
+#import "PullToRefreshView.h"
 
 #define MAX_HITTABLE 3
 #define MAX_NO_HITTABLE 4
 
-@interface HitWhoViewController : UIViewController<FBSingletonDelegate,UITableViewDelegate,UITableViewDataSource> {
+@interface HitWhoViewController : UIViewController<FBSingletonDelegate,UITableViewDelegate,UITableViewDataSource,RKObjectLoaderDelegate,PullToRefreshViewDelegate> {
     NSMutableArray *selectedHits;
     NSMutableArray *selectedHitsNames;
     NSMutableArray *noHits;
@@ -38,6 +40,7 @@
     NSArray *resultFriends;
     SpinnerView *spinner;
     IBOutlet UIView *loadingView;
+    PullToRefreshView *tablepull;
 
 }
 

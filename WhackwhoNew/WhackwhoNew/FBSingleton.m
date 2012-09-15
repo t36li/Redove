@@ -208,6 +208,16 @@ static FBSingleton *singletonDelegate = nil;
     }
 }
 
+-(void) RequestFriendUsing{
+    if (isLogIn){
+        currentAPICall = kAPIGetAppUsersFriendsUsing;
+        NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                       @"friends.getAppUsers", @"method",
+                                       nil];
+        [_facebook requestWithParams:params andDelegate:self];
+    }
+}
+
 #pragma mark - FBDelegate Methods
 
 - (void)fbDidLogin {
@@ -301,11 +311,12 @@ static FBSingleton *singletonDelegate = nil;
  * The resulting object may be a dictionary, an array, a string, or a number,
  * depending on thee format of the API response.
  */
+
 - (void)request:(FBRequest *)request didLoad:(id)result {
     
-    if ([result isKindOfClass:[NSArray class]] && ([result count] > 0)) {
-        result = [result objectAtIndex:0];
-    }
+    //if ([result isKindOfClass:[NSArray class]] && ([result count] > 0)) {
+    //    result = [result objectAtIndex:0];
+    //}
     switch (currentAPICall) {
         case kAPIGraphMe:{
             //show profile result;
@@ -389,8 +400,17 @@ static FBSingleton *singletonDelegate = nil;
                 else {
                     [delegate FBUserFriendsAppNotUsing:nil];
                 }
-                savedAPIResult = nil;
-            }
+                savedAPIResult = nil;             }
+            break;
+        }
+        case kAPIGetAppUsersFriendsUsing:{
+            
+                if ([result isKindOfClass:[NSArray class]]) {
+                    //[delegate FBUserFriendsAppUsingLoaded:result];
+                    [delegate FBUserFriendsAppUsingLoaded:[[NSArray alloc] initWithArray:result copyItems:YES]];
+                } else if ([result isKindOfClass:[NSDecimalNumber class]]) {
+                    [delegate FBUserFriendsAppUsingLoaded:[[NSArray alloc] initWithObjects:[result stringValue], nil]];
+                }
             break;
         }
     }
