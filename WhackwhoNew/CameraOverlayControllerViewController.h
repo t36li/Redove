@@ -15,12 +15,14 @@
     UIImagePickerController *pickerReference;
     UIImage *validPhoto, *croppedImage;
     
-    IBOutlet UIView *outfitView;    
+    IBOutlet UIView *outfitView;
+    IBOutlet UIButton *takePicBtn;
     id<CameraOverlayControllerViewControllerDelegate> delegate;
 }
 
 @property (nonatomic) UIImagePickerController *pickerReference;
 @property (nonatomic) IBOutlet UIView *outfitView;
+@property (nonatomic) IBOutlet UIButton *takePicBtn;
 @property (nonatomic) UIImage *validPhoto, *croppedImage;
 @property (nonatomic) id<CameraOverlayControllerViewControllerDelegate> delegate;
 

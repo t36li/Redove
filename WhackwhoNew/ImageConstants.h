@@ -25,6 +25,8 @@
 #define hills_l9 @"cloud background.png"
 #define champ_select_bg @"loading page background.png"
 #define background2 @"background 2.png"
+#define loading_bg @"loading page final background.png"
+#define store_bg @"store background.png"
 
 //buttons
 #define Play_but @"play s.png"
@@ -47,6 +49,7 @@
 #define Mice @"mice.png"
 #define Pinky @"pinky.png"
 #define Blue @"blue.png"
+#define Loading @"loading icon.png"
 
 //Frames
 #define FriendListCell @"friend list (cell).png"
@@ -67,3 +70,7 @@
 #define starting_body @"heart.png"
 
 
+//store frames
+#define UpperShelf @"upper shelf.png"
+#define StorePin @"store pin.png"
+#define LowerShelf @"lower shelf.png"

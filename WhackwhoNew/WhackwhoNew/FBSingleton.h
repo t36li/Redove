@@ -65,6 +65,7 @@ typedef enum apiCall {
 -(void) RequestMe;
 -(void) RequestFriendList;
 -(void) logout;
+-(void) unauthorized;
 -(void) login;
 -(void) RequestFriendsNotUsing;
 -(void) RequestFriendUsing;

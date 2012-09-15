@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GlobalMethods.h"
 
 @interface StoreViewController : UIViewController {
     
