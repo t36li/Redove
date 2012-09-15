@@ -70,7 +70,7 @@
     [userInfoMapping mapKeyPath:@"faceRect" toAttribute:@"faceRect"];
     [userInfoMapping mapKeyPath:@"userImgURL" toAttribute:@"userImgURL"];
     
-    [[RKObjectManager sharedManager].mappingProvider setMapping:userInfoMapping forKeyPath:@""];
+    [[RKObjectManager sharedManager].mappingProvider setMapping:userInfoMapping forKeyPath:@"user"];
     //[[RKObjectManager sharedManager].mappingProvider registerMapping:userInfoMapping withRootKeyPath:@""];
     //[[RKObjectManager sharedManager].mappingProvider setSerializationMapping:[userInfoMapping inverseMapping] forClass:[User class]];
     [RKObjectManager sharedManager].serializationMIMEType = RKMIMETypeJSON;

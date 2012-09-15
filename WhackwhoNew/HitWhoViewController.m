@@ -8,6 +8,7 @@
 
 #import "HitWhoViewController.h"
 #import "FBSingleton.h"
+#import "Friend.h"
 
 #define ChooseToGame @"chooseToGame"
 
@@ -57,16 +58,20 @@
     
     [director runWithScene:scene];*/
     
-    [[FBSingleton sharedInstance] RequestFriendsNotUsing];
+    [[FBSingleton sharedInstance] RequestFriendUsing];
     
     table.delegate = self;
     table.dataSource = self;
     
     spinner = [SpinnerView loadSpinnerIntoView:loadingView];
+    tablepull = [[PullToRefreshView alloc] initWithScrollView:(UIScrollView *) self.table];
+    [self.table addSubview:tablepull];
+    
 }
 
--(void) viewWillAppear:(BOOL)animated{
+-(void) viewDidAppear:(BOOL)animated{
     [[FBSingleton sharedInstance] setDelegate:self];
+    [tablepull setDelegate:self];
 }
 
 - (void)viewDidUnload
@@ -80,12 +85,9 @@
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
--(void) FBUserFriendsAppNotUsing:(NSArray *)friends{
-    self.resultFriends = friends;
-    if (resultFriends){
-        [self.table reloadData];
-        [spinner removeSpinner];
-    }
+-(void) FBUserFriendsAppUsingLoaded:(NSArray *)friendsUsingApp{
+    NSLog(@"%@",friendsUsingApp);
+    [self getFriendDBInfo:friendsUsingApp];
 }
 
 #pragma mark - UITableView Datasource and Delegate Methods
@@ -123,7 +125,7 @@
     cell.name.text = (NSString *)friend.name;
     cell.name.lineBreakMode  = UILineBreakModeWordWrap;
     cell.gender.text = friend.gender;
-    NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", friend.user_id];
+    NSString *formatting = [NSString stringWithFormat:@"http://www.whackwho.com/userImages/%@.png", friend.head_id];
     
     [cell.profileImage setImageWithURL:[NSURL URLWithString:formatting] success:^(UIImage *image) {
         [cell.spinner removeSpinner];
@@ -197,7 +199,57 @@
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+/*********handle database connections:*****************/
+-(void)getFriendDBInfo:(NSArray *) friendUsingAppIDs{
+    if (friendUsingAppIDs){
+        
+        NSMutableArray *friends = [[NSMutableArray alloc] init];
+        for (NSString* fID in friendUsingAppIDs) {
+            Friend* f = [[Friend alloc] init];
+            f.user_id = fID;
+            [friends addObject:f];
+        }
+        FriendArray *friendArray = [[FriendArray alloc] init];
+        friendArray.friends = friends;
+        //[[RKObjectManager sharedManager] postObject:friendArray delegate:self];
+        [[RKObjectManager sharedManager] postObject:friendArray usingBlock:^(RKObjectLoader *loader){
+            loader.delegate = self;
+            loader.resourcePath = @"/getFriendUsingApp";
+            loader.targetObject = nil;
+        }];
+    }
+}
 
+
+-(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error{
+    NSLog(@"Load Database Failed:%@",error);
+    
+}
+
+-(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object{
+    NSLog(@"loaded responses:%@",object);
+    FriendArray *friendArray = object;
+    self.resultFriends = friendArray.friends;
+    [self.table reloadData];
+    [spinner removeSpinner];
+    [tablepull finishedLoading];
+}
+
+-(void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response{
+    NSLog(@"request body:%@",[request HTTPBodyString]);
+    NSLog(@"response statue: %d", [response statusCode]);
+    NSLog(@"response body:%@",[response bodyAsString]);
+}
+//////////////////////////
+
+//////pull the table///////////
+
+-(void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view{
+    [[FBSingleton sharedInstance] RequestFriendUsing];
+    
+}
+
+///////////////////////////////
 -(void) handleTapOnImage:(id)sender {
     UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
     UIImage *tempImage = ((UIImageView *)(tap.view)).image;

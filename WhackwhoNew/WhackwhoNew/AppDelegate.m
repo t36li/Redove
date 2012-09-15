@@ -11,6 +11,7 @@
 #import "FBSingleton.h"
 #import <RestKit/RestKit.h>
 #import "User.h"
+#import "Friend.h"
 
 @implementation AppDelegate
 
@@ -29,6 +30,7 @@
     objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
     
     [User objectMappingLoader];
+    [FriendArray objectMappingLoader];
     
     return YES;
 }

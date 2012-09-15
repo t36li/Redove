@@ -36,6 +36,10 @@
 		69C95EA7159B51C9009966DA /* play b.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C95EA1159B51C9009966DA /* play b.png */; };
 		69C95EA8159B51C9009966DA /* play s.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C95EA2159B51C9009966DA /* play s.png */; };
 		69C95EAD159B63A9009966DA /* SelectToLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C95EAC159B63A9009966DA /* SelectToLoginViewController.m */; };
+		69E9EB9B16028E4E00E52D4F /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 69E9EB9616028E4E00E52D4F /* arrow.png */; };
+		69E9EB9C16028E4E00E52D4F /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 69E9EB9716028E4E00E52D4F /* arrow@2x.png */; };
+		69E9EB9D16028E4E00E52D4F /* PullToRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E9EB9916028E4E00E52D4F /* PullToRefreshView.m */; };
+		69E9EB9E16028E4E00E52D4F /* README in Resources */ = {isa = PBXBuildFile; fileRef = 69E9EB9A16028E4E00E52D4F /* README */; };
 		C10D2FC215D060A6007B751B /* Dragbox.m in Sources */ = {isa = PBXBuildFile; fileRef = C10D2FC115D060A6007B751B /* Dragbox.m */; };
 		C13D5EF415C5CEA0006F716C /* mouth effect test1.png in Resources */ = {isa = PBXBuildFile; fileRef = C13D5EF315C5CEA0006F716C /* mouth effect test1.png */; };
 		C13D5EF915C5EF89006F716C /* redo icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C13D5EF515C5EF85006F716C /* redo icon.png */; };
@@ -571,6 +575,11 @@
 		69C95EAB159B63A9009966DA /* SelectToLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectToLoginViewController.h; sourceTree = "<group>"; };
 		69C95EAC159B63A9009966DA /* SelectToLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectToLoginViewController.m; sourceTree = "<group>"; };
 		69D2B28415E165ED00E5BA4D /* UserInfoDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoDelegate.h; sourceTree = "<group>"; };
+		69E9EB9616028E4E00E52D4F /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		69E9EB9716028E4E00E52D4F /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
+		69E9EB9816028E4E00E52D4F /* PullToRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullToRefreshView.h; sourceTree = "<group>"; };
+		69E9EB9916028E4E00E52D4F /* PullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullToRefreshView.m; sourceTree = "<group>"; };
+		69E9EB9A16028E4E00E52D4F /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		C10D2FC015D060A6007B751B /* Dragbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dragbox.h; sourceTree = "<group>"; };
 		C10D2FC115D060A6007B751B /* Dragbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dragbox.m; sourceTree = "<group>"; };
 		C10D2FCB15D09625007B751B /* StatusCocosDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatusCocosDelegate.h; sourceTree = "<group>"; };
@@ -1103,6 +1112,8 @@
 			children = (
 				69164C5D15D9F978003FD8A8 /* User.h */,
 				69164C5E15D9F978003FD8A8 /* User.m */,
+				D006F6A715B4FB7D0079626F /* Friend.h */,
+				D006F6A815B4FB7D0079626F /* Friend.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1212,8 +1223,6 @@
 				69D2B28415E165ED00E5BA4D /* UserInfoDelegate.h */,
 				C14717FE1594ACD20002FF21 /* Prefix.pch */,
 				C14717FF1594ACD20002FF21 /* main.m */,
-				D006F6A715B4FB7D0079626F /* Friend.h */,
-				D006F6A815B4FB7D0079626F /* Friend.m */,
 			);
 			name = System;
 			sourceTree = "<group>";
@@ -1304,6 +1313,19 @@
 			name = Buttons;
 			sourceTree = "<group>";
 		};
+		69E9EB9516028E4E00E52D4F /* PullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				69E9EB9616028E4E00E52D4F /* arrow.png */,
+				69E9EB9716028E4E00E52D4F /* arrow@2x.png */,
+				69E9EB9816028E4E00E52D4F /* PullToRefreshView.h */,
+				69E9EB9916028E4E00E52D4F /* PullToRefreshView.m */,
+				69E9EB9A16028E4E00E52D4F /* README */,
+			);
+			name = PullToRefresh;
+			path = "sonnyparlin-PullToRefresh-89b4d7f";
+			sourceTree = "<group>";
+		};
 		C13D5EF215C5CE8C006F716C /* Special Effects */ = {
 			isa = PBXGroup;
 			children = (
@@ -1366,6 +1388,7 @@
 				C159325B15B5DE5A009B7955 /* FlashToCocosARC */,
 				C159324F15B5DE51009B7955 /* TBXML */,
 				D0E30674159E4B2E0080D845 /* WEPopover */,
+				69E9EB9516028E4E00E52D4F /* PullToRefresh */,
 				69C95E8B159A4A15009966DA /* Main Game */,
 				69C95E86159A461A009966DA /* Graphics */,
 				69C95E88159A462A009966DA /* Audio */,
@@ -2396,6 +2419,9 @@
 				C14385EB15CB339E008D9AE7 /* baby_animations.xml in Resources */,
 				C198EE2E15D0476E004D170C /* hammer.png in Resources */,
 				C1D342AD15FBD29C00B4CD2D /* bomb.png in Resources */,
+				69E9EB9B16028E4E00E52D4F /* arrow.png in Resources */,
+				69E9EB9C16028E4E00E52D4F /* arrow@2x.png in Resources */,
+				69E9EB9E16028E4E00E52D4F /* README in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2453,6 +2479,7 @@
 				C198EE2B15CF7889004D170C /* EmailViewController.m in Sources */,
 				C10D2FC215D060A6007B751B /* Dragbox.m in Sources */,
 				69164C5F15D9F978003FD8A8 /* User.m in Sources */,
+				69E9EB9D16028E4E00E52D4F /* PullToRefreshView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2648,6 +2675,7 @@
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ObjC",
+					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2A3A3CB5-3567-463A-B708-BA60487D1C68";
@@ -2682,6 +2710,7 @@
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ObjC",
+					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2A3A3CB5-3567-463A-B708-BA60487D1C68";

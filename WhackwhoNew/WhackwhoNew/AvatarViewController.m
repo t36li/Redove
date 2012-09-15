@@ -111,24 +111,7 @@
     User *user = [User alloc];
     UserInfo *usrInfo = [UserInfo sharedInstance];
     [user getFromUserInfo];
-    /*
-    [[RKObjectManager sharedManager] postObject delegate:(id<RKObjectLoaderDelegate>):user usingBlock:^(RKObjectLoader *loader){
-        //loader.targetObject = nil;
-        RKParams* params = [RKParams params];
-        //[params setValue:[NSString stringWithFormat:@"%d",user.whackWhoId] forParam:@"whackwho_id"];
-        //[params setValue:[NSString stringWithFormat:@"%d",user.headId] forParam:@"head_id"];
-        //[params setValue:user.leftEyePosition forParam:@"leftEyePosition"];
-        //[params setValue:user.rightEyePosition forParam:@"rightEyePosition"];
-        //[params setValue:user.mouthPosition forParam:@"mouthPosition"];
-        //[params setValue:user.faceRect forParam:@"faceRect"];
-        
-        NSData* imageData = UIImagePNGRepresentation(usrInfo->usrImg);
-        [params setData:imageData MIMEType:@"image/png" forParam:[NSString stringWithFormat:@"%i",user.headId]];
-        
-        loader.params = params;
-        loader.delegate = self;
-    }];//put usrImg
-     */
+    
     RKParams* params = [RKParams params];
     [params setValue:[NSString stringWithFormat:@"%d",user.whackWhoId] forParam:@"whackwho_id"];
     [params setValue:[NSString stringWithFormat:@"%d",user.headId] forParam:@"head_id"];
