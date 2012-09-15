@@ -51,8 +51,8 @@
 
 -(IBAction)logout_touched:(id)sender{
     if ([[FBSingleton sharedInstance] isLogIn]){
-        //[[FBSingleton sharedInstance] setDelegate:self];
-        [[FBSingleton sharedInstance] logout];
+        [[FBSingleton sharedInstance] logout]; //logout facebook with authorized info
+        //[[FBSingleton sharedInstance] unauthorized]; //facebook user info unauthorized
     }
 }
 

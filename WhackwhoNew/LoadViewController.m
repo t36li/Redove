@@ -40,12 +40,15 @@
             fbs = [FBSingleton sharedInstance];
             if ([fbs isLogIn]) [fbs RequestMe];
             break;
+        case NotLogIn :
+            
+            
         default:
             break;
     }
     
     NSLog(@"load Background");
-    [gmethods setViewBackground:FriendList_bg viewSender:self.view];
+    [gmethods setViewBackground:loading_bg viewSender:self.view];
     
     NSLog(@"load Loading Background");
     [myLabel setText:@"Loading...."];

@@ -134,8 +134,11 @@
 
 -(IBAction)Friend_touched:(id)sender{
     if ([fbs isLogIn]){
+        /********
         [[FBSingleton sharedInstance] RequestFriendList];
         [self performSegueWithIdentifier:PlayToFriendSegue sender:friend_but];
+         ********/
+        
     }
 }
 

@@ -150,7 +150,16 @@ static FBSingleton *singletonDelegate = nil;
 }
 
 -(void) logout{
-    [_facebook logout]; 
+    [_facebook logout];
+}
+
+-(void) unauthorized{
+    currentAPICall = kAPIGraphUserPermissionsDelete;
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
+    [_facebook requestWithGraphPath:@"me/permissions"
+                                    andParams:params
+                                andHttpMethod:@"DELETE"
+                                  andDelegate:self];
 }
 
 /*
@@ -412,6 +421,17 @@ static FBSingleton *singletonDelegate = nil;
                     [delegate FBUserFriendsAppUsingLoaded:[[NSArray alloc] initWithObjects:[result stringValue], nil]];
                 }
             break;
+        }
+        case kAPIGraphUserPermissionsDelete:{
+            // Nil out the session variables to prevent
+            // the app from thinking there is a valid session
+            _facebook.accessToken = nil;
+            _facebook.expirationDate = nil;
+            isLogIn = NO;
+            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:FBAccessToken];
+            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:FBExpirationDateKey];
+            [[NSUserDefaults standardUserDefaults] setInteger:NotLogIn forKey:LogInAs];
+            [delegate FBSingletonDidLogout];
         }
     }
 }
