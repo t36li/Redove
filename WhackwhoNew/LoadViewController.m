@@ -234,7 +234,7 @@
         [takePicAlert show];
     } else {
         [myLabel setText:@"Loading Complete!"];
-        [self performSegueWithIdentifier:@"GoToMenuSegue" sender:nil];
+        [self performSelector:@selector(goToMenu) withObject:nil afterDelay:2.5];
     }
 }
 
@@ -256,15 +256,9 @@
 
 
 
-/*-(void) goToMenu {
+-(void) goToMenu {
     [self performSegueWithIdentifier:@"GoToMenuSegue" sender:nil];
-    CCDirector *director = [CCDirector sharedDirector];
-    [director removeFromParentViewController];
-    [director.view removeFromSuperview];
-    [director didMoveToParentViewController:nil];
-    
-    [director popToRootScene];
-}*/
+}
 
 - (void)viewDidUnload
 {
