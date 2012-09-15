@@ -269,6 +269,8 @@
                 CCScene *scene = [[CCDirector sharedDirector] runningScene];
                 id layer = [[scene children] objectAtIndex:0];
                 [layer updateCharacterWithImage:equipment.image bodyPart:item.tag];
+                
+                [item setBackgroundColor:[UIColor clearColor]];
                 break;
             //if not in vincinity AND invalid gear part
             } else {
