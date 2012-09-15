@@ -8,9 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
-#import "MainMenuDelegate.h"
+#import "FBSingletonDelegate.h"
+#import "FBSingleton.h"
+#import <RestKit/RestKit.h>
+#import "UserInfo.h"
+#import "User.h"
+#import "GlobalMethods.h"
 
-@interface LoadViewController : UIViewController <MainMenuDelegate> {
+@interface LoadViewController : UIViewController <FBSingletonDelegate,RKRequestDelegate,RKObjectLoaderDelegate, UIAlertViewDelegate> {
+    
+    UserInfo *usr;
+    FBSingleton *fbs;
+    GlobalMethods *gmethods;
+    
+    IBOutlet UILabel *myLabel;
 }
+
+@property (nonatomic) IBOutlet UILabel *myLabel;
 
 @end

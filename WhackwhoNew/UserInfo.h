@@ -37,7 +37,7 @@ NSString *const UserChinPosition = @"ChinPosition";
     NSString *usrImgURL;
     UIImage *croppedImage;
     UIImage *usrImg;
-    UIImage *gameImage;
+    //UIImage *gameImage;
     CGPoint leftEyePosition, rightEyePosition, mouthPosition;
     CGRect faceRect;
     
@@ -50,14 +50,16 @@ NSString *const UserChinPosition = @"ChinPosition";
 @property (nonatomic, assign) CGRect faceRect;
 @property (nonatomic) id<UserInfoDelegate> delegate;
 
+@property (nonatomic, retain) UIImage *croppedImage, *usrImg;;
+
 
 +(id)sharedInstance;
 -(void) clearUserInfo;
 -(void) setUserPicture:(UIImage *)img delegate:(id)sender;
 -(UIImage *)getCroppedImage;
--(void) setGameImage:(UIImage *)img;
+//-(void) setGameImage:(UIImage *)img;
+//-(UIImage *) gameImage;
 +(UIImage *)getCroppedImage:(UIImage *)img inRect:(CGRect)rect;
--(UIImage *) exportImage;
 -(CGPoint) getLeftEyePos;
 -(CGPoint) getRightEyePos;
 -(CGPoint) getMouthPos;

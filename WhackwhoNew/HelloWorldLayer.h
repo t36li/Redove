@@ -26,14 +26,14 @@
     NSMutableArray *hearts;
     NSMutableArray *rainbows;
     NSMutableArray *coins;
+    NSMutableArray *bomb;
     //CCAnimation *laughAnim;
     CCLabelTTF *hitsLabel, *timeLabel, *scoreLabel, *comboLabel;
     ccTime totalTime;
     int myTime, lives;
     int consecHits, baseScore;
-    //int numHitOccur, numBombOccur;
     float speed;
-    BOOL gameOver, occupied, gamePaused;
+    BOOL gameOver, gamePaused, shake_once, has_bomb;
     HUDLayer * _hud;
     id<GameOverDelegate> gameOverDelegate;
     NSArray *botLeft, *botRight, *midLeft, *midRight, *topLeft, *topMid, *topRight;

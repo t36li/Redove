@@ -385,6 +385,7 @@
 		C1CDF56815B8ABB70002085B /* play again key.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CDF56615B8ABB60002085B /* play again key.png */; };
 		C1CDF56915B8ABB70002085B /* home key.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CDF56715B8ABB60002085B /* home key.png */; };
 		C1CDF59215C0ECDF0002085B /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CDF59115C0ECDF0002085B /* fire.png */; };
+		C1D342AD15FBD29C00B4CD2D /* bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = C1D342AC15FBD29C00B4CD2D /* bomb.png */; };
 		C1DCCBC615CB5143000CD722 /* StatusViewLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DCCBC515CB5143000CD722 /* StatusViewLayer.m */; };
 		C1FE252315AF656E00DAF258 /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE252215AF656E00DAF258 /* HUDLayer.m */; };
 		C1FE252715AF65EF00DAF258 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE252515AF65EF00DAF258 /* heart.png */; };
@@ -958,6 +959,7 @@
 		C1CDF56615B8ABB60002085B /* play again key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play again key.png"; sourceTree = "<group>"; };
 		C1CDF56715B8ABB60002085B /* home key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home key.png"; sourceTree = "<group>"; };
 		C1CDF59115C0ECDF0002085B /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
+		C1D342AC15FBD29C00B4CD2D /* bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bomb.png; sourceTree = "<group>"; };
 		C1DCCBC415CB5143000CD722 /* StatusViewLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewLayer.h; sourceTree = "<group>"; };
 		C1DCCBC515CB5143000CD722 /* StatusViewLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewLayer.m; sourceTree = "<group>"; };
 		C1FE252115AF656E00DAF258 /* HUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDLayer.h; sourceTree = "<group>"; };
@@ -1918,6 +1920,7 @@
 		C1FE252915AF661200DAF258 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				C1D342AC15FBD29C00B4CD2D /* bomb.png */,
 				C198EE2D15D0476E004D170C /* hammer.png */,
 				C1FE252515AF65EF00DAF258 /* heart.png */,
 				C1CDF59115C0ECDF0002085B /* fire.png */,

@@ -41,7 +41,7 @@
         
         self.isTouchEnabled = YES;
         
-        UIImage *face_DB = [[UserInfo sharedInstance] exportImage];
+        UIImage *face_DB = [[UserInfo sharedInstance] croppedImage];
         
         CGSize s = CGSizeMake(190, 250); //this is the size of the screen
         
@@ -88,9 +88,9 @@
         helmet.scale = 0.8;
         [self addChild:helmet z:5 tag:head_Label];
         //ADD face as child
-        face.position = ccp(helmet.boundingBox.size.width/2, helmet.boundingBox.size.height);
+        face.position = ccp(helmet.boundingBox.size.width/2, helmet.boundingBox.size.height/2);
         [helmet addChild:face z:-10 tag:face_label];
-
+         
         //animations
         CCMoveBy *moveHeadUp = [CCMoveBy actionWithDuration:2.5 position:ccp(0,10)];
         CCMoveBy *moveHeadDown = [CCMoveBy actionWithDuration:2.5 position:ccp(0,-10)];

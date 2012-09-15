@@ -119,7 +119,7 @@
     [params setValue:user.rightEyePosition forParam:@"rightEyePosition"];
     [params setValue:user.mouthPosition forParam:@"mouthPosition"];
     [params setValue:user.faceRect forParam:@"faceRect"];
-    UIImage *uploadImage = usrInfo->croppedImage;//[UIImage imageNamed:@"pause.png"];//usrInfo->usrImg;
+    UIImage *uploadImage = usrInfo.usrImg;//[UIImage imageNamed:@"pause.png"];//usrInfo->usrImg;
     NSData* imageData = UIImagePNGRepresentation(uploadImage);
     [params setData:imageData MIMEType:@"image/png" forParam:[NSString stringWithFormat:@"%d",user.headId]];
     
@@ -139,8 +139,9 @@
         //photoView.image = image;
         //[usr setUserPicture:image];
         [usr setUserPicture:image delegate:self];
+        usr.croppedImage = croppedImg;
         //headView.image = croppedImg;
-        backgroundView.image = usr.exportImage;
+        backgroundView.image = usr.croppedImage;
         newPhoto = YES;
     }
 }
@@ -174,7 +175,7 @@
 
 -(IBAction) addPicture:(id)sender {
     //headView.image = [[UserInfo sharedInstance] getCroppedImage];
-    backgroundView.image = [[UserInfo sharedInstance] exportImage];
+    backgroundView.image = [[UserInfo sharedInstance] usrImg];
 }
 
 - (IBAction)Back_Touched:(id)sender {

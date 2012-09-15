@@ -24,6 +24,7 @@
 #define hills_l8 @"hills_L8_new.png"
 #define hills_l9 @"cloud background.png"
 #define champ_select_bg @"loading page background.png"
+#define background2 @"background 2.png"
 
 //buttons
 #define Play_but @"play s.png"

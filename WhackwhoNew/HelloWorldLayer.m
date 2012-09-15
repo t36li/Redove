@@ -14,7 +14,7 @@
 #import <Foundation/Foundation.h>
 #import "CocosViewController.h"
 #import "StatusViewLayer.h"
-
+#import <AudioToolbox/AudioServices.h>
 
 #pragma mark - HelloWorldLayer
 
@@ -79,105 +79,36 @@
         self.isTouchEnabled = YES;
         gameOver = FALSE;
         gamePaused = FALSE;
+        has_bomb = FALSE;
         coins = [[NSMutableArray alloc] init];
-        
+        bomb = [[NSMutableArray alloc] init];
         CGSize s = CGSizeMake(480, 320);
+        CCSprite *bg;
         
-        //CCSprite *test = [CCSprite spriteWithFile:@"hills_finalView.png"];
-        //test.scale = 0.5;
-        //test.anchorPoint = ccp(0.5,0.5);
-        //test.position = ccp(s.width/2, s.height/2);
-        //[self addChild:test];
-        
-        //testing: hard-code 5 points
-        botLeft = [[NSArray alloc] initWithObjects:
-                   [NSValue valueWithCGPoint:CGPointMake(16, 146)],
-                   [NSValue valueWithCGPoint:CGPointMake(63, 135.5)],
-                   [NSValue valueWithCGPoint:CGPointMake(105.5, 111)],
-                   [NSValue valueWithCGPoint:CGPointMake(135, 78.5)],
-                   [NSValue valueWithCGPoint:CGPointMake(151.5, 44)],
-                   nil];
-        botRight = [[NSArray alloc] initWithObjects:
-                    [NSValue valueWithCGPoint:CGPointMake(390/2, 320-479/2)],
-                    [NSValue valueWithCGPoint:CGPointMake(504/2, 320-452/2)],
-                    [NSValue valueWithCGPoint:CGPointMake(634/2, 320-434/2)],
-                    [NSValue valueWithCGPoint:CGPointMake(763/2, 320-455/2)],
-                    [NSValue valueWithCGPoint:CGPointMake(872/2, 320-491/2)],
-                    nil];
-        midLeft = [[NSArray alloc] initWithObjects:
-                   [NSValue valueWithCGPoint:CGPointMake(179/2, 320-326/2)],
-                   [NSValue valueWithCGPoint:CGPointMake(321/2, 320-296/2)],
-                   [NSValue valueWithCGPoint:CGPointMake(439/2, 320-345/2)],
-                   nil];
-        midRight = [[NSArray alloc] initWithObjects:
-                    [NSValue valueWithCGPoint:CGPointMake(546/2, 320-334/2)],
-                    //[NSValue valueWithCGPoint:CGPointMake(648/2, 320-274/2)],
-                    [NSValue valueWithCGPoint:CGPointMake(772/2, 320-253/2)],
-                    [NSValue valueWithCGPoint:CGPointMake(905/2, 320-273/2)],
-                    nil];
-        topMid = [[NSArray alloc] initWithObjects:
-                  //[NSValue valueWithCGPoint:CGPointMake(316/2, 320-262/2)],
-                  //[NSValue valueWithCGPoint:CGPointMake(357/2, 320-229/2)],
-                  [NSValue valueWithCGPoint:CGPointMake(411/2, 320-195/2)],
-                  [NSValue valueWithCGPoint:CGPointMake(466/2, 320-174/2)],
-                  [NSValue valueWithCGPoint:CGPointMake(553/2, 320-164/2)],
-                  [NSValue valueWithCGPoint:CGPointMake(609/2, 320-167/2)],
-                  [NSValue valueWithCGPoint:CGPointMake(672/2, 320-184/2)],
-                  //[NSValue valueWithCGPoint:CGPointMake(720/2, 320-202/2)],
-                  //[NSValue valueWithCGPoint:CGPointMake(761/2, 320-224/2)],
-                  nil];
-        topLeft = [[NSArray alloc] initWithObjects:
-                   [NSValue valueWithCGPoint:CGPointMake(30/2, 320-153/2)],
-                   [NSValue valueWithCGPoint:CGPointMake(85/2, 320-151/2)],
-                   [NSValue valueWithCGPoint:CGPointMake(133/2, 320-166/2)],
-                   //[NSValue valueWithCGPoint:CGPointMake(188/2, 320-189/2)],
-                   //[NSValue valueWithCGPoint:CGPointMake(247/2, 320-233/2)],
-                   nil];
-        topRight = [[NSArray alloc] initWithObjects:
-                   //[NSValue valueWithCGPoint:CGPointMake(804/2, 320-213/2)],
-                   [NSValue valueWithCGPoint:CGPointMake(843/2, 320-196/2)],
-                   [NSValue valueWithCGPoint:CGPointMake(897/2, 320-176/2)],
-                   //[NSValue valueWithCGPoint:CGPointMake(938/2, 320-169/2)],
-                   nil];
-        
-        //add background this is for retina display
-        [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
+        //determine which background to load
+        int level = [[Game sharedGame] difficulty];
+        switch (level) {
+            case 1:
+                bg = [CCSprite spriteWithFile:background2];
+                bg.position = ccp(s.width/2, s.height/2);
+                [self addChild:bg];
+                break;
+            default:
+                [self performSelector:@selector(setHillsLevel)];
+                break;
+        }
         
         //set background color to white
         glClearColor(255, 255, 255, 255);
         
-        CCSprite *bg1 = [CCSprite spriteWithFile:hills_l1];
-        CCSprite *bg2 = [CCSprite spriteWithFile:hills_l2];
-        CCSprite *bg3 = [CCSprite spriteWithFile:hills_l3];
-        CCSprite *bg4 = [CCSprite spriteWithFile:hills_l4];
-        CCSprite *bg5 = [CCSprite spriteWithFile:hills_l5];
-        CCSprite *bg6 = [CCSprite spriteWithFile:hills_l6];
-        CCSprite *bg7 = [CCSprite spriteWithFile:hills_l7];
-        CCSprite *bg8 = [CCSprite spriteWithFile:hills_l8];
-        CCSprite *bg9 = [CCSprite spriteWithFile:hills_l9];
+        //code for initializing shake
+        self.isAccelerometerEnabled = YES;
+        [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1/60];
+        shake_once = false;
         
-        bg9.position = ccp(s.width/2, s.height/2);
-        bg8.position = ccp(s.width/2, s.height/2);
-        bg7.position = ccp(s.width/2, s.height/2);
-        bg6.position = ccp(s.width/2, s.height/2);
-        bg5.position = ccp(s.width/2, s.height/2);
-        bg4.position = ccp(s.width/2, s.height/2);
-        bg3.position = ccp(s.width/2, s.height/2);
-        bg2.position = ccp(s.width/2, s.height/2);
-        bg1.position = ccp(s.width/2, s.height/2);
         
-        [self addChild:bg1 z:-30];
-        [self addChild:bg2 z:-40];
-        [self addChild:bg3 z:-50];
-        [self addChild:bg4 z:-60];
-        [self addChild:bg5 z:-70];
-        [self addChild:bg6 z:-80];
-        [self addChild:bg7 z:-90];
-        [self addChild:bg8 z:-100];
-        [self addChild:bg9 z:-110];
         [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
 
-       
         //add particle emitter
         //emitter = [[CCParticleExplosion alloc] init];
         //emitter.visible = FALSE;
@@ -198,13 +129,6 @@
         //hitsLabel.scale = 0.1;
         [self addChild:hitsLabel z:10];
         
-        //add "combo" label
-       // comboLabel = [CCLabelTTF labelWithString:@"  HIT COMBO" fontName:@"chalkduster" fontSize:20];
-       // comboLabel.color = ccc3(255, 249, 0);
-       // comboLabel.anchorPoint = ccp(0.5,1);
-       // comboLabel.position = ccp(s.width/2, s.height - 30);
-       // [self addChild:comboLabel z:10];
-        
         //add "pause" label
         CCMenuItemImage *pause = [CCMenuItemImage itemWithNormalImage:@"pause.png" selectedImage:@"pause.png" target:self selector:@selector(pauseGame)];
         CCMenu *pauseMenu = [CCMenu menuWithItems:pause, nil];
@@ -215,7 +139,6 @@
         //add "life" sprites
         lives = 3;
         hearts = [[NSMutableArray alloc] init];
-        
         for (int i = 0; i < lives; i++) {
             CCSprite *life = [CCSprite spriteWithFile:@"heart.png"];
             life.anchorPoint = ccp(1,1);
@@ -224,33 +147,7 @@
             [self addChild:life z:10];
         }
         
-        //add "rainbows"
-        rainbows = [[NSMutableArray alloc] init];
-        CCSprite *rainbow = [CCSprite spriteWithFile:@"rainbow4.png"];
-        rainbow.position = ccp(156, 192);
-        rainbow.visible = FALSE;
-        [rainbows addObject:rainbow];
-        CCSprite *rainbow2 = [CCSprite spriteWithTexture:[rainbow texture]];
-        rainbow2.position = ccp(14, 247);
-        rainbow2.scale = 0.5;
-        rainbow2.visible = FALSE;
-        [rainbows addObject:rainbow2];
-        CCSprite *rainbow3 = [CCSprite spriteWithTexture:[rainbow texture]];
-        rainbow3.position = ccp(443, 214);
-        rainbow3.scale = 0.8;
-        rainbow3.visible = FALSE;
-        [rainbows addObject:rainbow3];
-        CCSprite *rainbow4 = [CCSprite spriteWithTexture:[rainbow texture]];
-        rainbow4.position = ccp(305, 220);
-        rainbow4.scale = 0.3;
-        rainbow4.visible = FALSE;
-        [rainbows addObject:rainbow4];
-        [self addChild:rainbow4 z:-95];
-        [self addChild:rainbow3 z:-95];
-        [self addChild:rainbow2 z:-95];
-        [self addChild:rainbow z:-95];
-        
-        //add "Scoreboard and flowers"
+        //add "Scoreboard"
         CCSprite *scoreboard = [CCSprite spriteWithFile:@"scoreboard.png"];
         scoreboard.anchorPoint = ccp(0.5, 0);
         scoreboard.position = ccp(s.width/2 + 10, -10);
@@ -270,13 +167,10 @@
         
         //testing UserInfo image taken from camera
         UserInfo *usr = [UserInfo sharedInstance];
-        UIImage *bigHead = usr.exportImage; //640 x 852 : 64 x 85.2
+        UIImage *bigHead = usr.croppedImage; //640 x 852 : 64 x 85.2
         
         // Old big head contentSize: 73.5 x 76.5
         //UIImage *bigHead = [UIImage imageNamed:standard_blue_head];
-
-        //the number of total heads to include in the heads array should be relative to the difficulty level chosen previously... max will be 10 ATM...this should be a loop that fast-enumerates through all the chosen names array from the previous view
-        //for testing purposes, set to 7
         
         //testing the upper and lower body piece-together
         UIImage *lowerBody = [UIImage imageNamed:standard_blue_body];
@@ -295,23 +189,11 @@
             head.position = ccp(0,0);
             
             CCSprite *body = [CCSprite spriteWithCGImage:[lowerBody CGImage] key:[NSString stringWithFormat:@"body_frame%i", index]];
-                        
-            //if ([selectedHeads containsObject:friend]) {
-            //    head.isSelectedHit = FALSE;
-            //} else {
-            //    head.isSelectedHit = TRUE;
-            //}
             
             [head addChild:body];
             body.anchorPoint = ccp(0.5, 0.75); //90 x 31 -> 182 x 120
             body.position = ccp(160,20);
             body.scale = 1.4;
-            //body_height_now = body.contentSize.height * body.scaleY;
-            //body_bounding_width = body.boundingBox.size.width;
-            //body_bounding_height = body.boundingBox.size.height;
-            
-            //body.anchorPoint = ccp(0.5, 0.05); //88 x 35
-            //body.position = ccp(44, 45);
 
             [self addChild:head];
             [heads addObject:head];
@@ -324,6 +206,119 @@
 	}
     
 	return self;
+}
+
+-(void) setHillsLevel {
+    //testing: hard-code 5 points
+    botLeft = [[NSArray alloc] initWithObjects:
+               [NSValue valueWithCGPoint:CGPointMake(16, 146)],
+               [NSValue valueWithCGPoint:CGPointMake(63, 135.5)],
+               [NSValue valueWithCGPoint:CGPointMake(105.5, 111)],
+               [NSValue valueWithCGPoint:CGPointMake(135, 78.5)],
+               [NSValue valueWithCGPoint:CGPointMake(151.5, 44)],
+               nil];
+    botRight = [[NSArray alloc] initWithObjects:
+                [NSValue valueWithCGPoint:CGPointMake(390/2, 320-479/2)],
+                [NSValue valueWithCGPoint:CGPointMake(504/2, 320-452/2)],
+                [NSValue valueWithCGPoint:CGPointMake(634/2, 320-434/2)],
+                [NSValue valueWithCGPoint:CGPointMake(763/2, 320-455/2)],
+                [NSValue valueWithCGPoint:CGPointMake(872/2, 320-491/2)],
+                nil];
+    midLeft = [[NSArray alloc] initWithObjects:
+               [NSValue valueWithCGPoint:CGPointMake(179/2, 320-326/2)],
+               [NSValue valueWithCGPoint:CGPointMake(321/2, 320-296/2)],
+               [NSValue valueWithCGPoint:CGPointMake(439/2, 320-345/2)],
+               nil];
+    midRight = [[NSArray alloc] initWithObjects:
+                [NSValue valueWithCGPoint:CGPointMake(546/2, 320-334/2)],
+                //[NSValue valueWithCGPoint:CGPointMake(648/2, 320-274/2)],
+                [NSValue valueWithCGPoint:CGPointMake(772/2, 320-253/2)],
+                [NSValue valueWithCGPoint:CGPointMake(905/2, 320-273/2)],
+                nil];
+    topMid = [[NSArray alloc] initWithObjects:
+              //[NSValue valueWithCGPoint:CGPointMake(316/2, 320-262/2)],
+              //[NSValue valueWithCGPoint:CGPointMake(357/2, 320-229/2)],
+              [NSValue valueWithCGPoint:CGPointMake(411/2, 320-195/2)],
+              [NSValue valueWithCGPoint:CGPointMake(466/2, 320-174/2)],
+              [NSValue valueWithCGPoint:CGPointMake(553/2, 320-164/2)],
+              [NSValue valueWithCGPoint:CGPointMake(609/2, 320-167/2)],
+              [NSValue valueWithCGPoint:CGPointMake(672/2, 320-184/2)],
+              //[NSValue valueWithCGPoint:CGPointMake(720/2, 320-202/2)],
+              //[NSValue valueWithCGPoint:CGPointMake(761/2, 320-224/2)],
+              nil];
+    topLeft = [[NSArray alloc] initWithObjects:
+               [NSValue valueWithCGPoint:CGPointMake(30/2, 320-153/2)],
+               [NSValue valueWithCGPoint:CGPointMake(85/2, 320-151/2)],
+               [NSValue valueWithCGPoint:CGPointMake(133/2, 320-166/2)],
+               //[NSValue valueWithCGPoint:CGPointMake(188/2, 320-189/2)],
+               //[NSValue valueWithCGPoint:CGPointMake(247/2, 320-233/2)],
+               nil];
+    topRight = [[NSArray alloc] initWithObjects:
+                //[NSValue valueWithCGPoint:CGPointMake(804/2, 320-213/2)],
+                [NSValue valueWithCGPoint:CGPointMake(843/2, 320-196/2)],
+                [NSValue valueWithCGPoint:CGPointMake(897/2, 320-176/2)],
+                //[NSValue valueWithCGPoint:CGPointMake(938/2, 320-169/2)],
+                nil];
+    
+    CGSize s = CGSizeMake(480, 320);
+    //add background this is for retina display
+    [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
+    CCSprite *bg1 = [CCSprite spriteWithFile:hills_l1];
+    CCSprite *bg2 = [CCSprite spriteWithFile:hills_l2];
+    CCSprite *bg3 = [CCSprite spriteWithFile:hills_l3];
+    CCSprite *bg4 = [CCSprite spriteWithFile:hills_l4];
+    CCSprite *bg5 = [CCSprite spriteWithFile:hills_l5];
+    CCSprite *bg6 = [CCSprite spriteWithFile:hills_l6];
+    CCSprite *bg7 = [CCSprite spriteWithFile:hills_l7];
+    CCSprite *bg8 = [CCSprite spriteWithFile:hills_l8];
+    CCSprite *bg9 = [CCSprite spriteWithFile:hills_l9];
+    
+    bg9.position = ccp(s.width/2, s.height/2);
+    bg8.position = ccp(s.width/2, s.height/2);
+    bg7.position = ccp(s.width/2, s.height/2);
+    bg6.position = ccp(s.width/2, s.height/2);
+    bg5.position = ccp(s.width/2, s.height/2);
+    bg4.position = ccp(s.width/2, s.height/2);
+    bg3.position = ccp(s.width/2, s.height/2);
+    bg2.position = ccp(s.width/2, s.height/2);
+    bg1.position = ccp(s.width/2, s.height/2);
+    
+    [self addChild:bg1 z:-30];
+    [self addChild:bg2 z:-40];
+    [self addChild:bg3 z:-50];
+    [self addChild:bg4 z:-60];
+    [self addChild:bg5 z:-70];
+    [self addChild:bg6 z:-80];
+    [self addChild:bg7 z:-90];
+    [self addChild:bg8 z:-100];
+    [self addChild:bg9 z:-110];
+    
+    
+    //add "rainbows"
+    rainbows = [[NSMutableArray alloc] init];
+    CCSprite *rainbow = [CCSprite spriteWithFile:@"rainbow4.png"];
+    rainbow.position = ccp(156, 192);
+    rainbow.visible = FALSE;
+    [rainbows addObject:rainbow];
+    CCSprite *rainbow2 = [CCSprite spriteWithTexture:[rainbow texture]];
+    rainbow2.position = ccp(14, 247);
+    rainbow2.scale = 0.5;
+    rainbow2.visible = FALSE;
+    [rainbows addObject:rainbow2];
+    CCSprite *rainbow3 = [CCSprite spriteWithTexture:[rainbow texture]];
+    rainbow3.position = ccp(443, 214);
+    rainbow3.scale = 0.8;
+    rainbow3.visible = FALSE;
+    [rainbows addObject:rainbow3];
+    CCSprite *rainbow4 = [CCSprite spriteWithTexture:[rainbow texture]];
+    rainbow4.position = ccp(305, 220);
+    rainbow4.scale = 0.3;
+    rainbow4.visible = FALSE;
+    [rainbows addObject:rainbow4];
+    [self addChild:rainbow4 z:-95];
+    [self addChild:rainbow3 z:-95];
+    [self addChild:rainbow2 z:-95];
+    [self addChild:rainbow z:-95];
 }
 
 -(void) pauseGame {
@@ -467,57 +462,7 @@
 
 -(void) popHead: (Character *) head {
     
-    //float width_now = head.contentSize.width * head.scaleX;
     float height_now = head.contentSize.height * head.scaleY; //76.5
-    //float height = head.contentSize.height; //255
-    //CCLOG(@"%f", height_now);
-    //CCLOG(@"%f", height);
-    /* random location code
-     occupied = FALSE;
-     int maxX = s.width - 40 - 100;
-     int maxY = s.height * 0.5;
-     int randX = arc4random() % maxX+40;
-     int randY = arc4random() % maxY+40;
-     //int haveBomb = arc4random() % 12;
-     
-     head.anchorPoint = ccp(0,0);
-     head.position = ccp(randX, randY);
-     CGRect box1 = CGRectMake(head.position.x, head.position.y, [head boundingBox].size.width, [head boundingBox].size.height);
-     
-     
-     for (Character *tok in heads) {
-     if (![[tok imageName] isEqualToString:[head imageName]]) {
-     CGRect box2 = CGRectMake(tok.position.x, tok.position.y, [tok boundingBox].size.width, [tok boundingBox].size.height);
-     if (CGRectIntersectsRect(box1, box2)) {
-     CCLOG(@"intersected!");
-     occupied = TRUE;
-     break;
-     }
-     }
-     }
-     
-     if (!occupied) {
-     if (haveBomb == 0) {
-     CCSprite *bomb = [CCSprite spriteWithFile:@"bob_resized.png"];
-     bomb.scale = 0.5;
-     //bomb.anchorPoint = ccp(0.5, 0);
-     [head addChild:bomb z:10];
-     bomb.position = ccp(head.contentSize.width/2,head.contentSize.height);
-     }
-     //Appear animations and tasks
-     head.didMiss = TRUE;
-     CCFadeTo *fadeOut = [CCFadeTo actionWithDuration:0.5 opacity:0];
-     CCFadeTo *fadeIn = [CCFadeTo actionWithDuration:0.5 opacity:255];
-     CCCallFuncN *setTappable = [CCCallFuncN actionWithTarget:self selector:@selector(setTappable:)];
-     CCCallFuncN *unsetTappable = [CCCallFuncN actionWithTarget:self selector:@selector(unSetTappable:)];
-     CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
-     //CCAnimate *laugh = [CCAnimate actionWithAnimation:laughAnim];
-     CCDelayTime *delay = [CCDelayTime actionWithDuration:0.1];
-     
-     //to fix "bug" put unsetTappble infront of fadeout
-     [head runAction:[CCSequence actions:setTappable, fadeIn, delay, fadeOut, unsetTappable, delay, checkCombo, nil]];
-     
-     }*/
     
     // algorithm: random the hill that it will pop up, then need to random the rotation... either left or right
     int randHill = arc4random() % 7;
@@ -597,7 +542,7 @@
             //check for collision (i.e. overlap)
             absrect2 = CGRectMake(head2.position.x, head2.position.y, [head2 boundingBox].size.width, [head2 boundingBox].size.height);
             if (CGRectIntersectsRect(absrect1, absrect2)) {
-                CCLOG(@"intersected!");
+                //CCLOG(@"intersected!");
                 head.position = ccp(0,0);
                 head.scale = 0.2;
                 head.visible = FALSE;
@@ -608,6 +553,22 @@
     }
     
     //now, this gets executed if no collission is detected....
+    
+#pragma mark - bomb popup code
+    //10% chance for a bomb to popup
+    if (arc4random() % 100 < 10 && !has_bomb) {
+        has_bomb = TRUE;
+        CCSprite *testObj = [CCSprite spriteWithFile:@"bomb.png"];
+        testObj.position = ccp(head.position.x + head.contentSize.width * head.scaleX/2, head.position.y+50);
+        testObj.scale = 2.0;
+        testObj.tag = 0; //tag will serve as hit or no-hit; 0 = nohit, 1 = hit
+        [self addChild:testObj];
+        [bomb addObject:testObj];
+        
+        CCRotateBy *rotateBomb = [CCRotateBy actionWithDuration:2.0f angle:(360*7)];
+        CCCallFuncN *removeBomb = [CCCallFuncN actionWithTarget:self selector:@selector(removeBomb:)];
+        [testObj runAction:[CCSequence actions: rotateBomb, removeBomb, nil]];
+    }
     
     //obtain rotation angle.... from method
     //angel is in radians already
@@ -643,7 +604,7 @@
     float rise = pt2.y - pt1.y;
     float run = pt2.x - pt1.x;
     float angle = atanf(rise/run) * -1;
-    CCLOG(@"%f", angle);
+    //CCLOG(@"%f", angle);
     return angle;
 }
 
@@ -712,47 +673,6 @@
 -(void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     if (gamePaused) return;
-    //[[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
-    //[[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
-    
-    //remove simultaneous touch element of gamemode
-    //add various other animations (e.g. fall out from sky, throw bomb, etc..)
-    
-    //simultaneous touch code
-    /* treat 2 separate touches that are 0.2 seconds apart as simultaneous
-    // if (true simultaneous touch)
-    // else two really short touches - add combo count
-    // else normal
-    
-    if ([[touches allObjects] count] >= 2) {
-        //true simultaneous touch
-        
-        comboHits = 0;
-        CCLOG(@"simultaneous touch!");
-        for (UITouch *touch in [touches allObjects]) {
-            CGPoint location = [touch locationInView:[touch view]];
-            location = [[CCDirector sharedDirector] convertToGL:location];
-            [self doShit:location];
-        }
-        baseScore += comboHits;
-        //update combo hits label and add combo points to basescore
-        //...
-    } else {
-        
-        UITouch *touch = [touches anyObject];
-        CGPoint location = [touch locationInView:[touch view]];
-        location = [[CCDirector sharedDirector] convertToGL:location];
-        
-        diff = touch.timestamp - ts;
-        
-        //this is essentially all calling the doShit method
-        //as if diff > 0.2, meaning not simultaneous, we reset the combohits count
-        [self doShit:location];
-        if (diff > 0.2) comboHits = 0;
-        baseScore += comboHits;
-        
-        ts = touch.timestamp;
-    }*/
     
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:[touch view]];
@@ -763,7 +683,7 @@
             continue;
         }
         if (CGRectContainsPoint(coin.boundingBox, location)) {
-            coin.tag = 1;
+            coin.tag = 1; //tag serves as coin.tappble = false
             [coin stopAllActions];
             //CCLOG(@"got coin!");
             baseScore += 100;
@@ -782,7 +702,6 @@
             continue;
         }
         
-        //CGRect temp = CGRectMake(head.position.x, head.position.y, head.boundingBox.size.width+body_bounding_width, head.boundingBox.size.height+body_bounding_height);
         if (CGRectContainsPoint(head.boundingBox, location)) {
             
             [head stopAllActions];
@@ -857,7 +776,42 @@
     } //end heads loop
 }
 
--(void) applyMouthEffect: (id) sender {
+
+//shake event handler
+-(void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
+    
+    float THRESHOLD = 2;
+    
+    if (acceleration.x > THRESHOLD || acceleration.x < -THRESHOLD ||
+        acceleration.y > THRESHOLD || acceleration.y < -THRESHOLD ||
+        acceleration.z > THRESHOLD || acceleration.z < -THRESHOLD) {
+        
+        if (!shake_once) {
+            CCLOG(@"shake it baby from the scene");
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+            shake_once = true;
+            
+            if (has_bomb) {
+                for (CCSprite *tempbomb in bomb) {
+                    tempbomb.tag = 1; //1 = hit
+                    [tempbomb stopAllActions];
+                    
+                    CCScaleBy *scaleCoinUp = [CCScaleBy actionWithDuration:0.2 scale:2];
+                    CCAction *scaleCoinDown = [scaleCoinUp reverse];
+                    CCCallFuncN *removeCoin = [CCCallFuncN actionWithTarget:self selector:@selector(removeBomb:)];
+                    [tempbomb runAction:[CCSequence actions:scaleCoinUp, scaleCoinDown, removeCoin, nil]];
+                    break;
+                }
+            }
+        }
+    }
+    else {
+        shake_once = false;
+    }
+    
+}
+
+/*-(void) applyMouthEffect: (id) sender {
     Character *head = (Character *)sender;
     //in the future, must random these effects
     CCSprite *mouthEffect = [CCSprite spriteWithFile:mouthEffectOne];
@@ -869,11 +823,22 @@
     mouthEffect.scale = 1/0.2;
     mouthEffect.anchorPoint = ccp(0.5,0.5);
     mouthEffect.position = ccp(mouthCenter.x/2, mouthCenter.y/2);
-}
+}*/
 
 -(void) removeHitEffect: (id) sender {
     CCSprite *hitEffect = (CCSprite *) sender;
     [self removeChild:hitEffect cleanup:YES];
+}
+
+-(void) removeBomb: (id) sender {
+    CCSprite *tempbomb = (CCSprite *) sender;
+    
+    if (tempbomb.tag == 0) {
+        baseScore -= 100;
+    }
+    
+    has_bomb = FALSE;
+    [self removeChild:tempbomb cleanup:YES];
 }
 
 -(void) removeCoin: (id) sender {
