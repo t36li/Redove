@@ -427,6 +427,10 @@ static FBSingleton *singletonDelegate = nil;
             // the app from thinking there is a valid session
             _facebook.accessToken = nil;
             _facebook.expirationDate = nil;
+            isLogIn = NO;
+            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:FBAccessToken];
+            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:FBExpirationDateKey];
+            [[NSUserDefaults standardUserDefaults] setInteger:NotLogIn forKey:LogInAs];
             [delegate FBSingletonDidLogout];
         }
     }
