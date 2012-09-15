@@ -23,6 +23,11 @@
     NSString *mouthPosition;
     NSString *faceRect;
     NSDate *registeredDate;
+    
+    NSString *helmet;
+    NSString *hammerArm;
+    NSString *shieldArm;
+    NSString *body;
 }
 
 
@@ -30,6 +35,7 @@
 @property (nonatomic, retain) NSString *mediaKey,*leftEyePosition,*rightEyePosition,*mouthPosition,*faceRect;
 @property (nonatomic, retain) NSString *userImgURL;
 @property (nonatomic, retain) NSDate *registeredDate;
+@property (nonatomic, retain) NSString *helmet, *hammerArm, *shieldArm, *body;
 
 -(void)copyToUserInfo;
 -(void)getFromUserInfo;

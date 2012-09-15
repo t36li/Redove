@@ -162,23 +162,17 @@
         
         //2 arrays containing the @"ids"        
         heads = [[NSMutableArray alloc] init];
-       // NSArray *bigList = [[Game sharedGame] friendList];
-       // NSArray *selectedHeads = [[Game sharedGame] selectedHeads];
-        
-        //testing UserInfo image taken from camera
-        UserInfo *usr = [UserInfo sharedInstance];
-        UIImage *bigHead = usr.croppedImage; //640 x 852 : 64 x 85.2
-        
-        // Old big head contentSize: 73.5 x 76.5
-        //UIImage *bigHead = [UIImage imageNamed:standard_blue_head];
+        //NSArray *bigList = [[Game sharedGame] friendList];
+        NSArray *selectedHeads = [[Game sharedGame] selectedHeads];
         
         //testing the upper and lower body piece-together
         UIImage *lowerBody = [UIImage imageNamed:standard_blue_body];
         int index = 1;
-        for (int i = 0; i < 7; i++) {
-            //get the friend portrait image...once database kicks in, we will grab the big head
-            //belonging to each user... then piece-wise this to the lower body part...
-            Character *head = [Character spriteWithCGImage:[bigHead CGImage] key:[NSString stringWithFormat:@"head_frame%i", index]];
+        for (int i = 0; i < 2; i++) {
+            NSString *formatting = [NSString stringWithFormat:@"http://www.whackwho.com/userImages/%@.png", [selectedHeads objectAtIndex:i]];
+            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:formatting]]];
+
+            Character *head = [Character spriteWithCGImage:[image CGImage] key:[NSString stringWithFormat:@"head_frame%i", index]];
             [head setTappable:FALSE];
             //head.sideWaysMove = FALSE;
             //body: 43 x 100

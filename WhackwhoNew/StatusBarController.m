@@ -403,6 +403,8 @@
 }
 
 - (IBAction)Ok_Pressed:(id)sender {
+    //if no records with current whackwho_id, then insert.
+    //else, update
     [self performSegueWithIdentifier:@"StatusToModeSegue" sender:sender];
 }
 
