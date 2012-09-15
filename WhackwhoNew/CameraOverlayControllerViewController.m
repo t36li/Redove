@@ -75,10 +75,10 @@
     */
     
     UIImage *img = [image fixOrientation];
-    UIImage *resizedImage = [AvatarBaseController resizeImage:img toSize:avatarView.frame.size];
-    UIImage *croppedImg = [AvatarBaseController cropImage:resizedImage inRect:headView.frame];
+//    UIImage *resizedImage = [AvatarBaseController resizeImage:img toSize:avatarView.frame.size];
+//    UIImage *croppedImg = [AvatarBaseController cropImage:resizedImage inRect:headView.frame];
     
-    headView.image = croppedImg;
+    //headView.image = croppedImg;
     /*
     UIGraphicsBeginImageContextWithOptions(avatarView.bounds.size, NO, [[UIScreen mainScreen] scale]);
     [avatarView.layer renderInContext:UIGraphicsGetCurrentContext()];
@@ -89,7 +89,7 @@
      */
     photoView.image = nil;
     
-    [self.delegate validImageCaptured:img croppedImage:croppedImg];
+    [self.delegate validImageCaptured:img croppedImage:nil];
     [self.pickerReference dismissModalViewControllerAnimated:YES];
 
 }

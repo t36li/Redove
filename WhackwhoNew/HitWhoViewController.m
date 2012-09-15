@@ -11,6 +11,7 @@
 #import "Friend.h"
 
 #define ChooseToGame @"chooseToGame"
+#define dummyString @"testobject"
 
 @implementation HitWhoViewController
 
@@ -28,7 +29,7 @@
 	// Do any additional setup after loading the view.
 
     selectedHits = [[NSMutableArray alloc] initWithObjects:hit1, hit2, hit3, nil];
-    selectedHitsNames = [[NSMutableArray alloc] init];
+    selectedHitsNames = [[NSMutableArray alloc] initWithObjects:dummyString, dummyString, dummyString, nil];
     noHits = [[NSMutableArray alloc] initWithObjects:noHit1, noHit2, noHit3, noHit4, nil];
     noHitsNames = [[NSMutableArray alloc] init];
     
@@ -147,6 +148,7 @@
     
     UIImage *tempImage = cell.profileImage.image;
     NSString *usrId = cell.identity;
+    
     int index = 0;
     Friend *friend;
     
@@ -158,11 +160,12 @@
         }
     }
     
-    //selectedHitsNames -> an array that stores currently selected friends' names
+    //selectedHitsNames -> an array that stores currently selected friends' whackwho_id
     //noHitsNames -> an array that contains names of people not selected
-    if (!([selectedHitsNames containsObject:friend] || [noHitsNames containsObject:friend]) && selectedHitsNames.count < MAX_HITTABLE) {
+    //!!!!!!!use head_id for now for testing, must use whackwho_id
+    if (!([selectedHitsNames containsObject:friend.head_id] || [noHitsNames containsObject:friend.head_id])) {
         
-        [selectedHitsNames addObject:friend];
+        [selectedHitsNames replaceObjectAtIndex:[selectedHitsNames indexOfObject:dummyString] withObject:friend.head_id];
         
         //selectedHits -> an array of UIImageView
         for (UIImageView *temp in selectedHits) {
@@ -184,9 +187,9 @@
                 [temp addGestureRecognizer:tap];
                     
                 //add swipe to cancel gesture (little cancel mark)
-                UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget: self action:@selector(handleSwipeOnImage:)];
-                swipe.numberOfTouchesRequired = 1;
-                [temp addGestureRecognizer:swipe];
+                //UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget: self action:@selector(handleSwipeOnImage:)];
+                //swipe.numberOfTouchesRequired = 1;
+                //[temp addGestureRecognizer:swipe];
                 break;
             }
             index++;
@@ -236,7 +239,6 @@
     NSLog(@"response statue: %d", [response statusCode]);
     NSLog(@"response body:%@",[response bodyAsString]);
 }
-//////////////////////////
 
 //////pull the table///////////
 
@@ -245,18 +247,32 @@
     
 }
 
-///////////////////////////////
 #pragma mark - Touch methods
+
+//set the portrait view to the image of the user's current status
 -(void) handleTapOnImage:(id)sender {
     UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
     UIImage *tempImage = ((UIImageView *)(tap.view)).image;
     
     portrait.image = tempImage;
     [portrait setContentMode:UIViewContentModeScaleAspectFill];
-
 }
 
-- (void) handleSwipeOnImage:(id)sender {
+-(IBAction)cancelTouched:(id)sender {
+    
+    int whichOne = [sender tag];
+    UIImageView *tempView = [selectedHits objectAtIndex:whichOne];
+    
+    if (portrait.image == tempView.image) {
+        portrait.image = nil;
+    }
+    
+    tempView.image = nil;
+    
+    [selectedHitsNames replaceObjectAtIndex:whichOne withObject:dummyString];
+}
+
+/*- (void) handleSwipeOnImage:(id)sender {
     UISwipeGestureRecognizer *swipe = (UISwipeGestureRecognizer *)sender;
     if (portrait.image == ((UIImageView *)(swipe.view)).image) {
         portrait.image = nil;
@@ -268,9 +284,9 @@
     int index = ((UIImageView *)(swipe.view)).tag;
     
     [selectedHitsNames removeObjectAtIndex:index];
-}
+}*/
 
--(IBAction) handleRandomButton:(id)sender {
+/*-(IBAction) handleRandomButton:(id)sender {
     //first remove all previous names from the NameArray
     if (!resultFriends.count)
         return;
@@ -279,12 +295,10 @@
 
     for (UIImageView *temp in noHits) {
         //if (temp.image == nil) {
-        NSString *tempName;
         // do not generate if already selected
         while (TRUE) {
             int randFriend = arc4random() % [resultFriends count];
             Friend *friend = [resultFriends objectAtIndex:randFriend];
-            tempName = friend.user_id;
             if (![noHitsNames containsObject:friend]) {
                 [noHitsNames addObject:friend];
                 NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", friend.user_id];
@@ -300,15 +314,13 @@
             }
         }
     }
-}
-
--(IBAction)cancelTouched:(id)sender {
-    
-}
+}*/
 
 -(IBAction) nextTouched:(id)sender {
     //if did not select all hits or did not press random
-   /* if ([selectedHitsNames containsObject:@"test"] || [noHitsNames count] < 1) {
+    [[Game sharedGame] setSelectedHeads:selectedHitsNames];
+    
+    /*if ([selectedHitsNames containsObject:@"test"] || [noHitsNames count] < 1) {
         //display alert showing must select all b4 game
         return;
     } else {

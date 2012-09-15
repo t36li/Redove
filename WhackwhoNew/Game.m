@@ -17,7 +17,7 @@ static Game *sharedGame = nil;
 @synthesize isEnabledSoundFX;
 @synthesize difficulty;
 @synthesize multiplier, timeBonus, consecHits, baseScore;
-@synthesize friendList;
+@synthesize allHeads;
 @synthesize selectedHeads;
 @synthesize head;
 
@@ -36,7 +36,7 @@ static Game *sharedGame = nil;
         self.timeBonus = 0;
         self.consecHits = 0;
         self.baseScore = 0;
-        friendList = [[NSMutableArray alloc] init];
+        allHeads = [[NSMutableArray alloc] init];
         selectedHeads = [[NSMutableArray alloc] init];
     }
     return self;
