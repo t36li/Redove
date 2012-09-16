@@ -1353,7 +1353,6 @@
 			isa = PBXGroup;
 			children = (
 				C13D5EF315C5CEA0006F716C /* mouth effect test1.png */,
-				C151793415C4B88D00A4378F /* coin front.png */,
 				C151791B15C36D3E00A4378F /* hit effect.png */,
 			);
 			name = "Special Effects";
@@ -1943,6 +1942,7 @@
 		C1FE252915AF661200DAF258 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				C151793415C4B88D00A4378F /* coin front.png */,
 				C1D342AC15FBD29C00B4CD2D /* bomb.png */,
 				C198EE2D15D0476E004D170C /* hammer.png */,
 				692E5BBD160508FB00303A50 /* loading icon.png */,
