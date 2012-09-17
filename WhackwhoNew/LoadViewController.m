@@ -15,11 +15,10 @@
 
 @synthesize myLabel;
 
--(void) viewDidLoad {
-    [super viewDidLoad];
-    
+-(void) initializeConnections {
     gmethods = [[GlobalMethods alloc] init];
     usr = [UserInfo sharedInstance];
+    [[FBSingleton sharedInstance] setDelegate:self];
     
     NSLog(@"Load/set currentLogInType");
     int loginId =((int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs] == 0)? 0 : (int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs];
@@ -36,13 +35,10 @@
     //NSLog(@"load UserInfo");
     switch ((int)[usr currentLogInType]) {
         case LogInFacebook:
-            [[FBSingleton sharedInstance] setDelegate:self];
             fbs = [FBSingleton sharedInstance];
             if ([fbs isLogIn]) [fbs RequestMe];
             break;
-        case NotLogIn :
-            
-            
+        case NotLogIn :            
         default:
             break;
     }
@@ -52,6 +48,11 @@
     
     NSLog(@"load Loading Background");
     [myLabel setText:@"Loading...."];
+}
+
+-(void) viewDidLoad {
+    [super viewDidLoad];
+    [self initializeConnections];
 }
 /*- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -103,7 +104,6 @@
 }*/
 
 -(void) viewDidAppear:(BOOL)animated{
-    [[FBSingleton sharedInstance] setDelegate:self];
     /*
      if ((int)usr.currentLogInType != NotLogIn){
      LoginAccountImageView.image = [gmethods imageForObject:usr.userId];
