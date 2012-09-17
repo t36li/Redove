@@ -26,21 +26,17 @@
     [usrInfo setFaceRect:CGRectFromString(faceRect)];
     usrInfo->usrImgURL = userImgURL;
     
-    int (^loadUserImage)() = ^int(){
-        if (userImgURL != nil){
-            [usrInfo setUsrImg:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:userImgURL]]]];
-            return 1;
-        }
-        return 0;
-    };
+    NSURL *url = [NSURL URLWithString:userImgURL];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    UIImage *img = [[UIImage alloc] initWithData:data];
     
-    if (loadUserImage() == 1){
+    if (img != nil) {
+        [usrInfo setUsrImg:img];
         usrInfo.croppedImage = [UserInfo getCroppedImage:usrInfo.usrImg inRect:[usrInfo faceRect]];
         NSLog(@"Game Image Loaded.");
     } else {
         NSLog(@"Game Image failed to load.");
     }
-     
 }
 
 -(void)getFromUserInfo{

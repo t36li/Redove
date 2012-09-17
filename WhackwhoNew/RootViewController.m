@@ -51,30 +51,31 @@
     gmethods = [[GlobalMethods alloc] init];
     usr = [UserInfo sharedInstance];
     fbs = [FBSingleton sharedInstance];
-    
-    if (LoginAccountImageView.image == nil) {
-        NSLog(@"Load/set currentLogInType");
-        int loginId =((int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs] == 0)? 0 : (int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs];
-        [usr setCurrentLogInType:loginId];
-        NSLog(@"login type ID: %i", loginId);
-        if (loginId == 0){
-            [[NSUserDefaults standardUserDefaults] setInteger:NotLogIn forKey:LogInAs];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            NSLog(@"login type : Not Login");
-        }
-        
-        NSLog(@"load UserInfo");
-        switch ((int)[usr currentLogInType]) {
-            case LogInFacebook:
-                [[FBSingleton sharedInstance] setDelegate:self];
-                fbs = [FBSingleton sharedInstance];
-                if ([fbs isLogIn])[fbs RequestMe];
-                break;
-            default:
-                break;
-        }
-    }
-    
+    fbs.delegate = self;
+//    
+//    if (LoginAccountImageView.image == nil) {
+//        NSLog(@"Load/set currentLogInType");
+//        int loginId =((int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs] == 0)? 0 : (int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs];
+//        [usr setCurrentLogInType:loginId];
+//        NSLog(@"login type ID: %i", loginId);
+//        if (loginId == 0){
+//            [[NSUserDefaults standardUserDefaults] setInteger:NotLogIn forKey:LogInAs];
+//            [[NSUserDefaults standardUserDefaults] synchronize];
+//            NSLog(@"login type : Not Login");
+//        }
+//        
+//        NSLog(@"load UserInfo");
+//        switch ((int)[usr currentLogInType]) {
+//            case LogInFacebook:
+//                [[FBSingleton sharedInstance] setDelegate:self];
+//                fbs = [FBSingleton sharedInstance];
+//                if ([fbs isLogIn])[fbs RequestMe];
+//                break;
+//            default:
+//                break;
+//        }
+//    }
+//    
     NSLog(@"load Background");
     [gmethods setViewBackground:MainPage_bg viewSender:self.view];
     
@@ -83,7 +84,6 @@
 }
 
 -(void) viewDidAppear:(BOOL)animated{
-    [[FBSingleton sharedInstance] setDelegate:self];
     /*
     if ((int)usr.currentLogInType != NotLogIn){
         LoginAccountImageView.image = [gmethods imageForObject:usr.userId];
@@ -161,7 +161,6 @@
         
         [[RKObjectManager sharedManager].client post:@"/uploadImage" params:params delegate:self];
 }
-        
 
 //FBSingleton Delegate:
 -(void) FBProfilePictureLoaded:(UIImage *)img{
@@ -214,7 +213,7 @@
 }
 
 //////////////////////Database REST:
-
+/*
 -(void)connToDB{
     //User: a static class for loading userInfo
     User *user = [User alloc];
@@ -225,7 +224,7 @@
         loader.delegate = self;
     }];// get if not ...post
 }
-/*
+
 -(void)testUploadImage{
     ///////////////////////testing... uploading a picture
     UIImage *testProfileImage = [UIImage imageNamed:@"hammer.png"];
@@ -242,61 +241,61 @@
 }
 
 */
-
--(void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response{
-    NSLog(@"request: '%@'",[request HTTPBodyString]);
-    NSLog(@"request Params: %@", [request params]);
-    NSLog(@"response code: %d",[response statusCode]);
-    
-    
-    if ([request isGET]) {
-        if ([response isOK]) {
-            NSLog(@"Retrieved JSON:%@",[response bodyAsString]);
-        }
-    }
-    if ([request isPOST]) {
-        if ([response isOK]){
-            NSLog(@"create succeed.");
-            NSLog(@"%@",response.bodyAsString);
-        }
-    }
-    
-}
-
--(void)request:(RKRequest *)request didFailLoadWithError:(NSError *)error{
-    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"Network Connection Failed: the new user failed to generate account!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    errorAlert.tag = networkErrorAlert;
-    [errorAlert show];
-}
-
--(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object{
-    User *userObject = [User alloc];
-    userObject = object;
-    [userObject copyToUserInfo];
-    NSLog(@"User data loaded.");
-    if(usr.usrImg == nil){
-        UIAlertView *takePicAlert = [[UIAlertView alloc] initWithTitle:@"Newbie?" message:@"Take a photo" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        takePicAlert.tag = newbieAlert;
-        [takePicAlert show];
-    }
-}
-
--(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error{
-    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Loading Error" message:@"Database Connection Failed: unable to pull out your profile" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [errorAlert show];
-}
-
--(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (alertView.tag == networkErrorAlert){
-        
-    }
-    else if (alertView.tag == newbieAlert){
-        if (buttonIndex == 0){
-            [self performSegueWithIdentifier:SelectToLoginToAvatar sender:self];
-        }
-    }
-}
-
+//
+//-(void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response{
+//    NSLog(@"request: '%@'",[request HTTPBodyString]);
+//    NSLog(@"request Params: %@", [request params]);
+//    NSLog(@"response code: %d",[response statusCode]);
+//    
+//    
+//    if ([request isGET]) {
+//        if ([response isOK]) {
+//            NSLog(@"Retrieved JSON:%@",[response bodyAsString]);
+//        }
+//    }
+//    if ([request isPOST]) {
+//        if ([response isOK]){
+//            NSLog(@"create succeed.");
+//            NSLog(@"%@",response.bodyAsString);
+//        }
+//    }
+//    
+//}
+//
+//-(void)request:(RKRequest *)request didFailLoadWithError:(NSError *)error{
+//    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"Network Connection Failed: the new user failed to generate account!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    errorAlert.tag = networkErrorAlert;
+//    [errorAlert show];
+//}
+//
+//-(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object{
+//    User *userObject = [User alloc];
+//    userObject = object;
+//    [userObject copyToUserInfo];
+//    NSLog(@"User data loaded.");
+//    if(usr.usrImg == nil){
+//        UIAlertView *takePicAlert = [[UIAlertView alloc] initWithTitle:@"Newbie?" message:@"Take a photo" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        takePicAlert.tag = newbieAlert;
+//        [takePicAlert show];
+//    }
+//}
+//
+//-(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error{
+//    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Loading Error" message:@"Database Connection Failed: unable to pull out your profile" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [errorAlert show];
+//}
+//
+//-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+//    if (alertView.tag == networkErrorAlert){
+//        
+//    }
+//    else if (alertView.tag == newbieAlert){
+//        if (buttonIndex == 0){
+//            [self performSegueWithIdentifier:SelectToLoginToAvatar sender:self];
+//        }
+//    }
+//}
+//
 ///////////////////////////
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:PlayToSelectLogInSegue]){
