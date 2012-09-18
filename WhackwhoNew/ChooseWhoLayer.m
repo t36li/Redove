@@ -7,8 +7,6 @@
 //
 
 #import "ChooseWhoLayer.h"
-#import "HelloWorldLayer.h"
-#import "TBXML.h"
 #import "StatusBarController.h"
 
 @implementation ChooseWhoLayer

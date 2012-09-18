@@ -45,7 +45,7 @@
 }
 
 // viewdidload gets called before this
--(void)viewWillAppear:(BOOL)animated {
+/*-(void)viewWillAppear:(BOOL)animated {
     
     self.navigationController.navigationBarHidden = YES;
     //photoView.image = [[UserInfo sharedInstance] exportImage];
@@ -92,20 +92,20 @@
     // Finish up our view controller containment responsibilities.
     [director didMoveToParentViewController:self];
 }
+ 
+ - (void) viewDidDisappear:(BOOL)animated {
+ CCDirector *director = [CCDirector sharedDirector];
+ [director removeFromParentViewController];
+ [director.view removeFromSuperview];
+ [director didMoveToParentViewController:nil];
+ 
+ [director end];
+ }*/
 
 
 -(void) viewDidAppear:(BOOL)animated{
     [[FBSingleton sharedInstance] setDelegate:self];
     [tablepull setDelegate:self];
-}
-
-- (void) viewDidDisappear:(BOOL)animated {
-    CCDirector *director = [CCDirector sharedDirector];
-    [director removeFromParentViewController];
-    [director.view removeFromSuperview];
-    [director didMoveToParentViewController:nil];
-    
-    [director end];
 }
 
 - (void)viewDidUnload

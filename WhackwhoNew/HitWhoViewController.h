@@ -19,6 +19,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <RestKit/RestKit.h>
 #import "PullToRefreshView.h"
+#import "Items.h"
 
 #define MAX_HITTABLE 3
 #define MAX_NO_HITTABLE 4

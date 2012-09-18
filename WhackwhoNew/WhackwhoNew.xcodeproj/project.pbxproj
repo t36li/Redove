@@ -103,6 +103,7 @@
 		C14B63C015AF5D3200376C91 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = C14B63BF15AF5D3100376C91 /* Character.m */; };
 		C151791C15C36D3E00A4378F /* hit effect.png in Resources */ = {isa = PBXBuildFile; fileRef = C151791B15C36D3E00A4378F /* hit effect.png */; };
 		C151793515C4B88D00A4378F /* coin front.png in Resources */ = {isa = PBXBuildFile; fileRef = C151793415C4B88D00A4378F /* coin front.png */; };
+		C155FE831608CE19007F254B /* Items.m in Sources */ = {isa = PBXBuildFile; fileRef = C155FE821608CE18007F254B /* Items.m */; };
 		C159285F15B356FA009B7955 /* hitFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 692AC3A515B24C0D001E4858 /* hitFriendCell.m */; };
 		C159286015B357EF009B7955 /* hitFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 692AC3A715B24C2A001E4858 /* hitFriendCell.xib */; };
 		C159287515B4E2DE009B7955 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C159287415B4E2DD009B7955 /* libz.dylib */; };
@@ -674,6 +675,8 @@
 		C14B63BF15AF5D3100376C91 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
 		C151791B15C36D3E00A4378F /* hit effect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hit effect.png"; sourceTree = "<group>"; };
 		C151793415C4B88D00A4378F /* coin front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coin front.png"; sourceTree = "<group>"; };
+		C155FE811608CE18007F254B /* Items.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Items.h; sourceTree = "<group>"; };
+		C155FE821608CE18007F254B /* Items.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Items.m; sourceTree = "<group>"; };
 		C159287415B4E2DD009B7955 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C159325015B5DE52009B7955 /* TBXML+Compression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBXML+Compression.h"; sourceTree = "<group>"; };
 		C159325115B5DE52009B7955 /* TBXML+Compression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TBXML+Compression.m"; sourceTree = "<group>"; };
@@ -1158,6 +1161,8 @@
 				692AC3A515B24C0D001E4858 /* hitFriendCell.m */,
 				C14B63B815AF5C9200376C91 /* ChooseWhoLayer.h */,
 				C14B63B915AF5C9200376C91 /* ChooseWhoLayer.m */,
+				C155FE811608CE18007F254B /* Items.h */,
+				C155FE821608CE18007F254B /* Items.m */,
 			);
 			name = HitWhoGroup;
 			sourceTree = "<group>";
@@ -2550,6 +2555,7 @@
 				C10D2FC215D060A6007B751B /* Dragbox.m in Sources */,
 				69164C5F15D9F978003FD8A8 /* User.m in Sources */,
 				69E9EB9D16028E4E00E52D4F /* PullToRefreshView.m in Sources */,
+				C155FE831608CE19007F254B /* Items.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
