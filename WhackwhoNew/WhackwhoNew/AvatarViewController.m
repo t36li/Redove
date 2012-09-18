@@ -117,6 +117,9 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     headView.layer.cornerRadius = 10.0;
     [self.imageView addSubview:avatarView];
     [self.imageView addSubview:imgView];
+    
+    UINavigationController *navCon = self.navigationController;
+    UIViewController *viewCon = self.navigationController.topViewController;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -249,7 +252,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     if (image != nil){
         photoView.image = [AvatarBaseController resizeImage:image toSize:photoView.frame.size];
         //[usr setUserPicture:image];
-        [usr setUserPicture:image delegate:self];
+        
         usr.croppedImage = croppedImg;
         //headView.image = croppedImg;
         //headView.image = usr.croppedImage;
@@ -273,6 +276,8 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
             NSLog(@"image stored.");
         }
     }
+    
+    [self Back:nil];
 }
 
 
@@ -286,25 +291,31 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
 }
 
 -(IBAction) addPicture:(id)sender {
-    //headView.image = [[UserInfo sharedInstance] getCroppedImage];
     UserInfo *info = [UserInfo sharedInstance];
+    [info setUserPicture:photoView.image delegate:self];
+    [SpinnerView loadSpinnerIntoView:self.view];
+    self.view.userInteractionEnabled = NO;
+
     CGRect newFrame = headView.frame;
     newFrame.origin.x -= photoView.frame.origin.x;
     newFrame.origin.y -= photoView.frame.origin.y;
     UIImage *resizedImage = [AvatarBaseController resizeImage:photoView.image toSize:photoView.frame.size];
     info.croppedImage = [AvatarBaseController cropImage:resizedImage inRect:newFrame];
     headView.image = info.croppedImage;
+    photoView.image = nil;
     
     backgroundView.image = [UIImage imageNamed:@"big head overlay white.png"];
 }
 
 - (IBAction)Back_Touched:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self Back:nil];
 }
 
 - (IBAction) Back:(id)sender{
-    [self.navigationController popViewControllerAnimated:YES];
-    UIViewController *control = [self.navigationController topViewController];
+    UINavigationController *navCon = self.navigationController;
+
+    [navCon popViewControllerAnimated:YES];
+    UIViewController *control = [navCon topViewController];
     if ([control isKindOfClass: [LoadViewController class]]) {
         LoadViewController *con = (LoadViewController *)control;
         [con.myLabel setText:@"Loading Complete!"];
