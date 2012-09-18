@@ -14,6 +14,7 @@
 #import <CoreImage/CoreImage.h>
 #import <RestKit/RestKit.h>
 #import "UserInfoDelegate.h"
+#import "LoadViewController.h"
 
 @interface AvatarViewController : AvatarBaseController <CameraOverlayControllerViewControllerDelegate,RKObjectLoaderDelegate,UserInfoDelegate, UIGestureRecognizerDelegate> {
     
