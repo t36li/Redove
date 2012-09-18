@@ -15,6 +15,7 @@
 #import <RestKit/RestKit.h>
 #import "UserInfoDelegate.h"
 #import "LoadViewController.h"
+#import "SpinnerView.h"
 
 @interface AvatarViewController : AvatarBaseController <CameraOverlayControllerViewControllerDelegate,RKObjectLoaderDelegate,UserInfoDelegate, UIGestureRecognizerDelegate> {
     

@@ -89,6 +89,7 @@
 	[animation setType:kCATransitionFade];
 	// Add it to the superView
 	[[superView layer] addAnimation:animation forKey:@"layerAnimation"];
+    spinnerView.indicator.center = superView.center;
     
 	return spinnerView;
 }
