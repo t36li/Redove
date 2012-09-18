@@ -117,9 +117,6 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     headView.layer.cornerRadius = 10.0;
     [self.imageView addSubview:avatarView];
     [self.imageView addSubview:imgView];
-    
-    UINavigationController *navCon = self.navigationController;
-    UIViewController *viewCon = self.navigationController.topViewController;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
