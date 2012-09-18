@@ -60,7 +60,7 @@
 @property (nonatomic) IBOutlet UIView *loadingView;
 @property (nonatomic) NSArray *resultFriends;
 
--(IBAction)handleRandomButton:(id)sender;
+//-(IBAction)handleRandomButton:(id)sender;
 -(IBAction)nextTouched:(id)sender;
 -(IBAction)Back_Touched:(id)sender;
 -(IBAction)cancelTouched:(id)sender;

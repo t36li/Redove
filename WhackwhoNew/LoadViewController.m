@@ -53,6 +53,7 @@
 -(void) viewDidLoad {
     [super viewDidLoad];
     [self initializeConnections];
+    self.navigationController.navigationBarHidden = YES;
 }
 /*- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

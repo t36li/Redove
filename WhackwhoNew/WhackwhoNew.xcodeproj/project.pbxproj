@@ -456,6 +456,14 @@
 		D0E59F74160807EB00F73C9D /* navigator 2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F6B160807EB00F73C9D /* navigator 2.png */; };
 		D0E59F75160807EB00F73C9D /* navigator.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F6C160807EB00F73C9D /* navigator.png */; };
 		D0E59F7816080E4F00F73C9D /* camera frame.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F7716080E4F00F73C9D /* camera frame.png */; };
+		D0E59F83160825D000F73C9D /* back icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F7A160825D000F73C9D /* back icon.png */; };
+		D0E59F85160825D000F73C9D /* red icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F7C160825D000F73C9D /* red icon.png */; };
+		D0E59F86160825D000F73C9D /* green icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F7D160825D000F73C9D /* green icon.png */; };
+		D0E59F87160825D000F73C9D /* yellow icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F7E160825D000F73C9D /* yellow icon.png */; };
+		D0E59F88160825D000F73C9D /* pink icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F7F160825D000F73C9D /* pink icon.png */; };
+		D0E59F89160825D000F73C9D /* blue icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F80160825D000F73C9D /* blue icon.png */; };
+		D0E59F8A160825D000F73C9D /* camera photo  frame.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F81160825D000F73C9D /* camera photo  frame.png */; };
+		D0E59F8B160825D000F73C9D /* green final.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F82160825D000F73C9D /* green final.png */; };
 		D0F8785D15C362AA00163EC8 /* standard blue.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F8785B15C362AA00163EC8 /* standard blue.png */; };
 		D0F8785E15C362AA00163EC8 /* standard pink.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F8785C15C362AA00163EC8 /* standard pink.png */; };
 /* End PBXBuildFile section */
@@ -1076,6 +1084,14 @@
 		D0E59F6B160807EB00F73C9D /* navigator 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigator 2.png"; sourceTree = "<group>"; };
 		D0E59F6C160807EB00F73C9D /* navigator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigator.png; sourceTree = "<group>"; };
 		D0E59F7716080E4F00F73C9D /* camera frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera frame.png"; sourceTree = "<group>"; };
+		D0E59F7A160825D000F73C9D /* back icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back icon.png"; sourceTree = "<group>"; };
+		D0E59F7C160825D000F73C9D /* red icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red icon.png"; sourceTree = "<group>"; };
+		D0E59F7D160825D000F73C9D /* green icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green icon.png"; sourceTree = "<group>"; };
+		D0E59F7E160825D000F73C9D /* yellow icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellow icon.png"; sourceTree = "<group>"; };
+		D0E59F7F160825D000F73C9D /* pink icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink icon.png"; sourceTree = "<group>"; };
+		D0E59F80160825D000F73C9D /* blue icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue icon.png"; sourceTree = "<group>"; };
+		D0E59F81160825D000F73C9D /* camera photo  frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera photo  frame.png"; sourceTree = "<group>"; };
+		D0E59F82160825D000F73C9D /* green final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green final.png"; sourceTree = "<group>"; };
 		D0F8785B15C362AA00163EC8 /* standard blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "standard blue.png"; sourceTree = "<group>"; };
 		D0F8785C15C362AA00163EC8 /* standard pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "standard pink.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1240,6 +1256,7 @@
 		69C95E86159A461A009966DA /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				D0E59F791608250200F73C9D /* CameraView */,
 				692E5BB81605074000303A50 /* icons */,
 				C14385D615CB2BE3008D9AE7 /* Baby Animation */,
 				C13D5EF215C5CE8C006F716C /* Special Effects */,
@@ -1966,15 +1983,6 @@
 			isa = PBXGroup;
 			children = (
 				C151793415C4B88D00A4378F /* coin front.png */,
-				D0E59F7716080E4F00F73C9D /* camera frame.png */,
-				D0E59F65160807EB00F73C9D /* big head overlay white.png */,
-				D0E59F66160807EB00F73C9D /* final blue.png */,
-				D0E59F67160807EB00F73C9D /* final gold.png */,
-				D0E59F68160807EB00F73C9D /* final pinky.png */,
-				D0E59F69160807EB00F73C9D /* final red.png */,
-				D0E59F6A160807EB00F73C9D /* green final.png */,
-				D0E59F6B160807EB00F73C9D /* navigator 2.png */,
-				D0E59F6C160807EB00F73C9D /* navigator.png */,
 				C1D342AC15FBD29C00B4CD2D /* bomb.png */,
 				C198EE2D15D0476E004D170C /* hammer.png */,
 				692E5BBD160508FB00303A50 /* loading icon.png */,
@@ -2066,6 +2074,30 @@
 				D0E3067E159E4B4C0080D845 /* WETouchableView.m */,
 			);
 			path = Popover;
+			sourceTree = "<group>";
+		};
+		D0E59F791608250200F73C9D /* CameraView */ = {
+			isa = PBXGroup;
+			children = (
+				D0E59F7A160825D000F73C9D /* back icon.png */,
+				D0E59F7C160825D000F73C9D /* red icon.png */,
+				D0E59F7D160825D000F73C9D /* green icon.png */,
+				D0E59F7E160825D000F73C9D /* yellow icon.png */,
+				D0E59F7F160825D000F73C9D /* pink icon.png */,
+				D0E59F80160825D000F73C9D /* blue icon.png */,
+				D0E59F81160825D000F73C9D /* camera photo  frame.png */,
+				D0E59F82160825D000F73C9D /* green final.png */,
+				D0E59F7716080E4F00F73C9D /* camera frame.png */,
+				D0E59F65160807EB00F73C9D /* big head overlay white.png */,
+				D0E59F66160807EB00F73C9D /* final blue.png */,
+				D0E59F67160807EB00F73C9D /* final gold.png */,
+				D0E59F68160807EB00F73C9D /* final pinky.png */,
+				D0E59F69160807EB00F73C9D /* final red.png */,
+				D0E59F6A160807EB00F73C9D /* green final.png */,
+				D0E59F6B160807EB00F73C9D /* navigator 2.png */,
+				D0E59F6C160807EB00F73C9D /* navigator.png */,
+			);
+			name = CameraView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2497,6 +2529,14 @@
 				D0E59F74160807EB00F73C9D /* navigator 2.png in Resources */,
 				D0E59F75160807EB00F73C9D /* navigator.png in Resources */,
 				D0E59F7816080E4F00F73C9D /* camera frame.png in Resources */,
+				D0E59F83160825D000F73C9D /* back icon.png in Resources */,
+				D0E59F85160825D000F73C9D /* red icon.png in Resources */,
+				D0E59F86160825D000F73C9D /* green icon.png in Resources */,
+				D0E59F87160825D000F73C9D /* yellow icon.png in Resources */,
+				D0E59F88160825D000F73C9D /* pink icon.png in Resources */,
+				D0E59F89160825D000F73C9D /* blue icon.png in Resources */,
+				D0E59F8A160825D000F73C9D /* camera photo  frame.png in Resources */,
+				D0E59F8B160825D000F73C9D /* green final.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

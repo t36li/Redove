@@ -40,7 +40,7 @@
 
 -(IBAction) startCamera:(id)sender;
 -(IBAction) addPicture:(id)sender;
--(IBAction) Back_Touched:(id)sender;
 -(IBAction) Back:(id)sender;
+-(IBAction) Change_Skin:(id)sender;
 
 @end

@@ -16,8 +16,6 @@
 
 -(void) setViewBackground:(NSString *)BackgroundImage viewSender:(id)sender;
 //+ (UIImage *)imageForObject:(NSString *)objectID;
--(void) RequestProfilePic:(NSString *)profileID;
-
 //RestKit initial setup (URL, ObjectMapping, router)
 -(void) RKInit;
 
