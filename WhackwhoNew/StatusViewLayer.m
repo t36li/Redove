@@ -41,8 +41,9 @@
         
         self.isTouchEnabled = YES;
         
-        UIImage *face_DB = [[UserInfo sharedInstance] croppedImage];
-        
+        NSString *formatting = [NSString stringWithFormat:@"http://www.whackwho.com/userImages/%d.png", [[UserInfo sharedInstance] headId]];
+        UIImage *face_DB = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:formatting]]];
+                
         CGSize s = CGSizeMake(190, 250); //this is the size of the screen
         
         //we will initialize all body part sprite here, then change the texture
@@ -64,21 +65,21 @@
         body.position = ccp(s.width/2 - 10, s.height*0.4);
         [self addChild:body z:0 tag:body_Label];
         
-        //init left_hand
-        left_hand = [CCSprite spriteWithFile:PauseButton];
-        left_hand.anchorPoint = ccp(0, 0);
-        left_hand.scale = 0.9;
-        left_hand.position = ccp(s.width/2 + 20, s.height*0.4-10);
-        [left_hand setVisible:FALSE];
-        [self addChild:left_hand z:10 tag:leftHand_Label];
+        //init hammerHand
+        hammerHand = [CCSprite spriteWithFile:PauseButton];
+        hammerHand.anchorPoint = ccp(0, 0);
+        hammerHand.scale = 0.9;
+        hammerHand.position = ccp(s.width/2 + 20, s.height*0.4-10);
+        [hammerHand setVisible:FALSE];
+        [self addChild:hammerHand z:10 tag:leftHand_Label];
         
-        //init right_hand
-        right_hand = [CCSprite spriteWithFile:PauseButton];
-        right_hand.anchorPoint = ccp(0.5, 0.5);
-        //right_hand.scale = 0.9;
-        [right_hand setVisible:FALSE];
-        right_hand.position = ccp(s.width/2 - 45, s.height*0.4 - 10);
-        [self addChild:right_hand z:10 tag:rightHand_Label];
+        //init shieldHand
+        shieldHand = [CCSprite spriteWithFile:PauseButton];
+        shieldHand.anchorPoint = ccp(0.5, 0.5);
+        //shieldHand.scale = 0.9;
+        [shieldHand setVisible:FALSE];
+        shieldHand.position = ccp(s.width/2 - 45, s.height*0.4 - 10);
+        [self addChild:shieldHand z:10 tag:rightHand_Label];
         
         
         //init helmet sprite, ADD face as child
@@ -122,18 +123,18 @@
             break;
         case leftHand_Label:
             if (newTex == nil) {
-                [left_hand setVisible:FALSE];
+                [hammerHand setVisible:FALSE];
             } else {
-                left_hand.texture = newTex;
-                [left_hand setVisible:TRUE];
+                hammerHand.texture = newTex;
+                [hammerHand setVisible:TRUE];
             }
             break;
         case rightHand_Label:
             if (newTex == nil) {
-                [right_hand setVisible:FALSE];
+                [shieldHand setVisible:FALSE];
             } else {
-                right_hand.texture = newTex;
-                [right_hand setVisible:TRUE];
+                shieldHand.texture = newTex;
+                [shieldHand setVisible:TRUE];
             }
             break;
         default:

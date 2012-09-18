@@ -159,7 +159,7 @@
         // Log info about the serialization
         NSLog(@"RKParams HTTPHeaderValueForContentType = %@", [params HTTPHeaderValueForContentType]);
         
-        [[RKObjectManager sharedManager].client post:@"/uploadImage" params:params delegate:self];
+       // [[RKObjectManager sharedManager].client post:@"/uploadImage" params:params delegate:self];
 }
 
 //FBSingleton Delegate:

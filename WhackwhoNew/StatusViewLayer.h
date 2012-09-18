@@ -10,12 +10,12 @@
 #import "cocos2d.h"
 #import "StatusCocosDelegate.h"
 
-@interface StatusViewLayer : CCLayer<StatusCocosDelegate> {
+@interface StatusViewLayer : CCLayer{//<StatusCocosDelegate> {
     CCSprite *face;
     CCSprite *helmet;
     CCSprite *body;
-    CCSprite *left_hand;
-    CCSprite *right_hand;
+    CCSprite *hammerHand;
+    CCSprite *shieldHand;
 }
 +(id) scene;
 

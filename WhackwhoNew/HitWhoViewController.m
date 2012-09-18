@@ -33,23 +33,6 @@
     noHits = [[NSMutableArray alloc] initWithObjects:noHit1, noHit2, noHit3, noHit4, nil];
     noHitsNames = [[NSMutableArray alloc] init];
     
-    /* CCGLView *glview = [CCGLView viewWithFrame:CGRectMake(0, 0, 160,200)];
-    [portrait addSubview:glview];
-    
-    CCDirector *director = [CCDirector sharedDirector];
-    [director setView:glview];
-    
-    // 'scene' is an autorelease object.
-	CCScene *scene = [CCScene node];
-	
-	// 'layer' is an autorelease object.
-	ChooseWhoLayer *layer = [ChooseWhoLayer node];
-    
-	// add layer as a child to scene
-	[scene addChild: layer z:0];
-    
-    [director runWithScene:scene];*/
-    
     [[FBSingleton sharedInstance] RequestFriendUsing];
     
     table.delegate = self;
@@ -61,9 +44,68 @@
     
 }
 
+// viewdidload gets called before this
+-(void)viewWillAppear:(BOOL)animated {
+    
+    self.navigationController.navigationBarHidden = YES;
+    //photoView.image = [[UserInfo sharedInstance] exportImage];
+    
+    CCDirector *director = [CCDirector sharedDirector];
+    
+    if ([director isPaused]) {
+        [director resume];
+    }
+    
+    CCGLView *glView = [CCGLView viewWithFrame:CGRectMake(0, 0, 140, 180)
+                                   pixelFormat:kEAGLColorFormatRGB565   //kEAGLColorFormatRGBA8
+                                   depthFormat:0    //GL_DEPTH_COMPONENT24_OES
+                            preserveBackbuffer:NO
+                                    sharegroup:nil
+                                 multiSampling:NO
+                               numberOfSamples:0];
+    
+    // HERE YOU CHECK TO SEE IF THERE IS A SCENE RUNNING IN THE DIRECTOR ALREADY
+    if(![director runningScene]){
+        [director setView:glView]; // SET THE DIRECTOR VIEW
+        if( ! [director enableRetinaDisplay:YES] ) // ENABLE RETINA
+            CCLOG(@"Retina Display Not supported");
+        
+        [director runWithScene:[ChooseWhoLayer scene]]; // RUN THE SCENE
+        
+    } else {
+        // THERE IS A SCENE, START SINCE IT WAS STOPPED AND REPLACE TO RESTART
+        [director startAnimation];
+        [director.view setFrame:CGRectMake(0, 0, 140, 180)];
+        [director replaceScene:[ChooseWhoLayer scene]];
+    }
+    
+    [director willMoveToParentViewController:nil];
+    [director.view removeFromSuperview];
+    [director removeFromParentViewController];
+    [director willMoveToParentViewController:self];
+    
+    // Add the director as a child view controller of this view controller.
+    [self addChildViewController:director];
+    [self.portrait addSubview: director.view];
+    [self.portrait sendSubviewToBack:director.view];
+    
+    // Finish up our view controller containment responsibilities.
+    [director didMoveToParentViewController:self];
+}
+
+
 -(void) viewDidAppear:(BOOL)animated{
     [[FBSingleton sharedInstance] setDelegate:self];
     [tablepull setDelegate:self];
+}
+
+- (void) viewDidDisappear:(BOOL)animated {
+    CCDirector *director = [CCDirector sharedDirector];
+    [director removeFromParentViewController];
+    [director.view removeFromSuperview];
+    [director didMoveToParentViewController:nil];
+    
+    [director end];
 }
 
 - (void)viewDidUnload
@@ -171,6 +213,10 @@
         for (UIImageView *temp in selectedHits) {
             if (temp.image == nil) {
                 temp.image = tempImage;
+                
+                //!!!! this is where we have to retrieve the user's whackwhoID,
+                //send it to database, and find out the user's current equip
+                //for now, assume everyone has default equipment
                 portrait.image = tempImage;
                 [portrait setContentMode:UIViewContentModeScaleAspectFill];
                 temp.tag = index;

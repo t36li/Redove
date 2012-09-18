@@ -1138,6 +1138,8 @@
 				C169200B15AFC7A700F081AF /* HitWhoViewController.m */,
 				692AC3A415B24C0D001E4858 /* hitFriendCell.h */,
 				692AC3A515B24C0D001E4858 /* hitFriendCell.m */,
+				C14B63B815AF5C9200376C91 /* ChooseWhoLayer.h */,
+				C14B63B915AF5C9200376C91 /* ChooseWhoLayer.m */,
 			);
 			name = HitWhoGroup;
 			sourceTree = "<group>";
@@ -1503,8 +1505,6 @@
 				C14B63B515AF5C3700376C91 /* Game.h */,
 				C14B63B615AF5C3700376C91 /* Game.m */,
 				C159349915B64988009B7955 /* GameOverDelegate.h */,
-				C14B63B815AF5C9200376C91 /* ChooseWhoLayer.h */,
-				C14B63B915AF5C9200376C91 /* ChooseWhoLayer.m */,
 				C1691FF515AFBA7C00F081AF /* HelloWorldLayer.h */,
 				C14B63BC15AF5CE000376C91 /* HelloWorldLayer.m */,
 				C14B63BE15AF5D3100376C91 /* Character.h */,
