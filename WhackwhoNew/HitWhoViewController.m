@@ -45,10 +45,9 @@
 }
 
 // viewdidload gets called before this
-/*-(void)viewWillAppear:(BOOL)animated {
+-(void)viewWillAppear:(BOOL)animated {
     
     self.navigationController.navigationBarHidden = YES;
-    //photoView.image = [[UserInfo sharedInstance] exportImage];
     
     CCDirector *director = [CCDirector sharedDirector];
     
@@ -56,7 +55,7 @@
         [director resume];
     }
     
-    CCGLView *glView = [CCGLView viewWithFrame:CGRectMake(0, 0, 140, 180)
+    CCGLView *glView = [CCGLView viewWithFrame:CGRectMake(0, 0, 120, 170)
                                    pixelFormat:kEAGLColorFormatRGB565   //kEAGLColorFormatRGBA8
                                    depthFormat:0    //GL_DEPTH_COMPONENT24_OES
                             preserveBackbuffer:NO
@@ -75,7 +74,7 @@
     } else {
         // THERE IS A SCENE, START SINCE IT WAS STOPPED AND REPLACE TO RESTART
         [director startAnimation];
-        [director.view setFrame:CGRectMake(0, 0, 140, 180)];
+        [director.view setFrame:CGRectMake(0, 0, 120, 170)];
         [director replaceScene:[ChooseWhoLayer scene]];
     }
     
@@ -93,14 +92,14 @@
     [director didMoveToParentViewController:self];
 }
  
- - (void) viewDidDisappear:(BOOL)animated {
- CCDirector *director = [CCDirector sharedDirector];
- [director removeFromParentViewController];
- [director.view removeFromSuperview];
- [director didMoveToParentViewController:nil];
+- (void) viewDidDisappear:(BOOL)animated {
+    CCDirector *director = [CCDirector sharedDirector];
+    [director removeFromParentViewController];
+    [director.view removeFromSuperview];
+    [director didMoveToParentViewController:nil];
  
- [director end];
- }*/
+    [director end];
+}
 
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -220,9 +219,9 @@
                 //for now, assume everyone has default equipment
                 
                 //call the cocos2d layer to update character
-                CCScene *scene = [[CCDirector sharedDirector] runningScene];
-                id layer = [[scene children] objectAtIndex:0];
-                [layer updatePortraitWitHHead:friend.head_id body:@"peter body.png" helmet:@"standard blue.png" hammer:@"hammer.png" shield:@"coin front.png"];
+                //CCScene *scene = [[CCDirector sharedDirector] runningScene];
+                //id layer = [[scene children] objectAtIndex:0];
+                //[layer updatePortraitWitHHead:friend.head_id body:@"peter body.png" helmet:@"standard blue.png" hammer:@"hammer.png" shield:@"coin front.png"];
                 
                 
                 temp.tag = index;
@@ -302,7 +301,7 @@
     UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
     UIImage *tempImage = ((UIImageView *)(tap.view)).image;
     
-    portrait.image = tempImage;
+    //portrait.image = tempImage;
     [portrait setContentMode:UIViewContentModeScaleAspectFill];
 }
 
@@ -311,9 +310,9 @@
     int whichOne = [sender tag];
     UIImageView *tempView = [selectedHits objectAtIndex:whichOne];
     
-    if (portrait.image == tempView.image) {
-        portrait.image = nil;
-    }
+    //if (portrait.image == tempView.image) {
+    //    portrait.image = nil;
+    //}
     
     tempView.image = nil;
     

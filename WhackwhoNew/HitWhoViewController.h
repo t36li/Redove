@@ -24,7 +24,8 @@
 #define MAX_HITTABLE 3
 #define MAX_NO_HITTABLE 4
 
-@interface HitWhoViewController : UIViewController<FBSingletonDelegate,UITableViewDelegate,UITableViewDataSource,RKObjectLoaderDelegate,PullToRefreshViewDelegate> {
+@interface HitWhoViewController : UIViewController<FBSingletonDelegate,UITableViewDelegate,UITableViewDataSource,RKObjectLoaderDelegate,PullToRefreshViewDelegate,CCDirectorDelegate> {
+   
     NSMutableArray *selectedHits;
     NSMutableArray *selectedHitsNames;
     NSMutableArray *noHits;
@@ -37,7 +38,10 @@
     IBOutlet UIImageView *noHit2;
     IBOutlet UIImageView *noHit3;
     IBOutlet UIImageView *noHit4;
-    IBOutlet UIImageView *portrait;
+    
+    
+    IBOutlet UIView *portrait;
+    
     UITableView *table;
     NSArray *resultFriends;
     SpinnerView *spinner;
@@ -54,7 +58,9 @@
 @property (nonatomic) IBOutlet UIImageView *noHit2;
 @property (nonatomic) IBOutlet UIImageView *noHit3;
 @property (nonatomic) IBOutlet UIImageView *noHit4;
-@property (nonatomic) IBOutlet UIImageView *portrait;
+
+@property (nonatomic) IBOutlet UIView *portrait;
+
 @property (nonatomic) IBOutlet UITableView *table;
 @property (nonatomic) SpinnerView *spinner;
 @property (nonatomic) IBOutlet UIView *loadingView;

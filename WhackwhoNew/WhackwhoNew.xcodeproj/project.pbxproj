@@ -98,12 +98,13 @@
 		C14718551594F0AE0002FF21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C14718541594F0AE0002FF21 /* AppDelegate.m */; };
 		C147185B1594F1AF0002FF21 /* CocosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C147185A1594F1AF0002FF21 /* CocosViewController.m */; };
 		C14B63B715AF5C3700376C91 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = C14B63B615AF5C3700376C91 /* Game.m */; };
-		C14B63BA15AF5C9200376C91 /* ChooseWhoLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C14B63B915AF5C9200376C91 /* ChooseWhoLayer.m */; };
 		C14B63BD15AF5CE000376C91 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C14B63BC15AF5CE000376C91 /* HelloWorldLayer.m */; };
 		C14B63C015AF5D3200376C91 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = C14B63BF15AF5D3100376C91 /* Character.m */; };
 		C151791C15C36D3E00A4378F /* hit effect.png in Resources */ = {isa = PBXBuildFile; fileRef = C151791B15C36D3E00A4378F /* hit effect.png */; };
 		C151793515C4B88D00A4378F /* coin front.png in Resources */ = {isa = PBXBuildFile; fileRef = C151793415C4B88D00A4378F /* coin front.png */; };
 		C155FE831608CE19007F254B /* Items.m in Sources */ = {isa = PBXBuildFile; fileRef = C155FE821608CE18007F254B /* Items.m */; };
+		C155FE9916091118007F254B /* ChooseWhoLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C155FE9816091118007F254B /* ChooseWhoLayer.m */; };
+		C155FE9B1609180A007F254B /* champ select background.png in Resources */ = {isa = PBXBuildFile; fileRef = C155FE9A16091809007F254B /* champ select background.png */; };
 		C159285F15B356FA009B7955 /* hitFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 692AC3A515B24C0D001E4858 /* hitFriendCell.m */; };
 		C159286015B357EF009B7955 /* hitFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 692AC3A715B24C2A001E4858 /* hitFriendCell.xib */; };
 		C159287515B4E2DE009B7955 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C159287415B4E2DD009B7955 /* libz.dylib */; };
@@ -676,8 +677,6 @@
 		C147185A1594F1AF0002FF21 /* CocosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CocosViewController.m; path = WhackwhoNew/CocosViewController.m; sourceTree = "<group>"; };
 		C14B63B515AF5C3700376C91 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		C14B63B615AF5C3700376C91 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
-		C14B63B815AF5C9200376C91 /* ChooseWhoLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseWhoLayer.h; sourceTree = "<group>"; };
-		C14B63B915AF5C9200376C91 /* ChooseWhoLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseWhoLayer.m; sourceTree = "<group>"; };
 		C14B63BC15AF5CE000376C91 /* HelloWorldLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		C14B63BE15AF5D3100376C91 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
 		C14B63BF15AF5D3100376C91 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
@@ -685,6 +684,9 @@
 		C151793415C4B88D00A4378F /* coin front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coin front.png"; sourceTree = "<group>"; };
 		C155FE811608CE18007F254B /* Items.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Items.h; sourceTree = "<group>"; };
 		C155FE821608CE18007F254B /* Items.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Items.m; sourceTree = "<group>"; };
+		C155FE9716091118007F254B /* ChooseWhoLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseWhoLayer.h; sourceTree = "<group>"; };
+		C155FE9816091118007F254B /* ChooseWhoLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseWhoLayer.m; sourceTree = "<group>"; };
+		C155FE9A16091809007F254B /* champ select background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "champ select background.png"; sourceTree = "<group>"; };
 		C159287415B4E2DD009B7955 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C159325015B5DE52009B7955 /* TBXML+Compression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBXML+Compression.h"; sourceTree = "<group>"; };
 		C159325115B5DE52009B7955 /* TBXML+Compression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TBXML+Compression.m"; sourceTree = "<group>"; };
@@ -1175,10 +1177,10 @@
 				C169200B15AFC7A700F081AF /* HitWhoViewController.m */,
 				692AC3A415B24C0D001E4858 /* hitFriendCell.h */,
 				692AC3A515B24C0D001E4858 /* hitFriendCell.m */,
-				C14B63B815AF5C9200376C91 /* ChooseWhoLayer.h */,
-				C14B63B915AF5C9200376C91 /* ChooseWhoLayer.m */,
 				C155FE811608CE18007F254B /* Items.h */,
 				C155FE821608CE18007F254B /* Items.m */,
+				C155FE9716091118007F254B /* ChooseWhoLayer.h */,
+				C155FE9816091118007F254B /* ChooseWhoLayer.m */,
 			);
 			name = HitWhoGroup;
 			sourceTree = "<group>";
@@ -1329,6 +1331,7 @@
 			children = (
 				C16921E515B24B7C00F081AF /* store interface.png */,
 				692E5BBB1605083800303A50 /* loading page final background.png */,
+				C155FE9A16091809007F254B /* champ select background.png */,
 				69C95E9B159B4E21009966DA /* MainPage_bg.png */,
 				C15934B915B78884009B7955 /* score paper.png */,
 				692E5BBF16050EF500303A50 /* store background.png */,
@@ -2537,6 +2540,7 @@
 				D0E59F89160825D000F73C9D /* blue icon.png in Resources */,
 				D0E59F8A160825D000F73C9D /* camera photo  frame.png in Resources */,
 				D0E59F8B160825D000F73C9D /* green final.png in Resources */,
+				C155FE9B1609180A007F254B /* champ select background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2563,7 +2567,6 @@
 				694F34AD15A68355009BA1C5 /* FriendsViewController.m in Sources */,
 				694F34B215A76006009BA1C5 /* FriendsTableCell.m in Sources */,
 				C14B63B715AF5C3700376C91 /* Game.m in Sources */,
-				C14B63BA15AF5C9200376C91 /* ChooseWhoLayer.m in Sources */,
 				C14B63BD15AF5CE000376C91 /* HelloWorldLayer.m in Sources */,
 				C14B63C015AF5D3200376C91 /* Character.m in Sources */,
 				D0948D4115ADFF0E00429477 /* AvatarBaseController.m in Sources */,
@@ -2596,6 +2599,7 @@
 				69164C5F15D9F978003FD8A8 /* User.m in Sources */,
 				69E9EB9D16028E4E00E52D4F /* PullToRefreshView.m in Sources */,
 				C155FE831608CE19007F254B /* Items.m in Sources */,
+				C155FE9916091118007F254B /* ChooseWhoLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

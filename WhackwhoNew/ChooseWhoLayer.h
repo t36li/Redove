@@ -1,25 +1,19 @@
 //
-//  ChooseWhoScene.h
-//  MoleIt
+//  ChooseWhoLayer.h
+//  WhackwhoNew
 //
-//  Created by Bob Li on 12-06-25.
-//  Copyright 2012 Waterloo. All rights reserved.
+//  Created by Bob Li on 2012-09-18.
+//  Copyright (c) 2012 Waterloo. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
 @interface ChooseWhoLayer : CCLayer {
     CCSprite *face;
-    CCSprite *helmet;
-    CCSprite *body;
-    CCSprite *hammerHand;
-    CCSprite *shieldHand;
+    
 }
 
-//@property (nonatomic, retain) id<GameOverDelegate> gameOverDelegate;
-//+(CCScene *) sceneWithDelegate:(id<GameOverDelegate>)delegate;
--(void)updatePortraitWitHHead: (NSString *)head body: (NSString *) bodyPic helmet:
-    (NSString *) helmetPic hammer: (NSString *) hammerName shield: (NSString *) shieldName;
 +(id) scene;
+
+
 @end

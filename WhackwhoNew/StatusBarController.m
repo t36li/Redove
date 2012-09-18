@@ -168,6 +168,27 @@
     [director didMoveToParentViewController:self];
 }
 
+- (void) viewDidDisappear:(BOOL)animated {
+    CCDirector *director = [CCDirector sharedDirector];
+    [director removeFromParentViewController];
+    [director.view removeFromSuperview];
+    [director didMoveToParentViewController:nil];
+    
+    [director end];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+}
+
+#pragma mark - UI methods
 - (void)handleTapOnItemImage: (UITapGestureRecognizer *)gesture {
     UITapGestureRecognizer *tap = (UITapGestureRecognizer *)gesture;
     UIImageView *item = ((UIImageView *)(tap.view));
@@ -183,6 +204,7 @@
         [item setBackgroundColor:[UIColor blackColor]];
     }
 }
+
 
 - (void)handleTapOnEquipmentImage: (UITapGestureRecognizer *)gesture {
     UITapGestureRecognizer *tap = (UITapGestureRecognizer *)gesture;
@@ -366,33 +388,8 @@
     UIImageView *itemView = ((UIImageView *)(tap.view));
 }*/
 
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-}
 
-- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-}
-
-- (void) viewDidDisappear:(BOOL)animated {
-    CCDirector *director = [CCDirector sharedDirector];
-    [director removeFromParentViewController];
-    [director.view removeFromSuperview];
-    [director didMoveToParentViewController:nil];
-    
-    [director end];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
-}
-
-#pragma mark - touch methods
+#pragma mark - button touch methods
 
 - (IBAction)Back_Touched:(id)sender {
     //if total stacks = 5, came from email..

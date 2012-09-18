@@ -37,12 +37,11 @@
 -(id) init {
     if ((self = [super init])) {
         
-        glClearColor(255, 255, 255, 255);
+        //glClearColor(255, 255, 255, 255);
         
-        self.isTouchEnabled = YES;
+        //self.isTouchEnabled = YES;
         
-        NSString *formatting = [NSString stringWithFormat:@"http://www.whackwho.com/userImages/%d.png", [[UserInfo sharedInstance] headId]];
-        UIImage *face_DB = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:formatting]]];
+        UIImage *face_DB = [[UserInfo sharedInstance] croppedImage];
                 
         CGSize s = CGSizeMake(190, 250); //this is the size of the screen
         
@@ -56,7 +55,7 @@
             face = [CCSprite spriteWithFile:PauseButton];
             [face setVisible:FALSE];
         }
-        face.scale = 0.4;
+        face.scale = 1;
         face.anchorPoint = ccp(0.5,1);
         
         //init body
