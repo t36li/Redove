@@ -218,13 +218,14 @@
                 //!!!! this is where we have to retrieve the user's whackwhoID,
                 //send it to database, and find out the user's current equip
                 //for now, assume everyone has default equipment
-                portrait.image = tempImage;
-                [portrait setContentMode:UIViewContentModeScaleAspectFill];
+                
+                //call the cocos2d layer to update character
+                CCScene *scene = [[CCDirector sharedDirector] runningScene];
+                id layer = [[scene children] objectAtIndex:0];
+                [layer updatePortraitWitHHead:friend.head_id body:@"peter body.png" helmet:@"standard blue.png" hammer:@"hammer.png" shield:@"coin front.png"];
+                
+                
                 temp.tag = index;
-                    
-                //set up big portraint image glview
-                //chooseWholayer has to obtain image from Game.h
-                //do something like [[game sharedgame] setHead: tempImage];
                     
                 temp.userInteractionEnabled = YES;
                 
@@ -393,5 +394,20 @@
     // .... need to pass Helloworldlayer the bigfriendlist and selectedheadslist
     //bigfriendslist = all 7 possible popups
 //}
+
+- (UIImage *)toImageWithScale:(CGFloat)scale {
+    // If scale is 0, it'll follows the screen scale for creating the bounds
+    UIGraphicsBeginImageContextWithOptions(self.portrait.bounds.size, NO, scale);
+    
+    // - [CALayer renderInContext:] also renders subviews
+    [self.portrait.layer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    // Get the image out of the context
+    UIImage *copied = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    // Return the result
+    return copied;
+}
 
 @end

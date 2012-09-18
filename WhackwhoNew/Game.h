@@ -16,6 +16,7 @@
     int difficulty;
     int multiplier, timeBonus, consecHits, baseScore;
     NSMutableArray *allHeads, *selectedHeads;
+    NSMutableArray *allSprites;
     UIImage *head;
 }
 
@@ -29,6 +30,7 @@
 @property (nonatomic, readwrite) int baseScore;
 @property (nonatomic, copy) NSMutableArray *allHeads;
 @property (nonatomic, copy) NSMutableArray *selectedHeads;
+@property (nonatomic, retain) NSMutableArray *allSprites;
 @property (nonatomic) UIImage *head;
 
 

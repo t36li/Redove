@@ -28,6 +28,7 @@
     NSMutableArray *selectedHitsNames;
     NSMutableArray *noHits;
     NSMutableArray *noHitsNames;
+
     IBOutlet UIImageView *hit1;
     IBOutlet UIImageView *hit2;
     IBOutlet UIImageView *hit3;
