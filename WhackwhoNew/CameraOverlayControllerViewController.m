@@ -39,6 +39,7 @@
     
     avatarView.frame = outfitView.frame;
     
+    backgroundView.image = [UIImage imageNamed:@"camera frame.png"];
 //    UserInfo *usr = [UserInfo sharedInstance];
     
 //    if ([usr.gender isEqualToString:@"male"]) {
