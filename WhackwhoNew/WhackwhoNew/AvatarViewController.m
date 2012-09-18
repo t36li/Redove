@@ -299,5 +299,11 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
 
 - (IBAction) Back:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
+    UIViewController *control = [self.navigationController topViewController];
+    if ([control isKindOfClass: [LoadViewController class]]) {
+        LoadViewController *con = (LoadViewController *)control;
+        [con.myLabel setText:@"Loading Complete!"];
+        [con performSelector:@selector(goToMenu) withObject:nil afterDelay:2.5];
+    }
 }
 @end

@@ -24,6 +24,8 @@
     IBOutlet UILabel *myLabel;
 }
 
-@property (nonatomic) IBOutlet UILabel *myLabel;
+@property (nonatomic, retain) IBOutlet UILabel *myLabel;
 
+
+-(void) goToMenu;
 @end

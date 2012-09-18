@@ -31,7 +31,7 @@
     UIImage *img = [[UIImage alloc] initWithData:data];
     
     if (img != nil) {
-        [usrInfo setUsrImg:img];
+        usrInfo.usrImg = img;
         usrInfo.croppedImage = [UserInfo getCroppedImage:usrInfo.usrImg inRect:[usrInfo faceRect]];
         NSLog(@"Game Image Loaded.");
     } else {
