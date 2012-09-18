@@ -10,7 +10,11 @@
 #import "cocos2d.h"
 
 @interface ChooseWhoLayer : CCLayer {
-    
+    CCSprite *face;
+    CCSprite *helmet;
+    CCSprite *body;
+    CCSprite *hammerHand;
+    CCSprite *shieldHand;
 }
 
 //@property (nonatomic, retain) id<GameOverDelegate> gameOverDelegate;

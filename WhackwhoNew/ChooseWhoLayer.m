@@ -32,23 +32,17 @@
     
     if ((self = [super init])) {
         
-        glClearColor(255, 255, 255, 255);
+        //glClearColor(255, 255, 255, 255);
                 
-        NSString *formatting = [NSString stringWithFormat:@"http://www.whackwho.com/userImages/%d.png", [[UserInfo sharedInstance] headId]];
-        UIImage *face_DB = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:formatting]]];
+        //NSString *formatting = [NSString stringWithFormat:@"http://www.whackwho.com/userImages/%d.png", [[UserInfo sharedInstance] headId]];
+        //UIImage *face_DB = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:formatting]]];
         
         CGSize s = CGSizeMake(190, 250); //this is the size of the screen
         
         //we will initialize all body part sprite here, then change the texture
         
         //init face with image from DB, if none exists, give it blank (use pause.png for now)
-        if ([face_DB CGImage] != nil) {
-            NSLog(@"Accessibility string: %@", [face_DB accessibilityIdentifier]);
-            face = [CCSprite spriteWithCGImage:[face_DB CGImage] key:[face_DB accessibilityIdentifier]]; //320 x 426
-        } else {
-            face = [CCSprite spriteWithFile:PauseButton];
-            [face setVisible:FALSE];
-        }
+        face = [CCSprite spriteWithFile:PauseButton];
         face.scale = 0.4;
         face.anchorPoint = ccp(0.5,1);
         
@@ -56,7 +50,7 @@
         body = [CCSprite spriteWithFile:standard_blue_body];
         body.anchorPoint = ccp(0.5, 0.75);
         body.position = ccp(s.width/2 - 10, s.height*0.4);
-        [self addChild:body z:0 tag:body_Label];
+        [self addChild:body z:0];
         
         //init hammerHand
         hammerHand = [CCSprite spriteWithFile:PauseButton];
@@ -64,7 +58,7 @@
         hammerHand.scale = 0.9;
         hammerHand.position = ccp(s.width/2 + 20, s.height*0.4-10);
         [hammerHand setVisible:FALSE];
-        [self addChild:hammerHand z:10 tag:leftHand_Label];
+        [self addChild:hammerHand z:10];
         
         //init shieldHand
         shieldHand = [CCSprite spriteWithFile:PauseButton];
@@ -72,7 +66,7 @@
         //shieldHand.scale = 0.9;
         [shieldHand setVisible:FALSE];
         shieldHand.position = ccp(s.width/2 - 45, s.height*0.4 - 10);
-        [self addChild:shieldHand z:10 tag:rightHand_Label];
+        [self addChild:shieldHand z:10];
         
         
         //init helmet sprite, ADD face as child
@@ -80,15 +74,15 @@
         helmet.anchorPoint = ccp(0.5,1);
         helmet.position = ccp(s.width/2 - 10, s.height-20);
         helmet.scale = 0.8;
-        [self addChild:helmet z:5 tag:head_Label];
+        [self addChild:helmet z:5];
         //ADD face as child
         face.position = ccp(helmet.boundingBox.size.width/2, helmet.boundingBox.size.height/2);
-        [helmet addChild:face z:-10 tag:face_label];
+        [helmet addChild:face z:-10];
         
         //animations
-        CCMoveBy *moveHeadUp = [CCMoveBy actionWithDuration:2.5 position:ccp(0,10)];
-        CCMoveBy *moveHeadDown = [CCMoveBy actionWithDuration:2.5 position:ccp(0,-10)];
-        [helmet runAction:[CCRepeatForever actionWithAction:[CCSequence actionOne:moveHeadUp two:moveHeadDown]]];
+        //CCMoveBy *moveHeadUp = [CCMoveBy actionWithDuration:2.5 position:ccp(0,10)];
+        //CCMoveBy *moveHeadDown = [CCMoveBy actionWithDuration:2.5 position:ccp(0,-10)];
+        //[helmet runAction:[CCRepeatForever actionWithAction:[CCSequence actionOne:moveHeadUp two:moveHeadDown]]];
         
     }
     return self;
