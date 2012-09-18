@@ -88,7 +88,11 @@
     return self;
 }
 
-
+-(void)updatePortraitWitHHead: (NSString *)head body: (NSString *) bodyPic helmet:
+    (NSString *) helmetPic hammer: (NSString *) hammerName shield: (NSString *) shieldName {
+    
+    
+}
 
 
 /*-(void) mainMenu {
