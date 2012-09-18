@@ -109,9 +109,14 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     //avatarView.frame = imageView.bounds;
     self.wtfView.backgroundColor = [UIColor clearColor];
     
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navigator.png"]];
+    imgView.frame = imageView.bounds;
+    imgView.contentMode = UIViewContentModeScaleAspectFill;
+    
     headView.layer.masksToBounds = YES;
     headView.layer.cornerRadius = 10.0;
     [self.imageView addSubview:avatarView];
+    [self.imageView addSubview:imgView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -249,7 +254,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
         //headView.image = croppedImg;
         //headView.image = usr.croppedImage;
         newPhoto = YES;
-        backgroundView.image = [UIImage imageNamed:@"standard big head.png"];
+        backgroundView.image = [UIImage imageNamed:@"big head overlay white.png"];
     }
 }
 
@@ -290,7 +295,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     info.croppedImage = [AvatarBaseController cropImage:resizedImage inRect:newFrame];
     headView.image = info.croppedImage;
     
-    backgroundView.image = [UIImage imageNamed:@"standard big head.png"];
+    backgroundView.image = [UIImage imageNamed:@"big head overlay white.png"];
 }
 
 - (IBAction)Back_Touched:(id)sender {
