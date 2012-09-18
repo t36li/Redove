@@ -307,10 +307,6 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     backgroundView.image = [UIImage imageNamed:@"big head overlay white.png"];
 }
 
-- (IBAction)Back_Touched:(id)sender {
-    [self Back:nil];
-}
-
 - (IBAction) Back:(id)sender{
     UINavigationController *navCon = self.navigationController;
 
@@ -320,6 +316,29 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
         LoadViewController *con = (LoadViewController *)control;
         [con.myLabel setText:@"Loading Complete!"];
         [con performSelector:@selector(goToMenu) withObject:nil afterDelay:2.5];
+    }
+}
+
+-(IBAction) Change_Skin:(id)sender {
+    if (![sender isKindOfClass:[UIButton class]])
+        return;
+    UIButton *btn = (UIButton*)sender;
+    switch (btn.tag) {
+        case 0:
+            backgroundView.image = [UIImage imageNamed:@"final blue.png"];
+            break;
+        case 1:
+            backgroundView.image = [UIImage imageNamed:@"final red.png"];
+            break;
+        case 2:
+            backgroundView.image = [UIImage imageNamed:@"final pinky.png"];
+            break;
+        case 3:
+            backgroundView.image = [UIImage imageNamed:@"green final.png"];
+            break;
+        case 4:
+            backgroundView.image = [UIImage imageNamed:@"final gold.png"];
+            break;
     }
 }
 @end
