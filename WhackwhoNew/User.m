@@ -32,7 +32,7 @@
     
     if (img != nil) {
         usrInfo.usrImg = img;
-        usrInfo.croppedImage = [UserInfo getCroppedImage:usrInfo.usrImg inRect:[usrInfo faceRect]];
+        usrInfo.croppedImage = img;
         NSLog(@"Game Image Loaded.");
     } else {
         NSLog(@"Game Image failed to load.");
