@@ -13,8 +13,8 @@
 // Needed to obtain the Navigation Controller
 #import <Foundation/Foundation.h>
 #import "CocosViewController.h"
-#import "StatusViewLayer.h"
 #import <AudioToolbox/AudioServices.h>
+#import "Items.h"
 
 #pragma mark - HelloWorldLayer
 
@@ -82,9 +82,11 @@
         has_bomb = FALSE;
         coins = [[NSMutableArray alloc] init];
         bomb = [[NSMutableArray alloc] init];
+        heads = [[NSMutableArray alloc] init];
+
         CGSize s = CGSizeMake(480, 320);
-        CCSprite *bg;
         
+        CCSprite *bg;
         //determine which background to load
         int level = [[Game sharedGame] difficulty];
         switch (level) {
@@ -105,7 +107,6 @@
         self.isAccelerometerEnabled = YES;
         [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1/60];
         shake_once = false;
-        
         
         [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
 
@@ -160,43 +161,42 @@
         scoreLabel.position = ccp(scoreboard.contentSize.width/2, scoreboard.contentSize.height/2);
         [scoreboard addChild:scoreLabel z:10];
         
-        //2 arrays containing the @"ids"        
-        heads = [[NSMutableArray alloc] init];
-        //NSArray *bigList = [[Game sharedGame] friendList];
-        NSArray *selectedHeads = [[Game sharedGame] selectedHeads];
+        //!!!! initializing popups
+        //use the array from game.h which contains all image names
         
-        //testing the upper and lower body piece-together
-        UIImage *lowerBody = [UIImage imageNamed:standard_blue_body];
-        int index = 1;
-        for (int i = 0; i < 2; i++) {
-            NSString *formatting = [NSString stringWithFormat:@"http://www.whackwho.com/userImages/%@.png", [selectedHeads objectAtIndex:i]];
-            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:formatting]]];
-
-            Character *head = [Character spriteWithCGImage:[image CGImage] key:[NSString stringWithFormat:@"head_frame%i", index]];
-            [head setTappable:FALSE];
-            //head.sideWaysMove = FALSE;
-            //body: 43 x 100
-            head.anchorPoint = ccp(0,0);
-            head.scale = 0.2;
-            head.isSelectedHit = TRUE;
-            head.visible = FALSE;
-            head.position = ccp(0,0);
+        //for (Items *person in [[Game sharedGame] arrayOfAllPopups]) {
+        Items *person = [[[Game sharedGame] arrayOfAllPopups] objectAtIndex:0];
+        
+            Character *faceSprite;
+            if (person.headID != nil) {
+                NSString *url = [NSString stringWithFormat:@"www.whackwho.com/userImages/%@.png", person.headID];
+                UIImage *face = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
+                faceSprite = [CCSprite spriteWithCGImage:[face CGImage] key:person.headID];
+            } else {
+                faceSprite = nil;
+            }
             
-            CCSprite *body = [CCSprite spriteWithCGImage:[lowerBody CGImage] key:[NSString stringWithFormat:@"body_frame%i", index]];
-            
-            [head addChild:body];
-            body.anchorPoint = ccp(0.5, 0.75); //90 x 31 -> 182 x 120
-            body.position = ccp(160,20);
-            body.scale = 1.4;
+            Character *helmet = [CCSprite spriteWithFile:person.helmet];
+            CCSprite *body = [CCSprite spriteWithFile:person.body];
+            CCSprite *hammerArm = [CCSprite spriteWithFile:person.hammerArm];
+            CCSprite *shieldArm = [CCSprite spriteWithFile:person.shieldArm];
 
-            [self addChild:head];
-            [heads addObject:head];
-            index++;
-        }
-
-        [self schedule:@selector(tryPopheads) interval:1.5];
-        [self schedule:@selector(checkGameState) interval:0.1];
-        [self schedule:@selector(timerUpdate:) interval:0.001];
+            [helmet addChild:faceSprite];
+            [helmet addChild:body];
+            [helmet addChild:hammerArm];
+            [helmet addChild:shieldArm];
+        
+            [self addChild:faceSprite z:10];
+            faceSprite.position = ccp(s.width/2, s.height/2);
+        
+            [heads addObject:helmet];
+        //}
+        
+        
+        
+        //[self schedule:@selector(tryPopheads) interval:1.5];
+        //[self schedule:@selector(checkGameState) interval:0.1];
+        //[self schedule:@selector(timerUpdate:) interval:0.001];
 	}
     
 	return self;
@@ -671,8 +671,10 @@
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:[touch view]];
     location = [[CCDirector sharedDirector] convertToGL:location];
+    
+    CCLOG(@"x: %f, y: %f", location.x, location.y);
 
-    for (CCSprite *coin in coins) {
+    /*for (CCSprite *coin in coins) {
         if (coin.tag == 1) {
             continue;
         }
@@ -767,7 +769,7 @@
             //stop the loop as we are not support multi-touch anymore
             break;
         }
-    } //end heads loop
+    } //end heads loop*/
 }
 
 

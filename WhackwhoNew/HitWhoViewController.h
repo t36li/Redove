@@ -28,16 +28,19 @@
    
     NSMutableArray *selectedHits;
     NSMutableArray *selectedHitsNames;
-    NSMutableArray *noHits;
-    NSMutableArray *noHitsNames;
+    NSMutableArray *arrayOfItems;
+    
+    //!!!decommission noHits.... no longer lets user select who to NOT hit
+    //NSMutableArray *noHits;
+    //NSMutableArray *noHitsNames;
 
     IBOutlet UIImageView *hit1;
     IBOutlet UIImageView *hit2;
     IBOutlet UIImageView *hit3;
-    IBOutlet UIImageView *noHit1;
-    IBOutlet UIImageView *noHit2;
-    IBOutlet UIImageView *noHit3;
-    IBOutlet UIImageView *noHit4;
+    //IBOutlet UIImageView *noHit1;
+    //IBOutlet UIImageView *noHit2;
+    //IBOutlet UIImageView *noHit3;
+    //IBOutlet UIImageView *noHit4;
     
     
     IBOutlet UIView *portrait;
@@ -54,10 +57,10 @@
 @property (nonatomic) IBOutlet UIImageView *hit1;
 @property (nonatomic) IBOutlet UIImageView *hit2;
 @property (nonatomic) IBOutlet UIImageView *hit3;
-@property (nonatomic) IBOutlet UIImageView *noHit1;
-@property (nonatomic) IBOutlet UIImageView *noHit2;
-@property (nonatomic) IBOutlet UIImageView *noHit3;
-@property (nonatomic) IBOutlet UIImageView *noHit4;
+//@property (nonatomic) IBOutlet UIImageView *noHit1;
+//@property (nonatomic) IBOutlet UIImageView *noHit2;
+//@property (nonatomic) IBOutlet UIImageView *noHit3;
+//@property (nonatomic) IBOutlet UIImageView *noHit4;
 
 @property (nonatomic) IBOutlet UIView *portrait;
 

@@ -12,4 +12,17 @@
 
 @synthesize headID, body, helmet, hammerArm, shieldArm;
 
+-(id)init {
+    self = [super init];
+    if (self) {
+        headID = nil;
+        body = nil;
+        helmet = nil;
+        hammerArm = nil;
+        shieldArm = nil;
+    }
+    return self;
+}
+
+
 @end

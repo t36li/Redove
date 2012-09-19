@@ -11,10 +11,10 @@
 
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
-#import "Character.h"
 #import "HUDLayer.h"
 #import "Game.h"
-#import "ChooseWhoLayer.h"
+#import "Character.h"
+//#import "ChooseWhoLayer.h"
 #import "GlobalMethods.h"
 #import "UserInfo.h"
 #import "GameOverDelegate.h"

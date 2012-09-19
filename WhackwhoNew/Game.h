@@ -15,8 +15,8 @@
     BOOL isEnabledSoundFX;
     int difficulty;
     int multiplier, timeBonus, consecHits, baseScore;
-    NSMutableArray *allHeads, *selectedHeads;
-    NSMutableArray *allSprites;
+    //NSMutableArray *allHeads, *selectedHeads;
+    NSMutableArray *arrayOfAllPopups;
     UIImage *head;
 }
 
@@ -28,11 +28,10 @@
 @property (nonatomic, readwrite) int timeBonus;
 @property (nonatomic, readwrite) int consecHits;
 @property (nonatomic, readwrite) int baseScore;
-@property (nonatomic, copy) NSMutableArray *allHeads;
-@property (nonatomic, copy) NSMutableArray *selectedHeads;
-@property (nonatomic, retain) NSMutableArray *allSprites;
+//@property (nonatomic, copy) NSMutableArray *allHeads;
+//@property (nonatomic, copy) NSMutableArray *selectedHeads;
+@property (nonatomic) NSMutableArray *arrayOfAllPopups;
 @property (nonatomic) UIImage *head;
-
 
 + (Game *) sharedGame;
 - (void) resetGameState;

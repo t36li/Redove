@@ -1,6 +1,6 @@
 //
 //  Character.m
-//  MoleIt
+//  WhackWho
 //
 //  Created by Bob Li on 12-06-24.
 //  Copyright (c) 2012 Waterloo. All rights reserved.

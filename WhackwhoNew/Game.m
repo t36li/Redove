@@ -17,9 +17,9 @@ static Game *sharedGame = nil;
 @synthesize isEnabledSoundFX;
 @synthesize difficulty;
 @synthesize multiplier, timeBonus, consecHits, baseScore;
-@synthesize allHeads;
-@synthesize selectedHeads;
-@synthesize allSprites;
+//@synthesize allHeads;
+//@synthesize selectedHeads;
+@synthesize arrayOfAllPopups;
 @synthesize head;
 
 #pragma mark -
@@ -37,8 +37,9 @@ static Game *sharedGame = nil;
         self.timeBonus = 0;
         self.consecHits = 0;
         self.baseScore = 0;
-        allHeads = [[NSMutableArray alloc] init];
-        selectedHeads = [[NSMutableArray alloc] init];
+        //allHeads = [[NSMutableArray alloc] init];
+        //selectedHeads = [[NSMutableArray alloc] init];
+        arrayOfAllPopups = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -89,8 +90,9 @@ static Game *sharedGame = nil;
     [self setTimeBonus:0];
     [self setConsecHits:0];
     [self setBaseScore:0];
-    //[biglist removeAllObjects];
+    //[allHeads removeAllObjects];
     //[selectedHeads removeAllObjects];
+    [arrayOfAllPopups removeAllObjects];
 }
 
 @end

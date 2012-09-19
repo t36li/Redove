@@ -28,8 +28,9 @@
 
 -(id) init {
     if ((self = [super init])) {
-        
-        
+        //CCSprite *test = [CCSprite spriteWithFile:@"hammer.png"];
+        //[self addChild:test];
+        //test.position = ccp(100,100);
     }
     return self;
 }
