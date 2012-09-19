@@ -60,18 +60,6 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(scale:)];
-    [pinchRecognizer setDelegate:self];
-    [self.view addGestureRecognizer:pinchRecognizer];
-    
-    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-    [panRecognizer setDelegate:self];
-    [self.view addGestureRecognizer:panRecognizer];
-    
-    newPhoto = NO;
-    
-    self.navigationController.navigationBarHidden = YES;
-    
     //set up background image
     GlobalMethods *gmethods = [[GlobalMethods alloc] init];
     [gmethods setViewBackground:FriendList_bg viewSender:self.view];
@@ -107,16 +95,11 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     
     self.navigationController.navigationBarHidden = NO;
     //avatarView.frame = imageView.bounds;
-    self.wtfView.backgroundColor = [UIColor clearColor];
-    
-    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navigator.png"]];
-    imgView.frame = imageView.bounds;
-    imgView.contentMode = UIViewContentModeScaleAspectFill;
+    self.wtfView.backgroundColor = [UIColor clearColor];    
     
     headView.layer.masksToBounds = YES;
     headView.layer.cornerRadius = 10.0;
     [self.imageView addSubview:avatarView];
-    [self.imageView addSubview:imgView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -132,24 +115,16 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     CGRect frame6 = headView.frame;
      */
     self.navigationController.navigationBarHidden = YES;
+    
+    UserInfo *usr = [UserInfo sharedInstance];
+    if (usr.usrImg == nil) {
+        [self startCamera:nil];
+    } else {
+        headView.image = usr.croppedImage;
+    }
 }
 
 -(void)scale:(id)sender {
-//    UIPinchGestureRecognizer *recognizer = (UIPinchGestureRecognizer *)sender;
-//    photoView.transform = CGAffineTransformScale(recognizer.view.transform, recognizer.scale, recognizer.scale);
-//    recognizer.scale = 1;
-//    if (photoView.frame.size.width > imageView.frame.size.width) {
-//        CGRect frame = photoView.frame;
-//        frame.size.width = imageView.frame.size.width;
-//        photoView.frame = frame;
-//        return;
-//    }
-//    if (photoView.frame.size.height > imageView.frame.size.height) {
-//        CGRect frame = photoView.frame;
-//        frame.size.height = imageView.frame.size.height;
-//        photoView.frame = frame;
-//        return;
-//    }
     
     PinchAxis pinch;
     if([(UIPinchGestureRecognizer*)sender state] == UIGestureRecognizerStateBegan) {
@@ -211,6 +186,16 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
 -(IBAction)startCamera:(id)sender {
     headView.image = nil;
     [self presentModalViewController:cameraController animated:NO];
+    
+    UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(scale:)];
+    [pinchRecognizer setDelegate:self];
+    [self.view addGestureRecognizer:pinchRecognizer];
+    
+    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    [panRecognizer setDelegate:self];
+    [self.view addGestureRecognizer:panRecognizer];
+    
+    self.navigationController.navigationBarHidden = YES;
 }
 
 -(void)saveUsrImageToServer{
@@ -226,7 +211,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     [params setValue:user.rightEyePosition forParam:@"rightEyePosition"];
     [params setValue:user.mouthPosition forParam:@"mouthPosition"];
     [params setValue:user.faceRect forParam:@"faceRect"];
-    UIImage *uploadImage = usrInfo.usrImg;//[UIImage imageNamed:@"pause.png"];//usrInfo->usrImg;
+    UIImage *uploadImage = usrInfo.croppedImage;//[UIImage imageNamed:@"pause.png"];//usrInfo->usrImg;
     NSData* imageData = UIImagePNGRepresentation(uploadImage);
     [params setData:imageData MIMEType:@"image/png" forParam:[NSString stringWithFormat:@"%d",user.headId]];
     
@@ -280,16 +265,17 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
 
 -(void)viewDidAppear:(BOOL)animated {
     if (newPhoto) {
-        // Create a new image view, from the image made by our gradient metho
-        //[self performSelectorInBackground:@selector(markFaces:) withObject:photoView];
-        
         newPhoto = NO;
     }
 }
 
 -(IBAction) addPicture:(id)sender {
     UserInfo *info = [UserInfo sharedInstance];
-    [info setUserPicture:photoView.image delegate:self];
+    
+    if (headView.image != nil) {
+        [self Back:nil];
+        return;
+    }
     [SpinnerView loadSpinnerIntoView:self.view];
     self.view.userInteractionEnabled = NO;
 
@@ -301,7 +287,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     headView.image = info.croppedImage;
     photoView.image = nil;
     
-    backgroundView.image = [UIImage imageNamed:@"big head overlay white.png"];
+    [info setUserPicture:photoView.image delegate:self];
 }
 
 - (IBAction) Back:(id)sender{
@@ -322,19 +308,16 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     UIButton *btn = (UIButton*)sender;
     switch (btn.tag) {
         case 0:
-            backgroundView.image = [UIImage imageNamed:@"final blue.png"];
+            backgroundView.image = [UIImage imageNamed:@"pink final.png"];
             break;
         case 1:
-            backgroundView.image = [UIImage imageNamed:@"final red.png"];
+            backgroundView.image = [UIImage imageNamed:@"yellow final.png"];
             break;
         case 2:
-            backgroundView.image = [UIImage imageNamed:@"final pinky.png"];
+            backgroundView.image = [UIImage imageNamed:@"blue final.png"];
             break;
         case 3:
             backgroundView.image = [UIImage imageNamed:@"green final.png"];
-            break;
-        case 4:
-            backgroundView.image = [UIImage imageNamed:@"final gold.png"];
             break;
     }
 }

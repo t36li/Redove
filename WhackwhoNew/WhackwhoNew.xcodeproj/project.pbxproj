@@ -421,6 +421,13 @@
 		D07F6FF01599463A0085DF2B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F6FEF1599463A0085DF2B /* CoreImage.framework */; };
 		D090C63815A238CF0051AA12 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D090C63715A238CF0051AA12 /* UserInfo.m */; };
 		D0948D4115ADFF0E00429477 /* AvatarBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0948D4015ADFF0E00429477 /* AvatarBaseController.m */; };
+		D09800CA1609621F009E97E8 /* green board.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800C61609621E009E97E8 /* green board.png */; };
+		D09800CB1609621F009E97E8 /* blue board.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800C71609621E009E97E8 /* blue board.png */; };
+		D09800CC1609621F009E97E8 /* yellow board.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800C81609621E009E97E8 /* yellow board.png */; };
+		D09800CD1609621F009E97E8 /* pink board.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800C91609621E009E97E8 /* pink board.png */; };
+		D09800D316096DE7009E97E8 /* pink final.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800CF16096DE4009E97E8 /* pink final.png */; };
+		D09800D416096DE7009E97E8 /* yellow final.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800D016096DE4009E97E8 /* yellow final.png */; };
+		D09800D516096DE7009E97E8 /* blue final.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800D116096DE6009E97E8 /* blue final.png */; };
 		D09FD5DD159E4EB60079231D /* CameraOverlayControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09FD5DB159E4EB60079231D /* CameraOverlayControllerViewController.m */; };
 		D09FD5DE159E4EB60079231D /* CameraOverlayControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D09FD5DC159E4EB60079231D /* CameraOverlayControllerViewController.xib */; };
 		D0A3F72415AF5E9A0027EFF9 /* pinky head.png in Resources */ = {isa = PBXBuildFile; fileRef = D0948D3215AB5D5700429477 /* pinky head.png */; };
@@ -447,11 +454,6 @@
 		D0E30671159E4B1B0080D845 /* popoverBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E30662159E4B1B0080D845 /* popoverBg@2x.png */; };
 		D0E30672159E4B1B0080D845 /* popoverBgSimple.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E30663159E4B1B0080D845 /* popoverBgSimple.png */; };
 		D0E59F6E160807EB00F73C9D /* big head overlay white.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F65160807EB00F73C9D /* big head overlay white.png */; };
-		D0E59F6F160807EB00F73C9D /* final blue.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F66160807EB00F73C9D /* final blue.png */; };
-		D0E59F70160807EB00F73C9D /* final gold.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F67160807EB00F73C9D /* final gold.png */; };
-		D0E59F71160807EB00F73C9D /* final pinky.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F68160807EB00F73C9D /* final pinky.png */; };
-		D0E59F72160807EB00F73C9D /* final red.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F69160807EB00F73C9D /* final red.png */; };
-		D0E59F73160807EB00F73C9D /* green final.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F6A160807EB00F73C9D /* green final.png */; };
 		D0E59F74160807EB00F73C9D /* navigator 2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F6B160807EB00F73C9D /* navigator 2.png */; };
 		D0E59F75160807EB00F73C9D /* navigator.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F6C160807EB00F73C9D /* navigator.png */; };
 		D0E59F7816080E4F00F73C9D /* camera frame.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F7716080E4F00F73C9D /* camera frame.png */; };
@@ -1027,6 +1029,13 @@
 		D0948D3915AB6E9A00429477 /* AvatarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AvatarView.xib; path = ../AvatarView.xib; sourceTree = "<group>"; };
 		D0948D3F15ADFF0E00429477 /* AvatarBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarBaseController.h; sourceTree = "<group>"; };
 		D0948D4015ADFF0E00429477 /* AvatarBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarBaseController.m; sourceTree = "<group>"; };
+		D09800C61609621E009E97E8 /* green board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green board.png"; sourceTree = "<group>"; };
+		D09800C71609621E009E97E8 /* blue board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue board.png"; sourceTree = "<group>"; };
+		D09800C81609621E009E97E8 /* yellow board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellow board.png"; sourceTree = "<group>"; };
+		D09800C91609621E009E97E8 /* pink board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink board.png"; sourceTree = "<group>"; };
+		D09800CF16096DE4009E97E8 /* pink final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink final.png"; sourceTree = "<group>"; };
+		D09800D016096DE4009E97E8 /* yellow final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellow final.png"; sourceTree = "<group>"; };
+		D09800D116096DE6009E97E8 /* blue final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue final.png"; sourceTree = "<group>"; };
 		D09FD5DA159E4EB60079231D /* CameraOverlayControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraOverlayControllerViewController.h; sourceTree = "<group>"; };
 		D09FD5DB159E4EB60079231D /* CameraOverlayControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraOverlayControllerViewController.m; sourceTree = "<group>"; };
 		D09FD5DC159E4EB60079231D /* CameraOverlayControllerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlayControllerViewController.xib; path = ../CameraOverlayControllerViewController.xib; sourceTree = "<group>"; };
@@ -1073,11 +1082,6 @@
 		D0E30685159E4B4C0080D845 /* WEPopoverViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WEPopoverViewController.h; sourceTree = "<group>"; };
 		D0E30686159E4B4C0080D845 /* WEPopoverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WEPopoverViewController.m; sourceTree = "<group>"; };
 		D0E59F65160807EB00F73C9D /* big head overlay white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "big head overlay white.png"; sourceTree = "<group>"; };
-		D0E59F66160807EB00F73C9D /* final blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "final blue.png"; sourceTree = "<group>"; };
-		D0E59F67160807EB00F73C9D /* final gold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "final gold.png"; sourceTree = "<group>"; };
-		D0E59F68160807EB00F73C9D /* final pinky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "final pinky.png"; sourceTree = "<group>"; };
-		D0E59F69160807EB00F73C9D /* final red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "final red.png"; sourceTree = "<group>"; };
-		D0E59F6A160807EB00F73C9D /* green final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green final.png"; sourceTree = "<group>"; };
 		D0E59F6B160807EB00F73C9D /* navigator 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigator 2.png"; sourceTree = "<group>"; };
 		D0E59F6C160807EB00F73C9D /* navigator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigator.png; sourceTree = "<group>"; };
 		D0E59F7716080E4F00F73C9D /* camera frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera frame.png"; sourceTree = "<group>"; };
@@ -2074,6 +2078,10 @@
 		D0E59F791608250200F73C9D /* CameraView */ = {
 			isa = PBXGroup;
 			children = (
+				D09800C61609621E009E97E8 /* green board.png */,
+				D09800C71609621E009E97E8 /* blue board.png */,
+				D09800C81609621E009E97E8 /* yellow board.png */,
+				D09800C91609621E009E97E8 /* pink board.png */,
 				D0E59F7A160825D000F73C9D /* back icon.png */,
 				D0E59F7C160825D000F73C9D /* red icon.png */,
 				D0E59F7D160825D000F73C9D /* green icon.png */,
@@ -2081,14 +2089,12 @@
 				D0E59F7F160825D000F73C9D /* pink icon.png */,
 				D0E59F80160825D000F73C9D /* blue icon.png */,
 				D0E59F81160825D000F73C9D /* camera photo  frame.png */,
+				D09800CF16096DE4009E97E8 /* pink final.png */,
+				D09800D016096DE4009E97E8 /* yellow final.png */,
+				D09800D116096DE6009E97E8 /* blue final.png */,
 				D0E59F82160825D000F73C9D /* green final.png */,
 				D0E59F7716080E4F00F73C9D /* camera frame.png */,
 				D0E59F65160807EB00F73C9D /* big head overlay white.png */,
-				D0E59F66160807EB00F73C9D /* final blue.png */,
-				D0E59F67160807EB00F73C9D /* final gold.png */,
-				D0E59F68160807EB00F73C9D /* final pinky.png */,
-				D0E59F69160807EB00F73C9D /* final red.png */,
-				D0E59F6A160807EB00F73C9D /* green final.png */,
 				D0E59F6B160807EB00F73C9D /* navigator 2.png */,
 				D0E59F6C160807EB00F73C9D /* navigator.png */,
 			);
@@ -2516,11 +2522,6 @@
 				692E5BC416050FFA00303A50 /* store pin.png in Resources */,
 				692E5BC61605101C00303A50 /* lower shelf.png in Resources */,
 				D0E59F6E160807EB00F73C9D /* big head overlay white.png in Resources */,
-				D0E59F6F160807EB00F73C9D /* final blue.png in Resources */,
-				D0E59F70160807EB00F73C9D /* final gold.png in Resources */,
-				D0E59F71160807EB00F73C9D /* final pinky.png in Resources */,
-				D0E59F72160807EB00F73C9D /* final red.png in Resources */,
-				D0E59F73160807EB00F73C9D /* green final.png in Resources */,
 				D0E59F74160807EB00F73C9D /* navigator 2.png in Resources */,
 				D0E59F75160807EB00F73C9D /* navigator.png in Resources */,
 				D0E59F7816080E4F00F73C9D /* camera frame.png in Resources */,
@@ -2532,6 +2533,13 @@
 				D0E59F89160825D000F73C9D /* blue icon.png in Resources */,
 				D0E59F8A160825D000F73C9D /* camera photo  frame.png in Resources */,
 				D0E59F8B160825D000F73C9D /* green final.png in Resources */,
+				D09800CA1609621F009E97E8 /* green board.png in Resources */,
+				D09800CB1609621F009E97E8 /* blue board.png in Resources */,
+				D09800CC1609621F009E97E8 /* yellow board.png in Resources */,
+				D09800CD1609621F009E97E8 /* pink board.png in Resources */,
+				D09800D316096DE7009E97E8 /* pink final.png in Resources */,
+				D09800D416096DE7009E97E8 /* yellow final.png in Resources */,
+				D09800D516096DE7009E97E8 /* blue final.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
