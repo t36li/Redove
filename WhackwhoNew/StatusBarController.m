@@ -430,8 +430,16 @@
     UIImageView *itemView = ((UIImageView *)(tap.view));
 }*/
 
+/*-(void) viewWillDisappear:(BOOL)animated {
+    CCDirector *director = [CCDirector sharedDirector];
+    [director removeFromParentViewController];
+    [director.view removeFromSuperview];
+    [director didMoveToParentViewController:nil];
+    
+    [director end];
+}*/
 
-#pragma mark - button touch methods
+#pragma mark - touch methods
 
 - (IBAction)Back_Touched:(id)sender {
     //if total stacks = 5, came from email..
@@ -460,8 +468,7 @@
     }
 }
 
-#pragma mark - gameOverDelegate Methods
-- (void)returnToMenu {
+/*- (void)returnToMenu {
     //UINavigationController *nav = self.navigationController;
     //if (![CCDirector sharedDirector].isPaused) {
     // [[CCDirector sharedDirector] pause];
@@ -476,6 +483,6 @@
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:2] animated:YES];
     }
 
-}
+}*/
 
 @end
