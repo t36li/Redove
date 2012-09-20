@@ -17,8 +17,8 @@
 
 @implementation HitWhoViewController
 
-@synthesize selectedHits;
 @synthesize hit1, hit2, hit3;
+@synthesize defaultImage;
 //@synthesize noHit1, noHit2, noHit3, noHit4;
 @synthesize containerView;
 @synthesize table;
@@ -31,12 +31,13 @@
 	// Do any additional setup after loading the view.
     
     [self.containerView setBackgroundColor:[UIColor clearColor]];
-
+    
     selectedHits = [[NSMutableArray alloc] initWithObjects:hit1, hit2, hit3, nil];
     selectedHitsNames = [[NSMutableArray alloc] init];
     //noHits = [[NSMutableArray alloc] initWithObjects:noHit1, noHit2, noHit3, noHit4, nil];
     //noHitsNames = [[NSMutableArray alloc] init];
     arrayOfFinalImages = [[NSMutableArray alloc] init];
+    [self setDefaultImage:[UIImage imageNamed:@"vlad.png"]];
     
     [[FBSingleton sharedInstance] RequestFriendUsing];
     
@@ -210,7 +211,7 @@
                 //obtain from database the names(string) of the current equipment images
                 //update the uiimageview accordingly
                 //call print screen function
-                //save to aray
+                //save to array
                 
                     //this is what should happen!!!
                     //Items *guy = [Items alloc];
@@ -224,13 +225,13 @@
                 hammerView.image = [UIImage imageNamed:starting_hammer];
                 shieldView.image = [UIImage imageNamed:starting_shield];
                 UIImage *guy = [self captureImageOnSelect];
-                [arrayOfFinalImages addObject:guy];
                 
-                //!!! this is for displaying other player's status
-                //call the cocos2d layer to update character
-                //CCScene *scene = [[CCDirector sharedDirector] runningScene];
-                //id layer = [[scene children] objectAtIndex:0];
-                //[layer updatePortraitWitHHead:friend.head_id body:@"peter body.png" helmet:@"standard blue.png" hammer:@"hammer.png" shield:@"coin front.png"];
+                if (![arrayOfFinalImages containsObject:defaultImage]) {
+                    [arrayOfFinalImages addObject:guy];
+                } else {
+                    [arrayOfFinalImages replaceObjectAtIndex:[arrayOfFinalImages indexOfObject:defaultImage] withObject:guy];
+                }
+               //[arrayOfFinalImages addObject:guy];
                 
                 //add tap gesture (to view the glview)
                 UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnImage:)];
@@ -301,11 +302,25 @@
 
 //set the portrait view to the image of the user's current status
 -(void) handleTapOnImage:(id)sender {
-    //UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
-    //UIImage *tempImage = ((UIImageView *)(tap.view)).image;
+    UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
+    UIImage *tempImage = ((UIImageView *)(tap.view)).image;
     
-    //portrait.image = tempImage;
-    //[portrait setContentMode:UIViewContentModeScaleAspectFill];
+    //obtain from database the names(string) of the current equipment images
+    //update the uiimageview accordingly
+    //call print screen function
+    //save to aray
+    
+    //this is what should happen!!!
+    //Items *guy = [Items alloc];
+    //guy.headID = friend.head_id;
+    //guy.helmet = standard_blue_head;
+    
+    //this is what is happening!!
+    faceView.image = tempImage;
+    helmetView.image = [UIImage imageNamed:standard_blue_head];
+    bodyView.image = [UIImage imageNamed:standard_blue_body];
+    hammerView.image = [UIImage imageNamed:starting_hammer];
+    shieldView.image = [UIImage imageNamed:starting_shield];
 }
 
 -(IBAction)cancelTouched:(id)sender {
@@ -313,10 +328,15 @@
     int whichOne = [sender tag];
     UIImageView *tempView = [selectedHits objectAtIndex:whichOne];
     
-    //if (portrait.image == tempView.image) {
-    //    portrait.image = nil;
-    //}
+    //set image of all subviews to nil in the containerView
+    for (UIImageView *view in self.containerView.subviews) {
+        [view setImage:nil];
+    }
     
+    //now need to remove that uiimage from the arrayOfImages
+    [arrayOfFinalImages replaceObjectAtIndex:whichOne withObject:defaultImage];//[UIImage imageNamed:@"vlad.png"]];
+    
+    //set mini-portrait to nil
     tempView.image = nil;
     
     [selectedHitsNames replaceObjectAtIndex:whichOne withObject:dummyString];
@@ -389,7 +409,7 @@
         
         if (totalFriends < (2*selectedHitsCount+1)) {
             for (int i = 0; i < selectedHitsCount + 1; i++) {
-                [arrayOfFinalImages addObject:[UIImage imageNamed:@"vlad.png"]];
+                [arrayOfFinalImages addObject:defaultImage];
             }
         }
         

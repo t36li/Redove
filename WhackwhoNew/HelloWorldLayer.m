@@ -163,17 +163,17 @@
         
         //!!!! initializing popups
         //use the array from game.h which contains all image names
+        int i = 1;
+        int xpad = 50;
+        for (UIImage *person in [[Game sharedGame] arrayOfAllPopups]) {
+            Character *head = [Character spriteWithCGImage:[person CGImage] key:[NSString stringWithFormat:@"person%i", i]];
+            head.position = ccp(xpad, s.height/2);
+            [self addChild:head];
         
-        //for (Items *person in [[Game sharedGame] arrayOfAllPopups]) {
-        Character *head = [Character spriteWithCGImage:[[[[Game sharedGame] arrayOfAllPopups] objectAtIndex:0] CGImage] key:@"1231231"];
-        head.position = ccp(s.width/2, s.height/2);
-        [self addChild:head];
-        
-        
+            xpad += 50;
             //[heads addObject:head];
-        //}
-        
-        
+            i++; //for key purposes
+        }
         
         //[self schedule:@selector(tryPopheads) interval:1.5];
         //[self schedule:@selector(checkGameState) interval:0.1];

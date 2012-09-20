@@ -28,7 +28,8 @@
    
     NSMutableArray *selectedHits;
     NSMutableArray *selectedHitsNames;
-    NSMutableArray *arrayOfFinalImages; 
+    NSMutableArray *arrayOfFinalImages;
+    UIImage *defaultImage;
     
     //!!!decommission noHits.... no longer lets user select who to NOT hit
     //NSMutableArray *noHits;
@@ -58,10 +59,10 @@
 
 }
 
-@property (nonatomic) NSMutableArray *selectedHits;
 @property (nonatomic) IBOutlet UIImageView *hit1;
 @property (nonatomic) IBOutlet UIImageView *hit2;
 @property (nonatomic) IBOutlet UIImageView *hit3;
+@property (nonatomic) UIImage *defaultImage;
 //@property (nonatomic) IBOutlet UIImageView *noHit1;
 //@property (nonatomic) IBOutlet UIImageView *noHit2;
 //@property (nonatomic) IBOutlet UIImageView *noHit3;
