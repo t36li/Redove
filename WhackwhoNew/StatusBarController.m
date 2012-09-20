@@ -7,7 +7,6 @@
 //
 
 #import "StatusBarController.h"
-#import "UserInfo.h"
 #import "StatusViewLayer.h"
 #import "HelloWorldLayer.h"
 #import "Dragbox.h"
@@ -123,7 +122,6 @@
 -(void)viewWillAppear:(BOOL)animated {
     
     self.navigationController.navigationBarHidden = YES;
-    //photoView.image = [[UserInfo sharedInstance] exportImage];
     
     CCDirector *director = [CCDirector sharedDirector];
     
@@ -372,7 +370,7 @@
 - (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 }
 
-- (void) viewDidDisappear:(BOOL)animated {
+-(void) viewWillDisappear:(BOOL)animated {
     CCDirector *director = [CCDirector sharedDirector];
     [director removeFromParentViewController];
     [director.view removeFromSuperview];

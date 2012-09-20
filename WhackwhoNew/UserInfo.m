@@ -178,7 +178,7 @@ static UserInfo *sharedInstance = nil;
         mouthPosition = mouthView.center;
         mouthPosition.y = usrImg.size.height - mouthPosition.y;
 
-        croppedImage = [UserInfo getCroppedImage:usrImg inRect:faceRect];
+//        croppedImage = [UserInfo getCroppedImage:usrImg inRect:faceRect];
     }
     
     //[photoView setTransform:CGAffineTransformMakeScale(1, -1)];
@@ -186,7 +186,7 @@ static UserInfo *sharedInstance = nil;
 }
 
 -(void) setUserPicture:(UIImage *)img delegate:(id)sender{
-    usrImg = [UIImage imageWithCGImage:img.CGImage];
+//    usrImg = [UIImage imageWithCGImage:img.CGImage];
     [self setDelegate:sender];
     if (usrImg != nil) {
         [self performSelectorInBackground:@selector(markFaces) withObject:nil];

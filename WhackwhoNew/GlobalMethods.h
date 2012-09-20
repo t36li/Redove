@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UserInfo.h"
+#import <RestKit/RestKit.h>
+#import <CommonCrypto/CommonDigest.h>
 
 @interface GlobalMethods : NSObject{
 }
@@ -18,7 +21,7 @@
 //+ (UIImage *)imageForObject:(NSString *)objectID;
 //RestKit initial setup (URL, ObjectMapping, router)
 -(void) RKInit;
-
++ (NSString *)generateHashForUIImage:(UIImage *)img;
 
 @end
 

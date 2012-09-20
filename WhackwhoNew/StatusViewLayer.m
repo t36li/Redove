@@ -46,16 +46,16 @@
         CGSize s = CGSizeMake(190, 250); //this is the size of the screen
         
         //we will initialize all body part sprite here, then change the texture
-        
+                
         //init face with image from DB, if none exists, give it blank (use pause.png for now)
         if ([face_DB CGImage] != nil) {
-            NSLog(@"Accessibility string: %@", [face_DB accessibilityIdentifier]);
-            face = [CCSprite spriteWithCGImage:[face_DB CGImage] key:[face_DB accessibilityIdentifier]]; //320 x 426
+//            face = [CCSprite spriteWithCGImage:[face_DB CGImage] key:[face_DB accessibilityIdentifier]]; //320 x 426
+            face = [CCSprite spriteWithCGImage:[face_DB CGImage] key:@"User Cropped Image"];
         } else {
             face = [CCSprite spriteWithFile:PauseButton];
             [face setVisible:FALSE];
         }
-        face.scale = 0.4;
+        face.scale = 1;
         face.anchorPoint = ccp(0.5,1);
         
         //init body
