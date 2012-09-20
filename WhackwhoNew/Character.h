@@ -17,7 +17,7 @@
     BOOL tappable;
     BOOL isSelectedHit;
     BOOL didMiss;
-    CCSprite *body;
+    //CCSprite *body;
     //BOOL sideWaysMove;
     //NSString *imageName;
     
@@ -27,7 +27,7 @@
 @property (nonatomic) BOOL tappable;
 @property (nonatomic) BOOL isSelectedHit;
 @property (nonatomic) BOOL didMiss;
-@property (nonatomic) CCSprite *body;
+//@property (nonatomic) CCSprite *body;
 //@property (nonatomic) BOOL sideWaysMove;
 //@property (nonatomic) int posOccupied;
 //@property (nonatomic) NSString *imageName;

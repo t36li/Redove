@@ -423,13 +423,6 @@
 		D07F6FF01599463A0085DF2B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F6FEF1599463A0085DF2B /* CoreImage.framework */; };
 		D090C63815A238CF0051AA12 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D090C63715A238CF0051AA12 /* UserInfo.m */; };
 		D0948D4115ADFF0E00429477 /* AvatarBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0948D4015ADFF0E00429477 /* AvatarBaseController.m */; };
-		D09800CA1609621F009E97E8 /* green board.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800C61609621E009E97E8 /* green board.png */; };
-		D09800CB1609621F009E97E8 /* blue board.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800C71609621E009E97E8 /* blue board.png */; };
-		D09800CC1609621F009E97E8 /* yellow board.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800C81609621E009E97E8 /* yellow board.png */; };
-		D09800CD1609621F009E97E8 /* pink board.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800C91609621E009E97E8 /* pink board.png */; };
-		D09800D316096DE7009E97E8 /* pink final.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800CF16096DE4009E97E8 /* pink final.png */; };
-		D09800D416096DE7009E97E8 /* yellow final.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800D016096DE4009E97E8 /* yellow final.png */; };
-		D09800D516096DE7009E97E8 /* blue final.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800D116096DE6009E97E8 /* blue final.png */; };
 		D09FD5DD159E4EB60079231D /* CameraOverlayControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09FD5DB159E4EB60079231D /* CameraOverlayControllerViewController.m */; };
 		D09FD5DE159E4EB60079231D /* CameraOverlayControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D09FD5DC159E4EB60079231D /* CameraOverlayControllerViewController.xib */; };
 		D0A3F72415AF5E9A0027EFF9 /* pinky head.png in Resources */ = {isa = PBXBuildFile; fileRef = D0948D3215AB5D5700429477 /* pinky head.png */; };

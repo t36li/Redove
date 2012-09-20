@@ -15,6 +15,6 @@
 //@synthesize imageName;
 @synthesize didMiss;
 //@synthesize sideWaysMove;
-@synthesize body;
+//@synthesize body;
 
 @end

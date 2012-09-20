@@ -165,31 +165,12 @@
         //use the array from game.h which contains all image names
         
         //for (Items *person in [[Game sharedGame] arrayOfAllPopups]) {
-        Items *person = [[[Game sharedGame] arrayOfAllPopups] objectAtIndex:0];
+        Character *head = [Character spriteWithCGImage:[[[[Game sharedGame] arrayOfAllPopups] objectAtIndex:0] CGImage] key:@"1231231"];
+        head.position = ccp(s.width/2, s.height/2);
+        [self addChild:head];
         
-            Character *faceSprite;
-            if (person.headID != nil) {
-                NSString *url = [NSString stringWithFormat:@"www.whackwho.com/userImages/%@.png", person.headID];
-                UIImage *face = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
-                faceSprite = [CCSprite spriteWithCGImage:[face CGImage] key:person.headID];
-            } else {
-                faceSprite = nil;
-            }
-            
-            Character *helmet = [CCSprite spriteWithFile:person.helmet];
-            CCSprite *body = [CCSprite spriteWithFile:person.body];
-            CCSprite *hammerArm = [CCSprite spriteWithFile:person.hammerArm];
-            CCSprite *shieldArm = [CCSprite spriteWithFile:person.shieldArm];
-
-            [helmet addChild:faceSprite];
-            [helmet addChild:body];
-            [helmet addChild:hammerArm];
-            [helmet addChild:shieldArm];
         
-            [self addChild:faceSprite z:10];
-            faceSprite.position = ccp(s.width/2, s.height/2);
-        
-            [heads addObject:helmet];
+            //[heads addObject:head];
         //}
         
         

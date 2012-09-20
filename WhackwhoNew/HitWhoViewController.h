@@ -28,7 +28,7 @@
    
     NSMutableArray *selectedHits;
     NSMutableArray *selectedHitsNames;
-    NSMutableArray *arrayOfItems;
+    NSMutableArray *arrayOfFinalImages; 
     
     //!!!decommission noHits.... no longer lets user select who to NOT hit
     //NSMutableArray *noHits;
@@ -43,7 +43,12 @@
     //IBOutlet UIImageView *noHit4;
     
     
-    IBOutlet UIView *portrait;
+    IBOutlet UIView *containerView;
+    UIImageView *faceView;
+    UIImageView *bodyView;
+    UIImageView *helmetView;
+    UIImageView *hammerView;
+    UIImageView *shieldView;
     
     UITableView *table;
     NSArray *resultFriends;
@@ -62,7 +67,7 @@
 //@property (nonatomic) IBOutlet UIImageView *noHit3;
 //@property (nonatomic) IBOutlet UIImageView *noHit4;
 
-@property (nonatomic) IBOutlet UIView *portrait;
+@property (nonatomic) IBOutlet UIView *containerView;
 
 @property (nonatomic) IBOutlet UITableView *table;
 @property (nonatomic) SpinnerView *spinner;

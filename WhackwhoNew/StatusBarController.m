@@ -118,9 +118,53 @@
     }
 }
 
-
-// viewdidload gets called before this
 -(void)viewWillAppear:(BOOL)animated {
+    self.navigationController.navigationBarHidden = YES;
+    
+    UIImage *face_DB = [[UserInfo sharedInstance] croppedImage];
+        
+    //we will initialize all body part sprite here, then change the texture
+    //!!! need to retrive from database the current equipment!
+    
+    //init face with image from DB, if none exists, give it blank (use pause.png for now)
+    UIImageView *faceView = [[UIImageView alloc] initWithFrame:CGRectMake(48, 90, 75, 35)];
+    [faceView setContentMode:UIViewContentModeScaleAspectFill];
+    [self.containerView addSubview:faceView];
+    [self.containerView sendSubviewToBack:faceView];
+    [faceView setImage:face_DB];
+    
+    //init body
+    UIImageView *bodyView = [[UIImageView alloc] initWithFrame:CGRectMake(42, 145, 88, 63)];
+    [bodyView setContentMode:UIViewContentModeScaleAspectFill];
+    [self.containerView addSubview:bodyView];
+    [bodyView setImage:[UIImage imageNamed:standard_blue_body]];
+    
+    //init helmet
+    UIImageView *helmetView = [[UIImageView alloc] initWithFrame:CGRectMake(25, 33, 120, 135)];
+    [helmetView setContentMode:UIViewContentModeScaleAspectFill];
+    [self.containerView addSubview:helmetView];
+    [helmetView setImage:[UIImage imageNamed:standard_blue_head]];
+    
+    //init hammerHand
+    UIImageView *hammerView = [[UIImageView alloc] initWithFrame:CGRectMake(118, 132, 32, 39)];
+    [hammerView setContentMode:UIViewContentModeScaleAspectFill];
+    [self.containerView addSubview:hammerView];
+    [hammerView setImage:[UIImage imageNamed:starting_hammer]];
+    
+    //init shieldHand
+    UIImageView *shieldView = [[UIImageView alloc] initWithFrame:CGRectMake(35, 145, 40, 40)];
+    [shieldView setContentMode:UIViewContentModeScaleAspectFill];
+    [self.containerView addSubview:shieldView];
+    [shieldView setImage:[UIImage imageNamed:starting_shield]];
+    
+    //animations
+    //CCMoveBy *moveHeadUp = [CCMoveBy actionWithDuration:2.5 position:ccp(0,10)];
+    //CCMoveBy *moveHeadDown = [CCMoveBy actionWithDuration:2.5 position:ccp(0,-10)];
+    //[helmet runAction:[CCRepeatForever actionWithAction:[CCSequence actionOne:moveHeadUp two:moveHeadDown]]];
+
+}
+// viewdidload gets called before this
+/*-(void)viewWillAppear:(BOOL)animated {
     
     self.navigationController.navigationBarHidden = YES;
     //photoView.image = [[UserInfo sharedInstance] exportImage];
@@ -175,7 +219,7 @@
     [director didMoveToParentViewController:nil];
     
     [director end];
-}
+}*/
 
 - (void)viewDidUnload
 {
