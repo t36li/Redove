@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "StatusCocosDelegate.h"
+#import "GlobalMethods.h"
 
 @interface StatusViewLayer : CCLayer{//<StatusCocosDelegate> {
     CCSprite *face;

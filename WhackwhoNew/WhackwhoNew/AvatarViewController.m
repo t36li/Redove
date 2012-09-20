@@ -117,10 +117,11 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     self.navigationController.navigationBarHidden = YES;
     
     UserInfo *usr = [UserInfo sharedInstance];
-    if (usr.usrImg == nil) {
+    if (!newPhoto) {
         [self startCamera:nil];
     } else {
         headView.image = usr.croppedImage;
+        backgroundView.image = [UIImage imageNamed:@"white final.png"];
     }
 }
 
@@ -224,6 +225,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
 }
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+    NSLog(@"didFailWithError: %@", error.description);
     
 }
 
@@ -234,12 +236,12 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     if (image != nil){
         photoView.image = [AvatarBaseController resizeImage:image toSize:photoView.frame.size];
         //[usr setUserPicture:image];
-        
+        usr.usrImg = image;
         usr.croppedImage = croppedImg;
         //headView.image = croppedImg;
         //headView.image = usr.croppedImage;
         newPhoto = YES;
-        backgroundView.image = [UIImage imageNamed:@"big head overlay white.png"];
+        backgroundView.image = [UIImage imageNamed:@"white final.png"];
     }
 }
 

@@ -7,7 +7,6 @@
 //
 
 #import "StatusBarController.h"
-#import "UserInfo.h"
 #import "StatusViewLayer.h"
 #import "HelloWorldLayer.h"
 #import "Dragbox.h"
@@ -167,7 +166,6 @@
 /*-(void)viewWillAppear:(BOOL)animated {
     
     self.navigationController.navigationBarHidden = YES;
-    //photoView.image = [[UserInfo sharedInstance] exportImage];
     
     CCDirector *director = [CCDirector sharedDirector];
     
