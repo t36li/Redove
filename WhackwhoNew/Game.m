@@ -18,6 +18,8 @@ static Game *sharedGame = nil;
 @synthesize difficulty;
 @synthesize multiplier, timeBonus, consecHits, baseScore;
 //@synthesize allHeads;
+
+@synthesize selectHeadCount;
 //@synthesize selectedHeads;
 @synthesize arrayOfAllPopups;
 @synthesize head;

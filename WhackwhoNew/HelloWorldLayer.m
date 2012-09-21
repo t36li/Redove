@@ -71,7 +71,7 @@
         
         //init retard variables
         consecHits = 0;
-        totalTime = 25;
+        totalTime = 45;
         myTime = (int)totalTime;
         baseScore = 0;
         speed = 1.5;
@@ -164,20 +164,27 @@
         //!!!! initializing popups
         //use the array from game.h which contains all image names
         int i = 1;
-        int xpad = 50;
+        //int xpad = 50;
         for (UIImage *person in [[Game sharedGame] arrayOfAllPopups]) {
             Character *head = [Character spriteWithCGImage:[person CGImage] key:[NSString stringWithFormat:@"person%i", i]];
-            head.position = ccp(xpad, s.height/2);
+            //head.position = ccp(xpad, s.height/2);
+            
+            if (i < [[Game sharedGame] selectHeadCount]) {
+                head.isSelectedHit = TRUE;
+            }
+            
+            head.visible = FALSE;
             [self addChild:head];
+            [heads addObject:head];
         
-            xpad += 50;
+            //xpad += 50;
             //[heads addObject:head];
             i++; //for key purposes
         }
         
-        //[self schedule:@selector(tryPopheads) interval:1.5];
-        //[self schedule:@selector(checkGameState) interval:0.1];
-        //[self schedule:@selector(timerUpdate:) interval:0.001];
+        [self schedule:@selector(tryPopheads) interval:1.5];
+        [self schedule:@selector(checkGameState) interval:0.1];
+        [self schedule:@selector(timerUpdate:) interval:0.001];
 	}
     
 	return self;
@@ -519,7 +526,7 @@
             if (CGRectIntersectsRect(absrect1, absrect2)) {
                 //CCLOG(@"intersected!");
                 head.position = ccp(0,0);
-                head.scale = 0.2;
+                //head.scale = 0.2;
                 head.visible = FALSE;
                 [head stopAllActions];
                 return;
@@ -559,7 +566,7 @@
     
     //init all the actions
     //add the height of the body * 0.3 to the move: 59.5 * 0.3
-    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp((height_now+5) * sin(rotationAngle), (height_now+5) * cos(rotationAngle))];
+    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp((height_now+10) * sin(rotationAngle), (height_now+10) * cos(rotationAngle))];
     CCMoveBy *easeMoveUp = [CCEaseIn actionWithAction:moveUp rate:3.0];
     CCAction *easeMoveDown = [easeMoveUp reverse];
     CCCallFuncN *setTappable = [CCCallFuncN actionWithTarget:self selector:@selector(setTappable:)];
@@ -601,7 +608,7 @@
 
     head.rotation = 0;
     head.position = ccp(0,0);
-    head.scale = 0.2;
+    //head.scale = 0.2;
     head.visible = FALSE;
 
     if (head.didMiss && head.isSelectedHit) {
@@ -653,9 +660,9 @@
     CGPoint location = [touch locationInView:[touch view]];
     location = [[CCDirector sharedDirector] convertToGL:location];
     
-    CCLOG(@"x: %f, y: %f", location.x, location.y);
+    //CCLOG(@"x: %f, y: %f", location.x, location.y);
 
-    /*for (CCSprite *coin in coins) {
+    for (CCSprite *coin in coins) {
         if (coin.tag == 1) {
             continue;
         }

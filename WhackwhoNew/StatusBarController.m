@@ -12,15 +12,15 @@
 #import "Dragbox.h"
 
 //define tags
-#define head_Label 1
+#define helmet_Label 1
 #define body_Label 2
-#define leftHand_Label 3
-#define rightHand_Label 4
+#define hammerHand_Label 3
+#define shieldHand_Label 4
 
 @implementation StatusBarController
 
 @synthesize containerView;
-@synthesize helmet, body, left_hand, right_hand;
+@synthesize helmet, body, hammer_hand, shield_hand;
 @synthesize stashItems;
 @synthesize item1, item2, item3, item4, item5, item6, item7, item8, item9, item10;
 @synthesize money, totalCash;
@@ -43,34 +43,34 @@
     
     stashItems =  [NSArray arrayWithObjects:item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, nil];
     
-    equipments = [NSArray arrayWithObjects:helmet, body, left_hand, right_hand, nil];
+    equipments = [NSArray arrayWithObjects:helmet, body, hammer_hand, shield_hand, nil];
     
     orig_item_positions = [[NSMutableDictionary alloc] init];
     orig_equipment_positions = [[NSMutableDictionary alloc] init];
     
     totalCash = 0;
     
-    //retrieve data from database about user's gears and display them accordingly
+    //retrieve data from database about user's storage and display them accordingly
     //assume for testing the user has 4 items only...
     //for (int i = 0, i < [useritems count], i++) {
     //    UIImage *item = [useritems objectatindex: int];
     //    [stashItems objectAtIndex:i].image = item;
     //}
     //will need to set tags for each item as well
-    item1.image = [UIImage imageNamed:starting_hammer];
-    item1.tag = leftHand_Label;
+    item1.image = [UIImage imageNamed:devil_hammer];
+    item1.tag = hammerHand_Label;
     item2.image = [UIImage imageNamed:standard_pink_head];
-    item2.tag = head_Label;
+    item2.tag = helmet_Label;
     item3.image = [UIImage imageNamed:starting_shield];
-    item3.tag = rightHand_Label;
+    item3.tag = shieldHand_Label;
     item4.image = [UIImage imageNamed:starting_body];
     item4.tag = body_Label;
     
     //setUp tags for equipments
-    helmet.tag = head_Label;
+    helmet.tag = helmet_Label;
     body.tag = body_Label;
-    left_hand.tag = leftHand_Label;
-    right_hand.tag = rightHand_Label;
+    hammer_hand.tag = hammerHand_Label;
+    shield_hand.tag = shieldHand_Label;
     
     //set up touch gestures for stash items
     int i = 1;
@@ -126,20 +126,20 @@
     //!!! need to retrive from database the current equipment!
     
     //init face with image from DB, if none exists, give it blank (use pause.png for now)
-    UIImageView *faceView = [[UIImageView alloc] initWithFrame:CGRectMake(48, 90, 75, 35)];
+    UIImageView *faceView = [[UIImageView alloc] initWithFrame:CGRectMake(43, 90, 85, 35)];
     [faceView setContentMode:UIViewContentModeScaleAspectFill];
     [self.containerView addSubview:faceView];
     [self.containerView sendSubviewToBack:faceView];
     [faceView setImage:face_DB];
     
     //init body
-    UIImageView *bodyView = [[UIImageView alloc] initWithFrame:CGRectMake(42, 145, 88, 63)];
+    UIImageView *bodyView = [[UIImageView alloc] initWithFrame:CGRectMake(42, 148, 88, 63)];
     [bodyView setContentMode:UIViewContentModeScaleAspectFill];
     [self.containerView addSubview:bodyView];
     [bodyView setImage:[UIImage imageNamed:standard_blue_body]];
     
     //init helmet
-    UIImageView *helmetView = [[UIImageView alloc] initWithFrame:CGRectMake(25, 33, 120, 135)];
+    UIImageView *helmetView = [[UIImageView alloc] initWithFrame:CGRectMake(25, 30, 120, 135)];
     [helmetView setContentMode:UIViewContentModeScaleAspectFill];
     [self.containerView addSubview:helmetView];
     [helmetView setImage:[UIImage imageNamed:standard_blue_head]];
@@ -235,6 +235,7 @@
     UITapGestureRecognizer *tap = (UITapGestureRecognizer *)gesture;
     UIImageView *item = ((UIImageView *)(tap.view));
     
+    //set previously selected item's background to clearcolor
     for (UIImageView *item in stashItems) {
         if ([item.backgroundColor isEqual:[UIColor blackColor]]) {
             [item setBackgroundColor:[UIColor clearColor]];
@@ -249,6 +250,7 @@
 
 
 - (void)handleTapOnEquipmentImage: (UITapGestureRecognizer *)gesture {
+    
     UITapGestureRecognizer *tap = (UITapGestureRecognizer *)gesture;
     UIImageView *equipment = ((UIImageView *)(tap.view));
     
@@ -260,9 +262,20 @@
             equipment.image = nil;
 
             //call the cocos2d layer to remove the equipment
-            CCScene *scene = [[CCDirector sharedDirector] runningScene];
-            id layer = [[scene children] objectAtIndex:0];
-            [layer updateCharacterWithImage:equipment.image bodyPart:equipment.tag];
+            switch (item.tag) {
+                case helmet_Label:
+                    
+                    break;
+                case body_Label:
+                    
+                    break;
+                case hammerHand_Label:
+                    
+                    break;
+                case shieldHand_Label:
+                    
+                    break;
+            }
             
             break;
         }
@@ -330,9 +343,20 @@
                 item.center = [pt CGPointValue];
                 
                 //call the cocos2d layer to update character
-                CCScene *scene = [[CCDirector sharedDirector] runningScene];
-                id layer = [[scene children] objectAtIndex:0];
-                [layer updateCharacterWithImage:equipment.image bodyPart:item.tag];
+                switch (item.tag) {
+                    case helmet_Label:
+                        
+                        break;
+                    case body_Label:
+                        
+                        break;
+                    case hammerHand_Label:
+                        
+                        break;
+                    case shieldHand_Label:
+                        
+                        break;
+                }
                 
                 [item setBackgroundColor:[UIColor clearColor]];
                 break;
