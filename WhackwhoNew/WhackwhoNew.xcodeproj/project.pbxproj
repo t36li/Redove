@@ -425,17 +425,6 @@
 		D006F6A915B4FB7D0079626F /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = D006F6A815B4FB7D0079626F /* Friend.m */; };
 		D006FCE615B51DC10079626F /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D006FCE515B51DC10079626F /* ImageIO.framework */; };
 		D07F6FF01599463A0085DF2B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F6FEF1599463A0085DF2B /* CoreImage.framework */; };
-		D08B57FF160BF9C10082BA4B /* StatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D08B57FE160BF9C10082BA4B /* StatusView.xib */; };
-		D08B580B160BFFF90082BA4B /* ear 2.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5801160BFFF90082BA4B /* ear 2.png */; };
-		D08B580C160BFFF90082BA4B /* ear 1.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5802160BFFF90082BA4B /* ear 1.png */; };
-		D08B580D160BFFF90082BA4B /* sworn1.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5803160BFFF90082BA4B /* sworn1.png */; };
-		D08B580E160BFFF90082BA4B /* scar 3.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5804160BFFF90082BA4B /* scar 3.png */; };
-		D08B580F160BFFF90082BA4B /* scar2.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5805160BFFF90082BA4B /* scar2.png */; };
-		D08B5810160BFFF90082BA4B /* scar 1.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5806160BFFF90082BA4B /* scar 1.png */; };
-		D08B5811160BFFF90082BA4B /* eye2.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5807160BFFF90082BA4B /* eye2.png */; };
-		D08B5812160BFFF90082BA4B /* lip 1.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5808160BFFF90082BA4B /* lip 1.png */; };
-		D08B5813160BFFF90082BA4B /* eye1.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5809160BFFF90082BA4B /* eye1.png */; };
-		D08B5814160BFFF90082BA4B /* tear.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B580A160BFFF90082BA4B /* tear.png */; };
 		D090C63815A238CF0051AA12 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D090C63715A238CF0051AA12 /* UserInfo.m */; };
 		D0948D4115ADFF0E00429477 /* AvatarBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0948D4015ADFF0E00429477 /* AvatarBaseController.m */; };
 		D09800CA1609621F009E97E8 /* green board.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800C61609621E009E97E8 /* green board.png */; };
