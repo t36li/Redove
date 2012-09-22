@@ -59,15 +59,26 @@
 #define mouthEffectOne @"mouth effect test1.png"
 
 //skeleton
-#define standard_blue_head @"final blue.png"
-#define standard_pink_head @"final pinky.png"
+#define standard_blue_head @"blue final.png"
+#define standard_pink_head @"pink final.png"
 #define standard_blue_body @"peter body.png"
 //#define standard_pink_body @"pink body.png"
 
 //items
+    //hammers
 #define starting_hammer @"hammer.png"
+#define spike_hammer @"h6 spike.png"
+#define candy_hammer @"h5 candy.png"
+#define rocket_hammer @"h4 rocket.png"
+#define rabbit_hammer @"h3 rabbit.png"
+#define bandage_hammer @"h2 bandage.png"
+#define devil_hammer @"h1 devil.png"
+
+    //shields
 #define starting_shield @"coin front.png"
+    //body
 #define starting_body @"heart.png"
+
 
 
 //store frames

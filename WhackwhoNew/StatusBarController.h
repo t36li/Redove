@@ -11,15 +11,15 @@
 #import "GameOverDelegate.h"
 #import "StatusCocosDelegate.h"
 
-@interface StatusBarController : UIViewController <CCDirectorDelegate, GameOverDelegate> {
+@interface StatusBarController : UIViewController {// <CCDirectorDelegate, GameOverDelegate> {
     IBOutlet UIView *containerView;
     
     //define the outlets for gear
     NSArray *equipments;
     IBOutlet UIImageView *helmet;
     IBOutlet UIImageView *body;
-    IBOutlet UIImageView *left_hand;
-    IBOutlet UIImageView *right_hand;
+    IBOutlet UIImageView *hammer_hand;
+    IBOutlet UIImageView *shield_hand;
     
     //define a dictionary containing all original positions of the above frames
     NSMutableDictionary *orig_equipment_positions;
@@ -45,8 +45,9 @@
     CGPoint startPoint;
     BOOL touched_item;
     
-    //define cocos layer as delegate
-    //id<StatusCocosDelegate> cocosDelegate;
+    //define containerView subviews
+    //UIImageView *faceView;
+    //UIImageView *bodyView
     
     //define money label
     IBOutlet UILabel *money;
@@ -63,8 +64,8 @@
 @property (nonatomic) NSArray *equipments;
 @property (nonatomic) IBOutlet UIImageView *helmet; 
 @property (nonatomic) IBOutlet UIImageView *body;
-@property (nonatomic) IBOutlet UIImageView *left_hand;
-@property (nonatomic) IBOutlet UIImageView *right_hand;
+@property (nonatomic) IBOutlet UIImageView *hammer_hand;
+@property (nonatomic) IBOutlet UIImageView *shield_hand;
 
 //define the stash items
 @property (nonatomic) NSArray *stashItems;

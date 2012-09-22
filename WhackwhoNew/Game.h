@@ -15,7 +15,8 @@
     BOOL isEnabledSoundFX;
     int difficulty;
     int multiplier, timeBonus, consecHits, baseScore;
-    //NSMutableArray *allHeads, *selectedHeads;
+    
+    int selectHeadCount;
     NSMutableArray *arrayOfAllPopups;
     UIImage *head;
 }
@@ -28,6 +29,8 @@
 @property (nonatomic, readwrite) int timeBonus;
 @property (nonatomic, readwrite) int consecHits;
 @property (nonatomic, readwrite) int baseScore;
+
+@property (nonatomic, readwrite) int selectHeadCount;
 //@property (nonatomic, copy) NSMutableArray *allHeads;
 //@property (nonatomic, copy) NSMutableArray *selectedHeads;
 @property (nonatomic, retain) NSMutableArray *arrayOfAllPopups;

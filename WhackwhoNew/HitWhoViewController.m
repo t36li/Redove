@@ -396,11 +396,8 @@
     } else {
         //first count number of friends. Then count number of selected hits
         //if total friends < 2 * selected + 1, then need to fill with void faces...
-        //if need to fil with void,
-        //  create array of items (contains curr. equip. info of selected hits)
-        //  + fill in the remaining with blank heads
-        //else
-        //  create array of items (contains curr.equip. info of selected + randomed friends)
+        //else, select random friends from resultFriends
+        //
         
         //!!! if not enough friends, need to use void head (i.e. heads without faces)
         
@@ -413,6 +410,7 @@
             }
         }
         
+        [[Game sharedGame] setSelectHeadCount:selectedHitsCount];
         [[Game sharedGame] setArrayOfAllPopups:arrayOfFinalImages];
 
         [self performSegueWithIdentifier:ChooseToGame sender:sender];
