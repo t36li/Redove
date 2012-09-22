@@ -443,6 +443,16 @@
 		D0B2477015C204C300C206BA /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2476F15C204C300C206BA /* UIImage+fixOrientation.m */; };
 		D0B4849A160E2C77000B95A7 /* FaceEffectsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B48498160E2C77000B95A7 /* FaceEffectsController.m */; };
 		D0B4849B160E2C77000B95A7 /* FaceEffectsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0B48499160E2C77000B95A7 /* FaceEffectsController.xib */; };
+		D0B48896160E5371000B95A7 /* ear 2.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5801160BFFF90082BA4B /* ear 2.png */; };
+		D0B48897160E5371000B95A7 /* ear 1.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5802160BFFF90082BA4B /* ear 1.png */; };
+		D0B48898160E5371000B95A7 /* sworn1.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5803160BFFF90082BA4B /* sworn1.png */; };
+		D0B48899160E5371000B95A7 /* scar 3.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5804160BFFF90082BA4B /* scar 3.png */; };
+		D0B4889A160E5371000B95A7 /* scar2.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5805160BFFF90082BA4B /* scar2.png */; };
+		D0B4889B160E5371000B95A7 /* scar 1.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5806160BFFF90082BA4B /* scar 1.png */; };
+		D0B4889C160E5371000B95A7 /* eye2.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5807160BFFF90082BA4B /* eye2.png */; };
+		D0B4889D160E5371000B95A7 /* lip 1.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5808160BFFF90082BA4B /* lip 1.png */; };
+		D0B4889E160E5371000B95A7 /* eye1.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5809160BFFF90082BA4B /* eye1.png */; };
+		D0B4889F160E5371000B95A7 /* tear.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B580A160BFFF90082BA4B /* tear.png */; };
 		D0B9EECD159E6F0D005D2460 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0B9EECC159E6F0D005D2460 /* MobileCoreServices.framework */; };
 		D0D7C84615955D3400F51C6E /* AvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D7C84515955D3400F51C6E /* AvatarViewController.m */; };
 		D0D7C84915956E3D00F51C6E /* ModeSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D7C84815956E3D00F51C6E /* ModeSelectionViewController.m */; };
@@ -1066,7 +1076,7 @@
 		D0B2476F15C204C300C206BA /* UIImage+fixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+fixOrientation.m"; sourceTree = "<group>"; };
 		D0B48497160E2C77000B95A7 /* FaceEffectsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceEffectsController.h; sourceTree = "<group>"; };
 		D0B48498160E2C77000B95A7 /* FaceEffectsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceEffectsController.m; sourceTree = "<group>"; };
-		D0B48499160E2C77000B95A7 /* FaceEffectsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FaceEffectsController.xib; sourceTree = "<group>"; };
+		D0B48499160E2C77000B95A7 /* FaceEffectsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FaceEffectsController.xib; path = ../FaceEffectsController.xib; sourceTree = "<group>"; };
 		D0B9EECC159E6F0D005D2460 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		D0B9EECF159EA9D4005D2460 /* CameraOverlayControllerViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraOverlayControllerViewControllerDelegate.h; sourceTree = "<group>"; };
 		D0D7C84415955D3400F51C6E /* AvatarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AvatarViewController.h; path = WhackwhoNew/AvatarViewController.h; sourceTree = "<group>"; };
@@ -1322,6 +1332,8 @@
 				C198EE2C15CF7AEB004D170C /* Personal Status View */,
 				D0D7C84415955D3400F51C6E /* AvatarViewController.h */,
 				D0D7C84515955D3400F51C6E /* AvatarViewController.m */,
+				D0B48497160E2C77000B95A7 /* FaceEffectsController.h */,
+				D0B48498160E2C77000B95A7 /* FaceEffectsController.m */,
 				D0948D3F15ADFF0E00429477 /* AvatarBaseController.h */,
 				D0948D4015ADFF0E00429477 /* AvatarBaseController.m */,
 				C198EE2915CF7888004D170C /* EmailViewController.h */,
@@ -1469,9 +1481,6 @@
 		C147166A1594ACCA0002FF21 = {
 			isa = PBXGroup;
 			children = (
-				D0B48497160E2C77000B95A7 /* FaceEffectsController.h */,
-				D0B48498160E2C77000B95A7 /* FaceEffectsController.m */,
-				D0B48499160E2C77000B95A7 /* FaceEffectsController.xib */,
 				69164C5C15D9F8DF003FD8A8 /* Classes */,
 				69A1964A15C356670079DC99 /* RestKit.xcodeproj */,
 				D006009515B5F29A0079626F /* SDWebImage.xcodeproj */,
@@ -1528,6 +1537,7 @@
 		C147168C1594ACCA0002FF21 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D0B48499160E2C77000B95A7 /* FaceEffectsController.xib */,
 				D0948D3915AB6E9A00429477 /* AvatarView.xib */,
 				D09FD5DC159E4EB60079231D /* CameraOverlayControllerViewController.xib */,
 				692AC3A715B24C2A001E4858 /* hitFriendCell.xib */,
@@ -2430,6 +2440,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0B48896160E5371000B95A7 /* ear 2.png in Resources */,
+				D0B48897160E5371000B95A7 /* ear 1.png in Resources */,
+				D0B48898160E5371000B95A7 /* sworn1.png in Resources */,
+				D0B48899160E5371000B95A7 /* scar 3.png in Resources */,
+				D0B4889A160E5371000B95A7 /* scar2.png in Resources */,
+				D0B4889B160E5371000B95A7 /* scar 1.png in Resources */,
+				D0B4889C160E5371000B95A7 /* eye2.png in Resources */,
+				D0B4889D160E5371000B95A7 /* lip 1.png in Resources */,
+				D0B4889E160E5371000B95A7 /* eye1.png in Resources */,
+				D0B4889F160E5371000B95A7 /* tear.png in Resources */,
 				C147168E1594ACCA0002FF21 /* Default.png in Resources */,
 				C14716901594ACCA0002FF21 /* fps_images.png in Resources */,
 				C14716921594ACCA0002FF21 /* fps_images-hd.png in Resources */,

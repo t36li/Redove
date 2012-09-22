@@ -14,6 +14,10 @@
 
 @implementation FaceEffectsController
 
+@synthesize containerView;
+@synthesize nose, mouth, left_eye, left_ear, left_tear, right_ear, right_eye, right_tear;
+@synthesize backButton;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -27,6 +31,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self.containerView addSubview:avatarView];
+    [containerView sendSubviewToBack:avatarView];
+    avatarView.frame = containerView.bounds;
+    UserInfo *user = [UserInfo sharedInstance];
+    headView.image = user.croppedImage;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+
 }
 
 - (void)viewDidUnload
@@ -39,6 +53,10 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+-(IBAction) back:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end
