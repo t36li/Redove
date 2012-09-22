@@ -90,13 +90,6 @@
 @property (nonatomic, retain) IBOutlet UIImageView *item9;
 @property (nonatomic, retain) IBOutlet UIImageView *item10;
 
-
-@property (nonatomic, retain)  UIImageView *faceView;
-@property (nonatomic, retain)  UIImageView *bodyView;
-@property (nonatomic, retain)  UIImageView *helmetView;
-@property (nonatomic, retain)  UIImageView *hammerView;
-@property (nonatomic, retain)  UIImageView *shieldView;
-
 //define money
 @property (nonatomic) IBOutlet UILabel *money;
 @property (nonatomic) int totalCash;

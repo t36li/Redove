@@ -25,7 +25,6 @@
 @synthesize stashItems;
 @synthesize item1, item2, item3, item4, item5, item6, item7, item8, item9, item10;
 @synthesize money, totalCash;
-@synthesize helmetView, shieldView, hammerView, bodyView, faceView;
 //@synthesize cocosDelegate;
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
@@ -128,12 +127,7 @@
     
     if (faceView.image == face_DB && face_DB != nil)
         return;
-    
-    [faceView removeFromSuperview];
-    [bodyView removeFromSuperview];
-    [helmetView removeFromSuperview];
-    [hammerView removeFromSuperview];
-    [shieldView removeFromSuperview];
+
         
     //we will initialize all body part sprite here, then change the texture
     //!!! need to retrive from database the current equipment!
