@@ -13,7 +13,7 @@
 
 #define ChooseToGame @"chooseToGame"
 #define dummyString @"testobject"
-#define MAX_HIT 2
+//#define MAX_HIT 2
 
 @implementation HitWhoViewController
 
@@ -388,7 +388,7 @@
 
 -(IBAction) nextTouched:(id)sender {
     //if did not select all hits or did not press random
-    if ([selectedHitsNames containsObject:dummyString] || [selectedHitsNames count] < MAX_HIT) {
+    if ([selectedHitsNames containsObject:dummyString] || [selectedHitsNames count] < 1) {
         //display alert showing must select all b4 game
         UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Selection Error" message:@"You can still pick more friends to hit!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [errorAlert show];
@@ -400,6 +400,7 @@
         //
         
         //!!! if not enough friends, need to use void head (i.e. heads without faces)
+        // else, random friends from list...
         
         int totalFriends = [resultFriends count];
         int selectedHitsCount = [selectedHitsNames count];
@@ -408,6 +409,29 @@
             for (int i = 0; i < selectedHitsCount + 1; i++) {
                 [arrayOfFinalImages addObject:defaultImage];
             }
+        } else {
+            for (int i = 0; i < selectedHitsCount + 1; i++) {
+                while (TRUE) {
+                    int rand = arc4random() % totalFriends;
+                    Friend *frd = [resultFriends objectAtIndex:rand];
+                    
+                    if (![selectedHitsNames containsObject:frd.whackwho_id]) {
+                        
+                        hitFriendCell *cell = (hitFriendCell *) [table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:rand inSection:0]];
+                        
+                        //this is what is happening!!
+                        faceView.image = cell.profileImage.image;
+                        helmetView.image = [UIImage imageNamed:standard_blue_head];
+                        bodyView.image = [UIImage imageNamed:standard_blue_body];
+                        hammerView.image = [UIImage imageNamed:starting_hammer];
+                        shieldView.image = [UIImage imageNamed:starting_shield];
+                        UIImage *guy = [self captureImageOnSelect];
+                        
+                        [arrayOfFinalImages addObject:guy];
+                        break;
+                    }
+                }//end while loop for randomization
+            }//end for loop
         }
         
         [[Game sharedGame] setSelectHeadCount:selectedHitsCount];

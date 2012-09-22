@@ -163,7 +163,7 @@
         
         //!!!! initializing popups
         //use the array from game.h which contains all image names
-        int i = 1;
+        int i = 0;
         //int xpad = 50;
         for (UIImage *person in [[Game sharedGame] arrayOfAllPopups]) {
             Character *head = [Character spriteWithCGImage:[person CGImage] key:[NSString stringWithFormat:@"person%i", i]];
@@ -171,6 +171,8 @@
             
             if (i < [[Game sharedGame] selectHeadCount]) {
                 head.isSelectedHit = TRUE;
+            } else {
+                head.isSelectedHit = FALSE;
             }
             
             head.visible = FALSE;
@@ -178,7 +180,7 @@
             [heads addObject:head];
         
             //xpad += 50;
-            //[heads addObject:head];
+            //head.visible = TRUE;
             i++; //for key purposes
         }
         
@@ -419,13 +421,16 @@
     
     if (gameOver) return;
     
-    //[self performSelector:@selector(checkGameState)];
+    //float numSelected = [[Game sharedGame] selectHeadCount];
+    //float totalHeadNum = [[[Game sharedGame] arrayOfAllPopups] count];
     
-    //should remove the head from the array if head.hp == 0?
-    //changed to 50% chance to pop for testing purposes
+    //int randFactor = (numSelected/totalHeadNum)*100;
+    
+    //selectedHeads/totalHeads chance to pop selected
+    //hence, chance of popping correct head increases as u choose more heads
     for (Character *head in heads) {
         if (head.numberOfRunningActions == 0) {
-            if (arc4random() % 100 < 33) {
+            if (arc4random() % 100 < 75){//randFactor) {
                 //pop the selected heads
                 if (head.isSelectedHit == TRUE) {
                     //numHitOccur++;
@@ -566,7 +571,7 @@
     
     //init all the actions
     //add the height of the body * 0.3 to the move: 59.5 * 0.3
-    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp((height_now+10) * sin(rotationAngle), (height_now+10) * cos(rotationAngle))];
+    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp((height_now+20) * sin(rotationAngle), (height_now+20) * cos(rotationAngle))];
     CCMoveBy *easeMoveUp = [CCEaseIn actionWithAction:moveUp rate:3.0];
     CCAction *easeMoveDown = [easeMoveUp reverse];
     CCCallFuncN *setTappable = [CCCallFuncN actionWithTarget:self selector:@selector(setTappable:)];
@@ -818,6 +823,12 @@
     CCSprite *tempbomb = (CCSprite *) sender;
     
     if (tempbomb.tag == 0) {
+        lives -= 1;
+        if ([hearts count] > 0) {
+            [self removeChild:[hearts objectAtIndex:[hearts count] - 1] cleanup:YES];
+            [hearts removeLastObject];
+        }
+
         baseScore -= 100;
     }
     

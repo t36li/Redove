@@ -21,6 +21,7 @@
 
 @synthesize containerView;
 @synthesize helmet, body, hammer_hand, shield_hand;
+@synthesize faceView, helmetView, bodyView, hammerView, shieldView;
 @synthesize stashItems;
 @synthesize item1, item2, item3, item4, item5, item6, item7, item8, item9, item10;
 @synthesize money, totalCash;
@@ -128,34 +129,34 @@
     //!!! need to retrive from database the current equipment!
     
     //init face with image from DB, if none exists, give it blank (use pause.png for now)
-    faceView = [[UIImageView alloc] initWithFrame:CGRectMake(43, 90, 85, 35)];
+    //faceView = [[UIImageView alloc] initWithFrame:CGRectMake(43, 90, 85, 35)];
     [faceView setContentMode:UIViewContentModeScaleAspectFill];
-    [self.containerView addSubview:faceView];
-    [self.containerView sendSubviewToBack:faceView];
+    //[self.containerView addSubview:faceView];
+    //[self.containerView sendSubviewToBack:faceView];
     [faceView setImage:face_DB];
     
     //init body
-    bodyView = [[UIImageView alloc] initWithFrame:CGRectMake(42, 148, 88, 63)];
-    [bodyView setContentMode:UIViewContentModeScaleAspectFill];
-    [self.containerView addSubview:bodyView];
+    //bodyView = [[UIImageView alloc] initWithFrame:CGRectMake(42, 148, 88, 63)];
+    [bodyView setContentMode:UIViewContentModeScaleToFill];
+    //[self.containerView addSubview:bodyView];
     [bodyView setImage:[UIImage imageNamed:standard_blue_body]];
     
     //init helmet
-    helmetView = [[UIImageView alloc] initWithFrame:CGRectMake(25, 30, 120, 135)];
+    //helmetView = [[UIImageView alloc] initWithFrame:CGRectMake(25, 30, 120, 135)];
     [helmetView setContentMode:UIViewContentModeScaleAspectFill];
-    [self.containerView addSubview:helmetView];
+    //[self.containerView addSubview:helmetView];
     [helmetView setImage:[UIImage imageNamed:standard_blue_head]];
     
     //init hammerHand
-    hammerView = [[UIImageView alloc] initWithFrame:CGRectMake(115, 134, 32, 39)];
+    //hammerView = [[UIImageView alloc] initWithFrame:CGRectMake(115, 134, 32, 39)];
     [hammerView setContentMode:UIViewContentModeScaleAspectFill];
-    [self.containerView addSubview:hammerView];
+    //[self.containerView addSubview:hammerView];
     [hammerView setImage:[UIImage imageNamed:starting_hammer]];
     
     //init shieldHand
-    shieldView = [[UIImageView alloc] initWithFrame:CGRectMake(35, 145, 40, 40)];
+    //shieldView = [[UIImageView alloc] initWithFrame:CGRectMake(35, 145, 40, 40)];
     [shieldView setContentMode:UIViewContentModeScaleAspectFill];
-    [self.containerView addSubview:shieldView];
+    //[self.containerView addSubview:shieldView];
     [shieldView setImage:[UIImage imageNamed:starting_shield]];
     
     //animations
@@ -234,6 +235,7 @@
 
 #pragma mark - UI methods
 - (void)handleTapOnItemImage: (UITapGestureRecognizer *)gesture {
+    
     UITapGestureRecognizer *tap = (UITapGestureRecognizer *)gesture;
     UIImageView *item = ((UIImageView *)(tap.view));
     

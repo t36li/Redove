@@ -46,11 +46,11 @@
     BOOL touched_item;
     
     //define containerView subviews
-    UIImageView *faceView;
-    UIImageView *bodyView;
-    UIImageView *helmetView;
-    UIImageView *hammerView;
-    UIImageView *shieldView;
+    IBOutlet UIImageView *faceView;
+    IBOutlet UIImageView *bodyView;
+    IBOutlet UIImageView *helmetView;
+    IBOutlet UIImageView *hammerView;
+    IBOutlet UIImageView *shieldView;
     
     //define money label
     IBOutlet UILabel *money;
@@ -69,6 +69,13 @@
 @property (nonatomic) IBOutlet UIImageView *body;
 @property (nonatomic) IBOutlet UIImageView *hammer_hand;
 @property (nonatomic) IBOutlet UIImageView *shield_hand;
+
+//define containerView subviews
+@property (nonatomic) IBOutlet UIImageView *faceView;
+@property (nonatomic) IBOutlet UIImageView *bodyView;
+@property (nonatomic) IBOutlet UIImageView *helmetView;
+@property (nonatomic) IBOutlet UIImageView *hammerView;
+@property (nonatomic) IBOutlet UIImageView *shieldView;
 
 //define the stash items
 @property (nonatomic) NSArray *stashItems;

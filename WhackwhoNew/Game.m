@@ -41,6 +41,7 @@ static Game *sharedGame = nil;
         self.baseScore = 0;
         //allHeads = [[NSMutableArray alloc] init];
         //selectedHeads = [[NSMutableArray alloc] init];
+        selectHeadCount = 0;
         arrayOfAllPopups = [[NSMutableArray alloc] init];
     }
     return self;
@@ -94,6 +95,7 @@ static Game *sharedGame = nil;
     [self setBaseScore:0];
     //[allHeads removeAllObjects];
     //[selectedHeads removeAllObjects];
+    [self setSelectHeadCount:0];
     [arrayOfAllPopups removeAllObjects];
 }
 
