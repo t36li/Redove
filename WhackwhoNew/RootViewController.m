@@ -203,10 +203,10 @@
         NSLog(@"Setting profile picture...");
         NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", [[UserInfo sharedInstance] userId]];
         [LoginAccountImageView setImageWithURL:[NSURL URLWithString:formatting]];
-        
-        NSLog(@"Fetch/Create Database record: starting...");
-        
-        [self performSelectorInBackground:@selector(connToDB) withObject:nil];
+//        
+//        NSLog(@"Fetch/Create Database record: starting...");
+//        
+//        [self performSelectorInBackground:@selector(connToDB) withObject:nil];
         //test upload image
         //[self testUploadImage];
     }

@@ -16,6 +16,7 @@
 #import "UserInfoDelegate.h"
 #import "LoadViewController.h"
 #import "SpinnerView.h"
+#import "FaceEffectsController.h"
 
 @interface AvatarViewController : AvatarBaseController <CameraOverlayControllerViewControllerDelegate,RKObjectLoaderDelegate,UserInfoDelegate, UIGestureRecognizerDelegate> {
     
@@ -42,5 +43,6 @@
 -(IBAction) addPicture:(id)sender;
 -(IBAction) Back:(id)sender;
 -(IBAction) Change_Skin:(id)sender;
+-(IBAction) goToSample:(id)sender;
 
 @end

@@ -61,14 +61,14 @@
 //@property (nonatomic, retain) id<StatusCocosDelegate> cocosDelegate;
 
 //define the container view that stores the cocos2d view
-@property (nonatomic) IBOutlet UIView *containerView;
+@property (nonatomic, retain) IBOutlet UIView *containerView;
 
 //define current equipment
-@property (nonatomic) NSArray *equipments;
-@property (nonatomic) IBOutlet UIImageView *helmet; 
-@property (nonatomic) IBOutlet UIImageView *body;
-@property (nonatomic) IBOutlet UIImageView *hammer_hand;
-@property (nonatomic) IBOutlet UIImageView *shield_hand;
+@property (nonatomic, retain) NSArray *equipments;
+@property (nonatomic, retain) IBOutlet UIImageView *helmet;
+@property (nonatomic, retain) IBOutlet UIImageView *body;
+@property (nonatomic, retain) IBOutlet UIImageView *hammer_hand;
+@property (nonatomic, retain) IBOutlet UIImageView *shield_hand;
 
 //define containerView subviews
 @property (nonatomic) IBOutlet UIImageView *faceView;
@@ -78,17 +78,24 @@
 @property (nonatomic) IBOutlet UIImageView *shieldView;
 
 //define the stash items
-@property (nonatomic) NSArray *stashItems;
-@property (nonatomic) IBOutlet UIImageView *item1;
-@property (nonatomic) IBOutlet UIImageView *item2;
-@property (nonatomic) IBOutlet UIImageView *item3;
-@property (nonatomic) IBOutlet UIImageView *item4;
-@property (nonatomic) IBOutlet UIImageView *item5;
-@property (nonatomic) IBOutlet UIImageView *item6;
-@property (nonatomic) IBOutlet UIImageView *item7;
-@property (nonatomic) IBOutlet UIImageView *item8;
-@property (nonatomic) IBOutlet UIImageView *item9;
-@property (nonatomic) IBOutlet UIImageView *item10;
+@property (nonatomic, retain) NSArray *stashItems;
+@property (nonatomic, retain) IBOutlet UIImageView *item1;
+@property (nonatomic, retain) IBOutlet UIImageView *item2;
+@property (nonatomic, retain) IBOutlet UIImageView *item3;
+@property (nonatomic, retain) IBOutlet UIImageView *item4;
+@property (nonatomic, retain) IBOutlet UIImageView *item5;
+@property (nonatomic, retain) IBOutlet UIImageView *item6;
+@property (nonatomic, retain) IBOutlet UIImageView *item7;
+@property (nonatomic, retain) IBOutlet UIImageView *item8;
+@property (nonatomic, retain) IBOutlet UIImageView *item9;
+@property (nonatomic, retain) IBOutlet UIImageView *item10;
+
+
+@property (nonatomic, retain)  UIImageView *faceView;
+@property (nonatomic, retain)  UIImageView *bodyView;
+@property (nonatomic, retain)  UIImageView *helmetView;
+@property (nonatomic, retain)  UIImageView *hammerView;
+@property (nonatomic, retain)  UIImageView *shieldView;
 
 //define money
 @property (nonatomic) IBOutlet UILabel *money;
