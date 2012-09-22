@@ -441,6 +441,8 @@
 		D0A3F72515AF5E9A0027EFF9 /* AvatarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0948D3915AB6E9A00429477 /* AvatarView.xib */; };
 		D0A3F74715B266330027EFF9 /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A3F74615B266330027EFF9 /* SpinnerView.m */; };
 		D0B2477015C204C300C206BA /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2476F15C204C300C206BA /* UIImage+fixOrientation.m */; };
+		D0B4849A160E2C77000B95A7 /* FaceEffectsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B48498160E2C77000B95A7 /* FaceEffectsController.m */; };
+		D0B4849B160E2C77000B95A7 /* FaceEffectsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0B48499160E2C77000B95A7 /* FaceEffectsController.xib */; };
 		D0B9EECD159E6F0D005D2460 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0B9EECC159E6F0D005D2460 /* MobileCoreServices.framework */; };
 		D0D7C84615955D3400F51C6E /* AvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D7C84515955D3400F51C6E /* AvatarViewController.m */; };
 		D0D7C84915956E3D00F51C6E /* ModeSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D7C84815956E3D00F51C6E /* ModeSelectionViewController.m */; };
@@ -1031,7 +1033,6 @@
 		D006F6A815B4FB7D0079626F /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
 		D006FCE515B51DC10079626F /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		D07F6FEF1599463A0085DF2B /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
-		D08B57FE160BF9C10082BA4B /* StatusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusView.xib; sourceTree = "<group>"; };
 		D08B5801160BFFF90082BA4B /* ear 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ear 2.png"; sourceTree = "<group>"; };
 		D08B5802160BFFF90082BA4B /* ear 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ear 1.png"; sourceTree = "<group>"; };
 		D08B5803160BFFF90082BA4B /* sworn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sworn1.png; sourceTree = "<group>"; };
@@ -1063,6 +1064,9 @@
 		D0A3F74615B266330027EFF9 /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
 		D0B2476E15C204C300C206BA /* UIImage+fixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+fixOrientation.h"; sourceTree = "<group>"; };
 		D0B2476F15C204C300C206BA /* UIImage+fixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+fixOrientation.m"; sourceTree = "<group>"; };
+		D0B48497160E2C77000B95A7 /* FaceEffectsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceEffectsController.h; sourceTree = "<group>"; };
+		D0B48498160E2C77000B95A7 /* FaceEffectsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceEffectsController.m; sourceTree = "<group>"; };
+		D0B48499160E2C77000B95A7 /* FaceEffectsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FaceEffectsController.xib; sourceTree = "<group>"; };
 		D0B9EECC159E6F0D005D2460 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		D0B9EECF159EA9D4005D2460 /* CameraOverlayControllerViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraOverlayControllerViewControllerDelegate.h; sourceTree = "<group>"; };
 		D0D7C84415955D3400F51C6E /* AvatarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AvatarViewController.h; path = WhackwhoNew/AvatarViewController.h; sourceTree = "<group>"; };
@@ -1465,7 +1469,9 @@
 		C147166A1594ACCA0002FF21 = {
 			isa = PBXGroup;
 			children = (
-				D08B57FE160BF9C10082BA4B /* StatusView.xib */,
+				D0B48497160E2C77000B95A7 /* FaceEffectsController.h */,
+				D0B48498160E2C77000B95A7 /* FaceEffectsController.m */,
+				D0B48499160E2C77000B95A7 /* FaceEffectsController.xib */,
 				69164C5C15D9F8DF003FD8A8 /* Classes */,
 				69A1964A15C356670079DC99 /* RestKit.xcodeproj */,
 				D006009515B5F29A0079626F /* SDWebImage.xcodeproj */,
@@ -2589,6 +2595,7 @@
 				C19A3A21160CD4FE00C6E8F9 /* h3 rabbit.png in Resources */,
 				C19A3A22160CD4FE00C6E8F9 /* h2 bandage.png in Resources */,
 				C19A3A23160CD4FE00C6E8F9 /* h1 devil.png in Resources */,
+				D0B4849B160E2C77000B95A7 /* FaceEffectsController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2648,6 +2655,7 @@
 				C155FE831608CE19007F254B /* Items.m in Sources */,
 				C155FE9916091118007F254B /* ChooseWhoLayer.m in Sources */,
 				C155FE9E160968A6007F254B /* Character.m in Sources */,
+				D0B4849A160E2C77000B95A7 /* FaceEffectsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
