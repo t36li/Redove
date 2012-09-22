@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1296</int>
+		<int key="IBDocument.SystemTarget">1280</int>
 		<string key="IBDocument.SystemVersion">12B19</string>
 		<string key="IBDocument.InterfaceBuilderVersion">2549</string>
 		<string key="IBDocument.AppKitVersion">1187</string>
@@ -56,7 +56,7 @@
 						<string key="NSFrame">{{122, 288}, {77, 38}}</string>
 						<reference key="NSSuperview" ref="699316968"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="1029789647"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -68,10 +68,10 @@
 					<object class="IBUIImageView" id="310303498">
 						<reference key="NSNextResponder" ref="699316968"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{207, 5}, {67, 106}}</string>
+						<string key="NSFrame">{{207, 30}, {67, 106}}</string>
 						<reference key="NSSuperview" ref="699316968"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="733603636"/>
+						<reference key="NSNextKeyView" ref="1029789647"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -83,7 +83,7 @@
 					<object class="IBUIImageView" id="607204850">
 						<reference key="NSNextResponder" ref="699316968"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{46, 5}, {67, 106}}</string>
+						<string key="NSFrame">{{46, 30}, {67, 106}}</string>
 						<reference key="NSSuperview" ref="699316968"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="537818575"/>
@@ -113,7 +113,7 @@
 					<object class="IBUIImageView" id="733603636">
 						<reference key="NSNextResponder" ref="699316968"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{97, 208}, {55, 44}}</string>
+						<string key="NSFrame">{{98, 208}, {55, 44}}</string>
 						<reference key="NSSuperview" ref="699316968"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="156711526"/>
@@ -131,7 +131,7 @@
 						<string key="NSFrame">{{93, 247}, {20, 22}}</string>
 						<reference key="NSSuperview" ref="699316968"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
+						<reference key="NSNextKeyView" ref="733603636"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -182,12 +182,12 @@
 						<reference key="object" ref="699316968"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="308498935"/>
-							<reference ref="607204850"/>
-							<reference ref="310303498"/>
 							<reference ref="537818575"/>
 							<reference ref="156711526"/>
-							<reference ref="733603636"/>
 							<reference ref="1029789647"/>
+							<reference ref="310303498"/>
+							<reference ref="607204850"/>
+							<reference ref="733603636"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -250,10 +250,6 @@
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<real value="1296" key="NS.object.0"/>
-		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
