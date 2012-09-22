@@ -46,8 +46,11 @@
     BOOL touched_item;
     
     //define containerView subviews
-    //UIImageView *faceView;
-    //UIImageView *bodyView
+    UIImageView *faceView;
+    UIImageView *bodyView;
+    UIImageView *helmetView;
+    UIImageView *hammerView;
+    UIImageView *shieldView;
     
     //define money label
     IBOutlet UILabel *money;

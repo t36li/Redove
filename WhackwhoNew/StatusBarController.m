@@ -65,6 +65,8 @@
     item3.tag = shieldHand_Label;
     item4.image = [UIImage imageNamed:starting_body];
     item4.tag = body_Label;
+    item5.image = [UIImage imageNamed:rabbit_hammer];
+    item5.tag = hammerHand_Label;
     
     //setUp tags for equipments
     helmet.tag = helmet_Label;
@@ -126,32 +128,32 @@
     //!!! need to retrive from database the current equipment!
     
     //init face with image from DB, if none exists, give it blank (use pause.png for now)
-    UIImageView *faceView = [[UIImageView alloc] initWithFrame:CGRectMake(43, 90, 85, 35)];
+    faceView = [[UIImageView alloc] initWithFrame:CGRectMake(43, 90, 85, 35)];
     [faceView setContentMode:UIViewContentModeScaleAspectFill];
     [self.containerView addSubview:faceView];
     [self.containerView sendSubviewToBack:faceView];
     [faceView setImage:face_DB];
     
     //init body
-    UIImageView *bodyView = [[UIImageView alloc] initWithFrame:CGRectMake(42, 148, 88, 63)];
+    bodyView = [[UIImageView alloc] initWithFrame:CGRectMake(42, 148, 88, 63)];
     [bodyView setContentMode:UIViewContentModeScaleAspectFill];
     [self.containerView addSubview:bodyView];
     [bodyView setImage:[UIImage imageNamed:standard_blue_body]];
     
     //init helmet
-    UIImageView *helmetView = [[UIImageView alloc] initWithFrame:CGRectMake(25, 30, 120, 135)];
+    helmetView = [[UIImageView alloc] initWithFrame:CGRectMake(25, 30, 120, 135)];
     [helmetView setContentMode:UIViewContentModeScaleAspectFill];
     [self.containerView addSubview:helmetView];
     [helmetView setImage:[UIImage imageNamed:standard_blue_head]];
     
     //init hammerHand
-    UIImageView *hammerView = [[UIImageView alloc] initWithFrame:CGRectMake(118, 132, 32, 39)];
+    hammerView = [[UIImageView alloc] initWithFrame:CGRectMake(115, 134, 32, 39)];
     [hammerView setContentMode:UIViewContentModeScaleAspectFill];
     [self.containerView addSubview:hammerView];
     [hammerView setImage:[UIImage imageNamed:starting_hammer]];
     
     //init shieldHand
-    UIImageView *shieldView = [[UIImageView alloc] initWithFrame:CGRectMake(35, 145, 40, 40)];
+    shieldView = [[UIImageView alloc] initWithFrame:CGRectMake(35, 145, 40, 40)];
     [shieldView setContentMode:UIViewContentModeScaleAspectFill];
     [self.containerView addSubview:shieldView];
     [shieldView setImage:[UIImage imageNamed:starting_shield]];
@@ -264,19 +266,18 @@
             //call the cocos2d layer to remove the equipment
             switch (item.tag) {
                 case helmet_Label:
-                    
+                    [helmetView setImage:[UIImage imageNamed:standard_blue_head]];
                     break;
                 case body_Label:
-                    
+                    [bodyView setImage:[UIImage imageNamed:standard_blue_body]];
                     break;
                 case hammerHand_Label:
-                    
+                    [hammerView setImage:[UIImage imageNamed:starting_hammer]];
                     break;
                 case shieldHand_Label:
-                    
+                    [shieldView setImage:[UIImage imageNamed:starting_shield]];
                     break;
             }
-            
             break;
         }
     }
@@ -335,6 +336,20 @@
                                  completion:nil];
                 
                 //set equipment image to the image being dragged. and item image to nil
+                
+                //put the other hammer into stash
+                if (equipment.image != nil) {
+                    for (UIImageView *item in stashItems) {
+                        
+                        if ([item.image CGImage] == nil) {
+                            item.tag = equipment.tag;
+                            item.image = equipment.image;
+                            break;
+                        }
+                    }
+                }
+                
+                //update equipment
                 equipment.image = item.image;
                 item.image = nil;
                 
@@ -345,16 +360,16 @@
                 //call the cocos2d layer to update character
                 switch (item.tag) {
                     case helmet_Label:
-                        
+                        [helmetView setImage:equipment.image];
                         break;
                     case body_Label:
-                        
+                        [bodyView setImage:equipment.image];
                         break;
                     case hammerHand_Label:
-                        
+                        [hammerView setImage:equipment.image];
                         break;
                     case shieldHand_Label:
-                        
+                        [shieldView setImage:equipment.image];
                         break;
                 }
                 

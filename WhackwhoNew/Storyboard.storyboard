@@ -286,6 +286,7 @@
                     <connections>
                         <outlet property="body" destination="tEL-lv-IZH" id="20B-bM-d2Q"/>
                         <outlet property="containerView" destination="fhO-MD-d75" id="dvh-WX-wbG"/>
+                        <outlet property="hammer_hand" destination="db3-wM-wR9" id="vQf-Vq-HTA"/>
                         <outlet property="helmet" destination="DEK-jd-gZH" id="VBl-wc-xMo"/>
                         <outlet property="item1" destination="Xx4-iT-rqt" id="sW3-It-fvW"/>
                         <outlet property="item10" destination="vAk-w5-qeM" id="Shw-TG-98v"/>
@@ -297,9 +298,8 @@
                         <outlet property="item7" destination="Qtt-wd-Est" id="SNo-bz-aHu"/>
                         <outlet property="item8" destination="7qP-Kl-fsB" id="hQh-u1-ced"/>
                         <outlet property="item9" destination="4HE-vV-IK0" id="zYT-ve-haO"/>
-                        <outlet property="left_hand" destination="db3-wM-wR9" id="qFv-Iu-gzs"/>
                         <outlet property="money" destination="3if-J1-b74" id="I0q-CL-Yab"/>
-                        <outlet property="right_hand" destination="fLl-gj-sHb" id="z4p-Da-oNJ"/>
+                        <outlet property="shield_hand" destination="fLl-gj-sHb" id="3Vn-fK-DrZ"/>
                         <segue destination="NW8-Zr-9Q9" kind="push" identifier="StatusToModeSegue" id="1sR-bf-A58"/>
                     </connections>
                 </viewController>
@@ -1483,6 +1483,7 @@
                 <relationship kind="action" name="money_pressed:"/>
                 <relationship kind="outlet" name="body" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="hammer_hand" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="helmet" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="item1" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="item10" candidateClass="UIImageView"/>
@@ -1494,9 +1495,8 @@
                 <relationship kind="outlet" name="item7" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="item8" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="item9" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="left_hand" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="money" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="right_hand" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="shield_hand" candidateClass="UIImageView"/>
             </relationships>
         </class>
         <class className="StoreViewController" superclassName="UIViewController">
