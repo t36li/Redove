@@ -40,11 +40,11 @@
     NSArray *subviews = avatarView.subviews;
     self.photoView = [subviews objectAtIndex:0];
     self.headView = [subviews objectAtIndex:1];
-    self.backgroundView = [subviews objectAtIndex:2];
-    self.markingView = [subviews objectAtIndex:3];
+    self.markingView = [subviews objectAtIndex:2];
+    self.backgroundView = [subviews objectAtIndex:3];
     
+    [avatarView bringSubviewToFront:markingView];    
     [avatarView bringSubviewToFront:backgroundView];
-    [avatarView bringSubviewToFront:markingView];
     [avatarView sendSubviewToBack:headView];
     [avatarView sendSubviewToBack:photoView];
 

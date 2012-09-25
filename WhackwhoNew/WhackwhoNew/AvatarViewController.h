@@ -29,13 +29,16 @@
     
     CGFloat _xlastScale;
     CGFloat _ylastScale;
+    
+    UIImageView *cameraOverlayView;
 }
-@property (nonatomic) IBOutlet UIView *wtfView;
+@property (nonatomic, strong) IBOutlet UIView *wtfView;
 
-@property (nonatomic) IBOutlet UIView *imageView;
+@property (nonatomic, strong) IBOutlet UIView *imageView;
 
 @property (nonatomic, strong) CameraOverlayControllerViewController *overlay;
-@property (nonatomic) UIImagePickerController *cameraController;
+@property (nonatomic, strong) UIImagePickerController *cameraController;
+@property (nonatomic, strong) UIImageView *cameraOverlayView;
 //@property (nonatomic, retain) IBOutlet AvatarView *avatarView;
 
 

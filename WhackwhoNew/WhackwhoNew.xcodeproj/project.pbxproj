@@ -490,6 +490,7 @@
 		D0E59F88160825D000F73C9D /* pink icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F7F160825D000F73C9D /* pink icon.png */; };
 		D0E59F89160825D000F73C9D /* blue icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F80160825D000F73C9D /* blue icon.png */; };
 		D0E59F8A160825D000F73C9D /* camera photo  frame.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F81160825D000F73C9D /* camera photo  frame.png */; };
+		D0F37ECF161150D200E58F1E /* camera view overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F37ECE161150D200E58F1E /* camera view overlay.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1142,6 +1143,7 @@
 		D0E59F7F160825D000F73C9D /* pink icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink icon.png"; sourceTree = "<group>"; };
 		D0E59F80160825D000F73C9D /* blue icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue icon.png"; sourceTree = "<group>"; };
 		D0E59F81160825D000F73C9D /* camera photo  frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera photo  frame.png"; sourceTree = "<group>"; };
+		D0F37ECE161150D200E58F1E /* camera view overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera view overlay.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2164,6 +2166,7 @@
 		D0E59F791608250200F73C9D /* CameraView */ = {
 			isa = PBXGroup;
 			children = (
+				D0F37ECE161150D200E58F1E /* camera view overlay.png */,
 				D09D9858160A9F7A00014ADB /* white final.png */,
 				D09D9859160A9F7A00014ADB /* pink final.png */,
 				D09D985A160A9F7A00014ADB /* yellow final.png */,
@@ -2648,6 +2651,7 @@
 				C19A3A65160E81B300C6E8F9 /* scroll down button.png in Resources */,
 				C19A3A66160E81B300C6E8F9 /* friend list icon.png in Resources */,
 				C19A3A67160E81B300C6E8F9 /* battle button.png in Resources */,
+				D0F37ECF161150D200E58F1E /* camera view overlay.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2900,6 +2904,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/WhackwhoNew/facebook-ios-sdk\"",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ObjC",
@@ -2935,6 +2940,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/WhackwhoNew/facebook-ios-sdk\"",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ObjC",

@@ -26,7 +26,7 @@
 
 @implementation AvatarViewController
 
-@synthesize imageView, overlay, cameraController, wtfView;
+@synthesize imageView, overlay, cameraController, wtfView, cameraOverlayView;
 
 typedef enum {
     PinchAxisNone,
@@ -100,6 +100,9 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     headView.layer.masksToBounds = YES;
     headView.layer.cornerRadius = 10.0;
     [self.imageView addSubview:avatarView];
+    
+    cameraOverlayView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"camera view overlay.png"]];
+    [markingView addSubview:cameraOverlayView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -123,6 +126,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
         headView.image = usr.croppedImage;
         backgroundView.image = [UIImage imageNamed:@"white final.png"];
     }
+    cameraOverlayView.frame = markingView.bounds;
 }
 
 -(void)scale:(id)sender {
