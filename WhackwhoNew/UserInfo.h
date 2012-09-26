@@ -22,7 +22,7 @@ NSString *const UserChinPosition = @"ChinPosition";
 
 @interface UserInfo : NSObject {
     @public
-    int currentLogInType;
+    NSInteger currentLogInType;
     NSString *userName;
     NSString *userId;
     NSString *gender;
@@ -30,8 +30,8 @@ NSString *const UserChinPosition = @"ChinPosition";
     
     
     // Avatar stuff
-    int whackWhoId;
-    int headId;
+    NSInteger whackWhoId;
+    NSInteger headId;
     
     //@private
     NSString *usrImgURL;
@@ -44,25 +44,19 @@ NSString *const UserChinPosition = @"ChinPosition";
     id<UserInfoDelegate> delegate;
 }
 
-@property (nonatomic, retain) NSString *userId, *userName, *gender;
-@property (nonatomic, readwrite) int currentLogInType,headId, whackWhoId;
-@property (nonatomic, assign) CGPoint leftEyePosition, rightEyePosition, mouthPosition;;
-@property (nonatomic, assign) CGRect faceRect;
+@property (nonatomic, strong) NSString *userId, *userName, *gender;
+@property (nonatomic) CGPoint leftEyePosition, rightEyePosition, mouthPosition;;
+@property (nonatomic) CGRect faceRect;
 @property (nonatomic) id<UserInfoDelegate> delegate;
+@property (nonatomic) NSInteger currentLogInType, whackWhoId, headId;
 
-@property (nonatomic, retain) UIImage *croppedImage, *usrImg;;
+@property (nonatomic, strong) UIImage *croppedImage, *usrImg;;
 
-
+-(void)markFaces:(UIImage *)img;
 +(id)sharedInstance;
 -(void) clearUserInfo;
 -(void) setUserPicture:(UIImage *)img delegate:(id)sender;
 -(UIImage *)getCroppedImage;
-//-(void) setGameImage:(UIImage *)img;
-//-(UIImage *) gameImage;
 +(UIImage *)getCroppedImage:(UIImage *)img inRect:(CGRect)rect;
--(CGPoint) getLeftEyePos;
--(CGPoint) getRightEyePos;
--(CGPoint) getMouthPos;
-//-(UIImage *)getAvatarImage;
 
 @end

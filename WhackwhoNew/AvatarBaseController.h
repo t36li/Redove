@@ -13,13 +13,13 @@
 
 @interface AvatarBaseController : UIViewController
 {
-    UIView *avatarView, *markingView;
+    UIView *avatarView, *markingView, *faceEffectsView;
     UIImageView *backgroundView, *headView, *photoView;
     CGPoint leftEyePos, rightEyePos, mouthPos;
 }
 
 @property (nonatomic) UIImageView *backgroundView, *headView, *photoView;
-@property (nonatomic) UIView *avatarView, *markingView;
+@property (nonatomic) UIView *avatarView, *markingView, *faceEffectsView;
 
 +(UIImage *)resizeImage:(UIImage *)img toSize:(CGSize)rect;
 +(UIImage *)cropImage:(UIImage *)image inRect:(CGRect)rect;

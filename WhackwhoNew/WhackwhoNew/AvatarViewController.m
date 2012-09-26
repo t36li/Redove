@@ -106,17 +106,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    /*
-    CGRect frame = imageView.bounds;
-    CGRect frame2 = avatarView.frame;
-    CGRect frame3 = headView.frame;
-     */
     self.avatarView.frame = imageView.bounds;
-    /*
-    CGRect frame4 = imageView.bounds;
-    CGRect frame5 = avatarView.frame;
-    CGRect frame6 = headView.frame;
-     */
     self.navigationController.navigationBarHidden = YES;
     
     UserInfo *usr = [UserInfo sharedInstance];
@@ -234,16 +224,11 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
 }
 
 -(void)validImageCaptured:(UIImage *)image croppedImage:(UIImage *)croppedImg{
-    //photoView.image = image;
-    //self.imageView.image = image;
     UserInfo *usr = [UserInfo sharedInstance];
     if (image != nil){
         photoView.image = [AvatarBaseController resizeImage:image toSize:photoView.frame.size];
-        //[usr setUserPicture:image];
         usr.usrImg = image;
         usr.croppedImage = croppedImg;
-        //headView.image = croppedImg;
-        //headView.image = usr.croppedImage;
         newPhoto = YES;
         backgroundView.image = [UIImage imageNamed:@"white final.png"];
     }
