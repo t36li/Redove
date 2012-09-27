@@ -17,10 +17,13 @@
 
 @implementation HitWhoViewController
 
-@synthesize hit1, hit2, hit3;
+@synthesize hit1, hit2, hit3, hit4;
 @synthesize defaultImage;
-//@synthesize noHit1, noHit2, noHit3, noHit4;
+
 @synthesize containerView;
+@synthesize faceView, helmetView, bodyView, hammerView, shieldView;
+@synthesize hitNumber;
+
 @synthesize table;
 @synthesize spinner, loadingView;
 @synthesize resultFriends;
@@ -32,10 +35,13 @@
     
     [self.containerView setBackgroundColor:[UIColor clearColor]];
     
-    selectedHits = [[NSMutableArray alloc] initWithObjects:hit1, hit2, hit3, nil];
+    selectedHits = [[NSMutableArray alloc] initWithObjects:hit1, hit2, hit3, hit4, nil];
     selectedHitsNames = [[NSMutableArray alloc] init];
+    
+    //!!!decommissioned!
     //noHits = [[NSMutableArray alloc] initWithObjects:noHit1, noHit2, noHit3, noHit4, nil];
     //noHitsNames = [[NSMutableArray alloc] init];
+    
     arrayOfFinalImages = [[NSMutableArray alloc] init];
     [self setDefaultImage:[UIImage imageNamed:@"vlad.png"]];
     
@@ -61,36 +67,29 @@
     //!!! need to retrive from database the current equipment!
     
     //init face with image from DB, if none exists, give it blank (use pause.png for now)
-    faceView = [[UIImageView alloc] initWithFrame:CGRectMake(48, 90, 75, 35)];
-    [faceView setContentMode:UIViewContentModeScaleAspectFill];
-    [self.containerView addSubview:faceView];
+    [faceView setContentMode:UIViewContentModeScaleToFill];
+    //[self.containerView addSubview:faceView];
     //[faceView setImage:face_DB];
     
     //init body
-    bodyView = [[UIImageView alloc] initWithFrame:CGRectMake(42, 145, 88, 63)];
-    [bodyView setContentMode:UIViewContentModeScaleAspectFill];
-    [self.containerView addSubview:bodyView];
+    [bodyView setContentMode:UIViewContentModeScaleToFill];
+    //[self.containerView addSubview:bodyView];
     //[bodyView setImage:[UIImage imageNamed:standard_blue_body]];
     
     //init helmet
-    helmetView = [[UIImageView alloc] initWithFrame:CGRectMake(25, 33, 120, 135)];
-    [helmetView setContentMode:UIViewContentModeScaleAspectFill];
-    [self.containerView addSubview:helmetView];
+    [helmetView setContentMode:UIViewContentModeScaleToFill];
+    //[self.containerView addSubview:helmetView];
     //[helmetView setImage:[UIImage imageNamed:standard_blue_head]];
     
     //init hammerHand
-    hammerView = [[UIImageView alloc] initWithFrame:CGRectMake(118, 132, 32, 39)];
-    [hammerView setContentMode:UIViewContentModeScaleAspectFill];
-    [self.containerView addSubview:hammerView];
+    [hammerView setContentMode:UIViewContentModeScaleToFill];
+    //[self.containerView addSubview:hammerView];
     //[hammerView setImage:[UIImage imageNamed:starting_hammer]];
     
     //init shieldHand
-    shieldView = [[UIImageView alloc] initWithFrame:CGRectMake(35, 145, 40, 40)];
-    [shieldView setContentMode:UIViewContentModeScaleAspectFill];
-    [self.containerView addSubview:shieldView];
+    [shieldView setContentMode:UIViewContentModeScaleToFill];
+    //[self.containerView addSubview:shieldView];
     //[shieldView setImage:[UIImage imageNamed:starting_shield]];
-
-    
 }
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -129,6 +128,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [resultFriends count];
 }
+
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"hitFriendCell";
@@ -140,7 +140,7 @@
         
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"hitFriendCell" owner:nil options:nil];
         cell = (hitFriendCell *)[nib objectAtIndex:0];
-        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:FriendListBWCell]];
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:HitWhoFriendListCell]];
         [cell.backgroundView setClipsToBounds:YES];
         [cell.backgroundView setContentMode:UIViewContentModeScaleAspectFill];
         cell.spinner = [[SpinnerView alloc] initWithFrame:cell.containerView.bounds];
@@ -302,6 +302,7 @@
 
 //set the portrait view to the image of the user's current status
 -(void) handleTapOnImage:(id)sender {
+    //NSLog(@"touched!!");
     UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
     UIImage *tempImage = ((UIImageView *)(tap.view)).image;
     
@@ -386,7 +387,7 @@
     }
 }*/
 
--(IBAction) nextTouched:(id)sender {
+-(IBAction)battleTouched:(id)sender {
     //if did not select all hits or did not press random
     if ([selectedHitsNames containsObject:dummyString] || [selectedHitsNames count] < 1) {
         //display alert showing must select all b4 game
@@ -394,6 +395,12 @@
         [errorAlert show];
         return;
     } else {
+        
+    }
+}
+
+/*-(IBAction) okTouched:(id)sender {
+
         //first count number of friends. Then count number of selected hits
         //if total friends < 2 * selected + 1, then need to fill with void faces...
         //else, select random friends from resultFriends
@@ -432,14 +439,14 @@
                     }
                 }//end while loop for randomization
             }//end for loop
-        }
+        
         
         [[Game sharedGame] setSelectHeadCount:selectedHitsCount];
         [[Game sharedGame] setArrayOfAllPopups:arrayOfFinalImages];
 
         [self performSegueWithIdentifier:ChooseToGame sender:sender];
-    }
-}
+        }
+}*/
 
 - (IBAction)Back_Touched:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
