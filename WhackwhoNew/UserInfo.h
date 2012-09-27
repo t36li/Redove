@@ -57,6 +57,7 @@ NSString *const UserChinPosition = @"ChinPosition";
 @property (nonatomic) CGPoint leftEyePosition, rightEyePosition, mouthPosition;;
 @property (nonatomic) CGRect faceRect;
 @property (nonatomic) id<UserInfoDelegate> delegate;
+@property (nonatomic) NSInteger currentLogInType, whackWhoId, headId;
 
 @property (nonatomic, strong) UIImage *croppedImage, *usrImg;
 @property (nonatomic, retain) CurrentEquip *currentEquip;

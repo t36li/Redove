@@ -14,7 +14,7 @@
 
 @implementation AvatarBaseController
 
-@synthesize backgroundView, headView, photoView, avatarView, markingView;
+@synthesize backgroundView, headView, photoView, avatarView, markingView, faceEffectsView;
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) {
@@ -41,9 +41,11 @@
     self.photoView = [subviews objectAtIndex:0];
     self.headView = [subviews objectAtIndex:1];
     self.markingView = [subviews objectAtIndex:2];
-    self.backgroundView = [subviews objectAtIndex:3];
+    self.faceEffectsView = [subviews objectAtIndex:3];
+    self.backgroundView = [subviews objectAtIndex:4];
     
-    [avatarView bringSubviewToFront:markingView];    
+    [avatarView bringSubviewToFront:markingView];
+    [avatarView bringSubviewToFront:faceEffectsView];
     [avatarView bringSubviewToFront:backgroundView];
     [avatarView sendSubviewToBack:headView];
     [avatarView sendSubviewToBack:photoView];

@@ -17,10 +17,13 @@
 
 @implementation HitWhoViewController
 
-@synthesize hit1, hit2, hit3;
+@synthesize hit1, hit2, hit3, hit4;
 @synthesize defaultImage;
-//@synthesize noHit1, noHit2, noHit3, noHit4;
+
 @synthesize containerView;
+@synthesize faceView, helmetView, bodyView, hammerView, shieldView;
+@synthesize hitNumber;
+
 @synthesize table;
 @synthesize spinner, loadingView;
 @synthesize resultFriends;
@@ -32,11 +35,16 @@
     
     [self.containerView setBackgroundColor:[UIColor clearColor]];
     
-    selectedHits = [[NSMutableArray alloc] initWithObjects:hit1, hit2, hit3, nil];
+    selectedHits = [[NSMutableArray alloc] initWithObjects:hit1, hit2, hit3, hit4, nil];
     selectedHitsNames = [[NSMutableArray alloc] init];
+    
+    //!!!decommissioned!
     //noHits = [[NSMutableArray alloc] initWithObjects:noHit1, noHit2, noHit3, noHit4, nil];
     //noHitsNames = [[NSMutableArray alloc] init];
+    
     arrayOfFinalImages = [[NSMutableArray alloc] init];
+    whichNumber = 0;
+    //change this to something else later
     [self setDefaultImage:[UIImage imageNamed:@"vlad.png"]];
     
     [[FBSingleton sharedInstance] RequestFriendUsing];
@@ -47,12 +55,13 @@
     spinner = [SpinnerView loadSpinnerIntoView:loadingView];
     tablepull = [[PullToRefreshView alloc] initWithScrollView:(UIScrollView *) self.table];
     [self.table addSubview:tablepull];
-        
 }
 
 // viewdidload gets called before this
 -(void)viewWillAppear:(BOOL)animated {
-    
+    CGRect frame = table.frame;
+    frame.size = CGSizeMake(140, 228);
+    table.frame = frame;
     self.navigationController.navigationBarHidden = YES;
     
     //UIImage *face_DB = [[UserInfo sharedInstance] croppedImage];
@@ -61,36 +70,29 @@
     //!!! need to retrive from database the current equipment!
     
     //init face with image from DB, if none exists, give it blank (use pause.png for now)
-    faceView = [[UIImageView alloc] initWithFrame:CGRectMake(48, 90, 75, 35)];
-    [faceView setContentMode:UIViewContentModeScaleAspectFill];
-    [self.containerView addSubview:faceView];
+    [faceView setContentMode:UIViewContentModeScaleToFill];
+    //[self.containerView addSubview:faceView];
     //[faceView setImage:face_DB];
     
     //init body
-    bodyView = [[UIImageView alloc] initWithFrame:CGRectMake(42, 145, 88, 63)];
-    [bodyView setContentMode:UIViewContentModeScaleAspectFill];
-    [self.containerView addSubview:bodyView];
+    [bodyView setContentMode:UIViewContentModeScaleToFill];
+    //[self.containerView addSubview:bodyView];
     //[bodyView setImage:[UIImage imageNamed:standard_blue_body]];
     
     //init helmet
-    helmetView = [[UIImageView alloc] initWithFrame:CGRectMake(25, 33, 120, 135)];
-    [helmetView setContentMode:UIViewContentModeScaleAspectFill];
-    [self.containerView addSubview:helmetView];
+    [helmetView setContentMode:UIViewContentModeScaleToFill];
+    //[self.containerView addSubview:helmetView];
     //[helmetView setImage:[UIImage imageNamed:standard_blue_head]];
     
     //init hammerHand
-    hammerView = [[UIImageView alloc] initWithFrame:CGRectMake(118, 132, 32, 39)];
-    [hammerView setContentMode:UIViewContentModeScaleAspectFill];
-    [self.containerView addSubview:hammerView];
+    [hammerView setContentMode:UIViewContentModeScaleToFill];
+    //[self.containerView addSubview:hammerView];
     //[hammerView setImage:[UIImage imageNamed:starting_hammer]];
     
     //init shieldHand
-    shieldView = [[UIImageView alloc] initWithFrame:CGRectMake(35, 145, 40, 40)];
-    [shieldView setContentMode:UIViewContentModeScaleAspectFill];
-    [self.containerView addSubview:shieldView];
+    [shieldView setContentMode:UIViewContentModeScaleToFill];
+    //[self.containerView addSubview:shieldView];
     //[shieldView setImage:[UIImage imageNamed:starting_shield]];
-
-    
 }
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -129,6 +131,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [resultFriends count];
 }
+
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"hitFriendCell";
@@ -140,7 +143,7 @@
         
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"hitFriendCell" owner:nil options:nil];
         cell = (hitFriendCell *)[nib objectAtIndex:0];
-        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:FriendListBWCell]];
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:HitWhoFriendListCell]];
         [cell.backgroundView setClipsToBounds:YES];
         [cell.backgroundView setContentMode:UIViewContentModeScaleAspectFill];
         cell.spinner = [[SpinnerView alloc] initWithFrame:cell.containerView.bounds];
@@ -242,6 +245,10 @@
                 //UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget: self action:@selector(handleSwipeOnImage:)];
                 //swipe.numberOfTouchesRequired = 1;
                 //[temp addGestureRecognizer:swipe];
+                
+                //determine which number to display
+                [self changeShieldNumber:temp.tag];
+                
                 break;
             }
         }
@@ -303,18 +310,14 @@
 
 //set the portrait view to the image of the user's current status
 -(void) handleTapOnImage:(id)sender {
+    //NSLog(@"touched!!");
     UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
     UIImage *tempImage = ((UIImageView *)(tap.view)).image;
+    int whichOne = ((UIImageView *)(tap.view)).tag;
     
-    //obtain from database the names(string) of the current equipment images
-    //update the uiimageview accordingly
-    //call print screen function
-    //save to aray
+    [self changeShieldNumber:whichOne];
     
-    //this is what should happen!!!
-    //Items *guy = [Items alloc];
-    //guy.headID = friend.head_id;
-    //guy.helmet = standard_blue_head;
+    //should be updating every gear, not just face
     
     //this is what is happening!!
     faceView.image = tempImage;
@@ -326,7 +329,7 @@
 
 -(IBAction)cancelTouched:(id)sender {
     
-    int whichOne = [sender tag];
+    int whichOne = whichNumber;
     UIImageView *tempView = [selectedHits objectAtIndex:whichOne];
     
     //set image of all subviews to nil in the containerView
@@ -387,7 +390,7 @@
     }
 }*/
 
--(IBAction) nextTouched:(id)sender {
+-(IBAction)battleTouched:(id)sender {
     //if did not select all hits or did not press random
     if ([selectedHitsNames containsObject:dummyString] || [selectedHitsNames count] < 1) {
         //display alert showing must select all b4 game
@@ -411,6 +414,8 @@
                 [arrayOfFinalImages addObject:defaultImage];
             }
         } else {
+            //if enough friends, random through friends
+            
             for (int i = 0; i < selectedHitsCount + 1; i++) {
                 while (TRUE) {
                     int rand = arc4random() % totalFriends;
@@ -433,13 +438,18 @@
                     }
                 }//end while loop for randomization
             }//end for loop
+            
+            
+            [[Game sharedGame] setSelectHeadCount:selectedHitsCount];
+            [[Game sharedGame] setArrayOfAllPopups:arrayOfFinalImages];
+            
+            [self performSegueWithIdentifier:ChooseToGame sender:sender];
         }
-        
-        [[Game sharedGame] setSelectHeadCount:selectedHitsCount];
-        [[Game sharedGame] setArrayOfAllPopups:arrayOfFinalImages];
-
-        [self performSegueWithIdentifier:ChooseToGame sender:sender];
     }
+}
+
+-(IBAction) okTouched:(id)sender {
+
 }
 
 - (IBAction)Back_Touched:(id)sender {
@@ -460,6 +470,27 @@
     
     // Return the result
     return copied;
+}
+
+- (void) changeShieldNumber: (int) whichTag {
+    switch (whichTag) {
+        case 0:
+            hitNumber.image = [UIImage imageNamed:hitNumberOne];
+            whichNumber = 0;
+            break;
+        case 1:
+            hitNumber.image = [UIImage imageNamed:hitNumberTwo];
+            whichNumber = 1;
+            break;
+        case 2:
+            hitNumber.image = [UIImage imageNamed:hitNumberThree];
+            whichNumber = 2;
+            break;
+        case 3:
+            hitNumber.image = [UIImage imageNamed:hitNumberFour];
+            whichNumber = 3;
+            break;
+    }
 }
 
 @end

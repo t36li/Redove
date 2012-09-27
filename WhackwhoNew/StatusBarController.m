@@ -25,6 +25,7 @@
 @synthesize stashItems;
 @synthesize item1, item2, item3, item4, item5, item6, item7, item8, item9, item10;
 @synthesize money, totalCash;
+@synthesize equipments;
 //@synthesize cocosDelegate;
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
