@@ -55,12 +55,13 @@
     spinner = [SpinnerView loadSpinnerIntoView:loadingView];
     tablepull = [[PullToRefreshView alloc] initWithScrollView:(UIScrollView *) self.table];
     [self.table addSubview:tablepull];
-        
 }
 
 // viewdidload gets called before this
 -(void)viewWillAppear:(BOOL)animated {
-    
+    CGRect frame = table.frame;
+    frame.size = CGSizeMake(140, 228);
+    table.frame = frame;
     self.navigationController.navigationBarHidden = YES;
     
     //UIImage *face_DB = [[UserInfo sharedInstance] croppedImage];
