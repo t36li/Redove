@@ -262,6 +262,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
 
 -(IBAction) addPicture:(id)sender {
     UserInfo *info = [UserInfo sharedInstance];
+    info.delegate = self;
     
     if (headView.image != nil) {
         [self Back:nil];
@@ -314,13 +315,13 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
 }
 
 -(IBAction) goToSample:(id)sender {
-    UserInfo *info = [UserInfo sharedInstance];
     CGRect newFrame = headView.frame;
     newFrame.origin.x -= photoView.frame.origin.x;
     newFrame.origin.y -= photoView.frame.origin.y;
     UIImage *resizedImage = [AvatarBaseController resizeImage:photoView.image toSize:photoView.frame.size];
-    info.croppedImage = [AvatarBaseController cropImage:resizedImage inRect:newFrame];
+    UIImage *cropImage = [AvatarBaseController cropImage:resizedImage inRect:newFrame];
     FaceEffectsController *faceControl = [[FaceEffectsController alloc] initWithNibName:@"FaceEffectsController" bundle:nil];
+    faceControl.cropImage = cropImage;
     [self presentModalViewController:faceControl animated:YES];
 }
 @end
