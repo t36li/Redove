@@ -262,9 +262,9 @@
         FriendArray *friendArray = [[FriendArray alloc] init];
         friendArray.friends = friends;
         //[[RKObjectManager sharedManager] postObject:friendArray delegate:self];
-        [[RKObjectManager sharedManager] postObject:friendArray usingBlock:^(RKObjectLoader *loader){
+        [[RKObjectManager sharedManager] getObject:friendArray usingBlock:^(RKObjectLoader *loader){
             loader.delegate = self;
-            loader.resourcePath = @"/getFriendUsingApp";
+            loader.resourcePath = [NSString stringWithFormat:@"/myfriends/inapp/1/%@", [friendUsingAppIDs componentsJoinedByString:@","]];
             loader.targetObject = nil;
         }];
     }
@@ -287,6 +287,7 @@
 
 -(void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response{
     NSLog(@"request body:%@",[request HTTPBodyString]);
+    NSLog(@"request url:%@",[request URL]);
     NSLog(@"response statue: %d", [response statusCode]);
     NSLog(@"response body:%@",[response bodyAsString]);
 }

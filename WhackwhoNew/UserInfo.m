@@ -10,7 +10,7 @@
 
 @implementation UserInfo
 
-@synthesize userName, userId, currentLogInType, headId, whackWhoId, gender, leftEyePosition, rightEyePosition, mouthPosition, faceRect, delegate, croppedImage, usrImg;
+@synthesize userName, userId, currentLogInType, headId, whackWhoId, gender, leftEyePosition, rightEyePosition, mouthPosition, faceRect, delegate, croppedImage, usrImg, currentEquip, storageInv,friendArray; 
 
 static UserInfo *sharedInstance = nil;
 
@@ -61,7 +61,7 @@ static UserInfo *sharedInstance = nil;
     return croppedImg;
 }
 
--(void)markFaces {
+-(void)markFaces:(UIImage *)img {
     //UIImage *tempImage = [UserInfo resizeImage:facePicture.image toSize:facePicture.s];
     //UIImageView *tempView = [[UIImageView alloc] initWithImage:tempImage];
     //[tempView setTransform:CGAffineTransformMakeScale(1, -1)];
@@ -70,7 +70,7 @@ static UserInfo *sharedInstance = nil;
     //UIImage *tempImage = [UserInfo resizeImage:usrImg toSize:usrImg.size];
     // draw a CI image with the previously loaded face detection picture
     
-    CIImage* image = [CIImage imageWithCGImage:usrImg.CGImage]; // create a face detector - since speed is not an issue we'll use a high accuracy
+    CIImage* image = [CIImage imageWithCGImage:img.CGImage]; // create a face detector - since speed is not an issue we'll use a high accuracy
     // detector
     
     CIDetector* detector = [CIDetector detectorOfType:CIDetectorTypeFace
@@ -108,7 +108,7 @@ static UserInfo *sharedInstance = nil;
         
         // add the new view to create a box around the face
         UIView *leftEyeView, *rightEyeView, *mouthView;
-        UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, usrImg.size.width, usrImg.size.height)];
+        UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, img.size.width, img.size.height)];
         [containerView addSubview:faceView];
         
         CGRect rectangle = faceFeature.bounds;
@@ -116,7 +116,7 @@ static UserInfo *sharedInstance = nil;
         NSLog(@"%@", output);
         
         faceRect = faceFeature.bounds;
-        faceRect.origin.y = usrImg.size.height - (faceRect.origin.y + faceRect.size.height);
+        faceRect.origin.y = img.size.height - (faceRect.origin.y + faceRect.size.height);
         if(faceFeature.hasLeftEyePosition)
         {
             // create a UIView with a size based on the width of the face
@@ -172,16 +172,13 @@ static UserInfo *sharedInstance = nil;
         }
         [containerView setTransform:CGAffineTransformMakeScale(1, -1)];
         leftEyePosition = leftEyeView.center;
-        leftEyePosition.y = usrImg.size.height - leftEyePosition.y;
+        leftEyePosition.y = img.size.height - leftEyePosition.y;
         rightEyePosition = rightEyeView.center;
-        rightEyePosition.y = usrImg.size.height - rightEyePosition.y;
+        rightEyePosition.y = img.size.height - rightEyePosition.y;
         mouthPosition = mouthView.center;
-        mouthPosition.y = usrImg.size.height - mouthPosition.y;
+        mouthPosition.y = img.size.height - mouthPosition.y;
 
-//        croppedImage = [UserInfo getCroppedImage:usrImg inRect:faceRect];
     }
-    
-    //[photoView setTransform:CGAffineTransformMakeScale(1, -1)];
     [delegate setUserPictureCompleted];
 }
 
@@ -189,7 +186,7 @@ static UserInfo *sharedInstance = nil;
 //    usrImg = [UIImage imageWithCGImage:img.CGImage];
     [self setDelegate:sender];
     if (usrImg != nil) {
-        [self performSelectorInBackground:@selector(markFaces) withObject:nil];
+        [self performSelectorInBackground:@selector(markFaces:) withObject:usrImg];
     }
 }
 
@@ -197,50 +194,5 @@ static UserInfo *sharedInstance = nil;
 -(UIImage *)getCroppedImage {
     return [UIImage imageWithCGImage:croppedImage.CGImage];
 }
-/*
--(void) setGameImage:(UIImage *)img {
-    gameImage = [UIImage imageWithCGImage:img.CGImage];
-    
-    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    
-	// If you go to the folder below, you will find those pictures
-	NSLog(@"%@",docDir);
-    
-	NSLog(@"saving png");
-	NSString *pngFilePath = [NSString stringWithFormat:@"%@/avatar.png",docDir];
-	NSData *data1 = [NSData dataWithData:UIImagePNGRepresentation(gameImage)];
-	[data1 writeToFile:pngFilePath atomically:YES];
-}
-
--(UIImage *) gameImage {
-    return gameImage;
-}*/
-
--(CGPoint) getLeftEyePos {
-    return leftEyePosition;
-}
-
--(CGPoint) getRightEyePos {
-    return rightEyePosition;
-}
-
--(CGPoint) getMouthPos {
-    return mouthPosition;
-}
-
-/*
--(UIImage *)getAvatarImage {
-    if (croppedImage == nil)
-        return nil;
-    baseController = [[AvatarBaseController alloc] initWithNibName:@"AvatarView" bundle:nil];
-    baseController.headView.image = croppedImage;
-    UIView *view = baseController.avatarView;
-    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, [[UIScreen mainScreen] scale]);
-    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return img;
-}
-*/
 
 @end

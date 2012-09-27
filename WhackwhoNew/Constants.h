@@ -9,7 +9,7 @@
 #define LogInAs @"LogInAs" //Four values: Renren, Facebook, Email, nil
 #define FBAccessToken @"AccessToken"
 #define FBExpirationDateKey @"ExpirationDateKey"
-#define BaseURL @"http://whackwho.com/rest"
+#define BaseURL @"http://whackwho.com/api/index.php"
 #define ImageURL @"http://whackwho.com"
 
 #define kAppName        @"Whack Who"

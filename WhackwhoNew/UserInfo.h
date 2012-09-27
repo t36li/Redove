@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "UserInfoDelegate.h"
+#import "CurrentEquip.h"
+#import "StorageInv.h"
+#import "Friend.h"
 /*
 NSString *const UserLeftEyePosition = @"LeftEyePosition";
 NSString *const UserRightEyePosition = @"RightEyePosition";
@@ -22,7 +25,7 @@ NSString *const UserChinPosition = @"ChinPosition";
 
 @interface UserInfo : NSObject {
     @public
-    int currentLogInType;
+    NSInteger currentLogInType;
     NSString *userName;
     NSString *userId;
     NSString *gender;
@@ -30,8 +33,8 @@ NSString *const UserChinPosition = @"ChinPosition";
     
     
     // Avatar stuff
-    int whackWhoId;
-    int headId;
+    NSInteger whackWhoId;
+    NSInteger headId;
     
     //@private
     NSString *usrImgURL;
@@ -41,28 +44,30 @@ NSString *const UserChinPosition = @"ChinPosition";
     CGPoint leftEyePosition, rightEyePosition, mouthPosition;
     CGRect faceRect;
     
+    CurrentEquip *currentEquip;
+    StorageInv *storageInv;
+    //NSDictionary *myFriends;
+    FriendArray *friendArray;
+    
     id<UserInfoDelegate> delegate;
 }
 
-@property (nonatomic, retain) NSString *userId, *userName, *gender;
+@property (nonatomic, strong) NSString *userId, *userName, *gender;
 @property (nonatomic, readwrite) int currentLogInType,headId, whackWhoId;
-@property (nonatomic, assign) CGPoint leftEyePosition, rightEyePosition, mouthPosition;;
-@property (nonatomic, assign) CGRect faceRect;
+@property (nonatomic) CGPoint leftEyePosition, rightEyePosition, mouthPosition;;
+@property (nonatomic) CGRect faceRect;
 @property (nonatomic) id<UserInfoDelegate> delegate;
 
-@property (nonatomic, retain) UIImage *croppedImage, *usrImg;;
+@property (nonatomic, strong) UIImage *croppedImage, *usrImg;
+@property (nonatomic, retain) CurrentEquip *currentEquip;
+@property (nonatomic, retain) StorageInv *storageInv;
+@property (nonatomic, retain) FriendArray *friendArray;
 
-
+-(void)markFaces:(UIImage *)img;
 +(id)sharedInstance;
 -(void) clearUserInfo;
 -(void) setUserPicture:(UIImage *)img delegate:(id)sender;
 -(UIImage *)getCroppedImage;
-//-(void) setGameImage:(UIImage *)img;
-//-(UIImage *) gameImage;
 +(UIImage *)getCroppedImage:(UIImage *)img inRect:(CGRect)rect;
--(CGPoint) getLeftEyePos;
--(CGPoint) getRightEyePos;
--(CGPoint) getMouthPos;
-//-(UIImage *)getAvatarImage;
 
 @end

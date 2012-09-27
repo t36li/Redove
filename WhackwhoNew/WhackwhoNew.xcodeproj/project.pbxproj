@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3DDA87B816127B23005349D1 /* CurrentEquip.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDA87B316127B23005349D1 /* CurrentEquip.m */; };
+		3DDA87B916127B23005349D1 /* Head.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDA87B516127B23005349D1 /* Head.m */; };
+		3DDA87BA16127B23005349D1 /* StorageInv.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDA87B716127B23005349D1 /* StorageInv.m */; };
 		690D419115AF5EC900472F82 /* friend list (background).png in Resources */ = {isa = PBXBuildFile; fileRef = 690D419015AF5EC900472F82 /* friend list (background).png */; };
 		690D419515AF5F5600472F82 /* friend list (cell).png in Resources */ = {isa = PBXBuildFile; fileRef = 690D419415AF5F5600472F82 /* friend list (cell).png */; };
 		69164C5F15D9F978003FD8A8 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 69164C5E15D9F978003FD8A8 /* User.m */; };
@@ -567,6 +570,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3DDA87B216127B23005349D1 /* CurrentEquip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentEquip.h; sourceTree = "<group>"; };
+		3DDA87B316127B23005349D1 /* CurrentEquip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentEquip.m; sourceTree = "<group>"; };
+		3DDA87B416127B23005349D1 /* Head.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Head.h; sourceTree = "<group>"; };
+		3DDA87B516127B23005349D1 /* Head.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Head.m; sourceTree = "<group>"; };
+		3DDA87B616127B23005349D1 /* StorageInv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageInv.h; sourceTree = "<group>"; };
+		3DDA87B716127B23005349D1 /* StorageInv.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageInv.m; sourceTree = "<group>"; };
 		690D419015AF5EC900472F82 /* friend list (background).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend list (background).png"; sourceTree = "<group>"; };
 		690D419415AF5F5600472F82 /* friend list (cell).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend list (cell).png"; sourceTree = "<group>"; };
 		69164C5D15D9F978003FD8A8 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -1209,6 +1218,12 @@
 		69164C5C15D9F8DF003FD8A8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3DDA87B216127B23005349D1 /* CurrentEquip.h */,
+				3DDA87B316127B23005349D1 /* CurrentEquip.m */,
+				3DDA87B416127B23005349D1 /* Head.h */,
+				3DDA87B516127B23005349D1 /* Head.m */,
+				3DDA87B616127B23005349D1 /* StorageInv.h */,
+				3DDA87B716127B23005349D1 /* StorageInv.m */,
 				69164C5D15D9F978003FD8A8 /* User.h */,
 				69164C5E15D9F978003FD8A8 /* User.m */,
 				D006F6A715B4FB7D0079626F /* Friend.h */,
@@ -2712,6 +2727,9 @@
 				C155FE9916091118007F254B /* ChooseWhoLayer.m in Sources */,
 				C155FE9E160968A6007F254B /* Character.m in Sources */,
 				D0B4849A160E2C77000B95A7 /* FaceEffectsController.m in Sources */,
+				3DDA87B816127B23005349D1 /* CurrentEquip.m in Sources */,
+				3DDA87B916127B23005349D1 /* Head.m in Sources */,
+				3DDA87BA16127B23005349D1 /* StorageInv.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

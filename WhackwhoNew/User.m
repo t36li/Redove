@@ -8,11 +8,10 @@
 
 #import "User.h"
 #import "UserInfo.h"
+#import "Friend.h"
 
 @implementation User
-@synthesize mediaTypeId,whackWhoId,headId,mediaKey,leftEyePosition,rightEyePosition,mouthPosition,faceRect,registeredDate, userImgURL;
-
-
+@synthesize mediaTypeId,whackWhoId,headId,mediaKey,leftEyePosition,rightEyePosition,mouthPosition,faceRect,registeredDate, userImgURL, currentEquip, storageInv;
 
 -(void)copyToUserInfo{
     UserInfo *usrInfo = [UserInfo sharedInstance];
@@ -24,6 +23,8 @@
     [usrInfo setRightEyePosition:CGPointFromString(rightEyePosition)];
     [usrInfo setMouthPosition:CGPointFromString(mouthPosition)];
     [usrInfo setFaceRect:CGRectFromString(faceRect)];
+    [usrInfo setCurrentEquip:[currentEquip currentEquipInFileNames]];
+    [usrInfo setStorageInv:[storageInv setStorageArrayInFileNames]];
     usrInfo->usrImgURL = userImgURL;
     
     NSURL *url = [NSURL URLWithString:userImgURL];
@@ -49,11 +50,65 @@
     rightEyePosition = NSStringFromCGPoint(usrInfo.rightEyePosition);
     mouthPosition = NSStringFromCGPoint(usrInfo.mouthPosition);
     faceRect = NSStringFromCGRect(usrInfo.faceRect);
+    currentEquip = [usrInfo.currentEquip currentEquipInIDs];
+    storageInv = [usrInfo.storageInv setStorageStringInIDs];
     userImgURL = usrInfo->usrImgURL;
     
 }
 
 +(void)objectMappingLoader{
+    //currentEquip mapping:
+    RKObjectMapping *curEquipMapping = [RKObjectMapping mappingForClass:[CurrentEquip class]];
+    [curEquipMapping mapKeyPath:@"Helmet" toAttribute:@"helmet"];
+    [curEquipMapping mapKeyPath:@"Body" toAttribute:@"body"];
+    [curEquipMapping mapKeyPath:@"hammerArm" toAttribute:@"hammerArm"];
+    [curEquipMapping mapKeyPath:@"shieldArm" toAttribute:@"shieldArm"];
+    [[RKObjectManager sharedManager].mappingProvider setMapping:curEquipMapping forKeyPath:@"currentEquip"];
+    
+    //storage Mapping:
+    RKObjectMapping *storageInvMapping = [RKObjectMapping mappingForClass:[StorageInv class]];
+    [storageInvMapping mapKeyPath:@"Helmets" toAttribute:@"helmets"];
+    [storageInvMapping mapKeyPath:@"Bodies" toAttribute:@"bodies"];
+    [storageInvMapping mapKeyPath:@"HammerArms" toAttribute:@"hammerArms"];
+    [storageInvMapping mapKeyPath:@"ShieldArms" toAttribute:@"shieldArms"];
+    [[RKObjectManager sharedManager].mappingProvider setMapping:storageInvMapping forKeyPath:@"storageInv"];
+    
+    //head Mapping:
+    RKObjectMapping *headMapping = [RKObjectMapping mappingForClass:[Head class]];
+    [headMapping mapKeyPath:@"head_id" toAttribute:@"headId"];
+    [headMapping mapKeyPath:@"leftEyePosition" toAttribute:@"leftEyePosition"];
+    [headMapping mapKeyPath:@"rightEyePosition" toAttribute:@"rightEyePosition"];
+    [headMapping mapKeyPath:@"mouthPosition" toAttribute:@"mouthPosition"];
+    [headMapping mapKeyPath:@"faceRect" toAttribute:@"faceRect"];
+    [[RKObjectManager sharedManager].mappingProvider setMapping:headMapping forKeyPath:@"head"];
+    
+    //friend mapping:
+    RKObjectMapping *friendInfoMapping = [RKObjectMapping mappingForClass:[Friend class]];
+    [friendInfoMapping mapKeyPath:@"mediatype_id" toAttribute:@"mediatype_id"];
+    [friendInfoMapping mapKeyPath:@"whackwho_id" toAttribute:@"whackwho_id"];
+    [friendInfoMapping mapKeyPath:@"media_key" toAttribute:@"user_id"];
+    [friendInfoMapping mapKeyPath:@"name" toAttribute:@"name"];
+    [friendInfoMapping mapKeyPath:@"isPlayer" toAttribute:@"isPlayer"];
+    [friendInfoMapping mapKeyPath:@"head_id" toAttribute:@"head_id"];
+    [friendInfoMapping mapKeyPath:@"gender" toAttribute:@"gender"];
+    [friendInfoMapping mapKeyPath:@"head" toRelationship:@"head" withMapping:headMapping];
+    [friendInfoMapping mapKeyPath:@"currentEquip" toRelationship:@"currentEquip" withMapping:curEquipMapping];
+    [[RKObjectManager sharedManager].mappingProvider setMapping:friendInfoMapping forKeyPath:@"friend"];
+    
+    //friend array mapping:
+    RKObjectMapping *friendArrayMapping = [RKObjectMapping mappingForClass:[FriendArray class]];
+    [friendArrayMapping mapKeyPath:@"friends" toRelationship:@"friends" withMapping:friendInfoMapping];
+    [[RKObjectManager sharedManager].mappingProvider setMapping:friendArrayMapping forKeyPath:@"myFriends"];
+    
+    [RKObjectManager sharedManager].serializationMIMEType = RKMIMETypeJSON;
+    [[RKObjectManager sharedManager].mappingProvider setSerializationMapping:[friendArrayMapping inverseMapping] forClass:[FriendArray class]];
+    [[RKObjectManager sharedManager].router routeClass:[FriendArray class] toResourcePath:@"/myfriends/inapp"];
+    [[RKObjectManager sharedManager].router routeClass:[FriendArray class] toResourcePath:@"myfriends/inapp" forMethod:RKRequestMethodPUT];
+    /*
+    [[RKObjectManager sharedManager].router routeClass:[FriendArray class] toResourcePath:@"/getFriendUsingApp" forMethod:RKRequestMethodPOST];
+    */
+    
+    //user mapping:
     RKObjectMapping *userInfoMapping = [RKObjectMapping mappingForClass:[User class]];
     [userInfoMapping mapKeyPath:@"whackwho_id" toAttribute:@"whackWhoId"];
     [userInfoMapping mapKeyPath:@"media_key" toAttribute:@"mediaKey"];
@@ -65,14 +120,13 @@
     [userInfoMapping mapKeyPath:@"mouthPosition" toAttribute:@"mouthPosition"];
     [userInfoMapping mapKeyPath:@"faceRect" toAttribute:@"faceRect"];
     [userInfoMapping mapKeyPath:@"userImgURL" toAttribute:@"userImgURL"];
+    [userInfoMapping mapKeyPath:@"currentEquip" toRelationship:@"currentEquip" withMapping:curEquipMapping];
+    [userInfoMapping mapKeyPath:@"storageInv" toRelationship:@"storageInv" withMapping:storageInvMapping];
     
     [[RKObjectManager sharedManager].mappingProvider setMapping:userInfoMapping forKeyPath:@"user"];
-    //[[RKObjectManager sharedManager].mappingProvider registerMapping:userInfoMapping withRootKeyPath:@""];
-    //[[RKObjectManager sharedManager].mappingProvider setSerializationMapping:[userInfoMapping inverseMapping] forClass:[User class]];
-    [RKObjectManager sharedManager].serializationMIMEType = RKMIMETypeJSON;
+    //[RKObjectManager sharedManager].serializationMIMEType = RKMIMETypeJSON;
     [[RKObjectManager sharedManager].mappingProvider setSerializationMapping:[userInfoMapping inverseMapping] forClass:[User class]];
-    [[RKObjectManager sharedManager].router routeClass:[User class] toResourcePath:@"/user" forMethod:RKRequestMethodPOST];
-    [[RKObjectManager sharedManager].router routeClass:[User class] toResourcePath:@"/user" forMethod:RKRequestMethodPUT];
+    [[RKObjectManager sharedManager].router routeClass:[User class] toResourcePath:@"/user/:mediaTypeId/:mediaKey"];
 }
 
 

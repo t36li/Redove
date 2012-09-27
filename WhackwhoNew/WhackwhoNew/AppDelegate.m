@@ -30,7 +30,7 @@
     objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
     
     [User objectMappingLoader];
-    [FriendArray objectMappingLoader];
+    //[FriendArray objectMappingLoader];
     
     return YES;
 }
