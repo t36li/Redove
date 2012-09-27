@@ -8,6 +8,7 @@
 
 #import "Friend.h"
 #import "Head.h"
+#import "UserInfo.h"
 
 
 @implementation Friend
@@ -47,5 +48,11 @@
 
 @synthesize friends = _friends;
 
+-(void)copyToUserInfo{
+    [[UserInfo sharedInstance] setFriendArray:self];
+}
 
+-(void)getFromUserInfo{
+    _friends = [[UserInfo sharedInstance] friendArray].friends;
+}
 @end

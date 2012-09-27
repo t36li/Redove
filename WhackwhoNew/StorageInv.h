@@ -13,6 +13,7 @@
 
 @property (nonatomic, retain) NSString *headIds, *helmets, *hammerArms, *shieldArms, *bodies;
 @property (nonatomic, retain) NSArray *headIdsArrayInFileName, *helmetsArrayInFileName, *hammerArmsArrayInFileName, *shieldArmsArrayInFileName, *bodiesArrayInFileName;
+
 -(StorageInv *)setStorageArrayInFileNames;
 -(StorageInv *)setStorageStringInIDs;
 @end

@@ -47,13 +47,16 @@
     //change this to something else later
     [self setDefaultImage:[UIImage imageNamed:@"vlad.png"]];
     
+    [[FBSingleton sharedInstance] setDelegate:self];
     [[FBSingleton sharedInstance] RequestFriendUsing];
+    //resultFriends = [[[UserInfo sharedInstance] friendArray] friends];
     
     table.delegate = self;
     table.dataSource = self;
     
     spinner = [SpinnerView loadSpinnerIntoView:loadingView];
     tablepull = [[PullToRefreshView alloc] initWithScrollView:(UIScrollView *) self.table];
+    
     [self.table addSubview:tablepull];
 }
 
@@ -111,7 +114,7 @@
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
--(void) FBUserFriendsAppUsingLoaded:(NSArray *)friendsUsingApp{
+-(void) FBSingletonUserFriendsAppUsingLoaded:(NSArray *)friendsUsingApp{
     NSLog(@"%@",friendsUsingApp);
     [self getFriendDBInfo:friendsUsingApp];
 }
@@ -269,9 +272,8 @@
         FriendArray *friendArray = [[FriendArray alloc] init];
         friendArray.friends = friends;
         //[[RKObjectManager sharedManager] postObject:friendArray delegate:self];
-        [[RKObjectManager sharedManager] getObject:friendArray usingBlock:^(RKObjectLoader *loader){
+        [[RKObjectManager sharedManager] putObject:friendArray usingBlock:^(RKObjectLoader *loader){
             loader.delegate = self;
-            loader.resourcePath = [NSString stringWithFormat:@"/myfriends/inapp/1/%@", [friendUsingAppIDs componentsJoinedByString:@","]];
             loader.targetObject = nil;
         }];
     }
@@ -286,6 +288,7 @@
 -(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object{
     NSLog(@"loaded responses:%@",object);
     FriendArray *friendArray = object;
+    [[UserInfo sharedInstance] setFriendArray:friendArray];
     self.resultFriends = friendArray.friends;
     [self.table reloadData];
     [spinner removeSpinner];

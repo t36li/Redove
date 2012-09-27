@@ -15,36 +15,36 @@
 
 -(StorageInv *)setStorageArrayInFileNames{
     self.headIdsArrayInFileName = [headIds componentsSeparatedByString:@","];
-    self.helmetsArrayInFileName = [self addFileExtension:self.helmets :@"HE"];
-    self.bodiesArrayInFileName = [self addFileExtension:self.bodies :@"BO"];
-    self.hammerArmsArrayInFileName = [self addFileExtension:self.hammerArms :@"HA"];
-    self.shieldArmsArrayInFileName = [self addFileExtension:self.shieldArms :@"SA"];
+    self.helmetsArrayInFileName = [self addFileExtension:self.helmets];
+    self.bodiesArrayInFileName = [self addFileExtension:self.bodies];
+    self.hammerArmsArrayInFileName = [self addFileExtension:self.hammerArms];
+    self.shieldArmsArrayInFileName = [self addFileExtension:self.shieldArms];
     
     return self;
 }
 
 -(StorageInv *)setStorageStringInIDs{
     self.headIds = [headIdsArrayInFileName componentsJoinedByString:@","];
-    self.helmets = [self removeFileExtension:helmetsArrayInFileName :@"HE"];
-    self.bodies = [self removeFileExtension:bodiesArrayInFileName :@"BO"];
-    self.hammerArms = [self removeFileExtension:hammerArmsArrayInFileName :@"HA"];
-    self.shieldArms = [self removeFileExtension:shieldArmsArrayInFileName :@"SA"];
+    self.helmets = [self removeFileExtension:helmetsArrayInFileName];
+    self.bodies = [self removeFileExtension:bodiesArrayInFileName];
+    self.hammerArms = [self removeFileExtension:hammerArmsArrayInFileName];
+    self.shieldArms = [self removeFileExtension:shieldArmsArrayInFileName];
     return self;
 }
 
--(NSArray *) addFileExtension:(NSString *)target : (NSString *)type{
+-(NSArray *) addFileExtension:(NSString *)target{
     NSMutableArray *returnT = [[NSMutableArray alloc] init];
     for (NSString *item in [target componentsSeparatedByString:@","]){
-        NSString* i = [NSString stringWithFormat:@"%@%@.png",type,item];
+        NSString* i = [NSString stringWithFormat:@"%@.png",item];
         [returnT addObject:i];
     }
     return [[NSArray alloc] initWithArray:returnT];
 }
-
--(NSString *) removeFileExtension:(NSArray *)target : (NSString *)type{
+ 
+-(NSString *) removeFileExtension:(NSArray *)target{
     NSMutableArray *returnT = [[NSMutableArray alloc] init];
     for (NSString *item in target){
-        NSString* i = [[item stringByReplacingOccurrencesOfString:type withString:@""] stringByReplacingOccurrencesOfString:@".png" withString:@""];
+        NSString* i = [item stringByReplacingOccurrencesOfString:@".png" withString:@""];
         [returnT addObject:i];
     }
     return [returnT componentsJoinedByString:@","];

@@ -1,4 +1,4 @@
-//
+ //
 //  FBSingleton.m
 //  WhackwhoNew
 //
@@ -416,9 +416,9 @@ static FBSingleton *singletonDelegate = nil;
             
                 if ([result isKindOfClass:[NSArray class]]) {
                     //[delegate FBUserFriendsAppUsingLoaded:result];
-                    [delegate FBUserFriendsAppUsingLoaded:[[NSArray alloc] initWithArray:result copyItems:YES]];
+                    [delegate FBSingletonUserFriendsAppUsingLoaded:[[NSArray alloc] initWithArray:result copyItems:YES]];
                 } else if ([result isKindOfClass:[NSDecimalNumber class]]) {
-                    [delegate FBUserFriendsAppUsingLoaded:[[NSArray alloc] initWithObjects:[result stringValue], nil]];
+                    [delegate FBSingletonUserFriendsAppUsingLoaded:[[NSArray alloc] initWithObjects:[result stringValue], nil]];
                 }
             break;
         }

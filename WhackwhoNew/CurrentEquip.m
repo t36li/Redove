@@ -11,22 +11,22 @@
 @implementation CurrentEquip
 @synthesize helmet,body,hammerArm,shieldArm;
 
+
 -(CurrentEquip *) currentEquipInFileNames{
     CurrentEquip *ce = [CurrentEquip alloc];
-    ce.helmet = [NSString stringWithFormat:@"HE%@.png",self.helmet];
-    ce.body = [NSString stringWithFormat:@"BO%@.png",self.body];
-    ce.hammerArm = [NSString stringWithFormat:@"HA%@.png",self.hammerArm];
-    ce.shieldArm = [NSString stringWithFormat:@"SA%@.png",self.shieldArm];
+    ce.helmet = [NSString stringWithFormat:@"%@.png",self.helmet];
+    ce.body = [NSString stringWithFormat:@"%@.png",self.body];
+    ce.hammerArm = [NSString stringWithFormat:@"%@.png",self.hammerArm];
+    ce.shieldArm = [NSString stringWithFormat:@"%@.png",self.shieldArm];
     return ce;
 }
 
 -(CurrentEquip *) currentEquipInIDs{
     CurrentEquip *ceReturn = [CurrentEquip alloc];
-    ceReturn.helmet =   [[self.helmet stringByReplacingOccurrencesOfString:@"HE" withString:@""] stringByReplacingOccurrencesOfString:@".png" withString:@""];
-    ceReturn.body =   [[self.body stringByReplacingOccurrencesOfString:@"BO" withString:@""] stringByReplacingOccurrencesOfString:@".png" withString:@""];
-    ceReturn.hammerArm =   [[self.hammerArm stringByReplacingOccurrencesOfString:@"HA" withString:@""] stringByReplacingOccurrencesOfString:@".png" withString:@""];
-    ceReturn.shieldArm =   [[self.shieldArm stringByReplacingOccurrencesOfString:@"SA" withString:@""] stringByReplacingOccurrencesOfString:@".png" withString:@""];
+    ceReturn.helmet =   [self.helmet  stringByReplacingOccurrencesOfString:@".png" withString:@""];
+    ceReturn.body =   [self.body stringByReplacingOccurrencesOfString:@".png" withString:@""];
+    ceReturn.hammerArm =   [self.hammerArm stringByReplacingOccurrencesOfString:@".png" withString:@""];
+    ceReturn.shieldArm =   [self.shieldArm stringByReplacingOccurrencesOfString:@".png" withString:@""];
     return ceReturn;
 }
-
 @end

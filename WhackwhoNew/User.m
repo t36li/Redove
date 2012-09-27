@@ -98,12 +98,12 @@
     //friend array mapping:
     RKObjectMapping *friendArrayMapping = [RKObjectMapping mappingForClass:[FriendArray class]];
     [friendArrayMapping mapKeyPath:@"friends" toRelationship:@"friends" withMapping:friendInfoMapping];
-    [[RKObjectManager sharedManager].mappingProvider setMapping:friendArrayMapping forKeyPath:@"myFriends"];
+    [[RKObjectManager sharedManager].mappingProvider setMapping:friendArrayMapping forKeyPath:@"friendsInApp"];
     
     [RKObjectManager sharedManager].serializationMIMEType = RKMIMETypeJSON;
     [[RKObjectManager sharedManager].mappingProvider setSerializationMapping:[friendArrayMapping inverseMapping] forClass:[FriendArray class]];
-    [[RKObjectManager sharedManager].router routeClass:[FriendArray class] toResourcePath:@"/myfriends/inapp"];
-    [[RKObjectManager sharedManager].router routeClass:[FriendArray class] toResourcePath:@"myfriends/inapp" forMethod:RKRequestMethodPUT];
+    [[RKObjectManager sharedManager].router routeClass:[FriendArray class] toResourcePath:@"/friends/inapp"];
+    [[RKObjectManager sharedManager].router routeClass:[FriendArray class] toResourcePath:@"/friends/inapp" forMethod:RKRequestMethodPUT];
     /*
     [[RKObjectManager sharedManager].router routeClass:[FriendArray class] toResourcePath:@"/getFriendUsingApp" forMethod:RKRequestMethodPOST];
     */

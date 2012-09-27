@@ -36,4 +36,7 @@
     NSArray *_friends;
 }
 @property (nonatomic,retain) NSArray *friends;
+
+-(void)copyToUserInfo;
+-(void)getFromUserInfo;
 @end
