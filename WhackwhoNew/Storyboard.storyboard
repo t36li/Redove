@@ -1249,8 +1249,8 @@
                                 <rect key="frame" x="124" y="7" width="45" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="testin number1.png" highlightedImage="UIImageView *faceView" id="ltO-mV-Vzo">
-                                <rect key="frame" x="135" y="15" width="25" height="32"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="ltO-mV-Vzo">
+                                <rect key="frame" x="135" y="15" width="22" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="small frame.png" id="ja1-qM-pBz" userLabel="hit1Frame">
@@ -1420,7 +1420,6 @@
         <image name="store background.png" width="960" height="640"/>
         <image name="store icon.png" width="122" height="114"/>
         <image name="store pin.png" width="116" height="77"/>
-        <image name="testin number1.png" width="27" height="50"/>
         <image name="upper shelf.png" width="393" height="121"/>
         <image name="yellow board.png" width="350" height="115"/>
     </resources>

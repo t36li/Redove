@@ -28,7 +28,9 @@
     NSMutableArray *selectedHits;
     NSMutableArray *selectedHitsNames;
     NSMutableArray *arrayOfFinalImages;
+    
     UIImage *defaultImage;
+    int whichNumber;
     
     //!!!decommission noHits.... no longer lets user select who to NOT hit
     //NSMutableArray *noHits;

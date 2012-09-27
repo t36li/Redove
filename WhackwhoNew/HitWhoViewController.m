@@ -43,6 +43,8 @@
     //noHitsNames = [[NSMutableArray alloc] init];
     
     arrayOfFinalImages = [[NSMutableArray alloc] init];
+    whichNumber = 0;
+    //change this to something else later
     [self setDefaultImage:[UIImage imageNamed:@"vlad.png"]];
     
     [[FBSingleton sharedInstance] RequestFriendUsing];
@@ -242,6 +244,10 @@
                 //UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget: self action:@selector(handleSwipeOnImage:)];
                 //swipe.numberOfTouchesRequired = 1;
                 //[temp addGestureRecognizer:swipe];
+                
+                //determine which number to display
+                [self changeShieldNumber:temp.tag];
+                
                 break;
             }
         }
@@ -305,16 +311,11 @@
     //NSLog(@"touched!!");
     UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
     UIImage *tempImage = ((UIImageView *)(tap.view)).image;
+    int whichOne = ((UIImageView *)(tap.view)).tag;
     
-    //obtain from database the names(string) of the current equipment images
-    //update the uiimageview accordingly
-    //call print screen function
-    //save to aray
+    [self changeShieldNumber:whichOne];
     
-    //this is what should happen!!!
-    //Items *guy = [Items alloc];
-    //guy.headID = friend.head_id;
-    //guy.helmet = standard_blue_head;
+    //should be updating every gear, not just face
     
     //this is what is happening!!
     faceView.image = tempImage;
@@ -326,7 +327,7 @@
 
 -(IBAction)cancelTouched:(id)sender {
     
-    int whichOne = [sender tag];
+    int whichOne = whichNumber;
     UIImageView *tempView = [selectedHits objectAtIndex:whichOne];
     
     //set image of all subviews to nil in the containerView
@@ -395,12 +396,6 @@
         [errorAlert show];
         return;
     } else {
-        
-    }
-}
-
-/*-(IBAction) okTouched:(id)sender {
-
         //first count number of friends. Then count number of selected hits
         //if total friends < 2 * selected + 1, then need to fill with void faces...
         //else, select random friends from resultFriends
@@ -417,6 +412,8 @@
                 [arrayOfFinalImages addObject:defaultImage];
             }
         } else {
+            //if enough friends, random through friends
+            
             for (int i = 0; i < selectedHitsCount + 1; i++) {
                 while (TRUE) {
                     int rand = arc4random() % totalFriends;
@@ -439,14 +436,19 @@
                     }
                 }//end while loop for randomization
             }//end for loop
-        
-        
-        [[Game sharedGame] setSelectHeadCount:selectedHitsCount];
-        [[Game sharedGame] setArrayOfAllPopups:arrayOfFinalImages];
-
-        [self performSegueWithIdentifier:ChooseToGame sender:sender];
+            
+            
+            [[Game sharedGame] setSelectHeadCount:selectedHitsCount];
+            [[Game sharedGame] setArrayOfAllPopups:arrayOfFinalImages];
+            
+            [self performSegueWithIdentifier:ChooseToGame sender:sender];
         }
-}*/
+    }
+}
+
+-(IBAction) okTouched:(id)sender {
+
+}
 
 - (IBAction)Back_Touched:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
@@ -466,6 +468,27 @@
     
     // Return the result
     return copied;
+}
+
+- (void) changeShieldNumber: (int) whichTag {
+    switch (whichTag) {
+        case 0:
+            hitNumber.image = [UIImage imageNamed:hitNumberOne];
+            whichNumber = 0;
+            break;
+        case 1:
+            hitNumber.image = [UIImage imageNamed:hitNumberTwo];
+            whichNumber = 1;
+            break;
+        case 2:
+            hitNumber.image = [UIImage imageNamed:hitNumberThree];
+            whichNumber = 2;
+            break;
+        case 3:
+            hitNumber.image = [UIImage imageNamed:hitNumberFour];
+            whichNumber = 3;
+            break;
+    }
 }
 
 @end
