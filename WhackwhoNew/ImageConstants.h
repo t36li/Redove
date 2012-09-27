@@ -53,7 +53,7 @@
 
 //Frames
 #define FriendListCell @"friend list (cell).png"
-#define FriendListBWCell @"cell.png"
+#define HitWhoFriendListCell @"friend list box.png"
 
 //special effects
 #define mouthEffectOne @"mouth effect test1.png"
