@@ -22,7 +22,7 @@
 
 @synthesize containerView;
 @synthesize faceView, helmetView, bodyView, hammerView, shieldView;
-@synthesize hitNumber;
+@synthesize hitNumber, leftHammer, rightHammer;
 
 @synthesize table;
 @synthesize spinner, loadingView;
@@ -35,6 +35,9 @@
     
     [self.containerView setBackgroundColor:[UIColor clearColor]];
     
+    whichNumber = 0;
+    numDefaultImage = 0;
+    
     selectedHits = [[NSMutableArray alloc] initWithObjects:hit1, hit2, hit3, hit4, nil];
     selectedHitsNames = [[NSMutableArray alloc] init];
     
@@ -43,7 +46,6 @@
     //noHitsNames = [[NSMutableArray alloc] init];
     
     arrayOfFinalImages = [[NSMutableArray alloc] init];
-    whichNumber = 0;
     //change this to something else later
     [self setDefaultImage:[UIImage imageNamed:@"vlad.png"]];
     
@@ -59,40 +61,21 @@
 
 // viewdidload gets called before this
 -(void)viewWillAppear:(BOOL)animated {
+    
     CGRect frame = table.frame;
     frame.size = CGSizeMake(140, 228);
     table.frame = frame;
     self.navigationController.navigationBarHidden = YES;
     
-    //UIImage *face_DB = [[UserInfo sharedInstance] croppedImage];
-    
-    //we will initialize all body part sprite here, then change the texture
-    //!!! need to retrive from database the current equipment!
-    
-    //init face with image from DB, if none exists, give it blank (use pause.png for now)
     [faceView setContentMode:UIViewContentModeScaleToFill];
-    //[self.containerView addSubview:faceView];
-    //[faceView setImage:face_DB];
-    
-    //init body
     [bodyView setContentMode:UIViewContentModeScaleToFill];
-    //[self.containerView addSubview:bodyView];
-    //[bodyView setImage:[UIImage imageNamed:standard_blue_body]];
-    
-    //init helmet
     [helmetView setContentMode:UIViewContentModeScaleToFill];
-    //[self.containerView addSubview:helmetView];
-    //[helmetView setImage:[UIImage imageNamed:standard_blue_head]];
-    
-    //init hammerHand
     [hammerView setContentMode:UIViewContentModeScaleToFill];
-    //[self.containerView addSubview:hammerView];
-    //[hammerView setImage:[UIImage imageNamed:starting_hammer]];
-    
-    //init shieldHand
     [shieldView setContentMode:UIViewContentModeScaleToFill];
-    //[self.containerView addSubview:shieldView];
-    //[shieldView setImage:[UIImage imageNamed:starting_shield]];
+    
+    //Lock the amount of ppl they can hit. Put locked or something
+    //MAX HIT = 3
+    
 }
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -195,6 +178,28 @@
         }
     }
     
+    //depending on how many objects are in arrayOfFinalImages,
+    //that is the index of the selectedHit that you use
+    //however, that has to exclude the num of default images added...
+    int numOfValidImages = [arrayOfFinalImages count] - numDefaultImage;
+    
+    UIImageView *temp = [selectedHits objectAtIndex:numOfValidImages];
+    
+    temp.image = tempImage;
+    
+    faceView.image = tempImage;
+    helmetView.image = [UIImage imageNamed:standard_blue_head];
+    bodyView.image = [UIImage imageNamed:standard_blue_body];
+    hammerView.image = [UIImage imageNamed:starting_hammer];
+    shieldView.image = [UIImage imageNamed:starting_shield];
+    
+    //add tap gesture (to view the glview)
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnImage:)];
+    tap.numberOfTapsRequired = 1;
+    [temp addGestureRecognizer:tap];
+    
+    [self changeShieldNumber:temp.tag];
+    
     //selectedHitsNames -> an array that stores currently selected friends' whackwho_id
     //noHitsNames -> an array that contains names of people not selected
     if (!([selectedHitsNames containsObject:friend.whackwho_id])){// || [noHitsNames containsObject:friend.whackwho_id])) {
@@ -210,43 +215,17 @@
             if (temp.image == nil) {
                 temp.image = tempImage;
                 
-                //selectedHitsNames contain an array of whackWhoID
-                //obtain from database the names(string) of the current equipment images
-                //update the uiimageview accordingly
-                //call print screen function
-                //save to array
-                
-                    //this is what should happen!!!
-                    //Items *guy = [Items alloc];
-                    //guy.headID = friend.head_id;
-                    //guy.helmet = standard_blue_head;
-                
-                //this is what is happening!!
                 faceView.image = tempImage;
                 helmetView.image = [UIImage imageNamed:standard_blue_head];
                 bodyView.image = [UIImage imageNamed:standard_blue_body];
                 hammerView.image = [UIImage imageNamed:starting_hammer];
                 shieldView.image = [UIImage imageNamed:starting_shield];
-                UIImage *guy = [self captureImageOnSelect];
-                
-                if (![arrayOfFinalImages containsObject:defaultImage]) {
-                    [arrayOfFinalImages addObject:guy];
-                } else {
-                    [arrayOfFinalImages replaceObjectAtIndex:[arrayOfFinalImages indexOfObject:defaultImage] withObject:guy];
-                }
-               //[arrayOfFinalImages addObject:guy];
-                
+                                
                 //add tap gesture (to view the glview)
                 UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnImage:)];
                 tap.numberOfTapsRequired = 1;
                 [temp addGestureRecognizer:tap];
-                    
-                //add swipe to cancel gesture (little cancel mark)
-                //UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget: self action:@selector(handleSwipeOnImage:)];
-                //swipe.numberOfTouchesRequired = 1;
-                //[temp addGestureRecognizer:swipe];
-                
-                //determine which number to display
+
                 [self changeShieldNumber:temp.tag];
                 
                 break;
@@ -312,6 +291,11 @@
     //NSLog(@"touched!!");
     UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
     UIImage *tempImage = ((UIImageView *)(tap.view)).image;
+    
+    if (tempImage == nil) {
+        return;
+    }
+    
     int whichOne = ((UIImageView *)(tap.view)).tag;
     
     [self changeShieldNumber:whichOne];
@@ -327,22 +311,72 @@
 }
 
 -(IBAction)cancelTouched:(id)sender {
+    CGPoint origPt_l = leftHammer.center;
+    CGPoint origPt_r = rightHammer.center;
     
-    int whichOne = whichNumber;
-    UIImageView *tempView = [selectedHits objectAtIndex:whichOne];
-    
-    //set image of all subviews to nil in the containerView
-    for (UIImageView *view in self.containerView.subviews) {
-        [view setImage:nil];
+    //if hammers are down, bring them up AND replace arrays/shit
+    if (origPt_r.y > 100) {
+        [self.view bringSubviewToFront:leftHammer];
+        [self.view bringSubviewToFront:rightHammer];
+        
+        [UIView animateWithDuration:2.1f
+                              delay:0.f
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             leftHammer.center = CGPointMake(origPt_l.x, origPt_l.y - 100);
+                             rightHammer.center = CGPointMake(origPt_r.x, origPt_r.y - 100);
+                         }
+                         completion:nil];
+        
+        
+        int whichOne = whichNumber;
+        UIImageView *tempView = [selectedHits objectAtIndex:whichOne];
+        
+        //set image of all subviews to nil in the containerView
+        for (UIImageView *view in self.containerView.subviews) {
+            [view setImage:nil];
+        }
+        
+        hitNumber.image = nil;
+        
+        //now need to remove that uiimage from the arrayOfImages
+        [arrayOfFinalImages replaceObjectAtIndex:whichOne withObject:defaultImage];//[UIImage imageNamed:@"vlad.png"]];
+        numDefaultImage++;
+        [selectedHitsNames replaceObjectAtIndex:whichOne withObject:dummyString];
+        
+        //set mini-portrait to nil
+        tempView.image = nil;
     }
+}
+
+-(IBAction) okTouched:(id)sender {
     
-    //now need to remove that uiimage from the arrayOfImages
-    [arrayOfFinalImages replaceObjectAtIndex:whichOne withObject:defaultImage];//[UIImage imageNamed:@"vlad.png"]];
+    CGPoint origPt_l = leftHammer.center;
+    CGPoint origPt_r = rightHammer.center;
     
-    //set mini-portrait to nil
-    tempView.image = nil;
-    
-    [selectedHitsNames replaceObjectAtIndex:whichOne withObject:dummyString];
+    //if hammers are up, bring them down and do stuff
+    if (origPt_r.y < 100) {
+        [self.view bringSubviewToFront:leftHammer];
+        [self.view bringSubviewToFront:rightHammer];
+        
+        [UIView animateWithDuration:2.1f
+                              delay:0.f
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             leftHammer.center = CGPointMake(origPt_l.x, origPt_l.y + 100);
+                             rightHammer.center = CGPointMake(origPt_r.x, origPt_r.y + 100);
+                         }
+                         completion:nil];
+        
+        UIImage *guy = [self captureImageOnSelect];
+        
+        if (![arrayOfFinalImages containsObject:defaultImage]) {
+            [arrayOfFinalImages addObject:guy];
+        } else {
+            [arrayOfFinalImages replaceObjectAtIndex:[arrayOfFinalImages indexOfObject:defaultImage] withObject:guy];
+            numDefaultImage--;
+        }
+    }
 }
 
 /*- (void) handleSwipeOnImage:(id)sender {
@@ -445,10 +479,6 @@
             [self performSegueWithIdentifier:ChooseToGame sender:sender];
         }
     }
-}
-
--(IBAction) okTouched:(id)sender {
-
 }
 
 - (IBAction)Back_Touched:(id)sender {

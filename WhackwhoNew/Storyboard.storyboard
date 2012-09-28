@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C54" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="V6n-XQ-h9E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12B19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Ti9-j0-bAz">
     <dependencies>
-        <deployment version="1296" defaultVersion="1536" identifier="iOS"/>
+        <deployment version="1296" identifier="iOS"/>
         <development version="4300" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
@@ -1179,7 +1179,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="nextTouched:" destination="Ti9-j0-bAz" eventType="touchUpInside" id="2u1-cf-2di"/>
+                                    <action selector="battleTouched:" destination="Ti9-j0-bAz" eventType="touchUpInside" id="Nlp-g9-kqD"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VZB-h3-PY1">
@@ -1209,6 +1209,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="okTouched:" destination="Ti9-j0-bAz" eventType="touchUpInside" id="6tt-ge-Abq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JEv-TA-1o9">
                                 <rect key="frame" x="33" y="234" width="67" height="60"/>
@@ -1222,7 +1225,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="cancelTouched:" destination="Ti9-j0-bAz" eventType="touchUpInside" id="3sr-2E-HuC"/>
+                                    <action selector="cancelTouched:" destination="Ti9-j0-bAz" eventType="touchUpInside" id="Una-DH-3wh"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Kji-mq-CXg">
@@ -1288,7 +1291,9 @@
                         <outlet property="hit3" destination="s9K-64-VZQ" id="1Qk-xj-LEN"/>
                         <outlet property="hit4" destination="MJX-50-L7b" id="OId-oH-AbG"/>
                         <outlet property="hitNumber" destination="ltO-mV-Vzo" id="2av-oB-d4K"/>
+                        <outlet property="leftHammer" destination="Lve-7m-9pR" id="3o7-cS-0NT"/>
                         <outlet property="loadingView" destination="EvH-60-K1v" id="SBm-JR-UYX"/>
+                        <outlet property="rightHammer" destination="Jc4-TF-OD7" id="gZO-bN-eHo"/>
                         <outlet property="shieldView" destination="IZL-mJ-IhY" id="Xir-vG-nyV"/>
                         <outlet property="table" destination="Kji-mq-CXg" id="1XM-Ze-nhL"/>
                         <segue destination="pLt-Tc-cty" kind="push" identifier="chooseToGame" id="nbN-wY-aNl"/>
@@ -1465,7 +1470,7 @@
                 <relationship kind="action" name="Back_Touched:"/>
                 <relationship kind="action" name="battleTouched:"/>
                 <relationship kind="action" name="cancelTouched:"/>
-                <relationship kind="action" name="nextTouched:"/>
+                <relationship kind="action" name="okTouched:"/>
                 <relationship kind="outlet" name="bodyView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="faceView" candidateClass="UIImageView"/>
@@ -1476,7 +1481,9 @@
                 <relationship kind="outlet" name="hit3" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="hit4" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="hitNumber" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="leftHammer" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="loadingView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="rightHammer" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="shieldView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="table" candidateClass="UITableView"/>
             </relationships>

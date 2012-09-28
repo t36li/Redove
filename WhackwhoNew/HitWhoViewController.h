@@ -20,9 +20,6 @@
 #import "PullToRefreshView.h"
 #import "Items.h"
 
-#define MAX_HITTABLE 3
-#define MAX_NO_HITTABLE 4
-
 @interface HitWhoViewController : UIViewController<FBSingletonDelegate,UITableViewDelegate,UITableViewDataSource,RKObjectLoaderDelegate,PullToRefreshViewDelegate> {
    
     NSMutableArray *selectedHits;
@@ -31,6 +28,7 @@
     
     UIImage *defaultImage;
     int whichNumber;
+    int numDefaultImage;
     
     //!!!decommission noHits.... no longer lets user select who to NOT hit
     //NSMutableArray *noHits;
@@ -42,6 +40,7 @@
     IBOutlet UIImageView *hit4;
     
     IBOutlet UIView *containerView;
+    
     IBOutlet UIImageView *faceView;
     IBOutlet UIImageView *bodyView;
     IBOutlet UIImageView *helmetView;
@@ -49,6 +48,8 @@
     IBOutlet UIImageView *shieldView;
     
     IBOutlet UIImageView *hitNumber;
+    IBOutlet UIImageView *leftHammer;
+    IBOutlet UIImageView *rightHammer;
     
     UITableView *table;
     NSArray *resultFriends;
@@ -63,9 +64,10 @@
 @property (nonatomic) IBOutlet UIImageView *hit3;
 @property (nonatomic) IBOutlet UIImageView *hit4;
 @property (nonatomic) IBOutlet UIImageView *hitNumber;
+@property (nonatomic) IBOutlet UIImageView *leftHammer;
+@property (nonatomic) IBOutlet UIImageView *rightHammer;
 
 @property (nonatomic) UIImage *defaultImage;
-
 
 @property (nonatomic) IBOutlet UIView *containerView;
 @property (nonatomic) IBOutlet UIImageView *faceView;
@@ -74,17 +76,14 @@
 @property (nonatomic) IBOutlet UIImageView *hammerView;
 @property (nonatomic) IBOutlet UIImageView *shieldView;
 
-
-
 @property (nonatomic) IBOutlet UITableView *table;
 @property (nonatomic) SpinnerView *spinner;
 @property (nonatomic) IBOutlet UIView *loadingView;
 @property (nonatomic) NSArray *resultFriends;
 
 //-(IBAction)handleRandomButton:(id)sender;
--(IBAction)nextTouched:(id)sender;
 -(IBAction)Back_Touched:(id)sender;
 -(IBAction)cancelTouched:(id)sender;
 -(IBAction)battleTouched:(id)sender;
-
+-(IBAction)okTouched:(id)sender;
 @end
