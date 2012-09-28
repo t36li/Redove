@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
+#import "CurrentEquip.h"
+#import "StorageInv.h"
 
 @interface User : NSObject{
 @public
@@ -23,11 +25,9 @@
     NSString *mouthPosition;
     NSString *faceRect;
     NSDate *registeredDate;
+    CurrentEquip *currentEquip;//only id (redesign string as image filename when copying to userInfo
+    StorageInv *storageInv;
     
-    NSString *helmet;
-    NSString *hammerArm;
-    NSString *shieldArm;
-    NSString *body;
 }
 
 
@@ -35,7 +35,9 @@
 @property (nonatomic, retain) NSString *mediaKey,*leftEyePosition,*rightEyePosition,*mouthPosition,*faceRect;
 @property (nonatomic, retain) NSString *userImgURL;
 @property (nonatomic, retain) NSDate *registeredDate;
-@property (nonatomic, retain) NSString *helmet, *hammerArm, *shieldArm, *body;
+@property (nonatomic, retain) CurrentEquip *currentEquip;
+@property (nonatomic, retain) StorageInv *storageInv;
+
 
 -(void)copyToUserInfo;
 -(void)getFromUserInfo;

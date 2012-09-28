@@ -8,21 +8,28 @@
 
 #import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
+#import "CurrentEquip.h"
+#import "Head.h"
 
 
 @interface Friend : NSObject<NSCopying> {
+    NSString *mediatype_id;
     NSString *user_id;//media(facebook) media_key
     NSString *whackwho_id;
-    NSString *head_id;
     NSString *name;
     NSString *gender;
+    NSString *head_id;
+    Head *head;
+    CurrentEquip *currentEquip;
     BOOL isPlayer;
+    
 }
 
-@property (nonatomic) NSString *user_id, *name, *gender, *whackwho_id, *head_id;
+@property (nonatomic) NSString *mediaType_id, *user_id, *name, *gender, *whackwho_id, *head_id;
+@property (nonatomic) CurrentEquip *currentEuip;
+@property (nonatomic) Head *head;
 @property (nonatomic, assign) BOOL isPlayer;
 
-+(void)objectMappingLoader;
 @end
 
 @interface FriendArray : NSObject{
@@ -30,6 +37,6 @@
 }
 @property (nonatomic,retain) NSArray *friends;
 
-
-+(void)objectMappingLoader;
+-(void)copyToUserInfo;
+-(void)getFromUserInfo;
 @end

@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "UserInfoDelegate.h"
+#import "CurrentEquip.h"
+#import "StorageInv.h"
+#import "Friend.h"
 /*
 NSString *const UserLeftEyePosition = @"LeftEyePosition";
 NSString *const UserRightEyePosition = @"RightEyePosition";
@@ -41,6 +44,11 @@ NSString *const UserChinPosition = @"ChinPosition";
     CGPoint leftEyePosition, rightEyePosition, mouthPosition;
     CGRect faceRect;
     
+    CurrentEquip *currentEquip;
+    StorageInv *storageInv;
+    //NSDictionary *myFriends;
+    FriendArray *friendArray;
+    
     id<UserInfoDelegate> delegate;
 }
 
@@ -50,7 +58,10 @@ NSString *const UserChinPosition = @"ChinPosition";
 @property (nonatomic) id<UserInfoDelegate> delegate;
 @property (nonatomic) NSInteger currentLogInType, whackWhoId, headId;
 
-@property (nonatomic, strong) UIImage *croppedImage, *usrImg;;
+@property (nonatomic, strong) UIImage *croppedImage, *usrImg;
+@property (nonatomic, retain) CurrentEquip *currentEquip;
+@property (nonatomic, retain) StorageInv *storageInv;
+@property (nonatomic, retain) FriendArray *friendArray;
 
 -(void)markFaces:(UIImage *)img;
 +(id)sharedInstance;

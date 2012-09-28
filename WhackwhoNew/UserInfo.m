@@ -10,8 +10,7 @@
 
 @implementation UserInfo
 
-@synthesize userName, userId, gender, leftEyePosition, rightEyePosition, mouthPosition, faceRect, delegate, croppedImage, usrImg;
-@synthesize currentLogInType, whackWhoId, headId;
+@synthesize userName, userId, currentLogInType, headId, whackWhoId, gender, leftEyePosition, rightEyePosition, mouthPosition, faceRect, delegate, croppedImage, usrImg, currentEquip, storageInv,friendArray; 
 
 static UserInfo *sharedInstance = nil;
 

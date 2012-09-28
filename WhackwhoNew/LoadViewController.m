@@ -179,7 +179,7 @@
     User *user = [User alloc];
     [user getFromUserInfo];
     //[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@""];
-    [[RKObjectManager sharedManager] postObject:user usingBlock:^(RKObjectLoader *loader){
+    [[RKObjectManager sharedManager] getObject:user usingBlock:^(RKObjectLoader *loader){
         loader.targetObject = nil;
         loader.delegate = self;
     }];// get if not ...post

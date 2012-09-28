@@ -10,6 +10,7 @@
 #import "StatusViewLayer.h"
 #import "HelloWorldLayer.h"
 #import "Dragbox.h"
+#import "User.h"
 
 //define tags
 #define helmet_Label 1
@@ -395,6 +396,45 @@
 	[gesture setTranslation:CGPointZero inView:item];
 }
 
+//update Database:
+-(void)updateDB{
+    User *user = [[User alloc]init];
+    UserInfo *uinfo = [UserInfo sharedInstance];
+    user.whackWhoId = [uinfo whackWhoId];
+    user.headId = uinfo.headId;
+    user.currentEquip = [[[UserInfo sharedInstance] currentEquip] currentEquipInIDs];
+    user.storageInv = [[[UserInfo sharedInstance] storageInv] setStorageStringInIDs];
+    
+    [[RKObjectManager sharedManager] putObject:user usingBlock:^(RKObjectLoader *loader){
+        loader.targetObject = nil;
+        loader.delegate = self;
+    }];
+}
+
+- (IBAction)saveToDB_Touched:(id)sender {
+    [self updateDB];
+}
+
+-(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error{
+    NSLog(@"Load Database Failed:%@",error);
+    
+}
+
+-(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object{
+    NSLog(@"loaded responses:%@",object);
+    
+    
+}
+
+-(void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response{
+    NSLog(@"request body:%@",[request HTTPBodyString]);
+    NSLog(@"request url:%@",[request URL]);
+    NSLog(@"response statue: %d", [response statusCode]);
+    NSLog(@"response body:%@",[response bodyAsString]);
+}
+
+
+
 /*- (void)equipmentDragged:(UIPanGestureRecognizer *)gesture
 {
 	UIImageView *equipment = (UIImageView *)gesture.view;
@@ -498,7 +538,8 @@
 - (IBAction)Ok_Pressed:(id)sender {
     //if no records with current whackwho_id, then insert.
     //else, update
-    [self performSegueWithIdentifier:@"StatusToModeSegue" sender:sender];
+    //[self updateDB];
+    [self performSegueWithIdentifier:@"StatusToModeSegue" sender:self];
 }
 
 - (IBAction)money_pressed:(id)sender {

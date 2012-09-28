@@ -49,13 +49,16 @@
     //change this to something else later
     [self setDefaultImage:[UIImage imageNamed:@"vlad.png"]];
     
+    [[FBSingleton sharedInstance] setDelegate:self];
     [[FBSingleton sharedInstance] RequestFriendUsing];
+    //resultFriends = [[[UserInfo sharedInstance] friendArray] friends];
     
     table.delegate = self;
     table.dataSource = self;
     
     spinner = [SpinnerView loadSpinnerIntoView:loadingView];
     tablepull = [[PullToRefreshView alloc] initWithScrollView:(UIScrollView *) self.table];
+    
     [self.table addSubview:tablepull];
 }
 
@@ -94,7 +97,7 @@
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
--(void) FBUserFriendsAppUsingLoaded:(NSArray *)friendsUsingApp{
+-(void) FBSingletonUserFriendsAppUsingLoaded:(NSArray *)friendsUsingApp{
     NSLog(@"%@",friendsUsingApp);
     [self getFriendDBInfo:friendsUsingApp];
 }
@@ -248,9 +251,8 @@
         FriendArray *friendArray = [[FriendArray alloc] init];
         friendArray.friends = friends;
         //[[RKObjectManager sharedManager] postObject:friendArray delegate:self];
-        [[RKObjectManager sharedManager] postObject:friendArray usingBlock:^(RKObjectLoader *loader){
+        [[RKObjectManager sharedManager] putObject:friendArray usingBlock:^(RKObjectLoader *loader){
             loader.delegate = self;
-            loader.resourcePath = @"/getFriendUsingApp";
             loader.targetObject = nil;
         }];
     }
@@ -265,6 +267,7 @@
 -(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object{
     NSLog(@"loaded responses:%@",object);
     FriendArray *friendArray = object;
+    [[UserInfo sharedInstance] setFriendArray:friendArray];
     self.resultFriends = friendArray.friends;
     [self.table reloadData];
     [spinner removeSpinner];
@@ -273,6 +276,7 @@
 
 -(void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response{
     NSLog(@"request body:%@",[request HTTPBodyString]);
+    NSLog(@"request url:%@",[request URL]);
     NSLog(@"response statue: %d", [response statusCode]);
     NSLog(@"response body:%@",[response bodyAsString]);
 }
