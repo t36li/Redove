@@ -67,6 +67,7 @@
     
     //storage Mapping:
     RKObjectMapping *storageInvMapping = [RKObjectMapping mappingForClass:[StorageInv class]];
+    [storageInvMapping mapKeyPath:@"HeadIDs" toAttribute:@"headIds"];
     [storageInvMapping mapKeyPath:@"Helmets" toAttribute:@"helmets"];
     [storageInvMapping mapKeyPath:@"Bodies" toAttribute:@"bodies"];
     [storageInvMapping mapKeyPath:@"HammerArms" toAttribute:@"hammerArms"];
@@ -127,6 +128,7 @@
     //[RKObjectManager sharedManager].serializationMIMEType = RKMIMETypeJSON;
     [[RKObjectManager sharedManager].mappingProvider setSerializationMapping:[userInfoMapping inverseMapping] forClass:[User class]];
     [[RKObjectManager sharedManager].router routeClass:[User class] toResourcePath:@"/user/:mediaTypeId/:mediaKey"];
+    [[RKObjectManager sharedManager].router routeClass:[User class] toResourcePath:@"/user/status/save" forMethod:RKRequestMethodPUT];
 }
 
 

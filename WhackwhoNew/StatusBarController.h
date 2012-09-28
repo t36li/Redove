@@ -10,8 +10,9 @@
 #import "cocos2d.h"
 #import "GameOverDelegate.h"
 #import "StatusCocosDelegate.h"
+#import <RestKit/RestKit.h>
 
-@interface StatusBarController : UIViewController {// <CCDirectorDelegate, GameOverDelegate> {
+@interface StatusBarController : UIViewController<RKObjectLoaderDelegate> {// <CCDirectorDelegate, GameOverDelegate> {
     IBOutlet UIView *containerView;
     
     //define the outlets for gear
@@ -97,5 +98,7 @@
 - (IBAction)Back_Touched:(id)sender;
 - (IBAction)Ok_Pressed:(id)sender;
 - (IBAction)money_pressed:(id)sender;
+- (void)updateDB;
+- (IBAction)saveToDB_Touched:(id)sender;
 
 @end
