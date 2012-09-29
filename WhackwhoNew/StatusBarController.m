@@ -66,7 +66,7 @@
     item2.tag = helmet_Label;
     item3.image = [UIImage imageNamed:starting_shield];
     item3.tag = shieldHand_Label;
-    item4.image = [UIImage imageNamed:starting_body];
+    item4.image = [UIImage imageNamed:standard_blue_body];
     item4.tag = body_Label;
     item5.image = [UIImage imageNamed:rabbit_hammer];
     item5.tag = hammerHand_Label;
@@ -262,7 +262,7 @@
             
             //if the box gets in the vincinity of an equipment box AND is correct body part
             if (distance <= sqrt(pow(CGRectGetMidX(equipment.bounds), 2.0) + pow(CGRectGetMidY(equipment.bounds), 2.0)) && equipment.tag == item.tag) {
-                [UIView animateWithDuration:0.1f
+                [UIView animateWithDuration:0.5f
                                       delay:0.f
                                     options:UIViewAnimationOptionCurveEaseInOut
                                  animations:^{

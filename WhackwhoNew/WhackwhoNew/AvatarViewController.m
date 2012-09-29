@@ -300,16 +300,16 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     UIButton *btn = (UIButton*)sender;
     switch (btn.tag) {
         case 0:
-            backgroundView.image = [UIImage imageNamed:@"pink final.png"];
+            backgroundView.image = [UIImage imageNamed:standard_pink_head];
             break;
         case 1:
-            backgroundView.image = [UIImage imageNamed:@"yellow final.png"];
+            backgroundView.image = [UIImage imageNamed:standard_yellow_head];
             break;
         case 2:
-            backgroundView.image = [UIImage imageNamed:@"blue final.png"];
+            backgroundView.image = [UIImage imageNamed:standard_blue_head];
             break;
         case 3:
-            backgroundView.image = [UIImage imageNamed:@"green final.png"];
+            backgroundView.image = [UIImage imageNamed:standard_green_head];
             break;
     }
 }

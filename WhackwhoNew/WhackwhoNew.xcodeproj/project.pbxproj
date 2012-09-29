@@ -398,13 +398,13 @@
 		C19A3A60160E81B300C6E8F9 /* name tag.png in Resources */ = {isa = PBXBuildFile; fileRef = C19A3A58160E81B300C6E8F9 /* name tag.png */; };
 		C19A3A61160E81B300C6E8F9 /* left hammer.png in Resources */ = {isa = PBXBuildFile; fileRef = C19A3A59160E81B300C6E8F9 /* left hammer.png */; };
 		C19A3A62160E81B300C6E8F9 /* right hammer.png in Resources */ = {isa = PBXBuildFile; fileRef = C19A3A5A160E81B300C6E8F9 /* right hammer.png */; };
-		C19A3A63160E81B300C6E8F9 /* testin number1.png in Resources */ = {isa = PBXBuildFile; fileRef = C19A3A5B160E81B300C6E8F9 /* testin number1.png */; };
-		C19A3A64160E81B300C6E8F9 /* shield icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C19A3A5C160E81B300C6E8F9 /* shield icon.png */; };
+		C19A3A63160E81B300C6E8F9 /* number1.png in Resources */ = {isa = PBXBuildFile; fileRef = C19A3A5B160E81B300C6E8F9 /* number1.png */; };
+		C19A3A64160E81B300C6E8F9 /* SA001.png in Resources */ = {isa = PBXBuildFile; fileRef = C19A3A5C160E81B300C6E8F9 /* SA001.png */; };
 		C19A3A65160E81B300C6E8F9 /* scroll down button.png in Resources */ = {isa = PBXBuildFile; fileRef = C19A3A5D160E81B300C6E8F9 /* scroll down button.png */; };
 		C19A3A66160E81B300C6E8F9 /* friend list icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C19A3A5E160E81B300C6E8F9 /* friend list icon.png */; };
 		C19A3A67160E81B300C6E8F9 /* battle button.png in Resources */ = {isa = PBXBuildFile; fileRef = C19A3A5F160E81B300C6E8F9 /* battle button.png */; };
 		C1A792D21613E985006F9C8E /* champ select backgrond.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A792D11613E984006F9C8E /* champ select backgrond.png */; };
-		C1A792D61613E9C1006F9C8E /* number 4.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A792D31613E9C0006F9C8E /* number 4.png */; };
+		C1A792D61613E9C1006F9C8E /* number4.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A792D31613E9C0006F9C8E /* number4.png */; };
 		C1A792D71613E9C1006F9C8E /* number2.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A792D41613E9C0006F9C8E /* number2.png */; };
 		C1A792D81613E9C1006F9C8E /* number3.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A792D51613E9C1006F9C8E /* number3.png */; };
 		C1B4397D15951B4100D62C2B /* StatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B4397C15951B4100D62C2B /* StatusBarController.m */; };
@@ -448,10 +448,10 @@
 		D09800CC1609621F009E97E8 /* yellow board.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800C81609621E009E97E8 /* yellow board.png */; };
 		D09800CD1609621F009E97E8 /* pink board.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800C91609621E009E97E8 /* pink board.png */; };
 		D09D985D160A9F7A00014ADB /* white final.png in Resources */ = {isa = PBXBuildFile; fileRef = D09D9858160A9F7A00014ADB /* white final.png */; };
-		D09D985E160A9F7A00014ADB /* pink final.png in Resources */ = {isa = PBXBuildFile; fileRef = D09D9859160A9F7A00014ADB /* pink final.png */; };
-		D09D985F160A9F7A00014ADB /* yellow final.png in Resources */ = {isa = PBXBuildFile; fileRef = D09D985A160A9F7A00014ADB /* yellow final.png */; };
-		D09D9860160A9F7A00014ADB /* blue final.png in Resources */ = {isa = PBXBuildFile; fileRef = D09D985B160A9F7A00014ADB /* blue final.png */; };
-		D09D9861160A9F7A00014ADB /* green final.png in Resources */ = {isa = PBXBuildFile; fileRef = D09D985C160A9F7A00014ADB /* green final.png */; };
+		D09D985E160A9F7A00014ADB /* HE002.png in Resources */ = {isa = PBXBuildFile; fileRef = D09D9859160A9F7A00014ADB /* HE002.png */; };
+		D09D985F160A9F7A00014ADB /* HE003.png in Resources */ = {isa = PBXBuildFile; fileRef = D09D985A160A9F7A00014ADB /* HE003.png */; };
+		D09D9860160A9F7A00014ADB /* HE001.png in Resources */ = {isa = PBXBuildFile; fileRef = D09D985B160A9F7A00014ADB /* HE001.png */; };
+		D09D9861160A9F7A00014ADB /* HE004.png in Resources */ = {isa = PBXBuildFile; fileRef = D09D985C160A9F7A00014ADB /* HE004.png */; };
 		D09FD5DD159E4EB60079231D /* CameraOverlayControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09FD5DB159E4EB60079231D /* CameraOverlayControllerViewController.m */; };
 		D09FD5DE159E4EB60079231D /* CameraOverlayControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D09FD5DC159E4EB60079231D /* CameraOverlayControllerViewController.xib */; };
 		D0A3F72515AF5E9A0027EFF9 /* AvatarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0948D3915AB6E9A00429477 /* AvatarView.xib */; };
@@ -1032,13 +1032,13 @@
 		C19A3A58160E81B300C6E8F9 /* name tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "name tag.png"; sourceTree = "<group>"; };
 		C19A3A59160E81B300C6E8F9 /* left hammer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left hammer.png"; sourceTree = "<group>"; };
 		C19A3A5A160E81B300C6E8F9 /* right hammer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right hammer.png"; sourceTree = "<group>"; };
-		C19A3A5B160E81B300C6E8F9 /* testin number1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "testin number1.png"; sourceTree = "<group>"; };
-		C19A3A5C160E81B300C6E8F9 /* shield icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shield icon.png"; sourceTree = "<group>"; };
+		C19A3A5B160E81B300C6E8F9 /* number1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = number1.png; sourceTree = "<group>"; };
+		C19A3A5C160E81B300C6E8F9 /* SA001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SA001.png; sourceTree = "<group>"; };
 		C19A3A5D160E81B300C6E8F9 /* scroll down button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scroll down button.png"; sourceTree = "<group>"; };
 		C19A3A5E160E81B300C6E8F9 /* friend list icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend list icon.png"; sourceTree = "<group>"; };
 		C19A3A5F160E81B300C6E8F9 /* battle button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "battle button.png"; sourceTree = "<group>"; };
 		C1A792D11613E984006F9C8E /* champ select backgrond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "champ select backgrond.png"; sourceTree = "<group>"; };
-		C1A792D31613E9C0006F9C8E /* number 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "number 4.png"; sourceTree = "<group>"; };
+		C1A792D31613E9C0006F9C8E /* number4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = number4.png; sourceTree = "<group>"; };
 		C1A792D41613E9C0006F9C8E /* number2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = number2.png; sourceTree = "<group>"; };
 		C1A792D51613E9C1006F9C8E /* number3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = number3.png; sourceTree = "<group>"; };
 		C1B4397B15951B4100D62C2B /* StatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarController.h; sourceTree = "<group>"; };
@@ -1099,10 +1099,10 @@
 		D09800C81609621E009E97E8 /* yellow board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellow board.png"; sourceTree = "<group>"; };
 		D09800C91609621E009E97E8 /* pink board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink board.png"; sourceTree = "<group>"; };
 		D09D9858160A9F7A00014ADB /* white final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white final.png"; sourceTree = "<group>"; };
-		D09D9859160A9F7A00014ADB /* pink final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink final.png"; sourceTree = "<group>"; };
-		D09D985A160A9F7A00014ADB /* yellow final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellow final.png"; sourceTree = "<group>"; };
-		D09D985B160A9F7A00014ADB /* blue final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue final.png"; sourceTree = "<group>"; };
-		D09D985C160A9F7A00014ADB /* green final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green final.png"; sourceTree = "<group>"; };
+		D09D9859160A9F7A00014ADB /* HE002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HE002.png; sourceTree = "<group>"; };
+		D09D985A160A9F7A00014ADB /* HE003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HE003.png; sourceTree = "<group>"; };
+		D09D985B160A9F7A00014ADB /* HE001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HE001.png; sourceTree = "<group>"; };
+		D09D985C160A9F7A00014ADB /* HE004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HE004.png; sourceTree = "<group>"; };
 		D09FD5DA159E4EB60079231D /* CameraOverlayControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraOverlayControllerViewController.h; sourceTree = "<group>"; };
 		D09FD5DB159E4EB60079231D /* CameraOverlayControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraOverlayControllerViewController.m; sourceTree = "<group>"; };
 		D09FD5DC159E4EB60079231D /* CameraOverlayControllerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlayControllerViewController.xib; path = ../CameraOverlayControllerViewController.xib; sourceTree = "<group>"; };
@@ -2068,6 +2068,10 @@
 		C1B2655E161773A10089A4FB /* Helmets */ = {
 			isa = PBXGroup;
 			children = (
+				D09D985B160A9F7A00014ADB /* HE001.png */,
+				D09D9859160A9F7A00014ADB /* HE002.png */,
+				D09D985A160A9F7A00014ADB /* HE003.png */,
+				D09D985C160A9F7A00014ADB /* HE004.png */,
 			);
 			name = Helmets;
 			sourceTree = "<group>";
@@ -2083,6 +2087,7 @@
 		C1B26560161773B60089A4FB /* Shields */ = {
 			isa = PBXGroup;
 			children = (
+				C19A3A5C160E81B300C6E8F9 /* SA001.png */,
 			);
 			name = Shields;
 			sourceTree = "<group>";
@@ -2123,11 +2128,10 @@
 				C19A3A58160E81B300C6E8F9 /* name tag.png */,
 				C19A3A59160E81B300C6E8F9 /* left hammer.png */,
 				C19A3A5A160E81B300C6E8F9 /* right hammer.png */,
-				C19A3A5B160E81B300C6E8F9 /* testin number1.png */,
-				C1A792D31613E9C0006F9C8E /* number 4.png */,
+				C19A3A5B160E81B300C6E8F9 /* number1.png */,
+				C1A792D31613E9C0006F9C8E /* number4.png */,
 				C1A792D41613E9C0006F9C8E /* number2.png */,
 				C1A792D51613E9C1006F9C8E /* number3.png */,
-				C19A3A5C160E81B300C6E8F9 /* shield icon.png */,
 				C19A3A5D160E81B300C6E8F9 /* scroll down button.png */,
 				C19A3A5E160E81B300C6E8F9 /* friend list icon.png */,
 				C19A3A5F160E81B300C6E8F9 /* battle button.png */,
@@ -2238,10 +2242,6 @@
 			children = (
 				D0F37ECE161150D200E58F1E /* camera view overlay.png */,
 				D09D9858160A9F7A00014ADB /* white final.png */,
-				D09D9859160A9F7A00014ADB /* pink final.png */,
-				D09D985A160A9F7A00014ADB /* yellow final.png */,
-				D09D985B160A9F7A00014ADB /* blue final.png */,
-				D09D985C160A9F7A00014ADB /* green final.png */,
 				D09800C61609621E009E97E8 /* green board.png */,
 				D09800C71609621E009E97E8 /* blue board.png */,
 				D09800C81609621E009E97E8 /* yellow board.png */,
@@ -2696,10 +2696,10 @@
 				D09800CC1609621F009E97E8 /* yellow board.png in Resources */,
 				D09800CD1609621F009E97E8 /* pink board.png in Resources */,
 				D09D985D160A9F7A00014ADB /* white final.png in Resources */,
-				D09D985E160A9F7A00014ADB /* pink final.png in Resources */,
-				D09D985F160A9F7A00014ADB /* yellow final.png in Resources */,
-				D09D9860160A9F7A00014ADB /* blue final.png in Resources */,
-				D09D9861160A9F7A00014ADB /* green final.png in Resources */,
+				D09D985E160A9F7A00014ADB /* HE002.png in Resources */,
+				D09D985F160A9F7A00014ADB /* HE003.png in Resources */,
+				D09D9860160A9F7A00014ADB /* HE001.png in Resources */,
+				D09D9861160A9F7A00014ADB /* HE004.png in Resources */,
 				C19A3A1E160CD4FE00C6E8F9 /* HA007.png in Resources */,
 				C19A3A1F160CD4FE00C6E8F9 /* HA006.png in Resources */,
 				C19A3A20160CD4FE00C6E8F9 /* HA005.png in Resources */,
@@ -2716,14 +2716,14 @@
 				C19A3A60160E81B300C6E8F9 /* name tag.png in Resources */,
 				C19A3A61160E81B300C6E8F9 /* left hammer.png in Resources */,
 				C19A3A62160E81B300C6E8F9 /* right hammer.png in Resources */,
-				C19A3A63160E81B300C6E8F9 /* testin number1.png in Resources */,
-				C19A3A64160E81B300C6E8F9 /* shield icon.png in Resources */,
+				C19A3A63160E81B300C6E8F9 /* number1.png in Resources */,
+				C19A3A64160E81B300C6E8F9 /* SA001.png in Resources */,
 				C19A3A65160E81B300C6E8F9 /* scroll down button.png in Resources */,
 				C19A3A66160E81B300C6E8F9 /* friend list icon.png in Resources */,
 				C19A3A67160E81B300C6E8F9 /* battle button.png in Resources */,
 				D0F37ECF161150D200E58F1E /* camera view overlay.png in Resources */,
 				C1A792D21613E985006F9C8E /* champ select backgrond.png in Resources */,
-				C1A792D61613E9C1006F9C8E /* number 4.png in Resources */,
+				C1A792D61613E9C1006F9C8E /* number4.png in Resources */,
 				C1A792D71613E9C1006F9C8E /* number2.png in Resources */,
 				C1A792D81613E9C1006F9C8E /* number3.png in Resources */,
 				C12114581616044300E3AAB1 /* Default-568h@2x.png in Resources */,

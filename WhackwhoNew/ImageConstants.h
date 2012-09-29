@@ -54,35 +54,32 @@
 //Frames
 #define FriendListCell @"friend list (cell).png"
 #define HitWhoFriendListCell @"friend list box.png"
-#define hitNumberOne @"testin number1.png"
+#define hitNumberOne @"number1.png"
 #define hitNumberTwo @"number2.png"
 #define hitNumberThree @"number3.png"
-#define hitNumberFour @"number 4.png"
+#define hitNumberFour @"number4.png"
 
 //special effects
 #define mouthEffectOne @"mouth effect test1.png"
 
-//skeleton
-#define standard_blue_head @"blue final.png"
-#define standard_pink_head @"pink final.png"
-#define standard_blue_body @"peter body.png"
-//#define standard_pink_body @"pink body.png"
-
 //items
     //hammers
-#define starting_hammer @"hammer.png"
-#define spike_hammer @"h6 spike.png"
-#define candy_hammer @"h5 candy.png"
-#define rocket_hammer @"h4 rocket.png"
-#define rabbit_hammer @"h3 rabbit.png"
-#define bandage_hammer @"h2 bandage.png"
-#define devil_hammer @"h1 devil.png"
-
+#define starting_hammer @"HA001.png"
+#define devil_hammer @"HA002.png"
+#define bandage_hammer @"HA003.png"
+#define rabbit_hammer @"HA004.png"
+#define rocket_hammer @"HA005.png"
+#define candy_hammer @"HA006.png"
+#define spike_hammer @"HA007.png"
     //shields
-#define starting_shield @"coin front.png"
+#define starting_shield @"SA001.png"
     //body
-#define starting_body @"heart.png"
-
+#define standard_blue_body @"BO001.png"
+    //helmets
+#define standard_blue_head @"HE001.png"
+#define standard_pink_head @"HE002.png"
+#define standard_yellow_head @"HE003.png"
+#define standard_green_head @"HE004.png"
 
 
 //store frames
