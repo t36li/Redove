@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Game.h"
-#import "ChooseWhoLayer.h"
 #import "FBSingletonDelegate.h"
 #import "FBSingleton.h"
 #import "hitFriendCell.h"
@@ -19,6 +18,7 @@
 #import <RestKit/RestKit.h>
 #import "PullToRefreshView.h"
 #import "Items.h"
+#import "HitWindow.h"
 
 @interface HitWhoViewController : UIViewController<FBSingletonDelegate,UITableViewDelegate,UITableViewDataSource,RKObjectLoaderDelegate,PullToRefreshViewDelegate> {
    
@@ -27,17 +27,16 @@
     NSMutableArray *arrayOfFinalImages;
     
     UIImage *defaultImage;
-    int whichNumber;
-    int numDefaultImage;
+    int shieldNumber;
     
     //!!!decommission noHits.... no longer lets user select who to NOT hit
     //NSMutableArray *noHits;
     //NSMutableArray *noHitsNames;
 
-    IBOutlet UIImageView *hit1;
-    IBOutlet UIImageView *hit2;
-    IBOutlet UIImageView *hit3;
-    IBOutlet UIImageView *hit4;
+    IBOutlet HitWindow *hit1;
+    IBOutlet HitWindow *hit2;
+    IBOutlet HitWindow *hit3;
+    IBOutlet HitWindow *hit4;
     
     IBOutlet UIView *containerView;
     
@@ -56,13 +55,13 @@
     SpinnerView *spinner;
     IBOutlet UIView *loadingView;
     PullToRefreshView *tablepull;
-
+    Friend *friendSelected;
 }
 
-@property (nonatomic) IBOutlet UIImageView *hit1;
-@property (nonatomic) IBOutlet UIImageView *hit2;
-@property (nonatomic) IBOutlet UIImageView *hit3;
-@property (nonatomic) IBOutlet UIImageView *hit4;
+@property (nonatomic) IBOutlet HitWindow *hit1;
+@property (nonatomic) IBOutlet HitWindow *hit2;
+@property (nonatomic) IBOutlet HitWindow *hit3;
+@property (nonatomic) IBOutlet HitWindow *hit4;
 @property (nonatomic) IBOutlet UIImageView *hitNumber;
 @property (nonatomic) IBOutlet UIImageView *leftHammer;
 @property (nonatomic) IBOutlet UIImageView *rightHammer;

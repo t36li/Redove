@@ -163,11 +163,10 @@
         
         //!!!! initializing popups
         //use the array from game.h which contains all image names
+        int xpad = 50; //for testing
         int i = 0;
-        //int xpad = 50;
         for (UIImage *person in [[Game sharedGame] arrayOfAllPopups]) {
             Character *head = [Character spriteWithCGImage:[person CGImage] key:[NSString stringWithFormat:@"person%i", i]];
-            //head.position = ccp(xpad, s.height/2);
             
             if (i < [[Game sharedGame] selectHeadCount]) {
                 head.isSelectedHit = TRUE;
@@ -178,15 +177,17 @@
             head.visible = FALSE;
             [self addChild:head];
             [heads addObject:head];
-        
-            //xpad += 50;
-            //head.visible = TRUE;
             i++; //for key purposes
+            
+            //for testing
+            head.position = ccp(xpad, s.height/2);
+            xpad += 50;
+            head.visible = TRUE;
         }
         
-        [self schedule:@selector(tryPopheads) interval:1.5];
-        [self schedule:@selector(checkGameState) interval:0.1];
-        [self schedule:@selector(timerUpdate:) interval:0.001];
+        //[self schedule:@selector(tryPopheads) interval:1.5];
+        //[self schedule:@selector(checkGameState) interval:0.1];
+        //[self schedule:@selector(timerUpdate:) interval:0.001];
 	}
     
 	return self;

@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
 #import "HelloWorldLayer.h"
-#import "ChooseWhoLayer.h"
 #import "GameOverDelegate.h"
 #import "MainMenuDelegate.h"
 #import "StatusViewLayer.h"

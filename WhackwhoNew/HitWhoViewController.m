@@ -35,8 +35,7 @@
     
     [self.containerView setBackgroundColor:[UIColor clearColor]];
     
-    whichNumber = 0;
-    numDefaultImage = 0;
+    shieldNumber = 0;
     
     selectedHits = [[NSMutableArray alloc] initWithObjects:hit1, hit2, hit3, hit4, nil];
     selectedHitsNames = [[NSMutableArray alloc] init];
@@ -171,24 +170,47 @@
     UIImage *tempImage = cell.profileImage.image;
     NSString *usrId = cell.identity;
     
-    Friend *friend;
-    
     //Find which friend the user has selected
     for (Friend *frd in resultFriends) {
         if (frd.user_id == usrId) {
-            friend = frd;
+            friendSelected = frd;
             break;
         }
     }
     
-    //depending on how many objects are in arrayOfFinalImages,
-    //that is the index of the selectedHit that you use
-    //however, that has to exclude the num of default images added...
-    int numOfValidImages = [arrayOfFinalImages count] - numDefaultImage;
+    if ([selectedHitsNames containsObject:friendSelected.whackwho_id]) {
+        //display alert showing already selected
+        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Selection Error" message:@"You're already hitting this guy! You can't overkill..." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [errorAlert show];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        return;
+    }
     
-    UIImageView *temp = [selectedHits objectAtIndex:numOfValidImages];
+    //determines which hitwindow to use
+    int whereCancelled;
+    if ([selectedHitsNames containsObject:dummyString]) {
+        whereCancelled = [selectedHitsNames indexOfObject:dummyString];
+    } else {
+        whereCancelled = [selectedHitsNames count];
+    }
     
+    HitWindow *temp = [selectedHits objectAtIndex:whereCancelled];
+    
+    if (leftHammer.center.y > 100) {
+        [self sendHammersUp];
+    }
+    
+    //add tap gesture (to view the glview)
+    if (![temp gestureRecognizers]) {
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnImage:)];
+        tap.numberOfTapsRequired = 1;
+        [temp addGestureRecognizer:tap];
+    }
+    
+    [self changeShieldNumber:temp.tag];
+
     temp.image = tempImage;
+    [temp setWhackID:friendSelected.whackwho_id];
     
     faceView.image = tempImage;
     helmetView.image = [UIImage imageNamed:standard_blue_head];
@@ -196,16 +218,9 @@
     hammerView.image = [UIImage imageNamed:starting_hammer];
     shieldView.image = [UIImage imageNamed:starting_shield];
     
-    //add tap gesture (to view the glview)
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnImage:)];
-    tap.numberOfTapsRequired = 1;
-    [temp addGestureRecognizer:tap];
-    
-    [self changeShieldNumber:temp.tag];
-    
     //selectedHitsNames -> an array that stores currently selected friends' whackwho_id
     //noHitsNames -> an array that contains names of people not selected
-    if (!([selectedHitsNames containsObject:friend.whackwho_id])){// || [noHitsNames containsObject:friend.whackwho_id])) {
+    /*if (!([selectedHitsNames containsObject:friend.whackwho_id])){// || [noHitsNames containsObject:friend.whackwho_id])) {
         
         if (![selectedHitsNames containsObject:dummyString]) {
             [selectedHitsNames addObject:friend.whackwho_id];
@@ -234,7 +249,7 @@
                 break;
             }
         }
-    }
+    }*/
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -294,20 +309,30 @@
 -(void) handleTapOnImage:(id)sender {
     //NSLog(@"touched!!");
     UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
-    UIImage *tempImage = ((UIImageView *)(tap.view)).image;
-    
-    if (tempImage == nil) {
+    HitWindow *temp = ((HitWindow *)(tap.view));
+    int whichOne = ((UIImageView *)(tap.view)).tag;
+
+    if (temp.image == nil) {
         return;
     }
     
-    int whichOne = ((UIImageView *)(tap.view)).tag;
+    //if in selectedHitsnames
+    if ([selectedHitsNames containsObject:temp.whackID]) {
+        if (leftHammer.center.y < 100) {
+            [self sendHammersDown];
+        }
+    } else {
+        if (leftHammer.center.y > 100) {
+            [self sendHammersUp];
+        }
+    }
     
     [self changeShieldNumber:whichOne];
     
     //should be updating every gear, not just face
     
     //this is what is happening!!
-    faceView.image = tempImage;
+    faceView.image = temp.image;
     helmetView.image = [UIImage imageNamed:standard_blue_head];
     bodyView.image = [UIImage imageNamed:standard_blue_body];
     hammerView.image = [UIImage imageNamed:starting_hammer];
@@ -315,26 +340,21 @@
 }
 
 -(IBAction)cancelTouched:(id)sender {
-    CGPoint origPt_l = leftHammer.center;
     CGPoint origPt_r = rightHammer.center;
     
-    //if hammers are down, bring them up AND replace arrays/shit
+    //if hammers are down, then this button is valided
     if (origPt_r.y > 100) {
         [self.view bringSubviewToFront:leftHammer];
         [self.view bringSubviewToFront:rightHammer];
         
-        [UIView animateWithDuration:2.1f
-                              delay:0.f
-                            options:UIViewAnimationOptionCurveEaseInOut
-                         animations:^{
-                             leftHammer.center = CGPointMake(origPt_l.x, origPt_l.y - 100);
-                             rightHammer.center = CGPointMake(origPt_r.x, origPt_r.y - 100);
-                         }
-                         completion:nil];
+        [self sendHammersUp];
         
+        int whichOne = shieldNumber;
         
-        int whichOne = whichNumber;
-        UIImageView *tempView = [selectedHits objectAtIndex:whichOne];
+        HitWindow *tempView = [selectedHits objectAtIndex:whichOne];
+        //set mini-portrait to nil
+        tempView.image = nil;
+        tempView.whackID = nil;
         
         //set image of all subviews to nil in the containerView
         for (UIImageView *view in self.containerView.subviews) {
@@ -345,17 +365,18 @@
         
         //now need to remove that uiimage from the arrayOfImages
         [arrayOfFinalImages replaceObjectAtIndex:whichOne withObject:defaultImage];//[UIImage imageNamed:@"vlad.png"]];
-        numDefaultImage++;
-        [selectedHitsNames replaceObjectAtIndex:whichOne withObject:dummyString];
+        //numDefaultImage++;
         
-        //set mini-portrait to nil
-        tempView.image = nil;
+        [selectedHitsNames replaceObjectAtIndex:whichOne withObject:dummyString];
+    } else {
+        //display alert showing cant cancel if you didn't ok
+        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:nil message:@"Can't cancel without ok-ing first" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [errorAlert show];
     }
 }
 
 -(IBAction) okTouched:(id)sender {
     
-    CGPoint origPt_l = leftHammer.center;
     CGPoint origPt_r = rightHammer.center;
     
     //if hammers are up, bring them down and do stuff
@@ -363,14 +384,7 @@
         [self.view bringSubviewToFront:leftHammer];
         [self.view bringSubviewToFront:rightHammer];
         
-        [UIView animateWithDuration:2.1f
-                              delay:0.f
-                            options:UIViewAnimationOptionCurveEaseInOut
-                         animations:^{
-                             leftHammer.center = CGPointMake(origPt_l.x, origPt_l.y + 100);
-                             rightHammer.center = CGPointMake(origPt_r.x, origPt_r.y + 100);
-                         }
-                         completion:nil];
+        [self sendHammersDown];
         
         UIImage *guy = [self captureImageOnSelect];
         
@@ -378,60 +392,25 @@
             [arrayOfFinalImages addObject:guy];
         } else {
             [arrayOfFinalImages replaceObjectAtIndex:[arrayOfFinalImages indexOfObject:defaultImage] withObject:guy];
-            numDefaultImage--;
+            //numDefaultImage--;
         }
+        
+        if (![selectedHitsNames containsObject:dummyString]) {
+            [selectedHitsNames addObject:friendSelected.whackwho_id];
+        } else {
+            [selectedHitsNames replaceObjectAtIndex:[selectedHitsNames indexOfObject:dummyString] withObject:friendSelected.whackwho_id];
+        }
+    } else {
+        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:nil message:@"You already pressed ok" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [errorAlert show];
     }
 }
-
-/*- (void) handleSwipeOnImage:(id)sender {
-    UISwipeGestureRecognizer *swipe = (UISwipeGestureRecognizer *)sender;
-    if (portrait.image == ((UIImageView *)(swipe.view)).image) {
-        portrait.image = nil;
-    }
-    
-    ((UIImageView *)(swipe.view)).image = nil;
-    
-    //remove the object from the "taken" array
-    int index = ((UIImageView *)(swipe.view)).tag;
-    
-    [selectedHitsNames removeObjectAtIndex:index];
-}*/
-
-/*-(IBAction) handleRandomButton:(id)sender {
-    //first remove all previous names from the NameArray
-    if (!resultFriends.count)
-        return;
-    
-    [noHitsNames removeAllObjects];
-
-    for (UIImageView *temp in noHits) {
-        //if (temp.image == nil) {
-        // do not generate if already selected
-        while (TRUE) {
-            int randFriend = arc4random() % [resultFriends count];
-            Friend *friend = [resultFriends objectAtIndex:randFriend];
-            if (![noHitsNames containsObject:friend]) {
-                [noHitsNames addObject:friend];
-                NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", friend.user_id];
-                [temp setImageWithURL:[NSURL URLWithString:formatting]];
-                break;
-                
-                temp.userInteractionEnabled = YES;
-                
-                //add tap gesture (to view the glview)
-                UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnImage:)];
-                tap.numberOfTapsRequired = 1;
-                [temp addGestureRecognizer:tap];
-            }
-        }
-    }
-}*/
 
 -(IBAction)battleTouched:(id)sender {
     //if did not select all hits or did not press random
     if ([selectedHitsNames containsObject:dummyString] || [selectedHitsNames count] < 1) {
         //display alert showing must select all b4 game
-        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Selection Error" message:@"You can still pick more friends to hit!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Selection Error" message:@"You can still pick more friends to hit OR press OK!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [errorAlert show];
         return;
     } else {
@@ -454,10 +433,12 @@
             //if enough friends, random through friends
             
             for (int i = 0; i < selectedHitsCount + 1; i++) {
+                //NSLog(@"%i", i);
                 while (TRUE) {
                     int rand = arc4random() % totalFriends;
+                    //rand = 2;
                     Friend *frd = [resultFriends objectAtIndex:rand];
-                    
+                    //NSLog(@"%@", frd.whackwho_id);
                     if (![selectedHitsNames containsObject:frd.whackwho_id]) {
                         
                         hitFriendCell *cell = (hitFriendCell *) [table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:rand inSection:0]];
@@ -471,17 +452,17 @@
                         UIImage *guy = [self captureImageOnSelect];
                         
                         [arrayOfFinalImages addObject:guy];
+                        [selectedHitsNames addObject:frd.whackwho_id];
                         break;
                     }
                 }//end while loop for randomization
             }//end for loop
-            
-            
-            [[Game sharedGame] setSelectHeadCount:selectedHitsCount];
-            [[Game sharedGame] setArrayOfAllPopups:arrayOfFinalImages];
-            
-            [self performSegueWithIdentifier:ChooseToGame sender:sender];
-        }
+        }//end "else" clause
+        
+        [[Game sharedGame] setSelectHeadCount:selectedHitsCount];
+        [[Game sharedGame] setArrayOfAllPopups:arrayOfFinalImages];
+        
+        [self performSegueWithIdentifier:ChooseToGame sender:sender];
     }
 }
 
@@ -509,21 +490,51 @@
     switch (whichTag) {
         case 0:
             hitNumber.image = [UIImage imageNamed:hitNumberOne];
-            whichNumber = 0;
+            shieldNumber = 0;
             break;
         case 1:
             hitNumber.image = [UIImage imageNamed:hitNumberTwo];
-            whichNumber = 1;
+            shieldNumber = 1;
             break;
         case 2:
             hitNumber.image = [UIImage imageNamed:hitNumberThree];
-            whichNumber = 2;
+            shieldNumber = 2;
             break;
         case 3:
             hitNumber.image = [UIImage imageNamed:hitNumberFour];
-            whichNumber = 3;
+            shieldNumber = 3;
             break;
     }
+}
+
+-(void) sendHammersDown {
+    CGPoint origPt_l = leftHammer.center;
+    CGPoint origPt_r = rightHammer.center;
+    
+    [UIView animateWithDuration:1.1f
+                          delay:0.f
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         leftHammer.center = CGPointMake(origPt_l.x, origPt_l.y + 100);
+                         rightHammer.center = CGPointMake(origPt_r.x, origPt_r.y + 100);
+                     }
+                     completion:nil];
+
+}
+
+-(void) sendHammersUp {
+    CGPoint origPt_l = leftHammer.center;
+    CGPoint origPt_r = rightHammer.center;
+    
+    [UIView animateWithDuration:1.1f
+                          delay:0.f
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         leftHammer.center = CGPointMake(origPt_l.x, origPt_l.y - 100);
+                         rightHammer.center = CGPointMake(origPt_r.x, origPt_r.y - 100);
+                     }
+                     completion:nil];
+    
 }
 
 @end

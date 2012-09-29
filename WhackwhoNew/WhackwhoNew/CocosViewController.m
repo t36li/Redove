@@ -87,14 +87,7 @@
      */
 }
 
-- (void)returnToMenu {
-    //UINavigationController *nav = self.navigationController;
-    //if (![CCDirector sharedDirector].isPaused) {
-       // [[CCDirector sharedDirector] pause];
-    //}
-    
-    //[[CCDirector sharedDirector] popScene];
-    
+- (void)returnToMenu {    
     CCDirector *director = [CCDirector sharedDirector];
     [director removeFromParentViewController];
     [director.view removeFromSuperview];
@@ -102,18 +95,14 @@
     
     [director end];
     director.delegate = nil;
+    [self.navigationController popViewControllerAnimated:YES];
+    //int totalStack = [self.navigationController.viewControllers count];
     
-    int totalStack = [self.navigationController.viewControllers count];
-    
-    if (totalStack == 8) {
+    /*if (totalStack == 8) {
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:5] animated:YES];
     } else {
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:3] animated:YES];
-    }
-    
-    //[[CCDirector sharedDirector].view setFrame:CGRectMake(0, 0, 190, 250)];
-    //[[CCDirector sharedDirector] replaceScene:[StatusViewLayer scene]];
-
+    }*/
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
