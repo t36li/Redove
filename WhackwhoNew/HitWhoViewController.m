@@ -379,6 +379,12 @@
     
     CGPoint origPt_r = rightHammer.center;
     
+    if (![selectedHitsNames count]) {
+        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:nil message:@"You havent selected anyone yet!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [errorAlert show];
+        return;
+    }
+    
     //if hammers are up, bring them down and do stuff
     if (origPt_r.y < 100) {
         [self.view bringSubviewToFront:leftHammer];
