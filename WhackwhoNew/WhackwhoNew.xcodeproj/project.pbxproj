@@ -52,7 +52,7 @@
 		69E9EB9E16028E4E00E52D4F /* README in Resources */ = {isa = PBXBuildFile; fileRef = 69E9EB9A16028E4E00E52D4F /* README */; };
 		C10D2FC215D060A6007B751B /* Dragbox.m in Sources */ = {isa = PBXBuildFile; fileRef = C10D2FC115D060A6007B751B /* Dragbox.m */; };
 		C12114581616044300E3AAB1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12114571616044300E3AAB1 /* Default-568h@2x.png */; };
-		C121145E161688C400E3AAB1 /* HitWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C121145D161688C400E3AAB1 /* HitWindow.m */; };
+		C12114611616967E00E3AAB1 /* HitWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C121145F1616967E00E3AAB1 /* HitWindow.m */; };
 		C13D5EF415C5CEA0006F716C /* mouth effect test1.png in Resources */ = {isa = PBXBuildFile; fileRef = C13D5EF315C5CEA0006F716C /* mouth effect test1.png */; };
 		C13D5EF915C5EF89006F716C /* redo icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C13D5EF515C5EF85006F716C /* redo icon.png */; };
 		C13D5EFA15C5EF89006F716C /* ok icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C13D5EF615C5EF86006F716C /* ok icon.png */; };
@@ -654,8 +654,8 @@
 		C10D2FC115D060A6007B751B /* Dragbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dragbox.m; sourceTree = "<group>"; };
 		C10D2FCB15D09625007B751B /* StatusCocosDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatusCocosDelegate.h; sourceTree = "<group>"; };
 		C12114571616044300E3AAB1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		C121145C161688C400E3AAB1 /* HitWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HitWindow.h; sourceTree = "<group>"; };
-		C121145D161688C400E3AAB1 /* HitWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HitWindow.m; sourceTree = "<group>"; };
+		C121145F1616967E00E3AAB1 /* HitWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HitWindow.m; sourceTree = "<group>"; };
+		C12114601616967E00E3AAB1 /* HitWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HitWindow.h; sourceTree = "<group>"; };
 		C13D5EF315C5CEA0006F716C /* mouth effect test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mouth effect test1.png"; sourceTree = "<group>"; };
 		C13D5EF515C5EF85006F716C /* redo icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redo icon.png"; sourceTree = "<group>"; };
 		C13D5EF615C5EF86006F716C /* ok icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ok icon.png"; sourceTree = "<group>"; };
@@ -1245,14 +1245,14 @@
 		692AC3A215B24BB0001E4858 /* HitWhoGroup */ = {
 			isa = PBXGroup;
 			children = (
+				C121145F1616967E00E3AAB1 /* HitWindow.m */,
+				C12114601616967E00E3AAB1 /* HitWindow.h */,
 				C169200A15AFC7A600F081AF /* HitWhoViewController.h */,
 				C169200B15AFC7A700F081AF /* HitWhoViewController.m */,
 				692AC3A415B24C0D001E4858 /* hitFriendCell.h */,
 				692AC3A515B24C0D001E4858 /* hitFriendCell.m */,
 				C155FE811608CE18007F254B /* Items.h */,
 				C155FE821608CE18007F254B /* Items.m */,
-				C121145C161688C400E3AAB1 /* HitWindow.h */,
-				C121145D161688C400E3AAB1 /* HitWindow.m */,
 			);
 			name = HitWhoGroup;
 			sourceTree = "<group>";
@@ -2749,7 +2749,7 @@
 				3DDA87B816127B23005349D1 /* CurrentEquip.m in Sources */,
 				3DDA87B916127B23005349D1 /* Head.m in Sources */,
 				3DDA87BA16127B23005349D1 /* StorageInv.m in Sources */,
-				C121145E161688C400E3AAB1 /* HitWindow.m in Sources */,
+				C12114611616967E00E3AAB1 /* HitWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
