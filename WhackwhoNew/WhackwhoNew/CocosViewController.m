@@ -121,27 +121,4 @@
 	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
-/*#pragma mark - shake gesture stuff
-
-- (BOOL)canBecomeFirstResponder {
-    return YES;
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self becomeFirstResponder];
-}
-
-- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-    if (event.type == UIEventTypeMotion && event.subtype == UIEventSubtypeMotionShake ) {
-        //CCLOG(@"shake it baby from the root view controller");
-        // send a message to the notification service where components can listen to
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"MyiPhoneShakeEvent" object:nil];
-    }
-    
-    if ( [super respondsToSelector:@selector(motionEnded:withEvent:)] ){
-		[super motionEnded:motion withEvent:event];
-	}
-    
-}*/
 @end

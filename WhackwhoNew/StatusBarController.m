@@ -129,40 +129,23 @@
     
     if (faceView.image == face_DB && face_DB != nil)
         return;
-
         
-    //we will initialize all body part sprite here, then change the texture
-    //!!! need to retrive from database the current equipment!
+    //!!!!!!!! need to retrive from database the current equipment!
     
-    //init face with image from DB, if none exists, give it blank (use pause.png for now)
-    //faceView = [[UIImageView alloc] initWithFrame:CGRectMake(43, 90, 85, 35)];
+
     [faceView setContentMode:UIViewContentModeScaleAspectFill];
-    //[self.containerView addSubview:faceView];
-    //[self.containerView sendSubviewToBack:faceView];
     [faceView setImage:face_DB];
     
-    //init body
-    //bodyView = [[UIImageView alloc] initWithFrame:CGRectMake(42, 148, 88, 63)];
     [bodyView setContentMode:UIViewContentModeScaleToFill];
-    //[self.containerView addSubview:bodyView];
     [bodyView setImage:[UIImage imageNamed:standard_blue_body]];
     
-    //init helmet
-    //helmetView = [[UIImageView alloc] initWithFrame:CGRectMake(25, 30, 120, 135)];
     [helmetView setContentMode:UIViewContentModeScaleAspectFill];
-    //[self.containerView addSubview:helmetView];
     [helmetView setImage:[UIImage imageNamed:standard_blue_head]];
     
-    //init hammerHand
-    //hammerView = [[UIImageView alloc] initWithFrame:CGRectMake(115, 134, 32, 39)];
     [hammerView setContentMode:UIViewContentModeScaleAspectFill];
-    //[self.containerView addSubview:hammerView];
     [hammerView setImage:[UIImage imageNamed:starting_hammer]];
     
-    //init shieldHand
-    //shieldView = [[UIImageView alloc] initWithFrame:CGRectMake(35, 145, 40, 40)];
     [shieldView setContentMode:UIViewContentModeScaleAspectFill];
-    //[self.containerView addSubview:shieldView];
     [shieldView setImage:[UIImage imageNamed:starting_shield]];
     
     //animations
@@ -171,62 +154,6 @@
     //[helmet runAction:[CCRepeatForever actionWithAction:[CCSequence actionOne:moveHeadUp two:moveHeadDown]]];
 
 }
-// viewdidload gets called before this
-/*-(void)viewWillAppear:(BOOL)animated {
-    
-    self.navigationController.navigationBarHidden = YES;
-    
-    CCDirector *director = [CCDirector sharedDirector];
-    
-    if ([director isPaused]) {
-        [director resume];
-    }
-    
-    CCGLView *glView = [CCGLView viewWithFrame:CGRectMake(0, 0, 190, 250)
-                                   pixelFormat:kEAGLColorFormatRGB565   //kEAGLColorFormatRGBA8
-                                   depthFormat:0    //GL_DEPTH_COMPONENT24_OES
-                            preserveBackbuffer:NO
-                                    sharegroup:nil
-                                 multiSampling:NO
-                               numberOfSamples:0];
-    
-    // HERE YOU CHECK TO SEE IF THERE IS A SCENE RUNNING IN THE DIRECTOR ALREADY
-    if(![director runningScene]){
-        [director setView:glView]; // SET THE DIRECTOR VIEW
-        if( ! [director enableRetinaDisplay:YES] ) // ENABLE RETINA
-            CCLOG(@"Retina Display Not supported");
-        
-        [director runWithScene:[StatusViewLayer scene]]; // RUN THE SCENE
-        
-    } else {
-        // THERE IS A SCENE, START SINCE IT WAS STOPPED AND REPLACE TO RESTART
-        [director startAnimation];
-        [director.view setFrame:CGRectMake(0, 0, 190, 250)];
-        [director replaceScene:[StatusViewLayer scene]];
-    }
-    
-    [director willMoveToParentViewController:nil];
-    [director.view removeFromSuperview];
-    [director removeFromParentViewController];
-    [director willMoveToParentViewController:self];
-    
-    // Add the director as a child view controller of this view controller.
-    [self addChildViewController:director];
-    [self.containerView addSubview: director.view];
-    [self.containerView sendSubviewToBack:director.view];
-    
-    // Finish up our view controller containment responsibilities.
-    [director didMoveToParentViewController:self];
-}
-
-- (void) viewDidDisappear:(BOOL)animated {
-    CCDirector *director = [CCDirector sharedDirector];
-    [director removeFromParentViewController];
-    [director.view removeFromSuperview];
-    [director didMoveToParentViewController:nil];
-    
-    [director end];
-}*/
 
 - (void)viewDidUnload
 {
@@ -434,7 +361,6 @@
 }
 
 
-
 /*- (void)equipmentDragged:(UIPanGestureRecognizer *)gesture
 {
 	UIImageView *equipment = (UIImageView *)gesture.view;
@@ -511,20 +437,6 @@
 	[gesture setTranslation:CGPointZero inView:equipment];
 }*/
 
-/*-(void) handleTapOnItemImage:(id)sender {
-    UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
-    UIImageView *itemView = ((UIImageView *)(tap.view));
-}*/
-
-/*-(void) viewWillDisappear:(BOOL)animated {
-    CCDirector *director = [CCDirector sharedDirector];
-    [director removeFromParentViewController];
-    [director.view removeFromSuperview];
-    [director didMoveToParentViewController:nil];
-    
-    [director end];
-}*/
-
 #pragma mark - touch methods
 
 - (IBAction)Back_Touched:(id)sender {
@@ -554,22 +466,5 @@
         }
     }
 }
-
-/*- (void)returnToMenu {
-    //UINavigationController *nav = self.navigationController;
-    //if (![CCDirector sharedDirector].isPaused) {
-    // [[CCDirector sharedDirector] pause];
-    //}
-    
-    //[[CCDirector sharedDirector] popScene];
-    int totalStack = [self.navigationController.viewControllers count];
-    
-    if (totalStack == 8) {
-        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:4] animated:YES];
-    } else {
-        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:2] animated:YES];
-    }
-
-}*/
 
 @end

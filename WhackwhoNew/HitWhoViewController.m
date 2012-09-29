@@ -379,7 +379,7 @@
     
     CGPoint origPt_r = rightHammer.center;
     
-    if (![selectedHitsNames count]) {
+    if (![faceView image]) {
         UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:nil message:@"You havent selected anyone yet!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [errorAlert show];
         return;
