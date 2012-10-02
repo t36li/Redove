@@ -53,24 +53,6 @@
     
     totalCash = 0;
     
-    //retrieve data from database about user's storage and display them accordingly
-    //assume for testing the user has 4 items only...
-    //for (int i = 0, i < [useritems count], i++) {
-    //    UIImage *item = [useritems objectatindex: int];
-    //    [stashItems objectAtIndex:i].image = item;
-    //}
-    //will need to set tags for each item as well
-    item1.image = [UIImage imageNamed:devil_hammer];
-    item1.tag = hammerHand_Label;
-    item2.image = [UIImage imageNamed:standard_pink_head];
-    item2.tag = helmet_Label;
-    item3.image = [UIImage imageNamed:starting_shield];
-    item3.tag = shieldHand_Label;
-    item4.image = [UIImage imageNamed:standard_blue_body];
-    item4.tag = body_Label;
-    item5.image = [UIImage imageNamed:rabbit_hammer];
-    item5.tag = hammerHand_Label;
-    
     //setUp tags for equipments
     helmet.tag = helmet_Label;
     body.tag = body_Label;
@@ -131,28 +113,81 @@
         return;
         
     //!!!!!!!! need to retrive from database the current equipment!
+    UserInfo *usinfo = [UserInfo sharedInstance];
+    CurrentEquip *ce = usinfo.currentEquip;
     
-
     [faceView setContentMode:UIViewContentModeScaleAspectFill];
     [faceView setImage:face_DB];
     
     [bodyView setContentMode:UIViewContentModeScaleToFill];
-    [bodyView setImage:[UIImage imageNamed:standard_blue_body]];
+    [bodyView setImage:[UIImage imageNamed:ce.body]];
+    [body setImage:[UIImage imageNamed:ce.body]];
     
     [helmetView setContentMode:UIViewContentModeScaleAspectFill];
-    [helmetView setImage:[UIImage imageNamed:standard_blue_head]];
+    [helmetView setImage:[UIImage imageNamed:ce.helmet]];
+    [helmet setImage:[UIImage imageNamed:ce.helmet]];
     
     [hammerView setContentMode:UIViewContentModeScaleAspectFill];
-    [hammerView setImage:[UIImage imageNamed:starting_hammer]];
+    [hammerView setImage:[UIImage imageNamed:ce.hammerArm]];
+    [hammer_hand setImage:[UIImage imageNamed:ce.hammerArm]];
     
     [shieldView setContentMode:UIViewContentModeScaleAspectFill];
-    [shieldView setImage:[UIImage imageNamed:starting_shield]];
+    [shieldView setImage:[UIImage imageNamed:ce.shieldArm]];
+    [shield_hand setImage:[UIImage imageNamed:ce.shieldArm]];
     
     //animations
     //CCMoveBy *moveHeadUp = [CCMoveBy actionWithDuration:2.5 position:ccp(0,10)];
     //CCMoveBy *moveHeadDown = [CCMoveBy actionWithDuration:2.5 position:ccp(0,-10)];
     //[helmet runAction:[CCRepeatForever actionWithAction:[CCSequence actionOne:moveHeadUp two:moveHeadDown]]];
-
+    
+    //!!!!!!!! need to retrive from database the current storage!
+    //will need to set tags for each item as well
+    StorageInv *si = usinfo.storageInv;
+    
+    NSArray *helmetArray = si.helmetsArrayInFileName;
+    NSArray *bodyArray = si.bodiesArrayInFileName;
+    NSArray *hammerArray = si.hammerArmsArrayInFileName;
+    NSArray *shieldArray = si.shieldArmsArrayInFileName;
+    
+    for (NSString *imageName in helmetArray) {
+        for (UIImageView *temp in stashItems) {
+            if (![temp image]) {
+                temp.image = [UIImage imageNamed:imageName];
+                temp.tag = helmet_Label;
+                break;
+            }
+        }
+    }
+    
+    for (NSString *imageName in bodyArray) {
+        for (UIImageView *temp in stashItems) {
+            if (![temp image]) {
+                temp.image = [UIImage imageNamed:imageName];
+                temp.tag = body_Label;
+                break;
+            }
+        }
+    }
+    
+    for (NSString *imageName in hammerArray) {
+        for (UIImageView *temp in stashItems) {
+            if (![temp image]) {
+                temp.image = [UIImage imageNamed:imageName];
+                temp.tag = hammerHand_Label;
+                break;
+            }
+        }
+    }
+    
+    for (NSString *imageName in shieldArray) {
+        for (UIImageView *temp in stashItems) {
+            if (![temp image]) {
+                temp.image = [UIImage imageNamed:imageName];
+                temp.tag = shieldHand_Label;
+                break;
+            }
+        }
+    }
 }
 
 - (void)viewDidUnload
@@ -201,16 +236,16 @@
             //call the cocos2d layer to remove the equipment
             switch (item.tag) {
                 case helmet_Label:
-                    [helmetView setImage:[UIImage imageNamed:standard_blue_head]];
+                    [helmetView setImage:[UIImage imageNamed:transparent_helmet]];
                     break;
                 case body_Label:
                     [bodyView setImage:[UIImage imageNamed:standard_blue_body]];
                     break;
                 case hammerHand_Label:
-                    [hammerView setImage:[UIImage imageNamed:starting_hammer]];
+                    [hammerView setImage:nil];
                     break;
                 case shieldHand_Label:
-                    [shieldView setImage:[UIImage imageNamed:starting_shield]];
+                    [shieldView setImage:nil];
                     break;
             }
             break;

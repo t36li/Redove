@@ -33,7 +33,7 @@
 @property (nonatomic, readwrite) int selectHeadCount;
 //@property (nonatomic, copy) NSMutableArray *allHeads;
 //@property (nonatomic, copy) NSMutableArray *selectedHeads;
-@property (nonatomic, retain) NSMutableArray *arrayOfAllPopups;
+@property (nonatomic, strong) NSMutableArray *arrayOfAllPopups;
 @property (nonatomic) UIImage *head;
 
 + (Game *) sharedGame;

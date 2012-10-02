@@ -76,6 +76,7 @@
     //body
 #define standard_blue_body @"BO001.png"
     //helmets
+#define transparent_helmet @"white final.png"
 #define standard_blue_head @"HE001.png"
 #define standard_pink_head @"HE002.png"
 #define standard_yellow_head @"HE003.png"
