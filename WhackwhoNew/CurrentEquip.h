@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
 
-@interface CurrentEquip : NSObject
+@interface CurrentEquip : NSObject{
+    NSString *helmet, *hammerArm, *shieldArm, *body;
+}
 
 @property (nonatomic, retain) NSString *helmet, *hammerArm, *shieldArm, *body;
 
