@@ -49,13 +49,13 @@ NSString *const UserChinPosition = @"ChinPosition";
     //NSDictionary *myFriends;
     FriendArray *friendArray;
     
-    id<UserInfoDelegate> delegate;
+//    id<UserInfoDelegate> delegate;
 }
 
 @property (nonatomic, strong) NSString *userId, *userName, *gender;
 @property (nonatomic) CGPoint leftEyePosition, rightEyePosition, mouthPosition;;
 @property (nonatomic) CGRect faceRect;
-@property (nonatomic) id<UserInfoDelegate> delegate;
+//@property (nonatomic) id<UserInfoDelegate> delegate;
 @property (nonatomic) NSInteger currentLogInType, whackWhoId, headId;
 
 @property (nonatomic, strong) UIImage *croppedImage, *usrImg;
@@ -63,7 +63,7 @@ NSString *const UserChinPosition = @"ChinPosition";
 @property (nonatomic, retain) StorageInv *storageInv;
 @property (nonatomic, retain) FriendArray *friendArray;
 
--(void)markFaces:(UIImage *)img;
+-(void)markFaces:(UIImage *)img withDelegate:(id<UserInfoDelegate>)delegate;
 +(id)sharedInstance;
 -(void) clearUserInfo;
 -(void) setUserPicture:(UIImage *)img delegate:(id)sender;

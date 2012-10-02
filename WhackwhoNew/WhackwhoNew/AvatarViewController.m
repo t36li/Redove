@@ -260,9 +260,14 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     }
 }
 
+//run this in background
+-(void) pushCroppedImage {
+    UserInfo *info = [UserInfo sharedInstance];
+    [info setUserPicture:photoView.image delegate:self];
+}
+
 -(IBAction) addPicture:(id)sender {
     UserInfo *info = [UserInfo sharedInstance];
-    info.delegate = self;
     
     if (headView.image != nil) {
         [self Back:nil];
@@ -279,7 +284,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     headView.image = info.croppedImage;
     photoView.image = nil;
     
-    [info setUserPicture:photoView.image delegate:self];
+    [self performSelectorInBackground:@selector(pushCroppedImage) withObject:nil];
 }
 
 - (IBAction) Back:(id)sender{
