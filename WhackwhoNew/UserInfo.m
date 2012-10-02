@@ -190,9 +190,9 @@ static UserInfo *sharedInstance = nil;
     }
 }
 
-
--(UIImage *)getCroppedImage {
-    return [UIImage imageWithCGImage:croppedImage.CGImage];
-}
+//
+//-(UIImage *)getCroppedImage {
+//    return [UIImage imageWithCGImage:croppedImage.CGImage];
+//}
 
 @end

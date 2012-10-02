@@ -67,7 +67,6 @@ NSString *const UserChinPosition = @"ChinPosition";
 +(id)sharedInstance;
 -(void) clearUserInfo;
 -(void) setUserPicture:(UIImage *)img delegate:(id)sender;
--(UIImage *)getCroppedImage;
 +(UIImage *)getCroppedImage:(UIImage *)img inRect:(CGRect)rect;
 
 @end
