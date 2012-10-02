@@ -14,7 +14,7 @@
 @implementation Friend
 
 @synthesize user_id, name, gender, isPlayer,whackwho_id,mediaType_id, head_id;
-@synthesize currentEuip, head;
+@synthesize currentEquip, head;
 
 -(id)init {
     self = [super init];
@@ -46,13 +46,26 @@
 
 @implementation FriendArray
 
-@synthesize friends = _friends;
+@synthesize friends;
 
 -(void)copyToUserInfo{
-    [[UserInfo sharedInstance] setFriendArray:self];
+    NSMutableArray *Rfriends = [[NSMutableArray alloc] init];
+    for (Friend *f in self.friends){
+        f.currentEquip = [f.currentEquip currentEquipInFileNames];
+        [Rfriends addObject:f];
+    }
+    FriendArray *fa = [[FriendArray alloc]init];
+    fa.friends = Rfriends;
+    [[UserInfo sharedInstance] setFriendArray:fa];
 }
 
 -(void)getFromUserInfo{
-    _friends = [[UserInfo sharedInstance] friendArray].friends;
+    NSMutableArray *Rfriends = [[NSMutableArray alloc] init];
+    for (Friend *f in [[[UserInfo sharedInstance] friendArray] friends]){
+        f.currentEquip = [f.currentEquip currentEquipInIDs];
+        [Rfriends addObject:f];
+    }
+    self.friends = nil;
+    self.friends = Rfriends;
 }
 @end

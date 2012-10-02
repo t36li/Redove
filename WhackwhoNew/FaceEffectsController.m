@@ -37,12 +37,11 @@
     UIImage *resizedImage = [AvatarBaseController resizeImage:cropImage toSize:headView.frame.size];
     headView.image = resizedImage;
     UserInfo *user = [UserInfo sharedInstance];
-    user.delegate = self;
     
     for (UIView *subview in faceEffectsView.subviews)
          [subview removeFromSuperview];
     
-    [user performSelectorInBackground:@selector(markFaces:) withObject:headView.image];
+    [user performSelector:@selector(markFaces:withDelegate:) withObject:headView.image withObject:self];
 }
 
 - (void)viewDidUnload

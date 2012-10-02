@@ -59,8 +59,8 @@
 +(void)objectMappingLoader{
     //currentEquip mapping:
     RKObjectMapping *curEquipMapping = [RKObjectMapping mappingForClass:[CurrentEquip class]];
-    [curEquipMapping mapKeyPath:@"Helmet" toAttribute:@"helmet"];
-    [curEquipMapping mapKeyPath:@"Body" toAttribute:@"body"];
+    [curEquipMapping mapKeyPath:@"helmet" toAttribute:@"helmet"];
+    [curEquipMapping mapKeyPath:@"body" toAttribute:@"body"];
     [curEquipMapping mapKeyPath:@"hammerArm" toAttribute:@"hammerArm"];
     [curEquipMapping mapKeyPath:@"shieldArm" toAttribute:@"shieldArm"];
     [[RKObjectManager sharedManager].mappingProvider setMapping:curEquipMapping forKeyPath:@"currentEquip"];

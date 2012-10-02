@@ -282,8 +282,9 @@
 -(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object{
     NSLog(@"loaded responses:%@",object);
     FriendArray *friendArray = object;
-    [[UserInfo sharedInstance] setFriendArray:friendArray];
-    self.resultFriends = friendArray.friends;
+    [friendArray copyToUserInfo];
+
+    self.resultFriends = [NSArray arrayWithArray:[[[UserInfo sharedInstance] friendArray] friends]];
     [self.table reloadData];
     [spinner removeSpinner];
     [tablepull finishedLoading];
