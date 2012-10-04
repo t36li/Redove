@@ -182,7 +182,7 @@
             //for testing
             //head.position = ccp(xpad, s.height/2);
             //xpad += 50;
-            head.visible = TRUE;
+            //head.visible = TRUE;
         }
         
         [self schedule:@selector(tryPopheads) interval:1.5];

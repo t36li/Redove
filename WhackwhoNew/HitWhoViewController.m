@@ -211,12 +211,14 @@
 
     temp.image = tempImage;
     [temp setWhackID:friendSelected.whackwho_id];
+    CurrentEquip *ce = friendSelected.currentEquip;
     
     faceView.image = tempImage;
-    helmetView.image = [UIImage imageNamed:standard_blue_head];
-    bodyView.image = [UIImage imageNamed:standard_blue_body];
-    hammerView.image = [UIImage imageNamed:starting_hammer];
-    shieldView.image = [UIImage imageNamed:starting_shield];
+    NSLog(@"%@", ce.hammerArm);
+    helmetView.image = [UIImage imageNamed:ce.helmet];
+    bodyView.image = [UIImage imageNamed:ce.body];
+    hammerView.image = [UIImage imageNamed:ce.hammerArm];
+    shieldView.image = [UIImage imageNamed:ce.shieldArm];
     
     //selectedHitsNames -> an array that stores currently selected friends' whackwho_id
     //noHitsNames -> an array that contains names of people not selected
@@ -285,6 +287,9 @@
     [friendArray copyToUserInfo];
 
     self.resultFriends = [NSArray arrayWithArray:[[[UserInfo sharedInstance] friendArray] friends]];
+    
+    //NSLog(@"%@",[[resultFriends objectAtIndex:0] currentEquip].hammerArm);
+    
     [self.table reloadData];
     [spinner removeSpinner];
     [tablepull finishedLoading];
