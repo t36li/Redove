@@ -1139,12 +1139,12 @@
                                 <rect key="frame" x="10" y="60" width="46" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView tag="1" contentMode="scaleToFill" id="8fp-vk-NVk" userLabel="hit2" customClass="HitWindow">
-                                <rect key="frame" x="10" y="147" width="46" height="44"/>
+                            <imageView tag="2" contentMode="scaleToFill" id="s9K-64-VZQ" userLabel="hit2" customClass="HitWindow">
+                                <rect key="frame" x="239" y="60" width="46" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView tag="2" contentMode="scaleToFill" id="s9K-64-VZQ" userLabel="hit3" customClass="HitWindow">
-                                <rect key="frame" x="239" y="60" width="46" height="44"/>
+                            <imageView tag="1" contentMode="scaleToFill" id="8fp-vk-NVk" userLabel="hit3" customClass="HitWindow">
+                                <rect key="frame" x="10" y="147" width="46" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView tag="3" contentMode="scaleToFill" id="MJX-50-L7b" userLabel="hit4" customClass="HitWindow">
@@ -1277,15 +1277,15 @@
                                 <rect key="frame" x="10" y="60" width="46" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="small frame.png" id="QxZ-bf-fbW" userLabel="hit2Frame">
+                            <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" image="small frame.png" id="QxZ-bf-fbW" userLabel="hit3Frame">
                                 <rect key="frame" x="10" y="147" width="46" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="small frame.png" id="a6f-em-4Jc" userLabel="hit3Frame">
+                            <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" image="small frame.png" id="a6f-em-4Jc" userLabel="hit2Frame">
                                 <rect key="frame" x="239" y="60" width="46" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="small frame.png" id="cTG-BT-hIb" userLabel="hit4Frame">
+                            <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" image="small frame.png" id="cTG-BT-hIb" userLabel="hit4Frame">
                                 <rect key="frame" x="239" y="147" width="46" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1302,8 +1302,8 @@
                         <outlet property="hammerView" destination="IW5-1J-tA4" id="FfB-Ih-PMT"/>
                         <outlet property="helmetView" destination="8Tt-Xf-GtL" id="6ND-Iw-IjK"/>
                         <outlet property="hit1" destination="iFk-7X-kQg" id="OfE-nI-Iga"/>
-                        <outlet property="hit2" destination="8fp-vk-NVk" id="6PX-H4-5fv"/>
-                        <outlet property="hit3" destination="s9K-64-VZQ" id="1Qk-xj-LEN"/>
+                        <outlet property="hit2" destination="s9K-64-VZQ" id="zw2-LI-xQz"/>
+                        <outlet property="hit3" destination="8fp-vk-NVk" id="XdG-In-pz1"/>
                         <outlet property="hit4" destination="MJX-50-L7b" id="OId-oH-AbG"/>
                         <outlet property="hitNumber" destination="ltO-mV-Vzo" id="2av-oB-d4K"/>
                         <outlet property="leftHammer" destination="Lve-7m-9pR" id="3o7-cS-0NT"/>

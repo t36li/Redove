@@ -23,15 +23,9 @@
 @interface HitWhoViewController : UIViewController<FBSingletonDelegate,UITableViewDelegate,UITableViewDataSource,RKObjectLoaderDelegate,PullToRefreshViewDelegate> {
    
     NSMutableArray *selectedHits;
-    NSMutableArray *selectedHitsNames;
-    NSMutableArray *arrayOfFinalImages;
+    NSArray *hitWindows;
     
     UIImage *defaultImage;
-    int shieldNumber;
-    
-    //!!!decommission noHits.... no longer lets user select who to NOT hit
-    //NSMutableArray *noHits;
-    //NSMutableArray *noHitsNames;
 
     IBOutlet HitWindow *hit1;
     IBOutlet HitWindow *hit2;
@@ -78,7 +72,8 @@
 @property (nonatomic) IBOutlet UITableView *table;
 @property (nonatomic) SpinnerView *spinner;
 @property (nonatomic) IBOutlet UIView *loadingView;
-@property (nonatomic) NSArray *resultFriends;
+@property (nonatomic, strong) NSArray *resultFriends;
+@property (nonatomic) NSArray *hitWindows;
 
 //-(IBAction)handleRandomButton:(id)sender;
 -(IBAction)Back_Touched:(id)sender;

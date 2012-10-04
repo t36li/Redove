@@ -20,7 +20,7 @@
     NSString *faceRect;
 }
 
-@property (nonatomic) NSString *leftEyePosition, *rightEyePosition, *mouthPosition, *faceRect, *headId;
-@property (nonatomic,retain) UIImage *headImage;
+@property (nonatomic, strong) NSString *leftEyePosition, *rightEyePosition, *mouthPosition, *faceRect, *headId;
+@property (nonatomic, strong) UIImage *headImage;
 
 @end
