@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Friend.h"
 
 @interface HitWindow : UIImageView {
-    NSString *whackID;
+    Friend *friend;
 }
-@property (nonatomic, retain) NSString *whackID;
+@property (nonatomic) Friend *friend;
 @end

@@ -22,12 +22,11 @@
     Head *head;
     CurrentEquip *currentEquip;
     BOOL isPlayer;
-    
 }
 
-@property (nonatomic) NSString *mediaType_id, *user_id, *name, *gender, *whackwho_id, *head_id;
-@property (nonatomic) CurrentEquip *currentEquip;
-@property (nonatomic) Head *head;
+@property (nonatomic, strong) NSString *mediaType_id, *user_id, *name, *gender, *whackwho_id, *head_id;
+@property (nonatomic, strong) CurrentEquip *currentEquip;
+@property (nonatomic, strong) Head *head;
 @property (nonatomic, assign) BOOL isPlayer;
 
 @end
@@ -35,7 +34,7 @@
 @interface FriendArray : NSObject{
     NSArray *friends;
 }
-@property (nonatomic,retain) NSArray *friends;
+@property (nonatomic, strong) NSArray *friends;
 
 -(void)copyToUserInfo;
 -(void)getFromUserInfo;

@@ -10,7 +10,7 @@
 
 @implementation HitWindow
 
-@synthesize whackID;
+@synthesize friend;
 
 - (id)initWithFrame:(CGRect)frame
 {
