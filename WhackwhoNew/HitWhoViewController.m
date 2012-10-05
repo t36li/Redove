@@ -271,7 +271,7 @@
             
             for (int i = 0; i < 4; ++i) {
                 if (selectedHits.count > i) {
-                    [finalImages addObject:[self captureImageOnSelect]];
+                    [finalImages addObject:[self captureImageInHitBox:i]];
                 } else {
                     [finalImages addObject:defaultImage];
                 }
@@ -286,65 +286,6 @@
     
     [self sendHammersDownWithBlock:block];
     
-    
-    
-    //if did not select all hits or did not press random
-//    if ([selectedHitsNames containsObject:dummyString] || [selectedHitsNames count] < 1) {
-//        //display alert showing must select all b4 game
-//        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Selection Error" message:@"You can still pick more friends to hit OR press OK!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        [errorAlert show];
-//        return;
-//    } else {
-//        //first count number of friends. Then count number of selected hits
-//        //if total friends < 2 * selected + 1, then need to fill with void faces...
-//        //else, select random friends from resultFriends
-//        //
-//        
-//        //!!! if not enough friends, need to use void head (i.e. heads without faces)
-//        // else, random friends from list...
-//        
-//        int totalFriends = [resultFriends count];
-//        int selectedHitsCount = [selectedHitsNames count];
-//        
-//        if (totalFriends < (2*selectedHitsCount+1)) {
-//            for (int i = 0; i < selectedHitsCount + 1; i++) {
-//                [arrayOfFinalImages addObject:defaultImage];
-//            }
-//        } else {
-//            //if enough friends, random through friends
-//            
-//            for (int i = 0; i < selectedHitsCount + 1; i++) {
-//                //NSLog(@"%i", i);
-//                while (TRUE) {
-//                    int rand = arc4random() % totalFriends;
-//                    //rand = 2;
-//                    Friend *frd = [resultFriends objectAtIndex:rand];
-//                    //NSLog(@"%@", frd.whackwho_id);
-//                    if (![selectedHitsNames containsObject:frd.whackwho_id]) {
-//                        
-//                        hitFriendCell *cell = (hitFriendCell *) [table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:rand inSection:0]];
-//                        
-//                        //this is what is happening!!
-//                        faceView.image = cell.profileImage.image;
-//                        helmetView.image = [UIImage imageNamed:standard_blue_head];
-//                        bodyView.image = [UIImage imageNamed:standard_blue_body];
-//                        hammerView.image = [UIImage imageNamed:starting_hammer];
-//                        shieldView.image = [UIImage imageNamed:starting_shield];
-//                        UIImage *guy = [self captureImageOnSelect];
-//                        
-//                        [arrayOfFinalImages addObject:guy];
-//                        [selectedHitsNames addObject:frd.whackwho_id];
-//                        break;
-//                    }
-//                }//end while loop for randomization
-//            }//end for loop
-//        }//end "else" clause
-//        
-//        [[Game sharedGame] setSelectHeadCount:selectedHitsCount];
-//        [[Game sharedGame] setArrayOfAllPopups:arrayOfFinalImages];
-//        
-//        [self performSegueWithIdentifier:ChooseToGame sender:sender];
-//    }
 }
 
 - (IBAction)Back_Touched:(id)sender {
@@ -353,7 +294,9 @@
 
 #pragma mark - capture image
 
-- (UIImage *)captureImageOnSelect {
+- (UIImage *)captureImageInHitBox:(NSInteger)number {
+    Friend *friend = [selectedHits objectAtIndex:number];
+    faceView.image = friend.head.headImage;
     // If scale is 0, it'll follows the screen scale for creating the bounds
     UIGraphicsBeginImageContextWithOptions(self.containerView.bounds.size, NO, 1.0f);
     
