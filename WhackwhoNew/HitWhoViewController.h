@@ -75,9 +75,7 @@
 @property (nonatomic, strong) NSArray *resultFriends;
 @property (nonatomic) NSArray *hitWindows;
 
-//-(IBAction)handleRandomButton:(id)sender;
 -(IBAction)Back_Touched:(id)sender;
 -(IBAction)cancelTouched:(id)sender;
 -(IBAction)battleTouched:(id)sender;
--(IBAction)okTouched:(id)sender;
 @end

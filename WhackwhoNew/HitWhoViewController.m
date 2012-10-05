@@ -263,43 +263,6 @@
     [self switchMainViewToIndex:MAX(selectedHits.count-1, 0)];
 }
 
--(IBAction) okTouched:(id)sender {
-    
-//    CGPoint origPt_r = rightHammer.center;
-//    
-//    if (![faceView image]) {
-//        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:nil message:@"You havent selected anyone yet!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        [errorAlert show];
-//        return;
-//    }
-//    
-//    //if hammers are up, bring them down and do stuff
-//    if (origPt_r.y < 100) {
-//        [self.view bringSubviewToFront:leftHammer];
-//        [self.view bringSubviewToFront:rightHammer];
-//        
-//        [self sendHammersDown];
-//        
-//        UIImage *guy = [self captureImageOnSelect];
-//        
-//        if (![arrayOfFinalImages containsObject:defaultImage]) {
-//            [arrayOfFinalImages addObject:guy];
-//        } else {
-//            [arrayOfFinalImages replaceObjectAtIndex:[arrayOfFinalImages indexOfObject:defaultImage] withObject:guy];
-//            //numDefaultImage--;
-//        }
-//        
-//        if (![selectedHitsNames containsObject:dummyString]) {
-//            [selectedHitsNames addObject:friendSelected.whackwho_id];
-//        } else {
-//            [selectedHitsNames replaceObjectAtIndex:[selectedHitsNames indexOfObject:dummyString] withObject:friendSelected.whackwho_id];
-//        }
-//    } else {
-//        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:nil message:@"You already pressed ok" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        [errorAlert show];
-//    }
-}
-
 -(IBAction)battleTouched:(id)sender {
     
     void (^block)(BOOL) = ^(BOOL finished) {
