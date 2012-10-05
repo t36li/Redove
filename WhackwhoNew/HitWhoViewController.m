@@ -172,20 +172,17 @@
         [selectedHits addObject:friend];
     }
     
-    [self changeShieldNumber:temp.tag];
-
-    temp.image = tempImage;
-    [temp setWhackID:friendSelected.whackwho_id];
-    CurrentEquip *ce = friendSelected.currentEquip;
+    faceView.image = friendSelected.head.headImage;
     
-    faceView.image = tempImage;
-    NSLog(@"%@", ce.hammerArm);
+    CurrentEquip *ce = friendSelected.currentEquip;
     helmetView.image = [UIImage imageNamed:ce.helmet];
     bodyView.image = [UIImage imageNamed:ce.body];
     hammerView.image = [UIImage imageNamed:ce.hammerArm];
     shieldView.image = [UIImage imageNamed:ce.shieldArm];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [self updateHitWindow];
 }
 
 /*********handle database connections:*****************/
@@ -249,6 +246,7 @@
     //NSLog(@"touched!!");
     UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
     HitWindow *temp = ((HitWindow *)(tap.view));
+    friendSelected = temp.friend;
     
     if (temp.image == nil)
         return;
