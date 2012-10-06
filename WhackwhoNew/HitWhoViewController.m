@@ -13,6 +13,7 @@
 
 #define ChooseToGame @"chooseToGame"
 #define dummyString @"testobject"
+#define pi 3.14159265359
 //#define MAX_HIT 2
 
 @implementation HitWhoViewController
@@ -76,6 +77,7 @@
     [bodyView setContentMode:UIViewContentModeScaleToFill];
     [helmetView setContentMode:UIViewContentModeScaleToFill];
     [hammerView setContentMode:UIViewContentModeScaleToFill];
+    hammerView.transform = CGAffineTransformMakeRotation(45*pi/180);
     [shieldView setContentMode:UIViewContentModeScaleToFill];
 }
 
@@ -171,11 +173,10 @@
         
     //Find which friend the user has selected
     Friend *friend = [resultFriends objectAtIndex:indexPath.row];
-    friendSelected = friend;
     
-    for (NSString *temp in selectedHits) {
-        NSLog(@"%@", temp);
-    }
+    //for (NSString *temp in selectedHits) {
+    //    NSLog(@"%@", temp);
+    //}
     
     if (![selectedHits containsObject:friend.whackwho_id]) {
         if ([selectedHits containsObject:dummyString]) {
@@ -188,7 +189,11 @@
         hitFriendCell *cell = (hitFriendCell *)[tableView cellForRowAtIndexPath:indexPath];
         faceView.image = cell.profileImage.image;
         
+        friendSelected = friend;
         [self updateHitWindow];
+    } else {
+        UIAlertView *error = [[UIAlertView alloc] initWithTitle:nil message:@"Already selected this guy!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [error show];
     }
     //CurrentEquip *ce = friendSelected.currentEquip;
     //helmetView.image = [UIImage imageNamed:ce.helmet];

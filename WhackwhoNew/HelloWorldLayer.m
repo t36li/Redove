@@ -158,7 +158,7 @@
         
         //!!!! initializing popups
         //use the array from game.h which contains all image names
-        int xpad = 50; //for testing
+        //int xpad = 50; //for testing
         int i = 0;
         for (UIImage *person in [[Game sharedGame] arrayOfAllPopups]) {
             Character *head = [Character spriteWithCGImage:[person CGImage] key:[NSString stringWithFormat:@"person%i", i]];
@@ -175,14 +175,14 @@
             i++; //for key purposes
             
             //for testing
-            head.position = ccp(xpad, s.height/2);
-            xpad += 60;
-            head.visible = TRUE;
+            //head.position = ccp(xpad, s.height/2);
+            //xpad += 60;
+            //head.visible = TRUE;
         }
         
-        //[self schedule:@selector(tryPopheads) interval:1.5];
-        //[self schedule:@selector(checkGameState) interval:0.1];
-        //[self schedule:@selector(timerUpdate:) interval:0.001];
+        [self schedule:@selector(tryPopheads) interval:1.5];
+        [self schedule:@selector(checkGameState) interval:0.1];
+        [self schedule:@selector(timerUpdate:) interval:0.001];
 	}
     
 	return self;
@@ -538,19 +538,19 @@
     
 #pragma mark - bomb popup code
     //10% chance for a bomb to popup
-    if (arc4random() % 100 < 10 && !has_bomb) {
-        has_bomb = TRUE;
-        CCSprite *testObj = [CCSprite spriteWithFile:@"bomb.png"];
-        testObj.position = ccp(head.position.x + head.contentSize.width * head.scaleX/2, head.position.y+50);
-        testObj.scale = 2.0;
-        testObj.tag = 0; //tag will serve as hit or no-hit; 0 = nohit, 1 = hit
-        [self addChild:testObj];
-        [bomb addObject:testObj];
+    //if (arc4random() % 100 < 10 && !has_bomb) {
+      //  has_bomb = TRUE;
+        //CCSprite *testObj = [CCSprite spriteWithFile:@"bomb.png"];
+       // testObj.position = ccp(head.position.x + head.contentSize.width * head.scaleX/2, head.position.y+50);
+     //   testObj.scale = 2.0;
+     //   testObj.tag = 0; //tag will serve as hit or no-hit; 0 = nohit, 1 = hit
+     //   [self addChild:testObj];
+     //   [bomb addObject:testObj];
         
-        CCRotateBy *rotateBomb = [CCRotateBy actionWithDuration:2.0f angle:(360*7)];
-        CCCallFuncN *removeBomb = [CCCallFuncN actionWithTarget:self selector:@selector(removeBomb:)];
-        [testObj runAction:[CCSequence actions: rotateBomb, removeBomb, nil]];
-    }
+     //   CCRotateBy *rotateBomb = [CCRotateBy actionWithDuration:2.0f angle:(360*7)];
+     //   CCCallFuncN *removeBomb = [CCCallFuncN actionWithTarget:self selector:@selector(removeBomb:)];
+     //   [testObj runAction:[CCSequence actions: rotateBomb, removeBomb, nil]];
+    //}
     
     //obtain rotation angle.... from method
     //angel is in radians already
