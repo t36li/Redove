@@ -169,24 +169,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Only handle taps if the view is related to showing nearby places that
     // the user can check-in to.
-    if ((![resultFriends count] || [selectedHits count] >= 4) && ![selectedHits containsObject:dummyString]) {
-        UIAlertView *error = [[UIAlertView alloc] initWithTitle:nil message:@"Already selected maximum number" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-        [error show];
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (![resultFriends count] || [selectedHits count] >= 4)
         return;
-    }
         
     //Find which friend the user has selected
     Friend *friend = [resultFriends objectAtIndex:indexPath.row];
     friendSelected = friend;
     
-    for (NSString *temp in selectedHits) {
-        NSLog(@"%@", temp);
+    if (![selectedHits containsObject:friend]) {
+        [selectedHits addObject:friend];
     }
     
     [self switchMainViewToIndex];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [self updateHitWindow];
 }
 
 /*********handle database connections:*****************/
@@ -250,6 +248,7 @@
     //NSLog(@"touched!!");
     UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
     HitWindow *temp = ((HitWindow *)(tap.view));
+    friendSelected = temp.friend;
     
     if (temp.image == nil)
         return;
@@ -258,26 +257,8 @@
 }
 
 -(IBAction)cancelTouched:(id)sender {
-    if (friendSelected == nil) {
-        UIAlertView *error = [[UIAlertView alloc] initWithTitle:nil message:@"Cannot cancel without selecting anything" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-        [error show];
+    if (friendSelected == nil)
         return;
-    }
-    
-    [selectedHits replaceObjectAtIndex:[selectedHits indexOfObject:friendSelected.whackwho_id] withObject:dummyString];
-    //[self updateHitWindow];
-    //[self switchMainViewToIndex:MAX(selectedHits.count-1, 0)];
-    for (HitWindow *temp in hitWindows) {
-        if (!temp.friend) {
-            continue;
-        }
-        if ([temp.friend.whackwho_id isEqualToString:friendSelected.whackwho_id]) {
-            temp.friend = nil;
-            temp.image = nil;
-            hitNumber.image = nil;
-            break;
-        }
-    }
     
     [selectedHits removeObject:friendSelected];
     
@@ -291,14 +272,8 @@
 }
 
 -(IBAction)battleTouched:(id)sender {
-    if (![selectedHits count] || [selectedHits containsObject:dummyString]) {
-        UIAlertView *error = [[UIAlertView alloc] initWithTitle:nil message:@"Please finish selecting first" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-        [error show];
-        return;
-    }
-    
     int max_popups = 2 * [selectedHits count] + 1;
-    
+
     void (^block)(BOOL) = ^(BOOL finished) {
         if (finished) {
             NSMutableArray *finalImages = [[NSMutableArray alloc] initWithCapacity:max_popups];
@@ -331,16 +306,8 @@
 
 //you do not capture the different equipments. etc
 - (UIImage *)captureImageInHitBox:(NSInteger)number {
-    HitWindow *temp = (HitWindow *)[hitWindows objectAtIndex:number];
-    Friend *friend = temp.friend;
-    CurrentEquip *ce = friend.currentEquip;
-    //faceView.image = friend.head.headImage;
-    faceView.image = temp.image;
-    helmetView.image = [UIImage imageNamed:ce.helmet];
-    bodyView.image = [UIImage imageNamed:ce.body];
-    hammerView.image = [UIImage imageNamed:ce.hammerArm];
-    shieldView.image = [UIImage imageNamed:ce.shieldArm];
-    
+    Friend *friend = [selectedHits objectAtIndex:number];
+    faceView.image = friend.head.headImage;
     // If scale is 0, it'll follows the screen scale for creating the bounds
     UIGraphicsBeginImageContextWithOptions(self.containerView.bounds.size, NO, 1.0f);
     
@@ -355,12 +322,12 @@
 }
 
 - (void) updateHitWindow {
-    for (HitWindow *temp in hitWindows) {
-        if (!temp.image) {
-            temp.image = faceView.image;
-            temp.friend = friendSelected;
-            [self switchMainViewToIndex:temp.tag];
-            break;
+    for (int i = 0; i < selectedHits.count; ++i) {
+        Friend *friend = [selectedHits objectAtIndex:i];
+        HitWindow *hit = [hitWindows objectAtIndex:i];
+        if (friend.head.headImage != hit.image) {
+            hit.image = friend.head.headImage;
+            hit.friend = friend;
         }
     }
     
@@ -385,19 +352,19 @@
     HitWindow *tempWindow;
     switch (index) {
         case 0:
-            //tempWindow = hit1;
+            tempWindow = hit1;
             hitNumber.image = [UIImage imageNamed:hitNumberOne];
             break;
         case 1:
-            //tempWindow = hit2;
+            tempWindow = hit2;
             hitNumber.image = [UIImage imageNamed:hitNumberTwo];
             break;
         case 2:
-            //tempWindow = hit3;
+            tempWindow = hit3;
             hitNumber.image = [UIImage imageNamed:hitNumberThree];
             break;
         case 3:
-            //tempWindow = hit4;
+            tempWindow = hit4;
             hitNumber.image = [UIImage imageNamed:hitNumberFour];
             break;
     }
