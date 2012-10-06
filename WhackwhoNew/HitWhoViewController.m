@@ -178,32 +178,12 @@
     //Find which friend the user has selected
     Friend *friend = [resultFriends objectAtIndex:indexPath.row];
     
-    //for (NSString *temp in selectedHits) {
-    //    NSLog(@"%@", temp);
-    //}
-    
-    if (![selectedHits containsObject:friend.whackwho_id]) {
-        if ([selectedHits containsObject:dummyString]) {
-            [selectedHits replaceObjectAtIndex:[selectedHits indexOfObject:dummyString] withObject:friend.whackwho_id];
-        } else {
-            [selectedHits addObject:friend.whackwho_id];
-        }
-        
-        //temporarily set to the image of the cell
-        hitFriendCell *cell = (hitFriendCell *)[tableView cellForRowAtIndexPath:indexPath];
-        faceView.image = cell.profileImage.image;
-        
-        friendSelected = friend;
-        [self updateHitWindow];
-    } else {
-        UIAlertView *error = [[UIAlertView alloc] initWithTitle:nil message:@"Already selected this guy!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-        [error show];
+    if (![selectedHits containsObject:friend]) {
+        [selectedHits addObject:friend];
     }
-    //CurrentEquip *ce = friendSelected.currentEquip;
-    //helmetView.image = [UIImage imageNamed:ce.helmet];
-    //bodyView.image = [UIImage imageNamed:ce.body];
-    //hammerView.image = [UIImage imageNamed:ce.hammerArm];
-    //shieldView.image = [UIImage imageNamed:ce.shieldArm];
+    
+    [self switchMainViewToIndex];
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     [self updateHitWindow];
