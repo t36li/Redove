@@ -34,6 +34,7 @@
 	// Do any additional setup after loading the view.
     
     [self.containerView setBackgroundColor:[UIColor clearColor]];
+    friendSelected = nil;
     
     hitWindows = [[NSArray alloc] initWithObjects:hit1, hit2, hit3, hit4, nil];
     for (HitWindow *hit in hitWindows) {
@@ -44,8 +45,8 @@
         }
     }
     
-    // meant to be used as a stack
-    selectedHits = [[NSMutableArray alloc] initWithCapacity:4];
+    // meant to be used as a stack. Only need to contain strings. No need to access friends as the hitwindows already have a friend element
+    selectedHits = [[NSMutableArray alloc] init];
     
     
     //change this to something else later
@@ -161,28 +162,40 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Only handle taps if the view is related to showing nearby places that
     // the user can check-in to.
-    if (![resultFriends count] || [selectedHits count] >= 4)
+    if ((![resultFriends count] || [selectedHits count] >= 4) && ![selectedHits containsObject:dummyString]) {
+        UIAlertView *error = [[UIAlertView alloc] initWithTitle:nil message:@"Already selected maximum number" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [error show];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
         return;
+    }
         
     //Find which friend the user has selected
     Friend *friend = [resultFriends objectAtIndex:indexPath.row];
     friendSelected = friend;
     
-    if (![selectedHits containsObject:friend]) {
-        [selectedHits addObject:friend];
+    for (NSString *temp in selectedHits) {
+        NSLog(@"%@", temp);
     }
     
-    faceView.image = friendSelected.head.headImage;
-    
-    CurrentEquip *ce = friendSelected.currentEquip;
-    helmetView.image = [UIImage imageNamed:ce.helmet];
-    bodyView.image = [UIImage imageNamed:ce.body];
-    hammerView.image = [UIImage imageNamed:ce.hammerArm];
-    shieldView.image = [UIImage imageNamed:ce.shieldArm];
-    
+    if (![selectedHits containsObject:friend.whackwho_id]) {
+        if ([selectedHits containsObject:dummyString]) {
+            [selectedHits replaceObjectAtIndex:[selectedHits indexOfObject:dummyString] withObject:friend.whackwho_id];
+        } else {
+            [selectedHits addObject:friend.whackwho_id];
+        }
+        
+        //temporarily set to the image of the cell
+        hitFriendCell *cell = (hitFriendCell *)[tableView cellForRowAtIndexPath:indexPath];
+        faceView.image = cell.profileImage.image;
+        
+        [self updateHitWindow];
+    }
+    //CurrentEquip *ce = friendSelected.currentEquip;
+    //helmetView.image = [UIImage imageNamed:ce.helmet];
+    //bodyView.image = [UIImage imageNamed:ce.body];
+    //hammerView.image = [UIImage imageNamed:ce.hammerArm];
+    //shieldView.image = [UIImage imageNamed:ce.shieldArm];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    [self updateHitWindow];
 }
 
 /*********handle database connections:*****************/
@@ -246,30 +259,57 @@
     //NSLog(@"touched!!");
     UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
     HitWindow *temp = ((HitWindow *)(tap.view));
-    friendSelected = temp.friend;
     
     if (temp.image == nil)
         return;
+    
+    friendSelected = temp.friend;
+    faceView.image = temp.image;
     
     [self switchMainViewToIndex:temp.tag];
 }
 
 -(IBAction)cancelTouched:(id)sender {
-    if (friendSelected == nil)
+    if (friendSelected == nil) {
+        UIAlertView *error = [[UIAlertView alloc] initWithTitle:nil message:@"Cannot cancel without selecting anything" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [error show];
         return;
+    }
     
-    [selectedHits removeObject:friendSelected];
-    [self updateHitWindow];
-    [self switchMainViewToIndex:MAX(selectedHits.count-1, 0)];
+    [selectedHits replaceObjectAtIndex:[selectedHits indexOfObject:friendSelected.whackwho_id] withObject:dummyString];
+    //[self updateHitWindow];
+    //[self switchMainViewToIndex:MAX(selectedHits.count-1, 0)];
+    for (HitWindow *temp in hitWindows) {
+        if (!temp.friend) {
+            continue;
+        }
+        if ([temp.friend.whackwho_id isEqualToString:friendSelected.whackwho_id]) {
+            temp.friend = nil;
+            temp.image = nil;
+            hitNumber.image = nil;
+            break;
+        }
+    }
+    
+    for (UIImageView *temp in [self.containerView subviews]) {
+        temp.image = nil;
+    }
 }
 
 -(IBAction)battleTouched:(id)sender {
+    if (![selectedHits count] || [selectedHits containsObject:dummyString]) {
+        UIAlertView *error = [[UIAlertView alloc] initWithTitle:nil message:@"Please finish selecting first" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [error show];
+        return;
+    }
+    
+    int max_popups = 2 * [selectedHits count] + 1;
     
     void (^block)(BOOL) = ^(BOOL finished) {
         if (finished) {
-            NSMutableArray *finalImages = [[NSMutableArray alloc] initWithCapacity:4];
+            NSMutableArray *finalImages = [[NSMutableArray alloc] initWithCapacity:max_popups];
             
-            for (int i = 0; i < 4; ++i) {
+            for (int i = 0; i < max_popups; ++i) {
                 if (selectedHits.count > i) {
                     [finalImages addObject:[self captureImageInHitBox:i]];
                 } else {
@@ -294,9 +334,18 @@
 
 #pragma mark - capture image
 
+//you do not capture the different equipments. etc
 - (UIImage *)captureImageInHitBox:(NSInteger)number {
-    Friend *friend = [selectedHits objectAtIndex:number];
-    faceView.image = friend.head.headImage;
+    HitWindow *temp = (HitWindow *)[hitWindows objectAtIndex:number];
+    Friend *friend = temp.friend;
+    CurrentEquip *ce = friend.currentEquip;
+    //faceView.image = friend.head.headImage;
+    faceView.image = temp.image;
+    helmetView.image = [UIImage imageNamed:ce.helmet];
+    bodyView.image = [UIImage imageNamed:ce.body];
+    hammerView.image = [UIImage imageNamed:ce.hammerArm];
+    shieldView.image = [UIImage imageNamed:ce.shieldArm];
+    
     // If scale is 0, it'll follows the screen scale for creating the bounds
     UIGraphicsBeginImageContextWithOptions(self.containerView.bounds.size, NO, 1.0f);
     
@@ -311,42 +360,52 @@
 }
 
 - (void) updateHitWindow {
-    for (int i = 0; i < selectedHits.count; ++i) {
-        Friend *friend = [selectedHits objectAtIndex:i];
-        HitWindow *hit = [hitWindows objectAtIndex:i];
-        if (friend.head.headImage != hit.image) {
-            hit.image = friend.head.headImage;
-            hit.friend = friend;
+    for (HitWindow *temp in hitWindows) {
+        if (!temp.image) {
+            temp.image = faceView.image;
+            temp.friend = friendSelected;
+            [self switchMainViewToIndex:temp.tag];
+            break;
         }
     }
+    
+    //for (int i = 0; i < selectedHits.count; ++i) {
+    //    Friend *friend = [selectedHits objectAtIndex:i];
+    //    HitWindow *hit = [hitWindows objectAtIndex:i];
+    //    if (friend.head.headImage != hit.image) {
+    //        hit.image = friend.head.headImage;
+    //        hit.friend = friend;
+    //    }
+    //}
 }
 
 -(void) switchMainViewToIndex:(NSInteger)index {
-    HitWindow *tempWindow;
+    //HitWindow *tempWindow;
     switch (index) {
         case 0:
-            tempWindow = hit1;
+            //tempWindow = hit1;
             hitNumber.image = [UIImage imageNamed:hitNumberOne];
             break;
         case 1:
-            tempWindow = hit2;
+            //tempWindow = hit2;
             hitNumber.image = [UIImage imageNamed:hitNumberTwo];
             break;
         case 2:
-            tempWindow = hit3;
+            //tempWindow = hit3;
             hitNumber.image = [UIImage imageNamed:hitNumberThree];
             break;
         case 3:
-            tempWindow = hit4;
+            //tempWindow = hit4;
             hitNumber.image = [UIImage imageNamed:hitNumberFour];
             break;
     }
     
-    faceView.image = tempWindow.friend.head.headImage;
-    helmetView.image = [UIImage imageNamed:standard_blue_head];
-    bodyView.image = [UIImage imageNamed:standard_blue_body];
-    hammerView.image = [UIImage imageNamed:starting_hammer];
-    shieldView.image = [UIImage imageNamed:starting_shield];
+   // faceView.image = tempWindow.friend.head.headImage;
+    CurrentEquip *ce = friendSelected.currentEquip;
+    helmetView.image = [UIImage imageNamed:ce.helmet];
+    bodyView.image = [UIImage imageNamed:ce.body];
+    hammerView.image = [UIImage imageNamed:ce.hammerArm];
+    shieldView.image = [UIImage imageNamed:ce.shieldArm];
 }
 
 -(void) sendHammersDownWithBlock:(void(^)(BOOL finished))block {

@@ -14,7 +14,7 @@
     BOOL isEnabledBackgroundMusic;
     BOOL isEnabledSoundFX;
     int difficulty;
-    int multiplier, timeBonus, consecHits, baseScore;
+    int moneyEarned, consecHits, baseScore;
     
     int selectHeadCount;
     NSMutableArray *arrayOfAllPopups;
@@ -25,8 +25,7 @@
 @property (nonatomic, readwrite) BOOL isEnabledBackgroundMusic;
 @property (nonatomic, readwrite) BOOL isEnabledSoundFX;
 @property (nonatomic, readwrite) int difficulty;
-@property (nonatomic, readwrite) int multiplier;
-@property (nonatomic, readwrite) int timeBonus;
+@property (nonatomic, readwrite) int moneyEarned;
 @property (nonatomic, readwrite) int consecHits;
 @property (nonatomic, readwrite) int baseScore;
 

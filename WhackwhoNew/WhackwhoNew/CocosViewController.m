@@ -95,7 +95,8 @@
     
     [director end];
     director.delegate = nil;
-    [self.navigationController popViewControllerAnimated:YES];
+    int total_stack = [self.navigationController.viewControllers count];
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:(total_stack - 2)] animated:YES];
     //int totalStack = [self.navigationController.viewControllers count];
     
     /*if (totalStack == 8) {
