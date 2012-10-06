@@ -61,6 +61,8 @@
     tablepull = [[PullToRefreshView alloc] initWithScrollView:(UIScrollView *) self.table];
     
     [self.table addSubview:tablepull];
+    
+    isHammerDown = NO;
 }
 
 // viewdidload gets called before this
@@ -81,6 +83,12 @@
 -(void) viewDidAppear:(BOOL)animated{
     [[FBSingleton sharedInstance] setDelegate:self];
     [tablepull setDelegate:self];
+    
+    if (isHammerDown) {
+        [self sendHammersUpWithBlock:^(BOOL finished) {
+            isHammerDown = NO;
+        }];
+    }
 }
 
 - (void)viewDidUnload
@@ -172,13 +180,7 @@
         [selectedHits addObject:friend];
     }
     
-    faceView.image = friendSelected.head.headImage;
-    
-    CurrentEquip *ce = friendSelected.currentEquip;
-    helmetView.image = [UIImage imageNamed:ce.helmet];
-    bodyView.image = [UIImage imageNamed:ce.body];
-    hammerView.image = [UIImage imageNamed:ce.hammerArm];
-    shieldView.image = [UIImage imageNamed:ce.shieldArm];
+    [self switchMainViewToIndex];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
@@ -251,7 +253,7 @@
     if (temp.image == nil)
         return;
     
-    [self switchMainViewToIndex:temp.tag];
+    [self switchMainViewToIndex];
 }
 
 -(IBAction)cancelTouched:(id)sender {
@@ -259,8 +261,14 @@
         return;
     
     [selectedHits removeObject:friendSelected];
+    
+    if (selectedHits.count > 0)
+        friendSelected = [selectedHits lastObject];
+    else
+        friendSelected = nil;
+    
     [self updateHitWindow];
-    [self switchMainViewToIndex:MAX(selectedHits.count-1, 0)];
+    [self switchMainViewToIndex];
 }
 
 -(IBAction)battleTouched:(id)sender {
@@ -281,6 +289,7 @@
             [[Game sharedGame] setArrayOfAllPopups:finalImages];
             
             [self performSegueWithIdentifier:ChooseToGame sender:sender];
+            isHammerDown = YES;
         }
     };
     
@@ -319,9 +328,25 @@
             hit.friend = friend;
         }
     }
+    
+    for (int i = selectedHits.count; i < 4; ++i) {
+        HitWindow *hit = [hitWindows objectAtIndex:i];
+        hit.image = nil;
+        hit.friend = nil;
+    }
 }
 
--(void) switchMainViewToIndex:(NSInteger)index {
+-(void) switchMainViewToIndex {
+    if (selectedHits.count <= 0) {
+        faceView.image = nil;
+        helmetView.image = nil;
+        bodyView.image = nil;
+        hammerView.image = nil;
+        shieldView.image = nil;
+        return;
+    }
+    
+    NSInteger index = [selectedHits indexOfObject:friendSelected];
     HitWindow *tempWindow;
     switch (index) {
         case 0:
@@ -342,14 +367,18 @@
             break;
     }
     
-    faceView.image = tempWindow.friend.head.headImage;
-    helmetView.image = [UIImage imageNamed:standard_blue_head];
-    bodyView.image = [UIImage imageNamed:standard_blue_body];
-    hammerView.image = [UIImage imageNamed:starting_hammer];
-    shieldView.image = [UIImage imageNamed:starting_shield];
+    CurrentEquip *ce = friendSelected.currentEquip;
+    faceView.image = friendSelected.head.headImage;
+    helmetView.image = [UIImage imageNamed:ce.helmet];
+    bodyView.image = [UIImage imageNamed:ce.body];
+    hammerView.image = [UIImage imageNamed:ce.hammerArm];
+    shieldView.image = [UIImage imageNamed:ce.shieldArm];
 }
 
 -(void) sendHammersDownWithBlock:(void(^)(BOOL finished))block {
+    if (isHammerDown)
+        return;
+    
     [self.view bringSubviewToFront:leftHammer];
     [self.view bringSubviewToFront:rightHammer];
     
@@ -364,10 +393,12 @@
                          rightHammer.center = CGPointMake(origPt_r.x, origPt_r.y + 100);
                      }
                      completion:block];
-
 }
 
 -(void) sendHammersUpWithBlock:(void(^)(BOOL finished))block {
+    if (!isHammerDown)
+        return;
+    
     [self.view bringSubviewToFront:leftHammer];
     [self.view bringSubviewToFront:rightHammer];
     

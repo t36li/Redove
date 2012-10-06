@@ -50,6 +50,8 @@
     IBOutlet UIView *loadingView;
     PullToRefreshView *tablepull;
     Friend *friendSelected;
+    
+    BOOL isHammerDown;
 }
 
 @property (nonatomic) IBOutlet HitWindow *hit1;
