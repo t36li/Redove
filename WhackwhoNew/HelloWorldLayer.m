@@ -109,11 +109,6 @@
         shake_once = false;
         
         [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
-
-        //add particle emitter
-        //emitter = [[CCParticleExplosion alloc] init];
-        //emitter.visible = FALSE;
-        //[self addChild:emitter];
         
         //add timer label
         timeLabel = [CCLabelTTF labelWithString:@"0:0" fontName:@"chalkduster" fontSize:40];
@@ -163,7 +158,7 @@
         
         //!!!! initializing popups
         //use the array from game.h which contains all image names
-        //int xpad = 50; //for testing
+        int xpad = 50; //for testing
         int i = 0;
         for (UIImage *person in [[Game sharedGame] arrayOfAllPopups]) {
             Character *head = [Character spriteWithCGImage:[person CGImage] key:[NSString stringWithFormat:@"person%i", i]];
@@ -180,14 +175,14 @@
             i++; //for key purposes
             
             //for testing
-            //head.position = ccp(xpad, s.height/2);
-            //xpad += 50;
-            //head.visible = TRUE;
+            head.position = ccp(xpad, s.height/2);
+            xpad += 60;
+            head.visible = TRUE;
         }
         
-        [self schedule:@selector(tryPopheads) interval:1.5];
-        [self schedule:@selector(checkGameState) interval:0.1];
-        [self schedule:@selector(timerUpdate:) interval:0.001];
+        //[self schedule:@selector(tryPopheads) interval:1.5];
+        //[self schedule:@selector(checkGameState) interval:0.1];
+        //[self schedule:@selector(timerUpdate:) interval:0.001];
 	}
     
 	return self;
@@ -324,7 +319,6 @@
         gameOver = TRUE;
         [[Game sharedGame] resetGameState];
         [gameOverDelegate returnToMenu];
-        //[[CCDirector sharedDirector] replaceScene:[CCTransitionZoomFlipX transitionWithDuration:0.5 scene:scene]];
     }
     
 }
@@ -724,21 +718,24 @@
             
             //if hit the correct "mole"
             if (head.isSelectedHit) {
-                //head.hp -= 10;
-                //comboHits++;
                 
-                //update scores
+                head.hp -= 2;
+                
+                //update scores - show little label sign beside
+                
                 consecHits++;
-                baseScore += 10;
+                baseScore += 5 + consecHits / 5;
                 
                 //update hit streak label
                 if (consecHits > 1) {
                     [hitsLabel setString:[NSString stringWithFormat:@"%d HIT STREAK!", consecHits]];
                 }
+            //if not hit correct "mole"
             } else {
                 
-                //play score adding animation to indicate combo bonus
-                baseScore += consecHits;
+                //vibrate to indicate mis-hit
+                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+
                 consecHits = 0;
                 
                 //update lives
@@ -777,7 +774,7 @@
         acceleration.z > THRESHOLD || acceleration.z < -THRESHOLD) {
         
         if (!shake_once) {
-            CCLOG(@"shake it baby from the scene");
+            //CCLOG(@"shake it baby from the scene");
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
             shake_once = true;
             
@@ -801,20 +798,6 @@
     
 }
 
-/*-(void) applyMouthEffect: (id) sender {
-    Character *head = (Character *)sender;
-    //in the future, must random these effects
-    CCSprite *mouthEffect = [CCSprite spriteWithFile:mouthEffectOne];
-    
-    UserInfo *usr = [UserInfo sharedInstance];
-    CGPoint mouthCenter = usr.mouthPosition;
-    
-    [head addChild:mouthEffect];
-    mouthEffect.scale = 1/0.2;
-    mouthEffect.anchorPoint = ccp(0.5,0.5);
-    mouthEffect.position = ccp(mouthCenter.x/2, mouthCenter.y/2);
-}*/
-
 -(void) removeHitEffect: (id) sender {
     CCSprite *hitEffect = (CCSprite *) sender;
     [self removeChild:hitEffect cleanup:YES];
@@ -830,7 +813,7 @@
             [hearts removeLastObject];
         }
 
-        baseScore -= 100;
+        baseScore -= 10;
     }
     
     has_bomb = FALSE;

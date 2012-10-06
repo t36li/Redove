@@ -27,12 +27,14 @@
     NSMutableArray *rainbows;
     NSMutableArray *coins;
     NSMutableArray *bomb;
-    //CCAnimation *laughAnim;
-    CCLabelTTF *hitsLabel, *timeLabel, *scoreLabel, *comboLabel;
+
+    CCLabelTTF *hitsLabel, *timeLabel, *scoreLabel;
     ccTime totalTime;
+    
     int myTime, lives;
-    int consecHits, baseScore;
+    int consecHits, baseScore, moneyEarned;
     float speed;
+    
     BOOL gameOver, gamePaused, shake_once, has_bomb;
     HUDLayer * _hud;
     id<GameOverDelegate> gameOverDelegate;

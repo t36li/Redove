@@ -10,9 +10,9 @@
 
 @implementation Character
 
-//@synthesize hp;
+@synthesize hp;
+@synthesize whackID;
 @synthesize tappable, isSelectedHit;
-//@synthesize imageName;
 @synthesize didMiss;
 //@synthesize sideWaysMove;
 //@synthesize body;
