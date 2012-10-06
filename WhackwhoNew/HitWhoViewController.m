@@ -12,7 +12,6 @@
 #import "UserInfo.h"
 
 #define ChooseToGame @"chooseToGame"
-#define dummyString @"testobject"
 //#define MAX_HIT 2
 
 @implementation HitWhoViewController
