@@ -239,7 +239,7 @@
         [takePicAlert show];
     } else {
         [myLabel setText:@"Loading Complete!"];
-        [self performSelector:@selector(goToMenu) withObject:nil afterDelay:2.5];
+        [self performSelector:@selector(goToMenu) withObject:nil afterDelay:1.5];
     }
 }
 

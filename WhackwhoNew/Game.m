@@ -87,7 +87,7 @@ static Game *sharedGame = nil;
     [self setIsGameOver:NO];
     [self setIsEnabledBackgroundMusic:YES];
     [self setIsEnabledSoundFX:YES];
-    [self setDifficulty:1];
+    [self setDifficulty:0];
     [self setMoneyEarned:0];
     [self setConsecHits:0];
     [self setBaseScore:0];

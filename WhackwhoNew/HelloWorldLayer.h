@@ -28,7 +28,7 @@
     NSMutableArray *coins;
     NSMutableArray *bomb;
 
-    CCLabelTTF *hitsLabel, *timeLabel, *scoreLabel;
+    CCLabelTTF *hitsLabel, *timeLabel, *scoreLabel, *ctLabel;
     ccTime totalTime;
     
     int myTime, lives;
@@ -46,7 +46,7 @@
 @property (nonatomic, retain) id<GameOverDelegate> gameOverDelegate;
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
-+(CCScene *) scene;
+//+(CCScene *) scene;
 +(CCScene *) sceneWithDelegate:(id<GameOverDelegate>)delegate;
 - (id)initWithHUD:(HUDLayer *)hud;
 
