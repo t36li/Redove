@@ -181,6 +181,7 @@
     if (![selectedHits containsObject:friend]) {
         [selectedHits addObject:friend];
     }
+    friendSelected = friend;
     
     [self switchMainViewToIndex];
     

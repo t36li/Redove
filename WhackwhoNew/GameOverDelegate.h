@@ -11,5 +11,6 @@
 @protocol GameOverDelegate <NSObject>
 
 -(void)returnToMenu;
+-(void)proceedToReview;
 
 @end

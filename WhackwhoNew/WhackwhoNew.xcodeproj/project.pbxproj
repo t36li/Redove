@@ -65,10 +65,6 @@
 		C13D5F0615C5F08B006F716C /* gold window.png in Resources */ = {isa = PBXBuildFile; fileRef = C13D5F0115C5F08A006F716C /* gold window.png */; };
 		C13D5F0A15C5FA43006F716C /* person status background transperent2.png in Resources */ = {isa = PBXBuildFile; fileRef = C13D5F0915C5FA42006F716C /* person status background transperent2.png */; };
 		C14385AB15C8C15A008D9AE7 /* LoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C14385AA15C8C15A008D9AE7 /* LoadViewController.m */; };
-		C14385AE15C8C1EA008D9AE7 /* LoadLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C14385AD15C8C1EA008D9AE7 /* LoadLayer.m */; };
-		C14385B315C8C2DF008D9AE7 /* NSThread+BlockExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C14385B015C8C2DF008D9AE7 /* NSThread+BlockExtensions.m */; };
-		C14385B415C8C2DF008D9AE7 /* ResourcesLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C14385B215C8C2DF008D9AE7 /* ResourcesLoader.m */; };
-		C14385BC15C8CD43008D9AE7 /* TestLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C14385BB15C8CD42008D9AE7 /* TestLayer.m */; };
 		C14385DA15CB2BFA008D9AE7 /* baby_sheets.xml in Resources */ = {isa = PBXBuildFile; fileRef = C14385D915CB2BFA008D9AE7 /* baby_sheets.xml */; };
 		C14385E315CB2C03008D9AE7 /* baby1.png in Resources */ = {isa = PBXBuildFile; fileRef = C14385DC15CB2C03008D9AE7 /* baby1.png */; };
 		C14385E415CB2C03008D9AE7 /* baby2.png in Resources */ = {isa = PBXBuildFile; fileRef = C14385DD15CB2C03008D9AE7 /* baby2.png */; };
@@ -104,6 +100,7 @@
 		C147185B1594F1AF0002FF21 /* CocosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C147185A1594F1AF0002FF21 /* CocosViewController.m */; };
 		C14B63B715AF5C3700376C91 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = C14B63B615AF5C3700376C91 /* Game.m */; };
 		C14B63BD15AF5CE000376C91 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C14B63BC15AF5CE000376C91 /* HelloWorldLayer.m */; };
+		C14CED111625139D00042BBF /* review background.png in Resources */ = {isa = PBXBuildFile; fileRef = C14CED101625139D00042BBF /* review background.png */; };
 		C151791C15C36D3E00A4378F /* hit effect.png in Resources */ = {isa = PBXBuildFile; fileRef = C151791B15C36D3E00A4378F /* hit effect.png */; };
 		C151793515C4B88D00A4378F /* coin front.png in Resources */ = {isa = PBXBuildFile; fileRef = C151793415C4B88D00A4378F /* coin front.png */; };
 		C155FE831608CE19007F254B /* Items.m in Sources */ = {isa = PBXBuildFile; fileRef = C155FE821608CE18007F254B /* Items.m */; };
@@ -669,15 +666,6 @@
 		C13D5F0915C5FA42006F716C /* person status background transperent2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "person status background transperent2.png"; sourceTree = "<group>"; };
 		C14385A915C8C15A008D9AE7 /* LoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadViewController.h; sourceTree = "<group>"; };
 		C14385AA15C8C15A008D9AE7 /* LoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadViewController.m; sourceTree = "<group>"; };
-		C14385AC15C8C1EA008D9AE7 /* LoadLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadLayer.h; sourceTree = "<group>"; };
-		C14385AD15C8C1EA008D9AE7 /* LoadLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadLayer.m; sourceTree = "<group>"; };
-		C14385AF15C8C2DF008D9AE7 /* NSThread+BlockExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSThread+BlockExtensions.h"; sourceTree = "<group>"; };
-		C14385B015C8C2DF008D9AE7 /* NSThread+BlockExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSThread+BlockExtensions.m"; sourceTree = "<group>"; };
-		C14385B115C8C2DF008D9AE7 /* ResourcesLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourcesLoader.h; sourceTree = "<group>"; };
-		C14385B215C8C2DF008D9AE7 /* ResourcesLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourcesLoader.m; sourceTree = "<group>"; };
-		C14385B915C8C7C0008D9AE7 /* MainMenuDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuDelegate.h; sourceTree = "<group>"; };
-		C14385BA15C8CD42008D9AE7 /* TestLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLayer.h; sourceTree = "<group>"; };
-		C14385BB15C8CD42008D9AE7 /* TestLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLayer.m; sourceTree = "<group>"; };
 		C14385D915CB2BFA008D9AE7 /* baby_sheets.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = baby_sheets.xml; sourceTree = "<group>"; };
 		C14385DC15CB2C03008D9AE7 /* baby1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baby1.png; sourceTree = "<group>"; };
 		C14385DD15CB2C03008D9AE7 /* baby2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baby2.png; sourceTree = "<group>"; };
@@ -719,6 +707,7 @@
 		C14B63B515AF5C3700376C91 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		C14B63B615AF5C3700376C91 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		C14B63BC15AF5CE000376C91 /* HelloWorldLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
+		C14CED101625139D00042BBF /* review background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "review background.png"; sourceTree = "<group>"; };
 		C151791B15C36D3E00A4378F /* hit effect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hit effect.png"; sourceTree = "<group>"; };
 		C151793415C4B88D00A4378F /* coin front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coin front.png"; sourceTree = "<group>"; };
 		C155FE811608CE18007F254B /* Items.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Items.h; sourceTree = "<group>"; };
@@ -1406,6 +1395,7 @@
 		69C95E94159A51E0009966DA /* Background */ = {
 			isa = PBXGroup;
 			children = (
+				C14CED101625139D00042BBF /* review background.png */,
 				C19A3A4C160E814600C6E8F9 /* champ select bg.png */,
 				C1A792D11613E984006F9C8E /* champ select backgrond.png */,
 				C19A3A4E160E815000C6E8F9 /* side wall.png */,
@@ -1487,15 +1477,6 @@
 			children = (
 				C14385A915C8C15A008D9AE7 /* LoadViewController.h */,
 				C14385AA15C8C15A008D9AE7 /* LoadViewController.m */,
-				C14385AC15C8C1EA008D9AE7 /* LoadLayer.h */,
-				C14385AD15C8C1EA008D9AE7 /* LoadLayer.m */,
-				C14385AF15C8C2DF008D9AE7 /* NSThread+BlockExtensions.h */,
-				C14385B015C8C2DF008D9AE7 /* NSThread+BlockExtensions.m */,
-				C14385B115C8C2DF008D9AE7 /* ResourcesLoader.h */,
-				C14385B215C8C2DF008D9AE7 /* ResourcesLoader.m */,
-				C14385B915C8C7C0008D9AE7 /* MainMenuDelegate.h */,
-				C14385BA15C8CD42008D9AE7 /* TestLayer.h */,
-				C14385BB15C8CD42008D9AE7 /* TestLayer.m */,
 			);
 			name = "Load Scene";
 			sourceTree = "<group>";
@@ -2729,6 +2710,7 @@
 				C1A792D71613E9C1006F9C8E /* number2.png in Resources */,
 				C1A792D81613E9C1006F9C8E /* number3.png in Resources */,
 				C12114581616044300E3AAB1 /* Default-568h@2x.png in Resources */,
+				C14CED111625139D00042BBF /* review background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2775,10 +2757,6 @@
 				C159347615B60B09009B7955 /* CCRobot.m in Sources */,
 				D0B2477015C204C300C206BA /* UIImage+fixOrientation.m in Sources */,
 				C14385AB15C8C15A008D9AE7 /* LoadViewController.m in Sources */,
-				C14385AE15C8C1EA008D9AE7 /* LoadLayer.m in Sources */,
-				C14385B315C8C2DF008D9AE7 /* NSThread+BlockExtensions.m in Sources */,
-				C14385B415C8C2DF008D9AE7 /* ResourcesLoader.m in Sources */,
-				C14385BC15C8CD43008D9AE7 /* TestLayer.m in Sources */,
 				C1DCCBC615CB5143000CD722 /* StatusViewLayer.m in Sources */,
 				C1692E9115CE282C00C7D4C7 /* StoreViewController.m in Sources */,
 				C198EE2B15CF7889004D170C /* EmailViewController.m in Sources */,

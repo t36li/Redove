@@ -76,7 +76,15 @@
     [director didMoveToParentViewController:self];
 }
 
--(void) goToMenu {
+-(void)proceedToReview {
+    CCDirector *director = [CCDirector sharedDirector];
+    [director removeFromParentViewController];
+    [director.view removeFromSuperview];
+    [director didMoveToParentViewController:nil];
+    
+    [director end];
+    director.delegate = nil;
+    [self performSelector:@selector(goToReview) withObject:nil afterDelay:1.5];
     /*
     [self performSegueWithIdentifier:@"GoToMenuSegue" sender:nil];
     CCDirector *director = [CCDirector sharedDirector];
@@ -86,6 +94,10 @@
     
     [director popToRootScene];
      */
+}
+
+-(void) goToReview {
+    [self performSegueWithIdentifier:@"CocosToReview" sender:nil];
 }
 
 - (void)returnToMenu {    

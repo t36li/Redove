@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12B19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="V6n-XQ-h9E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12B19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="V6n-XQ-h9E">
     <dependencies>
         <deployment version="1296" identifier="iOS"/>
         <development version="4300" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
         <!--Status Bar Controller - Status Bar-->
@@ -410,10 +410,35 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZjL-1t-UDA"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <segue destination="hmH-w8-Zgh" kind="push" identifier="CocosToReview" id="sjh-R2-bTC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sMe-Oa-IUB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1119" y="-343"/>
+            <point key="canvasLocation" x="1145" y="-343"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="s5c-ap-G3B">
+            <objects>
+                <viewController id="hmH-w8-Zgh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3vu-er-bca">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="review background.png" id="pZY-LK-vBd">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="M7l-xF-GNE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NqV-fo-eb7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1119" y="181"/>
         </scene>
         <!--View Controller - Main Menu-->
         <scene sceneID="lMF-05-ms5">
@@ -1417,6 +1442,7 @@
         <image name="play b.png" width="334" height="203"/>
         <image name="play s.png" width="334" height="203"/>
         <image name="redo icon.png" width="161" height="110"/>
+        <image name="review background.png" width="960" height="640"/>
         <image name="right button.png" width="84" height="102"/>
         <image name="right hammer.png" width="119" height="105"/>
         <image name="scroll down button.png" width="120" height="40"/>
@@ -1490,12 +1516,6 @@
         </class>
         <class className="HitWindow" superclassName="UIImageView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HitWindow.h"/>
-        </class>
-        <class className="LoadViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoadViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="myLabel" candidateClass="UILabel"/>
-            </relationships>
         </class>
         <class className="ModeSelectionViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ModeSelectionViewController.h"/>
