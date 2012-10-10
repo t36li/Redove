@@ -40,6 +40,9 @@
 #define AccessRenrenIcon @"RenRen_Login150X30.png"
 #define AccessRenrenIcon_HL @"RenRen_Login150X30.png"
 #define PauseButton @"pause.png"
+#define ResumeButton @"left button.png"
+#define RestartButton @"play again key.png"
+#define MainMenuButton @"home key.png"
 
 //Sprites
 #define Monk @"monk.png"

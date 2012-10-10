@@ -108,6 +108,8 @@
     [director end];
     director.delegate = nil;
     int total_stack = [self.navigationController.viewControllers count];
+    
+    //how to pop to status view?
     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:(total_stack - 2)] animated:YES];
     //int totalStack = [self.navigationController.viewControllers count];
     

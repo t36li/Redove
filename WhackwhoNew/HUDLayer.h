@@ -10,12 +10,12 @@
 #import "GameOverDelegate.h"
 
 @interface HUDLayer : CCLayer {
-    int baseScore, multiplier, consecHits, timeBonus, totalScore;
+    int baseScore, multiplier, coin;
     id<GameOverDelegate> gameOverDelegate;
 
 }
 
-- (void)showRestartMenu:(BOOL)won:(id<GameOverDelegate>)delegate;
+- (void)showPauseMenu:(id<GameOverDelegate>)delegate;
 @property (nonatomic, retain) id<GameOverDelegate> gameOverDelegate;
 
 @end

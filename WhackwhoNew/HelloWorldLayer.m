@@ -78,7 +78,7 @@
         _hud = hud;
         self.isTouchEnabled = YES;
         gameOver = FALSE;
-        gamePaused = FALSE;
+        //gamePaused = FALSE;
         has_bomb = FALSE;
         coins = [[NSMutableArray alloc] init];
         bomb = [[NSMutableArray alloc] init];
@@ -312,14 +312,19 @@
 
 -(void) pauseGame {
     if (self.isTouchEnabled) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Paused" message:@"Press the button to..." delegate:self cancelButtonTitle:@"Resume" otherButtonTitles:@"Back Home", nil];
-        [alert show];
-        gamePaused = TRUE;
+        //UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Paused" message:@"Press the button to..." delegate:self cancelButtonTitle:@"Resume" otherButtonTitles:@"Back Home", nil];
+        //[alert show];
+        //gamePaused = TRUE;
+        [[Game sharedGame] setBaseScore:baseScore];
+        [[Game sharedGame] setMoneyEarned:moneyEarned];
+        [[Game sharedGame] setMultiplier:consecHits];
+        
         [[CCDirector sharedDirector] pause];
+        [_hud showPauseMenu:gameOverDelegate];
     }
 }
 
--(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+/*-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     
     if (buttonIndex == 0) {
         gamePaused = FALSE;
@@ -330,7 +335,7 @@
         [gameOverDelegate returnToMenu];
     }
     
-}
+}*/
 
 -(void) timerUpdate: (ccTime) deltT {
     if (gameOver) return;
@@ -408,18 +413,16 @@
     //check if game is over
     if (myTime <= 0 || lives <= 0) {
         [self unscheduleAllSelectors];
-        [[CCDirector sharedDirector] pause];
+        //[[CCDirector sharedDirector] pause];
         
         gameOver = TRUE;
         self.isTouchEnabled = NO;
         
         [[Game sharedGame] setBaseScore:baseScore];
-        //[[Game sharedGame] setMoneyEarned];
-        //[[Game sharedGame] setMultiplier];
+        [[Game sharedGame] setMoneyEarned:moneyEarned];
+        [[Game sharedGame] setMultiplier:consecHits];
         
         //move navigation controller to next view controller
-
-        //[_hud showRestartMenu:YES :gameOverDelegate];
         NSString *msg;
         if (myTime <= 0) {
             msg = @"Time's UP!";
@@ -675,7 +678,7 @@
 
 -(void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    if (gamePaused) return;
+    //if (gamePaused) return;
     
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:[touch view]];

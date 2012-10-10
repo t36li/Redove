@@ -35,7 +35,7 @@
     int consecHits, baseScore, moneyEarned;
     float speed;
     
-    BOOL gameOver, gamePaused, shake_once, has_bomb;
+    BOOL gameOver, shake_once, has_bomb;//, gamePaused;
     HUDLayer * _hud;
     id<GameOverDelegate> gameOverDelegate;
     NSArray *botLeft, *botRight, *midLeft, *midRight, *topLeft, *topMid, *topRight;
