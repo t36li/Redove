@@ -418,7 +418,6 @@
                          rightHammer.center = CGPointMake(origPt_r.x, origPt_r.y - 100);
                      }
                      completion:block];
-    
 }
 
 @end

@@ -64,7 +64,7 @@
 
 @property (nonatomic) UIImage *defaultImage;
 
-@property (nonatomic) IBOutlet UIView *containerView;
+@property (nonatomic) IBOutlet UIView *containerView, *popupView, *characterReviewView;
 @property (nonatomic) IBOutlet UIImageView *faceView;
 @property (nonatomic) IBOutlet UIImageView *bodyView;
 @property (nonatomic) IBOutlet UIImageView *helmetView;
@@ -76,6 +76,8 @@
 @property (nonatomic) IBOutlet UIView *loadingView;
 @property (nonatomic, strong) NSArray *resultFriends;
 @property (nonatomic) NSArray *hitWindows;
+
+@property (nonatomic) UIButton *uploadBtn, *dismissPopupBtn;
 
 -(IBAction)Back_Touched:(id)sender;
 -(IBAction)cancelTouched:(id)sender;
