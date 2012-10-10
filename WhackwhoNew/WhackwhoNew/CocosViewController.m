@@ -9,6 +9,7 @@
 #import "CocosViewController.h"
 
 @implementation CocosViewController
+@synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

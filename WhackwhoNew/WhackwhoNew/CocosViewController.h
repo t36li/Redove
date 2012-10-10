@@ -13,12 +13,13 @@
 #import "MainMenuDelegate.h"
 #import "StatusViewLayer.h"
 #import "LoadLayer.h"
+#import "CocosViewControllerDelegate.h"
 
 @interface CocosViewController : UIViewController <CCDirectorDelegate, GameOverDelegate, MainMenuDelegate> {
-    
+    id<CocosViewControllerDelegate> delegate;
 }
 
-
+@property (nonatomic) id<CocosViewControllerDelegate> delegate;
 
 
 @end

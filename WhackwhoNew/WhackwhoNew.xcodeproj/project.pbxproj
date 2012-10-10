@@ -1108,6 +1108,7 @@
 		D09FD5DC159E4EB60079231D /* CameraOverlayControllerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlayControllerViewController.xib; path = ../CameraOverlayControllerViewController.xib; sourceTree = "<group>"; };
 		D0A3F74515B266330027EFF9 /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
 		D0A3F74615B266330027EFF9 /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
+		D0AB825E1625130100A0EF0B /* CocosViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CocosViewControllerDelegate.h; sourceTree = "<group>"; };
 		D0B2476E15C204C300C206BA /* UIImage+fixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+fixOrientation.h"; sourceTree = "<group>"; };
 		D0B2476F15C204C300C206BA /* UIImage+fixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+fixOrientation.m"; sourceTree = "<group>"; };
 		D0B48497160E2C77000B95A7 /* FaceEffectsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceEffectsController.h; sourceTree = "<group>"; };
@@ -1625,6 +1626,7 @@
 				C159347515B60B08009B7955 /* CCRobot.m */,
 				C14718591594F1AF0002FF21 /* CocosViewController.h */,
 				C147185A1594F1AF0002FF21 /* CocosViewController.m */,
+				D0AB825E1625130100A0EF0B /* CocosViewControllerDelegate.h */,
 				C14B63B515AF5C3700376C91 /* Game.h */,
 				C14B63B615AF5C3700376C91 /* Game.m */,
 				C159349915B64988009B7955 /* GameOverDelegate.h */,
