@@ -466,6 +466,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="196" height="258"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="H8t-PN-hnM">
+                                        <rect key="frame" x="9" y="8" width="178" height="240"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -527,6 +531,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="hitLeft:" destination="hmH-w8-Zgh" eventType="touchUpInside" id="7Z8-qk-3fW"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Fyr-FD-PlL">
                                 <rect key="frame" x="463" y="151" width="17" height="17"/>
@@ -539,6 +546,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="hitRight:" destination="hmH-w8-Zgh" eventType="touchUpInside" id="E4D-e5-pQn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -546,6 +556,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="M7l-xF-GNE"/>
                     <connections>
+                        <outlet property="avatarImageView" destination="H8t-PN-hnM" id="iu2-UY-gNn"/>
                         <outlet property="backBtn" destination="yQI-ni-O7a" id="YG7-kH-uUM"/>
                         <outlet property="leftBtn" destination="cqw-G4-5Do" id="hSH-S1-rjM"/>
                         <outlet property="portraitView" destination="KCy-ma-5ga" id="UUg-pn-CrW"/>
@@ -1679,6 +1690,9 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ReviewViewController.h"/>
             <relationships>
                 <relationship kind="action" name="hitBack:"/>
+                <relationship kind="action" name="hitLeft:"/>
+                <relationship kind="action" name="hitRight:"/>
+                <relationship kind="outlet" name="avatarImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="backBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="leftBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="portraitView" candidateClass="UIView"/>
