@@ -33,8 +33,10 @@
 
 @interface FriendArray : NSObject{
     NSArray *friends;
+    NSArray *strangers;
 }
 @property (nonatomic, strong) NSArray *friends;
+@property (nonatomic, strong) NSArray *strangers;
 
 -(void)copyToUserInfo;
 -(void)getFromUserInfo;
