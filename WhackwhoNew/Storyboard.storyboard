@@ -459,20 +459,20 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" id="KCy-ma-5ga">
-                                <rect key="frame" x="264" y="34" width="196" height="258"/>
+                                <rect key="frame" x="273" y="42" width="178" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="box frame.png" id="ClY-AM-ZMH">
-                                        <rect key="frame" x="0.0" y="0.0" width="196" height="258"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="H8t-PN-hnM">
-                                        <rect key="frame" x="9" y="8" width="178" height="240"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="178" height="240"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="box frame.png" id="ClY-AM-ZMH">
+                                <rect key="frame" x="264" y="34" width="196" height="258"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="total gold.png" id="uBu-Io-IFy">
                                 <rect key="frame" x="30" y="160" width="92" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
