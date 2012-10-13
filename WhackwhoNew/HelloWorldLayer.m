@@ -418,9 +418,11 @@
         gameOver = TRUE;
         self.isTouchEnabled = NO;
         
-        [[Game sharedGame] setBaseScore:baseScore];
-        [[Game sharedGame] setMoneyEarned:moneyEarned];
-        [[Game sharedGame] setMultiplier:consecHits];
+        Game *game = [Game sharedGame];
+        
+        [game setBaseScore:baseScore];
+        [game setMoneyEarned:moneyEarned];
+        [game setMultiplier:consecHits];
         
         //move navigation controller to next view controller
         NSString *msg;
@@ -433,6 +435,12 @@
         CCLabelTTF *gameOverLabel = [CCLabelTTF labelWithString:msg fontName:@"Chalkduster" fontSize:50];
         gameOverLabel.position = ccp(200,200);
         [self addChild:gameOverLabel];
+        NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:game.selectHeadCount];
+        for (int i = 0; i < game.selectHeadCount; i ++) {
+            [array addObject:[heads objectAtIndex:i]];
+        }
+        [game setArrayOfHits:array];
+        
         [gameOverDelegate proceedToReview];
         
         return;
@@ -744,7 +752,7 @@
             if (head.isSelectedHit) {
                 
                 head.hp -= 2;
-                
+                head.numberOfHits ++;
                 //update scores - show little label sign beside
                 int score_added = 5 + consecHits / 5;
                 baseScore += score_added;

@@ -32,6 +32,8 @@
     //BOOL sideWaysMove;
     //NSString *imageName;
     
+    NSInteger numberOfHits;
+    
 }
 //@property (nonatomic, retain) CCSprite *sprite;
 @property (nonatomic) int hp;
@@ -39,6 +41,7 @@
 @property (nonatomic) BOOL tappable;
 @property (nonatomic) BOOL isSelectedHit;
 @property (nonatomic) BOOL didMiss;
+@property (nonatomic) NSInteger numberOfHits;
 //@property (nonatomic) CCSprite *body;
 //@property (nonatomic) BOOL sideWaysMove;
 //@property (nonatomic) int posOccupied;
