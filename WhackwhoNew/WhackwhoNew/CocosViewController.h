@@ -13,7 +13,10 @@
 #import "StatusViewLayer.h"
 
 @interface CocosViewController : UIViewController <CCDirectorDelegate, GameOverDelegate> {
+    BOOL goingBackToMenu;
     
 }
+
+@property (nonatomic) BOOL goingBackToMenu;
 
 @end

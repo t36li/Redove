@@ -465,6 +465,7 @@
 		D0AB82881625212D00A0EF0B /* box frame.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB827D1625212D00A0EF0B /* box frame.png */; };
 		D0AB828B1625257E00A0EF0B /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB82891625257E00A0EF0B /* rock.png */; };
 		D0AB828C1625257E00A0EF0B /* wood background.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB828A1625257E00A0EF0B /* wood background.png */; };
+		D0AB828F1627BFD000A0EF0B /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AB828E1627BFD000A0EF0B /* ReviewViewController.m */; };
 		D0B2477015C204C300C206BA /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2476F15C204C300C206BA /* UIImage+fixOrientation.m */; };
 		D0B4849A160E2C77000B95A7 /* FaceEffectsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B48498160E2C77000B95A7 /* FaceEffectsController.m */; };
 		D0B4849B160E2C77000B95A7 /* FaceEffectsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0B48499160E2C77000B95A7 /* FaceEffectsController.xib */; };
@@ -1121,6 +1122,8 @@
 		D0AB827D1625212D00A0EF0B /* box frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "box frame.png"; sourceTree = "<group>"; };
 		D0AB82891625257E00A0EF0B /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
 		D0AB828A1625257E00A0EF0B /* wood background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wood background.png"; sourceTree = "<group>"; };
+		D0AB828D1627BFD000A0EF0B /* ReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewViewController.h; sourceTree = "<group>"; };
+		D0AB828E1627BFD000A0EF0B /* ReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewViewController.m; sourceTree = "<group>"; };
 		D0B2476E15C204C300C206BA /* UIImage+fixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+fixOrientation.h"; sourceTree = "<group>"; };
 		D0B2476F15C204C300C206BA /* UIImage+fixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+fixOrientation.m"; sourceTree = "<group>"; };
 		D0B48497160E2C77000B95A7 /* FaceEffectsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceEffectsController.h; sourceTree = "<group>"; };
@@ -1630,6 +1633,8 @@
 				C159347515B60B08009B7955 /* CCRobot.m */,
 				C14718591594F1AF0002FF21 /* CocosViewController.h */,
 				C147185A1594F1AF0002FF21 /* CocosViewController.m */,
+				D0AB828D1627BFD000A0EF0B /* ReviewViewController.h */,
+				D0AB828E1627BFD000A0EF0B /* ReviewViewController.m */,
 				C14B63B515AF5C3700376C91 /* Game.h */,
 				C14B63B615AF5C3700376C91 /* Game.m */,
 				C159349915B64988009B7955 /* GameOverDelegate.h */,
@@ -2824,6 +2829,7 @@
 				3DDA87B916127B23005349D1 /* Head.m in Sources */,
 				3DDA87BA16127B23005349D1 /* StorageInv.m in Sources */,
 				C12114611616967E00E3AAB1 /* HitWindow.m in Sources */,
+				D0AB828F1627BFD000A0EF0B /* ReviewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

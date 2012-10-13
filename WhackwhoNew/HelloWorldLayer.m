@@ -417,9 +417,11 @@
         gameOver = TRUE;
         self.isTouchEnabled = NO;
         
-        [[Game sharedGame] setBaseScore:baseScore];
-        [[Game sharedGame] setMoneyEarned:moneyEarned];
-        [[Game sharedGame] setMultiplier:consecHits];
+        Game *game = [Game sharedGame];
+        
+        [game setBaseScore:baseScore];
+        [game setMoneyEarned:moneyEarned];
+        [game setMultiplier:consecHits];
         
         //move navigation controller to next view controller
         NSString *msg;
@@ -745,7 +747,7 @@
             if (head.isSelectedHit) {
                 
                 head.hp -= 2;
-                
+                head.numberOfHits ++;
                 //update scores - show little label sign beside
                 int score_added = 5 + consecHits / 5;
                 baseScore += score_added;

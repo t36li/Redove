@@ -18,6 +18,7 @@
     
     int selectHeadCount;
     NSMutableArray *arrayOfAllPopups;
+    NSArray *arrayOfHits;
     UIImage *head;
 }
 
@@ -33,6 +34,7 @@
 //@property (nonatomic, copy) NSMutableArray *allHeads;
 //@property (nonatomic, copy) NSMutableArray *selectedHeads;
 @property (nonatomic, strong) NSMutableArray *arrayOfAllPopups;
+@property (nonatomic, strong) NSArray *arrayOfHits;
 @property (nonatomic) UIImage *head;
 
 + (Game *) sharedGame;

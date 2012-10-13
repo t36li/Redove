@@ -14,6 +14,7 @@
 @synthesize whackID;
 @synthesize tappable, isSelectedHit;
 @synthesize didMiss;
+@synthesize numberOfHits;
 //@synthesize sideWaysMove;
 //@synthesize body;
 

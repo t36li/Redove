@@ -43,7 +43,7 @@
     //CCParticleExplosion *emitter;
 }
 
-@property (nonatomic, retain) id<GameOverDelegate> gameOverDelegate;
+@property (nonatomic, strong) id<GameOverDelegate> gameOverDelegate;
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
 //+(CCScene *) scene;

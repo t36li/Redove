@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12B19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="V6n-XQ-h9E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C54" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="V6n-XQ-h9E">
     <dependencies>
         <deployment version="1296" identifier="iOS"/>
         <development version="4300" identifier="xcode"/>
@@ -418,10 +418,10 @@
             </objects>
             <point key="canvasLocation" x="1145" y="-343"/>
         </scene>
-        <!--View Controller-->
+        <!--Review View Controller-->
         <scene sceneID="s5c-ap-G3B">
             <objects>
-                <viewController id="hmH-w8-Zgh" sceneMemberID="viewController">
+                <viewController id="hmH-w8-Zgh" customClass="ReviewViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KIe-bk-cT1">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -466,6 +466,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="196" height="258"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="H8t-PN-hnM">
+                                        <rect key="frame" x="9" y="8" width="178" height="240"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -475,14 +479,6 @@
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="multipler.png" id="qhP-oC-jX4">
                                 <rect key="frame" x="30" y="204" width="92" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="golden right button.png" id="nmp-Sd-ScW">
-                                <rect key="frame" x="460" y="148" width="17" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="golden left button.png" id="Cz7-UJ-m3G">
-                                <rect key="frame" x="247" y="148" width="17" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="name box.png" id="lrc-g2-m3B">
@@ -520,12 +516,53 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="hitBack:" destination="hmH-w8-Zgh" eventType="touchUpInside" id="Gyx-cI-4WS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cqw-G4-5Do">
+                                <rect key="frame" x="244" y="151" width="17" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Button" image="golden left button.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hitLeft:" destination="hmH-w8-Zgh" eventType="touchUpInside" id="7Z8-qk-3fW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Fyr-FD-PlL">
+                                <rect key="frame" x="463" y="151" width="17" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Button" image="golden right button.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hitRight:" destination="hmH-w8-Zgh" eventType="touchUpInside" id="E4D-e5-pQn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="M7l-xF-GNE"/>
+                    <connections>
+                        <outlet property="avatarImageView" destination="H8t-PN-hnM" id="iu2-UY-gNn"/>
+                        <outlet property="backBtn" destination="yQI-ni-O7a" id="YG7-kH-uUM"/>
+                        <outlet property="leftBtn" destination="cqw-G4-5Do" id="hSH-S1-rjM"/>
+                        <outlet property="portraitView" destination="KCy-ma-5ga" id="UUg-pn-CrW"/>
+                        <outlet property="rightBtn" destination="Fyr-FD-PlL" id="hVW-Ms-3YV"/>
+                        <outlet property="uploadBtn" destination="uSZ-jd-3xZ" id="ZuZ-E2-aYq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NqV-fo-eb7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1560,6 +1597,166 @@
         <image name="wood background.png" width="960" height="640"/>
         <image name="yellow board.png" width="350" height="115"/>
     </resources>
+    <classes>
+        <class className="AvatarBaseController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AvatarBaseController.h"/>
+        </class>
+        <class className="AvatarViewController" superclassName="AvatarBaseController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AvatarViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="Back:"/>
+                <relationship kind="action" name="Change_Skin:"/>
+                <relationship kind="action" name="addPicture:"/>
+                <relationship kind="action" name="goToSample:"/>
+                <relationship kind="action" name="startCamera:"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="wtfView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="CocosViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CocosViewController.h"/>
+        </class>
+        <class className="EmailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EmailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="confirm_pressed:"/>
+            </relationships>
+        </class>
+        <class className="FriendsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="back_Touched:"/>
+                <relationship kind="outlet" name="friendTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="loadingView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="tableCell" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="HitWhoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HitWhoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="Back_Touched:"/>
+                <relationship kind="action" name="battleTouched:"/>
+                <relationship kind="action" name="cancelTouched:"/>
+                <relationship kind="outlet" name="bodyView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="characterReviewView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="faceView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="hammerView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="helmetView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="hit1" candidateClass="HitWindow"/>
+                <relationship kind="outlet" name="hit2" candidateClass="HitWindow"/>
+                <relationship kind="outlet" name="hit3" candidateClass="HitWindow"/>
+                <relationship kind="outlet" name="hit4" candidateClass="HitWindow"/>
+                <relationship kind="outlet" name="hitNumber" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="leftHammer" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="loadingView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="popupView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="rightHammer" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="shieldView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="HitWindow" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HitWindow.h"/>
+        </class>
+        <class className="LoadViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoadViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="myLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ModeSelectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ModeSelectionViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="Back_Touched:"/>
+                <relationship kind="action" name="leftButton_touched:"/>
+                <relationship kind="action" name="rightButton_touched:"/>
+                <relationship kind="outlet" name="background" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="rightButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="wholeView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="OptionsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OptionsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="back_touched:"/>
+                <relationship kind="action" name="logout_touched:"/>
+                <relationship kind="outlet" name="back" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="logout_but" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="ReviewViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ReviewViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="hitBack:"/>
+                <relationship kind="action" name="hitLeft:"/>
+                <relationship kind="action" name="hitRight:"/>
+                <relationship kind="outlet" name="avatarImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="backBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="leftBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="portraitView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="rightBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="uploadBtn" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="RootViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="opt_touched:"/>
+                <relationship kind="action" name="play_touched:"/>
+                <relationship kind="action" name="upload_clicked:"/>
+                <relationship kind="outlet" name="LoginAccountImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="opt_but" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="play_but" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SelectToLoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectToLoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="EMTouched:"/>
+                <relationship kind="action" name="FBTouched:"/>
+                <relationship kind="outlet" name="EMBut" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="FBBut" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="StatusBarController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StatusBarController.h"/>
+            <relationships>
+                <relationship kind="action" name="Back_Touched:"/>
+                <relationship kind="action" name="Ok_Pressed:"/>
+                <relationship kind="action" name="money_pressed:"/>
+                <relationship kind="action" name="saveToDB_Touched:"/>
+                <relationship kind="outlet" name="body" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="bodyView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="faceView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="hammerView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="hammer_hand" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="helmet" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="helmetView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item1" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item10" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item2" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item3" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item4" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item5" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item6" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item7" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item8" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="item9" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="money" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="shieldView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="shield_hand" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="StoreViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StoreViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="Back_Touched:"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation" orientation="landscapeRight"/>

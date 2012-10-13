@@ -10,6 +10,8 @@
 
 @implementation CocosViewController
 
+@synthesize goingBackToMenu;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -24,9 +26,15 @@
     [super viewDidLoad];
     
     //do anything else that only needs to load once
+    goingBackToMenu = NO;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
+    
+    if (goingBackToMenu) {
+        goingBackToMenu = NO;
+        return;
+    }
     
     CCDirector *director = [CCDirector sharedDirector];
     
@@ -96,6 +104,7 @@
 }
 
 -(void) goToReview {
+    goingBackToMenu = YES;
     [self performSegueWithIdentifier:@"CocosToReview" sender:nil];
 }
 

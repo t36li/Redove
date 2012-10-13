@@ -21,7 +21,7 @@ static Game *sharedGame = nil;
 
 @synthesize selectHeadCount;
 //@synthesize selectedHeads;
-@synthesize arrayOfAllPopups;
+@synthesize arrayOfAllPopups, arrayOfHits;
 @synthesize head;
 
 #pragma mark -
