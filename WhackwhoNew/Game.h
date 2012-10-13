@@ -14,10 +14,11 @@
     BOOL isEnabledBackgroundMusic;
     BOOL isEnabledSoundFX;
     int difficulty;
-    int moneyEarned, consecHits, baseScore;
+    int moneyEarned, multiplier, baseScore;
     
     int selectHeadCount;
     NSMutableArray *arrayOfAllPopups;
+    NSArray *arrayOfHits;
     UIImage *head;
 }
 
@@ -26,13 +27,14 @@
 @property (nonatomic, readwrite) BOOL isEnabledSoundFX;
 @property (nonatomic, readwrite) int difficulty;
 @property (nonatomic, readwrite) int moneyEarned;
-@property (nonatomic, readwrite) int consecHits;
+@property (nonatomic, readwrite) int multiplier;
 @property (nonatomic, readwrite) int baseScore;
 
 @property (nonatomic, readwrite) int selectHeadCount;
 //@property (nonatomic, copy) NSMutableArray *allHeads;
 //@property (nonatomic, copy) NSMutableArray *selectedHeads;
 @property (nonatomic, strong) NSMutableArray *arrayOfAllPopups;
+@property (nonatomic, strong) NSArray *arrayOfHits;
 @property (nonatomic) UIImage *head;
 
 + (Game *) sharedGame;

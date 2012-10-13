@@ -16,12 +16,12 @@ static Game *sharedGame = nil;
 @synthesize isEnabledBackgroundMusic;
 @synthesize isEnabledSoundFX;
 @synthesize difficulty;
-@synthesize moneyEarned, consecHits, baseScore;
+@synthesize moneyEarned, multiplier, baseScore;
 //@synthesize allHeads;
 
 @synthesize selectHeadCount;
 //@synthesize selectedHeads;
-@synthesize arrayOfAllPopups;
+@synthesize arrayOfAllPopups, arrayOfHits;
 @synthesize head;
 
 #pragma mark -
@@ -36,7 +36,7 @@ static Game *sharedGame = nil;
         self.isEnabledSoundFX = YES;
         self.difficulty = 1;
         self.moneyEarned = 0;
-        self.consecHits = 0;
+        self.multiplier = 0;
         self.baseScore = 0;
         //allHeads = [[NSMutableArray alloc] init];
         //selectedHeads = [[NSMutableArray alloc] init];
@@ -87,9 +87,9 @@ static Game *sharedGame = nil;
     [self setIsGameOver:NO];
     [self setIsEnabledBackgroundMusic:YES];
     [self setIsEnabledSoundFX:YES];
-    [self setDifficulty:1];
+    [self setDifficulty:0];
     [self setMoneyEarned:0];
-    [self setConsecHits:0];
+    [self setMultiplier:0];
     [self setBaseScore:0];
     //[allHeads removeAllObjects];
     //[selectedHeads removeAllObjects];

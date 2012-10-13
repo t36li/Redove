@@ -28,14 +28,14 @@
     NSMutableArray *coins;
     NSMutableArray *bomb;
 
-    CCLabelTTF *hitsLabel, *timeLabel, *scoreLabel;
+    CCLabelTTF *hitsLabel, *timeLabel, *scoreLabel, *ctLabel;
     ccTime totalTime;
     
     int myTime, lives;
     int consecHits, baseScore, moneyEarned;
     float speed;
     
-    BOOL gameOver, gamePaused, shake_once, has_bomb;
+    BOOL gameOver, shake_once, has_bomb;//, gamePaused;
     HUDLayer * _hud;
     id<GameOverDelegate> gameOverDelegate;
     NSArray *botLeft, *botRight, *midLeft, *midRight, *topLeft, *topMid, *topRight;
@@ -43,10 +43,10 @@
     //CCParticleExplosion *emitter;
 }
 
-@property (nonatomic, retain) id<GameOverDelegate> gameOverDelegate;
+@property (nonatomic, strong) id<GameOverDelegate> gameOverDelegate;
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
-+(CCScene *) scene;
+//+(CCScene *) scene;
 +(CCScene *) sceneWithDelegate:(id<GameOverDelegate>)delegate;
 - (id)initWithHUD:(HUDLayer *)hud;
 

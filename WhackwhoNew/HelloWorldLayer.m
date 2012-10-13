@@ -23,7 +23,7 @@
 
 @synthesize gameOverDelegate;
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
-+(CCScene *) scene
+/*+(CCScene *) scene
 {
     // 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
@@ -40,7 +40,7 @@
 	
 	// return the scene
 	return scene;
-}
+}*/
 
 +(CCScene *) sceneWithDelegate:(id<GameOverDelegate>)delegate
 {
@@ -78,7 +78,7 @@
         _hud = hud;
         self.isTouchEnabled = YES;
         gameOver = FALSE;
-        gamePaused = FALSE;
+        //gamePaused = FALSE;
         has_bomb = FALSE;
         coins = [[NSMutableArray alloc] init];
         bomb = [[NSMutableArray alloc] init];
@@ -111,19 +111,27 @@
         [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
         
         //add timer label
-        timeLabel = [CCLabelTTF labelWithString:@"0:0" fontName:@"chalkduster" fontSize:40];
+        timeLabel = [CCLabelTTF labelWithString:@"0:0" fontName:@"chalkduster" fontSize:30];
         timeLabel.color = ccc3(255, 249, 0);
         timeLabel.anchorPoint = ccp(0,1);
         timeLabel.position = ccp(15, s.height);
         [self addChild:timeLabel z:10];
         
         //add "hits" label
-        hitsLabel = [CCLabelTTF labelWithString:@"  HIT STREAK" fontName:@"chalkduster" fontSize:20];
-        hitsLabel.color = ccc3(255, 249, 0);
+        hitsLabel = [CCLabelTTF labelWithString:@"X" fontName:@"chalkduster" fontSize:35];
+        hitsLabel.color = ccc3(255, 0, 0);
         hitsLabel.anchorPoint = ccp(0.5,1);
         hitsLabel.position = ccp(s.width/2, s.height - 10);
         //hitsLabel.scale = 0.1;
         [self addChild:hitsLabel z:10];
+        
+        //add combat text label
+        ctLabel = [CCLabelTTF labelWithString:@"+1" fontName:@"chalkduster" fontSize:30];
+        ctLabel.color = ccc3(255, 0, 0);
+        ctLabel.anchorPoint = ccp(0.5,0.5);
+        //ctLabel.position = ccp(s.width/2, s.height/2);
+        [self addChild:ctLabel z:10];
+        ctLabel.visible = FALSE;
         
         //add "pause" label
         CCMenuItemImage *pause = [CCMenuItemImage itemWithNormalImage:@"pause.png" selectedImage:@"pause.png" target:self selector:@selector(pauseGame)];
@@ -156,9 +164,10 @@
         scoreLabel.position = ccp(scoreboard.contentSize.width/2, scoreboard.contentSize.height/2);
         [scoreboard addChild:scoreLabel z:10];
         
+        
         //!!!! initializing popups
         //use the array from game.h which contains all image names
-        int xpad = 50; //for testing
+        //int xpad = 50; //for testing
         int i = 0;
         for (UIImage *person in [[Game sharedGame] arrayOfAllPopups]) {
             Character *head = [Character spriteWithCGImage:[person CGImage] key:[NSString stringWithFormat:@"person%i", i]];
@@ -175,14 +184,14 @@
             i++; //for key purposes
             
             //for testing
-            head.position = ccp(xpad, s.height/2);
-            xpad += 60;
-            head.visible = TRUE;
+            //head.position = ccp(xpad, s.height/2);
+            //xpad += 60;
+            //head.visible = TRUE;
         }
         
-        //[self schedule:@selector(tryPopheads) interval:1.5];
-        //[self schedule:@selector(checkGameState) interval:0.1];
-        //[self schedule:@selector(timerUpdate:) interval:0.001];
+        [self schedule:@selector(tryPopheads) interval:1.5];
+        [self schedule:@selector(checkGameState) interval:0.1];
+        [self schedule:@selector(timerUpdate:) interval:0.001];
 	}
     
 	return self;
@@ -303,14 +312,19 @@
 
 -(void) pauseGame {
     if (self.isTouchEnabled) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Paused" message:@"Press the button to..." delegate:self cancelButtonTitle:@"Resume" otherButtonTitles:@"Back Home", nil];
-        [alert show];
-        gamePaused = TRUE;
+        //UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Paused" message:@"Press the button to..." delegate:self cancelButtonTitle:@"Resume" otherButtonTitles:@"Back Home", nil];
+        //[alert show];
+        //gamePaused = TRUE;
+        [[Game sharedGame] setBaseScore:baseScore];
+        [[Game sharedGame] setMoneyEarned:moneyEarned];
+        [[Game sharedGame] setMultiplier:consecHits];
+        
         [[CCDirector sharedDirector] pause];
+        [_hud showPauseMenu:gameOverDelegate];
     }
 }
 
--(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+/*-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     
     if (buttonIndex == 0) {
         gamePaused = FALSE;
@@ -321,7 +335,7 @@
         [gameOverDelegate returnToMenu];
     }
     
-}
+}*/
 
 -(void) timerUpdate: (ccTime) deltT {
     if (gameOver) return;
@@ -396,18 +410,39 @@
      }
      break;
      }*/
-    //check is game is over
+    //check if game is over
     if (myTime <= 0 || lives <= 0) {
         [self unscheduleAllSelectors];
-        [[CCDirector sharedDirector] pause];
-        self.isTouchEnabled = NO;
-        [[Game sharedGame] setBaseScore:baseScore];
-        //[[Game sharedGame] setConsecHits:consecHits];
-        //CocosViewController *vc = [[CocosViewController alloc] init];
-
-        [_hud showRestartMenu:YES :gameOverDelegate];
+        //[[CCDirector sharedDirector] pause];
         
         gameOver = TRUE;
+        self.isTouchEnabled = NO;
+        
+        Game *game = [Game sharedGame];
+        
+        [game setBaseScore:baseScore];
+        [game setMoneyEarned:moneyEarned];
+        [game setMultiplier:consecHits];
+        
+        //move navigation controller to next view controller
+        NSString *msg;
+        if (myTime <= 0) {
+            msg = @"Time's UP!";
+        } else {
+            msg = @"Game OVER!";
+        }
+        
+        CCLabelTTF *gameOverLabel = [CCLabelTTF labelWithString:msg fontName:@"Chalkduster" fontSize:50];
+        gameOverLabel.position = ccp(200,200);
+        [self addChild:gameOverLabel];
+        NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:game.selectHeadCount];
+        for (int i = 0; i < game.selectHeadCount; i ++) {
+            [array addObject:[heads objectAtIndex:i]];
+        }
+        [game setArrayOfHits:array];
+        
+        [gameOverDelegate proceedToReview];
+        
         return;
     }
 }
@@ -538,19 +573,19 @@
     
 #pragma mark - bomb popup code
     //10% chance for a bomb to popup
-    if (arc4random() % 100 < 10 && !has_bomb) {
-        has_bomb = TRUE;
-        CCSprite *testObj = [CCSprite spriteWithFile:@"bomb.png"];
-        testObj.position = ccp(head.position.x + head.contentSize.width * head.scaleX/2, head.position.y+50);
-        testObj.scale = 2.0;
-        testObj.tag = 0; //tag will serve as hit or no-hit; 0 = nohit, 1 = hit
-        [self addChild:testObj];
-        [bomb addObject:testObj];
+    //if (arc4random() % 100 < 10 && !has_bomb) {
+      //  has_bomb = TRUE;
+        //CCSprite *testObj = [CCSprite spriteWithFile:@"bomb.png"];
+       // testObj.position = ccp(head.position.x + head.contentSize.width * head.scaleX/2, head.position.y+50);
+     //   testObj.scale = 2.0;
+     //   testObj.tag = 0; //tag will serve as hit or no-hit; 0 = nohit, 1 = hit
+     //   [self addChild:testObj];
+     //   [bomb addObject:testObj];
         
-        CCRotateBy *rotateBomb = [CCRotateBy actionWithDuration:2.0f angle:(360*7)];
-        CCCallFuncN *removeBomb = [CCCallFuncN actionWithTarget:self selector:@selector(removeBomb:)];
-        [testObj runAction:[CCSequence actions: rotateBomb, removeBomb, nil]];
-    }
+     //   CCRotateBy *rotateBomb = [CCRotateBy actionWithDuration:2.0f angle:(360*7)];
+     //   CCCallFuncN *removeBomb = [CCCallFuncN actionWithTarget:self selector:@selector(removeBomb:)];
+     //   [testObj runAction:[CCSequence actions: rotateBomb, removeBomb, nil]];
+    //}
     
     //obtain rotation angle.... from method
     //angel is in radians already
@@ -589,9 +624,6 @@
     //CCLOG(@"%f", angle);
     return angle;
 }
-
-//-(void) setOccupied: (id) sender {
-//}
 
 -(void) setTappable: (id) sender {
     Character *head = (Character *) sender;
@@ -654,7 +686,7 @@
 
 -(void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    if (gamePaused) return;
+    //if (gamePaused) return;
     
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:[touch view]];
@@ -670,7 +702,7 @@
             coin.tag = 1; //tag serves as coin.tappble = false
             [coin stopAllActions];
             //CCLOG(@"got coin!");
-            baseScore += 100;
+            moneyEarned += 10;
             CCScaleBy *scaleCoinUp = [CCScaleBy actionWithDuration:0.2 scale:2];
             CCAction *scaleCoinDown = [scaleCoinUp reverse];
             CCCallFuncN *removeCoin = [CCCallFuncN actionWithTarget:self selector:@selector(removeCoin:)];
@@ -720,15 +752,21 @@
             if (head.isSelectedHit) {
                 
                 head.hp -= 2;
-                
+                head.numberOfHits ++;
                 //update scores - show little label sign beside
-                
-                consecHits++;
-                baseScore += 5 + consecHits / 5;
+                int score_added = 5 + consecHits / 5;
+                baseScore += score_added;
+                [ctLabel setString:[NSString stringWithFormat:@"+%i", score_added]];
+                ctLabel.visible = TRUE;
+                ctLabel.position = ccp(head.position.x, head.position.y);
+                CCDelayTime *delay = [CCDelayTime actionWithDuration:1.0];
+                CCCallFuncN *setLabelInvis = [CCCallFuncN actionWithTarget:self selector:@selector(setLabelInvis:)];
+                [ctLabel runAction:[CCSequence actions:delay, setLabelInvis, nil]];
                 
                 //update hit streak label
+                consecHits++;
                 if (consecHits > 1) {
-                    [hitsLabel setString:[NSString stringWithFormat:@"%d HIT STREAK!", consecHits]];
+                    [hitsLabel setString:[NSString stringWithFormat:@"X%i", consecHits]];
                 }
             //if not hit correct "mole"
             } else {
@@ -825,6 +863,11 @@
     
     [coins removeObject:coin];
     [self removeChild:coin cleanup:YES];
+}
+
+-(void) setLabelInvis: (id) sender {
+    CCLabelTTF *temp = (CCLabelTTF *) sender;
+    temp.visible = FALSE;
 }
 
 // on "dealloc" you need to release all your retained objects

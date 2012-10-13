@@ -10,6 +10,8 @@
 
 @implementation CocosViewController
 
+@synthesize goingBackToMenu;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -24,9 +26,15 @@
     [super viewDidLoad];
     
     //do anything else that only needs to load once
+    goingBackToMenu = NO;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
+    
+    if (goingBackToMenu) {
+        goingBackToMenu = NO;
+        return;
+    }
     
     CCDirector *director = [CCDirector sharedDirector];
     
@@ -75,7 +83,15 @@
     [director didMoveToParentViewController:self];
 }
 
--(void) goToMenu {
+-(void)proceedToReview {
+    CCDirector *director = [CCDirector sharedDirector];
+    [director removeFromParentViewController];
+    [director.view removeFromSuperview];
+    [director didMoveToParentViewController:nil];
+    
+    [director end];
+    director.delegate = nil;
+    [self performSelector:@selector(goToReview) withObject:nil afterDelay:1.5];
     /*
     [self performSegueWithIdentifier:@"GoToMenuSegue" sender:nil];
     CCDirector *director = [CCDirector sharedDirector];
@@ -87,6 +103,11 @@
      */
 }
 
+-(void) goToReview {
+    goingBackToMenu = YES;
+    [self performSegueWithIdentifier:@"CocosToReview" sender:nil];
+}
+
 - (void)returnToMenu {    
     CCDirector *director = [CCDirector sharedDirector];
     [director removeFromParentViewController];
@@ -96,6 +117,8 @@
     [director end];
     director.delegate = nil;
     int total_stack = [self.navigationController.viewControllers count];
+    
+    //how to pop to status view?
     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:(total_stack - 2)] animated:YES];
     //int totalStack = [self.navigationController.viewControllers count];
     

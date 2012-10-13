@@ -10,15 +10,13 @@
 #import "cocos2d.h"
 #import "HelloWorldLayer.h"
 #import "GameOverDelegate.h"
-#import "MainMenuDelegate.h"
 #import "StatusViewLayer.h"
-#import "LoadLayer.h"
 
-@interface CocosViewController : UIViewController <CCDirectorDelegate, GameOverDelegate, MainMenuDelegate> {
+@interface CocosViewController : UIViewController <CCDirectorDelegate, GameOverDelegate> {
+    BOOL goingBackToMenu;
     
 }
 
-
-
+@property (nonatomic) BOOL goingBackToMenu;
 
 @end
