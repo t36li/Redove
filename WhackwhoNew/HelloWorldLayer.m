@@ -434,6 +434,13 @@
         CCLabelTTF *gameOverLabel = [CCLabelTTF labelWithString:msg fontName:@"Chalkduster" fontSize:50];
         gameOverLabel.position = ccp(200,200);
         [self addChild:gameOverLabel];
+        
+        NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:game.selectHeadCount];
+        for (int i = 0; i < game.selectHeadCount; i ++) {
+            [array addObject:[heads objectAtIndex:i]];
+        }
+        [game setArrayOfHits:array];
+        
         [[CCDirector sharedDirector] pause];
         
         [gameOverDelegate proceedToReview];
