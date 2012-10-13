@@ -91,7 +91,7 @@
     
     [director end];
     director.delegate = nil;
-    [self performSelector:@selector(goToReview) withObject:nil afterDelay:1.5];
+    [self performSelector:@selector(goToReview) withObject:nil];
     /*
     [self performSegueWithIdentifier:@"GoToMenuSegue" sender:nil];
     CCDirector *director = [CCDirector sharedDirector];

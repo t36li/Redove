@@ -34,6 +34,8 @@
     }
     if (avatarArray.count > 0) {
         self.avatarImageView.image = [avatarArray objectAtIndex:0];
+        UserInfo *user = [UserInfo sharedInstance];
+        [user performSelector:@selector(markFaces:withDelegate:) withObject:self.avatarImageView.image withObject:self];
         selectedIndex = 0;
     }
 }
@@ -57,17 +59,52 @@
     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count - 3] animated:YES];
 }
 
+-(void) clearImageViews {
+    for (UIView *view in portraitView.subviews) {
+        if (view == avatarImageView)
+            continue;
+        [view removeFromSuperview];
+    }
+}
+
 -(IBAction) hitLeft:(id)sender {
     if (selectedIndex > 0) {
         selectedIndex --;
+        [self clearImageViews];
         self.avatarImageView.image = [avatarArray objectAtIndex:selectedIndex];
+        [[UserInfo sharedInstance] performSelector:@selector(markFaces:withDelegate:) withObject:self.avatarImageView.image withObject:self];
     }
 }
 
 -(IBAction) hitRight:(id)sender {
     if (selectedIndex < avatarArray.count - 1) {
         selectedIndex ++;
+        [self clearImageViews];
         self.avatarImageView.image = [avatarArray objectAtIndex:selectedIndex];
+        [[UserInfo sharedInstance] performSelector:@selector(markFaces:withDelegate:) withObject:self.avatarImageView.image withObject:self];
     }
+}
+
+-(void)setUserPictureCompleted {
+    UserInfo *user = [UserInfo sharedInstance];
+    CGFloat faceWidth = user.faceRect.size.width;
+    
+    UIImageView *leftEye = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"eye1.png"]];
+    CGRect leftEyeFrame = CGRectMake(user.leftEyePosition.x-faceWidth*0.15, user.leftEyePosition.y-faceWidth*0.15, faceWidth*0.3, faceWidth*0.3);
+    leftEye.frame = leftEyeFrame;
+    leftEye.center = user.leftEyePosition;
+    [portraitView addSubview:leftEye];
+    
+    UIImageView *rightEye = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"eye2.png"]];
+    CGRect rightEyeFrame = CGRectMake(user.rightEyePosition.x-faceWidth*0.15, user.rightEyePosition.y-faceWidth*0.15, faceWidth*0.3, faceWidth*0.3);
+    rightEye.frame = rightEyeFrame;
+    rightEye.center = user.rightEyePosition;
+    [portraitView addSubview:rightEye];
+    
+    UIImageView *mouth = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lip 1.png"]];
+    CGRect mouthFrame = CGRectMake(user.mouthPosition.x-faceWidth*0.2, user.mouthPosition.y-faceWidth*0.15, faceWidth*0.4, faceWidth*0.3);
+    mouth.frame = mouthFrame;
+    mouth.center = user.mouthPosition;
+    [portraitView addSubview:mouth];
 }
 @end

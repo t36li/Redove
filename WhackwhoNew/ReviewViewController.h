@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Game.h"
+#import "UserInfo.h"
 
-@interface ReviewViewController : UIViewController {
+@interface ReviewViewController : UIViewController<UserInfoDelegate> {
     IBOutlet UIView *portraitView;
     
     IBOutlet UIButton *backBtn, *uploadBtn, *leftBtn, *rightBtn;
