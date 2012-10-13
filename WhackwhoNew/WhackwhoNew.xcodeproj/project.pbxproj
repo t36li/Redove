@@ -2989,7 +2989,6 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2A3A3CB5-3567-463A-B708-BA60487D1C68";
 				"PROVISIONING_PROFILE[sdk=iphoneos5.1]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"WhackwhoNew/libs/kazmath/include\" ”$(TARGET_BUILD_DIR)/usr/local/lib/include” ”$(OBJROOT)/UninstalledProducts/include” '$(BUILT_PRODUCTS_DIR)/../../Headers'";
