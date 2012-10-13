@@ -413,7 +413,6 @@
     //check if game is over
     if (myTime <= 0 || lives <= 0) {
         [self unscheduleAllSelectors];
-        //[[CCDirector sharedDirector] pause];
         
         gameOver = TRUE;
         self.isTouchEnabled = NO;
@@ -433,6 +432,8 @@
         CCLabelTTF *gameOverLabel = [CCLabelTTF labelWithString:msg fontName:@"Chalkduster" fontSize:50];
         gameOverLabel.position = ccp(200,200);
         [self addChild:gameOverLabel];
+        [[CCDirector sharedDirector] pause];
+        
         [gameOverDelegate proceedToReview];
         
         return;
