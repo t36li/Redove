@@ -41,9 +41,9 @@
 }
 
 -(IBAction)FBTouched:(id)sender{
+    //[self.navigationController popToRootViewControllerAnimated:NO];
     [[FBSingleton sharedInstance] login];
     //[self.navigationController popViewControllerAnimated:YES];
-    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
