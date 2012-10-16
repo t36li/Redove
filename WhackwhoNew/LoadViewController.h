@@ -15,7 +15,7 @@
 #import "User.h"
 #import "GlobalMethods.h"
 
-@interface LoadViewController : UIViewController <FBSingletonDelegate,RKRequestDelegate,RKObjectLoaderDelegate, UIAlertViewDelegate> {
+@interface LoadViewController : UIViewController <FBSingletonDelegate,RKRequestDelegate,RKObjectLoaderDelegate> {
     
     UserInfo *usr;
     FBSingleton *fbs;

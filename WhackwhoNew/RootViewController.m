@@ -83,6 +83,7 @@
     [LoginAccountImageView setImageWithURL:[NSURL URLWithString:formatting]];
 }
 
+
 -(void) viewDidAppear:(BOOL)animated{
     /*
     if ((int)usr.currentLogInType != NotLogIn){
@@ -92,6 +93,7 @@
         LoginAccountImageView.image = nil;
     }
      */
+    fbs.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {

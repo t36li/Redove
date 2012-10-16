@@ -181,6 +181,9 @@
     userObject = object;
     [userObject copyToUserInfo];
     NSLog(@"User data loaded.");
+    [myLabel setText:@"Loading Complete!"];
+    [self performSelector:@selector(goToMenu) withObject:nil afterDelay:1.5];
+    /*
     if(usr->usrImg == nil){
         UIAlertView *takePicAlert = [[UIAlertView alloc] initWithTitle:@"Newbie?" message:@"Take a photo" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         takePicAlert.tag = newbieAlert;
@@ -188,14 +191,14 @@
     } else {
         [myLabel setText:@"Loading Complete!"];
         [self performSelector:@selector(goToMenu) withObject:nil afterDelay:1.5];
-    }
+    }*/
 }
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error{
     UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Loading Error" message:@"Database Connection Failed: unable to pull out your profile" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [errorAlert show];
 }
-
+/*
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (alertView.tag == networkErrorAlert){
         
@@ -205,7 +208,7 @@
             [self performSegueWithIdentifier:@"LoadToAvatar" sender:self];
         }
     }
-}
+}*/
 
 
 

@@ -103,6 +103,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     
     cameraOverlayView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"camera view overlay.png"]];
     [markingView addSubview:cameraOverlayView];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {

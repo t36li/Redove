@@ -14,7 +14,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <RestKit/RestKit.h>
 
-@interface RootViewController : UIViewController<FBSingletonDelegate, UIAlertViewDelegate> {
+@interface RootViewController : UIViewController<FBSingletonDelegate> {
     UIImageView *LoginAccountImageView; //Facebook Profile Image, Renren Profile Image or Gmail
     UIButton *play_but;
     UIButton *opt_but;

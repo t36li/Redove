@@ -253,7 +253,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="wZI-0E-4pI" kind="push" id="gff-oY-V5c"/>
+                                    <segue destination="wZI-0E-4pI" kind="push" identifier="goToAvatar" id="gff-oY-V5c"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uQN-HI-g79" userLabel="Ok Button">
@@ -965,7 +965,6 @@
                     <connections>
                         <outlet property="myLabel" destination="yNN-57-wew" id="VCc-WM-Pk5"/>
                         <segue destination="Nsl-EU-HzN" kind="push" identifier="GoToMenuSegue" id="TaV-sK-cbs"/>
-                        <segue destination="wZI-0E-4pI" kind="push" identifier="LoadToAvatar" id="2de-dV-3w5"/>
                         <segue destination="Y2f-Ky-VQq" kind="push" identifier="LoginToFacebook" id="4KT-zR-lzO"/>
                     </connections>
                 </viewController>
@@ -1618,7 +1617,6 @@
         <class className="RootViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
             <relationships>
-                <relationship kind="action" name="Friend_touched:"/>
                 <relationship kind="action" name="opt_touched:"/>
                 <relationship kind="action" name="play_touched:"/>
                 <relationship kind="action" name="upload_clicked:"/>
@@ -1676,7 +1674,4 @@
         <simulatedOrientationMetrics key="orientation" orientation="landscapeRight"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="gff-oY-V5c"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -102,6 +102,23 @@
         [equipment addGestureRecognizer:tap];
         i++;
     }
+    
+    UserInfo *usr = [UserInfo sharedInstance];
+    if (usr.usrImg == nil){
+        UIAlertView *takePicAlert = [[UIAlertView alloc] initWithTitle:@"Newbie?" message:@"Take a photo" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        takePicAlert.tag = 1;
+        [takePicAlert show];
+    }
+}
+
+
+
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView.tag == 1){
+        if (buttonIndex == 0){
+            [self performSegueWithIdentifier:@"goToAvatar" sender:nil];
+        }
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated {
