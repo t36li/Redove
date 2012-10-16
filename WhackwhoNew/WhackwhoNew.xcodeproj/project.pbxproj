@@ -377,7 +377,6 @@
 		C198EE1315CF114B004D170C /* vec2.c in Sources */ = {isa = PBXBuildFile; fileRef = C198ED3115CF114B004D170C /* vec2.c */; };
 		C198EE1415CF114B004D170C /* vec3.c in Sources */ = {isa = PBXBuildFile; fileRef = C198ED3215CF114B004D170C /* vec3.c */; };
 		C198EE1515CF114B004D170C /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = C198ED3315CF114B004D170C /* vec4.c */; };
-		C198EE2B15CF7889004D170C /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C198EE2A15CF7889004D170C /* EmailViewController.m */; };
 		C198EE2E15D0476E004D170C /* HA001.png in Resources */ = {isa = PBXBuildFile; fileRef = C198EE2D15D0476E004D170C /* HA001.png */; };
 		C19A3A1E160CD4FE00C6E8F9 /* HA007.png in Resources */ = {isa = PBXBuildFile; fileRef = C19A3A18160CD4FE00C6E8F9 /* HA007.png */; };
 		C19A3A1F160CD4FE00C6E8F9 /* HA006.png in Resources */ = {isa = PBXBuildFile; fileRef = C19A3A19160CD4FE00C6E8F9 /* HA006.png */; };
@@ -1015,8 +1014,6 @@
 		C198ED3115CF114B004D170C /* vec2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vec2.c; sourceTree = "<group>"; };
 		C198ED3215CF114B004D170C /* vec3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vec3.c; sourceTree = "<group>"; };
 		C198ED3315CF114B004D170C /* vec4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vec4.c; sourceTree = "<group>"; };
-		C198EE2915CF7888004D170C /* EmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailViewController.h; sourceTree = "<group>"; };
-		C198EE2A15CF7889004D170C /* EmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailViewController.m; sourceTree = "<group>"; };
 		C198EE2D15D0476E004D170C /* HA001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HA001.png; sourceTree = "<group>"; };
 		C19A3A18160CD4FE00C6E8F9 /* HA007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HA007.png; sourceTree = "<group>"; };
 		C19A3A19160CD4FE00C6E8F9 /* HA006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HA006.png; sourceTree = "<group>"; };
@@ -1396,8 +1393,6 @@
 				D0B48498160E2C77000B95A7 /* FaceEffectsController.m */,
 				D0948D3F15ADFF0E00429477 /* AvatarBaseController.h */,
 				D0948D4015ADFF0E00429477 /* AvatarBaseController.m */,
-				C198EE2915CF7888004D170C /* EmailViewController.h */,
-				C198EE2A15CF7889004D170C /* EmailViewController.m */,
 				D0A3F74515B266330027EFF9 /* SpinnerView.h */,
 				D0A3F74615B266330027EFF9 /* SpinnerView.m */,
 				D09FD5DA159E4EB60079231D /* CameraOverlayControllerViewController.h */,
@@ -2818,7 +2813,6 @@
 				C14385AB15C8C15A008D9AE7 /* LoadViewController.m in Sources */,
 				C1DCCBC615CB5143000CD722 /* StatusViewLayer.m in Sources */,
 				C1692E9115CE282C00C7D4C7 /* StoreViewController.m in Sources */,
-				C198EE2B15CF7889004D170C /* EmailViewController.m in Sources */,
 				C10D2FC215D060A6007B751B /* Dragbox.m in Sources */,
 				69164C5F15D9F978003FD8A8 /* User.m in Sources */,
 				69E9EB9D16028E4E00E52D4F /* PullToRefreshView.m in Sources */,

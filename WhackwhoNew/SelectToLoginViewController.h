@@ -11,12 +11,9 @@
 
 @interface SelectToLoginViewController : UIViewController<FBSingletonDelegate>{
     UIButton *FBBut;
-    UIButton *EMBut;
 }
 @property (nonatomic) IBOutlet UIButton *FBBut;
-@property (nonatomic) IBOutlet UIButton *EMBut;
 
 -(IBAction)FBTouched:(id)sender;
--(IBAction)EMTouched:(id)sender;
 
 @end

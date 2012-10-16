@@ -18,7 +18,7 @@
 @end
 
 @implementation SelectToLoginViewController
-@synthesize FBBut,EMBut;
+@synthesize FBBut;
 
 - (void)viewDidLoad
 {
@@ -30,7 +30,6 @@
     //setup FBBut Image;
     [FBBut setImage:[UIImage imageNamed:AccessFacebookIcon] forState:UIControlStateNormal];
     [FBBut setImage:[UIImage imageNamed:AccessFacebookIcon_HL] forState:UIControlStateHighlighted];
-    //setup EMBut Image
     //[FBBut setImage:[UIImage imageNamed:AccessFacebookIcon forState:UIControlStateNormal]];
 }
 
@@ -46,10 +45,6 @@
     //[self.navigationController popViewControllerAnimated:YES];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
--(IBAction)EMTouched:(id)sender{
-    
-}
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
