@@ -99,6 +99,7 @@
     //friend array mapping:
     RKObjectMapping *friendArrayMapping = [RKObjectMapping mappingForClass:[FriendArray class]];
     [friendArrayMapping mapKeyPath:@"friends" toRelationship:@"friends" withMapping:friendInfoMapping];
+    [friendArrayMapping mapKeyPath:@"strangers" toRelationship:@"strangers" withMapping:friendInfoMapping];
     [[RKObjectManager sharedManager].mappingProvider setMapping:friendArrayMapping forKeyPath:@"friendsInApp"];
     
     [RKObjectManager sharedManager].serializationMIMEType = RKMIMETypeJSON;
