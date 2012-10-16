@@ -26,15 +26,15 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    UserInfo *user = [UserInfo sharedInstance];
     NSArray *images = [[Game sharedGame] arrayOfAllPopups];
     for (UIImage *img in images) {
         if (img != defaultImage) {
-            [avatarArray addObject:img];
+            [avatarArray addObject:[UserInfo resizeImage:img toSize:portraitView.frame.size]];
         }
     }
     if (avatarArray.count > 0) {
         self.avatarImageView.image = [avatarArray objectAtIndex:0];
-        UserInfo *user = [UserInfo sharedInstance];
         [user performSelector:@selector(markFaces:withDelegate:) withObject:self.avatarImageView.image withObject:self];
         selectedIndex = 0;
     }
