@@ -316,7 +316,7 @@ static CCDirector *_sharedDirector = nil;
 		// set size
 		winSizeInPixels_ = winSizeInPoints_ = CCNSSizeToCGSize( [view_ bounds].size );
 
-		//[self createStatsLabel];
+		[self createStatsLabel];
 		
 		// it could be nil
 		if( view )
@@ -375,8 +375,6 @@ static CCDirector *_sharedDirector = nil;
 -(void) replaceScene: (CCScene*) scene
 {
 	NSAssert( scene != nil, @"Argument must be non-nil");
-    
-    NSLog(@"Scene stack count: %i", [scenesStack_ count]);
 
 	NSUInteger index = [scenesStack_ count];
 
@@ -469,6 +467,7 @@ static CCDirector *_sharedDirector = nil;
 	[[CCFileUtils sharedFileUtils] purgeCachedEntries];
 
 	// OpenGL view
+
 	// Since the director doesn't attach the openglview to the window
 	// it shouldn't remove it from the window too.
 //	[openGLView_ removeFromSuperview];

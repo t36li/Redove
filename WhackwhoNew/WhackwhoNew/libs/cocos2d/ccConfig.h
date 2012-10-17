@@ -45,7 +45,7 @@
  @since v2.0.0
  */
 #ifndef CC_ENABLE_GL_STATE_CACHE
-#define CC_ENABLE_GL_STATE_CACHE 1
+#define CC_ENABLE_GL_STATE_CACHE 0
 #endif
 
 /** @def CC_ENABLE_DEPRECATED
@@ -209,7 +209,7 @@
  2 -- draw texture box
  */
 #ifndef CC_SPRITE_DEBUG_DRAW
-#define CC_SPRITE_DEBUG_DRAW 1
+#define CC_SPRITE_DEBUG_DRAW 0
 #endif
 
 
