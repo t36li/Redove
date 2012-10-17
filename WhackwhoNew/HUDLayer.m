@@ -35,7 +35,6 @@
 
 - (void)mainMenuTapped:(id)sender {
     
-    //CCScene *scene = [ChooseWhoLayer scene];
     [[Game sharedGame] resetGameState];
     [gameOverDelegate returnToMenu];
 }

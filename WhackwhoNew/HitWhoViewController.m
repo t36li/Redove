@@ -289,8 +289,8 @@
                 }
             }
             
-            [[Game sharedGame] setSelectHeadCount:selectedHits.count];
-            [[Game sharedGame] setArrayOfAllPopups:finalImages];
+            //[[Game sharedGame] setSelectHeadCount:selectedHits.count];
+            //[[Game sharedGame] setArrayOfAllPopups:finalImages];
             
             [self performSegueWithIdentifier:ChooseToGame sender:sender];
             isHammerDown = YES;

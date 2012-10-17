@@ -70,7 +70,7 @@
 	if( (self=[super init]) ) {
         
         //init retard variables
-        consecHits = 0;
+        /*consecHits = 0;
         totalTime = 45;
         myTime = (int)totalTime;
         baseScore = 0;
@@ -80,9 +80,11 @@
         gameOver = FALSE;
         //gamePaused = FALSE;
         has_bomb = FALSE;
-        coins = [[NSMutableArray alloc] init];
-        bomb = [[NSMutableArray alloc] init];
-        heads = [[NSMutableArray alloc] init];
+        
+        hearts = [[NSArray alloc] init];
+        coins = [[NSArray alloc] init];
+        bomb = [[NSArray alloc] init];
+        heads = [[NSArray alloc] init];
 
         CGSize s = CGSizeMake(480, 320);
         
@@ -131,7 +133,7 @@
         ctLabel.anchorPoint = ccp(0.5,0.5);
         //ctLabel.position = ccp(s.width/2, s.height/2);
         [self addChild:ctLabel z:10];
-        ctLabel.visible = FALSE;
+        ctLabel.visible = FALSE;*/
         
         //add "pause" label
         CCMenuItemImage *pause = [CCMenuItemImage itemWithNormalImage:@"pause.png" selectedImage:@"pause.png" target:self selector:@selector(pauseGame)];
@@ -141,8 +143,7 @@
         [self addChild:pauseMenu z:10];
         
         //add "life" sprites
-        lives = 3;
-        hearts = [[NSMutableArray alloc] init];
+       /* lives = 3;
         for (int i = 0; i < lives; i++) {
             CCSprite *life = [CCSprite spriteWithFile:@"heart.png"];
             life.anchorPoint = ccp(1,1);
@@ -191,7 +192,7 @@
         
         [self schedule:@selector(tryPopheads) interval:1.5];
         [self schedule:@selector(checkGameState) interval:0.1];
-        [self schedule:@selector(timerUpdate:) interval:0.001];
+        [self schedule:@selector(timerUpdate:) interval:0.001];*/
 	}
     
 	return self;
@@ -199,7 +200,7 @@
 
 -(void) setHillsLevel {
     //testing: hard-code 5 points
-    botLeft = [[NSArray alloc] initWithObjects:
+    /*botLeft = [[NSArray alloc] initWithObjects:
                [NSValue valueWithCGPoint:CGPointMake(16, 146)],
                [NSValue valueWithCGPoint:CGPointMake(63, 135.5)],
                [NSValue valueWithCGPoint:CGPointMake(105.5, 111)],
@@ -307,11 +308,14 @@
     [self addChild:rainbow4 z:-95];
     [self addChild:rainbow3 z:-95];
     [self addChild:rainbow2 z:-95];
-    [self addChild:rainbow z:-95];
+    [self addChild:rainbow z:-95];*/
 }
 
 -(void) pauseGame {
-    if (self.isTouchEnabled) {
+    //[[Game sharedGame] resetGameState];
+    [gameOverDelegate returnToMenu];
+    
+    /*if (self.isTouchEnabled) {
         //UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Paused" message:@"Press the button to..." delegate:self cancelButtonTitle:@"Resume" otherButtonTitles:@"Back Home", nil];
         //[alert show];
         //gamePaused = TRUE;
@@ -321,7 +325,7 @@
         
         [[CCDirector sharedDirector] pause];
         [_hud showPauseMenu:gameOverDelegate];
-    }
+    }*/
 }
 
 /*-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
@@ -358,58 +362,6 @@
         hitsLabel.visible = TRUE;
     }
     
-    /*update "hp"
-     [hpBar1 setString:[NSString stringWithFormat:@"hp 1: %d", hp1]];
-     [hpBar2 setString:[NSString stringWithFormat:@"hp 2: %d", hp2]];
-     [hpBar3 setString:[NSString stringWithFormat:@"hp 3: %d", hp3]];
-     
-     switch (tempDifficulty) {
-     case 1:
-     if (hp1 <= 0) {
-     [[Game sharedGame] setBaseScore:baseScore];
-     [[Game sharedGame] setMultiplier:multiplier];
-     [[Game sharedGame] setTimeBonus: (myTime%60)];
-     tempDifficulty += 1;
-     [[Game sharedGame] setDifficulty:tempDifficulty];
-     [self unscheduleAllSelectors];
-     [_hud showRestartMenu:YES];
-     
-     
-     // CCLabelTTF *gameCompleteLabel = [CCLabelTTF labelWithString:@"Success!" fontName:@"Arial" fontSize:40];
-     
-     gameOver = TRUE;
-     return;
-     }
-     break;
-     case 2:
-     if (hp1 <= 0 && hp2 <= 0) {
-     tempDifficulty += 1;
-     [[Game sharedGame] setDifficulty:tempDifficulty];
-     [self unscheduleAllSelectors];
-     [_hud showRestartMenu:YES];
-     
-     
-     // CCLabelTTF *gameCompleteLabel = [CCLabelTTF labelWithString:@"Success!" fontName:@"Arial" fontSize:40];
-     
-     gameOver = TRUE;
-     return;
-     }
-     break;
-     case 3:
-     if (hp1 <= 0 && hp2 <= 0 && hp3 <= 0) {
-     tempDifficulty += 1;
-     [[Game sharedGame] setDifficulty:tempDifficulty];
-     [self unscheduleAllSelectors];
-     [_hud showRestartMenu:YES];
-     
-     
-     // CCLabelTTF *gameCompleteLabel = [CCLabelTTF labelWithString:@"Success!" fontName:@"Arial" fontSize:40];
-     
-     gameOver = TRUE;
-     return;
-     }
-     break;
-     }*/
     //check if game is over
     if (myTime <= 0 || lives <= 0) {
         [self unscheduleAllSelectors];
@@ -743,7 +695,7 @@
                 testObj.scale = 0.4;
                 testObj.tag = 0;
                 [self addChild:testObj];
-                [coins addObject:testObj];
+                //[coins addObject:testObj];
 
                 CCRotateBy *rotateCoin = [CCRotateBy actionWithDuration:1.9 angle:(360*7)];
                 CCCallFuncN *removeCoin = [CCCallFuncN actionWithTarget:self selector:@selector(removeCoin:)];
@@ -782,7 +734,7 @@
                 lives -= 1;
                 if ([hearts count] > 0) {
                     [self removeChild:[hearts objectAtIndex:[hearts count] - 1] cleanup:YES];
-                    [hearts removeLastObject];
+                    //[hearts removeLastObject];
                 }
             }
             
@@ -850,7 +802,7 @@
         lives -= 1;
         if ([hearts count] > 0) {
             [self removeChild:[hearts objectAtIndex:[hearts count] - 1] cleanup:YES];
-            [hearts removeLastObject];
+            //[hearts removeLastObject];
         }
 
         baseScore -= 10;
@@ -863,7 +815,7 @@
 -(void) removeCoin: (id) sender {
     CCSprite *coin = (CCSprite *) sender;
     
-    [coins removeObject:coin];
+    //[coins removeObject:coin];
     [self removeChild:coin cleanup:YES];
 }
 

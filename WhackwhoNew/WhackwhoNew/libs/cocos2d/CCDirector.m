@@ -316,7 +316,7 @@ static CCDirector *_sharedDirector = nil;
 		// set size
 		winSizeInPixels_ = winSizeInPoints_ = CCNSSizeToCGSize( [view_ bounds].size );
 
-		[self createStatsLabel];
+		//[self createStatsLabel];
 		
 		// it could be nil
 		if( view )

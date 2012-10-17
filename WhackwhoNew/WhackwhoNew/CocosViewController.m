@@ -11,6 +11,7 @@
 @implementation CocosViewController
 
 @synthesize goingBackToMenu;
+@synthesize myglview;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,10 +27,60 @@
     [super viewDidLoad];
     
     //do anything else that only needs to load once
-    goingBackToMenu = NO;
+    //goingBackToMenu = NO;
+    
+    CCDirector *director = [CCDirector sharedDirector];
+    
+    if ([director isPaused]) {
+        [director resume];
+    }
+    
+   // CCGLView *glView = [CCGLView viewWithFrame:CGRectMake(0, 0, 480, 320)
+     //                              pixelFormat:kEAGLColorFormatRGB565   //kEAGLColorFormatRGBA8
+       //                            depthFormat:0    //GL_DEPTH_COMPONENT24_OES
+         //                   preserveBackbuffer:NO
+           //                         sharegroup:nil
+             //                    multiSampling:NO
+               //                numberOfSamples:0];
+    
+    // HERE YOU CHECK TO SEE IF THERE IS A SCENE RUNNING IN THE DIRECTOR ALREADY
+    if(![director runningScene]){
+        if (!director.view) {
+            [director setDisplayStats:NO];
+            [director setView:myglview];
+        }
+         // SET THE DIRECTOR VIEW
+        if( ! [director enableRetinaDisplay:YES] ) // ENABLE RETINA
+            CCLOG(@"Retina Display Not supported");
+        
+        //[director runWithScene:[LoadLayer sceneWithDelegate:self]]; // RUN THE SCENE
+        
+        [director runWithScene:[HelloWorldLayer sceneWithDelegate:self]]; // RUN THE SCENE
+        
+    } else {
+        // THERE IS A SCENE, START SINCE IT WAS STOPPED AND REPLACE TO RESTART
+        [director startAnimation];
+        //[director.view setFrame:CGRectMake(0, 0, 480, 320)];
+        //[director runWithScene:[LoadLayer sceneWithDelegate:self]]; // RUN THE SCENE
+        
+        [director runWithScene:[HelloWorldLayer sceneWithDelegate:self]];
+    }
+    
+    //[director willMoveToParentViewController:nil];
+    //[director.view removeFromSuperview];
+    //[director removeFromParentViewController];
+    //[director willMoveToParentViewController:self];
+    
+    // Add the director as a child view controller of this view controller.
+    //[self addChildViewController:director];
+    //[self.view addSubview: director.view];
+    //[self.view sendSubviewToBack:director.view];
+    
+    // Finish up our view controller containment responsibilities.
+    //[director didMoveToParentViewController:self];
 }
 
-- (void) viewWillAppear:(BOOL)animated {
+/*- (void) viewWillAppear:(BOOL)animated {
     
     if (goingBackToMenu) {
         goingBackToMenu = NO;
@@ -81,7 +132,7 @@
     
     // Finish up our view controller containment responsibilities.
     [director didMoveToParentViewController:self];
-}
+}*/
 
 -(void)proceedToReview {
     CCDirector *director = [CCDirector sharedDirector];
@@ -110,17 +161,26 @@
 
 - (void)returnToMenu {    
     CCDirector *director = [CCDirector sharedDirector];
-    [director removeFromParentViewController];
-    [director.view removeFromSuperview];
-    [director didMoveToParentViewController:nil];
+    //[director removeFromParentViewController];
+    //[director.view removeFromSuperview];
+    //[director didMoveToParentViewController:nil];
     
     [director end];
-    director.delegate = nil;
-    int total_stack = [self.navigationController.viewControllers count];
     
+    //director.delegate = nil;
+    //director.view = nil;
+    //[CCLabelBMFont purgeCachedData];
+    //[CCAnimationCache purgeSharedAnimationCache];
+	//[CCSpriteFrameCache purgeSharedSpriteFrameCache];
+	//[CCTextureCache purgeSharedTextureCache];
+	//[CCShaderCache purgeSharedShaderCache];
+	//[[CCFileUtils sharedFileUtils] purgeCachedEntries];
+    
+    //[director end];
+    //int total_stack = [self.navigationController.viewControllers count];
+    [self.navigationController popViewControllerAnimated:YES];
     //how to pop to status view?
-    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:(total_stack - 2)] animated:YES];
-    //int totalStack = [self.navigationController.viewControllers count];
+    //[self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:(total_stack - 2)] animated:YES];
     
     /*if (totalStack == 8) {
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:5] animated:YES];
@@ -137,7 +197,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    [[CCDirector sharedDirector] setDelegate:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

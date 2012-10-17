@@ -15,8 +15,11 @@
 @interface CocosViewController : UIViewController <CCDirectorDelegate, GameOverDelegate> {
     BOOL goingBackToMenu;
     
+    IBOutlet CCGLView *myglview;
+    
 }
 
+@property (nonatomic) IBOutlet CCGLView *myglview;
 @property (nonatomic) BOOL goingBackToMenu;
 
 @end
