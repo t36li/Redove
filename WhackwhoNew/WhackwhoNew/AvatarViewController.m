@@ -103,6 +103,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     
     cameraOverlayView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"camera view overlay.png"]];
     [markingView addSubview:cameraOverlayView];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -213,7 +214,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     // Log info about the serialization
     NSLog(@"RKParams HTTPHeaderValueForContentType = %@", [params HTTPHeaderValueForContentType]);
     
-    [[RKObjectManager sharedManager].client post:@"/userImage" params:params delegate:self];
+    [[RKObjectManager sharedManager].client post:@"/user/head" params:params delegate:self];
     //[[RKObjectManager sharedManager].client put:@"/userImage" params:params delegate:self];
      
 }

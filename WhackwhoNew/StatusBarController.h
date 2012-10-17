@@ -12,7 +12,7 @@
 #import "StatusCocosDelegate.h"
 #import <RestKit/RestKit.h>
 
-@interface StatusBarController : UIViewController<RKObjectLoaderDelegate> {// <CCDirectorDelegate, GameOverDelegate> {
+@interface StatusBarController : UIViewController<RKObjectLoaderDelegate, UIAlertViewDelegate> {// <CCDirectorDelegate, GameOverDelegate> {
     IBOutlet UIView *containerView;
     
     //define the outlets for gear

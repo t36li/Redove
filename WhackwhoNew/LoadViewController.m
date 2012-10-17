@@ -32,16 +32,7 @@
         [self performSegueWithIdentifier:@"LoginToFacebook" sender:nil];
     }
     
-    //NSLog(@"load UserInfo");
-    switch ((int)[usr currentLogInType]) {
-        case LogInFacebook:
-            fbs = [FBSingleton sharedInstance];
-            if ([fbs isLogIn]) [fbs RequestMe];
-            break;
-        case NotLogIn :            
-        default:
-            break;
-    }
+
     
     NSLog(@"load Background");
     [gmethods setViewBackground:loading_bg viewSender:self.view];
@@ -52,67 +43,27 @@
 
 -(void) viewDidLoad {
     [super viewDidLoad];
-    [self initializeConnections];
-    self.navigationController.navigationBarHidden = YES;
-}
-/*- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    
+    NSLog(@"Load/set currentLogInType");
+    int loginId =((int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs] == 0)? 0 : (int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs];
+    usr = [UserInfo sharedInstance];
+    [usr setCurrentLogInType:loginId];
+    //NSLog(@"load UserInfo");
+    switch ((int)[usr currentLogInType]) {
+        case LogInFacebook:
+            fbs = [FBSingleton sharedInstance];
+            if ([fbs isLogIn]) [fbs RequestMe];
+            break;
+        case NotLogIn:
+        default:
+            break;
     }
-    return self;
-}
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    //mainMenu.hidden = YES;
-    
-    CCDirector *director = [CCDirector sharedDirector];
-    
-    if([director isViewLoaded] == NO)
-    {
-        // Create the OpenGL view that Cocos2D will render to.
-        CCGLView *glView = [CCGLView viewWithFrame:[self.view bounds]
-                                       pixelFormat:kEAGLColorFormatRGB565
-                                       depthFormat:0
-                                preserveBackbuffer:NO
-                                        sharegroup:nil
-                                     multiSampling:NO
-                                   numberOfSamples:0];
-        
-        //[glView setMultipleTouchEnabled:YES];
-        // Assign the view to the director.
-        [director setView:glView];
-        
-        // Initialize other director settings.
-        [director setAnimationInterval:1.0f/60.0f];
-        [director enableRetinaDisplay:YES];
-        [director setDisplayStats:YES];
-    }
-    
-    [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
-    
-    [director willMoveToParentViewController:self];
-    [self addChildViewController:director];
-    [self.view addSubview:director.view];
-    [self.view sendSubviewToBack:director.view];
-    [director didMoveToParentViewController:self];
-    
-    [director runWithScene:[LoadLayer sceneWithDelegate:self]];
-}*/
+}
 
 -(void) viewDidAppear:(BOOL)animated{
-    /*
-     if ((int)usr.currentLogInType != NotLogIn){
-     LoginAccountImageView.image = [gmethods imageForObject:usr.userId];
-     }
-     else {
-     LoginAccountImageView.image = nil;
-     }
-     */
+    [self initializeConnections];
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -128,19 +79,12 @@
     //NSLog(@"profilepictureloaded profileimage: %@",LoginAccountImageView.image);
 }
 
--(void)FBSingletonDidLogout {
-    //self.LoginAccountImageView.image = nil;
-    //[self dismissModalViewControllerAnimated:YES];
-    //[[UserInfo sharedInstance] setCurrentLogInType:NotLogIn];
-}
-
 -(void)FBSingletonDidLogin:(NSString *)userId :(NSString *)userName :(NSString *)gender {
     //[[FBSingleton sharedInstance] RequestMeProfileImage];
     [[UserInfo sharedInstance] setCurrentLogInType:LogInFacebook];
     [[UserInfo sharedInstance] setUserId:userId];
     [[UserInfo sharedInstance] setUserName:userName];
     [[UserInfo sharedInstance] setGender:gender];
-    //[self.navigationController popViewControllerAnimated:YES];
     [[FBSingleton sharedInstance] RequestMe];
 }
 
@@ -168,6 +112,10 @@
         //test upload image
         //[self testUploadImage];
     }
+    
+    if ([self.navigationController topViewController] != self)
+        [self.navigationController popToRootViewControllerAnimated:YES];
+
 }
 
 #pragma mark- database delegate methods
@@ -233,6 +181,9 @@
     userObject = object;
     [userObject copyToUserInfo];
     NSLog(@"User data loaded.");
+    [myLabel setText:@"Loading Complete!"];
+    [self performSelector:@selector(goToMenu) withObject:nil afterDelay:1.5];
+    /*
     if(usr->usrImg == nil){
         UIAlertView *takePicAlert = [[UIAlertView alloc] initWithTitle:@"Newbie?" message:@"Take a photo" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         takePicAlert.tag = newbieAlert;
@@ -240,14 +191,14 @@
     } else {
         [myLabel setText:@"Loading Complete!"];
         [self performSelector:@selector(goToMenu) withObject:nil afterDelay:1.5];
-    }
+    }*/
 }
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error{
     UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Loading Error" message:@"Database Connection Failed: unable to pull out your profile" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [errorAlert show];
 }
-
+/*
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (alertView.tag == networkErrorAlert){
         
@@ -257,7 +208,7 @@
             [self performSegueWithIdentifier:@"LoadToAvatar" sender:self];
         }
     }
-}
+}*/
 
 
 

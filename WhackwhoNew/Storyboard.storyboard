@@ -253,7 +253,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="wZI-0E-4pI" kind="push" id="gff-oY-V5c"/>
+                                    <segue destination="wZI-0E-4pI" kind="push" identifier="goToAvatar" id="gff-oY-V5c"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uQN-HI-g79" userLabel="Ok Button">
@@ -941,7 +941,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A5K-lf-t03" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2103" y="-930"/>
+            <point key="canvasLocation" x="-2375" y="181"/>
         </scene>
         <!--Load View Controller-->
         <scene sceneID="tVA-Ob-2kd">
@@ -973,7 +973,6 @@
                     <connections>
                         <outlet property="myLabel" destination="yNN-57-wew" id="VCc-WM-Pk5"/>
                         <segue destination="Nsl-EU-HzN" kind="push" identifier="GoToMenuSegue" id="TaV-sK-cbs"/>
-                        <segue destination="wZI-0E-4pI" kind="push" identifier="LoadToAvatar" id="2de-dV-3w5"/>
                         <segue destination="Y2f-Ky-VQq" kind="push" identifier="LoginToFacebook" id="4KT-zR-lzO"/>
                     </connections>
                 </viewController>
@@ -1054,12 +1053,11 @@
                         <outlet property="play_but" destination="uv1-mf-JIH" id="NKP-ur-UDi"/>
                         <segue destination="vVV-bT-q6I" kind="push" identifier="PlayToStatusSegue" id="xFH-vp-meh"/>
                         <segue destination="muy-dF-9KG" kind="push" identifier="PlayToFriendSegue" id="ydD-IN-fvF"/>
-                        <segue destination="Y2f-Ky-VQq" kind="push" identifier="PlayToSelectLogInSegue" id="2Ck-2k-j9S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jcM-k3-5zf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3995" y="-355"/>
+            <point key="canvasLocation" x="-3011" y="-407"/>
         </scene>
         <!--Friends View Controller-->
         <scene sceneID="ubQ-k2-43g">
@@ -1136,22 +1134,6 @@
                                     <action selector="FBTouched:" destination="Y2f-Ky-VQq" eventType="touchUpInside" id="BGX-29-GvQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3Jb-EX-f8z">
-                                <rect key="frame" x="171" y="188" width="154" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Email">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="EMTouched:" destination="Y2f-Ky-VQq" eventType="touchUpInside" id="OVh-zE-oWM"/>
-                                    <segue destination="gRh-5I-zoN" kind="push" id="vB9-GZ-A5c"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -1159,13 +1141,12 @@
                     <navigationItem key="navigationItem" id="vG0-XF-6ED"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="EMBut" destination="3Jb-EX-f8z" id="SSp-fd-d8J"/>
                         <outlet property="FBBut" destination="1oX-5I-yhA" id="G2n-7Z-DeD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mVC-ww-vrf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2431" y="293"/>
+            <point key="canvasLocation" x="-3859" y="-375"/>
         </scene>
         <!--Mode Selection View Controller - Difficulty Selection-->
         <scene sceneID="Cex-y9-cMJ">
@@ -1464,67 +1445,6 @@
             </objects>
             <point key="canvasLocation" x="251" y="-343"/>
         </scene>
-        <!--Email View Controller - Email-->
-        <scene sceneID="T3E-lB-ySk">
-            <objects>
-                <viewController storyboardIdentifier="" title="Email" id="gRh-5I-zoN" customClass="EmailViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="j4c-bj-fwc">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please enter email here" minimumFontSize="17" id="7RA-Hh-hs2">
-                                <rect key="frame" x="61" y="91" width="254" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pnW-l1-Mws">
-                                <rect key="frame" x="323" y="88" width="87" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Send!">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please enter verification code here" minimumFontSize="17" id="bQK-NY-QnB">
-                                <rect key="frame" x="61" y="160" width="254" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Zjb-FA-Glt">
-                                <rect key="frame" x="323" y="154" width="87" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Confirm!">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="confirm_pressed:" destination="gRh-5I-zoN" eventType="touchUpInside" id="Bdh-Om-O6H"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="eON-gc-qNa"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <connections>
-                        <segue destination="vVV-bT-q6I" kind="push" identifier="EmailToStatusSegue" id="Hid-eZ-3Fn"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VC3-T3-vP3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1059" y="-771"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="rfM-Fq-uxS">
             <objects>
@@ -1776,9 +1696,4 @@
         <simulatedOrientationMetrics key="orientation" orientation="landscapeRight"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="2Ck-2k-j9S"/>
-        <segue reference="xFH-vp-meh"/>
-        <segue reference="gff-oY-V5c"/>
-    </inferredMetricsTieBreakers>
 </document>

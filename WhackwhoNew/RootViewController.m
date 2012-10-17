@@ -83,6 +83,7 @@
     [LoginAccountImageView setImageWithURL:[NSURL URLWithString:formatting]];
 }
 
+
 -(void) viewDidAppear:(BOOL)animated{
     /*
     if ((int)usr.currentLogInType != NotLogIn){
@@ -92,6 +93,7 @@
         LoginAccountImageView.image = nil;
     }
      */
+    fbs.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -104,7 +106,8 @@
 
 -(IBAction)play_touched:(id)sender{
     NSLog(@"Play Button Touched");
-    
+    [self performSegueWithIdentifier:PlayToStatusSegue sender:sender];
+/*
     switch ((int)[usr currentLogInType]) {
         case NotLogIn:{
             [self performSegueWithIdentifier:PlayToSelectLogInSegue sender:sender];
@@ -125,7 +128,7 @@
             [self performSegueWithIdentifier:PlayToSelectLogInSegue sender:sender];
             break;
         }
-    }
+    }*/
 }
 
 -(IBAction)opt_touched:(id)sender{
@@ -161,19 +164,22 @@
         
        // [[RKObjectManager sharedManager].client post:@"/uploadImage" params:params delegate:self];
 }
-
+/*
 //FBSingleton Delegate:
 -(void) FBProfilePictureLoaded:(UIImage *)img{
     LoginAccountImageView.image = img;
     NSLog(@"profilepictureloaded profileimage: %@",LoginAccountImageView.image);
 }
-
+*/
 -(void)FBSingletonDidLogout {
     self.LoginAccountImageView.image = nil;
-    [self dismissModalViewControllerAnimated:YES];
+    [[UserInfo sharedInstance] clearUserInfo];
     [[UserInfo sharedInstance] setCurrentLogInType:NotLogIn];
+    
+    [self dismissModalViewControllerAnimated:NO];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
-
+/*
 -(void)FBSingletonDidLogin:(NSString *)userId :(NSString *)userName :(NSString *)gender {
     //[[FBSingleton sharedInstance] RequestMeProfileImage];
     [[UserInfo sharedInstance] setCurrentLogInType:LogInFacebook];
@@ -184,14 +190,14 @@
     [[FBSingleton sharedInstance] RequestMe];
     
     
-}
+}*/
 
 -(void) FBSIngletonUserFriendsDidLoaded:(NSArray *)friends{
     friendVC.resultData = friends;
     [friendVC.spinner removeSpinner];
     [friendVC.friendTable reloadData];
 }
-
+/*
 
 -(void) FbMeLoaded:(NSString *)userId :(NSString *)userName : (NSString *)gender{
     if (userId != nil){
@@ -210,7 +216,7 @@
         //test upload image
         //[self testUploadImage];
     }
-}
+}*/
 
 //////////////////////Database REST:
 /*

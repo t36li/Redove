@@ -68,5 +68,5 @@ NSString *const UserChinPosition = @"ChinPosition";
 -(void) clearUserInfo;
 -(void) setUserPicture:(UIImage *)img delegate:(id)sender;
 +(UIImage *)getCroppedImage:(UIImage *)img inRect:(CGRect)rect;
-
++(UIImage *)resizeImage:(UIImage *)image toSize:(CGSize)newSize;
 @end

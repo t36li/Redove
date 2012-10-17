@@ -40,11 +40,6 @@
     }
 }
 
--(void)FBSingletonDidLogout{
-    [[UserInfo sharedInstance] clearUserInfo];
-    [self dismissModalViewControllerAnimated:YES];
-}
-
 -(IBAction)back_touched:(id)sender{
     [self dismissModalViewControllerAnimated:YES];
 }
