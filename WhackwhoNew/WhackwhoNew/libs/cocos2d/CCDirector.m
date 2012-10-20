@@ -310,8 +310,9 @@ static CCDirector *_sharedDirector = nil;
 #ifdef __CC_PLATFORM_IOS
 		[super setView:view];
 #endif
-		[view_ release];
-		view_ = [view retain];
+		//[view_ release];
+		//view_ = [view retain];
+        view_ = view;
 
 		// set size
 		winSizeInPixels_ = winSizeInPoints_ = CCNSSizeToCGSize( [view_ bounds].size );
@@ -443,6 +444,8 @@ static CCDirector *_sharedDirector = nil;
 	// remove all objects, but don't release it.
 	// runWithScene might be executed after 'end'.
 	[scenesStack_ removeAllObjects];
+    [scenesStack_ release];
+    scenesStack_ = nil;
 
 	[self stopAnimation];
 
@@ -470,7 +473,7 @@ static CCDirector *_sharedDirector = nil;
 
 	// Since the director doesn't attach the openglview to the window
 	// it shouldn't remove it from the window too.
-//	[openGLView_ removeFromSuperview];
+	//[openGLView_ removeFromSuperview];
 
 
 	// Invalidate GL state cache

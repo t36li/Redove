@@ -25,7 +25,7 @@
     NSMutableArray *selectedHits;
     NSArray *hitWindows;
     
-    UIImage *defaultImage;
+    //UIImage *defaultImage;
 
     IBOutlet HitWindow *hit1;
     IBOutlet HitWindow *hit2;
@@ -46,6 +46,7 @@
     
     UITableView *table;
     NSArray *resultFriends;
+    NSMutableArray *resultStrangers;
     SpinnerView *spinner;
     IBOutlet UIView *loadingView;
     PullToRefreshView *tablepull;
@@ -62,7 +63,7 @@
 @property (nonatomic) IBOutlet UIImageView *leftHammer;
 @property (nonatomic) IBOutlet UIImageView *rightHammer;
 
-@property (nonatomic) UIImage *defaultImage;
+//@property (nonatomic) UIImage *defaultImage;
 
 @property (nonatomic) IBOutlet UIView *containerView, *popupView, *characterReviewView;
 @property (nonatomic) IBOutlet UIImageView *faceView;
@@ -75,6 +76,7 @@
 @property (nonatomic) SpinnerView *spinner;
 @property (nonatomic) IBOutlet UIView *loadingView;
 @property (nonatomic, strong) NSArray *resultFriends;
+@property (nonatomic, strong) NSMutableArray *resultStrangers;
 @property (nonatomic) NSArray *hitWindows;
 
 @property (nonatomic) UIButton *uploadBtn, *dismissPopupBtn;

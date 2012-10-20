@@ -22,25 +22,6 @@
 @implementation HelloWorldLayer
 
 @synthesize gameOverDelegate;
-// Helper class method that creates a Scene with the HelloWorldLayer as the only child.
-/*+(CCScene *) scene
-{
-    // 'scene' is an autorelease object.
-	CCScene *scene = [CCScene node];
-	
-    // 'hud' is the restart object
-    HUDLayer *hud = [HUDLayer node];
-    [scene addChild:hud z:10];
-    
-	// 'layer' is an autorelease object.
-	HelloWorldLayer *layer = [[HelloWorldLayer alloc] initWithHUD:hud];
-    
-	// add layer as a child to scene
-	[scene addChild: layer];
-	
-	// return the scene
-	return scene;
-}*/
 
 +(CCScene *) sceneWithDelegate:(id<GameOverDelegate>)delegate
 {
@@ -70,7 +51,7 @@
 	if( (self=[super init]) ) {
         
         //init retard variables
-        /*consecHits = 0;
+        consecHits = 0;
         totalTime = 45;
         myTime = (int)totalTime;
         baseScore = 0;
@@ -81,10 +62,10 @@
         //gamePaused = FALSE;
         has_bomb = FALSE;
         
-        hearts = [[NSArray alloc] init];
-        coins = [[NSArray alloc] init];
-        bomb = [[NSArray alloc] init];
-        heads = [[NSArray alloc] init];
+        hearts = [[NSMutableArray alloc] init];
+        coins = [[NSMutableArray alloc] init];
+        bomb = [[NSMutableArray alloc] init];
+        heads = [[NSMutableArray alloc] init];
 
         CGSize s = CGSizeMake(480, 320);
         
@@ -126,6 +107,7 @@
         hitsLabel.position = ccp(s.width/2, s.height - 10);
         //hitsLabel.scale = 0.1;
         [self addChild:hitsLabel z:10];
+        hitsLabel.visible = FALSE;
         
         //add combat text label
         ctLabel = [CCLabelTTF labelWithString:@"+1" fontName:@"chalkduster" fontSize:30];
@@ -133,7 +115,7 @@
         ctLabel.anchorPoint = ccp(0.5,0.5);
         //ctLabel.position = ccp(s.width/2, s.height/2);
         [self addChild:ctLabel z:10];
-        ctLabel.visible = FALSE;*/
+        ctLabel.visible = FALSE;
         
         //add "pause" label
         CCMenuItemImage *pause = [CCMenuItemImage itemWithNormalImage:@"pause.png" selectedImage:@"pause.png" target:self selector:@selector(pauseGame)];
@@ -143,7 +125,7 @@
         [self addChild:pauseMenu z:10];
         
         //add "life" sprites
-       /* lives = 3;
+        lives = 3;
         for (int i = 0; i < lives; i++) {
             CCSprite *life = [CCSprite spriteWithFile:@"heart.png"];
             life.anchorPoint = ccp(1,1);
@@ -192,7 +174,7 @@
         
         [self schedule:@selector(tryPopheads) interval:1.5];
         [self schedule:@selector(checkGameState) interval:0.1];
-        [self schedule:@selector(timerUpdate:) interval:0.001];*/
+        [self schedule:@selector(timerUpdate:) interval:0.001];
 	}
     
 	return self;
@@ -200,7 +182,7 @@
 
 -(void) setHillsLevel {
     //testing: hard-code 5 points
-    /*botLeft = [[NSArray alloc] initWithObjects:
+    botLeft = [[NSArray alloc] initWithObjects:
                [NSValue valueWithCGPoint:CGPointMake(16, 146)],
                [NSValue valueWithCGPoint:CGPointMake(63, 135.5)],
                [NSValue valueWithCGPoint:CGPointMake(105.5, 111)],
@@ -285,7 +267,7 @@
     
     
     //add "rainbows"
-    rainbows = [[NSMutableArray alloc] init];
+    /*rainbows = [[NSMutableArray alloc] init];
     CCSprite *rainbow = [CCSprite spriteWithFile:@"rainbow4.png"];
     rainbow.position = ccp(156, 192);
     rainbow.visible = FALSE;
@@ -327,19 +309,6 @@
         [_hud showPauseMenu:gameOverDelegate];
     }*/
 }
-
-/*-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    
-    if (buttonIndex == 0) {
-        gamePaused = FALSE;
-        [[CCDirector sharedDirector] resume];
-    } else if (buttonIndex == 1) {
-        gameOver = TRUE;
-        [[Game sharedGame] resetGameState];
-        [gameOverDelegate returnToMenu];
-    }
-    
-}*/
 
 -(void) timerUpdate: (ccTime) deltT {
     if (gameOver) return;
@@ -565,10 +534,6 @@
     //id action = [CCLiquid actionWithWaves:10 amplitude:20 grid:ccg(10,10) duration:5 ];
 
     [head runAction:[CCSequence actions: setTappable, easeMoveUp, delay, easeMoveDown,unsetTappable, checkCombo, nil]];
-
-    //CCFadeTo *fadeOut = [CCFadeTo actionWithDuration:0.5 opacity:0];
-    //CCFadeTo *fadeIn = [CCFadeTo actionWithDuration:0.5 opacity:255];
-    //CCAnimate *laugh = [CCAnimate actionWithAnimation:laughAnim];
 }
 
 -(float) getAngleWithPts: (CGPoint) pt1 andPointTwo: (CGPoint) pt2 {
@@ -598,8 +563,6 @@
     head.visible = FALSE;
 
     if (head.didMiss && head.isSelectedHit) {
-        //play add score animation
-        baseScore += consecHits;
         consecHits = 0;
     }
     
@@ -607,10 +570,9 @@
     if (consecHits == 0) {
         
         //set all rainbows to not visible
-        for (CCSprite *rainbow in rainbows) {
-            [rainbow runAction:[CCFadeOut actionWithDuration:0.5]];
-            rainbow.visible = FALSE;
-        }
+       // for (CCSprite *rainbow in rainbows) {
+         //   rainbow.visible = FALSE;
+        //}
         
         speed = 1.5;
         [self unschedule:@selector(tryPopheads)];
@@ -619,21 +581,21 @@
     } else if (consecHits % 5 == 0){
         
         //show rainbows every 5 hit combos
-        for (CCSprite *rainbow in rainbows) {
-            if (rainbow.visible == FALSE) {
-                [rainbow setVisible:TRUE];
-                CCFadeTo *fadeOut = [CCFadeTo actionWithDuration:0.5 opacity:80];
-                CCFadeTo *fadeIn = [CCFadeTo actionWithDuration:0.5 opacity:255];
-                CCRepeatForever *repeat = [CCRepeatForever actionWithAction:[CCSequence actionOne:fadeOut two:fadeIn]];
-                [rainbow runAction:repeat];
-                
-                //update speed accordingly with combo times
-                speed *= 0.5;
-                [self unschedule:@selector(tryPopheads)];
-                [self schedule:@selector(tryPopheads) interval:speed];
-                return;
-            }
-        }
+        //for (CCSprite *rainbow in rainbows) {
+          //  if (rainbow.visible == FALSE) {
+            //    [rainbow setVisible:TRUE];
+              //  CCFadeTo *fadeOut = [CCFadeTo actionWithDuration:0.5 opacity:80];
+               // CCFadeTo *fadeIn = [CCFadeTo actionWithDuration:0.5 opacity:255];
+               // CCRepeatForever *repeat = [CCRepeatForever actionWithAction:[CCSequence actionOne:fadeOut two:fadeIn]];
+                //[rainbow runAction:repeat];
+                //break;
+            //}
+        //}
+        //update speed accordingly with combo times
+        speed *= 0.5;
+        [self unschedule:@selector(tryPopheads)];
+        [self schedule:@selector(tryPopheads) interval:speed];
+
     }
 }
 
@@ -662,8 +624,6 @@
             CCCallFuncN *removeCoin = [CCCallFuncN actionWithTarget:self selector:@selector(removeCoin:)];
             [coin runAction:[CCSequence actions:scaleCoinUp, scaleCoinDown, removeCoin, nil]];
             break;
-            //[self removeChild:coin cleanup:YES];
-            //[coins removeObject:coin];
         }
     }
     
@@ -688,22 +648,22 @@
             CCCallFuncN *removeHitEffect = [CCCallFuncN actionWithTarget:self selector:@selector(removeHitEffect:)];
             [hitEffect runAction:[CCSequence actions:scaleUp, scaleDown, removeHitEffect, nil]];
             
-            //10% chance for a coin to popup
-            if (arc4random() % 100 < 10) {
-                CCSprite *testObj = [CCSprite spriteWithFile:@"coin front.png"];
-                testObj.position = ccp(head.position.x + head.contentSize.width * head.scaleX/2, head.position.y);
-                testObj.scale = 0.4;
-                testObj.tag = 0;
-                [self addChild:testObj];
-                //[coins addObject:testObj];
-
-                CCRotateBy *rotateCoin = [CCRotateBy actionWithDuration:1.9 angle:(360*7)];
-                CCCallFuncN *removeCoin = [CCCallFuncN actionWithTarget:self selector:@selector(removeCoin:)];
-                [testObj runAction:[CCSequence actions: rotateCoin, removeCoin, nil]];
-            }
-            
             //if hit the correct "mole"
             if (head.isSelectedHit) {
+                
+                //10% chance for a coin to popup
+                if (arc4random() % 100 < 10) {
+                    CCSprite *testObj = [CCSprite spriteWithFile:@"coin front.png"];
+                    testObj.position = ccp(location.x, location.y);
+                    testObj.scale = 0.4;
+                    testObj.tag = 0;
+                    [self addChild:testObj];
+                    [coins addObject:testObj];
+                    
+                    CCRotateBy *rotateCoin = [CCRotateBy actionWithDuration:1.9 angle:(360*7)];
+                    CCCallFuncN *removeCoin = [CCCallFuncN actionWithTarget:self selector:@selector(removeCoin:)];
+                    [testObj runAction:[CCSequence actions: rotateCoin, removeCoin, nil]];
+                }
                 
                 head.hp -= 2;
                 head.numberOfHits ++;
@@ -734,18 +694,25 @@
                 lives -= 1;
                 if ([hearts count] > 0) {
                     [self removeChild:[hearts objectAtIndex:[hearts count] - 1] cleanup:YES];
-                    //[hearts removeLastObject];
+                    [hearts removeLastObject];
                 }
+                
+                //send all heads down
+                for (Character *head in heads) {
+                    [head stopAllActions];
+                    head.visible = FALSE;
+                    head.tappable = FALSE;
+                    [head runAction:[CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)]];
+                }
+                break;
             }
-            
+        
             float height_now = head.contentSize.height * head.scaleY;
             
             float rotation = CC_DEGREES_TO_RADIANS(head.rotation);
             CCMoveBy *moveDown = [CCMoveBy actionWithDuration:0.5 position:ccp(-(5+height_now) * sin(rotation), -(height_now+5) * cos(rotation))];
             CCMoveBy *easeMoveDown = [CCEaseOut actionWithAction:moveDown rate:3.0];
             CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
-            //CCCallFuncN *addMouthEffect = [CCCallFuncN actionWithTarget:self selector:@selector(applyMouthEffect:)];
-            //[head runAction:addMouthEffect];
             
             [head runAction:[CCSequence actions: easeMoveDown, checkCombo, nil]];
             
@@ -795,27 +762,27 @@
     [self removeChild:hitEffect cleanup:YES];
 }
 
--(void) removeBomb: (id) sender {
-    CCSprite *tempbomb = (CCSprite *) sender;
+//-(void) removeBomb: (id) sender {
+  //  CCSprite *tempbomb = (CCSprite *) sender;
     
-    if (tempbomb.tag == 0) {
-        lives -= 1;
-        if ([hearts count] > 0) {
-            [self removeChild:[hearts objectAtIndex:[hearts count] - 1] cleanup:YES];
-            //[hearts removeLastObject];
-        }
+   // if (tempbomb.tag == 0) {
+     //   lives -= 1;
+       // if ([hearts count] > 0) {
+         //   [self removeChild:[hearts objectAtIndex:[hearts count] - 1] cleanup:YES];
+           // [hearts removeLastObject];
+        //}
 
-        baseScore -= 10;
-    }
+    //    baseScore -= 10;
+    //}
     
-    has_bomb = FALSE;
-    [self removeChild:tempbomb cleanup:YES];
-}
+    //has_bomb = FALSE;
+    //[self removeChild:tempbomb cleanup:YES];
+//}
 
 -(void) removeCoin: (id) sender {
     CCSprite *coin = (CCSprite *) sender;
     
-    //[coins removeObject:coin];
+    [coins removeObject:coin];
     [self removeChild:coin cleanup:YES];
 }
 

@@ -19,7 +19,7 @@
 @implementation HitWhoViewController
 
 @synthesize hit1, hit2, hit3, hit4;
-@synthesize defaultImage;
+//@synthesize defaultImage;
 
 @synthesize containerView;
 @synthesize faceView, helmetView, bodyView, hammerView, shieldView;
@@ -27,7 +27,7 @@
 
 @synthesize table;
 @synthesize spinner, loadingView;
-@synthesize resultFriends, hitWindows;
+@synthesize resultFriends, resultStrangers, hitWindows;
 
 - (void)viewDidLoad
 {
@@ -51,7 +51,7 @@
     
     
     //change this to something else later
-    [self setDefaultImage:[UIImage imageNamed:@"vlad.png"]];
+    //[self setDefaultImage:[UIImage imageNamed:@"vlad.png"]];
     
     [[FBSingleton sharedInstance] setDelegate:self];
     [[FBSingleton sharedInstance] RequestFriendUsing];
@@ -81,6 +81,12 @@
     [hammerView setContentMode:UIViewContentModeScaleToFill];
     hammerView.transform = CGAffineTransformMakeRotation(45*pi/180);
     [shieldView setContentMode:UIViewContentModeScaleToFill];
+    
+    faceView.image = nil;
+    bodyView.image = nil;
+    helmetView.image = nil;
+    hammerView.image = nil;
+    shieldView.image = nil;
 }
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -222,8 +228,15 @@
     [friendArray copyToUserInfo];
 
     self.resultFriends = [NSArray arrayWithArray:[[[UserInfo sharedInstance] friendArray] friends]];
+    self.resultStrangers = [NSMutableArray arrayWithArray:[[[UserInfo sharedInstance] friendArray] strangers]];
     
-    //NSLog(@"%@",[[resultFriends objectAtIndex:0] currentEquip].hammerArm);
+    for (int i = 0; i < resultStrangers.count; i++) {
+        Friend *tempFriend = [resultStrangers objectAtIndex:i];
+        if ([tempFriend.whackwho_id isEqualToString:[NSString stringWithFormat:@"%i", [[UserInfo sharedInstance] whackWhoId]]]) {
+            [resultStrangers removeObject:tempFriend];
+            break;
+        }
+    }
     
     [self.table reloadData];
     [spinner removeSpinner];
@@ -276,21 +289,23 @@
 
 -(IBAction)battleTouched:(id)sender {
     int max_popups = 2 * [selectedHits count] + 1;
-
+    //max_popups = 2;
     void (^block)(BOOL) = ^(BOOL finished) {
         if (finished) {
             NSMutableArray *finalImages = [[NSMutableArray alloc] initWithCapacity:max_popups];
             
             for (int i = 0; i < max_popups; ++i) {
                 if (selectedHits.count > i) {
-                    [finalImages addObject:[self captureImageInHitBox:i]];
+                    [finalImages addObject:[self captureImageInHitBox:i withArray:0]];
                 } else {
-                    [finalImages addObject:defaultImage];
+                    //[finalImages addObject:defaultImage];
+                    //going to decide in captureimagefunction stranger selection criteria
+                    [finalImages addObject:[self captureImageInHitBox:0 withArray:1]];
                 }
             }
             
-            //[[Game sharedGame] setSelectHeadCount:selectedHits.count];
-            //[[Game sharedGame] setArrayOfAllPopups:finalImages];
+            [[Game sharedGame] setSelectHeadCount:selectedHits.count];
+            [[Game sharedGame] setArrayOfAllPopups:finalImages];
             
             [self performSegueWithIdentifier:ChooseToGame sender:sender];
             isHammerDown = YES;
@@ -308,9 +323,22 @@
 #pragma mark - capture image
 
 //you do not capture the different equipments. etc
-- (UIImage *)captureImageInHitBox:(NSInteger)number {
-    Friend *friend = [selectedHits objectAtIndex:number];
-    faceView.image = friend.head.headImage;
+- (UIImage *)captureImageInHitBox:(NSInteger)number withArray: (NSInteger)array {
+    //capturing image from friends
+    //YOU ARE NOT CAPTURING INFO ABOUT THEIR EQUIPMENTS
+    Friend *friend;
+    if (array == 0) {
+        friend = [selectedHits objectAtIndex:number];
+        faceView.image = friend.head.headImage;
+    } else {//capturing image from strangers
+        //int randInt = arc4random() % resultStrangers.count;
+        friend = [resultStrangers objectAtIndex:0];
+        if (!friend.head.headImage) {
+            friend.head.headImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.whackwho.com/userImages/%@.png", friend.head_id]]]];
+        }
+        faceView.image = friend.head.headImage;
+    }
+    
     // If scale is 0, it'll follows the screen scale for creating the bounds
     UIGraphicsBeginImageContextWithOptions(self.containerView.bounds.size, NO, 1.0f);
     
