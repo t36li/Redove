@@ -23,28 +23,8 @@
 
 @synthesize gameOverDelegate;
 
-+(CCScene *) sceneWithDelegate:(id<GameOverDelegate>)delegate
-{
-	// 'scene' is an autorelease object.
-	CCScene *scene = [CCScene node];
-    
-    // 'hud' is the restart object
-    HUDLayer *hud = [HUDLayer node];
-    [scene addChild:hud z:10];
-	
-	// 'layer' is an autorelease object.
-	HelloWorldLayer *layer = [[HelloWorldLayer alloc] initWithHUD:hud];
-    layer.gameOverDelegate = delegate;
-    
-	// add layer as a child to scene
-	[scene addChild: layer z:0];
-    
-	// return the scene
-	return scene;
-}
-
 // on "init" you need to initialize your instance
--(id) initWithHUD:(HUDLayer *)hud
+-(id) init
 {
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
@@ -56,7 +36,7 @@
         myTime = (int)totalTime;
         baseScore = 0;
         speed = 1.5;
-        _hud = hud;
+        //_hud = hud;
         self.isTouchEnabled = YES;
         gameOver = FALSE;
         //gamePaused = FALSE;
@@ -135,7 +115,7 @@
         }
         
         //add "Scoreboard"
-        CCSprite *scoreboard = [CCSprite spriteWithFile:@"scoreboard.png"];
+        scoreboard = [CCSprite spriteWithFile:@"scoreboard.png"];
         scoreboard.anchorPoint = ccp(0.5, 0);
         scoreboard.position = ccp(s.width/2 + 10, -10);
         scoreboard.scale = 0.8;
@@ -178,6 +158,151 @@
 	}
     
 	return self;
+}
+
+-(void) reset {
+    [self unschedule:@selector(tryPopheads)];
+    [self unschedule:@selector(checkGameState)];
+    [self unschedule:@selector(timerUpdate:)];
+    
+    CCNode *child;
+    CCARRAY_FOREACH(self.children, child) {
+        [child stopAllActions];
+    }
+    
+    consecHits = 0;
+    totalTime = 45;
+    myTime = (int)totalTime;
+    baseScore = 0;
+    speed = 1.5;
+    //_hud = hud;
+    self.isTouchEnabled = YES;
+    gameOver = FALSE;
+    //gamePaused = FALSE;
+    has_bomb = FALSE;
+    
+    for (CCNode *node in hearts)
+        [self removeChild:node cleanup:YES];
+    [hearts removeAllObjects];
+    for (CCNode *node in coins)
+         [self removeChild:node cleanup:YES];
+    [coins removeAllObjects];
+    for (CCNode *node in bomb)
+        [self removeChild:node cleanup:YES];
+    [bomb removeAllObjects];
+    for (Character *toon in heads)
+        [self removeChild:toon cleanup:YES];
+    [heads removeAllObjects];
+    
+    CGSize s = CGSizeMake(480, 320);
+    
+    
+    // set background in future
+//    CCSprite *bg;
+//    //determine which background to load
+//    int level = [[Game sharedGame] difficulty];
+//    switch (level) {
+//        case 1:
+//            bg = [CCSprite spriteWithFile:background2];
+//            bg.position = ccp(s.width/2, s.height/2);
+//            [self addChild:bg];
+//            break;
+//        default:
+//            [self performSelector:@selector(setHillsLevel)];
+//            break;
+//    }
+    
+    shake_once = false;
+        
+    //add timer label
+    [self removeChild:timeLabel cleanup:YES];
+    timeLabel = [CCLabelTTF labelWithString:@"0:0" fontName:@"chalkduster" fontSize:30];
+    timeLabel.color = ccc3(255, 249, 0);
+    timeLabel.anchorPoint = ccp(0,1);
+    timeLabel.position = ccp(15, s.height);
+    [self addChild:timeLabel z:10];
+    
+    //add "hits" label
+    [self removeChild:hitsLabel cleanup:YES];
+    hitsLabel = [CCLabelTTF labelWithString:@"X" fontName:@"chalkduster" fontSize:35];
+    hitsLabel.color = ccc3(255, 0, 0);
+    hitsLabel.anchorPoint = ccp(0.5,1);
+    hitsLabel.position = ccp(s.width/2, s.height - 10);
+    //hitsLabel.scale = 0.1;
+    [self addChild:hitsLabel z:10];
+    hitsLabel.visible = FALSE;
+    
+    //add combat text label
+    [self removeChild:ctLabel cleanup:YES];
+    ctLabel = [CCLabelTTF labelWithString:@"+1" fontName:@"chalkduster" fontSize:30];
+    ctLabel.color = ccc3(255, 0, 0);
+    ctLabel.anchorPoint = ccp(0.5,0.5);
+    //ctLabel.position = ccp(s.width/2, s.height/2);
+    [self addChild:ctLabel z:10];
+    ctLabel.visible = FALSE;
+    
+//    //add "pause" label
+//    CCMenuItemImage *pause = [CCMenuItemImage itemWithNormalImage:@"pause.png" selectedImage:@"pause.png" target:self selector:@selector(pauseGame)];
+//    CCMenu *pauseMenu = [CCMenu menuWithItems:pause, nil];
+//    pauseMenu.anchorPoint = ccp(0,0);
+//    pauseMenu.position = ccp(20,20);
+//    [self addChild:pauseMenu z:10];
+    
+    //add "life" sprites
+    lives = 3;
+    for (int i = 0; i < lives; i++) {
+        CCSprite *life = [CCSprite spriteWithFile:@"heart.png"];
+        life.anchorPoint = ccp(1,1);
+        life.position = ccp(s.width - 5 - i*25, s.height - 5);
+        [hearts addObject:life];
+        [self addChild:life z:10];
+    }
+    
+    //add "Scoreboard"
+    [self removeChild:scoreboard cleanup:YES];
+    scoreboard = [CCSprite spriteWithFile:@"scoreboard.png"];
+    scoreboard.anchorPoint = ccp(0.5, 0);
+    scoreboard.position = ccp(s.width/2 + 10, -10);
+    scoreboard.scale = 0.8;
+    [self addChild:scoreboard z:-36];
+    
+    //add "score" label
+    [self removeChild:scoreLabel cleanup:YES];
+    scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"chalkduster" fontSize:50];
+    scoreLabel.color = ccc3(255, 200, 0);
+    scoreLabel.position = ccp(scoreboard.contentSize.width/2, scoreboard.contentSize.height/2);
+    [scoreboard addChild:scoreLabel z:10];
+    
+    
+    //!!!! initializing popups
+    //use the array from game.h which contains all image names
+    //int xpad = 50; //for testing
+    int i = 0;
+    for (UIImage *person in [[Game sharedGame] arrayOfAllPopups]) {
+        Character *head = [Character spriteWithCGImage:[person CGImage] key:[NSString stringWithFormat:@"person%i", i]];
+        
+        if (i < [[Game sharedGame] selectHeadCount]) {
+            head.isSelectedHit = TRUE;
+        } else {
+            head.isSelectedHit = FALSE;
+        }
+        
+        head.visible = FALSE;
+        [self addChild:head];
+        [heads addObject:head];
+        i++; //for key purposes
+        
+        //for testing
+        //head.position = ccp(xpad, s.height/2);
+        //xpad += 60;
+        //head.visible = TRUE;
+    }
+    
+    
+    [self schedule:@selector(tryPopheads) interval:1.5];
+    [self schedule:@selector(checkGameState) interval:0.1];
+    [self schedule:@selector(timerUpdate:) interval:0.001];
+
 }
 
 -(void) setHillsLevel {
@@ -362,7 +487,7 @@
         }
         [game setArrayOfHits:array];
         
-        [[CCDirector sharedDirector] pause];
+        //[[CCDirector sharedDirector] pause];
         
         [gameOverDelegate proceedToReview];
         
@@ -790,7 +915,35 @@
     CCLabelTTF *temp = (CCLabelTTF *) sender;
     temp.visible = FALSE;
 }
-
 // on "dealloc" you need to release all your retained objects
+@end
+
+@implementation HelloWorldScene
+
+@synthesize layer=_layer;
+
+
+- (id)init {
+    
+    if ((self = [super init])) {
+        // 'hud' is the restart object
+        HUDLayer *hud = [HUDLayer node];
+        [self addChild:hud z:10];
+        
+        self.layer = [HelloWorldLayer node];
+        [self addChild:self.layer z:0];
+    }
+	
+	return self;
+}
+
+-(void)reset {
+    [self removeAllChildrenWithCleanup:YES];
+    HUDLayer *hud = [HUDLayer node];
+    [self addChild:hud z:10];
+    
+    self.layer = [HelloWorldLayer node];
+    [self addChild:self.layer z:0];
+}
 
 @end

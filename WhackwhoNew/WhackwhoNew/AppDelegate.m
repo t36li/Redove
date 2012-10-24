@@ -32,6 +32,10 @@
     [User objectMappingLoader];
     //[FriendArray objectMappingLoader];
     
+    CCDirector *director = [CCDirector sharedDirector];
+    
+    [director setAnimationInterval:1.0f/60.0f];
+    [director enableRetinaDisplay:YES];
     return YES;
 }
 

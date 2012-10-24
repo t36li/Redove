@@ -181,6 +181,8 @@ static UserInfo *sharedInstance = nil;
     
     // end context
     UIGraphicsEndImageContext();
+    
+    return outputImg;
 }
 
 @end

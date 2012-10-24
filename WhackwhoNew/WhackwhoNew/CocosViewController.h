@@ -12,14 +12,10 @@
 #import "GameOverDelegate.h"
 #import "StatusViewLayer.h"
 
-@interface CocosViewController : UIViewController <CCDirectorDelegate, GameOverDelegate> {
+@interface CocosViewController : UIViewController {
     BOOL goingBackToMenu;
-    
-    IBOutlet CCGLView *myglview;
-    
 }
 
-@property (nonatomic) IBOutlet CCGLView *myglview;
 @property (nonatomic) BOOL goingBackToMenu;
 
 @end

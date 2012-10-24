@@ -26,11 +26,11 @@
 
 - (void)restartTapped:(id)sender {
     
-    // Reload the current scene    
-    CCScene *scene = [HelloWorldLayer sceneWithDelegate:gameOverDelegate];
-    [[Game sharedGame] resetGameState];
-    [[CCDirector sharedDirector] resume];
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.5 scene:scene]];
+//    // Reload the current scene    
+//    CCScene *scene = [HelloWorldLayer sceneWithDelegate:gameOverDelegate];
+//    [[Game sharedGame] resetGameState];
+//    [[CCDirector sharedDirector] resume];
+//    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.5 scene:scene]];
 }
 
 - (void)mainMenuTapped:(id)sender {
