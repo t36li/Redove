@@ -56,7 +56,7 @@
 }
 
 -(void)hitBack:(id)sender {
-    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count - 3] animated:YES];
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count - 4] animated:YES];
 }
 
 -(void) clearImageViews {

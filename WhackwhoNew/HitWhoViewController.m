@@ -380,22 +380,17 @@
     }
     
     NSInteger index = [selectedHits indexOfObject:friendSelected];
-    HitWindow *tempWindow;
     switch (index) {
         case 0:
-            tempWindow = hit1;
             hitNumber.image = [UIImage imageNamed:hitNumberOne];
             break;
         case 1:
-            tempWindow = hit2;
             hitNumber.image = [UIImage imageNamed:hitNumberTwo];
             break;
         case 2:
-            tempWindow = hit3;
             hitNumber.image = [UIImage imageNamed:hitNumberThree];
             break;
         case 3:
-            tempWindow = hit4;
             hitNumber.image = [UIImage imageNamed:hitNumberFour];
             break;
     }

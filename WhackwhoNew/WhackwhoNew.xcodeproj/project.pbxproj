@@ -439,6 +439,8 @@
 		D00600A815B5F3080079626F /* libSDWebImageARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D00600A115B5F29A0079626F /* libSDWebImageARC.a */; };
 		D006F6A915B4FB7D0079626F /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = D006F6A815B4FB7D0079626F /* Friend.m */; };
 		D006FCE615B51DC10079626F /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D006FCE515B51DC10079626F /* ImageIO.framework */; };
+		D04D763D163769BE003C858F /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D04D763B163769BE003C858F /* GameViewController.m */; };
+		D04D763E163769BE003C858F /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D04D763C163769BE003C858F /* GameViewController.xib */; };
 		D07F6FF01599463A0085DF2B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F6FEF1599463A0085DF2B /* CoreImage.framework */; };
 		D090C63815A238CF0051AA12 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D090C63715A238CF0051AA12 /* UserInfo.m */; };
 		D0948D4115ADFF0E00429477 /* AvatarBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0948D4015ADFF0E00429477 /* AvatarBaseController.m */; };
@@ -1084,6 +1086,9 @@
 		D006F6A715B4FB7D0079626F /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
 		D006F6A815B4FB7D0079626F /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
 		D006FCE515B51DC10079626F /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		D04D763A163769BE003C858F /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		D04D763B163769BE003C858F /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		D04D763C163769BE003C858F /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GameViewController.xib; path = ../GameViewController.xib; sourceTree = "<group>"; };
 		D07F6FEF1599463A0085DF2B /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		D08B5801160BFFF90082BA4B /* ear 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ear 2.png"; sourceTree = "<group>"; };
 		D08B5802160BFFF90082BA4B /* ear 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ear 1.png"; sourceTree = "<group>"; };
@@ -1594,6 +1599,7 @@
 		C147168C1594ACCA0002FF21 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D04D763C163769BE003C858F /* GameViewController.xib */,
 				D0B48499160E2C77000B95A7 /* FaceEffectsController.xib */,
 				D0948D3915AB6E9A00429477 /* AvatarView.xib */,
 				D09FD5DC159E4EB60079231D /* CameraOverlayControllerViewController.xib */,
@@ -1636,6 +1642,8 @@
 				C159347515B60B08009B7955 /* CCRobot.m */,
 				C14718591594F1AF0002FF21 /* CocosViewController.h */,
 				C147185A1594F1AF0002FF21 /* CocosViewController.m */,
+				D04D763A163769BE003C858F /* GameViewController.h */,
+				D04D763B163769BE003C858F /* GameViewController.m */,
 				D0AB828D1627BFD000A0EF0B /* ReviewViewController.h */,
 				D0AB828E1627BFD000A0EF0B /* ReviewViewController.m */,
 				C14B63B515AF5C3700376C91 /* Game.h */,
@@ -2795,6 +2803,7 @@
 				D0AB82881625212D00A0EF0B /* box frame.png in Resources */,
 				D0AB828B1625257E00A0EF0B /* rock.png in Resources */,
 				D0AB828C1625257E00A0EF0B /* wood background.png in Resources */,
+				D04D763E163769BE003C858F /* GameViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2854,6 +2863,7 @@
 				3DDA87BA16127B23005349D1 /* StorageInv.m in Sources */,
 				C12114611616967E00E3AAB1 /* HitWindow.m in Sources */,
 				D0AB828F1627BFD000A0EF0B /* ReviewViewController.m in Sources */,
+				D04D763D163769BE003C858F /* GameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3029,7 +3039,7 @@
 		C147180A1594ACD20002FF21 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: TIANBO LI (5BB7UGRU36)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos5.1]" = "iPhone Developer";
@@ -3057,7 +3067,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos5.1]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "\"WhackwhoNew/libs/kazmath/include\" ”$(TARGET_BUILD_DIR)/usr/local/lib/include” ”$(OBJROOT)/UninstalledProducts/include” '$(BUILT_PRODUCTS_DIR)/../../Headers'";
+				USER_HEADER_SEARCH_PATHS = "\"WhackwhoNew/libs/kazmath/include\" ”$(TARGET_BUILD_DIR)/usr/local/lib/include” ”$(OBJROOT)/UninstalledProducts/include” '$(BUILT_PRODUCTS_DIR)/../../Headers' \"WhackwhoNew/libs/cocos2d/";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3065,7 +3075,7 @@
 		C147180B1594ACD20002FF21 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: TIANBO LI (5BB7UGRU36)";
 				COPY_PHASE_STRIP = YES;
@@ -3092,7 +3102,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2A3A3CB5-3567-463A-B708-BA60487D1C68";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "\"WhackwhoNew/libs/kazmath/include\" ”$(TARGET_BUILD_DIR)/usr/local/lib/include” ”$(OBJROOT)/UninstalledProducts/include” '$(BUILT_PRODUCTS_DIR)/../../Headers'";
+				USER_HEADER_SEARCH_PATHS = "\"WhackwhoNew/libs/kazmath/include\" ”$(TARGET_BUILD_DIR)/usr/local/lib/include” ”$(OBJROOT)/UninstalledProducts/include” '$(BUILT_PRODUCTS_DIR)/../../Headers' \"WhackwhoNew/libs/cocos2d/";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "cocos2d.h"
+@class CocosViewController;
 
 @interface Game : NSObject {
     BOOL isGameOver;
@@ -20,6 +20,8 @@
     NSMutableArray *arrayOfAllPopups;
     NSArray *arrayOfHits;
     UIImage *head;
+    
+    UIViewController *gameView;
 }
 
 @property (nonatomic, readwrite) BOOL isGameOver;
@@ -36,6 +38,7 @@
 @property (nonatomic, strong) NSMutableArray *arrayOfAllPopups;
 @property (nonatomic, strong) NSArray *arrayOfHits;
 @property (nonatomic) UIImage *head;
+@property (nonatomic, strong) UIViewController *gameView;
 
 + (Game *) sharedGame;
 - (void) resetGameState;

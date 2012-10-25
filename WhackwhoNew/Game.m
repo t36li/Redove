@@ -7,6 +7,7 @@
 //
 
 #import "Game.h"
+#import "CocosViewController.h"
 
 static Game *sharedGame = nil;
 
@@ -23,6 +24,7 @@ static Game *sharedGame = nil;
 //@synthesize selectedHeads;
 @synthesize arrayOfAllPopups, arrayOfHits;
 @synthesize head;
+@synthesize gameView;
 
 #pragma mark -
 /////////////////////

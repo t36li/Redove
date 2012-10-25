@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12B19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="V6n-XQ-h9E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="V6n-XQ-h9E">
     <dependencies>
         <deployment version="1296" identifier="iOS"/>
         <development version="4300" identifier="xcode"/>
@@ -405,20 +405,12 @@
                     <view key="view" contentMode="scaleToFill" id="ZRY-HB-eTo">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" id="HkE-dL-DNL" customClass="CCGLView">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZjL-1t-UDA"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="myglview" destination="HkE-dL-DNL" id="Hfc-WH-7QJ"/>
                         <segue destination="hmH-w8-Zgh" kind="push" identifier="CocosToReview" id="sjh-R2-bTC"/>
                     </connections>
                 </viewController>
@@ -429,7 +421,7 @@
         <!--Review View Controller-->
         <scene sceneID="s5c-ap-G3B">
             <objects>
-                <viewController id="hmH-w8-Zgh" customClass="ReviewViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReviewViewController" id="hmH-w8-Zgh" customClass="ReviewViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KIe-bk-cT1">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1541,14 +1533,8 @@
                 <relationship kind="outlet" name="wtfView" candidateClass="UIView"/>
             </relationships>
         </class>
-        <class className="CCGLView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CCGLView.h"/>
-        </class>
         <class className="CocosViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CocosViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="myglview" candidateClass="CCGLView"/>
-            </relationships>
         </class>
         <class className="FriendsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewController.h"/>

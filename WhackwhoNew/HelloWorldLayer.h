@@ -16,7 +16,6 @@
 #import "Character.h"
 //#import "ChooseWhoLayer.h"
 #import "GlobalMethods.h"
-#import "UserInfo.h"
 #import "GameOverDelegate.h"
 
 // HelloWorldLayer
@@ -27,8 +26,9 @@
     NSMutableArray *rainbows;
     NSMutableArray *coins;
     NSMutableArray *bomb;
-
+    
     CCLabelTTF *hitsLabel, *timeLabel, *scoreLabel, *ctLabel;
+    CCSprite *scoreboard;
     ccTime totalTime;
     
     int myTime, lives;
@@ -45,10 +45,21 @@
 
 @property (nonatomic, strong) id<GameOverDelegate> gameOverDelegate;
 
+-(void)reset;
 // returns a CCScene that contains the HelloWorldLayer as the only child
 //+(CCScene *) scene;
-+(CCScene *) sceneWithDelegate:(id<GameOverDelegate>)delegate;
-- (id)initWithHUD:(HUDLayer *)hud;
 
 
 @end
+
+@interface HelloWorldScene : CCScene
+{
+    HelloWorldLayer *_layer;
+}
+
+-(void)reset;
+@property (nonatomic, strong) HelloWorldLayer *layer;
+
+@end
+
+
