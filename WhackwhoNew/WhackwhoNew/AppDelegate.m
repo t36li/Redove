@@ -77,7 +77,7 @@
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
-    
+    NSLog(@"Out of Memory!");
 }
 
 @end
