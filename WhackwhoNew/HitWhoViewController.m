@@ -178,8 +178,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Only handle taps if the view is related to showing nearby places that
     // the user can check-in to.
-    if (![resultFriends count] || [selectedHits count] >= 4)
+    if (![resultFriends count] || [selectedHits count] >= 4) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
         return;
+    }
         
     //Find which friend the user has selected
     Friend *friend = [resultFriends objectAtIndex:indexPath.row];
@@ -325,18 +327,41 @@
 //you do not capture the different equipments. etc
 - (UIImage *)captureImageInHitBox:(NSInteger)number withArray: (NSInteger)array {
     //capturing image from friends
-    //YOU ARE NOT CAPTURING INFO ABOUT THEIR EQUIPMENTS
+    //!!!!!!YOU ARE NOT CAPTURING INFO ABOUT THEIR EQUIPMENTS
     Friend *friend;
     if (array == 0) {
         friend = [selectedHits objectAtIndex:number];
         faceView.image = friend.head.headImage;
+        
+        CurrentEquip *ce = friend.currentEquip;
+        faceView.image = friendSelected.head.headImage;
+        helmetView.image = [UIImage imageNamed:ce.helmet];
+        bodyView.image = [UIImage imageNamed:ce.body];
+        hammerView.image = [UIImage imageNamed:ce.hammerArm];
+        shieldView.image = [UIImage imageNamed:ce.shieldArm];
+        
     } else {//capturing image from strangers
-        //int randInt = arc4random() % resultStrangers.count;
-        friend = [resultStrangers objectAtIndex:0];
+        int randInt;
+        while (TRUE) {
+            randInt = arc4random() % resultStrangers.count;
+            friend = [resultStrangers objectAtIndex:0];
+            NSString *selfGender = [[UserInfo sharedInstance] gender];
+            
+            if (![friend.gender isEqualToString:selfGender]) {
+                break;
+            }
+        }
+        
         if (!friend.head.headImage) {
             friend.head.headImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.whackwho.com/userImages/%@.png", friend.head_id]]]];
         }
         faceView.image = friend.head.headImage;
+        CurrentEquip *ce = friend.currentEquip;
+        faceView.image = friendSelected.head.headImage;
+        helmetView.image = [UIImage imageNamed:ce.helmet];
+        bodyView.image = [UIImage imageNamed:ce.body];
+        hammerView.image = [UIImage imageNamed:ce.hammerArm];
+        shieldView.image = [UIImage imageNamed:ce.shieldArm];
     }
     
     // If scale is 0, it'll follows the screen scale for creating the bounds

@@ -478,6 +478,7 @@
 	if( hasChildren_ )
 		[children_ makeObjectsPerformSelector:@selector(updateTransform)];
 
+
 #if CC_SPRITE_DEBUG_DRAW
 	// draw bounding box
 	CGPoint vertices[4] = {
