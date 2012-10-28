@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="V6n-XQ-h9E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C54" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="V6n-XQ-h9E">
     <dependencies>
         <deployment version="1296" identifier="iOS"/>
         <development version="4300" identifier="xcode"/>
@@ -388,11 +388,18 @@
                                 <rect key="frame" x="45" y="221" width="435" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="70Z-sW-Odx">
+                                <rect key="frame" x="59" y="186" width="401" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="r5z-vX-J1O"/>
+                    <connections>
+                        <outlet property="mainItemsScroll" destination="70Z-sW-Odx" id="3XV-Fn-9ru"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABn-0K-zfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -573,7 +580,7 @@
             <objects>
                 <viewController storyboardIdentifier="" title="Main Menu" id="roj-8l-2CS" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dx7-f6-dZt">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Whack Who" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="uIe-Oa-quE">
@@ -805,7 +812,7 @@
             <objects>
                 <viewController storyboardIdentifier="" title="Upload Picture" id="I8h-qE-rmG" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1ug-9b-2LZ">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Picture Scene" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="HqP-pK-9mt">
@@ -865,7 +872,7 @@
             <objects>
                 <viewController id="sqy-Cf-B9P" customClass="OptionsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cEO-iB-GHT">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lbw-xa-q6i">
@@ -940,7 +947,7 @@
             <objects>
                 <viewController id="Vj8-SE-OLF" customClass="LoadViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iQe-q5-hOJ">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="yNN-57-wew">
@@ -1108,7 +1115,7 @@
             <objects>
                 <viewController storyboardIdentifier="SelectToLoginVC" title="SelectToLogin" id="Y2f-Ky-VQq" customClass="SelectToLoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="veC-eQ-gEd">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1oX-5I-yhA">
@@ -1666,12 +1673,13 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StoreViewController.h"/>
             <relationships>
                 <relationship kind="action" name="Back_Touched:"/>
+                <relationship kind="outlet" name="mainItemsScroll" candidateClass="UIScrollView"/>
             </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation" orientation="landscapeRight"/>
-        <simulatedScreenMetrics key="destination"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
 </document>

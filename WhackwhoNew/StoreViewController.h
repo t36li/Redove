@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "GlobalMethods.h"
 
-@interface StoreViewController : UIViewController {
-    
+@interface StoreViewController : UIViewController<UIScrollViewDelegate> {
+    UIScrollView *mainItemsScroll;
+    float oldX; // here or better in .h interface
 }
-
+@property (strong, nonatomic) IBOutlet UIScrollView *mainItemsScroll;
 
 - (IBAction)Back_Touched:(id)sender;
 
