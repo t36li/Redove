@@ -39,7 +39,7 @@
     CCDirector *director = [CCDirector sharedDirector];
     
     director.view = ccglView;
-    
+    [director.view setFrame:CGRectMake(0, 0, 480, 320)];
     // Set the view controller as the director's delegate, so we can respond to certain events.
     director.delegate = self;
     
