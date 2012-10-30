@@ -50,6 +50,7 @@
     
     director.view = glView;
     
+    
     // Set the view controller as the director's delegate, so we can respond to certain events.
     director.delegate = self;
     [director setAnimationInterval:1.0f/60.0f];

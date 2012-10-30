@@ -65,12 +65,14 @@
         coins = [[NSMutableArray alloc] init];
         bomb = [[NSMutableArray alloc] init];
         heads = [[NSMutableArray alloc] init];
-
+        
         CGSize s = CGSizeMake(480, 320);
         
         CCSprite *bg;
+
         //determine which background to load
         int level = [[Game sharedGame] difficulty];
+        level = 0;
         switch (level) {
             case 1:
             {
@@ -80,15 +82,12 @@
                 break;
             }
             default:
-                [self performSelector:@selector(setHillsLevel)];
+                
                 break;
         }
         
-        //set background color to white
-        glClearColor(255, 255, 255, 255);
-        
         //code for initializing shake
-        self.isAccelerometerEnabled = YES;
+        /*self.isAccelerometerEnabled = YES;
         [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1/60];
         shake_once = false;
                 
@@ -173,7 +172,7 @@
         
         [self schedule:@selector(tryPopheads) interval:1.5];
         [self schedule:@selector(checkGameState) interval:0.1];
-        [self schedule:@selector(timerUpdate:) interval:0.001];
+        [self schedule:@selector(timerUpdate:) interval:0.001];*/
 	}
     
 	return self;
@@ -181,7 +180,7 @@
 
 -(void) setHillsLevel {
     //testing: hard-code 5 points
-    botLeft = [[NSArray alloc] initWithObjects:
+    /*botLeft = [[NSArray alloc] initWithObjects:
                [NSValue valueWithCGPoint:CGPointMake(16, 146)],
                [NSValue valueWithCGPoint:CGPointMake(63, 135.5)],
                [NSValue valueWithCGPoint:CGPointMake(105.5, 111)],
@@ -229,10 +228,14 @@
                 [NSValue valueWithCGPoint:CGPointMake(843/2, 320-196/2)],
                 [NSValue valueWithCGPoint:CGPointMake(897/2, 320-176/2)],
                 //[NSValue valueWithCGPoint:CGPointMake(938/2, 320-169/2)],
-                nil];
+                nil];*/
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+
+    glClearColor(255, 255, 255, 255);
     
     CGSize s = CGSizeMake(480, 320);
     //add background this is for retina display
+    [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
     CCSprite *bg1 = [CCSprite spriteWithFile:hills_l1];
     CCSprite *bg2 = [CCSprite spriteWithFile:hills_l2];
     CCSprite *bg3 = [CCSprite spriteWithFile:hills_l3];
@@ -262,7 +265,24 @@
     [self addChild:bg7 z:-90];
     [self addChild:bg8 z:-100];
     [self addChild:bg9 z:-110];
+    [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
+    [CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
     
+    CCSpriteBatchNode *spritesBgNode;
+    spritesBgNode = [CCSpriteBatchNode batchNodeWithFile:@"backgroundtest3.pvr.ccz"];
+    [self addChild:spritesBgNode];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"backgroundtest3.plist"];
+    
+    //because naming fucked up. L7 and L8 has to be swapped
+    
+    NSArray *images = [NSArray arrayWithObjects:@"L1.png", @"L2.png", @"L3.png", @"L4.png", @"L5.png", @"L6.png", @"L8.png", @"L7.png", @"L9.png", nil];
+    for(int i = 0; i < images.count; ++i) {
+        NSString *image = [images objectAtIndex:i];
+        CCSprite *sprite = [CCSprite spriteWithSpriteFrameName:image];
+        sprite.position = ccp(winSize.width/2, winSize.height/2);
+        [spritesBgNode addChild:sprite z:(i*-10)];
+    }
+
     
     //add "rainbows"
     /*rainbows = [[NSMutableArray alloc] init];

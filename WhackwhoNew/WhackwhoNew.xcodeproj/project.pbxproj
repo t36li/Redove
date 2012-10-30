@@ -681,6 +681,8 @@
 		C12114571616044300E3AAB1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C121145F1616967E00E3AAB1 /* HitWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HitWindow.m; sourceTree = "<group>"; };
 		C12114601616967E00E3AAB1 /* HitWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HitWindow.h; sourceTree = "<group>"; };
+		C132395F163C5C5E00117DF5 /* backgroundtest3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = backgroundtest3.plist; sourceTree = "<group>"; };
+		C1323960163C5C5E00117DF5 /* backgroundtest3.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = backgroundtest3.pvr.ccz; sourceTree = "<group>"; };
 		C13D5EF315C5CEA0006F716C /* mouth effect test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mouth effect test1.png"; sourceTree = "<group>"; };
 		C13D5EF515C5EF85006F716C /* redo icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redo icon.png"; sourceTree = "<group>"; };
 		C13D5EF615C5EF86006F716C /* ok icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ok icon.png"; sourceTree = "<group>"; };
@@ -1453,6 +1455,8 @@
 		69C95E94159A51E0009966DA /* Background */ = {
 			isa = PBXGroup;
 			children = (
+				C132395F163C5C5E00117DF5 /* backgroundtest3.plist */,
+				C1323960163C5C5E00117DF5 /* backgroundtest3.pvr.ccz */,
 				C19A3A4C160E814600C6E8F9 /* champ select bg.png */,
 				C1A792D11613E984006F9C8E /* champ select backgrond.png */,
 				C19A3A4E160E815000C6E8F9 /* side wall.png */,
