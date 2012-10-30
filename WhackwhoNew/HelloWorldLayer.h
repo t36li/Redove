@@ -45,10 +45,6 @@
 
 @property (nonatomic, strong) id<GameOverDelegate> gameOverDelegate;
 
--(void)reset;
-// returns a CCScene that contains the HelloWorldLayer as the only child
-//+(CCScene *) scene;
-
 
 @end
 
@@ -57,7 +53,6 @@
     HelloWorldLayer *_layer;
 }
 
--(void)reset;
 @property (nonatomic, strong) HelloWorldLayer *layer;
 
 @end

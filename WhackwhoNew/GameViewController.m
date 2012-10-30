@@ -38,19 +38,27 @@
     
     CCDirector *director = [CCDirector sharedDirector];
     
-    director.view = ccglView;
+    //director.view = ccglView;
+    
+    CCGLView *glView = [CCGLView viewWithFrame:[[[UIApplication sharedApplication] keyWindow] bounds]
+                                   pixelFormat:kEAGLColorFormatRGB565
+                                   depthFormat:0
+                            preserveBackbuffer:NO
+                                    sharegroup:nil
+                                 multiSampling:NO
+                               numberOfSamples:0];
+    
+    director.view = glView;
     
     // Set the view controller as the director's delegate, so we can respond to certain events.
     director.delegate = self;
-    
+    [director setAnimationInterval:1.0f/60.0f];
+    [director enableRetinaDisplay:YES];
     // Add the director as a child view controller of this view controller.
     [self addChildViewController:director];
     
-    // Finish up our view controller containment responsibilities.
-    [director didMoveToParentViewController:self];
-    
     [self.view addSubview:director.view];
-    
+    [director didMoveToParentViewController:self];
     
     if (![director runningScene]) {
         HelloWorldScene *newScene = [HelloWorldScene node];
