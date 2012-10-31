@@ -17,8 +17,6 @@
 
 @implementation GameViewController
 
-@synthesize ccglView;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -37,8 +35,6 @@
     // Do any additional setup after loading the view from its nib.
     
     CCDirector *director = [CCDirector sharedDirector];
-    
-    //director.view = ccglView;
     
     CCGLView *glView = [CCGLView viewWithFrame:[[[UIApplication sharedApplication] keyWindow] bounds]
                                    pixelFormat:kEAGLColorFormatRGB565
