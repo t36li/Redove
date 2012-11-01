@@ -452,6 +452,7 @@
 		D074BE5B1640941C00AF51EE /* vec3.c in Sources */ = {isa = PBXBuildFile; fileRef = D074BD6A1640941C00AF51EE /* vec3.c */; };
 		D074BE5C1640941C00AF51EE /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = D074BD6B1640941C00AF51EE /* vec4.c */; };
 		D07F6FF01599463A0085DF2B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F6FEF1599463A0085DF2B /* CoreImage.framework */; };
+		D08CE2FE164213130073576B /* Level2.plist in Resources */ = {isa = PBXBuildFile; fileRef = D08CE2FD164213130073576B /* Level2.plist */; };
 		D090C63815A238CF0051AA12 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D090C63715A238CF0051AA12 /* UserInfo.m */; };
 		D0948D4115ADFF0E00429477 /* AvatarBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0948D4015ADFF0E00429477 /* AvatarBaseController.m */; };
 		D09800CA1609621F009E97E8 /* green board.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800C61609621E009E97E8 /* green board.png */; };
@@ -1125,6 +1126,7 @@
 		D08B5808160BFFF90082BA4B /* lip 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lip 1.png"; sourceTree = "<group>"; };
 		D08B5809160BFFF90082BA4B /* eye1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye1.png; sourceTree = "<group>"; };
 		D08B580A160BFFF90082BA4B /* tear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tear.png; sourceTree = "<group>"; };
+		D08CE2FD164213130073576B /* Level2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level2.plist; sourceTree = "<group>"; };
 		D090C63615A238CE0051AA12 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		D090C63715A238CF0051AA12 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		D0948D3915AB6E9A00429477 /* AvatarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AvatarView.xib; path = ../AvatarView.xib; sourceTree = "<group>"; };
@@ -1569,6 +1571,7 @@
 		C147166A1594ACCA0002FF21 = {
 			isa = PBXGroup;
 			children = (
+				D08CE2FD164213130073576B /* Level2.plist */,
 				D04D76501638CBAC003C858F /* splash_sheet.plist */,
 				D04D76511638CBAC003C858F /* splash_sheet.png */,
 				C12114571616044300E3AAB1 /* Default-568h@2x.png */,
@@ -2844,6 +2847,7 @@
 				D04D763E163769BE003C858F /* GameViewController.xib in Resources */,
 				D04D76521638CBAD003C858F /* splash_sheet.plist in Resources */,
 				D04D76531638CBAD003C858F /* splash_sheet.png in Resources */,
+				D08CE2FE164213130073576B /* Level2.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
