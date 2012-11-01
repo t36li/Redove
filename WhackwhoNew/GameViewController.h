@@ -11,8 +11,6 @@
 #import "GameOverDelegate.h"
 
 @interface GameViewController : UIViewController <CCDirectorDelegate, GameOverDelegate> {
-    IBOutlet CCGLView *ccglView;
 }
 
-@property (nonatomic, strong) CCGLView *ccglView;
 @end

@@ -17,8 +17,6 @@
 
 @implementation GameViewController
 
-@synthesize ccglView;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -38,8 +36,6 @@
     
     CCDirector *director = [CCDirector sharedDirector];
     
-    //director.view = ccglView;
-    
     CCGLView *glView = [CCGLView viewWithFrame:[[[UIApplication sharedApplication] keyWindow] bounds]
                                    pixelFormat:kEAGLColorFormatRGB565
                                    depthFormat:0
@@ -55,6 +51,7 @@
     director.delegate = self;
     [director setAnimationInterval:1.0f/60.0f];
     [director enableRetinaDisplay:YES];
+    [director setDisplayStats:YES];
     // Add the director as a child view controller of this view controller.
     [self addChildViewController:director];
     
