@@ -345,10 +345,17 @@
         while (TRUE) {
             randInt = arc4random() % resultStrangers.count;
             friend = [resultStrangers objectAtIndex:0];
+            
             NSString *selfGender = [[UserInfo sharedInstance] gender];
             
-            if (![friend.gender isEqualToString:selfGender]) {
-                break;
+            if (arc4random() % 100 < 70) {
+                if (![friend.gender isEqualToString:selfGender]) {
+                    break;
+                }
+            } else {
+                if ([friend.gender isEqualToString:selfGender]) {
+                    break;
+                }
             }
         }
         

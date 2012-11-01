@@ -53,13 +53,15 @@
         
         //determine which background to load
         int level = [[Game sharedGame] difficulty];
-        level = 0;
+        level = 1;
+        CCSprite *bg;
         switch (level) {
             case 1:
-                
+                bg = [CCSprite spriteWithFile:@"background 2.png"];
+                [self addChild:bg];
                 break;
             default:
-                
+                [self performSelector:@selector(setHillsLevel)];
                 break;
         }
         
