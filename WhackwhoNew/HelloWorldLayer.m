@@ -72,11 +72,10 @@
         
         //0: Hills level
         //1: Water level
-        level = 0;
         
         switch (level) {
             case 1:
-                [self performSelector:@selector(setWaterLevel)];
+                [self performSelector:@selector(setSeaLevel)];
                 break;
                 
             default:
@@ -274,6 +273,32 @@
     [self addChild:rainbow3 z:-95];
     [self addChild:rainbow2 z:-95];
     [self addChild:rainbow z:-95];*/
+}
+
+-(void) setSeaLevel {
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    
+    glClearColor(255, 255, 255, 255);
+    
+    [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
+    [CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
+    
+    CCSpriteBatchNode *spritesBgNode;
+    spritesBgNode = [CCSpriteBatchNode batchNodeWithFile:@"background2.pvr.ccz"];
+    [self addChild:spritesBgNode];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"background2.plist"];
+    
+    //because naming fucked up. L7 and L8 has to be swapped
+    NSArray *images = [NSArray arrayWithObjects:@"L1.png", @"L2.png", @"L3.png", @"L4.png", @"L5.png", @"L6.png", nil];
+    for(int i = 0; i < images.count; ++i) {
+        NSString *image = [images objectAtIndex:i];
+        CCSprite *sprite = [CCSprite spriteWithSpriteFrameName:image];
+        sprite.anchorPoint = ccp(0.5,0.5);
+        sprite.position = ccp(winSize.height/2, winSize.width/2);
+        [spritesBgNode addChild:sprite z:(i*10)];
+    }
+    
+
 }
 
 -(void) pauseGame {
