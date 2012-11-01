@@ -29,15 +29,18 @@
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) ) {
-        [self addChild:[CCSprite spriteWithFile:@"splash_sheet.png"]];
+        
+        //[self addChild:[CCSprite spriteWithFile:@"splash_sheet.png"]];
         
         CGSize winSize = [CCDirector sharedDirector].winSize;
+        //returns width:320, height:480
+        //but since our orientation is landscape, should switch the two when position objects
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"splash_sheet.plist"];
         CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"splash_sheet.png"];
         CCSprite *splash = [CCSprite spriteWithSpriteFrameName:@"s1.png"];
-        splash.position = ccp(winSize.width/2, winSize.height/2);
+        splash.position = ccp(winSize.height/2, winSize.width/2);
         [spriteSheet addChild:splash];
-        [self addChild:spriteSheet];
+        [self addChild:spriteSheet z:50];
         
         NSMutableArray *splashFrames = [NSMutableArray array];
         for (int i = 1; i <= 13; i ++) {
@@ -46,8 +49,6 @@
         CCAnimation *splashAnim = [CCAnimation animationWithSpriteFrames:splashFrames delay:0.1f];
         CCAction *splashAction = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:splashAnim]];
         [splash runAction:splashAction];
-
-        return self;
         
         //init retard variables
         consecHits = 0;
@@ -66,26 +67,24 @@
         bomb = [[NSMutableArray alloc] init];
         heads = [[NSMutableArray alloc] init];
         
-        CGSize s = CGSizeMake(480, 320);
-        
-        CCSprite *bg;
-
         //determine which background to load
         int level = [[Game sharedGame] difficulty];
-        level = 1;
-        CCSprite *bg;
+        
+        //0: Hills level
+        //1: Water level
+        level = 0;
+        
         switch (level) {
             case 1:
-                bg = [CCSprite spriteWithFile:@"background 2.png"];
-                [self addChild:bg];
+                [self performSelector:@selector(setWaterLevel)];
                 break;
-            }
+                
             default:
                 [self performSelector:@selector(setHillsLevel)];
                 break;
         }
         
-        //code for initializing shake
+        //code for initializing all other sprites + schedulers
         /*self.isAccelerometerEnabled = YES;
         [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1/60];
         shake_once = false;
@@ -232,38 +231,6 @@
 
     glClearColor(255, 255, 255, 255);
     
-    CGSize s = CGSizeMake(480, 320);
-    //add background this is for retina display
-    [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
-    CCSprite *bg1 = [CCSprite spriteWithFile:hills_l1];
-    CCSprite *bg2 = [CCSprite spriteWithFile:hills_l2];
-    CCSprite *bg3 = [CCSprite spriteWithFile:hills_l3];
-    CCSprite *bg4 = [CCSprite spriteWithFile:hills_l4];
-    CCSprite *bg5 = [CCSprite spriteWithFile:hills_l5];
-    CCSprite *bg6 = [CCSprite spriteWithFile:hills_l6];
-    CCSprite *bg7 = [CCSprite spriteWithFile:hills_l7];
-    CCSprite *bg8 = [CCSprite spriteWithFile:hills_l8];
-    CCSprite *bg9 = [CCSprite spriteWithFile:hills_l9];
-    
-    bg9.position = ccp(s.width/2, s.height/2);
-    bg8.position = ccp(s.width/2, s.height/2);
-    bg7.position = ccp(s.width/2, s.height/2);
-    bg6.position = ccp(s.width/2, s.height/2);
-    bg5.position = ccp(s.width/2, s.height/2);
-    bg4.position = ccp(s.width/2, s.height/2);
-    bg3.position = ccp(s.width/2, s.height/2);
-    bg2.position = ccp(s.width/2, s.height/2);
-    bg1.position = ccp(s.width/2, s.height/2);
-    
-    [self addChild:bg1 z:-30];
-    [self addChild:bg2 z:-40];
-    [self addChild:bg3 z:-50];
-    [self addChild:bg4 z:-60];
-    [self addChild:bg5 z:-70];
-    [self addChild:bg6 z:-80];
-    [self addChild:bg7 z:-90];
-    [self addChild:bg8 z:-100];
-    [self addChild:bg9 z:-110];
     [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
     [CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
     
@@ -273,17 +240,16 @@
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"backgroundtest3.plist"];
     
     //because naming fucked up. L7 and L8 has to be swapped
-    
     NSArray *images = [NSArray arrayWithObjects:@"L1.png", @"L2.png", @"L3.png", @"L4.png", @"L5.png", @"L6.png", @"L8.png", @"L7.png", @"L9.png", nil];
     for(int i = 0; i < images.count; ++i) {
         NSString *image = [images objectAtIndex:i];
         CCSprite *sprite = [CCSprite spriteWithSpriteFrameName:image];
-        sprite.position = ccp(winSize.width/2, winSize.height/2);
+        sprite.anchorPoint = ccp(0.5,0.5);
+        sprite.position = ccp(winSize.height/2, winSize.width/2);
         [spritesBgNode addChild:sprite z:(i*-10)];
     }
-
     
-    //add "rainbows"
+    //add "rainbows" !!! do this in spritesheet later on
     /*rainbows = [[NSMutableArray alloc] init];
     CCSprite *rainbow = [CCSprite spriteWithFile:@"rainbow4.png"];
     rainbow.position = ccp(156, 192);
