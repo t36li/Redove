@@ -29,6 +29,25 @@
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) ) {
+        [self addChild:[CCSprite spriteWithFile:@"splash_sheet.png"]];
+        
+        CGSize winSize = [CCDirector sharedDirector].winSize;
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"splash_sheet.plist"];
+        CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"splash_sheet.png"];
+        CCSprite *splash = [CCSprite spriteWithSpriteFrameName:@"s1.png"];
+        splash.position = ccp(winSize.width/2, winSize.height/2);
+        [spriteSheet addChild:splash];
+        [self addChild:spriteSheet];
+        
+        NSMutableArray *splashFrames = [NSMutableArray array];
+        for (int i = 1; i <= 13; i ++) {
+            [splashFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"s%d.png", i]]];
+        }
+        CCAnimation *splashAnim = [CCAnimation animationWithSpriteFrames:splashFrames delay:0.1f];
+        CCAction *splashAction = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:splashAnim]];
+        [splash runAction:splashAction];
+
+        return self;
         
         //init retard variables
         consecHits = 0;
@@ -47,10 +66,10 @@
         bomb = [[NSMutableArray alloc] init];
         heads = [[NSMutableArray alloc] init];
         
-        //set background color to white
-        //glClearColor(255, 255, 255, 255);
-        //CGSize winSize = [CCDirector sharedDirector].winSize;
+        CGSize s = CGSizeMake(480, 320);
         
+        CCSprite *bg;
+
         //determine which background to load
         int level = [[Game sharedGame] difficulty];
         level = 1;
@@ -60,6 +79,7 @@
                 bg = [CCSprite spriteWithFile:@"background 2.png"];
                 [self addChild:bg];
                 break;
+            }
             default:
                 [self performSelector:@selector(setHillsLevel)];
                 break;
@@ -69,9 +89,7 @@
         /*self.isAccelerometerEnabled = YES;
         [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1/60];
         shake_once = false;
-        
-        [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
-        
+                
         //add timer label
         timeLabel = [CCLabelTTF labelWithString:@"0:0" fontName:@"chalkduster" fontSize:30];
         timeLabel.color = ccc3(255, 249, 0);
@@ -159,151 +177,6 @@
 	return self;
 }
 
--(void) reset {
-    [self unschedule:@selector(tryPopheads)];
-    [self unschedule:@selector(checkGameState)];
-    [self unschedule:@selector(timerUpdate:)];
-    
-    CCNode *child;
-    CCARRAY_FOREACH(self.children, child) {
-        [child stopAllActions];
-    }
-    
-    consecHits = 0;
-    totalTime = 45;
-    myTime = (int)totalTime;
-    baseScore = 0;
-    speed = 1.5;
-    //_hud = hud;
-    self.isTouchEnabled = YES;
-    gameOver = FALSE;
-    //gamePaused = FALSE;
-    has_bomb = FALSE;
-    
-    for (CCNode *node in hearts)
-        [self removeChild:node cleanup:YES];
-    [hearts removeAllObjects];
-    for (CCNode *node in coins)
-         [self removeChild:node cleanup:YES];
-    [coins removeAllObjects];
-    for (CCNode *node in bomb)
-        [self removeChild:node cleanup:YES];
-    [bomb removeAllObjects];
-    for (Character *toon in heads)
-        [self removeChild:toon cleanup:YES];
-    [heads removeAllObjects];
-    
-    CGSize s = CGSizeMake(480, 320);
-    
-    
-    // set background in future
-//    CCSprite *bg;
-//    //determine which background to load
-//    int level = [[Game sharedGame] difficulty];
-//    switch (level) {
-//        case 1:
-//            bg = [CCSprite spriteWithFile:background2];
-//            bg.position = ccp(s.width/2, s.height/2);
-//            [self addChild:bg];
-//            break;
-//        default:
-//            [self performSelector:@selector(setHillsLevel)];
-//            break;
-//    }
-    
-    shake_once = false;
-        
-    //add timer label
-    [self removeChild:timeLabel cleanup:YES];
-    timeLabel = [CCLabelTTF labelWithString:@"0:0" fontName:@"chalkduster" fontSize:30];
-    timeLabel.color = ccc3(255, 249, 0);
-    timeLabel.anchorPoint = ccp(0,1);
-    timeLabel.position = ccp(15, s.height);
-    [self addChild:timeLabel z:10];
-    
-    //add "hits" label
-    [self removeChild:hitsLabel cleanup:YES];
-    hitsLabel = [CCLabelTTF labelWithString:@"X" fontName:@"chalkduster" fontSize:35];
-    hitsLabel.color = ccc3(255, 0, 0);
-    hitsLabel.anchorPoint = ccp(0.5,1);
-    hitsLabel.position = ccp(s.width/2, s.height - 10);
-    //hitsLabel.scale = 0.1;
-    [self addChild:hitsLabel z:10];
-    hitsLabel.visible = FALSE;
-    
-    //add combat text label
-    [self removeChild:ctLabel cleanup:YES];
-    ctLabel = [CCLabelTTF labelWithString:@"+1" fontName:@"chalkduster" fontSize:30];
-    ctLabel.color = ccc3(255, 0, 0);
-    ctLabel.anchorPoint = ccp(0.5,0.5);
-    //ctLabel.position = ccp(s.width/2, s.height/2);
-    [self addChild:ctLabel z:10];
-    ctLabel.visible = FALSE;
-    
-//    //add "pause" label
-//    CCMenuItemImage *pause = [CCMenuItemImage itemWithNormalImage:@"pause.png" selectedImage:@"pause.png" target:self selector:@selector(pauseGame)];
-//    CCMenu *pauseMenu = [CCMenu menuWithItems:pause, nil];
-//    pauseMenu.anchorPoint = ccp(0,0);
-//    pauseMenu.position = ccp(20,20);
-//    [self addChild:pauseMenu z:10];
-    
-    //add "life" sprites
-    lives = 3;
-    for (int i = 0; i < lives; i++) {
-        CCSprite *life = [CCSprite spriteWithFile:@"heart.png"];
-        life.anchorPoint = ccp(1,1);
-        life.position = ccp(s.width - 5 - i*25, s.height - 5);
-        [hearts addObject:life];
-        [self addChild:life z:10];
-    }
-    
-    //add "Scoreboard"
-    [self removeChild:scoreboard cleanup:YES];
-    scoreboard = [CCSprite spriteWithFile:@"scoreboard.png"];
-    scoreboard.anchorPoint = ccp(0.5, 0);
-    scoreboard.position = ccp(s.width/2 + 10, -10);
-    scoreboard.scale = 0.8;
-    [self addChild:scoreboard z:-36];
-    
-    //add "score" label
-    [self removeChild:scoreLabel cleanup:YES];
-    scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"chalkduster" fontSize:50];
-    scoreLabel.color = ccc3(255, 200, 0);
-    scoreLabel.position = ccp(scoreboard.contentSize.width/2, scoreboard.contentSize.height/2);
-    [scoreboard addChild:scoreLabel z:10];
-    
-    
-    //!!!! initializing popups
-    //use the array from game.h which contains all image names
-    //int xpad = 50; //for testing
-    int i = 0;
-    for (UIImage *person in [[Game sharedGame] arrayOfAllPopups]) {
-        Character *head = [Character spriteWithCGImage:[person CGImage] key:[NSString stringWithFormat:@"person%i", i]];
-        
-        if (i < [[Game sharedGame] selectHeadCount]) {
-            head.isSelectedHit = TRUE;
-        } else {
-            head.isSelectedHit = FALSE;
-        }
-        
-        head.visible = FALSE;
-        [self addChild:head];
-        [heads addObject:head];
-        i++; //for key purposes
-        
-        //for testing
-        //head.position = ccp(xpad, s.height/2);
-        //xpad += 60;
-        //head.visible = TRUE;
-    }
-    
-    
-    [self schedule:@selector(tryPopheads) interval:1.5];
-    [self schedule:@selector(checkGameState) interval:0.1];
-    [self schedule:@selector(timerUpdate:) interval:0.001];
-
-}
-
 -(void) setHillsLevel {
     //testing: hard-code 5 points
     /*botLeft = [[NSArray alloc] initWithObjects:
@@ -359,6 +232,38 @@
 
     glClearColor(255, 255, 255, 255);
     
+    CGSize s = CGSizeMake(480, 320);
+    //add background this is for retina display
+    [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
+    CCSprite *bg1 = [CCSprite spriteWithFile:hills_l1];
+    CCSprite *bg2 = [CCSprite spriteWithFile:hills_l2];
+    CCSprite *bg3 = [CCSprite spriteWithFile:hills_l3];
+    CCSprite *bg4 = [CCSprite spriteWithFile:hills_l4];
+    CCSprite *bg5 = [CCSprite spriteWithFile:hills_l5];
+    CCSprite *bg6 = [CCSprite spriteWithFile:hills_l6];
+    CCSprite *bg7 = [CCSprite spriteWithFile:hills_l7];
+    CCSprite *bg8 = [CCSprite spriteWithFile:hills_l8];
+    CCSprite *bg9 = [CCSprite spriteWithFile:hills_l9];
+    
+    bg9.position = ccp(s.width/2, s.height/2);
+    bg8.position = ccp(s.width/2, s.height/2);
+    bg7.position = ccp(s.width/2, s.height/2);
+    bg6.position = ccp(s.width/2, s.height/2);
+    bg5.position = ccp(s.width/2, s.height/2);
+    bg4.position = ccp(s.width/2, s.height/2);
+    bg3.position = ccp(s.width/2, s.height/2);
+    bg2.position = ccp(s.width/2, s.height/2);
+    bg1.position = ccp(s.width/2, s.height/2);
+    
+    [self addChild:bg1 z:-30];
+    [self addChild:bg2 z:-40];
+    [self addChild:bg3 z:-50];
+    [self addChild:bg4 z:-60];
+    [self addChild:bg5 z:-70];
+    [self addChild:bg6 z:-80];
+    [self addChild:bg7 z:-90];
+    [self addChild:bg8 z:-100];
+    [self addChild:bg9 z:-110];
     [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
     [CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
     
@@ -922,15 +827,6 @@
     }
 	
 	return self;
-}
-
--(void)reset {
-    [self removeAllChildrenWithCleanup:YES];
-    HUDLayer *hud = [HUDLayer node];
-    [self addChild:hud z:10];
-    
-    self.layer = [HelloWorldLayer node];
-    [self addChild:self.layer z:0];
 }
 
 @end

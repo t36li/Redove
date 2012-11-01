@@ -36,6 +36,8 @@
     
     [director setAnimationInterval:1.0f/60.0f];
     [director enableRetinaDisplay:YES];
+    
+    [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
     return YES;
 }
 
