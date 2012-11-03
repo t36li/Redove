@@ -88,13 +88,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>background2.pvr.ccz</string>
+            <string>seaLevelBackground.pvr.ccz</string>
             <key>size</key>
             <string>{1024,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:43b6b64acc803e73d09b42b85caf8b78$</string>
+            <string>$TexturePacker:SmartUpdate:a62feacb366ceb326d4cec178737b057$</string>
             <key>textureFileName</key>
-            <string>background2.pvr.ccz</string>
+            <string>seaLevelBackground.pvr.ccz</string>
         </dict>
     </dict>
 </plist>

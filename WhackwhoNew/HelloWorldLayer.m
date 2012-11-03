@@ -234,12 +234,12 @@
     [CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
     
     CCSpriteBatchNode *spritesBgNode;
-    spritesBgNode = [CCSpriteBatchNode batchNodeWithFile:@"backgroundtest3.pvr.ccz"];
+    spritesBgNode = [CCSpriteBatchNode batchNodeWithFile:@"hillLevelBackground.pvr.ccz"];
     [self addChild:spritesBgNode];
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"backgroundtest3.plist"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"hillLevelBackground.plist"];
     
     //because naming fucked up. L7 and L8 has to be swapped
-    NSArray *images = [NSArray arrayWithObjects:@"L1.png", @"L2.png", @"L3.png", @"L4.png", @"L5.png", @"L6.png", @"L8.png", @"L7.png", @"L9.png", nil];
+    NSArray *images = [NSArray arrayWithObjects:@"L1.png", @"L2.png", @"L3.png", @"L4.png", @"L5.png", @"L6.png", @"L7.png", @"L8.png", @"L9.png", nil];
     for(int i = 0; i < images.count; ++i) {
         NSString *image = [images objectAtIndex:i];
         CCSprite *sprite = [CCSprite spriteWithSpriteFrameName:image];
@@ -284,9 +284,9 @@
     [CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
     
     CCSpriteBatchNode *spritesBgNode;
-    spritesBgNode = [CCSpriteBatchNode batchNodeWithFile:@"background2.pvr.ccz"];
+    spritesBgNode = [CCSpriteBatchNode batchNodeWithFile:@"seaLevelBackground.pvr.ccz"];
     [self addChild:spritesBgNode];
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"background2.plist"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"seaLevelBackground.plist"];
     
     //because naming fucked up. L7 and L8 has to be swapped
     NSArray *images = [NSArray arrayWithObjects:@"L1.png", @"L2.png", @"L3.png", @"L4.png", @"L5.png", @"L6.png", nil];
