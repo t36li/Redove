@@ -98,5 +98,11 @@
     [director replaceScene:newScene];
 }
 
+- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft)
+        return YES;
+    
+    return NO;
+}
 
 @end
