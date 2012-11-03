@@ -50,7 +50,8 @@
     // Set the view controller as the director's delegate, so we can respond to certain events.
     director.delegate = self;
     [director setAnimationInterval:1.0f/60.0f];
-    [director enableRetinaDisplay:YES];
+    if (![director enableRetinaDisplay:YES])
+        CCLOG(@"retina not supported");
     [director setDisplayStats:YES];
     // Add the director as a child view controller of this view controller.
     [self addChildViewController:director];
