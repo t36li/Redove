@@ -28,6 +28,7 @@
     //define the stash
     //make an array that contains all the UIImageViews
     NSArray *stashItems;
+    NSMutableArray *invItems;
     IBOutlet UIImageView *item1;
     IBOutlet UIImageView *item2;
     IBOutlet UIImageView *item3;
@@ -59,17 +60,17 @@
 }
 
 //define delegate
-//@property (nonatomic, retain) id<StatusCocosDelegate> cocosDelegate;
+//@property (nonatomic, strong) id<StatusCocosDelegate> cocosDelegate;
 
 //define the container view that stores the cocos2d view
-@property (nonatomic, retain) IBOutlet UIView *containerView;
+@property (nonatomic, strong) IBOutlet UIView *containerView;
 
 //define current equipment
-@property (nonatomic, retain) NSArray *equipments;
-@property (nonatomic, retain) IBOutlet UIImageView *helmet;
-@property (nonatomic, retain) IBOutlet UIImageView *body;
-@property (nonatomic, retain) IBOutlet UIImageView *hammer_hand;
-@property (nonatomic, retain) IBOutlet UIImageView *shield_hand;
+@property (nonatomic, strong) NSArray *equipments;
+@property (nonatomic, strong) IBOutlet UIImageView *helmet;
+@property (nonatomic, strong) IBOutlet UIImageView *body;
+@property (nonatomic, strong) IBOutlet UIImageView *hammer_hand;
+@property (nonatomic, strong) IBOutlet UIImageView *shield_hand;
 
 //define containerView subviews
 @property (nonatomic) IBOutlet UIImageView *faceView;
@@ -79,17 +80,18 @@
 @property (nonatomic) IBOutlet UIImageView *shieldView;
 
 //define the stash items
-@property (nonatomic, retain) NSArray *stashItems;
-@property (nonatomic, retain) IBOutlet UIImageView *item1;
-@property (nonatomic, retain) IBOutlet UIImageView *item2;
-@property (nonatomic, retain) IBOutlet UIImageView *item3;
-@property (nonatomic, retain) IBOutlet UIImageView *item4;
-@property (nonatomic, retain) IBOutlet UIImageView *item5;
-@property (nonatomic, retain) IBOutlet UIImageView *item6;
-@property (nonatomic, retain) IBOutlet UIImageView *item7;
-@property (nonatomic, retain) IBOutlet UIImageView *item8;
-@property (nonatomic, retain) IBOutlet UIImageView *item9;
-@property (nonatomic, retain) IBOutlet UIImageView *item10;
+@property (nonatomic, strong) NSArray *stashItems;
+@property (nonatomic, strong) NSMutableArray *invItems;
+@property (nonatomic, strong) IBOutlet UIImageView *item1;
+@property (nonatomic, strong) IBOutlet UIImageView *item2;
+@property (nonatomic, strong) IBOutlet UIImageView *item3;
+@property (nonatomic, strong) IBOutlet UIImageView *item4;
+@property (nonatomic, strong) IBOutlet UIImageView *item5;
+@property (nonatomic, strong) IBOutlet UIImageView *item6;
+@property (nonatomic, strong) IBOutlet UIImageView *item7;
+@property (nonatomic, strong) IBOutlet UIImageView *item8;
+@property (nonatomic, strong) IBOutlet UIImageView *item9;
+@property (nonatomic, strong) IBOutlet UIImageView *item10;
 
 //define money
 @property (nonatomic) IBOutlet UILabel *money;

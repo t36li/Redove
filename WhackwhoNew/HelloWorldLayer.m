@@ -69,7 +69,7 @@
         
         //determine which background to load
         int level = [[Game sharedGame] difficulty];
-        
+        level = 1;
         //0: Hills level
         //1: Water level
         
