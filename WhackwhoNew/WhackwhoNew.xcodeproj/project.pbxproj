@@ -1132,7 +1132,7 @@
 		D08B5808160BFFF90082BA4B /* lip 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lip 1.png"; sourceTree = "<group>"; };
 		D08B5809160BFFF90082BA4B /* eye1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye1.png; sourceTree = "<group>"; };
 		D08B580A160BFFF90082BA4B /* tear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tear.png; sourceTree = "<group>"; };
-		D08CE2FD164213130073576B /* Level2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level2.plist; sourceTree = "<group>"; };
+		D08CE2FD164213130073576B /* Level2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level2.plist; path = ../Level2.plist; sourceTree = "<group>"; };
 		D08F7C661645BD25001FB9A3 /* seaLevelBackground.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = seaLevelBackground.plist; sourceTree = "<group>"; };
 		D08F7C671645BD25001FB9A3 /* seaLevelBackground.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = seaLevelBackground.pvr.ccz; sourceTree = "<group>"; };
 		D08F7C681645BD25001FB9A3 /* seaLevelBackground-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "seaLevelBackground-hd.plist"; sourceTree = "<group>"; };
@@ -1591,7 +1591,6 @@
 		C147166A1594ACCA0002FF21 = {
 			isa = PBXGroup;
 			children = (
-				D08CE2FD164213130073576B /* Level2.plist */,
 				D04D76501638CBAC003C858F /* splash_sheet.plist */,
 				D04D76511638CBAC003C858F /* splash_sheet.png */,
 				C12114571616044300E3AAB1 /* Default-568h@2x.png */,
@@ -1651,6 +1650,7 @@
 		C147168C1594ACCA0002FF21 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D08CE2FD164213130073576B /* Level2.plist */,
 				D04D763C163769BE003C858F /* GameViewController.xib */,
 				D0B48499160E2C77000B95A7 /* FaceEffectsController.xib */,
 				D0948D3915AB6E9A00429477 /* AvatarView.xib */,

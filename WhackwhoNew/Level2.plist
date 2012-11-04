@@ -7,170 +7,218 @@
 		<key>p1</key>
 		<dict>
 			<key>x</key>
-			<integer>70</integer>
+			<integer>35</integer>
 			<key>y</key>
-			<integer>530</integer>
+			<integer>265</integer>
+			<key>z</key>
+			<integer>45</integer>
 		</dict>
 		<key>p2</key>
 		<dict>
 			<key>x</key>
-			<integer>270</integer>
+			<integer>135</integer>
 			<key>y</key>
-			<integer>530</integer>
+			<integer>265</integer>
+			<key>z</key>
+			<integer>45</integer>
 		</dict>
 		<key>p3</key>
 		<dict>
 			<key>x</key>
-			<integer>470</integer>
+			<integer>235</integer>
 			<key>y</key>
-			<integer>530</integer>
+			<integer>265</integer>
+			<key>z</key>
+			<integer>45</integer>
 		</dict>
 		<key>p4</key>
 		<dict>
 			<key>x</key>
-			<integer>670</integer>
+			<integer>335</integer>
 			<key>y</key>
-			<integer>530</integer>
+			<integer>265</integer>
+			<key>New item</key>
+			<integer>45</integer>
 		</dict>
 		<key>p5</key>
 		<dict>
 			<key>x</key>
-			<integer>870</integer>
+			<integer>435</integer>
 			<key>y</key>
-			<integer>530</integer>
+			<integer>265</integer>
+			<key>z</key>
+			<integer>45</integer>
 		</dict>
 		<key>p6</key>
 		<dict>
 			<key>x</key>
-			<integer>80</integer>
+			<integer>40</integer>
 			<key>y</key>
-			<integer>450</integer>
+			<integer>225</integer>
+			<key>z</key>
+			<integer>45</integer>
 		</dict>
 		<key>p7</key>
 		<dict>
 			<key>x</key>
-			<integer>270</integer>
+			<integer>135</integer>
 			<key>y</key>
-			<integer>450</integer>
+			<integer>225</integer>
+			<key>z</key>
+			<integer>45</integer>
 		</dict>
 		<key>p8</key>
 		<dict>
 			<key>x</key>
-			<integer>460</integer>
+			<integer>230</integer>
 			<key>y</key>
-			<integer>450</integer>
+			<integer>225</integer>
+			<key>z</key>
+			<integer>45</integer>
 		</dict>
 		<key>p9</key>
 		<dict>
 			<key>x</key>
-			<integer>670</integer>
+			<integer>335</integer>
 			<key>y</key>
-			<integer>450</integer>
+			<integer>225</integer>
+			<key>z</key>
+			<integer>45</integer>
 		</dict>
 		<key>p10</key>
 		<dict>
 			<key>x</key>
-			<integer>850</integer>
+			<integer>425</integer>
 			<key>y</key>
-			<integer>450</integer>
+			<integer>225</integer>
+			<key>z</key>
+			<integer>45</integer>
 		</dict>
 		<key>p11</key>
 		<dict>
 			<key>x</key>
-			<integer>50</integer>
+			<integer>25</integer>
 			<key>y</key>
-			<integer>330</integer>
+			<integer>165</integer>
+			<key>z</key>
+			<integer>35</integer>
 		</dict>
 		<key>p12</key>
 		<dict>
 			<key>x</key>
-			<integer>260</integer>
+			<integer>130</integer>
 			<key>y</key>
-			<integer>330</integer>
+			<integer>165</integer>
+			<key>z</key>
+			<integer>35</integer>
 		</dict>
 		<key>p13</key>
 		<dict>
 			<key>x</key>
-			<integer>470</integer>
+			<integer>235</integer>
 			<key>y</key>
-			<integer>330</integer>
+			<integer>165</integer>
+			<key>z</key>
+			<integer>35</integer>
 		</dict>
 		<key>p14</key>
 		<dict>
 			<key>x</key>
-			<integer>650</integer>
+			<integer>325</integer>
 			<key>y</key>
-			<integer>330</integer>
+			<integer>165</integer>
+			<key>z</key>
+			<integer>35</integer>
 		</dict>
 		<key>p15</key>
 		<dict>
 			<key>x</key>
-			<integer>870</integer>
+			<integer>435</integer>
 			<key>y</key>
-			<integer>330</integer>
+			<integer>165</integer>
+			<key>z</key>
+			<integer>35</integer>
 		</dict>
 		<key>p16</key>
 		<dict>
 			<key>x</key>
-			<integer>330</integer>
+			<integer>165</integer>
 			<key>y</key>
-			<integer>280</integer>
+			<integer>140</integer>
+			<key>z</key>
+			<integer>25</integer>
 		</dict>
 		<key>p17</key>
 		<dict>
 			<key>x</key>
-			<integer>540</integer>
+			<integer>270</integer>
 			<key>y</key>
-			<integer>280</integer>
+			<integer>140</integer>
+			<key>z</key>
+			<integer>25</integer>
 		</dict>
 		<key>p18</key>
 		<dict>
 			<key>x</key>
-			<integer>730</integer>
+			<integer>365</integer>
 			<key>y</key>
-			<integer>280</integer>
+			<integer>140</integer>
+			<key>z</key>
+			<integer>25</integer>
 		</dict>
 		<key>p19</key>
 		<dict>
 			<key>x</key>
-			<integer>900</integer>
+			<integer>450</integer>
 			<key>y</key>
-			<integer>280</integer>
+			<integer>240</integer>
+			<key>z</key>
+			<integer>25</integer>
 		</dict>
 		<key>p20</key>
 		<dict>
 			<key>x</key>
-			<integer>70</integer>
+			<integer>35</integer>
 			<key>y</key>
-			<integer>200</integer>
+			<integer>100</integer>
+			<key>z</key>
+			<integer>25</integer>
 		</dict>
 		<key>p21</key>
 		<dict>
 			<key>x</key>
-			<integer>270</integer>
+			<integer>135</integer>
 			<key>y</key>
-			<integer>200</integer>
+			<integer>100</integer>
+			<key>z</key>
+			<integer>25</integer>
 		</dict>
 		<key>p22</key>
 		<dict>
 			<key>x</key>
-			<integer>470</integer>
+			<integer>235</integer>
 			<key>y</key>
-			<integer>200</integer>
+			<integer>100</integer>
+			<key>z</key>
+			<integer>25</integer>
 		</dict>
 		<key>p23</key>
 		<dict>
 			<key>x</key>
-			<integer>670</integer>
+			<integer>335</integer>
 			<key>y</key>
-			<integer>200</integer>
+			<integer>100</integer>
+			<key>z</key>
+			<integer>25</integer>
 		</dict>
 		<key>p24</key>
 		<dict>
 			<key>x</key>
-			<integer>870</integer>
+			<integer>435</integer>
 			<key>y</key>
-			<integer>200</integer>
+			<integer>100</integer>
+			<key>z</key>
+			<integer>25</integer>
 		</dict>
 	</dict>
 </dict>
