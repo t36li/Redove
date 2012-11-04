@@ -41,9 +41,16 @@
     NSArray *botLeft, *botRight, *midLeft, *midRight, *topLeft, *topMid, *topRight;
     //float body_height_now, body_bounding_width, body_bounding_height;
     //CCParticleExplosion *emitter;
+    
+    NSDictionary *locations;
+    CCSpriteBatchNode *splashSheet;
+    NSMutableArray *splashFrames;
 }
 
 @property (nonatomic, strong) id<GameOverDelegate> gameOverDelegate;
+@property (nonatomic, strong) NSDictionary *locations;
+@property (nonatomic, strong) CCSpriteBatchNode *splashSheet;
+@property (nonatomic, strong) NSMutableArray *splashFrames;
 
 
 @end

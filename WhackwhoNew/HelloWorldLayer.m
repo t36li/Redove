@@ -21,7 +21,7 @@
 // HelloWorldLayer implementation
 @implementation HelloWorldLayer
 
-@synthesize gameOverDelegate;
+@synthesize gameOverDelegate, locations, splashSheet, splashFrames;
 
 // on "init" you need to initialize your instance
 -(id) init
@@ -33,23 +33,7 @@
         //[self addChild:[CCSprite spriteWithFile:@"splash_sheet.png"]];
         
         CGSize winSize = [CCDirector sharedDirector].winSize;
-        //returns width:320, height:480
-        //but since our orientation is landscape, should switch the two when position objects
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"splash_sheet.plist"];
-        CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"splash_sheet.png"];
-        CCSprite *splash = [CCSprite spriteWithSpriteFrameName:@"s1.png"];
-        splash.position = ccp(winSize.height/2, winSize.width/2);
-        [spriteSheet addChild:splash];
-        [self addChild:spriteSheet z:50];
-        
-        NSMutableArray *splashFrames = [NSMutableArray array];
-        for (int i = 1; i <= 13; i ++) {
-            [splashFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"s%d.png", i]]];
-        }
-        CCAnimation *splashAnim = [CCAnimation animationWithSpriteFrames:splashFrames delay:0.1f];
-        CCAction *splashAction = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:splashAnim]];
-        [splash runAction:splashAction];
-        
+                
         //init retard variables
         consecHits = 0;
         totalTime = 45;
@@ -66,7 +50,15 @@
         coins = [[NSMutableArray alloc] init];
         bomb = [[NSMutableArray alloc] init];
         heads = [[NSMutableArray alloc] init];
-        
+        splashFrames = [NSMutableArray array];
+
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"splash_sheet.plist"];
+        splashSheet = [CCSpriteBatchNode batchNodeWithFile:@"splash_sheet.png"];
+        [self addChild:splashSheet z:100];
+        for (int i = 1; i <= 13; i ++) {
+            [splashFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"s%d.png", i]]];
+        }
+
         //determine which background to load
         int level = [[Game sharedGame] difficulty];
         level = 1;
@@ -84,7 +76,7 @@
         }
         
         //code for initializing all other sprites + schedulers
-        /*self.isAccelerometerEnabled = YES;
+        self.isAccelerometerEnabled = YES;
         [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1/60];
         shake_once = false;
                 
@@ -92,14 +84,14 @@
         timeLabel = [CCLabelTTF labelWithString:@"0:0" fontName:@"chalkduster" fontSize:30];
         timeLabel.color = ccc3(255, 249, 0);
         timeLabel.anchorPoint = ccp(0,1);
-        timeLabel.position = ccp(15, s.height);
+        timeLabel.position = ccp(15, winSize.height);
         [self addChild:timeLabel z:10];
         
         //add "hits" label
         hitsLabel = [CCLabelTTF labelWithString:@"X" fontName:@"chalkduster" fontSize:35];
         hitsLabel.color = ccc3(255, 0, 0);
         hitsLabel.anchorPoint = ccp(0.5,1);
-        hitsLabel.position = ccp(s.width/2, s.height - 10);
+        hitsLabel.position = ccp(winSize.width/2, winSize.height - 10);
         //hitsLabel.scale = 0.1;
         [self addChild:hitsLabel z:10];
         hitsLabel.visible = FALSE;
@@ -124,7 +116,7 @@
         for (int i = 0; i < lives; i++) {
             CCSprite *life = [CCSprite spriteWithFile:@"heart.png"];
             life.anchorPoint = ccp(1,1);
-            life.position = ccp(s.width - 5 - i*25, s.height - 5);
+            life.position = ccp(winSize.width - 5 - i*25, winSize.height - 5);
             [hearts addObject:life];
             [self addChild:life z:10];
         }
@@ -132,7 +124,7 @@
         //add "Scoreboard"
         scoreboard = [CCSprite spriteWithFile:@"scoreboard.png"];
         scoreboard.anchorPoint = ccp(0.5, 0);
-        scoreboard.position = ccp(s.width/2 + 10, -10);
+        scoreboard.position = ccp(winSize.width/2 + 10, -10);
         scoreboard.scale = 0.8;
         [self addChild:scoreboard z:-36];
         
@@ -168,8 +160,8 @@
         }
         
         [self schedule:@selector(tryPopheads) interval:1.5];
-        [self schedule:@selector(checkGameState) interval:0.1];
-        [self schedule:@selector(timerUpdate:) interval:0.001];*/
+        //[self schedule:@selector(checkGameState) interval:0.1];
+        [self schedule:@selector(timerUpdate:) interval:0.001];
 	}
     
 	return self;
@@ -234,12 +226,12 @@
     [CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
     
     CCSpriteBatchNode *spritesBgNode;
-    spritesBgNode = [CCSpriteBatchNode batchNodeWithFile:@"backgroundtest3.pvr.ccz"];
+    spritesBgNode = [CCSpriteBatchNode batchNodeWithFile:@"hillLevelBackground.pvr.ccz"];
     [self addChild:spritesBgNode];
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"backgroundtest3.plist"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"hillLevelBackground.plist"];
     
     //because naming fucked up. L7 and L8 has to be swapped
-    NSArray *images = [NSArray arrayWithObjects:@"L1.png", @"L2.png", @"L3.png", @"L4.png", @"L5.png", @"L6.png", @"L8.png", @"L7.png", @"L9.png", nil];
+    NSArray *images = [NSArray arrayWithObjects:@"L1.png", @"L2.png", @"L3.png", @"L4.png", @"L5.png", @"L6.png", @"L7.png", @"L8.png", @"L9.png", nil];
     for(int i = 0; i < images.count; ++i) {
         NSString *image = [images objectAtIndex:i];
         CCSprite *sprite = [CCSprite spriteWithSpriteFrameName:image];
@@ -284,9 +276,9 @@
     [CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
     
     CCSpriteBatchNode *spritesBgNode;
-    spritesBgNode = [CCSpriteBatchNode batchNodeWithFile:@"background2.pvr.ccz"];
+    spritesBgNode = [CCSpriteBatchNode batchNodeWithFile:@"seaLevelBackground.pvr.ccz"];
     [self addChild:spritesBgNode];
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"background2.plist"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"seaLevelBackground.plist"];
     
     //because naming fucked up. L7 and L8 has to be swapped
     NSArray *images = [NSArray arrayWithObjects:@"L1.png", @"L2.png", @"L3.png", @"L4.png", @"L5.png", @"L6.png", nil];
@@ -298,7 +290,9 @@
         [spritesBgNode addChild:sprite z:(i*10)];
     }
     
-
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Level2" ofType:@"plist"];
+    NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:filePath];
+    locations = [dictionary objectForKey:@"points"];
 }
 
 -(void) pauseGame {
@@ -395,21 +389,81 @@
                 //pop the selected heads
                 if (head.isSelectedHit == TRUE) {
                     //numHitOccur++;
-                    [self popHead:head];
+                    [self popHeadNew:head];
                 }
             } else {
                 //pop the "bomb"
                 if (head.isSelectedHit == FALSE) {
                     //numBombOccur++;
-                    [self popHead:head];
+                    [self popHeadNew:head];
                 }
             }
         }
     }
 }
 
--(void) popHead: (Character *) head {
+-(BOOL) checkLocation:(CGPoint) point {
+    for (Character *head in heads) {
+        if (CGPointEqualToPoint(point, head.position))
+            return YES;
+    }
+    return NO;
+}
+
+
+- (void) popHeadNew: (Character *) head {
+    NSNumber *x, *y, *zOrder;
     
+    do {
+        int index = (arc4random() % locations.count) + 1;
+        NSDictionary *dict = [locations objectForKey:[NSString stringWithFormat:@"p%d", index]];
+        x = [dict objectForKey:@"x"];
+        y = [dict objectForKey:@"y"];
+        zOrder = [dict objectForKey:@"z"];
+    } while ([self checkLocation:CGPointMake(x.integerValue, y.integerValue)]);
+    
+    [head setZOrder:zOrder.integerValue];
+    [head setPosition:CGPointMake(x.integerValue, y.integerValue)];
+    [head convertToWorldSpace:head.position];
+    
+    head.didMiss = TRUE;
+    head.visible = TRUE;
+    
+
+    CCSprite *splash = [CCSprite spriteWithSpriteFrameName:@"s1.png"];
+    CGPoint splashPosition = head.position;
+    splashPosition.y -= 30;
+    splash.position = splashPosition;
+    [splashSheet addChild:splash z:head.zOrder+1];
+    
+    CCAnimation *splashAnim = [CCAnimation animationWithSpriteFrames:splashFrames delay:0.1f];
+    CCRepeat *splashAction = [CCRepeat actionWithAction:[CCAnimate actionWithAnimation:splashAnim] times:1];
+    CCCallFuncN *endSplashAction = [CCCallFuncN actionWithTarget:self selector:@selector(endSplashAction:)];
+    [splash runAction:[CCSequence actions:splashAction, endSplashAction, nil]];
+
+    
+    //init all the actions
+    //add the height of the body * 0.3 to the move: 59.5 * 0.3
+    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp(0, 40)];
+    CCMoveBy *easeMoveUp = [CCEaseIn actionWithAction:moveUp rate:3.0];
+    CCAction *easeMoveDown = [easeMoveUp reverse];
+    CCDelayTime *delay = [CCDelayTime actionWithDuration:3.0];
+    
+    CCCallFuncN *endHeadAction = [CCCallFuncN actionWithTarget:self selector:@selector(endHeadAction:)];
+    //id action = [CCLiquid actionWithWaves:10 amplitude:20 grid:ccg(10,10) duration:5 ];
+    
+    [head runAction:[CCSequence actions:easeMoveUp, delay, easeMoveDown, endHeadAction, nil]];
+}
+-(void) endSplashAction: (id)node {
+    [[node parent] removeChild:node cleanup:YES];
+}
+-(void) endHeadAction: (id)node {
+    [node stopAllActions];
+    [node setVisible:NO];
+}
+
+-(void) popHead: (Character *) head {
+        
     float height_now = head.contentSize.height * head.scaleY; //76.5
     
     // algorithm: random the hill that it will pop up, then need to random the rotation... either left or right
