@@ -431,7 +431,9 @@
     
 
     CCSprite *splash = [CCSprite spriteWithSpriteFrameName:@"s1.png"];
-    splash.position = head.position;
+    CGPoint splashPosition = head.position;
+    splashPosition.y -= 30;
+    splash.position = splashPosition;
     [splashSheet addChild:splash z:head.zOrder+1];
     
     CCAnimation *splashAnim = [CCAnimation animationWithSpriteFrames:splashFrames delay:0.1f];
@@ -442,7 +444,7 @@
     
     //init all the actions
     //add the height of the body * 0.3 to the move: 59.5 * 0.3
-    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp(0, 20)];
+    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp(0, 40)];
     CCMoveBy *easeMoveUp = [CCEaseIn actionWithAction:moveUp rate:3.0];
     CCAction *easeMoveDown = [easeMoveUp reverse];
     CCDelayTime *delay = [CCDelayTime actionWithDuration:3.0];
