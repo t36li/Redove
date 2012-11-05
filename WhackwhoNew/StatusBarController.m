@@ -23,7 +23,7 @@
 @synthesize containerView;
 @synthesize helmet, body, hammer_hand, shield_hand;
 @synthesize faceView, helmetView, bodyView, hammerView, shieldView;
-@synthesize stashItems;
+@synthesize stashItems, invItems;
 @synthesize item1, item2, item3, item4, item5, item6, item7, item8, item9, item10;
 @synthesize money, totalCash;
 @synthesize equipments;
@@ -50,6 +50,7 @@
     
     orig_item_positions = [[NSMutableDictionary alloc] init];
     orig_equipment_positions = [[NSMutableDictionary alloc] init];
+    invItems = [[NSMutableArray alloc] initWithCapacity:10];
     
     totalCash = 0;
     
@@ -103,6 +104,13 @@
         i++;
     }
     
+    [faceView setContentMode:UIViewContentModeScaleAspectFill];
+    [bodyView setContentMode:UIViewContentModeScaleToFill];
+    [helmetView setContentMode:UIViewContentModeScaleAspectFill];
+    [hammerView setContentMode:UIViewContentModeScaleAspectFill];
+    [shieldView setContentMode:UIViewContentModeScaleAspectFill];
+    
+    //need to cache user's previous image
     UserInfo *usr = [UserInfo sharedInstance];
     if (usr.usrImg == nil){
         UIAlertView *takePicAlert = [[UIAlertView alloc] initWithTitle:@"Newbie?" message:@"Take a photo" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -133,22 +141,17 @@
     UserInfo *usinfo = [UserInfo sharedInstance];
     CurrentEquip *ce = usinfo.currentEquip;
     
-    [faceView setContentMode:UIViewContentModeScaleAspectFill];
     [faceView setImage:face_DB];
     
-    [bodyView setContentMode:UIViewContentModeScaleToFill];
     [bodyView setImage:[UIImage imageNamed:ce.body]];
     [body setImage:[UIImage imageNamed:ce.body]];
     
-    [helmetView setContentMode:UIViewContentModeScaleAspectFill];
     [helmetView setImage:[UIImage imageNamed:ce.helmet]];
     [helmet setImage:[UIImage imageNamed:ce.helmet]];
     
-    [hammerView setContentMode:UIViewContentModeScaleAspectFill];
     [hammerView setImage:[UIImage imageNamed:ce.hammerArm]];
     [hammer_hand setImage:[UIImage imageNamed:ce.hammerArm]];
     
-    [shieldView setContentMode:UIViewContentModeScaleAspectFill];
     [shieldView setImage:[UIImage imageNamed:ce.shieldArm]];
     [shield_hand setImage:[UIImage imageNamed:ce.shieldArm]];
     
@@ -159,50 +162,36 @@
     
     //!!!!!!!! need to retrive from database the current storage!
     //will need to set tags for each item as well
+    //tempmainarray max count = 10
     StorageInv *si = usinfo.storageInv;
+    NSArray *tempMainArray = [[NSArray alloc] initWithArray:si.helmetsArrayInFileName];
+    tempMainArray = [tempMainArray arrayByAddingObjectsFromArray:si.bodiesArrayInFileName];
+    tempMainArray = [tempMainArray arrayByAddingObjectsFromArray:si.hammerArmsArrayInFileName];
+    tempMainArray = [tempMainArray arrayByAddingObjectsFromArray:si.shieldArmsArrayInFileName];
     
-    NSArray *helmetArray = si.helmetsArrayInFileName;
-    NSArray *bodyArray = si.bodiesArrayInFileName;
-    NSArray *hammerArray = si.hammerArmsArrayInFileName;
-    NSArray *shieldArray = si.shieldArmsArrayInFileName;
+    int numHelmets = si.helmetsArrayInFileName.count;
+    int numBodies = si.bodiesArrayInFileName.count;
+    int numHammer = si.hammerArmsArrayInFileName.count;
+    //int numShield = si.shieldArmsArrayInFileName.count;
     
-    for (NSString *imageName in helmetArray) {
-        for (UIImageView *temp in stashItems) {
-            if (![temp image]) {
-                temp.image = [UIImage imageNamed:imageName];
-                temp.tag = helmet_Label;
-                break;
-            }
-        }
-    }
-    
-    for (NSString *imageName in bodyArray) {
-        for (UIImageView *temp in stashItems) {
-            if (![temp image]) {
-                temp.image = [UIImage imageNamed:imageName];
-                temp.tag = body_Label;
-                break;
-            }
-        }
-    }
-    
-    for (NSString *imageName in hammerArray) {
-        for (UIImageView *temp in stashItems) {
-            if (![temp image]) {
-                temp.image = [UIImage imageNamed:imageName];
-                temp.tag = hammerHand_Label;
-                break;
-            }
-        }
-    }
-    
-    for (NSString *imageName in shieldArray) {
-        for (UIImageView *temp in stashItems) {
-            if (![temp image]) {
-                temp.image = [UIImage imageNamed:imageName];
-                temp.tag = shieldHand_Label;
-                break;
-            }
+    for (int i = 0; i < tempMainArray.count; i++) {
+        UIImageView *temp = [stashItems objectAtIndex:i];
+        if (i < numHelmets) {
+            temp.tag = helmet_Label;
+            temp.image = nil;
+            temp.image = [UIImage imageNamed:[tempMainArray objectAtIndex:i]];
+        } else if (i < (numHelmets + numBodies)) {
+            temp.tag = body_Label;
+            temp.image = nil;
+            temp.image = [UIImage imageNamed:[tempMainArray objectAtIndex:i]];
+        } else if (i < (numHelmets + numBodies + numHammer)) {
+            temp.tag = hammerHand_Label;
+            temp.image = nil;
+            temp.image = [UIImage imageNamed:[tempMainArray objectAtIndex:i]];
+        } else {
+            temp.tag = shieldHand_Label;
+            temp.image = nil;
+            temp.image = [UIImage imageNamed:[tempMainArray objectAtIndex:i]];
         }
     }
 }
