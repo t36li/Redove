@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "SpinnerView.h"
 #import "Friend.h"
+#import "FBSingletonDelegate.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface FriendsViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>{
+@interface FriendsViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,FBSingletonDelegate>{
     NSArray *resultData;
     NSString *resultAction;
     UITableView *friendsTable;

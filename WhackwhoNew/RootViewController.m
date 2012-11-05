@@ -135,12 +135,11 @@
 
 }
 
--(IBAction)Friend_touched:(id)sender{
+-(IBAction)Friend_touched:(id)sender{//change it to invite friends![button changed]
     if ([fbs isLogIn]){
-        /********
-        [[FBSingleton sharedInstance] RequestFriendList];
+        [[FBSingleton sharedInstance] RequestFriendsNotUsing];
         [self performSegueWithIdentifier:PlayToFriendSegue sender:friend_but];
-         ********/
+        
         
     }
 }
@@ -192,8 +191,8 @@
     
 }*/
 
--(void) FBSIngletonUserFriendsDidLoaded:(NSArray *)friends{
-    friendVC.resultData = friends;
+-(void) FBSIngletonFriendsDidLoaded:(NSDictionary *)friends{
+    friendVC.resultData = [[NSArray alloc] initWithArray:[friends allValues]];
     [friendVC.spinner removeSpinner];
     [friendVC.friendTable reloadData];
 }

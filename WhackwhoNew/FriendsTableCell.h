@@ -22,6 +22,7 @@
 @property (weak, nonatomic, readonly) IBOutlet UIImageView *profileImageView;
 @property (nonatomic) IBOutlet UIView *containerView;
 @property (nonatomic, strong) SpinnerView *spinner;
+@property (strong, nonatomic) IBOutlet UILabel *isPlayer;
 
 
 @end

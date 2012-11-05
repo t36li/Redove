@@ -9,6 +9,7 @@
 #import "FriendsViewController.h"
 #import "FriendsTableCell.h"
 #import "GlobalMethods.h"
+#import "FBSingleton.h"
 
 @interface FriendsViewController ()
 
@@ -22,6 +23,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //[[FBSingleton sharedInstance] RequestFriendsNotUsing];
     
     [[GlobalMethods alloc] setViewBackground:FriendList_bg viewSender:self.view];
     friendsTable.dataSource = self;
@@ -40,6 +42,10 @@
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+}
+
+- (void) filterFriendsNotUsingApp{
+    //NSPredicate *predicate = [NSPredicate ]
 }
 
 
@@ -78,6 +84,11 @@
     cell.name.text = friend.name;
     cell.name.lineBreakMode  = UILineBreakModeWordWrap;
     cell.gender.text = friend.gender;
+    if (friend.isPlayer){
+        cell.isPlayer.text = @"玩家";
+    }else{
+        cell.isPlayer.text = @"傻逼";
+    }
     NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", friend.user_id];
 
     [cell.profileImageView setImageWithURL:[NSURL URLWithString:formatting] success:^(UIImage *image) {

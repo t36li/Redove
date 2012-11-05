@@ -14,7 +14,8 @@
 -(void)FbMeLoaded:(NSString *)userId :(NSString *)userName : (NSString *)gender;
 -(void)FBSingletonDidLogout;
 -(void)FBSingletonDidLogin:(NSString *)userId: (NSString *) userName : (NSString *)gender;
--(void)FBSIngletonUserFriendsDidLoaded:(NSArray *) friends;
+-(void)FBSIngletonFriendsDidLoaded:(NSDictionary *) friends;
 -(void)FBUserFriendsAppNotUsing:(NSArray *) friends;
--(void)FBSingletonUserFriendsAppUsingLoaded:(NSArray *) friendsUsingApp;
+//-(void)FBSingletonUserFriendsAppUsingLoaded:(NSArray *) friendsUsingApp;
+-(void)FBSingletonHitWhoIDListLoaded:(NSArray *) friendUsingAppIDs;
 @end

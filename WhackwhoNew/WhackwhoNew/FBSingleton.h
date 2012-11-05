@@ -18,6 +18,7 @@ typedef enum apiCall {
     kDialogRequestsSendToMany,
     kAPIGetAppUsersFriendsNotUsing,
     kAPIGetAppUsersFriendsUsing,
+    kAPIGetAppUsersHitWhoList,
     kAPIFriendsForDialogRequests,
     kDialogRequestsSendToSelect,
     kAPIFriendsForTargetDialogRequests,
@@ -38,7 +39,6 @@ typedef enum apiCall {
     kAPIGraphUserVideosPost,
 } apiCall;
 
-
 @interface FBSingleton : NSObject<FBRequestDelegate, FBDialogDelegate, FBSessionDelegate> {
 @public
     
@@ -47,15 +47,19 @@ typedef enum apiCall {
     NSArray* _permissions;
     BOOL isLogIn;
     NSArray *savedAPIResult;
+    NSArray *savedAllFriends;
+    NSArray *savedFriendsUsingApp;
     id<FBSingletonDelegate> delegate;
     NSMutableDictionary *friendsDictionary;
+    
     // Internal state
     int score;
 }
 @property (readonly) Facebook *facebook;
 @property (nonatomic) id<FBSingletonDelegate> delegate;
 @property (nonatomic, assign) BOOL isLogIn;
-@property (nonatomic) NSMutableDictionary *friendsDictionary;
+@property (nonatomic,strong) NSMutableDictionary *friendsDictionary;
+@property (nonatomic) NSArray *savedFriendsUsingApp;
 
 + (FBSingleton *) sharedInstance;
 
@@ -69,5 +73,6 @@ typedef enum apiCall {
 -(void) login;
 -(void) RequestFriendsNotUsing;
 -(void) RequestFriendUsing;
+-(void) RequestHitWhoList;
 
 @end 

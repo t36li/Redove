@@ -14,7 +14,7 @@ static NSString* kAppId = @"442728025757863"; // Facebook app ID here
 
 @implementation FBSingleton
 @synthesize facebook = _facebook;
-@synthesize delegate, isLogIn, friendsDictionary;
+@synthesize delegate, isLogIn, friendsDictionary,savedFriendsUsingApp;
 
 #pragma mark -
 #pragma mark Singleton Variables
@@ -195,18 +195,24 @@ static FBSingleton *singletonDelegate = nil;
 -(void) RequestFriendList{
     // Check if there is a valid session
     if (isLogIn){
+        if (!friendsDictionary.count){
         currentAPICall = kAPIGraphUserFriends;
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        @"id,name,picture,gender",  @"fields",
                                        nil];
         [_facebook requestWithGraphPath:@"me/friends" andParams:params andDelegate:self];
-        if (friendsDictionary.count) {
-            [delegate FBSIngletonUserFriendsDidLoaded:[friendsDictionary allValues]];
+        }else{
+            [delegate FBSIngletonFriendsDidLoaded:friendsDictionary];
         }
+        //if (friendsDictionary.count) {
+        //    [delegate FBSIngletonUserFriendsDidLoaded:[friendsDictionary allValues]];
+        //}
     }
 }
 
 -(void) RequestFriendsNotUsing{
+    [self RequestFriendUsing];
+    /*
     if (isLogIn){
         currentAPICall = kAPIGetAppUsersFriendsNotUsing; ///testing ...correct : kAPIGetAppUsersFriendsUsing
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -214,16 +220,35 @@ static FBSingleton *singletonDelegate = nil;
                                        nil];
         [_facebook requestWithParams:params andDelegate:self];
         
+    }*/
+}
+
+-(void) RequestHitWhoList{
+    if (isLogIn){
+        if (savedFriendsUsingApp != nil){
+            [delegate FBSingletonHitWhoIDListLoaded:savedFriendsUsingApp];
+        }else{
+            currentAPICall = kAPIGetAppUsersHitWhoList;
+            NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                           @"friends.getAppUsers", @"method",
+                                           nil];
+            [_facebook requestWithParams:params andDelegate:self];
+        }
+            
     }
 }
 
 -(void) RequestFriendUsing{
     if (isLogIn){
+        if (savedAllFriends == nil){
+            [self RequestFriendList];
+        }else{
         currentAPICall = kAPIGetAppUsersFriendsUsing;
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        @"friends.getAppUsers", @"method",
                                        nil];
         [_facebook requestWithParams:params andDelegate:self];
+        }
     }
 }
 
@@ -298,9 +323,11 @@ static FBSingleton *singletonDelegate = nil;
 }
 
 
-- (void)parseFriendList:(NSArray *)resultData {
+- (void)parseFriendList:(NSArray *)AllFriends : (NSArray *)FriendsInApp{
+    if (!friendsDictionary.count){
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-    for (NSDictionary *diction in resultData) {
+        
+    for (NSDictionary *diction in AllFriends) {
         NSString *userID = (NSString *)[diction objectForKey:@"id"];
         NSString *name = (NSString *)[diction objectForKey:@"name"];
         NSString *gender = (NSString *)[diction objectForKey:@"gender"];
@@ -308,11 +335,23 @@ static FBSingleton *singletonDelegate = nil;
         friend.user_id = userID;
         friend.name = name;
         friend.gender = gender;
+        friend.isPlayer = [FriendsInApp containsObject:[[NSDecimalNumber alloc] initWithString:userID]];
         [dictionary setObject:friend forKey:userID];
     }
-    [friendsDictionary addEntriesFromDictionary:dictionary];
+        [friendsDictionary addEntriesFromDictionary:dictionary];
+    }else {
+        for (NSString *userID in friendsDictionary){
+            BOOL isPlayer = [FriendsInApp containsObject:[[NSDecimalNumber alloc] initWithString:userID]];
+            Friend *f = [friendsDictionary objectForKey:userID];
+            if (f.isPlayer != isPlayer){//new player
+                [friendsDictionary removeObjectForKey:f.user_id];
+                f.isPlayer = isPlayer;
+                [friendsDictionary setObject:f forKey:f.user_id];
+            }
+        }
+    }
+    
 }
-
 /**
  * Called when a request returns and its response has been parsed into
  * an object.
@@ -340,36 +379,54 @@ static FBSingleton *singletonDelegate = nil;
             break;
         }
         case kAPIGraphUserFriends:{
+            NSArray *resultData = [result objectForKey:@"data"];
+            if ([resultData count] >0){
+                savedAllFriends = [[NSArray alloc] initWithArray:resultData];
+                [self RequestFriendUsing];
+            }else{
+                savedAllFriends = nil;
+            }
+            
+            break;
+            /*
             
             NSArray *resultData = [result objectForKey:@"data"];
             if ([resultData count] > 0) {
                 [self parseFriendList:resultData];
                 [delegate FBSIngletonUserFriendsDidLoaded:[friendsDictionary allValues]];
-                /*
+                *
                 for (NSUInteger i=0; i<[resultData count] && i < 25; i++) {
                     [friends addObject:[resultData objectAtIndex:i]];
                 }
                 // Show the friend information in a new view controller with FBSingleton Delegate
                 [delegate FBSIngletonUserFriendsDidLoaded:friends];
-                 */
+                 *
             } else {
                 [delegate FBSIngletonUserFriendsDidLoaded:nil];
             }
             break;
+            */
         }
         case kAPIGetAppUsersFriendsNotUsing:{
+            /*
+            //saveAPIResult is friendsUsingApp
             if (savedAPIResult ==nil){
                 if ([result isKindOfClass:[NSArray class]]) {
                     savedAPIResult = [[NSMutableArray alloc] initWithArray:result copyItems:YES];
                 } else if ([result isKindOfClass:[NSDecimalNumber class]]) {
                     savedAPIResult = [[NSMutableArray alloc] initWithObjects:[result stringValue], nil];
                 }
+            }
+            if (!friendsDictionary.count){
+                currentAPICall = kAPIRequestFriendDic_AtFriendNotUsing;
                 NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                                @"id,name,gender",  @"fields",
                                                nil];
                 [_facebook requestWithGraphPath:@"me/friends" andParams:params andDelegate:self];
             }
             else {
+                
+                
                 NSArray *resultData = [result objectForKey:@"data"];
                 if ([resultData count]){
                     //NSMutableArray *friendsWithoutApp = [[NSMutableArray alloc] initWithCapacity:1];
@@ -386,7 +443,7 @@ static FBSingleton *singletonDelegate = nil;
                     NSMutableDictionary *friendsWithoutAppDictionary = [[NSMutableDictionary alloc] initWithDictionary:friendsDictionary ];
                     [friendsWithoutAppDictionary removeObjectsForKeys:friendsWithApp];
                     
-                    /*
+                    *
                     for (NSDictionary *friendObject in resultData){
                         BOOL foundFriend = NO;
                         for (NSString *friendWithApp in savedAPIResult){
@@ -398,7 +455,7 @@ static FBSingleton *singletonDelegate = nil;
                         if (!foundFriend) {
                             [friendsWithoutApp addObject:friendObject];
                         }
-                    }*/
+                    }*
                     if ([friendsWithoutAppDictionary count] > 0) {
                         [delegate FBUserFriendsAppNotUsing:[friendsWithoutAppDictionary allValues]];
                     }
@@ -411,15 +468,27 @@ static FBSingleton *singletonDelegate = nil;
                 }
                 savedAPIResult = nil;             }
             break;
+    */
         }
         case kAPIGetAppUsersFriendsUsing:{
-            
                 if ([result isKindOfClass:[NSArray class]]) {
-                    //[delegate FBUserFriendsAppUsingLoaded:result];
-                    [delegate FBSingletonUserFriendsAppUsingLoaded:[[NSArray alloc] initWithArray:result copyItems:YES]];
-                } else if ([result isKindOfClass:[NSDecimalNumber class]]) {
-                    [delegate FBSingletonUserFriendsAppUsingLoaded:[[NSArray alloc] initWithObjects:[result stringValue], nil]];
+                    savedFriendsUsingApp = [[NSArray alloc] initWithArray:result copyItems:YES];
+                }else if ([result isKindOfClass:[NSDecimalNumber class]]) {
+                    savedFriendsUsingApp = [[NSArray alloc] initWithObjects:[result stringValue], nil];
                 }
+                //[self ParseFriendsDicUsingBlock];
+                [self parseFriendList:savedAllFriends :savedFriendsUsingApp];
+            
+                [delegate FBSIngletonFriendsDidLoaded:friendsDictionary];
+            break;
+        }
+        case kAPIGetAppUsersHitWhoList:{
+            if ([result isKindOfClass:[NSArray class]]) {
+                savedFriendsUsingApp = [[NSArray alloc] initWithArray:result copyItems:YES];
+            }else if ([result isKindOfClass:[NSDecimalNumber class]]) {
+                savedFriendsUsingApp = [[NSArray alloc] initWithObjects:[result stringValue], nil];
+            }
+            [self RequestHitWhoList];
             break;
         }
         case kAPIGraphUserPermissionsDelete:{

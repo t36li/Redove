@@ -54,7 +54,7 @@
     //[self setDefaultImage:[UIImage imageNamed:@"vlad.png"]];
     
     [[FBSingleton sharedInstance] setDelegate:self];
-    [[FBSingleton sharedInstance] RequestFriendUsing];
+    [[FBSingleton sharedInstance] RequestHitWhoList];
     
     table.delegate = self;
     table.dataSource = self;
@@ -111,9 +111,17 @@
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
--(void) FBSingletonUserFriendsAppUsingLoaded:(NSArray *)friendsUsingApp{
-    NSLog(@"%@",friendsUsingApp);
-    [self getFriendDBInfo:friendsUsingApp];
+-(void) FBSingletonHitWhoIDListLoaded:(NSArray *)friendUsingAppID{
+    NSLog(@"%@",friendUsingAppID);
+    
+    //comment might be userful when cache the friendsArray [straighters remain the same unless pull to refresh]
+    
+    //if ([[[UserInfo sharedInstance] friendArray] friends] == nil){
+        [self getFriendDBInfo:friendUsingAppID];
+    //}
+    //else{
+    //    resultFriends = [NSArray arrayWithArray:[[[UserInfo sharedInstance] friendArray] friends]];
+    //}
 }
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -255,8 +263,10 @@
 //////pull the table///////////
 
 -(void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view{
-    [[FBSingleton sharedInstance] RequestFriendUsing];
-    
+    [[FBSingleton sharedInstance] setSavedFriendsUsingApp:nil];
+    //might be userful:
+    //[[[UserInfo sharedInstance] friendArray] setFriends:nil];
+    [[FBSingleton sharedInstance] RequestHitWhoList];
 }
 
 #pragma mark - Touch methods
