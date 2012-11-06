@@ -344,7 +344,7 @@
         faceView.image = friend.head.headImage;
         
         CurrentEquip *ce = friend.currentEquip;
-        faceView.image = friendSelected.head.headImage;
+        faceView.image = friend.head.headImage;
         helmetView.image = [UIImage imageNamed:ce.helmet];
         bodyView.image = [UIImage imageNamed:ce.body];
         hammerView.image = [UIImage imageNamed:ce.hammerArm];
