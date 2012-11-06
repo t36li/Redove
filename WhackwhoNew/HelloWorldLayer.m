@@ -149,6 +149,8 @@
             }
             
             head.visible = FALSE;
+            head.position = CGPointZero;
+            
             [self addChild:head];
             [heads addObject:head];
             i++; //for key purposes
@@ -383,6 +385,7 @@
     
     //selectedHeads/totalHeads chance to pop selected
     //hence, chance of popping correct head increases as u choose more heads
+    /*
     for (Character *head in heads) {
         if (head.numberOfRunningActions == 0) {
             if (arc4random() % 100 < 75){//randFactor) {
@@ -397,6 +400,14 @@
                     //numBombOccur++;
                     [self popHeadNew:head];
                 }
+            }
+        }
+    }*/
+    
+    @synchronized(heads) {
+    	for (Character *head in heads) {
+            if (CGPointEqualToPoint(head.position, CGPointZero)) {
+                [self popHeadNew:head];
             }
         }
     }
@@ -449,17 +460,16 @@
     CCAction *easeMoveDown = [easeMoveUp reverse];
     CCDelayTime *delay = [CCDelayTime actionWithDuration:3.0];
     
-    CCCallFuncN *endHeadAction = [CCCallFuncN actionWithTarget:self selector:@selector(endHeadAction:)];
+    CCCallFuncN *setTappable = [CCCallFuncN actionWithTarget:self selector:@selector(setTappable:)];
+    CCCallFuncN *setUntappable = [CCCallFuncN actionWithTarget:self selector:@selector(unSetTappable:)];
+    CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
     //id action = [CCLiquid actionWithWaves:10 amplitude:20 grid:ccg(10,10) duration:5 ];
     
-    [head runAction:[CCSequence actions:easeMoveUp, delay, easeMoveDown, endHeadAction, nil]];
+    [head runAction:[CCSequence actions: setTappable, easeMoveUp, delay, easeMoveDown, setUntappable, checkCombo, nil]];
 }
+
 -(void) endSplashAction: (id)node {
     [[node parent] removeChild:node cleanup:YES];
-}
--(void) endHeadAction: (id)node {
-    [node stopAllActions];
-    [node setVisible:NO];
 }
 
 -(void) popHead: (Character *) head {
@@ -622,7 +632,7 @@
     head.rotation = 0;
     head.position = ccp(0,0);
     //head.scale = 0.2;
-    head.visible = FALSE;
+    head.visible = NO;
 
     if (head.didMiss && head.isSelectedHit) {
         consecHits = 0;
