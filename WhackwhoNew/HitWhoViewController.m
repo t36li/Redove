@@ -354,7 +354,7 @@
         int randInt;
         while (TRUE) {
             randInt = arc4random() % resultStrangers.count;
-            friend = [resultStrangers objectAtIndex:0];
+            friend = [resultStrangers objectAtIndex:randInt];
             
             NSString *selfGender = [[UserInfo sharedInstance] gender];
             
@@ -374,7 +374,7 @@
         }
         faceView.image = friend.head.headImage;
         CurrentEquip *ce = friend.currentEquip;
-        faceView.image = friendSelected.head.headImage;
+        faceView.image = friend.head.headImage;
         helmetView.image = [UIImage imageNamed:ce.helmet];
         bodyView.image = [UIImage imageNamed:ce.body];
         hammerView.image = [UIImage imageNamed:ce.hammerArm];
