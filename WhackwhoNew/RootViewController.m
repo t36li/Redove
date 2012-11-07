@@ -137,7 +137,7 @@
 
 -(IBAction)Friend_touched:(id)sender{//change it to invite friends![button changed]
     if ([fbs isLogIn]){
-        [[FBSingleton sharedInstance] RequestFriendsNotUsing];
+        //[[FBSingleton sharedInstance] RequestFriendsNotUsing];
         [self performSegueWithIdentifier:PlayToFriendSegue sender:friend_but];
         
         

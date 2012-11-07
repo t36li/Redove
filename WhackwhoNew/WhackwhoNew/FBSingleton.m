@@ -140,7 +140,8 @@ static FBSingleton *singletonDelegate = nil;
 -(void) login {
     // Check if there is a valid session
     if (!isLogIn) {
-        [_facebook authorize:nil];
+        _permissions =  [NSArray arrayWithObjects: @"read_stream", @"publish_stream", nil];
+        [_facebook authorize:_permissions];
     }
     //else {
     //    [_facebook requestWithGraphPath:@"me" andDelegate:self];
@@ -249,6 +250,17 @@ static FBSingleton *singletonDelegate = nil;
                                        nil];
         [_facebook requestWithParams:params andDelegate:self];
         }
+    }
+}
+
+-(void) InviteYou:(NSString *)fbID{
+    if (isLogIn){
+        currentAPICall = kDialogRequestsSendToTarget;
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                      @"Come and join me to WHACK! download WhackWho.",  @"message",
+                                      fbID, @"to",
+                                      nil];
+        [_facebook dialog:@"apprequests" andParams:params andDelegate:self];
     }
 }
 
@@ -519,6 +531,23 @@ static FBSingleton *singletonDelegate = nil;
  */
 - (void)dialogDidComplete:(FBDialog *)dialog {
     NSLog(@"published successfully on FB");
+}
+
+
+
+/**
+ * Helper method to parse URL query parameters
+ */
+- (NSDictionary *)parseURLParams:(NSString *)query {
+	NSArray *pairs = [query componentsSeparatedByString:@"&"];
+	NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+	for (NSString *pair in pairs) {
+		NSArray *kv = [pair componentsSeparatedByString:@"="];
+        
+		[params setObject:[[kv objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
+                   forKey:[[kv objectAtIndex:0] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+	}
+    return params;
 }
 
 

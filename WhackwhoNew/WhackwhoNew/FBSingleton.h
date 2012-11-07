@@ -74,5 +74,6 @@ typedef enum apiCall {
 -(void) RequestFriendsNotUsing;
 -(void) RequestFriendUsing;
 -(void) RequestHitWhoList;
+-(void) InviteYou:(NSString *)fbID;
 
 @end 

@@ -23,7 +23,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //[[FBSingleton sharedInstance] RequestFriendsNotUsing];
+    [[FBSingleton sharedInstance] RequestFriendsNotUsing];
     
     [[GlobalMethods alloc] setViewBackground:FriendList_bg viewSender:self.view];
     friendsTable.dataSource = self;
@@ -31,12 +31,18 @@
     friendsTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     spinner = [[SpinnerView alloc] initWithFrame:loadingView.bounds];
+    //[FBSingleton sharedInstance].delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     if (!resultData.count)
         [spinner startSpinnerInView:loadingView];
 }
+
+-(void)viewDidAppear:(BOOL)animated{
+    [FBSingleton sharedInstance].delegate = self;
+}
+
 
 - (void)viewDidUnload
 {
@@ -80,15 +86,19 @@
     }
     
     Friend *friend = [resultData objectAtIndex:indexPath.row];
-    
+    cell.user_id = friend.user_id;
     cell.name.text = friend.name;
     cell.name.lineBreakMode  = UILineBreakModeWordWrap;
     cell.gender.text = friend.gender;
     if (friend.isPlayer){
         cell.isPlayer.text = @"玩家";
+        cell.Invite_but.hidden = YES;
+        
     }else{
         cell.isPlayer.text = @"傻逼";
+        cell.Invite_but.hidden = NO;
     }
+    
     NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", friend.user_id];
 
     [cell.profileImageView setImageWithURL:[NSURL URLWithString:formatting] success:^(UIImage *image) {
@@ -106,6 +116,38 @@
         [celler.spinner startSpinnerInView:celler.containerView];
 }
 
+
+////FBSingletonDelegation:
+-(void) FBSIngletonFriendsDidLoaded:(NSDictionary *)friends{
+    self.resultData = [[NSArray alloc] initWithArray:[friends allValues]];
+    [self.spinner removeSpinner];
+    [self.friendTable reloadData];
+}
+
+-(void)FBSingletonInviteYouCompleted:(BOOL)success :(NSArray *)fbIDs{
+        NSArray *cells = [self findCells:fbIDs];
+    if (success == YES){
+        for (FriendsTableCell *cell in cells){
+            cell.Invite_but.titleLabel.text = @"Invited";
+            cell.Invite_but.enabled = NO;
+        }
+    }else {
+        for (FriendsTableCell *cell in cells){
+            cell.Invite_but.titleLabel.text = @"Failed";
+        }
+    }
+}
+
+//return the searched cell:
+-(NSArray *)findCells:(NSArray*)userIDs{
+    NSMutableArray *cells = [[NSMutableArray alloc] init];
+    for (FriendsTableCell *cell in [friendTable visibleCells]){
+        if ([userIDs containsObject:cell.user_id]){
+            [cells addObject:cell];
+        }
+    }
+    return [[NSArray alloc] initWithArray:cells];
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
