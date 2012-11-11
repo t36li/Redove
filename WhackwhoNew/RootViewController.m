@@ -41,7 +41,7 @@
 
 @implementation RootViewController
 @synthesize LoginAccountImageView;
-@synthesize play_but,opt_but, friendVC;
+@synthesize play_but,opt_but;//friendVC;
 
 -(void) viewDidLoad
 {

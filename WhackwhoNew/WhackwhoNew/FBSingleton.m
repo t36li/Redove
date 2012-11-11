@@ -255,12 +255,12 @@ static FBSingleton *singletonDelegate = nil;
 
 -(void) InviteYou:(NSString *)fbID{
     if (isLogIn){
-        currentAPICall = kDialogRequestsSendToTarget;
+        //currentAPICall = kDialogRequestsSendToTarget;
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                       @"Come and join me to WHACK! download WhackWho.",  @"message",
-                                      fbID, @"to",
+                                      @"841183328", @"to",
                                       nil];
-        [_facebook dialog:@"apprequests" andParams:params andDelegate:self];
+        [_facebook dialog:@"apprequests" andParams:params andDelegate:nil];
     }
 }
 
@@ -533,6 +533,68 @@ static FBSingleton *singletonDelegate = nil;
     NSLog(@"published successfully on FB");
 }
 
+#pragma mark - FBDialogDelegate Methods
+
+/**
+ * Called when a UIServer Dialog successfully return. Using this callback
+ * instead of dialogDidComplete: to properly handle successful shares/sends
+ * that return ID data back.
+ */
+- (void)dialogCompleteWithUrl:(NSURL *)url {
+    if (![url query]) {
+        NSLog(@"User canceled dialog or there was an error");
+        return;
+    }
+    
+    NSDictionary *params = [self parseURLParams:[url query]];
+    switch (currentAPICall) {
+        case kDialogFeedUser:
+        case kDialogFeedFriend:
+            /*
+             {
+             // Successful posts return a post_id
+             if ([params valueForKey:@"post_id"]) {
+             [self showMessage:@"Published feed successfully."];
+             NSLog(@"Feed post ID: %@", [params valueForKey:@"post_id"]);
+             }
+             break;
+             }*/
+        case kDialogRequestsSendToMany:
+        case kDialogRequestsSendToSelect:
+        case kDialogRequestsSendToTarget:
+        {
+            // Successful requests return the id of the request
+            // and ids of recipients.
+            NSMutableArray *recipientIDs = [[NSMutableArray alloc] init];
+            for (NSString *paramKey in params) {
+                if ([paramKey hasPrefix:@"to["]) {
+                    [recipientIDs addObject:[params objectForKey:paramKey]];
+                }
+            }
+            if ([params objectForKey:@"request"]){
+                NSLog(@"Request ID: %@", [params objectForKey:@"request"]);
+            }
+            if ([recipientIDs count] > 0) {
+                [delegate FBSingletonInviteYouCompleted:YES :recipientIDs];
+                NSLog(@"Recipient ID(s): %@", recipientIDs);
+            }
+            [delegate FBSingletonInviteYouCompleted:NO :recipientIDs];
+            
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+- (void)dialogDidNotComplete:(FBDialog *)dialog {
+    NSLog(@"Dialog dismissed.");
+}
+
+- (void)dialog:(FBDialog*)dialog didFailWithError:(NSError *)error {
+    NSLog(@"Error message: %@", [[error userInfo] objectForKey:@"error_msg"]);
+    //[self showMessage:@"Oops, something went haywire."];
+}
 
 
 /**

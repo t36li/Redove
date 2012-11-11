@@ -41,6 +41,8 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [FBSingleton sharedInstance].delegate = self;
+    if (!resultData.count)
+        [spinner startSpinnerInView:loadingView];
 }
 
 

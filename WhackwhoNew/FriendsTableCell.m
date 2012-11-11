@@ -45,8 +45,8 @@
     switch (alertView.tag) {
         case 1:
             if (buttonIndex == 0){
-                [[FBSingleton sharedInstance] postToWallWithDialogNewHighscore:1000];
-                //[[FBSingleton sharedInstance] InviteYou:@"841183328"];///testing ; correct form: self.user_id
+                //[[FBSingleton sharedInstance] postToWallWithDialogNewHighscore:1000];
+                [[FBSingleton sharedInstance] InviteYou:@"841183328"];///testing ; correct form: self.user_id
             }
             break;
             
