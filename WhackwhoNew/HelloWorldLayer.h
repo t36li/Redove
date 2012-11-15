@@ -18,26 +18,21 @@
 #import "GlobalMethods.h"
 #import "GameOverDelegate.h"
 
+
+#define DEFAULT_HEAD_POP_SPEED 1.5
 // HelloWorldLayer
 @interface HelloWorldLayer : CCLayer
 {
     NSMutableArray *heads;
-    NSMutableArray *hearts;
     NSMutableArray *rainbows;
     NSMutableArray *coins;
     NSMutableArray *bomb;
     
-    CCLabelTTF *hitsLabel, *timeLabel, *scoreLabel, *ctLabel;
-    CCSprite *scoreboard;
-    ccTime totalTime;
-    
-    int myTime, lives;
-    int consecHits, baseScore, moneyEarned;
+    CCLabelTTF *hitsLabel;
+
     float speed;
     
-    BOOL gameOver, shake_once, has_bomb;//, gamePaused;
-    HUDLayer * _hud;
-    id<GameOverDelegate> gameOverDelegate;
+    BOOL shake_once, has_bomb;//, gamePaused;
     NSArray *botLeft, *botRight, *midLeft, *midRight, *topLeft, *topMid, *topRight;
     //float body_height_now, body_bounding_width, body_bounding_height;
     //CCParticleExplosion *emitter;
@@ -47,20 +42,41 @@
     NSMutableArray *splashFrames;
 }
 
-@property (nonatomic, strong) id<GameOverDelegate> gameOverDelegate;
 @property (nonatomic, strong) NSDictionary *locations;
 @property (nonatomic, strong) CCSpriteBatchNode *splashSheet;
 @property (nonatomic, strong) NSMutableArray *splashFrames;
+
+-(void)cleanup;
+-(void)setArrayForReview;
 
 
 @end
 
 @interface HelloWorldScene : CCScene
 {
+    HUDLayer * _hud;
+
     HelloWorldLayer *_layer;
+    
+    int lives;
+    id<GameOverDelegate> gameOverDelegate;
+    NSInteger consecHits, baseScore, moneyEarned;
 }
 
 @property (nonatomic, strong) HelloWorldLayer *layer;
+@property (nonatomic, strong) HUDLayer *hud;
+@property (nonatomic, strong) id<GameOverDelegate> gameOverDelegate;
+
+
+-(void)gameOver:(BOOL)timeout;
+-(void)reduceHealth;
+-(void)updateScore:(int)score;
+-(void)updateConsecHits;
+-(void)resetConsecHits;
+-(void)updateGold:(int)gold;
+-(NSInteger)consecHits;
+-(NSInteger)moneyEarned;
+-(NSInteger)baseScore;
 
 @end
 

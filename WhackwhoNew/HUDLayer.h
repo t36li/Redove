@@ -10,12 +10,22 @@
 #import "GameOverDelegate.h"
 
 @interface HUDLayer : CCLayer {
-    int baseScore, multiplier, coin;
-    id<GameOverDelegate> gameOverDelegate;
-
+    //int baseScore, multiplier, coin;
+    //id<GameOverDelegate> gameOverDelegate;
+    NSMutableArray *hearts;
+    CCLabelTTF *timeLabel, *scoreLabel;
+    CCMenu *pauseMenu;
+    BOOL gameOver;
+    CCSprite *scoreboard;
+    ccTime myTime;
+    int lives;
 }
 
-- (void)showPauseMenu:(id<GameOverDelegate>)delegate;
-@property (nonatomic, retain) id<GameOverDelegate> gameOverDelegate;
+-(void)resetTimer;
+-(void)removeHeart;
+-(void)updateScore:(NSInteger)score;
+
+//- (void)showPauseMenu:(id<GameOverDelegate>)delegate;
+//@property (nonatomic, retain) id<GameOverDelegate> gameOverDelegate;
 
 @end

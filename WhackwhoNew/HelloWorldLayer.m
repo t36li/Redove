@@ -21,7 +21,7 @@
 // HelloWorldLayer implementation
 @implementation HelloWorldLayer
 
-@synthesize gameOverDelegate, locations, splashSheet, splashFrames;
+@synthesize locations, splashSheet, splashFrames;
 
 // on "init" you need to initialize your instance
 -(id) init
@@ -31,22 +31,16 @@
 	if( (self=[super init]) ) {
         
         //[self addChild:[CCSprite spriteWithFile:@"splash_sheet.png"]];
-        
+
+
         CGSize winSize = [CCDirector sharedDirector].winSize;
                 
-        //init retard variables
-        consecHits = 0;
-        totalTime = 45;
-        myTime = (int)totalTime;
-        baseScore = 0;
-        speed = 1.5;
+        //init variables
+        speed = DEFAULT_HEAD_POP_SPEED;
         //_hud = hud;
-        self.isTouchEnabled = YES;
-        gameOver = FALSE;
         //gamePaused = FALSE;
         has_bomb = FALSE;
         
-        hearts = [[NSMutableArray alloc] init];
         coins = [[NSMutableArray alloc] init];
         bomb = [[NSMutableArray alloc] init];
         heads = [[NSMutableArray alloc] init];
@@ -79,13 +73,6 @@
         self.isAccelerometerEnabled = YES;
         [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1/60];
         shake_once = false;
-                
-        //add timer label
-        timeLabel = [CCLabelTTF labelWithString:@"0:0" fontName:@"chalkduster" fontSize:30];
-        timeLabel.color = ccc3(255, 249, 0);
-        timeLabel.anchorPoint = ccp(0,1);
-        timeLabel.position = ccp(15, winSize.height);
-        [self addChild:timeLabel z:10];
         
         //add "hits" label
         hitsLabel = [CCLabelTTF labelWithString:@"X" fontName:@"chalkduster" fontSize:35];
@@ -95,45 +82,6 @@
         //hitsLabel.scale = 0.1;
         [self addChild:hitsLabel z:10];
         hitsLabel.visible = FALSE;
-        
-        //add combat text label
-        ctLabel = [CCLabelTTF labelWithString:@"+1" fontName:@"chalkduster" fontSize:30];
-        ctLabel.color = ccc3(255, 0, 0);
-        ctLabel.anchorPoint = ccp(0.5,0.5);
-        //ctLabel.position = ccp(s.width/2, s.height/2);
-        [self addChild:ctLabel z:10];
-        ctLabel.visible = FALSE;
-        
-        //add "pause" label
-        CCMenuItemImage *pause = [CCMenuItemImage itemWithNormalImage:@"pause.png" selectedImage:@"pause.png" target:self selector:@selector(pauseGame)];
-        CCMenu *pauseMenu = [CCMenu menuWithItems:pause, nil];
-        pauseMenu.anchorPoint = ccp(0,0);
-        pauseMenu.position = ccp(20,20);
-        [self addChild:pauseMenu z:10];
-        
-        //add "life" sprites
-        lives = 3;
-        for (int i = 0; i < lives; i++) {
-            CCSprite *life = [CCSprite spriteWithFile:@"heart.png"];
-            life.anchorPoint = ccp(1,1);
-            life.position = ccp(winSize.width - 5 - i*25, winSize.height - 5);
-            [hearts addObject:life];
-            [self addChild:life z:10];
-        }
-        
-        //add "Scoreboard"
-        scoreboard = [CCSprite spriteWithFile:@"scoreboard.png"];
-        scoreboard.anchorPoint = ccp(0.5, 0);
-        scoreboard.position = ccp(winSize.width/2 + 10, -10);
-        scoreboard.scale = 0.8;
-        [self addChild:scoreboard z:-36];
-        
-        //add "score" label
-        scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"chalkduster" fontSize:50];
-        scoreLabel.color = ccc3(255, 200, 0);
-        scoreLabel.position = ccp(scoreboard.contentSize.width/2, scoreboard.contentSize.height/2);
-        [scoreboard addChild:scoreLabel z:10];
-        
         
         //!!!! initializing popups
         //use the array from game.h which contains all image names
@@ -163,7 +111,6 @@
         
         [self schedule:@selector(tryPopheads) interval:1.5];
         //[self schedule:@selector(checkGameState) interval:0.1];
-        [self schedule:@selector(timerUpdate:) interval:0.001];
 	}
     
 	return self;
@@ -297,86 +244,25 @@
     locations = [dictionary objectForKey:@"points"];
 }
 
--(void) pauseGame {
-    //[[Game sharedGame] resetGameState];
-    [gameOverDelegate returnToMenu];
-    
-    /*if (self.isTouchEnabled) {
-        //UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Paused" message:@"Press the button to..." delegate:self cancelButtonTitle:@"Resume" otherButtonTitles:@"Back Home", nil];
-        //[alert show];
-        //gamePaused = TRUE;
-        [[Game sharedGame] setBaseScore:baseScore];
-        [[Game sharedGame] setMoneyEarned:moneyEarned];
-        [[Game sharedGame] setMultiplier:consecHits];
-        
-        [[CCDirector sharedDirector] pause];
-        [_hud showPauseMenu:gameOverDelegate];
-    }*/
-}
+ -(void) cleanup {
+     
+     //check if game is over
+     [self stopAllActions];
+     [self unscheduleAllSelectors];
+     [self removeAllChildrenWithCleanup:YES];
+ }
 
--(void) timerUpdate: (ccTime) deltT {
-    if (gameOver) return;
-    
-    totalTime -= deltT;
-    myTime = (int)totalTime;
-    [timeLabel setString:[NSString stringWithFormat:@"%d:%02d", myTime/60, myTime%60]];
-}
+-(void)setArrayForReview {
+    Game *game = [Game sharedGame];
 
--(void) checkGameState{
-    if (gameOver) return;
-    
-    //update "score"
-    [scoreLabel setString:[NSString stringWithFormat:@"%d", baseScore]];
-    
-    //update "hits"
-    if (consecHits <= 1) {
-        hitsLabel.visible = FALSE;
-    } else {
-        hitsLabel.visible = TRUE;
+    NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:game.selectHeadCount];
+    for (int i = 0; i < game.selectHeadCount; i ++) {
+        [array addObject:[heads objectAtIndex:i]];
     }
-    
-    //check if game is over
-    if (myTime <= 0 || lives <= 0) {
-        [self unscheduleAllSelectors];
-        
-        gameOver = TRUE;
-        self.isTouchEnabled = NO;
-        
-        Game *game = [Game sharedGame];
-        
-        [game setBaseScore:baseScore];
-        [game setMoneyEarned:moneyEarned];
-        [game setMultiplier:consecHits];
-        
-        //move navigation controller to next view controller
-        NSString *msg;
-        if (myTime <= 0) {
-            msg = @"Time's UP!";
-        } else {
-            msg = @"Game OVER!";
-        }
-        
-        CCLabelTTF *gameOverLabel = [CCLabelTTF labelWithString:msg fontName:@"Chalkduster" fontSize:50];
-        gameOverLabel.position = ccp(200,200);
-        [self addChild:gameOverLabel];
-        
-        NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:game.selectHeadCount];
-        for (int i = 0; i < game.selectHeadCount; i ++) {
-            [array addObject:[heads objectAtIndex:i]];
-        }
-        [game setArrayOfHits:array];
-        
-        //[[CCDirector sharedDirector] pause];
-        
-        [gameOverDelegate proceedToReview];
-        
-        return;
-    }
+    [game setArrayOfHits:array];
 }
 
 -(void) tryPopheads{
-    
-    if (gameOver) return;
     
     //float numSelected = [[Game sharedGame] selectHeadCount];
     //float totalHeadNum = [[[Game sharedGame] arrayOfAllPopups] count];
@@ -627,6 +513,7 @@
 }
 
 -(void) checkCombo: (id) sender {
+    HelloWorldScene *scene = (HelloWorldScene *)self.parent;
     Character *head = (Character *) sender;
 
     head.rotation = 0;
@@ -635,22 +522,22 @@
     head.visible = NO;
 
     if (head.didMiss && head.isSelectedHit) {
-        consecHits = 0;
+        [scene resetConsecHits];
     }
     
     //display rainbows according to hit streaks
-    if (consecHits == 0) {
+    if (scene.consecHits == 0 && speed != DEFAULT_HEAD_POP_SPEED) {
         
         //set all rainbows to not visible
        // for (CCSprite *rainbow in rainbows) {
          //   rainbow.visible = FALSE;
         //}
         
-        speed = 1.5;
+        speed = DEFAULT_HEAD_POP_SPEED;
         [self unschedule:@selector(tryPopheads)];
         [self schedule:@selector(tryPopheads) interval:speed];
         
-    } else if (consecHits % 5 == 0){
+    } else if (scene.consecHits % 5 == 0){
         
         //show rainbows every 5 hit combos
         //for (CCSprite *rainbow in rainbows) {
@@ -669,129 +556,6 @@
         [self schedule:@selector(tryPopheads) interval:speed];
 
     }
-}
-
-
--(void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    //if (gamePaused) return;
-    
-    UITouch *touch = [touches anyObject];
-    CGPoint location = [touch locationInView:[touch view]];
-    location = [[CCDirector sharedDirector] convertToGL:location];
-    
-    //CCLOG(@"x: %f, y: %f", location.x, location.y);
-
-    for (CCSprite *coin in coins) {
-        if (coin.tag == 1) {
-            continue;
-        }
-        if (CGRectContainsPoint(coin.boundingBox, location)) {
-            coin.tag = 1; //tag serves as coin.tappble = false
-            [coin stopAllActions];
-            //CCLOG(@"got coin!");
-            moneyEarned += 10;
-            CCScaleBy *scaleCoinUp = [CCScaleBy actionWithDuration:0.2 scale:2];
-            CCAction *scaleCoinDown = [scaleCoinUp reverse];
-            CCCallFuncN *removeCoin = [CCCallFuncN actionWithTarget:self selector:@selector(removeCoin:)];
-            [coin runAction:[CCSequence actions:scaleCoinUp, scaleCoinDown, removeCoin, nil]];
-            break;
-        }
-    }
-    
-    for (Character *head in heads) {
-        if (head.tappable == FALSE) {
-            continue;
-        }
-        
-        if (CGRectContainsPoint(head.boundingBox, location)) {
-            
-            [head stopAllActions];
-            head.didMiss = FALSE;
-            head.tappable = FALSE;
-            
-            //need to remove hiteffect sprite just like the coins
-            CCSprite *hitEffect = [CCSprite spriteWithFile:@"hit effect.png"];
-            hitEffect.scale = 0.01;
-            hitEffect.position = ccp(head.position.x + head.contentSize.width * head.scaleX/2, head.position.y);
-            [self addChild:hitEffect];
-            CCScaleTo *scaleUp = [CCScaleTo actionWithDuration:0.1 scale:1.0];
-            CCScaleTo *scaleDown = [CCScaleTo actionWithDuration:0.1 scale:0.01];
-            CCCallFuncN *removeHitEffect = [CCCallFuncN actionWithTarget:self selector:@selector(removeHitEffect:)];
-            [hitEffect runAction:[CCSequence actions:scaleUp, scaleDown, removeHitEffect, nil]];
-            
-            //if hit the correct "mole"
-            if (head.isSelectedHit) {
-                
-                //10% chance for a coin to popup
-                if (arc4random() % 100 < 10) {
-                    CCSprite *testObj = [CCSprite spriteWithFile:@"coin front.png"];
-                    testObj.position = ccp(location.x, location.y);
-                    testObj.scale = 0.4;
-                    testObj.tag = 0;
-                    [self addChild:testObj];
-                    [coins addObject:testObj];
-                    
-                    CCRotateBy *rotateCoin = [CCRotateBy actionWithDuration:1.9 angle:(360*7)];
-                    CCCallFuncN *removeCoin = [CCCallFuncN actionWithTarget:self selector:@selector(removeCoin:)];
-                    [testObj runAction:[CCSequence actions: rotateCoin, removeCoin, nil]];
-                }
-                
-                head.hp -= 2;
-                head.numberOfHits ++;
-                //update scores - show little label sign beside
-                int score_added = 5 + consecHits / 5;
-                baseScore += score_added;
-                [ctLabel setString:[NSString stringWithFormat:@"+%i", score_added]];
-                ctLabel.visible = TRUE;
-                ctLabel.position = ccp(head.position.x, head.position.y);
-                CCDelayTime *delay = [CCDelayTime actionWithDuration:1.0];
-                CCCallFuncN *setLabelInvis = [CCCallFuncN actionWithTarget:self selector:@selector(setLabelInvis:)];
-                [ctLabel runAction:[CCSequence actions:delay, setLabelInvis, nil]];
-                
-                //update hit streak label
-                consecHits++;
-                if (consecHits > 1) {
-                    [hitsLabel setString:[NSString stringWithFormat:@"X%i", consecHits]];
-                }
-            //if not hit correct "mole"
-            } else {
-                
-                //vibrate to indicate mis-hit
-                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-
-                consecHits = 0;
-                
-                //update lives
-                lives -= 1;
-                if ([hearts count] > 0) {
-                    [self removeChild:[hearts objectAtIndex:[hearts count] - 1] cleanup:YES];
-                    [hearts removeLastObject];
-                }
-                
-                //send all heads down
-                for (Character *head in heads) {
-                    [head stopAllActions];
-                    head.visible = FALSE;
-                    head.tappable = FALSE;
-                    [head runAction:[CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)]];
-                }
-                break;
-            }
-        
-            float height_now = head.contentSize.height * head.scaleY;
-            
-            float rotation = CC_DEGREES_TO_RADIANS(head.rotation);
-            CCMoveBy *moveDown = [CCMoveBy actionWithDuration:0.5 position:ccp(-(5+height_now) * sin(rotation), -(height_now+5) * cos(rotation))];
-            CCMoveBy *easeMoveDown = [CCEaseOut actionWithAction:moveDown rate:3.0];
-            CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
-            
-            [head runAction:[CCSequence actions: easeMoveDown, checkCombo, nil]];
-            
-            //stop the loop as we are not support multi-touch anymore
-            break;
-        }
-    } //end heads loop*/
 }
 
 
@@ -851,6 +615,12 @@
     //[self removeChild:tempbomb cleanup:YES];
 //}
 
+
+
+- (void)registerWithTouchDispatcher {
+    [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+}
+
 -(void) removeCoin: (id) sender {
     CCSprite *coin = (CCSprite *) sender;
     
@@ -858,30 +628,247 @@
     [self removeChild:coin cleanup:YES];
 }
 
--(void) setLabelInvis: (id) sender {
-    CCLabelTTF *temp = (CCLabelTTF *) sender;
-    temp.visible = FALSE;
+-(void) removeNode: (id) node {
+    [self removeChild:node cleanup:YES];
 }
+
+-(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+    
+    //if (gamePaused) return;
+    
+    CGPoint location = [touch locationInView:[touch view]];
+    location = [[CCDirector sharedDirector] convertToGL:location];
+    HelloWorldScene *scene = (HelloWorldScene *)self.parent;
+
+    //CCLOG(@"x: %f, y: %f", location.x, location.y);
+    
+    for (CCSprite *coin in coins) {
+        if (coin.tag == 1) {
+            continue;
+        }
+        if (CGRectContainsPoint(coin.boundingBox, location)) {
+            coin.tag = 1; //tag serves as coin.tappble = false
+            [coin stopAllActions];
+            //CCLOG(@"got coin!");
+            [scene updateGold:10];
+            CCScaleBy *scaleCoinUp = [CCScaleBy actionWithDuration:0.2 scale:2];
+            CCAction *scaleCoinDown = [scaleCoinUp reverse];
+            CCCallFuncN *removeCoin = [CCCallFuncN actionWithTarget:self selector:@selector(removeCoin:)];
+            [coin runAction:[CCSequence actions:scaleCoinUp, scaleCoinDown, removeCoin, nil]];
+            
+            return YES;
+        }
+    }
+    
+    for (Character *head in heads) {
+        if (head.tappable == FALSE) {
+            continue;
+        }
+        
+        if (CGRectContainsPoint(head.boundingBox, location)) {
+            
+            [head stopAllActions];
+            head.didMiss = FALSE;
+            head.tappable = FALSE;
+            
+            //need to remove hiteffect sprite just like the coins
+            CCSprite *hitEffect = [CCSprite spriteWithFile:@"hit effect.png"];
+            hitEffect.scale = 0.01;
+            hitEffect.position = ccp(head.position.x + head.contentSize.width * head.scaleX/2, head.position.y);
+            [self addChild:hitEffect];
+            CCScaleTo *scaleUp = [CCScaleTo actionWithDuration:0.1 scale:1.0];
+            CCScaleTo *scaleDown = [CCScaleTo actionWithDuration:0.1 scale:0.01];
+            CCCallFuncN *removeHitEffect = [CCCallFuncN actionWithTarget:self selector:@selector(removeHitEffect:)];
+            [hitEffect runAction:[CCSequence actions:scaleUp, scaleDown, removeHitEffect, nil]];
+            
+            //if hit the correct "mole"
+            if (head.isSelectedHit) {
+                
+                //10% chance for a coin to popup
+                if (arc4random() % 100 < 10) {
+                    CCSprite *testObj = [CCSprite spriteWithFile:@"coin front.png"];
+                    testObj.position = ccp(location.x, location.y);
+                    testObj.scale = 0.4;
+                    testObj.tag = 0;
+                    [self addChild:testObj];
+                    [coins addObject:testObj];
+                    
+                    CCRotateBy *rotateCoin = [CCRotateBy actionWithDuration:1.9 angle:(360*7)];
+                    CCCallFuncN *removeCoin = [CCCallFuncN actionWithTarget:self selector:@selector(removeCoin:)];
+                    [testObj runAction:[CCSequence actions: rotateCoin, removeCoin, nil]];
+                }
+                
+                head.hp -= 2;
+                head.numberOfHits ++;
+                //update scores - show little label sign beside
+                int score_added = 5 + scene.consecHits / 5;
+                [scene updateScore:score_added];
+                
+                //generate crit label
+                CCLabelTTF *ctLabel;
+                ctLabel = [CCLabelTTF labelWithString:@"+1" fontName:@"chalkduster" fontSize:30];
+                ctLabel.color = ccc3(255, 0, 0);
+                ctLabel.anchorPoint = ccp(0.5,0.5);
+                [self addChild:ctLabel z:10];
+                [ctLabel setString:[NSString stringWithFormat:@"+%i", score_added]];
+                ctLabel.visible = TRUE;
+                ctLabel.position = ccp(head.position.x, head.position.y);
+                CCDelayTime *delay = [CCDelayTime actionWithDuration:1.0];
+                CCCallFuncN *remove = [CCCallFuncN actionWithTarget:self selector:@selector(removeNode::)];
+                [ctLabel runAction:[CCSequence actions:delay, remove, nil]];
+                
+                //update hit streak label
+                [scene updateConsecHits];
+                if (scene.consecHits > 1) {
+                    [hitsLabel setString:[NSString stringWithFormat:@"X%i", scene.consecHits]];
+                }
+                //if not hit correct "mole"
+            } else {
+                
+                //vibrate to indicate mis-hit
+                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                
+                [scene resetConsecHits];
+                
+                //update lives
+                [scene reduceHealth];
+                
+                //send all heads down
+                for (Character *head in heads) {
+                    [head stopAllActions];
+                    head.visible = FALSE;
+                    head.tappable = FALSE;
+                    [head runAction:[CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)]];
+                }
+                break;
+            }
+            
+            float height_now = head.contentSize.height * head.scaleY;
+            
+            float rotation = CC_DEGREES_TO_RADIANS(head.rotation);
+            CCMoveBy *moveDown = [CCMoveBy actionWithDuration:0.5 position:ccp(-(5+height_now) * sin(rotation), -(height_now+5) * cos(rotation))];
+            CCMoveBy *easeMoveDown = [CCEaseOut actionWithAction:moveDown rate:3.0];
+            CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
+            
+            [head runAction:[CCSequence actions: easeMoveDown, checkCombo, nil]];
+            
+            //stop the loop as we are not support multi-touch anymore
+            return YES;
+        }
+    } //end heads loop*/
+    
+    return NO;
+}
+
+
+
+/*
+-(void) ccTouchCancelled:(UITouch *)touch withEvent:(UIEvent *)event {
+    
+}
+
+-(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
+    
+}
+
+-(void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
+    
+}
+ */
 // on "dealloc" you need to release all your retained objects
 @end
 
 @implementation HelloWorldScene
 
 @synthesize layer=_layer;
+@synthesize hud=_hud;
+@synthesize gameOverDelegate;
 
 
 - (id)init {
     
     if ((self = [super init])) {
+        
+        lives = 3;
+        consecHits = 0;
+        baseScore = 0;
+        moneyEarned = 0;
+
         // 'hud' is the restart object
-        HUDLayer *hud = [HUDLayer node];
-        [self addChild:hud z:10];
+        self.hud = [HUDLayer node];
+        [self addChild:self.hud z:10];
         
         self.layer = [HelloWorldLayer node];
         [self addChild:self.layer z:0];
+        
     }
 	
 	return self;
 }
 
+-(void)gameOver:(BOOL)timeout {
+    //update "score"
+    [self.layer cleanup];
+    
+    
+    NSString *msg;
+    if (timeout) {
+        msg = @"Time's UP!";
+    } else {
+        msg = @"Game OVER!";
+    }
+    CCLabelTTF *gameOverLabel = [CCLabelTTF labelWithString:msg fontName:@"Chalkduster" fontSize:50];
+    gameOverLabel.position = ccp(200,200);
+    [self addChild:gameOverLabel];
+    
+    
+    [self performSelector:@selector(transitionToReview) withObject:nil afterDelay:2.0];
+    
+    
+    Game *game = [Game sharedGame];
+    [game setBaseScore:baseScore];
+    [game setMoneyEarned:moneyEarned];
+    [game setMultiplier:consecHits];
+}
+
+-(void)transitionToReview {
+    [self.gameOverDelegate proceedToReview];
+}
+
+-(void)reduceHealth {
+    lives -= 1;
+    
+    if (lives <= 0) {
+        [self gameOver:NO];
+    }
+}
+
+-(void)updateScore:(int)score {
+    baseScore = score;
+    [self.hud updateScore:baseScore];
+}
+
+-(void)updateConsecHits {
+    consecHits++;
+}
+
+-(void)resetConsecHits {
+    consecHits = 0;
+}
+
+-(void)updateGold:(int)gold {
+    moneyEarned += gold;
+}
+
+-(NSInteger)consecHits {
+    return consecHits;
+}
+
+-(NSInteger)moneyEarned {
+    return moneyEarned;
+}
+
+-(NSInteger)baseScore {
+    return baseScore;
+}
 @end

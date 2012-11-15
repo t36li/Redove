@@ -11,8 +11,9 @@
 #import "CocosViewController.h"
 @implementation HUDLayer
 
-@synthesize gameOverDelegate;
+//@synthesize gameOverDelegate;
 
+/*
 - (void) resumeTapped:(id)sender {
     
     // Reload the current scene
@@ -106,6 +107,121 @@
     resumeMenu.position = ccp(s.width/2, s.height * 0.2);
     [highscoreLayer addChild:resumeMenu z:10];
 
+}
+ */
+
+-(void) setVariables {
+    myTime = 45;
+    hearts = [NSMutableArray array];
+    lives = 3;
+
+}
+
+-(id) init {
+    if ((self = [super init])) {
+       
+        CGSize winSize = [CCDirector sharedDirector].winSize;
+
+        //add timer label
+        timeLabel = [CCLabelTTF labelWithString:@"0:0" fontName:@"chalkduster" fontSize:30];
+        timeLabel.color = ccc3(255, 249, 0);
+        timeLabel.anchorPoint = ccp(0,1);
+        timeLabel.position = ccp(15, winSize.height);
+        [self addChild:timeLabel z:10];
+        
+        //add "pause" label
+        CCMenuItemImage *pause = [CCMenuItemImage itemWithNormalImage:@"pause.png" selectedImage:@"pause.png" target:self selector:@selector(pauseGame)];
+        pauseMenu = [CCMenu menuWithItems:pause, nil];
+        pauseMenu.anchorPoint = ccp(0,0);
+        pauseMenu.position = ccp(20,20);
+        [self addChild:pauseMenu z:10];
+        
+        //add "life" sprites
+        for (int i = 0; i < lives; i++) {
+            CCSprite *life = [CCSprite spriteWithFile:@"heart.png"];
+            life.anchorPoint = ccp(1,1);
+            life.position = ccp(winSize.width - 5 - i*25, winSize.height - 5);
+            [hearts addObject:life];
+            [self addChild:life z:10];
+        }
+        
+        //add "Scoreboard"
+        scoreboard = [CCSprite spriteWithFile:@"scoreboard.png"];
+        scoreboard.anchorPoint = ccp(0.5, 0);
+        scoreboard.position = ccp(winSize.width/2 + 10, -10);
+        scoreboard.scale = 0.8;
+        [self addChild:scoreboard z:-36];
+        
+        //add "score" label
+        scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"chalkduster" fontSize:50];
+        scoreLabel.color = ccc3(255, 200, 0);
+        scoreLabel.position = ccp(scoreboard.contentSize.width/2, scoreboard.contentSize.height/2);
+        [scoreboard addChild:scoreLabel z:10];
+
+        [self schedule:@selector(timerUpdate:) interval:1/60];
+
+    }
+    return self;
+}
+
+
+-(void) timerUpdate: (ccTime) deltT {    
+    myTime -= deltT;
+    [timeLabel setString:[NSString stringWithFormat:@"%d:%02d", (int)myTime/60, (int)myTime%60]];
+    
+    if (myTime <= 0) {
+        CCNode *scene = self.parent;
+        HelloWorldScene *helloScene = (HelloWorldScene *)scene;
+        [helloScene gameOver:YES];
+        [self unschedule:@selector(timerUpdate:)];
+    }
+}
+
+-(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+    CGPoint location = [touch locationInView:[touch view]];
+    location = [[CCDirector sharedDirector] convertToGL:location];
+    
+    if (CGRectContainsPoint(pauseMenu.boundingBox, location)) {
+        HelloWorldScene *scene = (HelloWorldScene *)self.parent;
+        [scene.gameOverDelegate returnToMenu];
+        return YES;
+    }
+    
+    return NO;
+}
+
+-(void)resetTimer {
+    [self setVariables];
+    [self unschedule:@selector(timerUpdate:)];
+}
+
+
+-(void)removeHeart {
+    if ([hearts count] > 0) {
+        [self removeChild:[hearts objectAtIndex:[hearts count] - 1] cleanup:YES];
+        [hearts removeLastObject];
+    }
+}
+
+-(void)updateScore:(NSInteger)score {
+    [scoreLabel setString:[NSString stringWithFormat:@"%d", score]];
+}
+
+/*
+-(void) ccTouchCancelled:(UITouch *)touch withEvent:(UIEvent *)event {
+    
+}
+
+-(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
+    
+}
+
+-(void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
+    
+}
+*/
+- (void)registerWithTouchDispatcher {
+    [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
 }
 
 @end
