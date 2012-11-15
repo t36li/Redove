@@ -18,4 +18,5 @@
 -(void)FBUserFriendsAppNotUsing:(NSArray *) friends;
 //-(void)FBSingletonUserFriendsAppUsingLoaded:(NSArray *) friendsUsingApp;
 -(void)FBSingletonHitWhoIDListLoaded:(NSArray *) friendUsingAppIDs;
+-(void)FBSingletonInviteYouCompleted:(BOOL)success:(NSArray *)fbIDs;
 @end
