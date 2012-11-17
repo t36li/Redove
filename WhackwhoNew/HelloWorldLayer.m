@@ -109,7 +109,7 @@
             //head.visible = TRUE;
         }
         
-        [self schedule:@selector(tryPopheads) interval:1.5];
+        //[self schedule:@selector(tryPopheads) interval:1.5];
         //[self schedule:@selector(checkGameState) interval:0.1];
 	}
     
@@ -794,12 +794,12 @@
         baseScore = 0;
         moneyEarned = 0;
 
-        // 'hud' is the restart object
-        self.hud = [HUDLayer node];
-        [self addChild:self.hud z:10];
-        
         self.layer = [HelloWorldLayer node];
         [self addChild:self.layer z:0];
+        
+        // 'hud' is the restart object
+        self.hud = [HUDLayer node];
+        [self addChild:self.hud z:100];
         
     }
 	
