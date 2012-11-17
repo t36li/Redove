@@ -11,10 +11,14 @@
 
 @interface StoreViewController : UIViewController<UIScrollViewDelegate> {
     UIScrollView *mainItemsScroll;
+    UIScrollView *purchasedItemsScroll;
+    
     float oldX; // here or better in .h interface
 }
 @property (strong, nonatomic) IBOutlet UIScrollView *mainItemsScroll;
 
 - (IBAction)Back_Touched:(id)sender;
+- (IBAction)Buy_Touched:(id)sender;
+- (IBAction)Undo_Touched:(id)sender;
 
 @end

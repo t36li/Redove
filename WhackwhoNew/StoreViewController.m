@@ -9,6 +9,7 @@
 #import "StoreViewController.h"
 #import "cocos2d.h"
 #import "StatusViewLayer.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface StoreViewController ()
 
@@ -61,9 +62,11 @@
         rect.origin.y = 0;
         
         imageView.frame = rect;
-        imageView.transform = CGAffineTransformMakeRotation(30*3.14159/100);
+        //imageView.transform = CGAffineTransformMakeRotation(30*3.14159/100);
+        [imageView.layer setBorderColor:[[UIColor blackColor] CGColor]];
+        [imageView.layer setBorderWidth:2.5];
         [mainItemsScroll addSubview:imageView];
-        cx += imageView.frame.size.width+5;
+        cx += imageView.frame.size.width;//+5;
         tot++;
     }
     //self.pageControl.numberOfPages = nimages;
