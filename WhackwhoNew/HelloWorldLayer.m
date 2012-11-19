@@ -32,7 +32,7 @@
         
         //[self addChild:[CCSprite spriteWithFile:@"splash_sheet.png"]];
 
-
+        self.isTouchEnabled = YES;
         CGSize winSize = [CCDirector sharedDirector].winSize;
                 
         //init variables
@@ -109,7 +109,7 @@
             //head.visible = TRUE;
         }
         
-        //[self schedule:@selector(tryPopheads) interval:1.5];
+        [self schedule:@selector(tryPopheads) interval:1.5];
         //[self schedule:@selector(checkGameState) interval:0.1];
 	}
     
@@ -714,7 +714,7 @@
                 ctLabel.visible = TRUE;
                 ctLabel.position = ccp(head.position.x, head.position.y);
                 CCDelayTime *delay = [CCDelayTime actionWithDuration:1.0];
-                CCCallFuncN *remove = [CCCallFuncN actionWithTarget:self selector:@selector(removeNode::)];
+                CCCallFuncN *remove = [CCCallFuncN actionWithTarget:self selector:@selector(removeNode:)];
                 [ctLabel runAction:[CCSequence actions:delay, remove, nil]];
                 
                 //update hit streak label

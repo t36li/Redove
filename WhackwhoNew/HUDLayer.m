@@ -114,7 +114,7 @@
     myTime = 45;
     hearts = [NSMutableArray array];
     lives = 3;
-
+    self.isTouchEnabled = YES;
 }
 
 -(id) init {
@@ -160,7 +160,7 @@
         scoreLabel.position = ccp(winSize.height/2, 40);
         [scoreboard addChild:scoreLabel z:104];
         
-        [self schedule:@selector(timerUpdate)];
+        [self schedule:@selector(timerUpdate:) interval:0.5f];
     }
     return self;
 }
@@ -171,8 +171,8 @@
 }
 
 
--(void) timerUpdate {
-    myTime -= 0.5f;
+-(void) timerUpdate:(ccTime)deltt {
+    myTime -= deltt;
     [timeLabel setString:[NSString stringWithFormat:@"%d:%02d", (int)myTime/60, (int)myTime%60]];
     
     if (myTime <= 0) {
@@ -227,8 +227,10 @@
     
 }
 */
+/*
 - (void)registerWithTouchDispatcher {
     [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
 }
+ */
 
 @end
