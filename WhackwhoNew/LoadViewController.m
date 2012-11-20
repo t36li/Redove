@@ -32,7 +32,7 @@
         }
             break;
         case LogInFacebook:{
-            fbs = [FBSingletonNew sharedInstance];
+            //fbs = [FBSingletonNew sharedInstance];
             //if ([fbs isLogin]==YES){
             //    [fbs populateUserDetails];
             //}
@@ -78,51 +78,6 @@
 #pragma mark- facebook delegate methods
 
 
-
--(void) FBProfilePictureLoaded:(UIImage *)img{
-    //LoginAccountImageView.image = img;
-    //NSLog(@"profilepictureloaded profileimage: %@",LoginAccountImageView.image);
-}
-
-//-(void)FBSingletonDidLogin:(NSString *)userId :(NSString *)userName :(NSString *)gender {
-//    //[[FBSingleton sharedInstance] RequestMeProfileImage];
-//    [[UserInfo sharedInstance] setCurrentLogInType:LogInFacebook];
-//    [[UserInfo sharedInstance] setUserId:userId];
-//    [[UserInfo sharedInstance] setUserName:userName];
-//    [[UserInfo sharedInstance] setGender:gender];
-//    [[FBSingleton sharedInstance] RequestMe];
-//}
-
--(void) FBSIngletonUserFriendsDidLoaded:(NSArray *)friends{
-    //friendVC.resultData = friends;
-    //[friendVC.spinner removeSpinner];
-    //[friendVC.friendTable reloadData];
-}
-
-//
-//-(void) FbMeLoaded:(NSString *)userId :(NSString *)userName : (NSString *)gender{
-//    if (userId != nil){
-//        [[UserInfo sharedInstance] setUserId:userId];
-//        [[UserInfo sharedInstance] setUserName:userName];
-//        [[UserInfo sharedInstance] setGender:gender];
-//        NSLog(@"my Facebook: {ID: %@, Name: %@, gender: %@",userId,userName,gender);
-//        
-//        //NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", userId];
-//        //[LoginAccountImageView setImageWithURL:[NSURL URLWithString:formatting]];
-//        //NSLog(@"Facebook profile picture loaded");
-//        
-//        NSLog(@"Fetch/Create Database record: starting...");
-//        
-//        [self performSelectorInBackground:@selector(connToDB) withObject:nil];
-//        //test upload image
-//        //[self testUploadImage];
-//    }
-//    
-//    if ([self.navigationController topViewController] != self)
-//        [self.navigationController popToRootViewControllerAnimated:YES];
-//
-//}
-
 -(void)FBLogInUserLoadedSuccess{
     NSLog(@"Fetch/Create Database record: starting...");
     
@@ -146,23 +101,6 @@
         loader.delegate = self;
     }];// get if not ...post
 }
-/*
- -(void)testUploadImage{
- ///////////////////////testing... uploading a picture
- UIImage *testProfileImage = [UIImage imageNamed:@"hammer.png"];
- RKParams* params = [RKParams params];
- 
- NSData* imageData = UIImagePNGRepresentation(testProfileImage);
- [params setData:imageData MIMEType:@"image/png" forParam:@"image1"];
- 
- // Log info about the serialization
- NSLog(@"RKParams HTTPHeaderValueForContentType = %@", [params HTTPHeaderValueForContentType]);
- 
- // Send it for processing!
- [[RKObjectManager sharedManager].client post:@"/userImage" params:params delegate:self];
- }
- 
- */
 
 -(void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response{
     NSLog(@"request: '%@'",[request HTTPBodyString]);

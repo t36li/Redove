@@ -52,8 +52,7 @@ static FBSingletonNew *singletonDelegate = nil;
 
 //Facebook status
 -(BOOL)isLogin{
-    [self performLogin];
-    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded){
+    if (FBSession.activeSession.isOpen){
         NSLog(@"FB status: on");
         return YES;
         

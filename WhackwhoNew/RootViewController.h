@@ -7,20 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FBSingletonDelegate.h"
-#import "FBSingleton.h"
 #import "FriendsViewController.h"
+#import "FBSingletonNew.h"
 #import "SpinnerView.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <RestKit/RestKit.h>
 
-@interface RootViewController : UIViewController<FBSingletonDelegate> {
-    UIImageView *LoginAccountImageView; //Facebook Profile Image, Renren Profile Image or Gmail
+@interface RootViewController : UIViewController{
+    FBProfilePictureView *profileImageView; //Facebook Profile Image, Renren Profile Image or Gmail
+    
     UIButton *play_but;
     UIButton *opt_but;
     FriendsViewController *friendVC;
 }
-@property (nonatomic) IBOutlet UIImageView *LoginAccountImageView; 
+@property (retain, nonatomic) IBOutlet FBProfilePictureView *profileImageView;
+
 @property (nonatomic) IBOutlet UIButton *play_but;
 @property (nonatomic) IBOutlet UIButton *opt_but;
 @property (nonatomic) FriendsViewController *friendVC;
