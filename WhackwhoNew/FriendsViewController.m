@@ -23,7 +23,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[FBSingleton sharedInstance] RequestFriendsNotUsing];
+    //**[[FBSingleton sharedInstance] RequestFriendsNotUsing];
     
     [[GlobalMethods alloc] setViewBackground:FriendList_bg viewSender:self.view];
     friendsTable.dataSource = self;
@@ -40,7 +40,7 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    [FBSingleton sharedInstance].delegate = self;
+    //**[FBSingleton sharedInstance].delegate = self;
     if (!resultData.count)
         [spinner startSpinnerInView:loadingView];
 }

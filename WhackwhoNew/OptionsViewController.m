@@ -45,10 +45,10 @@
 }
 
 -(IBAction)logout_touched:(id)sender{
-    if ([[FBSingleton sharedInstance] isLogIn]){
-        [[FBSingleton sharedInstance] logout]; //logout facebook with authorized info
+    //**if ([[FBSingleton sharedInstance] isLogIn]){
+    //**    [[FBSingleton sharedInstance] logout]; //logout facebook with authorized info
         //[[FBSingleton sharedInstance] unauthorized]; //facebook user info unauthorized
-    }
+   // }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

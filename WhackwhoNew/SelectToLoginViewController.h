@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FBSingletonDelegate.h"
+#import "FBSingletonNewDelegate.h"
 
-@interface SelectToLoginViewController : UIViewController<FBSingletonDelegate>{
+@interface SelectToLoginViewController : UIViewController<FBSingletonNewDelegate>{
     UIButton *FBBut;
 }
 @property (nonatomic) IBOutlet UIButton *FBBut;

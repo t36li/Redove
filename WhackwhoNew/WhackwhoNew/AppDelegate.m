@@ -12,6 +12,7 @@
 #import <RestKit/RestKit.h>
 #import "User.h"
 #import "Friend.h"
+#import "FBSingletonNew.h"
 
 @implementation AppDelegate
 
@@ -30,7 +31,6 @@
     objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
     
     [User objectMappingLoader];
-    //[FriendArray objectMappingLoader];
     
     CCDirector *director = [CCDirector sharedDirector];
     
@@ -44,13 +44,13 @@
 //facebook connection
 //pre 4.2 support
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    return [[[FBSingleton sharedInstance] facebook] handleOpenURL:url];
-}
+//- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+//    return [[[FBSingleton sharedInstance] facebook] handleOpenURL:url];
+//}
 
 // For 4.2+ support
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    return [[[FBSingleton sharedInstance] facebook] handleOpenURL:url];
+    return [FBSession.activeSession handleOpenURL:url];//[[[FBSingleton sharedInstance] facebook] handleOpenURL:url];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -75,11 +75,13 @@
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     //[[CCDirector sharedDirector] resume];
+    [FBSession.activeSession handleDidBecomeActive];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {

@@ -8,17 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
-#import "FBSingletonDelegate.h"
-#import "FBSingleton.h"
+#import "FBSingletonNewDelegate.h"
+#import "FBSingletonNew.h"
 #import <RestKit/RestKit.h>
 #import "UserInfo.h"
 #import "User.h"
 #import "GlobalMethods.h"
 
-@interface LoadViewController : UIViewController <FBSingletonDelegate,RKRequestDelegate,RKObjectLoaderDelegate> {
+@interface LoadViewController : UIViewController <FBSingletonNewDelegate,RKRequestDelegate,RKObjectLoaderDelegate> {
     
     UserInfo *usr;
-    FBSingleton *fbs;
+    FBSingletonNew *fbs;
     GlobalMethods *gmethods;
     
     IBOutlet UILabel *myLabel;

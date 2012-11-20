@@ -34,7 +34,7 @@
 @interface RootViewController (){
     @private
     UserInfo *usr;
-    FBSingleton *fbs;
+    FBSingletonNew *fbs;
     GlobalMethods *gmethods;
 }
 @end
@@ -50,7 +50,7 @@
     
     gmethods = [[GlobalMethods alloc] init];
     usr = [UserInfo sharedInstance];
-    fbs = [FBSingleton sharedInstance];
+    //**fbs = [FBSingleton sharedInstance];
     fbs.delegate = self;
 //    
 //    if (LoginAccountImageView.image == nil) {
@@ -136,12 +136,12 @@
 }
 
 -(IBAction)Friend_touched:(id)sender{//change it to invite friends![button changed]
-    if ([fbs isLogIn]){
+    //**if ([fbs isLogIn]){
         //[[FBSingleton sharedInstance] RequestFriendsNotUsing];
         [self performSegueWithIdentifier:PlayToFriendSegue sender:friend_but];
         
         
-    }
+   // }
 }
 
 -(IBAction)upload_clicked:(id)sender {

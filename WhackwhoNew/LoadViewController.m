@@ -18,21 +18,38 @@
 -(void) initializeConnections {
     gmethods = [[GlobalMethods alloc] init];
     usr = [UserInfo sharedInstance];
-    [[FBSingleton sharedInstance] setDelegate:self];
+    //[[FBSingleton sharedInstance] setDelegate:self];
     
     NSLog(@"Load/set currentLogInType");
     int loginId =((int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs] == 0)? 0 : (int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs];
     [usr setCurrentLogInType:loginId];
     
     NSLog(@"login type ID: %i", loginId);
-    if (loginId == 0){
-        [[NSUserDefaults standardUserDefaults] setInteger:NotLogIn forKey:LogInAs];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        NSLog(@"login type : Not Logged in!");
-        [self performSegueWithIdentifier:@"LoginToFacebook" sender:nil];
+    switch (loginId) {
+        case NotLogIn:{
+            NSLog(@"login type : Not Logged in!");
+            [self performSegueWithIdentifier:@"LoginToFacebook" sender:nil];
+        }
+            break;
+        case LogInFacebook:{
+            fbs = [FBSingletonNew sharedInstance];
+            //if ([fbs isLogin]==YES){
+            //    [fbs populateUserDetails];
+            //}
+        }
+            break;
+        case LogInGmail:
+        case LogInRenren:
+        case LogInEmail:
+        default:{
+            [[NSUserDefaults standardUserDefaults] setInteger:NotLogIn forKey:LogInAs];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            NSLog(@"login type : Not Logged in!");
+            [self performSegueWithIdentifier:@"LoginToFacebook" sender:nil];
+        }
+            
+            break;
     }
-    
-
     
     NSLog(@"load Background");
     [gmethods setViewBackground:loading_bg viewSender:self.view];
@@ -43,25 +60,10 @@
 
 -(void) viewDidLoad {
     [super viewDidLoad];
-    
-    NSLog(@"Load/set currentLogInType");
-    int loginId =((int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs] == 0)? 0 : (int)[[NSUserDefaults standardUserDefaults] integerForKey:LogInAs];
-    usr = [UserInfo sharedInstance];
-    [usr setCurrentLogInType:loginId];
-    //NSLog(@"load UserInfo");
-    switch ((int)[usr currentLogInType]) {
-        case LogInFacebook:
-            fbs = [FBSingleton sharedInstance];
-            if ([fbs isLogIn]) [fbs RequestMe];
-            break;
-        case NotLogIn:
-        default:
-            break;
-    }
-
 }
 
 -(void) viewDidAppear:(BOOL)animated{
+    [FBSingletonNew sharedInstance].delegate = self;
     [self initializeConnections];
     self.navigationController.navigationBarHidden = YES;
 }
@@ -74,19 +76,22 @@
 }
 
 #pragma mark- facebook delegate methods
+
+
+
 -(void) FBProfilePictureLoaded:(UIImage *)img{
     //LoginAccountImageView.image = img;
     //NSLog(@"profilepictureloaded profileimage: %@",LoginAccountImageView.image);
 }
 
--(void)FBSingletonDidLogin:(NSString *)userId :(NSString *)userName :(NSString *)gender {
-    //[[FBSingleton sharedInstance] RequestMeProfileImage];
-    [[UserInfo sharedInstance] setCurrentLogInType:LogInFacebook];
-    [[UserInfo sharedInstance] setUserId:userId];
-    [[UserInfo sharedInstance] setUserName:userName];
-    [[UserInfo sharedInstance] setGender:gender];
-    [[FBSingleton sharedInstance] RequestMe];
-}
+//-(void)FBSingletonDidLogin:(NSString *)userId :(NSString *)userName :(NSString *)gender {
+//    //[[FBSingleton sharedInstance] RequestMeProfileImage];
+//    [[UserInfo sharedInstance] setCurrentLogInType:LogInFacebook];
+//    [[UserInfo sharedInstance] setUserId:userId];
+//    [[UserInfo sharedInstance] setUserName:userName];
+//    [[UserInfo sharedInstance] setGender:gender];
+//    [[FBSingleton sharedInstance] RequestMe];
+//}
 
 -(void) FBSIngletonUserFriendsDidLoaded:(NSArray *)friends{
     //friendVC.resultData = friends;
@@ -94,28 +99,37 @@
     //[friendVC.friendTable reloadData];
 }
 
+//
+//-(void) FbMeLoaded:(NSString *)userId :(NSString *)userName : (NSString *)gender{
+//    if (userId != nil){
+//        [[UserInfo sharedInstance] setUserId:userId];
+//        [[UserInfo sharedInstance] setUserName:userName];
+//        [[UserInfo sharedInstance] setGender:gender];
+//        NSLog(@"my Facebook: {ID: %@, Name: %@, gender: %@",userId,userName,gender);
+//        
+//        //NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", userId];
+//        //[LoginAccountImageView setImageWithURL:[NSURL URLWithString:formatting]];
+//        //NSLog(@"Facebook profile picture loaded");
+//        
+//        NSLog(@"Fetch/Create Database record: starting...");
+//        
+//        [self performSelectorInBackground:@selector(connToDB) withObject:nil];
+//        //test upload image
+//        //[self testUploadImage];
+//    }
+//    
+//    if ([self.navigationController topViewController] != self)
+//        [self.navigationController popToRootViewControllerAnimated:YES];
+//
+//}
 
--(void) FbMeLoaded:(NSString *)userId :(NSString *)userName : (NSString *)gender{
-    if (userId != nil){
-        [[UserInfo sharedInstance] setUserId:userId];
-        [[UserInfo sharedInstance] setUserName:userName];
-        [[UserInfo sharedInstance] setGender:gender];
-        NSLog(@"my Facebook: {ID: %@, Name: %@, gender: %@",userId,userName,gender);
-        
-        //NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", userId];
-        //[LoginAccountImageView setImageWithURL:[NSURL URLWithString:formatting]];
-        //NSLog(@"Facebook profile picture loaded");
-        
-        NSLog(@"Fetch/Create Database record: starting...");
-        
-        [self performSelectorInBackground:@selector(connToDB) withObject:nil];
-        //test upload image
-        //[self testUploadImage];
-    }
+-(void)FBLogInUserLoadedSuccess{
+    NSLog(@"Fetch/Create Database record: starting...");
+    
+    [self performSelectorInBackground:@selector(connToDB) withObject:nil];
     
     if ([self.navigationController topViewController] != self)
         [self.navigationController popToRootViewControllerAnimated:YES];
-
 }
 
 #pragma mark- database delegate methods

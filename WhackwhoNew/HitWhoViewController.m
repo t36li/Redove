@@ -53,8 +53,8 @@
     //change this to something else later
     //[self setDefaultImage:[UIImage imageNamed:@"vlad.png"]];
     
-    [[FBSingleton sharedInstance] setDelegate:self];
-    [[FBSingleton sharedInstance] RequestHitWhoList];
+    //**[[FBSingleton sharedInstance] setDelegate:self];
+    //**[[FBSingleton sharedInstance] RequestHitWhoList];
     
     table.delegate = self;
     table.dataSource = self;
@@ -90,7 +90,7 @@
 }
 
 -(void) viewDidAppear:(BOOL)animated{
-    [[FBSingleton sharedInstance] setDelegate:self];
+    //**[[FBSingleton sharedInstance] setDelegate:self];
     [tablepull setDelegate:self];
     
     if (isHammerDown) {
@@ -263,10 +263,10 @@
 //////pull the table///////////
 
 -(void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view{
-    [[FBSingleton sharedInstance] setSavedFriendsUsingApp:nil];
+    //**[[FBSingleton sharedInstance] setSavedFriendsUsingApp:nil];
     //might be userful:
     //[[[UserInfo sharedInstance] friendArray] setFriends:nil];
-    [[FBSingleton sharedInstance] RequestHitWhoList];
+    //**[[FBSingleton sharedInstance] RequestHitWhoList];
 }
 
 #pragma mark - Touch methods
