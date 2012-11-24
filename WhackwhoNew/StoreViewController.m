@@ -16,7 +16,7 @@
 @end
 
 @implementation StoreViewController
-@synthesize mainItemsScroll;
+@synthesize mainItemsScroll, purchasedItemsScroll;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,16 +27,29 @@
     return self;
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+        
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self setupMainItemsScroll];
+    
+    NSString *path = [self dataFilepath];
+
+    dic = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+
+}
+
 - (void)setupMainItemsScroll
 {
     mainItemsScroll.delegate = self;
     
     [self.mainItemsScroll setBackgroundColor:[UIColor clearColor]];
     [mainItemsScroll setCanCancelContentTouches:NO];
-    //[mainItemsScroll showsHorizontalScrollIndicator:NO];
-    //mainItemsScroll.indicatorStyle = nil;
-    //mainItemsScroll.frame =
-    mainItemsScroll.clipsToBounds = NO;
+    
     mainItemsScroll.scrollEnabled = YES;
     mainItemsScroll.pagingEnabled = YES;
     
@@ -49,7 +62,7 @@
         if (tot==15) {
             break;
         }
-        if (4==nimages) {
+        if (nimages==8) {
             nimages=0;
         }
         
@@ -61,6 +74,10 @@
         rect.origin.x = cx;
         rect.origin.y = 0;
         
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTapOnItem:)];
+        tap.numberOfTapsRequired = 1;
+        [imageView addGestureRecognizer:tap];
+        
         imageView.frame = rect;
         //imageView.transform = CGAffineTransformMakeRotation(30*3.14159/100);
         [imageView.layer setBorderColor:[[UIColor blackColor] CGColor]];
@@ -69,36 +86,49 @@
         cx += imageView.frame.size.width;//+5;
         tot++;
     }
-    //self.pageControl.numberOfPages = nimages;
-    //[mainItemsScroll setContentSize:CGSizeMake(cx, [mainItemsScroll bounds].size.height)];
+
     CGRect frame = mainItemsScroll.frame;
     frame.size = CGSizeMake(380,67);
     mainItemsScroll.frame = frame;
     mainItemsScroll.contentSize = CGSizeMake(cx, 67);
     mainItemsScroll.clipsToBounds = YES;
+}
+
+- (void) handleTapOnItem: (UITapGestureRecognizer *)gesture {
+    UITapGestureRecognizer *tap = (UITapGestureRecognizer *)gesture;
+    UIImageView *item = ((UIImageView *)(tap.view));
     
-    //[mainItemsScroll setContentOffset:CGPointMake(mainItemsScroll.frame.size.width, mainItemsScroll.frame.size.height)];//[mainItemsScroll bounds].size.height)];
+    NSLog(@"TOUCHED!");
+    
+    [item setBackgroundColor:[UIColor blackColor]];
 }
 
-/*
-
-- (void)scrollViewDidScroll:(UIScrollView *)aScrollView
-{
-    [aScrollView setContentOffset: CGPointMake(oldX,aScrollView.contentOffset.y)];
-    // or if you are sure you wanna it always on left:
-    // [aScrollView setContentOffset: CGPointMake(0, aScrollView.contentOffset.y)];
+- (NSString *) dataFilepath {
+    //read the plist
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"ItemsPList" ofType:@"plist"];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:path]) {
+        NSLog(@"The file exists");
+        return path;
+    } else {
+        NSLog(@"The file does not exist");
+        return nil;
+    }
 }
- */
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+- (void) writePlist {
+    
+    [dic setObject:[NSNumber numberWithInt:50] forKey:@"Money"];
+    
+    NSLog(@"New Cash: %i", [[dic objectForKey:@"Money"] intValue]);
     
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [self setupMainItemsScroll];
+- (void) readPlist {
+    
+    NSLog(@"Cash: %i", [[dic objectForKey:@"Money"] intValue]);
+    
 }
 
 - (void)viewDidUnload
@@ -113,9 +143,18 @@
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
+#pragma touch_methods
+
 - (IBAction)Back_Touched:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)Buy_Touched:(id)sender {
+    
+}
+
+- (IBAction)Undo_Touched:(id)sender {
+    
+}
 
 @end
