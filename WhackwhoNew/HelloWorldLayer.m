@@ -32,7 +32,7 @@
         
         //[self addChild:[CCSprite spriteWithFile:@"splash_sheet.png"]];
 
-
+        self.isTouchEnabled = YES;
         CGSize winSize = [CCDirector sharedDirector].winSize;
                 
         //init variables
@@ -714,7 +714,7 @@
                 ctLabel.visible = TRUE;
                 ctLabel.position = ccp(head.position.x, head.position.y);
                 CCDelayTime *delay = [CCDelayTime actionWithDuration:1.0];
-                CCCallFuncN *remove = [CCCallFuncN actionWithTarget:self selector:@selector(removeNode::)];
+                CCCallFuncN *remove = [CCCallFuncN actionWithTarget:self selector:@selector(removeNode:)];
                 [ctLabel runAction:[CCSequence actions:delay, remove, nil]];
                 
                 //update hit streak label
@@ -794,12 +794,12 @@
         baseScore = 0;
         moneyEarned = 0;
 
-        // 'hud' is the restart object
-        self.hud = [HUDLayer node];
-        [self addChild:self.hud z:10];
-        
         self.layer = [HelloWorldLayer node];
         [self addChild:self.layer z:0];
+        
+        // 'hud' is the restart object
+        self.hud = [HUDLayer node];
+        [self addChild:self.hud z:100];
         
     }
 	
