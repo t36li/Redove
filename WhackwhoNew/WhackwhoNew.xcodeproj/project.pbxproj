@@ -455,6 +455,7 @@
 		D074BE5C1640941C00AF51EE /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = D074BD6B1640941C00AF51EE /* vec4.c */; };
 		D07F6FF01599463A0085DF2B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F6FEF1599463A0085DF2B /* CoreImage.framework */; };
 		D08CE2FE164213130073576B /* Level2.plist in Resources */ = {isa = PBXBuildFile; fileRef = D08CE2FD164213130073576B /* Level2.plist */; };
+		D08EDEFD166465AF000906E0 /* crop.png in Resources */ = {isa = PBXBuildFile; fileRef = D08EDEFC166465AF000906E0 /* crop.png */; };
 		D08F7C6A1645BD25001FB9A3 /* seaLevelBackground.plist in Resources */ = {isa = PBXBuildFile; fileRef = D08F7C661645BD25001FB9A3 /* seaLevelBackground.plist */; };
 		D08F7C6B1645BD25001FB9A3 /* seaLevelBackground.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = D08F7C671645BD25001FB9A3 /* seaLevelBackground.pvr.ccz */; };
 		D08F7C6C1645BD25001FB9A3 /* seaLevelBackground-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = D08F7C681645BD25001FB9A3 /* seaLevelBackground-hd.plist */; };
@@ -1137,6 +1138,7 @@
 		D08B5809160BFFF90082BA4B /* eye1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye1.png; sourceTree = "<group>"; };
 		D08B580A160BFFF90082BA4B /* tear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tear.png; sourceTree = "<group>"; };
 		D08CE2FD164213130073576B /* Level2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level2.plist; path = ../Level2.plist; sourceTree = "<group>"; };
+		D08EDEFC166465AF000906E0 /* crop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crop.png; sourceTree = "<group>"; };
 		D08F7C661645BD25001FB9A3 /* seaLevelBackground.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = seaLevelBackground.plist; sourceTree = "<group>"; };
 		D08F7C671645BD25001FB9A3 /* seaLevelBackground.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = seaLevelBackground.pvr.ccz; sourceTree = "<group>"; };
 		D08F7C681645BD25001FB9A3 /* seaLevelBackground-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "seaLevelBackground-hd.plist"; sourceTree = "<group>"; };
@@ -2363,6 +2365,7 @@
 		D0E59F791608250200F73C9D /* CameraView */ = {
 			isa = PBXGroup;
 			children = (
+				D08EDEFC166465AF000906E0 /* crop.png */,
 				D0F37ECE161150D200E58F1E /* camera view overlay.png */,
 				D09D9858160A9F7A00014ADB /* white final.png */,
 				D09800C61609621E009E97E8 /* green board.png */,
@@ -2884,6 +2887,7 @@
 				D08F7C751645BE42001FB9A3 /* hillLevelBackground.pvr.ccz in Resources */,
 				C1053A0416582E6C0015B932 /* ItemsPList.plist in Resources */,
 				C1053A191664213F0015B932 /* Level1.plist in Resources */,
+				D08EDEFD166465AF000906E0 /* crop.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

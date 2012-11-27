@@ -101,8 +101,8 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     headView.layer.cornerRadius = 10.0;
     [self.imageView addSubview:avatarView];
     
-    cameraOverlayView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"camera view overlay.png"]];
-    [markingView addSubview:cameraOverlayView];
+    //cameraOverlayView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"camera view overlay.png"]];
+    //[markingView addSubview:cameraOverlayView];
     
 }
 
@@ -274,18 +274,26 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
         [self Back:nil];
         return;
     }
-    [SpinnerView loadSpinnerIntoView:self.view];
+    //[SpinnerView loadSpinnerIntoView:self.view];
     self.view.userInteractionEnabled = NO;
-
-    CGRect newFrame = headView.frame;
+    
+    UIImage *mask = [UIImage imageNamed:@"crop.png"];
+    UIImage *resizedMask = [AvatarBaseController resizeImage:mask toSize:photoView.frame.size];
+    CGRect newFrame = backgroundView.frame;
     newFrame.origin.x -= photoView.frame.origin.x;
     newFrame.origin.y -= photoView.frame.origin.y;
     UIImage *resizedImage = [AvatarBaseController resizeImage:photoView.image toSize:photoView.frame.size];
-    info.croppedImage = [AvatarBaseController cropImage:resizedImage inRect:newFrame];
-    headView.image = info.croppedImage;
+    UIImage *croppedImage = [AvatarBaseController cropImage:resizedImage inRect:newFrame];
+    
+    //photoView.image = croppedImage;
+    
+    info.croppedImage = [AvatarBaseController maskImage:croppedImage withMask:resizedMask];
+    //headView.image = info.croppedImage;
+    //photoView.image = info.croppedImage;
+    backgroundView.image = info.croppedImage;
     photoView.image = nil;
     
-    [self performSelectorInBackground:@selector(pushCroppedImage) withObject:nil];
+    //[self performSelectorInBackground:@selector(pushCroppedImage) withObject:nil];
 }
 
 - (IBAction) Back:(id)sender{
