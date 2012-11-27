@@ -73,7 +73,7 @@
         
         //!!!! initializing popups
         //use the array from game.h which contains all image names
-        int xpad = 50; //for testing
+        //int xpad = 50; //for testing
         int i = 0;
         for (UIImage *person in [[Game sharedGame] arrayOfAllPopups]) {
             Character *head = [Character spriteWithCGImage:[person CGImage] key:[NSString stringWithFormat:@"person%i", i]];
@@ -92,12 +92,12 @@
             i++; //for key purposes
             
             //for testing
-            head.position = ccp(xpad, winSize.height/2);
-            xpad += 60;
-            head.visible = TRUE;
+            //head.position = ccp(xpad, winSize.height/2);
+            //xpad += 60;
+            //head.visible = TRUE;
         }
         
-        //[self schedule:@selector(tryPopheads) interval:1.5];
+        [self schedule:@selector(tryPopheads) interval:1.5];
 	}
     
 	return self;

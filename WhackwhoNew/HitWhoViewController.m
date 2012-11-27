@@ -337,7 +337,6 @@
 //you do not capture the different equipments. etc
 - (UIImage *)captureImageInHitBox:(NSInteger)number withArray: (NSInteger)array {
     //capturing image from friends
-    //!!!!!!YOU ARE NOT CAPTURING INFO ABOUT THEIR EQUIPMENTS
     Friend *friend;
     if (array == 0) {
         friend = [selectedHits objectAtIndex:number];
@@ -352,6 +351,12 @@
         
     } else {//capturing image from strangers
         int randInt;
+        
+        //testing purposes
+        for (Friend *friend in resultStrangers) {
+            NSLog(@"%@", friend.name);
+        }
+        
         while (TRUE) {
             randInt = arc4random() % resultStrangers.count;
             friend = [resultStrangers objectAtIndex:randInt];
