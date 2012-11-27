@@ -380,7 +380,7 @@
     int randTilt;
     if (randPt ==0) { //if at beginning of hill, can only tilt to the right
         randTilt = 1;
-    } else if (randPt == hillTop.count) {//if at end of hill, can only tilt to left
+    } else if (randPt == (hillTop.count-1)) {//if at end of hill, can only tilt to left
         randTilt = -1;
     } else {//somewhere in between
         randTilt = arc4random() % 2;
