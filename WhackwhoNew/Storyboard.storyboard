@@ -1714,6 +1714,7 @@
                 <relationship kind="action" name="Buy_Touched:"/>
                 <relationship kind="action" name="Undo_Touched:"/>
                 <relationship kind="outlet" name="mainItemsScroll" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="purchasedItemsScroll" candidateClass="UIScrollView"/>
             </relationships>
         </class>
     </classes>

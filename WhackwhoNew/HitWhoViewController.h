@@ -23,6 +23,7 @@
 @interface HitWhoViewController : UIViewController<FBSingletonDelegate,UITableViewDelegate,UITableViewDataSource,RKObjectLoaderDelegate,PullToRefreshViewDelegate> {
    
     NSMutableArray *selectedHits;
+    NSMutableArray *selectedStrangers;
     NSArray *hitWindows;
     
     //UIImage *defaultImage;

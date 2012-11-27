@@ -48,7 +48,7 @@
     
     // meant to be used as a stack. Only need to contain strings. No need to access friends as the hitwindows already have a friend element
     selectedHits = [[NSMutableArray alloc] init];
-    
+    selectedStrangers = [[NSMutableArray alloc] init];
     
     //change this to something else later
     //[self setDefaultImage:[UIImage imageNamed:@"vlad.png"]];
@@ -356,16 +356,9 @@
             randInt = arc4random() % resultStrangers.count;
             friend = [resultStrangers objectAtIndex:randInt];
             
-            NSString *selfGender = [[UserInfo sharedInstance] gender];
-            
-            if (arc4random() % 100 < 70) {
-                if (![friend.gender isEqualToString:selfGender]) {
-                    break;
-                }
-            } else {
-                if ([friend.gender isEqualToString:selfGender]) {
-                    break;
-                }
+            if (![selectedStrangers containsObject:friend]) {
+                [selectedStrangers addObject:friend];
+                break;
             }
         }
         
