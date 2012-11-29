@@ -464,6 +464,7 @@
 		D08F7C731645BE42001FB9A3 /* hillLevelBackground-hd.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = D08F7C6F1645BE42001FB9A3 /* hillLevelBackground-hd.pvr.ccz */; };
 		D08F7C741645BE42001FB9A3 /* hillLevelBackground.plist in Resources */ = {isa = PBXBuildFile; fileRef = D08F7C701645BE42001FB9A3 /* hillLevelBackground.plist */; };
 		D08F7C751645BE42001FB9A3 /* hillLevelBackground.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = D08F7C711645BE42001FB9A3 /* hillLevelBackground.pvr.ccz */; };
+		D0903BEC1667219C00BB920B /* CustomDrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0903BEB1667219C00BB920B /* CustomDrawView.m */; };
 		D090C63815A238CF0051AA12 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D090C63715A238CF0051AA12 /* UserInfo.m */; };
 		D0948D4115ADFF0E00429477 /* AvatarBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0948D4015ADFF0E00429477 /* AvatarBaseController.m */; };
 		D09800CA1609621F009E97E8 /* green board.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800C61609621E009E97E8 /* green board.png */; };
@@ -1147,6 +1148,8 @@
 		D08F7C6F1645BE42001FB9A3 /* hillLevelBackground-hd.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hillLevelBackground-hd.pvr.ccz"; sourceTree = "<group>"; };
 		D08F7C701645BE42001FB9A3 /* hillLevelBackground.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hillLevelBackground.plist; sourceTree = "<group>"; };
 		D08F7C711645BE42001FB9A3 /* hillLevelBackground.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = hillLevelBackground.pvr.ccz; sourceTree = "<group>"; };
+		D0903BEA1667219C00BB920B /* CustomDrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomDrawView.h; sourceTree = "<group>"; };
+		D0903BEB1667219C00BB920B /* CustomDrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDrawView.m; sourceTree = "<group>"; };
 		D090C63615A238CE0051AA12 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		D090C63715A238CF0051AA12 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		D0948D3915AB6E9A00429477 /* AvatarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AvatarView.xib; path = ../AvatarView.xib; sourceTree = "<group>"; };
@@ -1449,6 +1452,8 @@
 				C198EE2C15CF7AEB004D170C /* Personal Status View */,
 				D0D7C84415955D3400F51C6E /* AvatarViewController.h */,
 				D0D7C84515955D3400F51C6E /* AvatarViewController.m */,
+				D0903BEA1667219C00BB920B /* CustomDrawView.h */,
+				D0903BEB1667219C00BB920B /* CustomDrawView.m */,
 				D0B48497160E2C77000B95A7 /* FaceEffectsController.h */,
 				D0B48498160E2C77000B95A7 /* FaceEffectsController.m */,
 				D0948D3F15ADFF0E00429477 /* AvatarBaseController.h */,
@@ -2948,6 +2953,7 @@
 				C12114611616967E00E3AAB1 /* HitWindow.m in Sources */,
 				D0AB828F1627BFD000A0EF0B /* ReviewViewController.m in Sources */,
 				D04D763D163769BE003C858F /* GameViewController.m in Sources */,
+				D0903BEC1667219C00BB920B /* CustomDrawView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

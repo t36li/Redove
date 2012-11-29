@@ -27,6 +27,7 @@
 @implementation AvatarViewController
 
 @synthesize imageView, overlay, cameraController, wtfView, cameraOverlayView;
+@synthesize drawOverlayView;
 
 typedef enum {
     PinchAxisNone,
@@ -104,6 +105,15 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     //cameraOverlayView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"camera view overlay.png"]];
     //[markingView addSubview:cameraOverlayView];
     
+    drawOverlayView = [[CustomDrawView alloc] initWithFrame:imageView.bounds];
+    [self.imageView addSubview:drawOverlayView];
+    
+    [drawOverlayView setPrePreviousPoint:CGPointZero];
+    [drawOverlayView setPreviousPoint:CGPointZero];
+    [drawOverlayView setLineWidth:1.0f];
+    [drawOverlayView setCurrentColor:[UIColor blackColor]];
+    [drawOverlayView setClearsContextBeforeDrawing:YES];
+        
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -118,6 +128,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
         backgroundView.image = [UIImage imageNamed:@"white final.png"];
     }
     cameraOverlayView.frame = markingView.bounds;
+    drawOverlayView.frame = imageView.bounds;
 }
 
 -(void)scale:(id)sender {
@@ -182,7 +193,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
 -(IBAction)startCamera:(id)sender {
     headView.image = nil;
     [self presentModalViewController:cameraController animated:NO];
-    
+    /*
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(scale:)];
     [pinchRecognizer setDelegate:self];
     [self.view addGestureRecognizer:pinchRecognizer];
@@ -190,7 +201,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
     [panRecognizer setDelegate:self];
     [self.view addGestureRecognizer:panRecognizer];
-    
+    */
     self.navigationController.navigationBarHidden = YES;
 }
 
