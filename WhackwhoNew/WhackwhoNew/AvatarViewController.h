@@ -17,7 +17,7 @@
 #import "LoadViewController.h"
 #import "SpinnerView.h"
 #import "FaceEffectsController.h"
-#import "CustomDrawView.h"
+#import "CustomDrawViewController.h"
 
 @interface AvatarViewController : AvatarBaseController <CameraOverlayControllerViewControllerDelegate,RKObjectLoaderDelegate,UserInfoDelegate, UIGestureRecognizerDelegate> {
     
@@ -32,8 +32,6 @@
     CGFloat _ylastScale;
     
     UIImageView *cameraOverlayView;
-    
-    CustomDrawView *drawOverlayView;
 }
 @property (nonatomic, strong) IBOutlet UIView *wtfView;
 
@@ -43,8 +41,6 @@
 @property (nonatomic, strong) UIImagePickerController *cameraController;
 @property (nonatomic, strong) UIImageView *cameraOverlayView;
 //@property (nonatomic, retain) IBOutlet AvatarView *avatarView;
-
-@property (nonatomic, strong) CustomDrawView *drawOverlayView;
 
 
 -(IBAction) startCamera:(id)sender;

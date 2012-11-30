@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Waterloo. All rights reserved.
 //
 #import "CustomDrawView.h"
+#import "UserInfo.h"
+#import "AvatarBaseController.h"
 
 @implementation CustomDrawView
 
@@ -87,11 +89,33 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     
+    UserInfo *user = [UserInfo sharedInstance];
+    
     UITouch *touch = [touches anyObject];
     CGPoint currentPoint = [touch locationInView:self];
     [userPoints addObject:[NSValue valueWithCGPoint:currentPoint]];
     
-    self.drawImageView.image = [self drawPathWithPoints:userPoints image:nil];
+    
+    
+    UIImage *mask = [self drawPathWithPoints:userPoints image:nil];
+    
+    UIView *container = [[UIView alloc] initWithFrame:self.frame];
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:mask];
+    [container setBackgroundColor:[UIColor whiteColor]];
+    [imgView setBackgroundColor:[UIColor clearColor]];
+    [container addSubview:imgView];
+    //[self addSubview:container];
+    
+    UIGraphicsBeginImageContext(self.bounds.size);
+    [container.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *renderedMask = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    UIImage *resizedImage = [AvatarBaseController resizeImage:user.usrImg toSize:drawImageView.frame.size];
+    user.croppedImage = [AvatarBaseController maskImage:resizedImage withMask:renderedMask];
+    
+    drawImageView.image = user.croppedImage;
+
     return;
     /*
     

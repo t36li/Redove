@@ -27,7 +27,6 @@
 @implementation AvatarViewController
 
 @synthesize imageView, overlay, cameraController, wtfView, cameraOverlayView;
-@synthesize drawOverlayView;
 
 typedef enum {
     PinchAxisNone,
@@ -104,15 +103,6 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     
     //cameraOverlayView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"camera view overlay.png"]];
     //[markingView addSubview:cameraOverlayView];
-    
-    drawOverlayView = [[CustomDrawView alloc] initWithFrame:imageView.bounds];
-    [self.imageView addSubview:drawOverlayView];
-    
-    [drawOverlayView setPrePreviousPoint:CGPointZero];
-    [drawOverlayView setPreviousPoint:CGPointZero];
-    [drawOverlayView setLineWidth:1.0f];
-    [drawOverlayView setCurrentColor:[UIColor blackColor]];
-    [drawOverlayView setClearsContextBeforeDrawing:YES];
         
 }
 
@@ -128,7 +118,6 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
         backgroundView.image = [UIImage imageNamed:@"white final.png"];
     }
     cameraOverlayView.frame = markingView.bounds;
-    drawOverlayView.frame = imageView.bounds;
 }
 
 -(void)scale:(id)sender {
@@ -187,7 +176,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+    return interfaceOrientation == UIInterfaceOrientationLandscapeLeft;
 }
 
 -(IBAction)startCamera:(id)sender {
@@ -338,7 +327,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
             break;
     }
 }
-
+/*
 -(IBAction) goToSample:(id)sender {
     CGRect newFrame = headView.frame;
     newFrame.origin.x -= photoView.frame.origin.x;
@@ -349,4 +338,14 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     faceControl.cropImage = cropImage;
     [self presentModalViewController:faceControl animated:YES];
 }
+ */
+
+-(IBAction) goToSample:(id)sender {
+    CustomDrawViewController *drawController = [[CustomDrawViewController alloc] initWithNibName:@"CustomDrawViewController" bundle:nil];
+    drawController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self.navigationController pushViewController:drawController animated:YES];
+    UserInfo *info = [UserInfo sharedInstance];
+    ((CustomDrawView *)drawController.view).drawImageView.image = info.usrImg;
+}
+
 @end
