@@ -10,6 +10,7 @@
 
 #define networkErrorAlert 1
 #define newbieAlert 2
+#define FBprofileLoadFailedAlert 3
 
 @implementation LoadViewController
 
@@ -36,6 +37,8 @@
             //if ([fbs isLogin]==YES){
             //    [fbs populateUserDetails];
             //}
+            //[[FBSingletonNew sharedInstance] openSession];
+            [[FBSingletonNew sharedInstance] populateUserDetails];
         }
             break;
         case LogInGmail:
@@ -71,22 +74,29 @@
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
     // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark- facebook delegate methods
 
 
--(void)FBLogInUserLoadedSuccess{
-    NSLog(@"Fetch/Create Database record: starting...");
-    
-    [self performSelectorInBackground:@selector(connToDB) withObject:nil];
-    
-    if ([self.navigationController topViewController] != self)
-        [self.navigationController popToRootViewControllerAnimated:YES];
+-(void) FBUserProfileLoaded{
+    [self connToDB];
+
 }
 
+-(void) FBUserProfileLoadFailed:(NSError *)error{
+    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Facebook Error" message:[NSString stringWithFormat:@"Facebook profile failed to load: %@",error] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    errorAlert.tag = FBprofileLoadFailedAlert;
+    [errorAlert show];
+    
+}
+
+-(void) FBLogOutSuccess{
+    [[UserInfo sharedInstance] setCurrentLogInType:NotLogIn];
+    [self dismissModalViewControllerAnimated:YES];
+    [self goToMenu];
+}
 #pragma mark- database delegate methods
 
 //////////////////////Database REST:
@@ -150,8 +160,9 @@
     UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Loading Error" message:@"Database Connection Failed: unable to pull out your profile" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [errorAlert show];
 }
-/*
+
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    /*
     if (alertView.tag == networkErrorAlert){
         
     }
@@ -160,7 +171,12 @@
             [self performSegueWithIdentifier:@"LoadToAvatar" sender:self];
         }
     }
-}*/
+     */
+    if (alertView.tag == FBprofileLoadFailedAlert){
+        [usr LogInTypeChanged:NotLogIn];
+        [self goToMenu];
+    }
+}
 
 
 

@@ -15,10 +15,9 @@ static FBSingletonNew *singletonDelegate = nil;
 
 -(id)init{
     if ((self = [super init])){
-        userInfo = [UserInfo sharedInstance];
-        if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded){
-            [self openSession];
-        }
+        //if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded){
+       //     [self openSession];
+        //}
     }
     return self;
 }
@@ -52,7 +51,7 @@ static FBSingletonNew *singletonDelegate = nil;
 
 //Facebook status
 -(BOOL)isLogin{
-    if (FBSession.activeSession.isOpen){
+    if (FBSession.activeSession.state == FBSessionStateOpen){
         NSLog(@"FB status: on");
         return YES;
         
@@ -61,6 +60,7 @@ static FBSingletonNew *singletonDelegate = nil;
         return NO;
     }
 }
+
 /***********
 ****Facebook Requests
 ************/
@@ -71,9 +71,9 @@ static FBSingletonNew *singletonDelegate = nil;
 
 -(void)performLogout{
     NSLog(@"FB Logout");
-    if ([self isLogin] == YES)
-        [FBSession.activeSession closeAndClearTokenInformation];
-    
+    [FBSession.activeSession closeAndClearTokenInformation];
+    [[UserInfo sharedInstance] closeInstance];
+    [delegate FBLogOutSuccess];
 }
 
 - (void)populateUserDetails
@@ -86,14 +86,19 @@ static FBSingletonNew *singletonDelegate = nil;
              if (!error) {
                  
                  //populate userInfo:
-                 [userInfo setCurrentLogInType:LogInFacebook];
-                 [userInfo setUserId:user.id];
-                 [userInfo setUserName:user.name];
-                 [userInfo setGender:[user objectForKey:@"gender"]];
-                 NSLog(@"UserInfo:[id:%@, name:%@, gender:%@]",user.id,user.username,[user objectForKey:@"gender"]);
-                 [delegate FBLogInUserLoadedSuccess];
+                 [[UserInfo sharedInstance] setCurrentLogInType:LogInFacebook];
+                 [[UserInfo sharedInstance] setUserId:user.id];
+                 [[UserInfo sharedInstance] setUserName:user.name];
+                 [[UserInfo sharedInstance] setGender:[user objectForKey:@"gender"]];
+                 //profileImageView.profileID = user.id;
+                 NSLog(@"facebook user loaded: UserInfo:[id:%@, name:%@, gender:%@]",user.id,user.username,[user objectForKey:@"gender"]);
+                 [delegate FBUserProfileLoaded];
+             }else{
+                 [delegate FBUserProfileLoadFailed:error];
              }
          }];
+    }else{
+        [self openSession];
     }
 }
 
@@ -104,12 +109,25 @@ static FBSingletonNew *singletonDelegate = nil;
 //FB Login:
 - (void)openSession
 {
-    if (!FBSession.activeSession.isOpen)
-        [FBSession.activeSession openWithCompletionHandler:
-         ^(FBSession *session,
-           FBSessionState state, NSError *error) {
-             [self sessionStateChanged:session state:state error:error];
-         }];
+    if (FBSession.activeSession.state != FBSessionStateCreated){
+        FBSession.activeSession = [[FBSession alloc] init];
+    }
+    if (!FBSession.activeSession.isOpen){
+        [FBSession.activeSession openWithCompletionHandler:^(FBSession *session,
+                                                             FBSessionState state, NSError *error) {
+            [self sessionStateChanged:session state:state error:error];
+        }];
+    }
+        //if (Session.state == FBSessionStateCreatedTokenLoaded){
+        
+        //}
+    
+//    if (!FBSession.activeSession.isOpen)
+//        [FBSession.activeSession openWithCompletionHandler:
+//         ^(FBSession *session,
+//           FBSessionState state, NSError *error) {
+//             [self sessionStateChanged:session state:state error:error];
+//         }];
 }
 
 - (void)sessionStateChanged:(FBSession *)session
@@ -120,8 +138,7 @@ static FBSingletonNew *singletonDelegate = nil;
         case FBSessionStateOpen: {
             NSLog(@"Facebook Login Response: success");
             //set up login type:
-            [[NSUserDefaults standardUserDefaults] setInteger:LogInFacebook forKey:LogInAs];
-            [userInfo setCurrentLogInType:LogInFacebook];
+            [[UserInfo sharedInstance] LogInTypeChanged:LogInFacebook];
             [self populateUserDetails];
             //[delegate FBperformLogInSuccess];
         }

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+//#import "FBSingletonNew.h"
 #import "UserInfoDelegate.h"
 #import "CurrentEquip.h"
 #import "StorageInv.h"
@@ -29,6 +30,7 @@ NSString *const UserChinPosition = @"ChinPosition";
     NSString *userName;
     NSString *userId;
     NSString *gender;
+    //FBProfilePictureView *profileImageView;
     
     
     
@@ -62,6 +64,7 @@ NSString *const UserChinPosition = @"ChinPosition";
 @property (nonatomic, retain) CurrentEquip *currentEquip;
 @property (nonatomic, retain) StorageInv *storageInv;
 @property (nonatomic, retain) FriendArray *friendArray;
+//@property (nonatomic, retain) FBProfilePictureView *profileImageView;
 
 -(void)markFaces:(UIImage *)img withDelegate:(id<UserInfoDelegate>)delegate;
 +(id)sharedInstance;
@@ -69,4 +72,6 @@ NSString *const UserChinPosition = @"ChinPosition";
 -(void) setUserPicture:(UIImage *)img delegate:(id)sender;
 +(UIImage *)getCroppedImage:(UIImage *)img inRect:(CGRect)rect;
 +(UIImage *)resizeImage:(UIImage *)image toSize:(CGSize)newSize;
+-(void)LogInTypeChanged:(LogInType) type;
+-(void)closeInstance;
 @end

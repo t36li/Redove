@@ -10,7 +10,7 @@
 
 @implementation UserInfo
 
-@synthesize userName, userId, currentLogInType, headId, whackWhoId, gender, leftEyePosition, rightEyePosition, mouthPosition, faceRect, croppedImage, usrImg, currentEquip, storageInv,friendArray;
+@synthesize userName, userId, currentLogInType, headId, whackWhoId, gender, leftEyePosition, rightEyePosition, mouthPosition, faceRect, croppedImage, usrImg, currentEquip, storageInv,friendArray;//,profileImageView;
 
 static UserInfo *sharedInstance = nil;
 
@@ -183,6 +183,19 @@ static UserInfo *sharedInstance = nil;
     UIGraphicsEndImageContext();
     
     return outputImg;
+}
+
+-(void)LogInTypeChanged:(LogInType) type{
+    [[NSUserDefaults standardUserDefaults] setInteger:type forKey:LogInAs];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self setCurrentLogInType:type];
+}
+
+-(void)closeInstance{
+    sharedInstance = nil;
+    [[NSUserDefaults standardUserDefaults] setInteger:NotLogIn forKey:LogInAs];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

@@ -7,11 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FBSingletonDelegate.h"
+#import "FBSingletonNew.h"
+#import "UserInfo.h"
 
-@interface OptionsViewController : UIViewController <FBSingletonDelegate>{
+@interface OptionsViewController : UIViewController {
     UIButton *back;
     UIButton *logout_but;
+    
+@private
+    UserInfo *usr;
+    FBSingletonNew *fbs;
+    
 }
 @property (nonatomic) IBOutlet UIButton *back;
 @property (nonatomic) IBOutlet UIButton *logout_but;

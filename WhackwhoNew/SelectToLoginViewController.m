@@ -31,7 +31,7 @@
     [FBBut setImage:[UIImage imageNamed:AccessFacebookIcon] forState:UIControlStateNormal];
     [FBBut setImage:[UIImage imageNamed:AccessFacebookIcon_HL] forState:UIControlStateHighlighted];
     //[FBBut setImage:[UIImage imageNamed:AccessFacebookIcon forState:UIControlStateNormal]];
-    [FBSingletonNew sharedInstance].delegate = self;
+    
 }
 
 - (void)viewDidUnload
@@ -41,16 +41,15 @@
     
 }
 
--(IBAction)FBTouched:(id)sender{
-    //[self.navigationController popToRootViewControllerAnimated:NO];
-    [[FBSingletonNew sharedInstance] performLogin];
-    //[self.navigationController popViewControllerAnimated:YES];
+-(void)viewDidAppear:(BOOL)animated{
+    //[FBSingletonNew sharedInstance].delegate = self;
 }
 
--(void)FBperformLogInSuccess{
-    NSLog(@"login Facebook Success");
-    [self.navigationController popViewControllerAnimated:YES];
+-(IBAction)FBTouched:(id)sender{
+    
+    [[FBSingletonNew sharedInstance] performLogin];
 }
+
 
 -(void)FBperformLogInFailed:(NSError *)error{
     if (error) {

@@ -12,12 +12,13 @@
 #import "UserInfo.h"
 
 @interface FBSingletonNew : NSObject{
-    UserInfo *userInfo;
+    FBProfilePictureView *profileImageView;
     id<FBSingletonNewDelegate> delegate;
 }
 
-@property (nonatomic) FBSession *session;
+@property (nonatomic,retain) FBProfilePictureView *profileImageView;
 @property (nonatomic) id<FBSingletonNewDelegate> delegate;
+
 
 + (FBSingletonNew *) sharedInstance;
 
@@ -27,5 +28,6 @@
 -(void)performLogout;
 -(void)populateUserDetails;
 -(void)RequestFriendsAll;
+-(void)openSession;
 
 @end

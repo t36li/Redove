@@ -13,12 +13,16 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <RestKit/RestKit.h>
 
-@interface RootViewController : UIViewController{
+@interface RootViewController : UIViewController<FBSingletonNewDelegate>{
     FBProfilePictureView *profileImageView; //Facebook Profile Image, Renren Profile Image or Gmail
     
     UIButton *play_but;
     UIButton *opt_but;
     FriendsViewController *friendVC;
+    
+@private
+    UserInfo *usr;
+    FBSingletonNew *fbs;
 }
 @property (retain, nonatomic) IBOutlet FBProfilePictureView *profileImageView;
 

@@ -7,14 +7,9 @@
 //
 
 #import "OptionsViewController.h"
-#import "FBSingleton.h"
+#import "FBSingletonNew.h"
 #import "RootViewController.h"
 #import "UserInfo.h"
-
-
-@interface OptionsViewController ()
-
-@end
 
 @implementation OptionsViewController
 @synthesize back, logout_but;
@@ -23,6 +18,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    usr = [UserInfo sharedInstance];
+    fbs = [FBSingletonNew sharedInstance];
+    if ((int)[[UserInfo sharedInstance] currentLogInType] != NotLogIn) {
+        logout_but.hidden = NO;
+    }
+    else {
+        logout_but.hidden = YES;
+    }
 }
 
 - (void)viewDidUnload
@@ -32,12 +35,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    if ((int)[[UserInfo sharedInstance] currentLogInType] != NotLogIn) {
-        logout_but.hidden = NO;
-    }
-    else {
-        logout_but.hidden = YES;
-    }
+    
 }
 
 -(IBAction)back_touched:(id)sender{
@@ -45,6 +43,18 @@
 }
 
 -(IBAction)logout_touched:(id)sender{
+    switch ([usr currentLogInType]) {
+        case LogInFacebook:{
+            if ([fbs isLogin]){
+                [fbs performLogout];
+            }
+                }
+            break;
+            
+        default:
+            break;
+    }
+    //[self performSelector:@selector(back_Touched) withObject:self afterDelay:1.5];
     //**if ([[FBSingleton sharedInstance] isLogIn]){
     //**    [[FBSingleton sharedInstance] logout]; //logout facebook with authorized info
         //[[FBSingleton sharedInstance] unauthorized]; //facebook user info unauthorized

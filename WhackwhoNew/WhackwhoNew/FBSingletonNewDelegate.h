@@ -12,10 +12,9 @@
 @protocol FBSingletonNewDelegate <NSObject>
 
 @optional
--(void)FBperformLogInSuccess;
--(void)FBperformLogInFailed:(NSError *)error;
--(void)FBLogInUserLoadedSuccess;
-
+-(void)FBUserProfileLoaded;
+-(void)FBUserProfileLoadFailed:(NSError *)error;
+-(void)FBLogOutSuccess;
 -(void)populateUserDetailsCompleted;
 
 @end

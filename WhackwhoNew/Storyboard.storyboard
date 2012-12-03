@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C54" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="V6n-XQ-h9E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="V6n-XQ-h9E">
     <dependencies>
         <deployment version="1296" identifier="iOS"/>
         <development version="4300" identifier="xcode"/>
@@ -347,7 +347,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D07-jd-mo4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1348" y="-355"/>
+            <point key="canvasLocation" x="-2044" y="-599"/>
         </scene>
         <!--Store View Controller - Store-->
         <scene sceneID="2eg-AE-KJX">
@@ -403,7 +403,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABn-0K-zfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-602" y="210"/>
+            <point key="canvasLocation" x="-990" y="10"/>
         </scene>
         <!--Cocos View Controller - Main Game Screen-->
         <scene sceneID="rZj-jY-lho">
@@ -423,7 +423,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sMe-Oa-IUB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1146" y="-343"/>
+            <point key="canvasLocation" x="478" y="-543"/>
         </scene>
         <!--Review View Controller-->
         <scene sceneID="s5c-ap-G3B">
@@ -573,7 +573,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NqV-fo-eb7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1119" y="181"/>
+            <point key="canvasLocation" x="1219" y="-543"/>
         </scene>
         <!--View Controller - Main Menu-->
         <scene sceneID="lMF-05-ms5">
@@ -639,7 +639,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Geg-Zx-pWH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1424" y="1579"/>
+            <point key="canvasLocation" x="-1176" y="811"/>
         </scene>
         <!--Avatar View Controller - Avatar-->
         <scene sceneID="tah-D5-QYy">
@@ -805,7 +805,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igT-g3-GWA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="770" y="-868"/>
+            <point key="canvasLocation" x="-1006" y="-1064"/>
         </scene>
         <!--View Controller - Upload Picture-->
         <scene sceneID="Zag-Y7-71F">
@@ -865,7 +865,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vaJ-yO-m3a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1424" y="1129"/>
+            <point key="canvasLocation" x="-2096" y="817"/>
         </scene>
         <!--Options View Controller-->
         <scene sceneID="gWg-BX-wkF">
@@ -876,7 +876,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lbw-xa-q6i">
-                                <rect key="frame" x="322" y="263" width="138" height="37"/>
+                                <rect key="frame" x="322" y="264" width="138" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Logout">
@@ -940,7 +940,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A5K-lf-t03" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2375" y="181"/>
+            <point key="canvasLocation" x="-2071" y="-47"/>
         </scene>
         <!--Load View Controller-->
         <scene sceneID="tVA-Ob-2kd">
@@ -977,7 +977,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ohA-AL-P5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4262" y="-915"/>
+            <point key="canvasLocation" x="-4090" y="-875"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="2kV-1f-EPW">
@@ -1057,7 +1057,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jcM-k3-5zf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3011" y="-407"/>
+            <point key="canvasLocation" x="-3091" y="-615"/>
         </scene>
         <!--Friends View Controller-->
         <scene sceneID="ubQ-k2-43g">
@@ -1109,7 +1109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kZU-Qi-2D5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3475" y="264"/>
+            <point key="canvasLocation" x="-2071" y="-1224"/>
         </scene>
         <!--Select To Login View Controller - SelectToLogin-->
         <scene sceneID="WAf-pU-lOc">
@@ -1146,7 +1146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mVC-ww-vrf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3859" y="-375"/>
+            <point key="canvasLocation" x="-3103" y="-1373"/>
         </scene>
         <!--Mode Selection View Controller - Difficulty Selection-->
         <scene sceneID="Cex-y9-cMJ">
@@ -1239,7 +1239,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VHU-J7-cw1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-602" y="-365"/>
+            <point key="canvasLocation" x="-990" y="-549"/>
         </scene>
         <!--Hit Who View Controller-->
         <scene sceneID="s7l-E3-qJT">
@@ -1443,7 +1443,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HQw-zE-ONS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="251" y="-343"/>
+            <point key="canvasLocation" x="-181" y="-549"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rfM-Fq-uxS">
@@ -1461,7 +1461,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R2f-Fu-b0g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4988" y="-907"/>
+            <point key="canvasLocation" x="-5008" y="-875"/>
         </scene>
     </scenes>
     <resources>
@@ -1525,163 +1525,6 @@
         <image name="wood background.png" width="960" height="640"/>
         <image name="yellow board.png" width="350" height="115"/>
     </resources>
-    <classes>
-        <class className="AvatarBaseController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AvatarBaseController.h"/>
-        </class>
-        <class className="AvatarViewController" superclassName="AvatarBaseController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AvatarViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="Back:"/>
-                <relationship kind="action" name="Change_Skin:"/>
-                <relationship kind="action" name="addPicture:"/>
-                <relationship kind="action" name="goToSample:"/>
-                <relationship kind="action" name="startCamera:"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="wtfView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="CocosViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CocosViewController.h"/>
-        </class>
-        <class className="FBProfilePictureView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FBProfilePictureView.h"/>
-        </class>
-        <class className="FriendsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="back_Touched:"/>
-                <relationship kind="outlet" name="friendTable" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="loadingView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="tableCell" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="HitWhoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HitWhoViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="Back_Touched:"/>
-                <relationship kind="action" name="battleTouched:"/>
-                <relationship kind="action" name="cancelTouched:"/>
-                <relationship kind="outlet" name="bodyView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="characterReviewView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="faceView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="hammerView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="helmetView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="hit1" candidateClass="HitWindow"/>
-                <relationship kind="outlet" name="hit2" candidateClass="HitWindow"/>
-                <relationship kind="outlet" name="hit3" candidateClass="HitWindow"/>
-                <relationship kind="outlet" name="hit4" candidateClass="HitWindow"/>
-                <relationship kind="outlet" name="hitNumber" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="leftHammer" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="loadingView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="popupView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="rightHammer" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="shieldView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="HitWindow" superclassName="UIImageView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HitWindow.h"/>
-        </class>
-        <class className="LoadViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoadViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="myLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ModeSelectionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ModeSelectionViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="Back_Touched:"/>
-                <relationship kind="action" name="leftButton_touched:"/>
-                <relationship kind="action" name="rightButton_touched:"/>
-                <relationship kind="outlet" name="background" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="rightButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="wholeView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="OptionsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OptionsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="back_touched:"/>
-                <relationship kind="action" name="logout_touched:"/>
-                <relationship kind="outlet" name="back" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="logout_but" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="ReviewViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ReviewViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="hitBack:"/>
-                <relationship kind="action" name="hitLeft:"/>
-                <relationship kind="action" name="hitRight:"/>
-                <relationship kind="outlet" name="avatarImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="backBtn" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="leftBtn" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="portraitView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="rightBtn" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="uploadBtn" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="RootViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="Friend_touched:"/>
-                <relationship kind="action" name="opt_touched:"/>
-                <relationship kind="action" name="play_touched:"/>
-                <relationship kind="action" name="upload_clicked:"/>
-                <relationship kind="outlet" name="opt_but" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="play_but" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="profileImageView" candidateClass="FBProfilePictureView"/>
-            </relationships>
-        </class>
-        <class className="SelectToLoginViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectToLoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="FBTouched:"/>
-                <relationship kind="outlet" name="FBBut" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="StatusBarController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StatusBarController.h"/>
-            <relationships>
-                <relationship kind="action" name="Back_Touched:"/>
-                <relationship kind="action" name="Ok_Pressed:"/>
-                <relationship kind="action" name="money_pressed:"/>
-                <relationship kind="action" name="saveToDB_Touched:"/>
-                <relationship kind="outlet" name="body" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="bodyView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="faceView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="hammerView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="hammer_hand" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="helmet" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="helmetView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="item1" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="item10" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="item2" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="item3" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="item4" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="item5" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="item6" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="item7" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="item8" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="item9" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="money" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="shieldView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="shield_hand" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="StoreViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StoreViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="Back_Touched:"/>
-                <relationship kind="outlet" name="mainItemsScroll" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation" orientation="landscapeRight"/>

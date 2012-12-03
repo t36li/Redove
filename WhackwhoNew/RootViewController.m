@@ -30,14 +30,6 @@
 //static NSArray *FriendsData = nil;
 
 
-@interface RootViewController (){
-    @private
-    UserInfo *usr;
-    FBSingletonNew *fbs;
-    GlobalMethods *gmethods;
-}
-@end
-
 @implementation RootViewController
 @synthesize play_but,opt_but;
 @synthesize profileImageView;
@@ -46,20 +38,24 @@
 {
     //NSLog(@"RootViewController viewDidLoad");
     [super viewDidLoad];
+    usr = [UserInfo sharedInstance];
+    fbs = [FBSingletonNew sharedInstance];
     
-    gmethods = [[GlobalMethods alloc] init];
-    usr = [UserInfo sharedInstance];   
-    NSLog(@"RootViewController: load Background");
+    GlobalMethods *gmethods = [[GlobalMethods alloc] init];
     [gmethods setViewBackground:MainPage_bg viewSender:self.view];
-    
-    NSLog(@"RootViewController: load Profile Image");
-    if ([[FBSingletonNew sharedInstance] isLogin] == YES)
-        profileImageView.profileID = usr.userId;
+    NSLog(@"RootViewController: Background loaded");
 }
 
 
 -(void) viewDidAppear:(BOOL)animated{
+    NSLog(@"RootViewController: load Profile Image");
+    if ([fbs isLogin] == YES){
+        self.profileImageView.profileID = [usr userId];
+    }else{
+        profileImageView.profileID = nil;
+    }
 }
+
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -71,7 +67,12 @@
 
 -(IBAction)play_touched:(id)sender{
     NSLog(@"Play Button Touched");
-    [self performSegueWithIdentifier:PlayToStatusSegue sender:sender];
+    if ([fbs isLogin]==YES){
+        [self performSegueWithIdentifier:PlayToStatusSegue sender:sender];
+    }else{
+        //[self performSegueWithIdentifier:PlayToSelectLogInSegue sender:sender];
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
+    }
 }
 
 -(IBAction)opt_touched:(id)sender{
@@ -82,6 +83,7 @@
     if ([[FBSingletonNew sharedInstance] isLogin] == YES)
         [self performSegueWithIdentifier:PlayToFriendSegue sender:friend_but];
 }
+
 
 -(IBAction)upload_clicked:(id)sender {
     RKParams* params = [RKParams params];
@@ -102,6 +104,11 @@
         
        // [[RKObjectManager sharedManager].client post:@"/uploadImage" params:params delegate:self];
 }
+
+//-(void) FBLogOutSuccess{
+//    profileImageView.profileID = nil;
+//}
+
 
 -(void)FBSingletonDidLogout {
     //self.LoginAccountImageView.image = nil;
@@ -137,8 +144,6 @@
 }
 
 - (void)viewDidUnload {
-    [self setProfileImageView:nil];
-    [self setProfileImageView:nil];
     [super viewDidUnload];
 }
 @end
