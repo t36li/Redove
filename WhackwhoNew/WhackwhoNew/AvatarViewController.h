@@ -17,6 +17,7 @@
 #import "LoadViewController.h"
 #import "SpinnerView.h"
 #import "FaceEffectsController.h"
+#import "CustomDrawViewController.h"
 
 @interface AvatarViewController : AvatarBaseController <CameraOverlayControllerViewControllerDelegate,RKObjectLoaderDelegate,UserInfoDelegate, UIGestureRecognizerDelegate> {
     

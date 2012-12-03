@@ -103,7 +103,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     
     //cameraOverlayView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"camera view overlay.png"]];
     //[markingView addSubview:cameraOverlayView];
-    
+        
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -176,13 +176,13 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+    return interfaceOrientation == UIInterfaceOrientationLandscapeLeft;
 }
 
 -(IBAction)startCamera:(id)sender {
     headView.image = nil;
     [self presentModalViewController:cameraController animated:NO];
-    
+    /*
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(scale:)];
     [pinchRecognizer setDelegate:self];
     [self.view addGestureRecognizer:pinchRecognizer];
@@ -190,7 +190,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
     [panRecognizer setDelegate:self];
     [self.view addGestureRecognizer:panRecognizer];
-    
+    */
     self.navigationController.navigationBarHidden = YES;
 }
 
@@ -327,7 +327,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
             break;
     }
 }
-
+/*
 -(IBAction) goToSample:(id)sender {
     CGRect newFrame = headView.frame;
     newFrame.origin.x -= photoView.frame.origin.x;
@@ -338,4 +338,14 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     faceControl.cropImage = cropImage;
     [self presentModalViewController:faceControl animated:YES];
 }
+ */
+
+-(IBAction) goToSample:(id)sender {
+    CustomDrawViewController *drawController = [[CustomDrawViewController alloc] initWithNibName:@"CustomDrawViewController" bundle:nil];
+    drawController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self.navigationController pushViewController:drawController animated:YES];
+    UserInfo *info = [UserInfo sharedInstance];
+    ((CustomDrawView *)drawController.view).drawImageView.image = info.usrImg;
+}
+
 @end
