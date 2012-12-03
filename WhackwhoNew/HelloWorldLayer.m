@@ -46,7 +46,8 @@
         //determine which background to load
         //if unlocked new level, then randomize
 
-        level = hillLevel;
+        //level = hillLevel;
+        level = [[Game sharedGame] difficulty];
         
         switch (level) {
             case hillLevel:
