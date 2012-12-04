@@ -342,8 +342,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
 
 -(IBAction) goToSample:(id)sender {
     CustomDrawViewController *drawController = [[CustomDrawViewController alloc] initWithNibName:@"CustomDrawViewController" bundle:nil];
-    drawController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self.navigationController pushViewController:drawController animated:YES];
+    [self presentModalViewController:drawController animated:YES];
     UserInfo *info = [UserInfo sharedInstance];
     ((CustomDrawView *)drawController.view).drawImageView.image = info.usrImg;
 }
