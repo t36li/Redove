@@ -14,8 +14,6 @@
 
 @implementation CustomDrawViewController
 
-@synthesize backButton;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -45,7 +43,18 @@
 -(BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     return toInterfaceOrientation == UIInterfaceOrientationPortrait;
 }
+
 -(IBAction)backTouched:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+-(IBAction)resetPaths:(id)sender {
+    [(CustomDrawView *)self.view resetPaths];
+}
+
+-(IBAction)done:(id)sender {
+    [(CustomDrawView *)self.view commitPaths];
+    
     [self dismissModalViewControllerAnimated:YES];
 }
 @end

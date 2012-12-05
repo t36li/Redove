@@ -20,8 +20,10 @@
 @synthesize currentColor;
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (userPoints == nil)
+        userPoints = [NSMutableArray array];
+    
     UITouch *touch = [touches anyObject];
-    userPoints = [NSMutableArray array];
     self.previousPoint = [touch locationInView:self];
     [userPoints addObject:[NSValue valueWithCGPoint:[touch locationInView:self]]];
 }
@@ -88,34 +90,12 @@
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    UserInfo *user = [UserInfo sharedInstance];
-    
+        
     UITouch *touch = [touches anyObject];
     CGPoint currentPoint = [touch locationInView:self];
     [userPoints addObject:[NSValue valueWithCGPoint:currentPoint]];
     
     
-    
-    UIImage *mask = [self drawPathWithPoints:userPoints image:nil];
-    
-    UIView *container = [[UIView alloc] initWithFrame:self.frame];
-    UIImageView *imgView = [[UIImageView alloc] initWithImage:mask];
-    [container setBackgroundColor:[UIColor whiteColor]];
-    [imgView setBackgroundColor:[UIColor clearColor]];
-    [container addSubview:imgView];
-    //[self addSubview:container];
-    
-    UIGraphicsBeginImageContext(self.bounds.size);
-    [container.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *renderedMask = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    UIImage *resizedImage = [AvatarBaseController resizeImage:user.usrImg toSize:drawImageView.frame.size];
-    user.croppedImage = [AvatarBaseController maskImage:resizedImage withMask:renderedMask];
-    
-    drawImageView.image = user.croppedImage;
-
     return;
     /*
     
@@ -186,6 +166,40 @@
     UIImage *ret = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return ret;
+}
+
+-(void) resetPaths {
+    [userPoints removeAllObjects];
+    
+    UserInfo *user = [UserInfo sharedInstance];
+    self.drawImageView.image = user.usrImg;
+}
+
+-(void) commitPaths {
+    
+    UserInfo *user = [UserInfo sharedInstance];
+    
+    UIImage *mask = [self drawPathWithPoints:userPoints image:nil];
+    
+    UIView *container = [[UIView alloc] initWithFrame:self.frame];
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:mask];
+    [container setBackgroundColor:[UIColor whiteColor]];
+    [imgView setBackgroundColor:[UIColor clearColor]];
+    [container addSubview:imgView];
+    //[self addSubview:container];
+    
+    UIGraphicsBeginImageContext(self.bounds.size);
+    [container.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *renderedMask = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    UIImage *resizedImage = [AvatarBaseController resizeImage:user.usrImg toSize:drawImageView.frame.size];
+    drawImageView.image = [AvatarBaseController maskImage:resizedImage withMask:renderedMask];
+    
+    UIImage *temp = drawImageView.image;
+    CGSize size = temp.size;
+    
+    return;
 }
 
 @end
