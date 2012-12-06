@@ -114,7 +114,13 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     if (!newPhoto) {
         [self startCamera:nil];
     } else {
-        headView.image = usr.croppedImage;
+        if (usr.croppedImage == nil) {
+            photoView.image = usr.usrImg;
+            headView.image = nil;
+        } else {
+            photoView.image = nil;
+            headView.image = usr.croppedImage;
+        }
         backgroundView.image = [UIImage imageNamed:@"white final.png"];
     }
     cameraOverlayView.frame = markingView.bounds;
@@ -174,12 +180,17 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     // Release any retained subviews of the main view.
 }
 
+-(NSUInteger) supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskLandscapeLeft;
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return interfaceOrientation == UIInterfaceOrientationLandscapeLeft;
 }
 
 -(IBAction)startCamera:(id)sender {
+    newPhoto = YES;
     headView.image = nil;
     [self presentModalViewController:cameraController animated:NO];
     /*
@@ -227,7 +238,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
 -(void)validImageCaptured:(UIImage *)image croppedImage:(UIImage *)croppedImg{
     UserInfo *usr = [UserInfo sharedInstance];
     if (image != nil){
-        photoView.image = [AvatarBaseController resizeImage:image toSize:photoView.frame.size];
+        //photoView.image = [AvatarBaseController resizeImage:image toSize:photoView.frame.size];
         usr.usrImg = image;
         usr.croppedImage = croppedImg;
         newPhoto = YES;
@@ -341,6 +352,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
  */
 
 -(IBAction) goToSample:(id)sender {
+    newPhoto = YES;
     CustomDrawViewController *drawController = [[CustomDrawViewController alloc] initWithNibName:@"CustomDrawViewController" bundle:nil];
     [self presentModalViewController:drawController animated:YES];
     UserInfo *info = [UserInfo sharedInstance];

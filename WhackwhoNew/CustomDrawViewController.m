@@ -44,6 +44,10 @@
     return toInterfaceOrientation == UIInterfaceOrientationPortrait;
 }
 
+-(NSUInteger) supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 -(IBAction)backTouched:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
 }

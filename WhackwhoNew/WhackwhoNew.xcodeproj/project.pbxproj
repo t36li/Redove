@@ -455,6 +455,7 @@
 		D074BE5C1640941C00AF51EE /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = D074BD6B1640941C00AF51EE /* vec4.c */; };
 		D07F6FF01599463A0085DF2B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F6FEF1599463A0085DF2B /* CoreImage.framework */; };
 		D08CE2FE164213130073576B /* Level2.plist in Resources */ = {isa = PBXBuildFile; fileRef = D08CE2FD164213130073576B /* Level2.plist */; };
+		D08D14A5167042F800F50BBF /* UINavigationController+OrientationFix.m in Sources */ = {isa = PBXBuildFile; fileRef = D08D14A4167042F800F50BBF /* UINavigationController+OrientationFix.m */; };
 		D08EDEFD166465AF000906E0 /* crop.png in Resources */ = {isa = PBXBuildFile; fileRef = D08EDEFC166465AF000906E0 /* crop.png */; };
 		D08F7C6A1645BD25001FB9A3 /* seaLevelBackground.plist in Resources */ = {isa = PBXBuildFile; fileRef = D08F7C661645BD25001FB9A3 /* seaLevelBackground.plist */; };
 		D08F7C6B1645BD25001FB9A3 /* seaLevelBackground.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = D08F7C671645BD25001FB9A3 /* seaLevelBackground.pvr.ccz */; };
@@ -1141,6 +1142,8 @@
 		D08B5809160BFFF90082BA4B /* eye1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye1.png; sourceTree = "<group>"; };
 		D08B580A160BFFF90082BA4B /* tear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tear.png; sourceTree = "<group>"; };
 		D08CE2FD164213130073576B /* Level2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level2.plist; path = ../Level2.plist; sourceTree = "<group>"; };
+		D08D14A3167042F800F50BBF /* UINavigationController+OrientationFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+OrientationFix.h"; sourceTree = "<group>"; };
+		D08D14A4167042F800F50BBF /* UINavigationController+OrientationFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+OrientationFix.m"; sourceTree = "<group>"; };
 		D08EDEFC166465AF000906E0 /* crop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crop.png; sourceTree = "<group>"; };
 		D08F7C661645BD25001FB9A3 /* seaLevelBackground.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = seaLevelBackground.plist; sourceTree = "<group>"; };
 		D08F7C671645BD25001FB9A3 /* seaLevelBackground.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = seaLevelBackground.pvr.ccz; sourceTree = "<group>"; };
@@ -1578,6 +1581,8 @@
 		C14385A815C8C13C008D9AE7 /* Load Scene */ = {
 			isa = PBXGroup;
 			children = (
+				D08D14A3167042F800F50BBF /* UINavigationController+OrientationFix.h */,
+				D08D14A4167042F800F50BBF /* UINavigationController+OrientationFix.m */,
 				C14385A915C8C15A008D9AE7 /* LoadViewController.h */,
 				C14385AA15C8C15A008D9AE7 /* LoadViewController.m */,
 			);
@@ -2964,6 +2969,7 @@
 				D04D763D163769BE003C858F /* GameViewController.m in Sources */,
 				D0903BEC1667219C00BB920B /* CustomDrawView.m in Sources */,
 				D092386B1668534000E1A231 /* CustomDrawViewController.m in Sources */,
+				D08D14A5167042F800F50BBF /* UINavigationController+OrientationFix.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

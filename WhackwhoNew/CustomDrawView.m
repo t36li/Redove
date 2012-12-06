@@ -194,10 +194,37 @@
     UIGraphicsEndImageContext();
     
     UIImage *resizedImage = [AvatarBaseController resizeImage:user.usrImg toSize:drawImageView.frame.size];
-    drawImageView.image = [AvatarBaseController maskImage:resizedImage withMask:renderedMask];
+    UIImage *maskedImage = [AvatarBaseController maskImage:resizedImage withMask:renderedMask];
     
-    UIImage *temp = drawImageView.image;
-    CGSize size = temp.size;
+    
+    int max_X, max_Y, min_X, min_Y;
+    max_X = max_Y = 0;
+    min_X = min_Y = INT_MAX;
+    
+    for (NSValue *val in userPoints) {
+        CGPoint point = val.CGPointValue;
+        int x = point.x;
+        int y = point.y;
+        
+        if (x > max_X)
+            max_X = x;
+        else if (x < min_X)
+            min_X = x;
+        
+        if (y > max_Y)
+            max_Y = y;
+        else if (y < min_Y)
+            min_Y = y;
+        
+    }
+    
+    UIImage *finalImage = [AvatarBaseController cropImage:maskedImage inRect:CGRectMake(min_X, min_Y, max_X - min_X, max_Y - min_Y)];
+    
+    drawImageView.image = finalImage;
+    
+    [[UserInfo sharedInstance] setCroppedImage:finalImage];
+    
+    [userPoints removeAllObjects];
     
     return;
 }
