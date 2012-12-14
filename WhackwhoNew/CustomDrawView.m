@@ -218,11 +218,16 @@
         
     }
     
-    UIImage *finalImage = [AvatarBaseController cropImage:maskedImage inRect:CGRectMake(min_X, min_Y, max_X - min_X, max_Y - min_Y)];
+    CGRect faceRect = CGRectMake(min_X, min_Y, max_X - min_X, max_Y - min_Y);
     
-    drawImageView.image = finalImage;
+    UIImage *finalImage = [AvatarBaseController cropImage:maskedImage inRect:faceRect];
     
-    [[UserInfo sharedInstance] setCroppedImage:finalImage];
+    UIImage *finalResizedImage = [AvatarBaseController resizeImage:finalImage toSize:drawImageView.frame.size];
+    
+    drawImageView.image = finalResizedImage;
+    
+    [user setCroppedImage:finalResizedImage];
+    user.faceRect = faceRect;
     
     [userPoints removeAllObjects];
     
