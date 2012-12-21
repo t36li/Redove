@@ -11,8 +11,8 @@
 
 @interface CustomDrawViewController : UIViewController
 
-@property (nonatomic, strong) IBOutlet UIButton *backButton;
-
 -(IBAction)backTouched:(id)sender;
+-(IBAction)resetPaths:(id)sender;
+-(IBAction)done:(id)sender;
 
 @end

@@ -25,9 +25,9 @@
 @end
 
 @implementation AvatarViewController
-
+@synthesize tempPhoto, tempCrop;
 @synthesize imageView, overlay, cameraController, wtfView, cameraOverlayView;
-
+/*
 typedef enum {
     PinchAxisNone,
     PinchAxisHorizontal,
@@ -46,7 +46,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     : tangent >= 3.7320508076f ? PinchAxisVertical   // 75 degrees
     : PinchAxisNone;
 }
-
+*/
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) {
         // initialize what you need here
@@ -111,15 +111,21 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     self.navigationController.navigationBarHidden = YES;
     
     UserInfo *usr = [UserInfo sharedInstance];
-    if (!newPhoto) {
+    if (tempPhoto == nil) {
         [self startCamera:nil];
     } else {
-        headView.image = usr.croppedImage;
+        if (usr.croppedImage == nil) {
+            photoView.image = usr.usrImg;
+            headView.image = nil;
+        } else {
+            photoView.image = nil;
+            headView.image = usr.croppedImage;
+        }
         backgroundView.image = [UIImage imageNamed:@"white final.png"];
     }
     cameraOverlayView.frame = markingView.bounds;
 }
-
+/*
 -(void)scale:(id)sender {
     
     PinchAxis pinch;
@@ -167,11 +173,16 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
     
 }
+ */
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+}
+
+-(NSUInteger) supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskLandscapeLeft;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -180,7 +191,6 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
 }
 
 -(IBAction)startCamera:(id)sender {
-    headView.image = nil;
     [self presentModalViewController:cameraController animated:NO];
     /*
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(scale:)];
@@ -207,7 +217,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     [params setValue:user.rightEyePosition forParam:@"rightEyePosition"];
     [params setValue:user.mouthPosition forParam:@"mouthPosition"];
     [params setValue:user.faceRect forParam:@"faceRect"];
-    UIImage *uploadImage = usrInfo.croppedImage;//[UIImage imageNamed:@"pause.png"];//usrInfo->usrImg;
+    UIImage *uploadImage = usrInfo.croppedImage;
     NSData* imageData = UIImagePNGRepresentation(uploadImage);
     [params setData:imageData MIMEType:@"image/png" forParam:[NSString stringWithFormat:@"%d",user.headId]];
     
@@ -225,19 +235,11 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
 }
 
 -(void)validImageCaptured:(UIImage *)image croppedImage:(UIImage *)croppedImg{
-    UserInfo *usr = [UserInfo sharedInstance];
     if (image != nil){
-        photoView.image = [AvatarBaseController resizeImage:image toSize:photoView.frame.size];
-        usr.usrImg = image;
-        usr.croppedImage = croppedImg;
-        newPhoto = YES;
+        tempPhoto = image;
+        tempCrop = croppedImg;
         backgroundView.image = [UIImage imageNamed:@"white final.png"];
     }
-}
-
--(void)setUserPictureCompleted{
-    //upload to the server
-    [self saveUsrImageToServer];
 }
 
 -(void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response{
@@ -254,46 +256,15 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     [self Back:nil];
 }
 
-
--(void)viewDidAppear:(BOOL)animated {
-    if (newPhoto) {
-        newPhoto = NO;
-    }
-}
-
-//run this in background
--(void) pushCroppedImage {
-    UserInfo *info = [UserInfo sharedInstance];
-    [info setUserPicture:photoView.image delegate:self];
-}
-
--(IBAction) addPicture:(id)sender {
-    UserInfo *info = [UserInfo sharedInstance];
-    
-    if (headView.image != nil) {
+-(IBAction) addPicture:(id)sender {    
+    if (tempPhoto == nil) {
         [self Back:nil];
         return;
     }
-    //[SpinnerView loadSpinnerIntoView:self.view];
-    self.view.userInteractionEnabled = NO;
     
-    UIImage *mask = [UIImage imageNamed:@"crop.png"];
-    UIImage *resizedMask = [AvatarBaseController resizeImage:mask toSize:photoView.frame.size];
-    CGRect newFrame = backgroundView.frame;
-    newFrame.origin.x -= photoView.frame.origin.x;
-    newFrame.origin.y -= photoView.frame.origin.y;
-    UIImage *resizedImage = [AvatarBaseController resizeImage:photoView.image toSize:photoView.frame.size];
-    UIImage *croppedImage = [AvatarBaseController cropImage:resizedImage inRect:newFrame];
+    [SpinnerView loadSpinnerIntoView:self.view];
     
-    //photoView.image = croppedImage;
-    
-    info.croppedImage = [AvatarBaseController maskImage:croppedImage withMask:resizedMask];
-    //headView.image = info.croppedImage;
-    //photoView.image = info.croppedImage;
-    backgroundView.image = info.croppedImage;
-    photoView.image = nil;
-    
-    //[self performSelectorInBackground:@selector(pushCroppedImage) withObject:nil];
+    [self saveUsrImageToServer];
 }
 
 - (IBAction) Back:(id)sender{
@@ -341,11 +312,12 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
  */
 
 -(IBAction) goToSample:(id)sender {
+    if (tempPhoto == nil)
+        return;
+    
     CustomDrawViewController *drawController = [[CustomDrawViewController alloc] initWithNibName:@"CustomDrawViewController" bundle:nil];
-    drawController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self.navigationController pushViewController:drawController animated:YES];
-    UserInfo *info = [UserInfo sharedInstance];
-    ((CustomDrawView *)drawController.view).drawImageView.image = info.usrImg;
+    [self presentModalViewController:drawController animated:YES];
+    ((CustomDrawView *)drawController.view).drawImageView.image = tempPhoto;
 }
 
 @end

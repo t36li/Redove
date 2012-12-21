@@ -24,4 +24,7 @@
 @property (nonatomic) CGPoint prePreviousPoint;
 @property (nonatomic) CGPoint previousPoint;
 
+-(void) resetPaths;
+-(void) commitPaths;
+
 @end
