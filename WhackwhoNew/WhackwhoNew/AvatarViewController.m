@@ -107,21 +107,21 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    UserInfo *shared = [UserInfo sharedInstance];
     self.avatarView.frame = imageView.bounds;
     self.navigationController.navigationBarHidden = YES;
     
-    UserInfo *usr = [UserInfo sharedInstance];
     if (tempPhoto == nil) {
         [self startCamera:nil];
     } else {
-        if (usr.croppedImage == nil) {
-            photoView.image = usr.usrImg;
-            headView.image = nil;
+        if (tempPhoto == shared.usrImg) {
+            photoView.image = tempPhoto;
+            backgroundView.image = [UIImage imageNamed:@"white final.png"];
         } else {
             photoView.image = nil;
-            headView.image = usr.croppedImage;
+            headView.image = shared.croppedImage;
         }
-        backgroundView.image = [UIImage imageNamed:@"white final.png"];
+
     }
     cameraOverlayView.frame = markingView.bounds;
 }
@@ -237,6 +237,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
 -(void)validImageCaptured:(UIImage *)image croppedImage:(UIImage *)croppedImg{
     if (image != nil){
         tempPhoto = image;
+        [[UserInfo sharedInstance] setUsrImg:tempPhoto];
         tempCrop = croppedImg;
         backgroundView.image = [UIImage imageNamed:@"white final.png"];
     }
