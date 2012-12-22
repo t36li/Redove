@@ -175,7 +175,7 @@
     self.drawImageView.image = user.usrImg;
 }
 
--(void) commitPaths {
+-(void) commitPaths{
     
     UserInfo *user = [UserInfo sharedInstance];
     
@@ -193,7 +193,7 @@
     UIImage *renderedMask = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    UIImage *resizedImage = [AvatarBaseController resizeImage:user.usrImg toSize:drawImageView.frame.size];
+    UIImage *resizedImage = [AvatarBaseController resizeImage:drawImageView.image toSize:drawImageView.frame.size];
     UIImage *maskedImage = [AvatarBaseController maskImage:resizedImage withMask:renderedMask];
     
     
@@ -227,6 +227,7 @@
     drawImageView.image = finalResizedImage;
     
     [user setCroppedImage:finalResizedImage];
+    [user setUsrImg:nil];
     user.faceRect = faceRect;
     
     [userPoints removeAllObjects];
