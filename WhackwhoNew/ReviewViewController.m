@@ -26,7 +26,6 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    UserInfo *user = [UserInfo sharedInstance];
     NSArray *images = [[Game sharedGame] arrayOfAllPopups];
     for (UIImage *img in images) {
         if (img != defaultImage) {
@@ -35,7 +34,7 @@
     }
     if (avatarArray.count > 0) {
         self.avatarImageView.image = [avatarArray objectAtIndex:0];
-        [user performSelector:@selector(markFaces:withDelegate:) withObject:self.avatarImageView.image withObject:self];
+        //[user performSelector:@selector(markFaces:withDelegate:) withObject:self.avatarImageView.image withObject:self];
         selectedIndex = 0;
     }
 }
@@ -72,7 +71,7 @@
         selectedIndex --;
         [self clearImageViews];
         self.avatarImageView.image = [avatarArray objectAtIndex:selectedIndex];
-        [[UserInfo sharedInstance] performSelector:@selector(markFaces:withDelegate:) withObject:self.avatarImageView.image withObject:self];
+        //[[UserInfo sharedInstance] performSelector:@selector(markFaces:withDelegate:) withObject:self.avatarImageView.image withObject:self];
     }
 }
 
@@ -81,7 +80,7 @@
         selectedIndex ++;
         [self clearImageViews];
         self.avatarImageView.image = [avatarArray objectAtIndex:selectedIndex];
-        [[UserInfo sharedInstance] performSelector:@selector(markFaces:withDelegate:) withObject:self.avatarImageView.image withObject:self];
+        //[[UserInfo sharedInstance] performSelector:@selector(markFaces:withDelegate:) withObject:self.avatarImageView.image withObject:self];
     }
 }
 
