@@ -22,7 +22,7 @@
 //@synthesize defaultImage;
 
 @synthesize containerView;
-@synthesize faceView, helmetView, bodyView, hammerView, shieldView;
+@synthesize faceView, bodyView;
 @synthesize hitNumber, leftHammer, rightHammer;
 
 @synthesize table;
@@ -77,16 +77,9 @@
     
     [faceView setContentMode:UIViewContentModeScaleToFill];
     [bodyView setContentMode:UIViewContentModeScaleToFill];
-    [helmetView setContentMode:UIViewContentModeScaleToFill];
-    [hammerView setContentMode:UIViewContentModeScaleToFill];
-    hammerView.transform = CGAffineTransformMakeRotation(45*pi/180);
-    [shieldView setContentMode:UIViewContentModeScaleToFill];
     
     faceView.image = nil;
     bodyView.image = nil;
-    helmetView.image = nil;
-    hammerView.image = nil;
-    shieldView.image = nil;
 }
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -344,10 +337,7 @@
         
         CurrentEquip *ce = friend.currentEquip;
         faceView.image = friend.head.headImage;
-        helmetView.image = [UIImage imageNamed:ce.helmet];
         bodyView.image = [UIImage imageNamed:ce.body];
-        hammerView.image = [UIImage imageNamed:ce.hammerArm];
-        shieldView.image = [UIImage imageNamed:ce.shieldArm];
         
     } else {//capturing image from strangers
         int randInt;
@@ -373,10 +363,7 @@
         faceView.image = friend.head.headImage;
         CurrentEquip *ce = friend.currentEquip;
         faceView.image = friend.head.headImage;
-        helmetView.image = [UIImage imageNamed:ce.helmet];
         bodyView.image = [UIImage imageNamed:ce.body];
-        hammerView.image = [UIImage imageNamed:ce.hammerArm];
-        shieldView.image = [UIImage imageNamed:ce.shieldArm];
     }
     
     // If scale is 0, it'll follows the screen scale for creating the bounds
@@ -412,10 +399,7 @@
 -(void) switchMainViewToIndex {
     if (selectedHits.count <= 0) {
         faceView.image = nil;
-        helmetView.image = nil;
         bodyView.image = nil;
-        hammerView.image = nil;
-        shieldView.image = nil;
         return;
     }
     
@@ -437,10 +421,7 @@
     
     CurrentEquip *ce = friendSelected.currentEquip;
     faceView.image = friendSelected.head.headImage;
-    helmetView.image = [UIImage imageNamed:ce.helmet];
     bodyView.image = [UIImage imageNamed:ce.body];
-    hammerView.image = [UIImage imageNamed:ce.hammerArm];
-    shieldView.image = [UIImage imageNamed:ce.shieldArm];
 }
 
 -(void) sendHammersDownWithBlock:(void(^)(BOOL finished))block {

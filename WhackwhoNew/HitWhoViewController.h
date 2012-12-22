@@ -37,9 +37,6 @@
     
     IBOutlet UIImageView *faceView;
     IBOutlet UIImageView *bodyView;
-    IBOutlet UIImageView *helmetView;
-    IBOutlet UIImageView *hammerView;
-    IBOutlet UIImageView *shieldView;
     
     IBOutlet UIImageView *hitNumber;
     IBOutlet UIImageView *leftHammer;
@@ -69,9 +66,6 @@
 @property (nonatomic) IBOutlet UIView *containerView, *popupView, *characterReviewView;
 @property (nonatomic) IBOutlet UIImageView *faceView;
 @property (nonatomic) IBOutlet UIImageView *bodyView;
-@property (nonatomic) IBOutlet UIImageView *helmetView;
-@property (nonatomic) IBOutlet UIImageView *hammerView;
-@property (nonatomic) IBOutlet UIImageView *shieldView;
 
 @property (nonatomic) IBOutlet UITableView *table;
 @property (nonatomic) SpinnerView *spinner;

@@ -1221,8 +1221,6 @@
                         <outlet property="bodyView" destination="BcR-3t-HvS" id="Zal-jB-rPo"/>
                         <outlet property="containerView" destination="prf-J9-2FP" id="2lD-V2-5sr"/>
                         <outlet property="faceView" destination="02S-5y-Lg6" id="Xxi-k2-fGI"/>
-                        <outlet property="hammerView" destination="IW5-1J-tA4" id="FfB-Ih-PMT"/>
-                        <outlet property="helmetView" destination="8Tt-Xf-GtL" id="6ND-Iw-IjK"/>
                         <outlet property="hit1" destination="iFk-7X-kQg" id="OfE-nI-Iga"/>
                         <outlet property="hit2" destination="s9K-64-VZQ" id="zw2-LI-xQz"/>
                         <outlet property="hit3" destination="8fp-vk-NVk" id="XdG-In-pz1"/>
@@ -1231,7 +1229,6 @@
                         <outlet property="leftHammer" destination="Lve-7m-9pR" id="3o7-cS-0NT"/>
                         <outlet property="loadingView" destination="EvH-60-K1v" id="SBm-JR-UYX"/>
                         <outlet property="rightHammer" destination="Jc4-TF-OD7" id="gZO-bN-eHo"/>
-                        <outlet property="shieldView" destination="IZL-mJ-IhY" id="Xir-vG-nyV"/>
                         <outlet property="table" destination="Kji-mq-CXg" id="1XM-Ze-nhL"/>
                         <segue destination="pLt-Tc-cty" kind="push" identifier="chooseToGame" id="nbN-wY-aNl"/>
                     </connections>
@@ -1352,8 +1349,6 @@
                 <relationship kind="outlet" name="characterReviewView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="faceView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="hammerView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="helmetView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="hit1" candidateClass="HitWindow"/>
                 <relationship kind="outlet" name="hit2" candidateClass="HitWindow"/>
                 <relationship kind="outlet" name="hit3" candidateClass="HitWindow"/>
@@ -1363,7 +1358,6 @@
                 <relationship kind="outlet" name="loadingView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="popupView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="rightHammer" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="shieldView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="table" candidateClass="UITableView"/>
             </relationships>
         </class>
