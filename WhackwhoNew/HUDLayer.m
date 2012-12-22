@@ -160,6 +160,16 @@
         scoreLabel.position = ccp(winSize.height/2, 40);
         [scoreboard addChild:scoreLabel z:104];
         
+        
+        //add "hits" label
+        hitsLabel = [CCLabelTTF labelWithString:@"X" fontName:@"chalkduster" fontSize:35];
+        hitsLabel.color = ccc3(255, 0, 0);
+        hitsLabel.anchorPoint = ccp(0.5,1);
+        hitsLabel.position = ccp(winSize.width/2, winSize.height - 10);
+        //hitsLabel.scale = 0.1;
+        [self addChild:hitsLabel z:10];
+        hitsLabel.visible = FALSE;
+        
         [self schedule:@selector(timerUpdate:) interval:0.5f];
     }
     return self;
@@ -212,6 +222,17 @@
 
 -(void)updateScore:(NSInteger)score {
     [scoreLabel setString:[NSString stringWithFormat:@"%d", score]];
+}
+
+-(void)updateHits:(NSInteger)hits {
+    [hitsLabel setString:[NSString stringWithFormat:@"%d", hits]];
+}
+
+-(void)showGameOverLabel:(NSString *)msg {
+    CCLabelTTF *label = [CCLabelTTF labelWithString:msg fontName:@"chalkduster" fontSize:50];
+    label.color = ccc3(255, 249, 0);
+    label.position = ccp(150,200);
+    [self addChild:label z:10];
 }
 
 /*

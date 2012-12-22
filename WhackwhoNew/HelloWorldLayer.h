@@ -28,7 +28,7 @@
     NSMutableArray *coins;
     NSMutableArray *bomb;
     
-    CCLabelTTF *hitsLabel;
+    //CCLabelTTF *hitsLabel;
 
     float speed;
     

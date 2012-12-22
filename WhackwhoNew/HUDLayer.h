@@ -13,7 +13,7 @@
     //int baseScore, multiplier, coin;
     //id<GameOverDelegate> gameOverDelegate;
     NSMutableArray *hearts;
-    CCLabelTTF *timeLabel, *scoreLabel;
+    CCLabelTTF *timeLabel, *scoreLabel, *hitsLabel;
     CCMenu *pauseMenu;
     BOOL gameOver;
     CCSprite *scoreboard;
@@ -24,6 +24,8 @@
 -(void)resetTimer;
 -(void)removeHeart;
 -(void)updateScore:(NSInteger)score;
+-(void)updateHits:(NSInteger)hits;
+-(void)showGameOverLabel:(NSString *)msg;
 
 //- (void)showPauseMenu:(id<GameOverDelegate>)delegate;
 //@property (nonatomic, retain) id<GameOverDelegate> gameOverDelegate;

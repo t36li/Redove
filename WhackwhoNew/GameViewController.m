@@ -65,9 +65,6 @@
         newScene.gameOverDelegate = self;
         [director runWithScene:newScene];
     } else {
-        //[director replaceScene:scene];
-        //[scene.layer reset];
-        //scene.layer.gameOverDelegate = self;
         HelloWorldScene *newScene = [HelloWorldScene node];
         newScene.gameOverDelegate = self;
         [director replaceScene:newScene];
@@ -92,7 +89,7 @@
 
 - (void)returnToMenu {
     int total_stack = [self.navigationController.viewControllers count];
-    //how to pop to status view?
+    [[Game sharedGame] resetGameState];
     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:(total_stack - 4)] animated:YES];
 //    CCDirector *director = [CCDirector sharedDirector];
 //    HelloWorldScene *newScene = [HelloWorldScene node];

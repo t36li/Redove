@@ -58,19 +58,10 @@
                 break;
         }
         
-        //code for initializing all other sprites + schedulers
+        //initialize shake handler
         self.isAccelerometerEnabled = YES;
         [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1/60];
         shake_once = false;
-        
-        //add "hits" label
-        hitsLabel = [CCLabelTTF labelWithString:@"X" fontName:@"chalkduster" fontSize:35];
-        hitsLabel.color = ccc3(255, 0, 0);
-        hitsLabel.anchorPoint = ccp(0.5,1);
-        hitsLabel.position = ccp(winSize.width/2, winSize.height - 10);
-        //hitsLabel.scale = 0.1;
-        [self addChild:hitsLabel z:10];
-        hitsLabel.visible = FALSE;
         
         //!!!! initializing popups
         //use the array from game.h which contains all image names
@@ -158,7 +149,7 @@
 
     glClearColor(255, 255, 255, 255);
     
-    [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
+    /*[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
     [CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
     
     CCSpriteBatchNode *spritesBgNode;
@@ -174,7 +165,7 @@
         sprite.anchorPoint = ccp(0.5,0.5);
         sprite.position = ccp(winSize.height/2, winSize.width/2);
         [spritesBgNode addChild:sprite z:(i*-10)];
-    }
+    }*/
     
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Level1" ofType:@"plist"];
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:filePath];
@@ -662,7 +653,7 @@
                 int score_added = 5 + scene.consecHits / 5;
                 [scene updateScore:score_added];
                 
-                //generate crit label
+                //generate "combat text"
                 CCLabelTTF *ctLabel;
                 ctLabel = [CCLabelTTF labelWithString:@"+1" fontName:@"chalkduster" fontSize:30];
                 ctLabel.color = ccc3(255, 0, 0);
@@ -675,11 +666,10 @@
                 CCCallFuncN *remove = [CCCallFuncN actionWithTarget:self selector:@selector(removeNode:)];
                 [ctLabel runAction:[CCSequence actions:delay, remove, nil]];
                 
-                //update hit streak label
+
                 [scene updateConsecHits];
-                if (scene.consecHits > 1) {
-                    [hitsLabel setString:[NSString stringWithFormat:@"X%i", scene.consecHits]];
-                }
+
+                
                 //if not hit correct "mole"
             } else {
                 
@@ -768,17 +758,16 @@
     //update "score"
     [self.layer cleanup];
     
+    //NSString *msg;
+    //if (timeout) {
+        //msg = @"Time's UP!";
+    //} else {
+      //  msg = @"Game OVER!";
+    //}
     
-    NSString *msg;
-    if (timeout) {
-        msg = @"Time's UP!";
-    } else {
-        msg = @"Game OVER!";
-    }
-    CCLabelTTF *gameOverLabel = [CCLabelTTF labelWithString:msg fontName:@"Chalkduster" fontSize:50];
-    gameOverLabel.position = ccp(200,200);
-    [self addChild:gameOverLabel];
+    //[self.hud showGameOverLabel:msg];
     
+    [self.hud cleanup];
     
     [self performSelector:@selector(transitionToReview) withObject:nil afterDelay:2.0];
     
@@ -795,6 +784,7 @@
 
 -(void)reduceHealth {
     lives -= 1;
+    [self.hud removeHeart];
     
     if (lives <= 0) {
         [self gameOver:NO];
@@ -802,12 +792,14 @@
 }
 
 -(void)updateScore:(int)score {
-    baseScore = score;
+    baseScore += score;
     [self.hud updateScore:baseScore];
+    
 }
 
 -(void)updateConsecHits {
     consecHits++;
+    [self.hud updateHits:consecHits];
 }
 
 -(void)resetConsecHits {
