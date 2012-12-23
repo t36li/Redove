@@ -80,7 +80,6 @@
 }
 
 -(IBAction)Friend_touched:(id)sender{//change it to invite friends![button changed]
-    if ([[FBSingletonNew sharedInstance] isLogin] == YES)
         [self performSegueWithIdentifier:PlayToFriendSegue sender:friend_but];
 }
 
@@ -131,7 +130,7 @@
     else if ([segue.identifier isEqualToString:PlayToStatusSegue]){
     }
     else if ([segue.identifier isEqualToString:PlayToFriendSegue]){
-        self.friendVC = segue.destinationViewController;
+        //self.friendVC = segue.destinationViewController;
     }
     else if ([segue.identifier isEqualToString:SelectToLoginToAvatar]){
     }

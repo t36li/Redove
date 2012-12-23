@@ -102,8 +102,10 @@ static FBSingletonNew *singletonDelegate = nil;
     }
 }
 
--(void)RequestFriendsAll{
-    
+-(void)RequestAllFriends{
+    if ([self isLogin] == YES){
+        
+    }
 }
 
 //FB Login:

@@ -27,7 +27,7 @@
 -(void)performLogin;
 -(void)performLogout;
 -(void)populateUserDetails;
--(void)RequestFriendsAll;
+-(void)RequestAllFriends;
 -(void)openSession;
 
 @end

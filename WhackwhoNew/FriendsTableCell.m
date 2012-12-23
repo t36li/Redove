@@ -12,7 +12,7 @@
 @implementation FriendsTableCell
 @synthesize name = _nameLabel;
 @synthesize gender;
-@synthesize profileImageView = _profileImageView;
+@synthesize FBprofileImageView = _profileImageView;
 @synthesize containerView;
 @synthesize spinner;
 @synthesize user_id;

@@ -9,9 +9,13 @@
 #import "FriendsViewController.h"
 #import "FriendsTableCell.h"
 #import "GlobalMethods.h"
-#import "FBSingleton.h"
 
 @interface FriendsViewController ()
+
+@property (strong, nonatomic) IBOutlet UITextView *selectedFriendsView;
+@property (retain, nonatomic) FBFriendPickerViewController *friendPickerController;
+
+- (void)fillTextBoxAndDismiss:(NSString *)text;
 
 @end
 
@@ -19,6 +23,7 @@
 
 @synthesize resultData, resultAction;
 @synthesize tableCell,friendTable, spinner, loadingView;
+@synthesize friendPickerController,selectedFriendsView;
 
 - (void)viewDidLoad
 {
@@ -32,6 +37,9 @@
     
     spinner = [[SpinnerView alloc] initWithFrame:loadingView.bounds];
     //[FBSingleton sharedInstance].delegate = self;
+    
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -48,12 +56,52 @@
 
 - (void)viewDidUnload
 {
+    self.selectedFriendsView = nil;
+    self.friendPickerController = nil;
+    [self setInviteMessage:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
 
 - (void) filterFriendsNotUsingApp{
     //NSPredicate *predicate = [NSPredicate ]
+}
+
+- (IBAction)FriendListClick:(id)sender {
+    if(self.friendPickerController == nil){
+        self.friendPickerController = [[FBFriendPickerViewController alloc] init];
+        self.friendPickerController.title = @"Pick Friends";
+        self.friendPickerController.delegate = self;
+    }
+    [self.friendPickerController loadData];
+    [self.friendPickerController clearSelection];
+    
+    [self presentModalViewController:self.friendPickerController animated:YES];
+}
+
+- (void)facebookViewControllerDoneWasPressed:(id)sender {
+    NSMutableString *text = [[NSMutableString alloc] init];
+    
+    // we pick up the users from the selection, and create a string that we use to update the text view
+    // at the bottom of the display; note that self.selection is a property inherited from our base class
+    for (id<FBGraphUser> user in self.friendPickerController.selection) {
+        if ([text length]) {
+            [text appendString:@", "];
+        }
+        [text appendString:user.name];
+    }
+    
+    [self fillTextBoxAndDismiss:text.length > 0 ? text : @"<None>"];
+}
+
+- (void)facebookViewControllerCancelWasPressed:(id)sender {
+    [self fillTextBoxAndDismiss:@"<Cancelled>"];
+}
+
+- (void)fillTextBoxAndDismiss:(NSString *)text {
+    self.inviteMessage.text = text;
+    
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 
@@ -103,18 +151,18 @@
     
     NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", friend.user_id];
 
-    [cell.profileImageView setImageWithURL:[NSURL URLWithString:formatting] success:^(UIImage *image) {
+    /*[cell.FBprofileImageView setImageWithURL:[NSURL URLWithString:formatting] success:^(UIImage *image) {
         [cell.spinner removeSpinner];
     }failure:^(NSError *error) {
         [cell.spinner removeSpinner];
-    }];
+    }];*/
     
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     FriendsTableCell *celler = (FriendsTableCell *)cell;
-    if (celler.profileImageView.image == nil)
+    if (celler.FBprofileImageView == nil)
         [celler.spinner startSpinnerInView:celler.containerView];
 }
 
@@ -155,6 +203,8 @@
 {
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
+
+
 
 - (IBAction)back_Touched:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];

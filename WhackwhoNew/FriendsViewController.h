@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "SpinnerView.h"
 #import "Friend.h"
-#import "FBSingletonDelegate.h"
+#import "FBSingletonNew.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface FriendsViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,FBSingletonDelegate>{
+@interface FriendsViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,FBFriendPickerDelegate>{
     NSArray *resultData;
     NSString *resultAction;
     UITableView *friendsTable;
@@ -25,6 +25,8 @@
 @property (nonatomic, weak) IBOutlet UITableView *friendTable;
 @property (nonatomic) SpinnerView *spinner;
 @property (nonatomic) IBOutlet UIView *loadingView;
+@property (strong, nonatomic) IBOutlet UITextView *inviteMessage;
+- (IBAction)FriendListClick:(id)sender;
 
 - (IBAction)back_Touched:(id)sender;
 
