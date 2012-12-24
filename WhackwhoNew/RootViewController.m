@@ -49,6 +49,7 @@
 
 
 -(void) viewDidAppear:(BOOL)animated{
+    fbs.delegate = self;
     NSLog(@"RootViewController: load Profile Image");
     if ([fbs isLogin] == YES){
         self.profileImageView.profileID = [usr userId];

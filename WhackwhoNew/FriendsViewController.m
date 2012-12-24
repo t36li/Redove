@@ -149,7 +149,7 @@
         cell.Invite_but.hidden = NO;
     }
     
-    NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", friend.user_id];
+    //NSString *formatting = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", friend.user_id];
 
     /*[cell.FBprofileImageView setImageWithURL:[NSURL URLWithString:formatting] success:^(UIImage *image) {
         [cell.spinner removeSpinner];

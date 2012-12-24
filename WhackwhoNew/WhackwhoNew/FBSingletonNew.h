@@ -12,13 +12,11 @@
 #import "UserInfo.h"
 
 @interface FBSingletonNew : NSObject<FBDialogDelegate>{
-    FBProfilePictureView *profileImageView;
     id<FBSingletonNewDelegate> delegate;
 }
 
 
 
-@property (nonatomic,retain) FBProfilePictureView *profileImageView;
 @property (nonatomic) id<FBSingletonNewDelegate> delegate;
 @property (strong, nonatomic) Facebook *facebook;
 @property (nonatomic, retain) NSURL *openedURL;
@@ -36,10 +34,10 @@
 -(void)openSession;
 -(void)sendRequest;
 
-- (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI;
+//- (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI;
 - (void) closeSession;
 - (void) sendRequest;
-- (void)sendRequestToiOSFriends;
+//- (void)sendRequestToiOSFriends;
 - (NSDictionary*)parseURLParams:(NSString *)query;
 - (void) checkIncomingNotification;
 

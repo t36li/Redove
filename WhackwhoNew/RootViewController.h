@@ -18,7 +18,6 @@
     
     UIButton *play_but;
     UIButton *opt_but;
-    FriendsViewController *friendVC;
     
 @private
     UserInfo *usr;
@@ -29,10 +28,9 @@
 
 @property (nonatomic) IBOutlet UIButton *play_but;
 @property (nonatomic) IBOutlet UIButton *opt_but;
-@property (nonatomic) FriendsViewController *friendVC;
 
 -(IBAction)play_touched:(id)sender;
 -(IBAction)opt_touched:(id)sender;
--(IBAction)upload_clicked:(id)sender;
+//-(IBAction)upload_clicked:(id)sender;
 
 @end
