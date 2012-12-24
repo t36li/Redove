@@ -34,12 +34,12 @@
     // Release any retained subviews of the main view.
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    
+-(void)viewDidAppear:(BOOL)animated{
+    [[FBSingletonNew sharedInstance] setDelegate:self];
 }
 
 -(IBAction)back_touched:(id)sender{
-    [self dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(IBAction)logout_touched:(id)sender{
@@ -59,6 +59,12 @@
     //**    [[FBSingleton sharedInstance] logout]; //logout facebook with authorized info
         //[[FBSingleton sharedInstance] unauthorized]; //facebook user info unauthorized
    // }
+}
+
+-(void)FBLogOutSuccess{
+    [[UserInfo sharedInstance] setCurrentLogInType:NotLogIn];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

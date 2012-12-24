@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="V6n-XQ-h9E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="V6n-XQ-h9E">
     <dependencies>
         <deployment version="1296" identifier="iOS"/>
         <development version="4300" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
         <!--Status Bar Controller - Status Bar-->
@@ -668,7 +668,7 @@
             <objects>
                 <viewController id="sqy-Cf-B9P" customClass="OptionsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cEO-iB-GHT">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lbw-xa-q6i">
@@ -826,7 +826,7 @@
                                 </state>
                                 <connections>
                                     <action selector="opt_touched:" destination="Nsl-EU-HzN" eventType="touchUpInside" id="3In-ef-0eK"/>
-                                    <segue destination="sqy-Cf-B9P" kind="modal" modalTransitionStyle="partialCurl" id="ikB-xU-5mO"/>
+                                    <segue destination="sqy-Cf-B9P" kind="push" id="ikB-xU-5mO"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" id="7vk-ti-ebb" customClass="FBProfilePictureView">

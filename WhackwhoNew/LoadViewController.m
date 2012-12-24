@@ -100,11 +100,11 @@
     
 }
 
--(void) FBLogOutSuccess{
-    [[UserInfo sharedInstance] setCurrentLogInType:NotLogIn];
-    [self dismissModalViewControllerAnimated:YES];
-    [self goToMenu];
-}
+//-(void) FBLogOutSuccess{
+//    [[UserInfo sharedInstance] setCurrentLogInType:NotLogIn];
+//    [self dismissModalViewControllerAnimated:YES];
+//    [self goToMenu];
+//}
 #pragma mark- database delegate methods
 
 //////////////////////Database REST:
