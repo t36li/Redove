@@ -60,6 +60,7 @@
     
     if (![director runningScene]) {
         HelloWorldScene *newScene = [HelloWorldScene node];
+        [HelloWorldScene setGameOverDelegate:self];
         [director runWithScene:newScene];
     } else {
         HelloWorldScene *newScene = [HelloWorldScene node];
@@ -68,11 +69,11 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    CCScene *runningScene = [[CCDirector sharedDirector] runningScene];
-    if (runningScene != nil && [runningScene isKindOfClass:[HelloWorldScene class]]) {
-        HelloWorldScene *scene = (HelloWorldScene *)[[CCDirector sharedDirector] runningScene];
-        scene.gameOverDelegate = self;
-    }
+//    CCScene *runningScene = [[CCDirector sharedDirector] runningScene];
+//    if (runningScene != nil && [runningScene isKindOfClass:[HelloWorldScene class]]) {
+//        HelloWorldScene *scene = (HelloWorldScene *)[[CCDirector sharedDirector] runningScene];
+//        scene.gameOverDelegate = self;
+//    }
 }
 
 - (void)didReceiveMemoryWarning

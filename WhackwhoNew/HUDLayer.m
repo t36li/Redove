@@ -176,8 +176,7 @@
 }
 
 -(void) pauseGame {
-    HelloWorldScene *scene = (HelloWorldScene *)self.parent;
-    [scene.gameOverDelegate returnToMenu];
+    [[HelloWorldScene gameOverDelegate] returnToMenu];
 }
 
 
@@ -200,7 +199,7 @@
     
     if (CGRectContainsPoint(pauseMenu.boundingBox, location)) {
         HelloWorldScene *scene = (HelloWorldScene *)self.parent;
-        [scene.gameOverDelegate returnToMenu];
+        [[HelloWorldScene gameOverDelegate] returnToMenu];
         return YES;
     }
     

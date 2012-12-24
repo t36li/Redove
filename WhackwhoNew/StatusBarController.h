@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "cocos2d.h"
-#import "GameOverDelegate.h"
 #import "StatusCocosDelegate.h"
 #import <RestKit/RestKit.h>
 
-@interface StatusBarController : UIViewController<RKObjectLoaderDelegate, UIAlertViewDelegate> {// <CCDirectorDelegate, GameOverDelegate> {
+@interface StatusBarController : UIViewController<RKObjectLoaderDelegate, UIAlertViewDelegate> {
     IBOutlet UIView *containerView;
     
     

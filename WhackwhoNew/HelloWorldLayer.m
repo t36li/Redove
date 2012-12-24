@@ -739,7 +739,8 @@
 
 @synthesize layer=_layer;
 @synthesize hud=_hud;
-@synthesize gameOverDelegate;
+
+static id<GameOverDelegate> gameOverDelegate = nil;
 
 
 - (id)init {
@@ -787,7 +788,7 @@
 }
 
 -(void)transitionToReview {
-    [self.gameOverDelegate proceedToReview];
+    [gameOverDelegate proceedToReview];
 }
 
 -(void)reduceHealth {
@@ -828,5 +829,13 @@
 
 -(NSInteger)baseScore {
     return baseScore;
+}
+
++(void)setGameOverDelegate:(id<GameOverDelegate>)delegate {
+    gameOverDelegate = delegate;
+}
+
++(id<GameOverDelegate>)gameOverDelegate {
+    return gameOverDelegate;
 }
 @end
