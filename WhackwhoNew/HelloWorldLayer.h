@@ -46,7 +46,6 @@
 @property (nonatomic, strong) CCSpriteBatchNode *splashSheet;
 @property (nonatomic, strong) NSMutableArray *splashFrames;
 
--(void)cleanup;
 -(void)setArrayForReview;
 
 
