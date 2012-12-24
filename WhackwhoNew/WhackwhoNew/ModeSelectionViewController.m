@@ -19,6 +19,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    index = 0;
     bg_list = [[NSMutableArray alloc] initWithObjects: @"hills_finalView.png", @"background 2.png", nil];
     background.image = [UIImage imageNamed:[bg_list objectAtIndex:index]];
     //[self.view bringSubviewToFront:wholeView];
@@ -37,7 +38,7 @@
 }
 
 -(void) viewWillAppear:(BOOL)animated {
-    index = 0;
+    background.image = [UIImage imageNamed:[bg_list objectAtIndex:index]];
     self.navigationController.navigationBarHidden = YES;
 }
 
