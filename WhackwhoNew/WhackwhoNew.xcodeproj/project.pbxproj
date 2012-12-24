@@ -53,6 +53,8 @@
 		69E9EB9C16028E4E00E52D4F /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 69E9EB9716028E4E00E52D4F /* arrow@2x.png */; };
 		69E9EB9D16028E4E00E52D4F /* PullToRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E9EB9916028E4E00E52D4F /* PullToRefreshView.m */; };
 		69E9EB9E16028E4E00E52D4F /* README in Resources */ = {isa = PBXBuildFile; fileRef = 69E9EB9A16028E4E00E52D4F /* README */; };
+		C1053A0416582E6C0015B932 /* ItemsPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1053A0316582E6C0015B932 /* ItemsPList.plist */; };
+		C1053A191664213F0015B932 /* Level1.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1053A181664213F0015B932 /* Level1.plist */; };
 		C10D2FC215D060A6007B751B /* Dragbox.m in Sources */ = {isa = PBXBuildFile; fileRef = C10D2FC115D060A6007B751B /* Dragbox.m */; };
 		C12114581616044300E3AAB1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12114571616044300E3AAB1 /* Default-568h@2x.png */; };
 		C12114611616967E00E3AAB1 /* HitWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C121145F1616967E00E3AAB1 /* HitWindow.m */; };
@@ -456,6 +458,8 @@
 		D074BE5C1640941C00AF51EE /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = D074BD6B1640941C00AF51EE /* vec4.c */; };
 		D07F6FF01599463A0085DF2B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F6FEF1599463A0085DF2B /* CoreImage.framework */; };
 		D08CE2FE164213130073576B /* Level2.plist in Resources */ = {isa = PBXBuildFile; fileRef = D08CE2FD164213130073576B /* Level2.plist */; };
+		D08D14A5167042F800F50BBF /* UINavigationController+OrientationFix.m in Sources */ = {isa = PBXBuildFile; fileRef = D08D14A4167042F800F50BBF /* UINavigationController+OrientationFix.m */; };
+		D08EDEFD166465AF000906E0 /* crop.png in Resources */ = {isa = PBXBuildFile; fileRef = D08EDEFC166465AF000906E0 /* crop.png */; };
 		D08F7C6A1645BD25001FB9A3 /* seaLevelBackground.plist in Resources */ = {isa = PBXBuildFile; fileRef = D08F7C661645BD25001FB9A3 /* seaLevelBackground.plist */; };
 		D08F7C6B1645BD25001FB9A3 /* seaLevelBackground.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = D08F7C671645BD25001FB9A3 /* seaLevelBackground.pvr.ccz */; };
 		D08F7C6C1645BD25001FB9A3 /* seaLevelBackground-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = D08F7C681645BD25001FB9A3 /* seaLevelBackground-hd.plist */; };
@@ -464,7 +468,10 @@
 		D08F7C731645BE42001FB9A3 /* hillLevelBackground-hd.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = D08F7C6F1645BE42001FB9A3 /* hillLevelBackground-hd.pvr.ccz */; };
 		D08F7C741645BE42001FB9A3 /* hillLevelBackground.plist in Resources */ = {isa = PBXBuildFile; fileRef = D08F7C701645BE42001FB9A3 /* hillLevelBackground.plist */; };
 		D08F7C751645BE42001FB9A3 /* hillLevelBackground.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = D08F7C711645BE42001FB9A3 /* hillLevelBackground.pvr.ccz */; };
+		D0903BEC1667219C00BB920B /* CustomDrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0903BEB1667219C00BB920B /* CustomDrawView.m */; };
 		D090C63815A238CF0051AA12 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D090C63715A238CF0051AA12 /* UserInfo.m */; };
+		D092386B1668534000E1A231 /* CustomDrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09238691668534000E1A231 /* CustomDrawViewController.m */; };
+		D092386C1668534000E1A231 /* CustomDrawViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D092386A1668534000E1A231 /* CustomDrawViewController.xib */; };
 		D0948D4115ADFF0E00429477 /* AvatarBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0948D4015ADFF0E00429477 /* AvatarBaseController.m */; };
 		D09800CA1609621F009E97E8 /* green board.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800C61609621E009E97E8 /* green board.png */; };
 		D09800CB1609621F009E97E8 /* blue board.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800C71609621E009E97E8 /* blue board.png */; };
@@ -708,6 +715,8 @@
 		69E9EB9816028E4E00E52D4F /* PullToRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullToRefreshView.h; sourceTree = "<group>"; };
 		69E9EB9916028E4E00E52D4F /* PullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullToRefreshView.m; sourceTree = "<group>"; };
 		69E9EB9A16028E4E00E52D4F /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		C1053A0316582E6C0015B932 /* ItemsPList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ItemsPList.plist; sourceTree = "<group>"; };
+		C1053A181664213F0015B932 /* Level1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level1.plist; sourceTree = "<group>"; };
 		C10D2FC015D060A6007B751B /* Dragbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dragbox.h; sourceTree = "<group>"; };
 		C10D2FC115D060A6007B751B /* Dragbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dragbox.m; sourceTree = "<group>"; };
 		C10D2FCB15D09625007B751B /* StatusCocosDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatusCocosDelegate.h; sourceTree = "<group>"; };
@@ -1157,6 +1166,9 @@
 		D08B5809160BFFF90082BA4B /* eye1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye1.png; sourceTree = "<group>"; };
 		D08B580A160BFFF90082BA4B /* tear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tear.png; sourceTree = "<group>"; };
 		D08CE2FD164213130073576B /* Level2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level2.plist; path = ../Level2.plist; sourceTree = "<group>"; };
+		D08D14A3167042F800F50BBF /* UINavigationController+OrientationFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+OrientationFix.h"; sourceTree = "<group>"; };
+		D08D14A4167042F800F50BBF /* UINavigationController+OrientationFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+OrientationFix.m"; sourceTree = "<group>"; };
+		D08EDEFC166465AF000906E0 /* crop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crop.png; sourceTree = "<group>"; };
 		D08F7C661645BD25001FB9A3 /* seaLevelBackground.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = seaLevelBackground.plist; sourceTree = "<group>"; };
 		D08F7C671645BD25001FB9A3 /* seaLevelBackground.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = seaLevelBackground.pvr.ccz; sourceTree = "<group>"; };
 		D08F7C681645BD25001FB9A3 /* seaLevelBackground-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "seaLevelBackground-hd.plist"; sourceTree = "<group>"; };
@@ -1165,8 +1177,13 @@
 		D08F7C6F1645BE42001FB9A3 /* hillLevelBackground-hd.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hillLevelBackground-hd.pvr.ccz"; sourceTree = "<group>"; };
 		D08F7C701645BE42001FB9A3 /* hillLevelBackground.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hillLevelBackground.plist; sourceTree = "<group>"; };
 		D08F7C711645BE42001FB9A3 /* hillLevelBackground.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = hillLevelBackground.pvr.ccz; sourceTree = "<group>"; };
+		D0903BEA1667219C00BB920B /* CustomDrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomDrawView.h; sourceTree = "<group>"; };
+		D0903BEB1667219C00BB920B /* CustomDrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDrawView.m; sourceTree = "<group>"; };
 		D090C63615A238CE0051AA12 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		D090C63715A238CF0051AA12 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		D09238681668534000E1A231 /* CustomDrawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomDrawViewController.h; sourceTree = "<group>"; };
+		D09238691668534000E1A231 /* CustomDrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDrawViewController.m; sourceTree = "<group>"; };
+		D092386A1668534000E1A231 /* CustomDrawViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomDrawViewController.xib; sourceTree = "<group>"; };
 		D0948D3915AB6E9A00429477 /* AvatarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AvatarView.xib; path = ../AvatarView.xib; sourceTree = "<group>"; };
 		D0948D3F15ADFF0E00429477 /* AvatarBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarBaseController.h; sourceTree = "<group>"; };
 		D0948D4015ADFF0E00429477 /* AvatarBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarBaseController.m; sourceTree = "<group>"; };
@@ -1486,6 +1503,11 @@
 				C198EE2C15CF7AEB004D170C /* Personal Status View */,
 				D0D7C84415955D3400F51C6E /* AvatarViewController.h */,
 				D0D7C84515955D3400F51C6E /* AvatarViewController.m */,
+				D0903BEA1667219C00BB920B /* CustomDrawView.h */,
+				D0903BEB1667219C00BB920B /* CustomDrawView.m */,
+				D09238681668534000E1A231 /* CustomDrawViewController.h */,
+				D09238691668534000E1A231 /* CustomDrawViewController.m */,
+				D092386A1668534000E1A231 /* CustomDrawViewController.xib */,
 				D0B48497160E2C77000B95A7 /* FaceEffectsController.h */,
 				D0B48498160E2C77000B95A7 /* FaceEffectsController.m */,
 				D0948D3F15ADFF0E00429477 /* AvatarBaseController.h */,
@@ -1501,6 +1523,7 @@
 				D0D7C84815956E3D00F51C6E /* ModeSelectionViewController.m */,
 				C1692E8F15CE282B00C7D4C7 /* StoreViewController.h */,
 				C1692E9015CE282C00C7D4C7 /* StoreViewController.m */,
+				C1053A0316582E6C0015B932 /* ItemsPList.plist */,
 				C14B63B015AF5B5400376C91 /* Actual Game Scene(Cocos2d) */,
 				694F34B315A7775E009BA1C5 /* Mainpage Views */,
 				696F17FF15A4E30A00DC849F /* Constants.h */,
@@ -1601,6 +1624,8 @@
 		C14385A815C8C13C008D9AE7 /* Load Scene */ = {
 			isa = PBXGroup;
 			children = (
+				D08D14A3167042F800F50BBF /* UINavigationController+OrientationFix.h */,
+				D08D14A4167042F800F50BBF /* UINavigationController+OrientationFix.m */,
 				C14385A915C8C15A008D9AE7 /* LoadViewController.h */,
 				C14385AA15C8C15A008D9AE7 /* LoadViewController.m */,
 			);
@@ -1699,6 +1724,7 @@
 		C147168C1594ACCA0002FF21 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C1053A181664213F0015B932 /* Level1.plist */,
 				D08CE2FD164213130073576B /* Level2.plist */,
 				D04D763C163769BE003C858F /* GameViewController.xib */,
 				D0B48499160E2C77000B95A7 /* FaceEffectsController.xib */,
@@ -2406,6 +2432,7 @@
 		D0E59F791608250200F73C9D /* CameraView */ = {
 			isa = PBXGroup;
 			children = (
+				D08EDEFC166465AF000906E0 /* crop.png */,
 				D0F37ECE161150D200E58F1E /* camera view overlay.png */,
 				D09D9858160A9F7A00014ADB /* white final.png */,
 				D09800C61609621E009E97E8 /* green board.png */,

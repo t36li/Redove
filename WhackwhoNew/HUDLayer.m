@@ -114,20 +114,22 @@
     myTime = 45;
     hearts = [NSMutableArray array];
     lives = 3;
-
+    self.isTouchEnabled = YES;
 }
 
 -(id) init {
     if ((self = [super init])) {
-       
+        [self setVariables];
+        
+        
         CGSize winSize = [CCDirector sharedDirector].winSize;
-
+        
         //add timer label
         timeLabel = [CCLabelTTF labelWithString:@"0:0" fontName:@"chalkduster" fontSize:30];
         timeLabel.color = ccc3(255, 249, 0);
-        timeLabel.anchorPoint = ccp(0,1);
-        timeLabel.position = ccp(15, winSize.height);
-        [self addChild:timeLabel z:10];
+        timeLabel.anchorPoint = ccp(0,0);
+        timeLabel.position = ccp(15, winSize.width - timeLabel.contentSize.height);
+        [self addChild:timeLabel z:101];
         
         //add "pause" label
         CCMenuItemImage *pause = [CCMenuItemImage itemWithNormalImage:@"pause.png" selectedImage:@"pause.png" target:self selector:@selector(pauseGame)];
@@ -139,42 +141,57 @@
         //add "life" sprites
         for (int i = 0; i < lives; i++) {
             CCSprite *life = [CCSprite spriteWithFile:@"heart.png"];
-            life.anchorPoint = ccp(1,1);
-            life.position = ccp(winSize.width - 5 - i*25, winSize.height - 5);
+            life.anchorPoint = ccp(0,0);
+            life.position = ccp(winSize.height - (i + 1)*life.contentSize.width, winSize.width - life.contentSize.height);
             [hearts addObject:life];
-            [self addChild:life z:10];
+            [self addChild:life z:103];
         }
         
         //add "Scoreboard"
         scoreboard = [CCSprite spriteWithFile:@"scoreboard.png"];
-        scoreboard.anchorPoint = ccp(0.5, 0);
-        scoreboard.position = ccp(winSize.width/2 + 10, -10);
-        scoreboard.scale = 0.8;
-        [self addChild:scoreboard z:-36];
+        scoreboard.anchorPoint = ccp(0, 0);
+        scoreboard.position = ccp(winSize.height/2 - scoreboard.contentSize.width/2, 0);
+        [self addChild:scoreboard z:-102];
         
         //add "score" label
         scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"chalkduster" fontSize:50];
+        scoreLabel.anchorPoint = ccp(0.5, 0.5);
         scoreLabel.color = ccc3(255, 200, 0);
-        scoreLabel.position = ccp(scoreboard.contentSize.width/2, scoreboard.contentSize.height/2);
-        [scoreboard addChild:scoreLabel z:10];
-
-        [self schedule:@selector(timerUpdate:) interval:1/60];
-
+        scoreLabel.position = ccp(winSize.height/2, 40);
+        [scoreboard addChild:scoreLabel z:104];
+        
+        
+        //add "hits" label
+        hitsLabel = [CCLabelTTF labelWithString:@"X" fontName:@"chalkduster" fontSize:35];
+        hitsLabel.color = ccc3(255, 0, 0);
+        hitsLabel.anchorPoint = ccp(0.5,1);
+        hitsLabel.position = ccp(winSize.width/2, winSize.height - 10);
+        //hitsLabel.scale = 0.1;
+        [self addChild:hitsLabel z:10];
+        hitsLabel.visible = FALSE;
+        
+        [self schedule:@selector(timerUpdate:) interval:0.5f];
     }
     return self;
 }
 
+-(void) pauseGame {
+    HelloWorldScene *scene = (HelloWorldScene *)self.parent;
+    [scene.gameOverDelegate returnToMenu];
+}
 
--(void) timerUpdate: (ccTime) deltT {    
-    myTime -= deltT;
+
+-(void) timerUpdate:(ccTime)deltt {
+    myTime -= deltt;
     [timeLabel setString:[NSString stringWithFormat:@"%d:%02d", (int)myTime/60, (int)myTime%60]];
     
     if (myTime <= 0) {
         CCNode *scene = self.parent;
         HelloWorldScene *helloScene = (HelloWorldScene *)scene;
         [helloScene gameOver:YES];
-        [self unschedule:@selector(timerUpdate:)];
+        [self unschedule:@selector(timerUpdate)];
     }
+    
 }
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
@@ -207,6 +224,17 @@
     [scoreLabel setString:[NSString stringWithFormat:@"%d", score]];
 }
 
+-(void)updateHits:(NSInteger)hits {
+    [hitsLabel setString:[NSString stringWithFormat:@"%d", hits]];
+}
+
+-(void)showGameOverLabel:(NSString *)msg {
+    CCLabelTTF *label = [CCLabelTTF labelWithString:msg fontName:@"chalkduster" fontSize:50];
+    label.color = ccc3(255, 249, 0);
+    label.position = ccp(150,200);
+    [self addChild:label z:10];
+}
+
 /*
 -(void) ccTouchCancelled:(UITouch *)touch withEvent:(UIEvent *)event {
     
@@ -220,8 +248,10 @@
     
 }
 */
+/*
 - (void)registerWithTouchDispatcher {
     [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
 }
+ */
 
 @end

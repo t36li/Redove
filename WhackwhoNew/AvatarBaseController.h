@@ -23,5 +23,6 @@
 
 +(UIImage *)resizeImage:(UIImage *)img toSize:(CGSize)rect;
 +(UIImage *)cropImage:(UIImage *)image inRect:(CGRect)rect;
++(UIImage *)maskImage:(UIImage *)image withMask:(UIImage *)maskImage;
 
 @end

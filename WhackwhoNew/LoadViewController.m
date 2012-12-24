@@ -65,6 +65,14 @@
     [super viewDidLoad];
 }
 
+-(BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+    return toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft;
+}
+
+-(NSUInteger) supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskLandscapeLeft;
+}
+
 -(void) viewDidAppear:(BOOL)animated{
     [FBSingletonNew sharedInstance].delegate = self;
     [self initializeConnections];
@@ -188,11 +196,6 @@
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
 @end

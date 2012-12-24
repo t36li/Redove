@@ -17,20 +17,22 @@
 #import "LoadViewController.h"
 #import "SpinnerView.h"
 #import "FaceEffectsController.h"
+#import "CustomDrawViewController.h"
 
-@interface AvatarViewController : AvatarBaseController <CameraOverlayControllerViewControllerDelegate,RKObjectLoaderDelegate,UserInfoDelegate, UIGestureRecognizerDelegate> {
+@interface AvatarViewController : AvatarBaseController <CameraOverlayControllerViewControllerDelegate,RKObjectLoaderDelegate, UIGestureRecognizerDelegate> {
     
     IBOutlet UIView *imageView;
     IBOutlet UIView *wtfView;
     CameraOverlayControllerViewController *overlay;
     //IBOutlet AvatarView *avatarView;
     UIImagePickerController *cameraController;
-    BOOL newPhoto;
     
     CGFloat _xlastScale;
     CGFloat _ylastScale;
     
     UIImageView *cameraOverlayView;
+    
+    UIImage *tempPhoto, *tempCrop;
 }
 @property (nonatomic, strong) IBOutlet UIView *wtfView;
 
@@ -39,6 +41,7 @@
 @property (nonatomic, strong) CameraOverlayControllerViewController *overlay;
 @property (nonatomic, strong) UIImagePickerController *cameraController;
 @property (nonatomic, strong) UIImageView *cameraOverlayView;
+@property (nonatomic, strong) UIImage *tempPhoto, *tempCrop;
 //@property (nonatomic, retain) IBOutlet AvatarView *avatarView;
 
 

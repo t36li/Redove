@@ -22,7 +22,7 @@
 //@synthesize defaultImage;
 
 @synthesize containerView;
-@synthesize faceView, helmetView, bodyView, hammerView, shieldView;
+@synthesize faceView, bodyView;
 @synthesize hitNumber, leftHammer, rightHammer;
 
 @synthesize table;
@@ -48,7 +48,7 @@
     
     // meant to be used as a stack. Only need to contain strings. No need to access friends as the hitwindows already have a friend element
     selectedHits = [[NSMutableArray alloc] init];
-    
+    selectedStrangers = [[NSMutableArray alloc] init];
     
     //change this to something else later
     //[self setDefaultImage:[UIImage imageNamed:@"vlad.png"]];
@@ -77,16 +77,9 @@
     
     [faceView setContentMode:UIViewContentModeScaleToFill];
     [bodyView setContentMode:UIViewContentModeScaleToFill];
-    [helmetView setContentMode:UIViewContentModeScaleToFill];
-    [hammerView setContentMode:UIViewContentModeScaleToFill];
-    hammerView.transform = CGAffineTransformMakeRotation(45*pi/180);
-    [shieldView setContentMode:UIViewContentModeScaleToFill];
     
     faceView.image = nil;
     bodyView.image = nil;
-    helmetView.image = nil;
-    hammerView.image = nil;
-    shieldView.image = nil;
 }
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -344,7 +337,6 @@
 //you do not capture the different equipments. etc
 - (UIImage *)captureImageInHitBox:(NSInteger)number withArray: (NSInteger)array {
     //capturing image from friends
-    //!!!!!!YOU ARE NOT CAPTURING INFO ABOUT THEIR EQUIPMENTS
     Friend *friend;
     if (array == 0) {
         friend = [selectedHits objectAtIndex:number];
@@ -352,27 +344,23 @@
         
         CurrentEquip *ce = friend.currentEquip;
         faceView.image = friend.head.headImage;
-        helmetView.image = [UIImage imageNamed:ce.helmet];
         bodyView.image = [UIImage imageNamed:ce.body];
-        hammerView.image = [UIImage imageNamed:ce.hammerArm];
-        shieldView.image = [UIImage imageNamed:ce.shieldArm];
         
     } else {//capturing image from strangers
         int randInt;
+        
+        //testing purposes
+        for (Friend *friend in resultStrangers) {
+            NSLog(@"%@", friend.name);
+        }
+        
         while (TRUE) {
             randInt = arc4random() % resultStrangers.count;
             friend = [resultStrangers objectAtIndex:randInt];
             
-            NSString *selfGender = [[UserInfo sharedInstance] gender];
-            
-            if (arc4random() % 100 < 70) {
-                if (![friend.gender isEqualToString:selfGender]) {
-                    break;
-                }
-            } else {
-                if ([friend.gender isEqualToString:selfGender]) {
-                    break;
-                }
+            if (![selectedStrangers containsObject:friend]) {
+                [selectedStrangers addObject:friend];
+                break;
             }
         }
         
@@ -382,10 +370,7 @@
         faceView.image = friend.head.headImage;
         CurrentEquip *ce = friend.currentEquip;
         faceView.image = friend.head.headImage;
-        helmetView.image = [UIImage imageNamed:ce.helmet];
         bodyView.image = [UIImage imageNamed:ce.body];
-        hammerView.image = [UIImage imageNamed:ce.hammerArm];
-        shieldView.image = [UIImage imageNamed:ce.shieldArm];
     }
     
     // If scale is 0, it'll follows the screen scale for creating the bounds
@@ -421,10 +406,7 @@
 -(void) switchMainViewToIndex {
     if (selectedHits.count <= 0) {
         faceView.image = nil;
-        helmetView.image = nil;
         bodyView.image = nil;
-        hammerView.image = nil;
-        shieldView.image = nil;
         return;
     }
     
@@ -446,10 +428,7 @@
     
     CurrentEquip *ce = friendSelected.currentEquip;
     faceView.image = friendSelected.head.headImage;
-    helmetView.image = [UIImage imageNamed:ce.helmet];
     bodyView.image = [UIImage imageNamed:ce.body];
-    hammerView.image = [UIImage imageNamed:ce.hammerArm];
-    shieldView.image = [UIImage imageNamed:ce.shieldArm];
 }
 
 -(void) sendHammersDownWithBlock:(void(^)(BOOL finished))block {

@@ -67,10 +67,10 @@ NSString *const UserChinPosition = @"ChinPosition";
 @property (nonatomic, retain) NSDictionary *myFriendPlayers;
 //@property (nonatomic, retain) FBProfilePictureView *profileImageView;
 
--(void)markFaces:(UIImage *)img withDelegate:(id<UserInfoDelegate>)delegate;
+//-(void)markFaces:(UIImage *)img withDelegate:(id<UserInfoDelegate>)delegate;
 +(id)sharedInstance;
 -(void) clearUserInfo;
--(void) setUserPicture:(UIImage *)img delegate:(id)sender;
+//-(void) setUserPicture:(UIImage *)img delegate:(id)sender;
 +(UIImage *)getCroppedImage:(UIImage *)img inRect:(CGRect)rect;
 +(UIImage *)resizeImage:(UIImage *)image toSize:(CGSize)newSize;
 -(void)LogInTypeChanged:(LogInType) type;

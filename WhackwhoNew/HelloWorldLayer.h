@@ -28,14 +28,14 @@
     NSMutableArray *coins;
     NSMutableArray *bomb;
     
-    CCLabelTTF *hitsLabel;
+    //CCLabelTTF *hitsLabel;
 
     float speed;
     
-    BOOL shake_once, has_bomb;//, gamePaused;
+    BOOL shake_once, has_bomb;
     NSArray *botLeft, *botRight, *midLeft, *midRight, *topLeft, *topMid, *topRight;
-    //float body_height_now, body_bounding_width, body_bounding_height;
-    //CCParticleExplosion *emitter;
+
+    int level;
     
     NSDictionary *locations;
     CCSpriteBatchNode *splashSheet;
