@@ -7,9 +7,9 @@
 //
 
 #import "HitWhoViewController.h"
-#import "FBSingleton.h"
 #import "Friend.h"
 #import "UserInfo.h"
+#import "FBSingletonNew.h"
 
 #define ChooseToGame @"chooseToGame"
 #define dummyString @"testobject"
@@ -90,7 +90,8 @@
 }
 
 -(void) viewDidAppear:(BOOL)animated{
-    //**[[FBSingleton sharedInstance] setDelegate:self];
+    
+    [[FBSingletonNew sharedInstance] setDelegate:self];
     [tablepull setDelegate:self];
     
     if (isHammerDown) {
@@ -98,6 +99,7 @@
             isHammerDown = NO;
         }];
     }
+    [self loadPlayersList];
 }
 
 - (void)viewDidUnload
@@ -111,18 +113,31 @@
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
--(void) FBSingletonHitWhoIDListLoaded:(NSArray *)friendUsingAppID{
-    NSLog(@"%@",friendUsingAppID);
-    
-    //comment might be userful when cache the friendsArray [straighters remain the same unless pull to refresh]
-    
-    //if ([[[UserInfo sharedInstance] friendArray] friends] == nil){
-        [self getFriendDBInfo:friendUsingAppID];
-    //}
-    //else{
-    //    resultFriends = [NSArray arrayWithArray:[[[UserInfo sharedInstance] friendArray] friends]];
-    //}
+-(void)loadPlayersList{
+    if ([[UserInfo sharedInstance] friendArray] == nil){
+        [[FBSingletonNew sharedInstance] requestFriendsUsing];
+    }else{
+        //call database to reload strangers list:
+        [self getFriendDBInfo:[[UserInfo sharedInstance] friendArray]];
+    }
 }
+
+-(void)loadPlayerListCompleted:(FriendArray *)friendArray{
+    [self getFriendDBInfo:friendArray];
+}
+
+//-(void) FBSingletonHitWhoIDListLoaded:(NSArray *)friendUsingAppID{
+//    NSLog(@"%@",friendUsingAppID);
+//    
+//    //comment might be userful when cache the friendsArray [straighters remain the same unless pull to refresh]
+//    
+//    //if ([[[UserInfo sharedInstance] friendArray] friends] == nil){
+//        [self getFriendDBInfo:friendUsingAppID];
+//    //}
+//    //else{
+//    //    resultFriends = [NSArray arrayWithArray:[[[UserInfo sharedInstance] friendArray] friends]];
+//    //}
+//}
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #pragma mark - UITableView Datasource and Delegate Methods
@@ -207,17 +222,8 @@
 }
 
 /*********handle database connections:*****************/
--(void)getFriendDBInfo:(NSArray *) friendUsingAppIDs{
-    if (friendUsingAppIDs){
-        
-        NSMutableArray *friends = [[NSMutableArray alloc] init];
-        for (NSString* fID in friendUsingAppIDs) {
-            Friend* f = [[Friend alloc] init];
-            f.user_id = fID;
-            [friends addObject:f];
-        }
-        FriendArray *friendArray = [[FriendArray alloc] init];
-        friendArray.friends = friends;
+-(void)getFriendDBInfo:(FriendArray *) friendArray{
+    if (friendArray.friends.count){
         //[[RKObjectManager sharedManager] postObject:friendArray delegate:self];
         [[RKObjectManager sharedManager] putObject:friendArray usingBlock:^(RKObjectLoader *loader){
             loader.delegate = self;
@@ -267,6 +273,7 @@
     //might be userful:
     //[[[UserInfo sharedInstance] friendArray] setFriends:nil];
     //**[[FBSingleton sharedInstance] RequestHitWhoList];
+    [[FBSingletonNew sharedInstance] requestFriendsUsing];
 }
 
 #pragma mark - Touch methods

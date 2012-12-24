@@ -209,4 +209,9 @@
 - (IBAction)back_Touched:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (IBAction)SendTouched:(id)sender {
+    // User has clicked on the Tell Friends button
+    [[FBSingletonNew sharedInstance] performSelector:@selector(sendRequest) withObject:nil afterDelay:0.5];
+}
 @end

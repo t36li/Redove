@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Game.h"
-#import "FBSingletonDelegate.h"
-#import "FBSingleton.h"
 #import "hitFriendCell.h"
 #import "GlobalMethods.h"
 #import "SpinnerView.h"
@@ -19,8 +17,9 @@
 #import "PullToRefreshView.h"
 #import "Items.h"
 #import "HitWindow.h"
+#import "FBSingletonNewDelegate.h"
 
-@interface HitWhoViewController : UIViewController<FBSingletonDelegate,UITableViewDelegate,UITableViewDataSource,RKObjectLoaderDelegate,PullToRefreshViewDelegate> {
+@interface HitWhoViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,RKObjectLoaderDelegate,PullToRefreshViewDelegate,FBSingletonNewDelegate> {
    
     NSMutableArray *selectedHits;
     NSArray *hitWindows;

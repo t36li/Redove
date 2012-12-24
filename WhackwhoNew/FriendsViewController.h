@@ -29,6 +29,7 @@
 - (IBAction)FriendListClick:(id)sender;
 
 - (IBAction)back_Touched:(id)sender;
+- (IBAction)SendTouched:(id)sender;
 
 
 

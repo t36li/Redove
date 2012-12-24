@@ -7,7 +7,6 @@
 //
 
 #import "FriendsTableCell.h"
-#import "FBSingleton.h"
 
 @implementation FriendsTableCell
 @synthesize name = _nameLabel;

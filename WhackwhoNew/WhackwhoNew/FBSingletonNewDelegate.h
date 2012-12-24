@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <FacebookSDK/FacebookSDK.h>
+#import "Friend.h"
 
 @protocol FBSingletonNewDelegate <NSObject>
 
@@ -16,5 +16,6 @@
 -(void)FBUserProfileLoadFailed:(NSError *)error;
 -(void)FBLogOutSuccess;
 -(void)populateUserDetailsCompleted;
+-(void)loadPlayerListCompleted:(FriendArray *)friendArray;
 
 @end

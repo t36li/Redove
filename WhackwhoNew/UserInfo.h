@@ -48,7 +48,7 @@ NSString *const UserChinPosition = @"ChinPosition";
     
     CurrentEquip *currentEquip;
     StorageInv *storageInv;
-    NSDictionary *myFriends;
+    NSDictionary *myFriendPlayers;
     FriendArray *friendArray;
     
 //    id<UserInfoDelegate> delegate;
@@ -64,7 +64,7 @@ NSString *const UserChinPosition = @"ChinPosition";
 @property (nonatomic, retain) CurrentEquip *currentEquip;
 @property (nonatomic, retain) StorageInv *storageInv;
 @property (nonatomic, retain) FriendArray *friendArray;
-@property (nonatomic, retain) NSDictionary *myFriends;
+@property (nonatomic, retain) NSDictionary *myFriendPlayers;
 //@property (nonatomic, retain) FBProfilePictureView *profileImageView;
 
 -(void)markFaces:(UIImage *)img withDelegate:(id<UserInfoDelegate>)delegate;

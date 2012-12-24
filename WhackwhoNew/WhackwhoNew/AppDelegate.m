@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "cocos2d.h"
-#import "FBSingleton.h"
 #import <RestKit/RestKit.h>
 #import "User.h"
 #import "Friend.h"
@@ -17,6 +16,7 @@
 @implementation AppDelegate
 
 @synthesize window = _window, usr;
+@synthesize appUsageCheckEnabled = _appUsageCheckEnabled;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -38,6 +38,14 @@
     [director enableRetinaDisplay:YES];
     
     [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
+    
+    // We will remember the user's setting if they do not wish to
+    // send any more invites.
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.appUsageCheckEnabled = YES;
+    if ([defaults objectForKey:@"AppUsageCheck"]) {
+        self.appUsageCheckEnabled = [defaults boolForKey:@"AppUsageCheck"];
+    }
     return YES;
 }
 
@@ -50,6 +58,7 @@
 
 // For 4.2+ support
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    [[FBSingletonNew sharedInstance] setOpenedURL:url];
     return [FBSession.activeSession handleOpenURL:url];//[[[FBSingleton sharedInstance] facebook] handleOpenURL:url];
 }
 
@@ -76,12 +85,17 @@
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     //[[CCDirector sharedDirector] resume];
     [FBSession.activeSession handleDidBecomeActive];
+    
+    if (FBSession.activeSession.isOpen) {
+        // Check for any incoming notifications
+        [[FBSingletonNew sharedInstance] checkIncomingNotification];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    
+    [FBSession.activeSession close];
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {

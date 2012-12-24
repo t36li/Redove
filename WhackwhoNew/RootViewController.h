@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "FriendsViewController.h"
-#import "FBSingletonNew.h"
+#import "AppDelegate.h"
 #import "SpinnerView.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <RestKit/RestKit.h>
 
-@interface RootViewController : UIViewController<FBSingletonNewDelegate>{
+@interface RootViewController : UIViewController<FBSingletonNewDelegate,UIAlertViewDelegate>{
     FBProfilePictureView *profileImageView; //Facebook Profile Image, Renren Profile Image or Gmail
     
     UIButton *play_but;
@@ -23,6 +23,7 @@
 @private
     UserInfo *usr;
     FBSingletonNew *fbs;
+    
 }
 @property (retain, nonatomic) IBOutlet FBProfilePictureView *profileImageView;
 

@@ -15,5 +15,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic) UserInfo *usr;
+@property (nonatomic,assign) BOOL appUsageCheckEnabled;
+
 
 @end
