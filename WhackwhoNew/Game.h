@@ -13,6 +13,8 @@
     BOOL isGameOver;
     BOOL isEnabledBackgroundMusic;
     BOOL isEnabledSoundFX;
+    
+    BOOL readyToStart;
     int difficulty;
     int moneyEarned, multiplier, baseScore;
     
@@ -31,6 +33,7 @@
 @property (nonatomic, readwrite) int moneyEarned;
 @property (nonatomic, readwrite) int multiplier;
 @property (nonatomic, readwrite) int baseScore;
+@property (nonatomic, readwrite) BOOL readyToStart;
 
 @property (nonatomic, readwrite) int selectHeadCount;
 //@property (nonatomic, copy) NSMutableArray *allHeads;

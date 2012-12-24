@@ -33,10 +33,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
     CCDirector *director = [CCDirector sharedDirector];
-    
-    CCGLView *glView = [CCGLView viewWithFrame:[[[UIApplication sharedApplication] keyWindow] bounds]
+    CCGLView *glView = [CCGLView viewWithFrame:self.view.bounds
                                    pixelFormat:kEAGLColorFormatRGB565
                                    depthFormat:0
                             preserveBackbuffer:NO
@@ -47,9 +45,9 @@
     [glView setMultipleTouchEnabled:YES];
     director.view = glView;
     
-    
+    [[CCDirector sharedDirector] setDelegate:self];
+
     // Set the view controller as the director's delegate, so we can respond to certain events.
-    director.delegate = self;
     [director setAnimationInterval:1.0f/60.0f];
     if (![director enableRetinaDisplay:YES])
         CCLOG(@"retina not supported");
@@ -62,12 +60,18 @@
     
     if (![director runningScene]) {
         HelloWorldScene *newScene = [HelloWorldScene node];
-        newScene.gameOverDelegate = self;
         [director runWithScene:newScene];
     } else {
         HelloWorldScene *newScene = [HelloWorldScene node];
-        newScene.gameOverDelegate = self;
         [director replaceScene:newScene];
+    }
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    CCScene *runningScene = [[CCDirector sharedDirector] runningScene];
+    if (runningScene != nil && [runningScene isKindOfClass:[HelloWorldScene class]]) {
+        HelloWorldScene *scene = (HelloWorldScene *)[[CCDirector sharedDirector] runningScene];
+        scene.gameOverDelegate = self;
     }
 }
 
