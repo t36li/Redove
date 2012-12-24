@@ -19,7 +19,6 @@
 @synthesize internetActive, hostActive;
 
 -(void) initializeConnections {
-    if (self.internetActive) {
 
     gmethods = [[GlobalMethods alloc] init];
     usr = [UserInfo sharedInstance];
@@ -64,7 +63,6 @@
     NSLog(@"load Loading Background");
     [myLabel setText:@"Loading...."];
     
-    }
 }
 
 - (void) checkNetworkStatus:(NSNotification *)notice {
