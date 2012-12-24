@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "FBSingletonNew.h"
+#import "FBSingletonNewDelegate.h"
 #import "UserInfo.h"
 
-@interface OptionsViewController : UIViewController {
+@interface OptionsViewController : UIViewController<FBSingletonNewDelegate>{
     UIButton *back;
     UIButton *logout_but;
     

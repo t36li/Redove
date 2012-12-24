@@ -105,6 +105,7 @@
 		C14B63BD15AF5CE000376C91 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C14B63BC15AF5CE000376C91 /* HelloWorldLayer.m */; };
 		C151791C15C36D3E00A4378F /* hit effect.png in Resources */ = {isa = PBXBuildFile; fileRef = C151791B15C36D3E00A4378F /* hit effect.png */; };
 		C151793515C4B88D00A4378F /* coin front.png in Resources */ = {isa = PBXBuildFile; fileRef = C151793415C4B88D00A4378F /* coin front.png */; };
+		C15305C61688E239003D7D1B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C15305C51688E239003D7D1B /* Reachability.m */; };
 		C155FE831608CE19007F254B /* Items.m in Sources */ = {isa = PBXBuildFile; fileRef = C155FE821608CE18007F254B /* Items.m */; };
 		C155FE9E160968A6007F254B /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = C155FE9D160968A5007F254B /* Character.m */; };
 		C159285F15B356FA009B7955 /* hitFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 692AC3A515B24C0D001E4858 /* hitFriendCell.m */; };
@@ -747,6 +748,8 @@
 		C14B63BC15AF5CE000376C91 /* HelloWorldLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		C151791B15C36D3E00A4378F /* hit effect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hit effect.png"; sourceTree = "<group>"; };
 		C151793415C4B88D00A4378F /* coin front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coin front.png"; sourceTree = "<group>"; };
+		C15305C41688E239003D7D1B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		C15305C51688E239003D7D1B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		C155FE811608CE18007F254B /* Items.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Items.h; sourceTree = "<group>"; };
 		C155FE821608CE18007F254B /* Items.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Items.m; sourceTree = "<group>"; };
 		C155FE9C160968A5007F254B /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
@@ -1587,6 +1590,8 @@
 		C14385A815C8C13C008D9AE7 /* Load Scene */ = {
 			isa = PBXGroup;
 			children = (
+				C15305C41688E239003D7D1B /* Reachability.h */,
+				C15305C51688E239003D7D1B /* Reachability.m */,
 				D08D14A3167042F800F50BBF /* UINavigationController+OrientationFix.h */,
 				D08D14A4167042F800F50BBF /* UINavigationController+OrientationFix.m */,
 				C14385A915C8C15A008D9AE7 /* LoadViewController.h */,
@@ -3023,6 +3028,7 @@
 				D0903BEC1667219C00BB920B /* CustomDrawView.m in Sources */,
 				D092386B1668534000E1A231 /* CustomDrawViewController.m in Sources */,
 				D08D14A5167042F800F50BBF /* UINavigationController+OrientationFix.m in Sources */,
+				C15305C61688E239003D7D1B /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

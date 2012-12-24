@@ -15,6 +15,8 @@
 #import "User.h"
 #import "GlobalMethods.h"
 
+@class Reachability;
+
 @interface LoadViewController : UIViewController <FBSingletonNewDelegate,RKRequestDelegate,RKObjectLoaderDelegate> {
     
     UserInfo *usr;
@@ -22,10 +24,16 @@
     GlobalMethods *gmethods;
     
     IBOutlet UILabel *myLabel;
+    
+    Reachability *internetReachable;
+    Reachability *hostReachable;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *myLabel;
+@property BOOL internetActive;
+@property BOOL hostActive;
 
-
+-(void) checkNetworkStatus:(NSNotification *)notice;
 -(void) goToMenu;
+
 @end
