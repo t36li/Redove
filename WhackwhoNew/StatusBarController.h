@@ -11,10 +11,10 @@
 #import <RestKit/RestKit.h>
 
 @interface StatusBarController : UIViewController<RKObjectLoaderDelegate, UIAlertViewDelegate> {
-    IBOutlet UIView *containerView;
-    
+    IBOutlet UILabel *popularity_lbl;
     
     //define containerView subviews
+    IBOutlet UIView *containerView;
     IBOutlet UIImageView *faceView;
     IBOutlet UIImageView *bodyView;
 }
@@ -29,9 +29,11 @@
 @property (nonatomic) IBOutlet UIImageView *faceView;
 @property (nonatomic) IBOutlet UIImageView *bodyView;
 
+@property (nonatomic) IBOutlet UILabel *popularity_lbl;
+
 - (IBAction)Back_Touched:(id)sender;
 - (IBAction)Ok_Pressed:(id)sender;
-- (void)updateDB;
 - (IBAction)saveToDB_Touched:(id)sender;
+//- (void)updateDB;
 
 @end

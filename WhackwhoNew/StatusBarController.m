@@ -13,15 +13,16 @@
 #import "User.h"
 
 //define tags
-#define helmet_Label 1
-#define body_Label 2
-#define hammerHand_Label 3
-#define shieldHand_Label 4
+//#define helmet_Label 1
+//#define body_Label 2
+//#define hammerHand_Label 3
+//#define shieldHand_Label 4
 
 @implementation StatusBarController
 
 @synthesize containerView;
 @synthesize faceView, bodyView;
+@synthesize popularity_lbl;
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) {
@@ -37,6 +38,8 @@
     
     [faceView setContentMode:UIViewContentModeScaleAspectFill];
     [bodyView setContentMode:UIViewContentModeScaleToFill];
+    
+    [self.containerView setBackgroundColor:[UIColor clearColor]];
     
     //need to cache user's previous image
     UserInfo *usr = [UserInfo sharedInstance];
@@ -62,16 +65,18 @@
     
     UIImage *face_DB = [[UserInfo sharedInstance] croppedImage];
     
+    [RKClient clientWithBaseURL:[NSURL URLWithString:BaseURL]];
+    NSString *whackID = [NSString stringWithFormat:@"%i",[[UserInfo sharedInstance] whackWhoId]];
+    [[RKClient sharedClient] get:[NSString stringWithFormat:@"/hits/%@", whackID] delegate:self];
+    
     if (faceView.image == face_DB && face_DB != nil)
         return;
         
-    //!!!!!!!! need to retrive from database the current equipment!
-    UserInfo *usinfo = [UserInfo sharedInstance];
-    CurrentEquip *ce = usinfo.currentEquip;
-    
+    //UserInfo *usinfo = [UserInfo sharedInstance];
+    //CurrentEquip *ce = usinfo.currentEquip;
     [faceView setImage:face_DB];
+    [bodyView setImage:[UIImage imageNamed:standard_blue_body]];
     
-    [bodyView setImage:[UIImage imageNamed:ce.body]];
 }
 
 - (void)viewDidUnload
@@ -87,22 +92,22 @@
 
 
 //update Database:
--(void)updateDB{
+/*-(void)updateDB{
     User *user = [[User alloc]init];
     UserInfo *uinfo = [UserInfo sharedInstance];
     user.whackWhoId = [uinfo whackWhoId];
     user.headId = uinfo.headId;
-    user.currentEquip = [[[UserInfo sharedInstance] currentEquip] currentEquipInIDs];
-    user.storageInv = [[[UserInfo sharedInstance] storageInv] setStorageStringInIDs];
+    //user.currentEquip = [[[UserInfo sharedInstance] currentEquip] currentEquipInIDs];
+    //user.storageInv = [[[UserInfo sharedInstance] storageInv] setStorageStringInIDs];
     
     [[RKObjectManager sharedManager] putObject:user usingBlock:^(RKObjectLoader *loader){
         loader.targetObject = nil;
         loader.delegate = self;
     }];
-}
+}*/
 
 - (IBAction)saveToDB_Touched:(id)sender {
-    [self updateDB];
+    //[self updateDB];
 }
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error{
@@ -117,10 +122,12 @@
 }
 
 -(void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response{
-    NSLog(@"request body:%@",[request HTTPBodyString]);
-    NSLog(@"request url:%@",[request URL]);
-    NSLog(@"response statue: %d", [response statusCode]);
+    //NSLog(@"request body:%@",[request HTTPBodyString]);
+    //NSLog(@"request url:%@",[request URL]);
+    //NSLog(@"response statue: %d", [response statusCode]);
     NSLog(@"response body:%@",[response bodyAsString]);
+    
+    [popularity_lbl setText:[response bodyAsString]];
 }
 
 #pragma mark - touch methods

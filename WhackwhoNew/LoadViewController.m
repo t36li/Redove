@@ -233,15 +233,7 @@
     NSLog(@"User data loaded.");
     [myLabel setText:@"Loading Complete!"];
     [self performSelector:@selector(goToMenu) withObject:nil afterDelay:1.5];
-    /*
-    if(usr->usrImg == nil){
-        UIAlertView *takePicAlert = [[UIAlertView alloc] initWithTitle:@"Newbie?" message:@"Take a photo" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        takePicAlert.tag = newbieAlert;
-        [takePicAlert show];
-    } else {
-        [myLabel setText:@"Loading Complete!"];
-        [self performSelector:@selector(goToMenu) withObject:nil afterDelay:1.5];
-    }*/
+
 }
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error{
@@ -250,23 +242,12 @@
 }
 
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    /*
-    if (alertView.tag == networkErrorAlert){
-        
-    }
-    else if (alertView.tag == newbieAlert){
-        if (buttonIndex == 0){
-            [self performSegueWithIdentifier:@"LoadToAvatar" sender:self];
-        }
-    }
-     */
+
     if (alertView.tag == FBprofileLoadFailedAlert){
         [usr LogInTypeChanged:NotLogIn];
         [self goToMenu];
     }
 }
-
-
 
 -(void) goToMenu {
     [self performSegueWithIdentifier:@"GoToMenuSegue" sender:nil];

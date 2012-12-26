@@ -11,7 +11,7 @@
 //backgrounds
 #define MainPage_bg @"Main_Menu_Bg.png"
 #define GameMode_grass_bg @"hills_finalView.png"
-#define SelectToLogIn_bg @"SelectToLogIn_bg.png"
+#define SelectToLogIn_bg @"Choose_Connections_Bg.jpg"
 #define FriendList_bg @"friend list (background).png"
 #define OceanMode_bg @"background 2.png"
 #define hills_l1 @"hills_L1.png"
