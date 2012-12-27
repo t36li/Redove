@@ -11,6 +11,9 @@
 #import "HelloWorldLayer.h"
 #import "FacebookShareViewController.h"
 #import "Dragbox.h"
+//#import "StatusViewLayer.h"
+//#import "HelloWorldLayer.h"
+//#import "Dragbox.h"
 #import "User.h"
 #import "HitUpdate.h"
 #import "UserInfo.h"
@@ -191,7 +194,7 @@
     NSLog(@"loaded responses:%@",object);
     
     
-}
+}   
 
 -(void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response{
     //NSLog(@"request body:%@",[request HTTPBodyString]);

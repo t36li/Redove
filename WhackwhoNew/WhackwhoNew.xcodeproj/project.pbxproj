@@ -2645,6 +2645,32 @@
 				D0EC140F1688D24300E24357 /* FacebookSDKResources.bundle in Resources */,
 				D0EC14111688D25D00E24357 /* FBUserSettingsViewResources.bundle in Resources */,
 				3D8BA1AB1688E69A00B731A1 /* FacebookShareViewController.xib in Resources */,
+				C14139CE1688F393005556BD /* Option_Button.png in Resources */,
+				C14139CF1688F393005556BD /* Play_Button.png in Resources */,
+				C14139D11688F3E5005556BD /* Main_Menu_Bg.png in Resources */,
+				C14139D31688F50B005556BD /* Friends_Button.png in Resources */,
+				C14139D51688F6D4005556BD /* Personal_Status_Bg.png in Resources */,
+				C14139DA1688F725005556BD /* Status_Popularity_Frame.png in Resources */,
+				C14139DB1688F725005556BD /* Status_Total_Gold_Frame.png in Resources */,
+				C14139DC1688F725005556BD /* Status_Total_Gp_Frame.png in Resources */,
+				C14139DD1688F725005556BD /* Status_TotalScore_Frame.png in Resources */,
+				C14139DF1688F813005556BD /* Ok_Button.png in Resources */,
+				C14139E21688F88D005556BD /* Undo_Button_1.png in Resources */,
+				C14139E31688F88D005556BD /* Undo_Button_2.png in Resources */,
+				C14139E51688FA74005556BD /* Choose_Connections_Bg.jpg in Resources */,
+				C14139EA168CA5D6005556BD /* ScorePlist.plist in Resources */,
+				C14139EC168CB28F005556BD /* camera.png in Resources */,
+				C14139EE168CBD23005556BD /* HitWho_Bg.png in Resources */,
+				C14139F0168CBD2E005556BD /* Battle_Button.png in Resources */,
+				C14139F3168CBD3A005556BD /* HitWho_FriendBox.png in Resources */,
+				C14139F4168CBD3A005556BD /* HitWho_HitBox.png in Resources */,
+				C14139F6168CBD4F005556BD /* HitWho_NameTag.png in Resources */,
+				C14139F8168CBD5E005556BD /* HitWho_Portrait.png in Resources */,
+				C14139FA168CBD6D005556BD /* HitWho_Ok_But.png in Resources */,
+				C14139FC168CBD85005556BD /* HitWho_ScrollDown_Icon.png in Resources */,
+				C14139FE168CBD98005556BD /* HitWho_Shield_Icon.png in Resources */,
+				C1413A01168CBDC0005556BD /* HitWho_LeftArrow.png in Resources */,
+				C1413A02168CBDC0005556BD /* HitWho_RightArrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2709,6 +2735,8 @@
 				D092386B1668534000E1A231 /* CustomDrawViewController.m in Sources */,
 				D08D14A5167042F800F50BBF /* UINavigationController+OrientationFix.m in Sources */,
 				3D8BA1AA1688E69A00B731A1 /* FacebookShareViewController.m in Sources */,
+				C15305C61688E239003D7D1B /* Reachability.m in Sources */,
+				C14139E8168C9D29005556BD /* HitUpdate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
