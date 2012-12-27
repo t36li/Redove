@@ -18,6 +18,7 @@
     int headId;
     NSString *mediaKey;
     NSString *userImgURL;
+    NSInteger popularity;
     
     
     NSString *leftEyePosition;
@@ -37,6 +38,7 @@
 @property (nonatomic, retain) NSDate *registeredDate;
 @property (nonatomic, retain) CurrentEquip *currentEquip;
 @property (nonatomic, retain) StorageInv *storageInv;
+@property (nonatomic) NSInteger popularity;
 
 
 -(void)copyToUserInfo;

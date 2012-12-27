@@ -169,6 +169,7 @@
     cell.name.text = (NSString *)friend.name;
     cell.name.lineBreakMode  = UILineBreakModeWordWrap;
     cell.gender.text = friend.gender;
+    cell.popularity.text = [NSString stringWithFormat:@"%d",friend.popularity];
     NSString *formatting = [NSString stringWithFormat:@"http://www.whackwho.com/userImages/%@.png", friend.head_id];
     
     [cell.profileImage setImageWithURL:[NSURL URLWithString:formatting] success:^(UIImage *image) {

@@ -14,7 +14,7 @@
 @implementation Friend
 
 @synthesize user_id, name, gender, isPlayer,whackwho_id,mediaType_id, head_id;
-@synthesize currentEquip, head,popularity;
+@synthesize currentEquip, head, popularity;
 
 -(id)init {
     self = [super init];
@@ -32,11 +32,13 @@
     copy->gender = nil;
     copy->whackwho_id = nil;
     copy->head_id = nil;
+    copy->popularity = nil;
     copy.user_id = [NSString stringWithString:self.user_id];
     copy.name = [NSString stringWithString:self.name];
     copy.gender = [NSString stringWithString:self.gender];
     copy.whackwho_id = [NSString stringWithString:self.whackwho_id];
     copy.user_id = [NSString stringWithString:self.user_id];
+    copy.popularity = self.popularity;
     
     return copy;
 }

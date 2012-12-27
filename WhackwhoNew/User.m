@@ -11,7 +11,7 @@
 #import "Friend.h"
 
 @implementation User
-@synthesize mediaTypeId,whackWhoId,headId,mediaKey,leftEyePosition,rightEyePosition,mouthPosition,faceRect,registeredDate, userImgURL, currentEquip, storageInv;
+@synthesize mediaTypeId,whackWhoId,headId,mediaKey,leftEyePosition,rightEyePosition,mouthPosition,faceRect,registeredDate, userImgURL, currentEquip, storageInv,popularity;
 
 -(void)copyToUserInfo{
     UserInfo *usrInfo = [UserInfo sharedInstance];
@@ -25,6 +25,7 @@
     [usrInfo setFaceRect:CGRectFromString(faceRect)];
     [usrInfo setCurrentEquip:[currentEquip currentEquipInFileNames]];
     [usrInfo setStorageInv:[storageInv setStorageArrayInFileNames]];
+    [usrInfo setPopularity:popularity];
     usrInfo->usrImgURL = userImgURL;
     
     NSURL *url = [NSURL URLWithString:userImgURL];
@@ -46,6 +47,7 @@
     whackWhoId = usrInfo.whackWhoId;
     headId = usrInfo.headId;
     mediaKey = usrInfo.userId;
+    popularity = usrInfo.popularity;
     leftEyePosition = NSStringFromCGPoint(usrInfo.leftEyePosition);
     rightEyePosition = NSStringFromCGPoint(usrInfo.rightEyePosition);
     mouthPosition = NSStringFromCGPoint(usrInfo.mouthPosition);
