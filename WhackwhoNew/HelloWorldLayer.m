@@ -41,7 +41,7 @@
     [super onEnter];
     
     self.isTouchEnabled = YES;
-    CGSize winSize = [CCDirector sharedDirector].winSize;
+    //CGSize winSize = [CCDirector sharedDirector].winSize;
     
     //init variables
     speed = DEFAULT_HEAD_POP_SPEED;
@@ -56,6 +56,7 @@
     
     //level = hillLevel;
     level = [[Game sharedGame] difficulty];
+    level = hillLevel;
     
     switch (level) {
         case hillLevel:
@@ -67,14 +68,14 @@
     }
     
     //initialize shake handler
-    self.isAccelerometerEnabled = YES;
-    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1/60];
-    shake_once = false;
+    //self.isAccelerometerEnabled = YES;
+    //[[UIAccelerometer sharedAccelerometer] setUpdateInterval:1/60];
+    //shake_once = false;
     
     //!!!! initializing popups
     //use the array from game.h which contains all image names
     //int xpad = 50; //for testing
-    int i = 0;
+    /*int i = 0;
     for (UIImage *person in [[Game sharedGame] arrayOfAllPopups]) {
         Character *head = [Character spriteWithCGImage:[person CGImage] key:[NSString stringWithFormat:@"person%i", i]];
         
@@ -97,81 +98,32 @@
         //head.visible = TRUE;
     }
     
-    [self schedule:@selector(tryPopheads) interval:1.5];
+    [self schedule:@selector(tryPopheads) interval:1.5];*/
      
 }
 
 -(void) setHillsLevel {
-    /*botLeft = [[NSArray alloc] initWithObjects:
-               [NSValue valueWithCGPoint:CGPointMake(16, 146)],
-               [NSValue valueWithCGPoint:CGPointMake(63, 135.5)],
-               [NSValue valueWithCGPoint:CGPointMake(105.5, 111)],
-               [NSValue valueWithCGPoint:CGPointMake(135, 78.5)],
-               [NSValue valueWithCGPoint:CGPointMake(151.5, 44)],
-               nil]; z: - 35
-    botRight = [[NSArray alloc] initWithObjects:
-                [NSValue valueWithCGPoint:CGPointMake(390/2, 320-479/2)],
-                [NSValue valueWithCGPoint:CGPointMake(504/2, 320-452/2)],
-                [NSValue valueWithCGPoint:CGPointMake(634/2, 320-434/2)],
-                [NSValue valueWithCGPoint:CGPointMake(763/2, 320-455/2)],
-                [NSValue valueWithCGPoint:CGPointMake(872/2, 320-491/2)],
-                nil]; z: -45
-    midLeft = [[NSArray alloc] initWithObjects:
-               [NSValue valueWithCGPoint:CGPointMake(179/2, 320-326/2)],
-               [NSValue valueWithCGPoint:CGPointMake(321/2, 320-296/2)],
-               [NSValue valueWithCGPoint:CGPointMake(439/2, 320-345/2)],
-               nil]; z: -55
-    midRight = [[NSArray alloc] initWithObjects:
-                [NSValue valueWithCGPoint:CGPointMake(546/2, 320-334/2)],
-                //[NSValue valueWithCGPoint:CGPointMake(648/2, 320-274/2)],
-                [NSValue valueWithCGPoint:CGPointMake(772/2, 320-253/2)],
-                [NSValue valueWithCGPoint:CGPointMake(905/2, 320-273/2)],
-                nil]; z: -65
-    topMid = [[NSArray alloc] initWithObjects:
-              //[NSValue valueWithCGPoint:CGPointMake(316/2, 320-262/2)],
-              //[NSValue valueWithCGPoint:CGPointMake(357/2, 320-229/2)],
-              [NSValue valueWithCGPoint:CGPointMake(411/2, 320-195/2)],
-              [NSValue valueWithCGPoint:CGPointMake(466/2, 320-174/2)],
-              [NSValue valueWithCGPoint:CGPointMake(553/2, 320-164/2)],
-              [NSValue valueWithCGPoint:CGPointMake(609/2, 320-167/2)],
-              [NSValue valueWithCGPoint:CGPointMake(672/2, 320-184/2)],
-              //[NSValue valueWithCGPoint:CGPointMake(720/2, 320-202/2)],
-              //[NSValue valueWithCGPoint:CGPointMake(761/2, 320-224/2)],
-              nil]; z: -75
-    topLeft = [[NSArray alloc] initWithObjects:
-               [NSValue valueWithCGPoint:CGPointMake(30/2, 320-153/2)],
-               [NSValue valueWithCGPoint:CGPointMake(85/2, 320-151/2)],
-               [NSValue valueWithCGPoint:CGPointMake(133/2, 320-166/2)],
-               //[NSValue valueWithCGPoint:CGPointMake(188/2, 320-189/2)],
-               //[NSValue valueWithCGPoint:CGPointMake(247/2, 320-233/2)],
-               nil]; z: -85
-    topRight = [[NSArray alloc] initWithObjects:
-                //[NSValue valueWithCGPoint:CGPointMake(804/2, 320-213/2)],
-                [NSValue valueWithCGPoint:CGPointMake(843/2, 320-196/2)],
-                [NSValue valueWithCGPoint:CGPointMake(897/2, 320-176/2)],
-                //[NSValue valueWithCGPoint:CGPointMake(938/2, 320-169/2)],
-                nil]; z: -95 */
     CGSize winSize = [CCDirector sharedDirector].winSize;
 
     glClearColor(255, 255, 255, 255);
     
-    /*[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
+    [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
     [CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
     
     CCSpriteBatchNode *spritesBgNode;
-    spritesBgNode = [CCSpriteBatchNode batchNodeWithFile:@"hillLevelBackground.pvr.ccz"];
+    spritesBgNode = [CCSpriteBatchNode batchNodeWithFile:@"hill_level_spritesheet.pvr.ccz"];
     [self addChild:spritesBgNode];
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"hillLevelBackground.plist"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"hill_level_spritesheet.plist"];
     
-    //because naming fucked up. L7 and L8 has to be swapped
-    NSArray *images = [NSArray arrayWithObjects:@"L1.png", @"L2.png", @"L3.png", @"L4.png", @"L5.png", @"L6.png", @"L7.png", @"L8.png", @"L9.png", nil];
+    //L9 is the upper most level
+    NSArray *images = [NSArray arrayWithObjects:@"hill_background.png", @"hill1.png", @"hill2.png", @"hill3.png", @"hill4.png", @"hill5.png", @"hill6.png", @"hill7.png", @"hill8.png", @"hill9.png", nil];
     for(int i = 0; i < images.count; ++i) {
         NSString *image = [images objectAtIndex:i];
         CCSprite *sprite = [CCSprite spriteWithSpriteFrameName:image];
         sprite.anchorPoint = ccp(0.5,0.5);
-        sprite.position = ccp(winSize.height/2, winSize.width/2);
+        sprite.position = ccp(winSize.width/2, winSize.height/2);
         [spritesBgNode addChild:sprite z:(i*-10)];
-    }*/
+    }
     
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Level1" ofType:@"plist"];
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:filePath];
@@ -246,7 +198,7 @@
     [bomb removeAllObjects];
     [rainbows removeAllObjects];
     
-    CGSize winsize = [[CCDirector sharedDirector] winSize];
+    //CGSize winsize = [[CCDirector sharedDirector] winSize];
     
     [super onExit];
  }
@@ -518,7 +470,7 @@
 
 
 //shake event handler
--(void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
+/*-(void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
     
     float THRESHOLD = 2;
     
@@ -549,7 +501,7 @@
         shake_once = false;
     }
     
-}
+}*/
 
 -(void) removeHitEffect: (id) sender {
     CCSprite *hitEffect = (CCSprite *) sender;

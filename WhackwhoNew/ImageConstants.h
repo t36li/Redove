@@ -8,43 +8,39 @@
 
 //Define all the Images names as constants, including backgrounds, icons, etc.
 
+//Testing purposes for Mode Selection
+#define levelOneFull @"hills_finalView.jpg"
+#define levelTwoFull @"SeaLevel_finalView.jpg"
+
 //backgrounds
 #define MainPage_bg @"Main_Menu_Bg.png"
-#define GameMode_grass_bg @"hills_finalView.png"
 #define SelectToLogIn_bg @"Choose_Connections_Bg.jpg"
 #define FriendList_bg @"friend list (background).png"
-#define OceanMode_bg @"background 2.png"
-#define hills_l1 @"hills_L1.png"
-#define hills_l2 @"hills_L2.png"
-#define hills_l3 @"hills_L3.png"
-#define hills_l4 @"hills_L4.png"
-#define hills_l5 @"hills_L5.png"
-#define hills_l6 @"hills_L6.png"
-#define hills_l7 @"hills_L7.png"
-#define hills_l8 @"hills_L8_new.png"
-#define hills_l9 @"cloud background.png"
-#define champ_select_bg @"loading page background.png"
-#define background2 @"background 2.png"
+
 #define loading_bg @"loading page final background.png"
 #define store_bg @"store background.png"
 
 //buttons
-#define Play_but @"Play_Button.png"
-#define Play_but_touched @"play b.png"
-#define Option_but @"Option_Button.png"
-#define Option_but_touched @"option b.png"
-#define friend_but @"Friends_Button.png"
-#define friend_but_touched @"friend b.png"
+//#define Play_but @"Play_Button.png"
+//#define Play_but_touched @"play b.png"
+//#define Option_but @"Option_Button.png"
+//#define Option_but_touched @"option b.png"
+//#define friend_but @"Friends_Button.png"
+//#define friend_but_touched @"friend b.png"
 #define AccessFacebookIcon @"FacebookButton30x34.png"
 #define AccessFacebookIcon_HL @"FacebookButton30x34.png"
 #define AccessRenrenIcon @"RenRen_Login150X30.png"
 #define AccessRenrenIcon_HL @"RenRen_Login150X30.png"
+
+//In-game buttons
 #define PauseButton @"pause.png"
 #define ResumeButton @"left button.png"
 #define RestartButton @"play again key.png"
 #define MainMenuButton @"home key.png"
 
 //Sprites
+#define heartSp @"hearts.png"
+#define scoreboardSp @"hill_scoreboard.png"
 #define Monk @"monk.png"
 #define Vald @"vald.png"
 #define Olaf @"olaf.png"

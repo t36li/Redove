@@ -132,7 +132,7 @@
         [self addChild:timeLabel z:101];
         
         //add "pause" label
-        CCMenuItemImage *pause = [CCMenuItemImage itemWithNormalImage:@"pause.png" selectedImage:@"pause.png" target:self selector:@selector(pauseGame)];
+        CCMenuItemImage *pause = [CCMenuItemImage itemWithNormalImage:PauseButton selectedImage:PauseButton target:self selector:@selector(pauseGame)];
         pauseMenu = [CCMenu menuWithItems:pause, nil];
         pauseMenu.anchorPoint = ccp(0,0);
         pauseMenu.position = ccp(20,20);
@@ -140,7 +140,7 @@
         
         //add "life" sprites
         for (int i = 0; i < lives; i++) {
-            CCSprite *life = [CCSprite spriteWithFile:@"heart.png"];
+            CCSprite *life = [CCSprite spriteWithFile:heartSp];
             life.anchorPoint = ccp(0,0);
             life.position = ccp(winSize.width - (i + 1)*life.contentSize.width, winSize.height - life.contentSize.height);
             [hearts addObject:life];
@@ -148,7 +148,7 @@
         }
         
         //add "Scoreboard"
-        scoreboard = [CCSprite spriteWithFile:@"scoreboard.png"];
+        scoreboard = [CCSprite spriteWithFile:scoreboardSp];
         scoreboard.anchorPoint = ccp(0, 0);
         scoreboard.position = ccp(winSize.width/2 - scoreboard.contentSize.width/2, 0);
         [self addChild:scoreboard z:-102];
