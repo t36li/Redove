@@ -9,6 +9,7 @@
 #import "StatusBarController.h"
 #import "StatusViewLayer.h"
 #import "HelloWorldLayer.h"
+#import "FacebookShareViewController.h"
 #import "Dragbox.h"
 #import "User.h"
 
@@ -101,9 +102,30 @@
     }];
 }
 
-- (IBAction)saveToDB_Touched:(id)sender {
-    [self updateDB];
+- (IBAction)publish_touched:(id)sender {
+    // If scale is 0, it'll follows the screen scale for creating the bounds
+    UIGraphicsBeginImageContextWithOptions(self.containerView.bounds.size, NO, 1.0f);
+    
+    [self.containerView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    // Get the image out of the context
+    UIImage *copied = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    
+    
+    FacebookShareViewController *fbshare = [[FacebookShareViewController alloc]
+                                           initWithNibName:@"FacebookShareViewController"
+                                           bundle:nil];
+    [fbshare setPublishedImage:copied];
+    //[fbshare setPostImageView:imageView];
+    //[self presentViewController:fbshare animated:YES completion:nil];
+    [self.navigationController pushViewController:fbshare animated:YES];
 }
+
+//- (IBAction)saveToDB_Touched:(id)sender {
+//    [self updateDB];
+//}
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error{
     NSLog(@"Load Database Failed:%@",error);

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D8BA1AA1688E69A00B731A1 /* FacebookShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8BA1A81688E69900B731A1 /* FacebookShareViewController.m */; };
+		3D8BA1AB1688E69A00B731A1 /* FacebookShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D8BA1A91688E69900B731A1 /* FacebookShareViewController.xib */; };
 		3DDA87B816127B23005349D1 /* CurrentEquip.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDA87B316127B23005349D1 /* CurrentEquip.m */; };
 		3DDA87B916127B23005349D1 /* Head.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDA87B516127B23005349D1 /* Head.m */; };
 		3DDA87BA16127B23005349D1 /* StorageInv.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDA87B716127B23005349D1 /* StorageInv.m */; };
@@ -620,6 +622,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D8BA1A71688E69900B731A1 /* FacebookShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookShareViewController.h; sourceTree = "<group>"; };
+		3D8BA1A81688E69900B731A1 /* FacebookShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookShareViewController.m; sourceTree = "<group>"; };
+		3D8BA1A91688E69900B731A1 /* FacebookShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FacebookShareViewController.xib; sourceTree = "<group>"; };
 		3DDA87B216127B23005349D1 /* CurrentEquip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentEquip.h; sourceTree = "<group>"; };
 		3DDA87B316127B23005349D1 /* CurrentEquip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentEquip.m; sourceTree = "<group>"; };
 		3DDA87B416127B23005349D1 /* Head.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Head.h; sourceTree = "<group>"; };
@@ -1401,6 +1406,9 @@
 				3DE7A847165AC33800891E1B /* FBSingletonNew.h */,
 				3DE7A848165AC33800891E1B /* FBSingletonNew.m */,
 				3DE7A84A165AC55800891E1B /* FBSingletonNewDelegate.h */,
+				3D8BA1A71688E69900B731A1 /* FacebookShareViewController.h */,
+				3D8BA1A81688E69900B731A1 /* FacebookShareViewController.m */,
+				3D8BA1A91688E69900B731A1 /* FacebookShareViewController.xib */,
 			);
 			name = Facebook;
 			sourceTree = "<group>";
@@ -2960,6 +2968,7 @@
 				D092386C1668534000E1A231 /* CustomDrawViewController.xib in Resources */,
 				D0EC140F1688D24300E24357 /* FacebookSDKResources.bundle in Resources */,
 				D0EC14111688D25D00E24357 /* FBUserSettingsViewResources.bundle in Resources */,
+				3D8BA1AB1688E69A00B731A1 /* FacebookShareViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3023,6 +3032,7 @@
 				D0903BEC1667219C00BB920B /* CustomDrawView.m in Sources */,
 				D092386B1668534000E1A231 /* CustomDrawViewController.m in Sources */,
 				D08D14A5167042F800F50BBF /* UINavigationController+OrientationFix.m in Sources */,
+				3D8BA1AA1688E69A00B731A1 /* FacebookShareViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

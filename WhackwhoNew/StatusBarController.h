@@ -34,6 +34,6 @@
 - (IBAction)Back_Touched:(id)sender;
 - (IBAction)Ok_Pressed:(id)sender;
 - (void)updateDB;
-- (IBAction)saveToDB_Touched:(id)sender;
+- (IBAction)publish_touched:(id)sender;
 
 @end
