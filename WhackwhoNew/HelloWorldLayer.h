@@ -32,7 +32,7 @@
 
     float speed;
     
-    BOOL shake_once, has_bomb;
+    BOOL has_bomb;//shake_once
     NSArray *botLeft, *botRight, *midLeft, *midRight, *topLeft, *topMid, *topRight;
 
     int level;

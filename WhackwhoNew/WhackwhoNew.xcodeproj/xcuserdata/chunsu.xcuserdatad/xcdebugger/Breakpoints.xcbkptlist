@@ -7,39 +7,78 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "OptionsViewController.m"
-         timestampString = "378067805.306826"
+         filePath = "WhackwhoNew/FacebookShareViewController.m"
+         timestampString = "378333805.12103"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "49"
-         endingLineNumber = "49"
-         landmarkName = "-logout_touched:"
+         startingLineNumber = "159"
+         endingLineNumber = "159"
+         landmarkName = "-shareButtonAction:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "RootViewController.m"
-         timestampString = "378069373.268974"
+         filePath = "WhackwhoNew/FacebookShareViewController.m"
+         timestampString = "378333805.12103"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "52"
-         endingLineNumber = "52"
-         landmarkName = "-viewDidAppear:"
+         startingLineNumber = "153"
+         endingLineNumber = "153"
+         landmarkName = "-cancelButtonAction:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "OptionsViewController.m"
-         timestampString = "378069545.393241"
+         filePath = "WhackwhoNew/FacebookShareViewController.m"
+         timestampString = "378333805.12103"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "67"
-         endingLineNumber = "67"
-         landmarkName = "-FBLogOutSuccess"
+         startingLineNumber = "81"
+         endingLineNumber = "81"
+         landmarkName = "-initWithNibName:bundle:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "WhackwhoNew/FacebookShareViewController.m"
+         timestampString = "378333805.12103"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "88"
+         endingLineNumber = "88"
+         landmarkName = "-initWithNibName:bundle:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "WhackwhoNew/FacebookShareViewController.m"
+         timestampString = "378333293.631345"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "46"
+         endingLineNumber = "46"
+         landmarkName = "-publishStory"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "WhackwhoNew/FacebookShareViewController.m"
+         timestampString = "378333805.12103"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "83"
+         endingLineNumber = "83"
+         landmarkName = "-initWithNibName:bundle:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

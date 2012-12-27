@@ -7,12 +7,13 @@
 //
 
 #import "StatusBarController.h"
-//#import "StatusViewLayer.h"
-//#import "HelloWorldLayer.h"
-//#import "Dragbox.h"
+#import "FacebookShareViewController.h"
 #import "User.h"
 #import "HitUpdate.h"
 #import "UserInfo.h"
+//#import "StatusViewLayer.h"
+//#import "HelloWorldLayer.h"
+//#import "Dragbox.h"
 
 //define tags
 //#define helmet_Label 1
@@ -156,15 +157,30 @@
     }];
 }*/
 
-- (IBAction)saveToDB_Touched:(id)sender {
-    //[self updateDB];
-    HitUpdate *updates = [[HitUpdate alloc] init];
-    updates.whackID = @"35";
-    updates.mediaType = @"1";
-    [[RKObjectManager sharedManager].router routeClass: [HitUpdate class] toResourcePath:@"/hits/update" forMethod:RKRequestMethodPUT];
-    [[RKObjectManager sharedManager] putObject:updates delegate:self];
-
+- (IBAction)publish_touched:(id)sender {
+    // If scale is 0, it'll follows the screen scale for creating the bounds
+    UIGraphicsBeginImageContextWithOptions(self.containerView.bounds.size, NO, 1.0f);
+    
+    [self.containerView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    // Get the image out of the context
+    UIImage *copied = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    
+    
+    FacebookShareViewController *fbshare = [[FacebookShareViewController alloc]
+                                           initWithNibName:@"FacebookShareViewController"
+                                           bundle:nil];
+    [fbshare setPublishedImage:copied];
+    //[fbshare setPostImageView:imageView];
+    //[self presentViewController:fbshare animated:YES completion:nil];
+    [self.navigationController pushViewController:fbshare animated:YES];
 }
+
+//- (IBAction)saveToDB_Touched:(id)sender {
+//    [self updateDB];
+//}
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error{
     NSLog(@"Load Database Failed:%@",error);
@@ -175,7 +191,7 @@
     NSLog(@"loaded responses:%@",object);
     
     
-}
+}   
 
 -(void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response{
     //NSLog(@"request body:%@",[request HTTPBodyString]);

@@ -20,7 +20,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     index = 0;
-    bg_list = [[NSMutableArray alloc] initWithObjects: @"hills_finalView.png", @"background 2.png", nil];
+    bg_list = [[NSMutableArray alloc] initWithObjects: levelOneFull, levelTwoFull, nil];
     background.image = [UIImage imageNamed:[bg_list objectAtIndex:index]];
     //[self.view bringSubviewToFront:wholeView];
     
