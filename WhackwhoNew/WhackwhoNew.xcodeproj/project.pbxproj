@@ -399,7 +399,6 @@
 		D07F6FF01599463A0085DF2B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F6FEF1599463A0085DF2B /* CoreImage.framework */; };
 		D08CE2FE164213130073576B /* Level2.plist in Resources */ = {isa = PBXBuildFile; fileRef = D08CE2FD164213130073576B /* Level2.plist */; };
 		D08D14A5167042F800F50BBF /* UINavigationController+OrientationFix.m in Sources */ = {isa = PBXBuildFile; fileRef = D08D14A4167042F800F50BBF /* UINavigationController+OrientationFix.m */; };
-		D08EDEFD166465AF000906E0 /* crop.png in Resources */ = {isa = PBXBuildFile; fileRef = D08EDEFC166465AF000906E0 /* crop.png */; };
 		D08F7C6A1645BD25001FB9A3 /* seaLevelBackground.plist in Resources */ = {isa = PBXBuildFile; fileRef = D08F7C661645BD25001FB9A3 /* seaLevelBackground.plist */; };
 		D08F7C6B1645BD25001FB9A3 /* seaLevelBackground.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = D08F7C671645BD25001FB9A3 /* seaLevelBackground.pvr.ccz */; };
 		D08F7C6C1645BD25001FB9A3 /* seaLevelBackground-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = D08F7C681645BD25001FB9A3 /* seaLevelBackground-hd.plist */; };
@@ -473,14 +472,8 @@
 		D0E30672159E4B1B0080D845 /* popoverBgSimple.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E30663159E4B1B0080D845 /* popoverBgSimple.png */; };
 		D0E59F6E160807EB00F73C9D /* big head overlay white.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F65160807EB00F73C9D /* big head overlay white.png */; };
 		D0E59F74160807EB00F73C9D /* navigator 2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F6B160807EB00F73C9D /* navigator 2.png */; };
-		D0E59F75160807EB00F73C9D /* navigator.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F6C160807EB00F73C9D /* navigator.png */; };
 		D0E59F7816080E4F00F73C9D /* camera frame.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F7716080E4F00F73C9D /* camera frame.png */; };
 		D0E59F83160825D000F73C9D /* back icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F7A160825D000F73C9D /* back icon.png */; };
-		D0E59F85160825D000F73C9D /* red icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F7C160825D000F73C9D /* red icon.png */; };
-		D0E59F86160825D000F73C9D /* green icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F7D160825D000F73C9D /* green icon.png */; };
-		D0E59F87160825D000F73C9D /* yellow icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F7E160825D000F73C9D /* yellow icon.png */; };
-		D0E59F88160825D000F73C9D /* pink icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F7F160825D000F73C9D /* pink icon.png */; };
-		D0E59F89160825D000F73C9D /* blue icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F80160825D000F73C9D /* blue icon.png */; };
 		D0E59F8A160825D000F73C9D /* camera photo  frame.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F81160825D000F73C9D /* camera photo  frame.png */; };
 		D0EC140D1688D20000E24357 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EC140C1688D20000E24357 /* FacebookSDK.framework */; };
 		D0EC140F1688D24300E24357 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D0EC140E1688D24300E24357 /* FacebookSDKResources.bundle */; };
@@ -1022,7 +1015,6 @@
 		D08CE2FD164213130073576B /* Level2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level2.plist; path = ../Level2.plist; sourceTree = "<group>"; };
 		D08D14A3167042F800F50BBF /* UINavigationController+OrientationFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+OrientationFix.h"; sourceTree = "<group>"; };
 		D08D14A4167042F800F50BBF /* UINavigationController+OrientationFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+OrientationFix.m"; sourceTree = "<group>"; };
-		D08EDEFC166465AF000906E0 /* crop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crop.png; sourceTree = "<group>"; };
 		D08F7C661645BD25001FB9A3 /* seaLevelBackground.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = seaLevelBackground.plist; sourceTree = "<group>"; };
 		D08F7C671645BD25001FB9A3 /* seaLevelBackground.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = seaLevelBackground.pvr.ccz; sourceTree = "<group>"; };
 		D08F7C681645BD25001FB9A3 /* seaLevelBackground-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "seaLevelBackground-hd.plist"; sourceTree = "<group>"; };
@@ -1115,14 +1107,8 @@
 		D0E30686159E4B4C0080D845 /* WEPopoverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WEPopoverViewController.m; sourceTree = "<group>"; };
 		D0E59F65160807EB00F73C9D /* big head overlay white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "big head overlay white.png"; sourceTree = "<group>"; };
 		D0E59F6B160807EB00F73C9D /* navigator 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigator 2.png"; sourceTree = "<group>"; };
-		D0E59F6C160807EB00F73C9D /* navigator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigator.png; sourceTree = "<group>"; };
 		D0E59F7716080E4F00F73C9D /* camera frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera frame.png"; sourceTree = "<group>"; };
 		D0E59F7A160825D000F73C9D /* back icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back icon.png"; sourceTree = "<group>"; };
-		D0E59F7C160825D000F73C9D /* red icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red icon.png"; sourceTree = "<group>"; };
-		D0E59F7D160825D000F73C9D /* green icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green icon.png"; sourceTree = "<group>"; };
-		D0E59F7E160825D000F73C9D /* yellow icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellow icon.png"; sourceTree = "<group>"; };
-		D0E59F7F160825D000F73C9D /* pink icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink icon.png"; sourceTree = "<group>"; };
-		D0E59F80160825D000F73C9D /* blue icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue icon.png"; sourceTree = "<group>"; };
 		D0E59F81160825D000F73C9D /* camera photo  frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera photo  frame.png"; sourceTree = "<group>"; };
 		D0EC140C1688D20000E24357 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK.framework; sourceTree = "<group>"; };
 		D0EC140E1688D24300E24357 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = ../FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
@@ -1437,6 +1423,8 @@
 		C13D5EF215C5CE8C006F716C /* Special Effects */ = {
 			isa = PBXGroup;
 			children = (
+				D04D76501638CBAC003C858F /* splash_sheet.plist */,
+				D04D76511638CBAC003C858F /* splash_sheet.png */,
 				C13D5EF315C5CEA0006F716C /* mouth effect test1.png */,
 				C151791B15C36D3E00A4378F /* hit effect.png */,
 			);
@@ -1459,8 +1447,6 @@
 		C147166A1594ACCA0002FF21 = {
 			isa = PBXGroup;
 			children = (
-				D04D76501638CBAC003C858F /* splash_sheet.plist */,
-				D04D76511638CBAC003C858F /* splash_sheet.png */,
 				C12114571616044300E3AAB1 /* Default-568h@2x.png */,
 				69164C5C15D9F8DF003FD8A8 /* Classes */,
 				69A1964A15C356670079DC99 /* RestKit.xcodeproj */,
@@ -2186,7 +2172,6 @@
 		D0E59F791608250200F73C9D /* CameraView */ = {
 			isa = PBXGroup;
 			children = (
-				D08EDEFC166465AF000906E0 /* crop.png */,
 				D0F37ECE161150D200E58F1E /* camera view overlay.png */,
 				D09D9858160A9F7A00014ADB /* white final.png */,
 				D09800C61609621E009E97E8 /* green board.png */,
@@ -2194,16 +2179,10 @@
 				D09800C81609621E009E97E8 /* yellow board.png */,
 				D09800C91609621E009E97E8 /* pink board.png */,
 				D0E59F7A160825D000F73C9D /* back icon.png */,
-				D0E59F7C160825D000F73C9D /* red icon.png */,
-				D0E59F7D160825D000F73C9D /* green icon.png */,
-				D0E59F7E160825D000F73C9D /* yellow icon.png */,
-				D0E59F7F160825D000F73C9D /* pink icon.png */,
-				D0E59F80160825D000F73C9D /* blue icon.png */,
 				D0E59F81160825D000F73C9D /* camera photo  frame.png */,
 				D0E59F7716080E4F00F73C9D /* camera frame.png */,
 				D0E59F65160807EB00F73C9D /* big head overlay white.png */,
 				D0E59F6B160807EB00F73C9D /* navigator 2.png */,
-				D0E59F6C160807EB00F73C9D /* navigator.png */,
 			);
 			name = CameraView;
 			sourceTree = "<group>";
@@ -2605,14 +2584,8 @@
 				692E5BC61605101C00303A50 /* lower shelf.png in Resources */,
 				D0E59F6E160807EB00F73C9D /* big head overlay white.png in Resources */,
 				D0E59F74160807EB00F73C9D /* navigator 2.png in Resources */,
-				D0E59F75160807EB00F73C9D /* navigator.png in Resources */,
 				D0E59F7816080E4F00F73C9D /* camera frame.png in Resources */,
 				D0E59F83160825D000F73C9D /* back icon.png in Resources */,
-				D0E59F85160825D000F73C9D /* red icon.png in Resources */,
-				D0E59F86160825D000F73C9D /* green icon.png in Resources */,
-				D0E59F87160825D000F73C9D /* yellow icon.png in Resources */,
-				D0E59F88160825D000F73C9D /* pink icon.png in Resources */,
-				D0E59F89160825D000F73C9D /* blue icon.png in Resources */,
 				D0E59F8A160825D000F73C9D /* camera photo  frame.png in Resources */,
 				D09800CA1609621F009E97E8 /* green board.png in Resources */,
 				D09800CB1609621F009E97E8 /* blue board.png in Resources */,
@@ -2660,7 +2633,6 @@
 				D08F7C751645BE42001FB9A3 /* hillLevelBackground.pvr.ccz in Resources */,
 				C1053A0416582E6C0015B932 /* ItemsPList.plist in Resources */,
 				C1053A191664213F0015B932 /* Level1.plist in Resources */,
-				D08EDEFD166465AF000906E0 /* crop.png in Resources */,
 				D092386C1668534000E1A231 /* CustomDrawViewController.xib in Resources */,
 				D0EC140F1688D24300E24357 /* FacebookSDKResources.bundle in Resources */,
 				D0EC14111688D25D00E24357 /* FBUserSettingsViewResources.bundle in Resources */,
