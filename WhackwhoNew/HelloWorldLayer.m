@@ -32,67 +32,73 @@
 
 	if( (self=[super init]) ) {
         
-        self.isTouchEnabled = YES;
-        CGSize winSize = [CCDirector sharedDirector].winSize;
-                
-        //init variables
-        speed = DEFAULT_HEAD_POP_SPEED;
-        has_bomb = FALSE;
-        
-        coins = [[NSMutableArray alloc] init];
-        bomb = [[NSMutableArray alloc] init];
-        heads = [[NSMutableArray alloc] init];
-
-        //determine which background to load
-        //if unlocked new level, then randomize
-
-        //level = hillLevel;
-        level = [[Game sharedGame] difficulty];
-        
-        switch (level) {
-            case hillLevel:
-                [self performSelector:@selector(setHillsLevel)];
-                break;
-            case seaLevel:
-                [self performSelector:@selector(setSeaLevel)];
-                break;
-        }
-        
-        //initialize shake handler
-        self.isAccelerometerEnabled = YES;
-        [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1/60];
-        shake_once = false;
-        
-        //!!!! initializing popups
-        //use the array from game.h which contains all image names
-        //int xpad = 50; //for testing
-        int i = 0;
-        for (UIImage *person in [[Game sharedGame] arrayOfAllPopups]) {
-            Character *head = [Character spriteWithCGImage:[person CGImage] key:[NSString stringWithFormat:@"person%i", i]];
-            
-            if (i < [[Game sharedGame] selectHeadCount]) {
-                head.isSelectedHit = TRUE;
-            } else {
-                head.isSelectedHit = FALSE;
-            }
-            
-            head.visible = FALSE;
-            head.position = CGPointZero;
-            
-            [self addChild:head];
-            [heads addObject:head];
-            i++; //for key purposes
-            
-            //for testing
-            //head.position = ccp(xpad, winSize.height/2);
-            //xpad += 60;
-            //head.visible = TRUE;
-        }
-        
-        [self schedule:@selector(tryPopheads) interval:1.5];
 	}
     
 	return self;
+}
+
+-(void) onEnter {
+    [super onEnter];
+    
+    self.isTouchEnabled = YES;
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    
+    //init variables
+    speed = DEFAULT_HEAD_POP_SPEED;
+    has_bomb = FALSE;
+    
+    coins = [[NSMutableArray alloc] init];
+    bomb = [[NSMutableArray alloc] init];
+    heads = [[NSMutableArray alloc] init];
+    
+    //determine which background to load
+    //if unlocked new level, then randomize
+    
+    //level = hillLevel;
+    level = [[Game sharedGame] difficulty];
+    
+    switch (level) {
+        case hillLevel:
+            [self performSelector:@selector(setHillsLevel)];
+            break;
+        case seaLevel:
+            [self performSelector:@selector(setSeaLevel)];
+            break;
+    }
+    
+    //initialize shake handler
+    self.isAccelerometerEnabled = YES;
+    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1/60];
+    shake_once = false;
+    
+    //!!!! initializing popups
+    //use the array from game.h which contains all image names
+    //int xpad = 50; //for testing
+    int i = 0;
+    for (UIImage *person in [[Game sharedGame] arrayOfAllPopups]) {
+        Character *head = [Character spriteWithCGImage:[person CGImage] key:[NSString stringWithFormat:@"person%i", i]];
+        
+        if (i < [[Game sharedGame] selectHeadCount]) {
+            head.isSelectedHit = TRUE;
+        } else {
+            head.isSelectedHit = FALSE;
+        }
+        
+        head.visible = FALSE;
+        head.position = CGPointZero;
+        
+        [self addChild:head];
+        [heads addObject:head];
+        i++; //for key purposes
+        
+        //for testing
+        //head.position = ccp(xpad, winSize.height/2);
+        //xpad += 60;
+        //head.visible = TRUE;
+    }
+    
+    [self schedule:@selector(tryPopheads) interval:1.5];
+     
 }
 
 -(void) setHillsLevel {
@@ -225,7 +231,7 @@
         NSString *image = [images objectAtIndex:i];
         CCSprite *sprite = [CCSprite spriteWithSpriteFrameName:image];
         sprite.anchorPoint = ccp(0.5,0.5);
-        sprite.position = ccp(winSize.height/2, winSize.width/2);
+        sprite.position = ccp(winSize.width/2, winSize.height/2);
         [spritesBgNode addChild:sprite z:(i*10)];
     }
     
@@ -234,12 +240,15 @@
     locations = [dictionary objectForKey:@"points"];
 }
 
--(void) cleanup {
-     
-     //check if game is over
-     [self stopAllActions];
-     [self unscheduleAllSelectors];
-     [self removeAllChildrenWithCleanup:YES];
+-(void) onExit {
+    [coins removeAllObjects];
+    [heads removeAllObjects];
+    [bomb removeAllObjects];
+    [rainbows removeAllObjects];
+    
+    CGSize winsize = [[CCDirector sharedDirector] winSize];
+    
+    [super onExit];
  }
 
 -(void)setArrayForReview {
@@ -730,7 +739,8 @@
 
 @synthesize layer=_layer;
 @synthesize hud=_hud;
-@synthesize gameOverDelegate;
+
+static id<GameOverDelegate> gameOverDelegate = nil;
 
 
 - (id)init {
@@ -742,11 +752,12 @@
         baseScore = 0;
         moneyEarned = 0;
 
-        self.layer = [HelloWorldLayer node];
+        self.layer = [[HelloWorldLayer alloc] init];
         [self addChild:self.layer z:0];
         
         // 'hud' is the restart object
-        self.hud = [HUDLayer node];
+        self.hud = [[HUDLayer alloc] init];
+        
         [self addChild:self.hud z:100];
         
     }
@@ -756,7 +767,7 @@
 
 -(void)gameOver:(BOOL)timeout {
     //update "score"
-    [self.layer cleanup];
+    [self cleanup];
     
     //NSString *msg;
     //if (timeout) {
@@ -766,8 +777,6 @@
     //}
     
     //[self.hud showGameOverLabel:msg];
-    
-    [self.hud cleanup];
     
     [self performSelector:@selector(transitionToReview) withObject:nil afterDelay:2.0];
     
@@ -779,7 +788,7 @@
 }
 
 -(void)transitionToReview {
-    [self.gameOverDelegate proceedToReview];
+    [gameOverDelegate proceedToReview];
 }
 
 -(void)reduceHealth {
@@ -820,5 +829,13 @@
 
 -(NSInteger)baseScore {
     return baseScore;
+}
+
++(void)setGameOverDelegate:(id<GameOverDelegate>)delegate {
+    gameOverDelegate = delegate;
+}
+
++(id<GameOverDelegate>)gameOverDelegate {
+    return gameOverDelegate;
 }
 @end

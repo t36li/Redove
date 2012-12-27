@@ -24,12 +24,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    GlobalMethods *gmethods = [[GlobalMethods alloc] init];
-    [gmethods setViewBackground:SelectToLogIn_bg viewSender:self.view];
+    //GlobalMethods *gmethods = [[GlobalMethods alloc] init];
+    //[gmethods setViewBackground:SelectToLogIn_bg viewSender:self.view];
 
     //setup FBBut Image;
-    [FBBut setImage:[UIImage imageNamed:AccessFacebookIcon] forState:UIControlStateNormal];
-    [FBBut setImage:[UIImage imageNamed:AccessFacebookIcon_HL] forState:UIControlStateHighlighted];
+    //[FBBut setImage:[UIImage imageNamed:AccessFacebookIcon] forState:UIControlStateNormal];
+    //[FBBut setImage:[UIImage imageNamed:AccessFacebookIcon_HL] forState:UIControlStateHighlighted];
     //[FBBut setImage:[UIImage imageNamed:AccessFacebookIcon forState:UIControlStateNormal]];
     
 }

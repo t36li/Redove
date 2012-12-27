@@ -9,9 +9,9 @@
 //Define all the Images names as constants, including backgrounds, icons, etc.
 
 //backgrounds
-#define MainPage_bg @"MainPage_bg"
+#define MainPage_bg @"Main_Menu_Bg.png"
 #define GameMode_grass_bg @"hills_finalView.png"
-#define SelectToLogIn_bg @"SelectToLogIn_bg.png"
+#define SelectToLogIn_bg @"Choose_Connections_Bg.jpg"
 #define FriendList_bg @"friend list (background).png"
 #define OceanMode_bg @"background 2.png"
 #define hills_l1 @"hills_L1.png"
@@ -29,11 +29,11 @@
 #define store_bg @"store background.png"
 
 //buttons
-#define Play_but @"play s.png"
+#define Play_but @"Play_Button.png"
 #define Play_but_touched @"play b.png"
-#define Option_but @"option s.png"
+#define Option_but @"Option_Button.png"
 #define Option_but_touched @"option b.png"
-#define friend_but @"friend s.png"
+#define friend_but @"Friends_Button.png"
 #define friend_but_touched @"friend b.png"
 #define AccessFacebookIcon @"FacebookButton30x34.png"
 #define AccessFacebookIcon_HL @"FacebookButton30x34.png"

@@ -32,8 +32,6 @@ NSString *const UserChinPosition = @"ChinPosition";
     NSString *gender;
     //FBProfilePictureView *profileImageView;
     
-    
-    
     // Avatar stuff
     NSInteger whackWhoId;
     NSInteger headId;

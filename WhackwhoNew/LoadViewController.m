@@ -7,6 +7,7 @@
 //
 
 #import "LoadViewController.h"
+#import "Reachability.h"
 
 #define networkErrorAlert 1
 #define newbieAlert 2
@@ -15,8 +16,10 @@
 @implementation LoadViewController
 
 @synthesize myLabel;
+@synthesize internetActive, hostActive;
 
 -(void) initializeConnections {
+
     gmethods = [[GlobalMethods alloc] init];
     usr = [UserInfo sharedInstance];
     //[[FBSingleton sharedInstance] setDelegate:self];
@@ -59,10 +62,83 @@
     
     NSLog(@"load Loading Background");
     [myLabel setText:@"Loading...."];
+    
+}
+
+- (void) checkNetworkStatus:(NSNotification *)notice {
+    NetworkStatus internetStatus = [internetReachable currentReachabilityStatus];
+    switch (internetStatus)
+    
+    {
+        case NotReachable:
+        {
+            self.internetActive = NO;
+            UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:nil message:@"Sorry, there's no active internet connection to your device~ Please find one ASAP to enjoy Whackwho!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [errorAlert show];            
+            break;
+            
+        }
+        case ReachableViaWiFi:
+        {
+            NSLog(@"The internet is working via WIFI.");
+            self.internetActive = YES;
+            
+            break;
+            
+        }
+        case ReachableViaWWAN:
+        {
+            NSLog(@"The internet is working via WWAN.");
+            self.internetActive = YES;
+            
+            break;
+            
+        }
+    }
+    
+    NetworkStatus hostStatus = [hostReachable currentReachabilityStatus];
+    switch (hostStatus)
+    
+    {
+        case NotReachable:
+        {
+            NSLog(@"A gateway to the host server is down.");
+            self.hostActive = NO;
+            
+            break;
+            
+        }
+        case ReachableViaWiFi:
+        {
+            NSLog(@"A gateway to the host server is working via WIFI.");
+            self.hostActive = YES;
+            
+            break;
+            
+        }
+        case ReachableViaWWAN:
+        {
+            NSLog(@"A gateway to the host server is working via WWAN.");
+            self.hostActive = YES;
+            
+            break;
+            
+        }
+    }
+    
 }
 
 -(void) viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkNetworkStatus:) name:kReachabilityChangedNotification object:nil];
+    
+    internetReachable = [Reachability reachabilityForInternetConnection];
+    [internetReachable startNotifier];
+    
+    hostReachable = [Reachability reachabilityWithHostname:@"www.whackwho.com"];
+    [hostReachable startNotifier];
+
 }
 
 -(BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
@@ -83,6 +159,10 @@
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
+}
+
+-(void) viewDidDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark- facebook delegate methods
@@ -153,15 +233,7 @@
     NSLog(@"User data loaded.");
     [myLabel setText:@"Loading Complete!"];
     [self performSelector:@selector(goToMenu) withObject:nil afterDelay:1.5];
-    /*
-    if(usr->usrImg == nil){
-        UIAlertView *takePicAlert = [[UIAlertView alloc] initWithTitle:@"Newbie?" message:@"Take a photo" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        takePicAlert.tag = newbieAlert;
-        [takePicAlert show];
-    } else {
-        [myLabel setText:@"Loading Complete!"];
-        [self performSelector:@selector(goToMenu) withObject:nil afterDelay:1.5];
-    }*/
+
 }
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error{
@@ -170,23 +242,12 @@
 }
 
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    /*
-    if (alertView.tag == networkErrorAlert){
-        
-    }
-    else if (alertView.tag == newbieAlert){
-        if (buttonIndex == 0){
-            [self performSegueWithIdentifier:@"LoadToAvatar" sender:self];
-        }
-    }
-     */
+
     if (alertView.tag == FBprofileLoadFailedAlert){
         [usr LogInTypeChanged:NotLogIn];
         [self goToMenu];
     }
 }
-
-
 
 -(void) goToMenu {
     [self performSegueWithIdentifier:@"GoToMenuSegue" sender:nil];

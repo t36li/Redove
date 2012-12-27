@@ -43,7 +43,7 @@
     
     GlobalMethods *gmethods = [[GlobalMethods alloc] init];
     [gmethods setViewBackground:MainPage_bg viewSender:self.view];
-    NSLog(@"RootViewController: Background loaded");
+    //NSLog(@"RootViewController: Background loaded");
     [self performSelector:@selector(appInviteAlertActivate) withObject:nil afterDelay:1];
 }
 

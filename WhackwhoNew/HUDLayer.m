@@ -128,7 +128,7 @@
         timeLabel = [CCLabelTTF labelWithString:@"0:0" fontName:@"chalkduster" fontSize:30];
         timeLabel.color = ccc3(255, 249, 0);
         timeLabel.anchorPoint = ccp(0,0);
-        timeLabel.position = ccp(15, winSize.width - timeLabel.contentSize.height);
+        timeLabel.position = ccp(15, winSize.height - timeLabel.contentSize.height);
         [self addChild:timeLabel z:101];
         
         //add "pause" label
@@ -142,7 +142,7 @@
         for (int i = 0; i < lives; i++) {
             CCSprite *life = [CCSprite spriteWithFile:@"heart.png"];
             life.anchorPoint = ccp(0,0);
-            life.position = ccp(winSize.height - (i + 1)*life.contentSize.width, winSize.width - life.contentSize.height);
+            life.position = ccp(winSize.width - (i + 1)*life.contentSize.width, winSize.height - life.contentSize.height);
             [hearts addObject:life];
             [self addChild:life z:103];
         }
@@ -150,14 +150,14 @@
         //add "Scoreboard"
         scoreboard = [CCSprite spriteWithFile:@"scoreboard.png"];
         scoreboard.anchorPoint = ccp(0, 0);
-        scoreboard.position = ccp(winSize.height/2 - scoreboard.contentSize.width/2, 0);
+        scoreboard.position = ccp(winSize.width/2 - scoreboard.contentSize.width/2, 0);
         [self addChild:scoreboard z:-102];
         
         //add "score" label
         scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"chalkduster" fontSize:50];
         scoreLabel.anchorPoint = ccp(0.5, 0.5);
         scoreLabel.color = ccc3(255, 200, 0);
-        scoreLabel.position = ccp(winSize.height/2, 40);
+        scoreLabel.position = ccp(scoreboard.contentSize.width/2, 40);
         [scoreboard addChild:scoreLabel z:104];
         
         
@@ -176,8 +176,7 @@
 }
 
 -(void) pauseGame {
-    HelloWorldScene *scene = (HelloWorldScene *)self.parent;
-    [scene.gameOverDelegate returnToMenu];
+    [[HelloWorldScene gameOverDelegate] returnToMenu];
 }
 
 
@@ -200,7 +199,7 @@
     
     if (CGRectContainsPoint(pauseMenu.boundingBox, location)) {
         HelloWorldScene *scene = (HelloWorldScene *)self.parent;
-        [scene.gameOverDelegate returnToMenu];
+        [[HelloWorldScene gameOverDelegate] returnToMenu];
         return YES;
     }
     

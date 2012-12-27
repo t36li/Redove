@@ -46,7 +46,6 @@
 @property (nonatomic, strong) CCSpriteBatchNode *splashSheet;
 @property (nonatomic, strong) NSMutableArray *splashFrames;
 
--(void)cleanup;
 -(void)setArrayForReview;
 
 
@@ -59,13 +58,11 @@
     HelloWorldLayer *_layer;
     
     int lives;
-    id<GameOverDelegate> gameOverDelegate;
     NSInteger consecHits, baseScore, moneyEarned;
 }
 
 @property (nonatomic, strong) HelloWorldLayer *layer;
 @property (nonatomic, strong) HUDLayer *hud;
-@property (nonatomic, strong) id<GameOverDelegate> gameOverDelegate;
 
 
 -(void)gameOver:(BOOL)timeout;
@@ -77,6 +74,9 @@
 -(NSInteger)consecHits;
 -(NSInteger)moneyEarned;
 -(NSInteger)baseScore;
+
++(void)setGameOverDelegate:(id<GameOverDelegate>)delegate;
++(id<GameOverDelegate>)gameOverDelegate;
 
 @end
 

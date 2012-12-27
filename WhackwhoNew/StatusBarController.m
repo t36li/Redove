@@ -12,17 +12,24 @@
 #import "FacebookShareViewController.h"
 #import "Dragbox.h"
 #import "User.h"
+#import "HitUpdate.h"
+#import "UserInfo.h"
 
 //define tags
-#define helmet_Label 1
-#define body_Label 2
-#define hammerHand_Label 3
-#define shieldHand_Label 4
+//#define helmet_Label 1
+//#define body_Label 2
+//#define hammerHand_Label 3
+//#define shieldHand_Label 4
+#define hs_lbl 1
+#define gold_lbl 2
+#define gp_lbl 3
+#define pop_lbl 4
 
 @implementation StatusBarController
 
 @synthesize containerView;
 @synthesize faceView, bodyView;
+@synthesize popularity_lbl, total_gold_lbl, total_gp_lbl, high_score_lbl;
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) {
@@ -36,8 +43,14 @@
 {
     [super viewDidLoad];
     
-    [faceView setContentMode:UIViewContentModeScaleAspectFill];
+    [faceView setContentMode:UIViewContentModeScaleAspectFit];
     [bodyView setContentMode:UIViewContentModeScaleToFill];
+    
+    [self.containerView setBackgroundColor:[UIColor clearColor]];
+    
+    NSString *path = [self dataFilepath];
+    
+    dic = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
     
     //need to cache user's previous image
     UserInfo *usr = [UserInfo sharedInstance];
@@ -48,8 +61,7 @@
     }
 }
 
-
-
+//newbie alert view
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (alertView.tag == 1){
         if (buttonIndex == 0){
@@ -63,16 +75,22 @@
     
     UIImage *face_DB = [[UserInfo sharedInstance] croppedImage];
     
-    if (faceView.image == face_DB && face_DB != nil)
-        return;
-        
-    //!!!!!!!! need to retrive from database the current equipment!
-    UserInfo *usinfo = [UserInfo sharedInstance];
-    CurrentEquip *ce = usinfo.currentEquip;
-    
     [faceView setImage:face_DB];
+    //[bodyView setImage:[UIImage imageNamed:standard_blue_body]];
+        
+    [high_score_lbl setText:[self readPlist:hs_lbl]];
+    [total_gold_lbl setText:[self readPlist:gold_lbl]];
+    [total_gp_lbl setText:[self readPlist:gp_lbl]];
+        
+    [RKClient clientWithBaseURL:[NSURL URLWithString:BaseURL]];
+    NSString *whackID = [NSString stringWithFormat:@"%i",[[UserInfo sharedInstance] whackWhoId]];
+    [[RKClient sharedClient] get:[NSString stringWithFormat:@"/hits/%@", whackID] delegate:self];
     
-    [bodyView setImage:[UIImage imageNamed:ce.body]];
+    //if (faceView.image == face_DB && face_DB != nil)
+      //  return;
+        
+    //UserInfo *usinfo = [UserInfo sharedInstance];
+    //CurrentEquip *ce = usinfo.currentEquip;
 }
 
 - (void)viewDidUnload
@@ -86,21 +104,58 @@
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
+//Plist methods
+- (NSString *) dataFilepath {
+    //read the plist
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"ScorePlist" ofType:@"plist"];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:path]) {
+        NSLog(@"The file exists");
+        return path;
+    } else {
+        NSLog(@"The file does not exist");
+        return nil;
+    }
+}
+
+- (NSString *) readPlist: (int) whichLbl {
+    NSNumber *ret;
+    
+    switch (whichLbl) {
+        case hs_lbl:
+            ret = [dic objectForKey:@"High_Score"];
+            break;
+        case gold_lbl:
+            ret = [dic objectForKey:@"Total_Gold"];
+            break;
+        case gp_lbl:
+            ret = [dic objectForKey:@"Games_Played"];
+            break;
+    }
+    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    return [numberFormatter stringFromNumber:ret];
+    
+}
+
 
 //update Database:
--(void)updateDB{
+/*-(void)updateDB{
     User *user = [[User alloc]init];
     UserInfo *uinfo = [UserInfo sharedInstance];
     user.whackWhoId = [uinfo whackWhoId];
     user.headId = uinfo.headId;
-    user.currentEquip = [[[UserInfo sharedInstance] currentEquip] currentEquipInIDs];
-    user.storageInv = [[[UserInfo sharedInstance] storageInv] setStorageStringInIDs];
+    //user.currentEquip = [[[UserInfo sharedInstance] currentEquip] currentEquipInIDs];
+    //user.storageInv = [[[UserInfo sharedInstance] storageInv] setStorageStringInIDs];
     
     [[RKObjectManager sharedManager] putObject:user usingBlock:^(RKObjectLoader *loader){
         loader.targetObject = nil;
         loader.delegate = self;
     }];
-}
+}*/
 
 - (IBAction)publish_touched:(id)sender {
     // If scale is 0, it'll follows the screen scale for creating the bounds
@@ -139,10 +194,12 @@
 }
 
 -(void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response{
-    NSLog(@"request body:%@",[request HTTPBodyString]);
-    NSLog(@"request url:%@",[request URL]);
-    NSLog(@"response statue: %d", [response statusCode]);
+    //NSLog(@"request body:%@",[request HTTPBodyString]);
+    //NSLog(@"request url:%@",[request URL]);
+    //NSLog(@"response statue: %d", [response statusCode]);
     NSLog(@"response body:%@",[response bodyAsString]);
+    
+    [popularity_lbl setText:[response bodyAsString]];
 }
 
 #pragma mark - touch methods

@@ -10,6 +10,8 @@
 #import "Friend.h"
 #import "UserInfo.h"
 #import "FBSingletonNew.h"
+#import "cocos2d.h"
+#import "HelloWorldLayer.h"
 
 #define ChooseToGame @"chooseToGame"
 #define dummyString @"testobject"
@@ -300,32 +302,48 @@
 }
 
 -(IBAction)battleTouched:(id)sender {
-    int max_popups = 2 * [selectedHits count] + 1;
+    [self performSelectorInBackground:@selector(processImagesInBackground) withObject:nil];
     //max_popups = 2;
     void (^block)(BOOL) = ^(BOOL finished) {
         if (finished) {
-            NSMutableArray *finalImages = [[NSMutableArray alloc] initWithCapacity:max_popups];
             
-            for (int i = 0; i < max_popups; ++i) {
-                if (selectedHits.count > i) {
-                    [finalImages addObject:[self captureImageInHitBox:i withArray:0]];
-                } else {
-                    //[finalImages addObject:defaultImage];
-                    //going to decide in captureimagefunction stranger selection criteria
-                    [finalImages addObject:[self captureImageInHitBox:0 withArray:1]];
-                }
-            }
+            Game *game = [Game sharedGame];
             
-            [[Game sharedGame] setSelectHeadCount:selectedHits.count];
-            [[Game sharedGame] setArrayOfAllPopups:finalImages];
-            
+            while (!game.readyToStart);
             [self performSegueWithIdentifier:ChooseToGame sender:sender];
             isHammerDown = YES;
+            game.readyToStart = NO;
         }
     };
     
     [self sendHammersDownWithBlock:block];
     
+}
+
+-(void) processImagesInBackground {
+    int max_popups = 2 * [selectedHits count] + 1;
+
+    NSMutableArray *finalImages = [[NSMutableArray alloc] initWithCapacity:max_popups];
+    
+    for (int i = 0; i < max_popups; ++i) {
+        if (selectedHits.count > i) {
+            [finalImages addObject:[self captureImageInHitBox:i withArray:0]];
+        } else {
+            //[finalImages addObject:defaultImage];
+            //going to decide in captureimagefunction stranger selection criteria
+            [finalImages addObject:[self captureImageInHitBox:0 withArray:1]];
+        }
+    }
+    
+    [[Game sharedGame] setSelectHeadCount:selectedHits.count];
+    [[Game sharedGame] setArrayOfAllPopups:finalImages];
+    
+    CCDirector *shared = [CCDirector sharedDirector];
+    if (shared.runningScene != nil) {
+        [shared replaceScene:[[HelloWorldScene alloc] init]];
+    }
+    [[Game sharedGame] setReadyToStart:YES];
+
 }
 
 - (IBAction)Back_Touched:(id)sender {
@@ -441,7 +459,7 @@
     CGPoint origPt_l = leftHammer.center;
     CGPoint origPt_r = rightHammer.center;
     
-    [UIView animateWithDuration:1.1f
+    [UIView animateWithDuration:1.5f
                           delay:0.f
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{

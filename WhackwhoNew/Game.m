@@ -25,6 +25,7 @@ static Game *sharedGame = nil;
 @synthesize arrayOfAllPopups, arrayOfHits;
 @synthesize head;
 @synthesize gameView;
+@synthesize readyToStart;
 
 #pragma mark -
 /////////////////////
@@ -89,7 +90,7 @@ static Game *sharedGame = nil;
     [self setIsGameOver:NO];
     [self setIsEnabledBackgroundMusic:YES];
     [self setIsEnabledSoundFX:YES];
-    [self setDifficulty:0];
+    //[self setDifficulty:0];
     [self setMoneyEarned:0];
     [self setMultiplier:0];
     [self setBaseScore:0];
