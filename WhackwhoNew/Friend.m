@@ -14,7 +14,7 @@
 @implementation Friend
 
 @synthesize user_id, name, gender, isPlayer,whackwho_id,mediaType_id, head_id;
-@synthesize currentEquip, head;
+@synthesize currentEquip, head,popularity;
 
 -(id)init {
     self = [super init];

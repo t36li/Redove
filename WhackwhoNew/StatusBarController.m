@@ -187,6 +187,7 @@
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error{
     NSLog(@"Load Database Failed:%@",error);
+    [popularity_lbl setText:[NSString stringWithFormat:@"%d",[[UserInfo sharedInstance] popularity]]];
     
 }
 
@@ -203,6 +204,10 @@
     NSLog(@"response body:%@",[response bodyAsString]);
     
     [popularity_lbl setText:[response bodyAsString]];
+    NSInteger popular = [[response bodyAsString] intValue];
+    if ([[UserInfo sharedInstance] popularity] != popular){
+        [[UserInfo sharedInstance] setPopularity:popular];
+    }
 }
 
 #pragma mark - touch methods

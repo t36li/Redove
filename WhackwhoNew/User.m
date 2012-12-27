@@ -92,6 +92,7 @@
     [friendInfoMapping mapKeyPath:@"isPlayer" toAttribute:@"isPlayer"];
     [friendInfoMapping mapKeyPath:@"head_id" toAttribute:@"head_id"];
     [friendInfoMapping mapKeyPath:@"gender" toAttribute:@"gender"];
+    [friendInfoMapping mapKeyPath:@"hits" toAttribute:@"popularity"];
     [friendInfoMapping mapKeyPath:@"head" toRelationship:@"head" withMapping:headMapping];
     [friendInfoMapping mapKeyPath:@"currentEquip" toRelationship:@"currentEquip" withMapping:curEquipMapping];
     [[RKObjectManager sharedManager].mappingProvider setMapping:friendInfoMapping forKeyPath:@"friend"];
@@ -122,6 +123,7 @@
     [userInfoMapping mapKeyPath:@"mouthPosition" toAttribute:@"mouthPosition"];
     [userInfoMapping mapKeyPath:@"faceRect" toAttribute:@"faceRect"];
     [userInfoMapping mapKeyPath:@"userImgURL" toAttribute:@"userImgURL"];
+    [userInfoMapping mapKeyPath:@"hits" toAttribute:@"popularity"];
     [userInfoMapping mapKeyPath:@"currentEquip" toRelationship:@"currentEquip" withMapping:curEquipMapping];
     [userInfoMapping mapKeyPath:@"storageInv" toRelationship:@"storageInv" withMapping:storageInvMapping];
     
