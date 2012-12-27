@@ -7,22 +7,28 @@
 //
 
 #import "StatusBarController.h"
-#import "StatusViewLayer.h"
-#import "HelloWorldLayer.h"
-#import "Dragbox.h"
+//#import "StatusViewLayer.h"
+//#import "HelloWorldLayer.h"
+//#import "Dragbox.h"
 #import "User.h"
+#import "HitUpdate.h"
+#import "UserInfo.h"
 
 //define tags
 //#define helmet_Label 1
 //#define body_Label 2
 //#define hammerHand_Label 3
 //#define shieldHand_Label 4
+#define hs_lbl 1
+#define gold_lbl 2
+#define gp_lbl 3
+#define pop_lbl 4
 
 @implementation StatusBarController
 
 @synthesize containerView;
 @synthesize faceView, bodyView;
-@synthesize popularity_lbl;
+@synthesize popularity_lbl, total_gold_lbl, total_gp_lbl, high_score_lbl;
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) {
@@ -36,10 +42,14 @@
 {
     [super viewDidLoad];
     
-    [faceView setContentMode:UIViewContentModeScaleAspectFill];
+    [faceView setContentMode:UIViewContentModeScaleAspectFit];
     [bodyView setContentMode:UIViewContentModeScaleToFill];
     
     [self.containerView setBackgroundColor:[UIColor clearColor]];
+    
+    NSString *path = [self dataFilepath];
+    
+    dic = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
     
     //need to cache user's previous image
     UserInfo *usr = [UserInfo sharedInstance];
@@ -50,8 +60,7 @@
     }
 }
 
-
-
+//newbie alert view
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (alertView.tag == 1){
         if (buttonIndex == 0){
@@ -65,18 +74,22 @@
     
     UIImage *face_DB = [[UserInfo sharedInstance] croppedImage];
     
+    [faceView setImage:face_DB];
+    //[bodyView setImage:[UIImage imageNamed:standard_blue_body]];
+        
+    [high_score_lbl setText:[self readPlist:hs_lbl]];
+    [total_gold_lbl setText:[self readPlist:gold_lbl]];
+    [total_gp_lbl setText:[self readPlist:gp_lbl]];
+        
     [RKClient clientWithBaseURL:[NSURL URLWithString:BaseURL]];
     NSString *whackID = [NSString stringWithFormat:@"%i",[[UserInfo sharedInstance] whackWhoId]];
     [[RKClient sharedClient] get:[NSString stringWithFormat:@"/hits/%@", whackID] delegate:self];
     
-    if (faceView.image == face_DB && face_DB != nil)
-        return;
+    //if (faceView.image == face_DB && face_DB != nil)
+      //  return;
         
     //UserInfo *usinfo = [UserInfo sharedInstance];
     //CurrentEquip *ce = usinfo.currentEquip;
-    [faceView setImage:face_DB];
-    [bodyView setImage:[UIImage imageNamed:standard_blue_body]];
-    
 }
 
 - (void)viewDidUnload
@@ -88,6 +101,43 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+}
+
+//Plist methods
+- (NSString *) dataFilepath {
+    //read the plist
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"ScorePlist" ofType:@"plist"];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:path]) {
+        NSLog(@"The file exists");
+        return path;
+    } else {
+        NSLog(@"The file does not exist");
+        return nil;
+    }
+}
+
+- (NSString *) readPlist: (int) whichLbl {
+    NSNumber *ret;
+    
+    switch (whichLbl) {
+        case hs_lbl:
+            ret = [dic objectForKey:@"High_Score"];
+            break;
+        case gold_lbl:
+            ret = [dic objectForKey:@"Total_Gold"];
+            break;
+        case gp_lbl:
+            ret = [dic objectForKey:@"Games_Played"];
+            break;
+    }
+    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    return [numberFormatter stringFromNumber:ret];
+    
 }
 
 
@@ -108,6 +158,12 @@
 
 - (IBAction)saveToDB_Touched:(id)sender {
     //[self updateDB];
+    HitUpdate *updates = [[HitUpdate alloc] init];
+    updates.whackID = @"35";
+    updates.mediaType = @"1";
+    [[RKObjectManager sharedManager].router routeClass: [HitUpdate class] toResourcePath:@"/hits/update" forMethod:RKRequestMethodPUT];
+    [[RKObjectManager sharedManager] putObject:updates delegate:self];
+
 }
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error{
