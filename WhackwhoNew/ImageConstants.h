@@ -56,7 +56,7 @@
 
 //Frames
 #define FriendListCell @"friend list (cell).png"
-#define HitWhoFriendListCell @"friend list box.png"
+#define HitWhoFriendListCell @"HitWho_FriendBox.png"
 #define hitNumberOne @"number1.png"
 #define hitNumberTwo @"number2.png"
 #define hitNumberThree @"number3.png"
@@ -84,7 +84,6 @@
 #define standard_pink_head @"HE002.png"
 #define standard_yellow_head @"HE003.png"
 #define standard_green_head @"HE004.png"
-
 
 //store frames
 #define UpperShelf @"upper shelf.png"

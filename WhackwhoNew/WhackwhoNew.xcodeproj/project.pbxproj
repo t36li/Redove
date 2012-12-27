@@ -75,6 +75,9 @@
 		C14139FE168CBD98005556BD /* HitWho_Shield_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C14139FD168CBD98005556BD /* HitWho_Shield_Icon.png */; };
 		C1413A01168CBDC0005556BD /* HitWho_LeftArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = C14139FF168CBDC0005556BD /* HitWho_LeftArrow.png */; };
 		C1413A02168CBDC0005556BD /* HitWho_RightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A00168CBDC0005556BD /* HitWho_RightArrow.png */; };
+		C1413A04168CC14D005556BD /* Invite_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A03168CC14D005556BD /* Invite_Button.png */; };
+		C1413A06168CC306005556BD /* HitWho_Hammer.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A05168CC306005556BD /* HitWho_Hammer.png */; };
+		C1413A08168CC3C3005556BD /* HitWho_FullView.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1413A07168CC3C2005556BD /* HitWho_FullView.jpg */; };
 		C14385AB15C8C15A008D9AE7 /* LoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C14385AA15C8C15A008D9AE7 /* LoadViewController.m */; };
 		C147167A1594ACCA0002FF21 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14716791594ACCA0002FF21 /* QuartzCore.framework */; };
 		C147167C1594ACCA0002FF21 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C147167B1594ACCA0002FF21 /* OpenGLES.framework */; };
@@ -649,6 +652,9 @@
 		C14139FD168CBD98005556BD /* HitWho_Shield_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_Shield_Icon.png; sourceTree = "<group>"; };
 		C14139FF168CBDC0005556BD /* HitWho_LeftArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_LeftArrow.png; sourceTree = "<group>"; };
 		C1413A00168CBDC0005556BD /* HitWho_RightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_RightArrow.png; sourceTree = "<group>"; };
+		C1413A03168CC14D005556BD /* Invite_Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Invite_Button.png; sourceTree = "<group>"; };
+		C1413A05168CC306005556BD /* HitWho_Hammer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_Hammer.png; sourceTree = "<group>"; };
+		C1413A07168CC3C2005556BD /* HitWho_FullView.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HitWho_FullView.jpg; sourceTree = "<group>"; };
 		C14385A915C8C15A008D9AE7 /* LoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadViewController.h; sourceTree = "<group>"; };
 		C14385AA15C8C15A008D9AE7 /* LoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadViewController.m; sourceTree = "<group>"; };
 		C14716751594ACCA0002FF21 /* WhackwhoNew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhackwhoNew.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1210,6 +1216,7 @@
 				C14139FD168CBD98005556BD /* HitWho_Shield_Icon.png */,
 				C14139FF168CBDC0005556BD /* HitWho_LeftArrow.png */,
 				C1413A00168CBDC0005556BD /* HitWho_RightArrow.png */,
+				C1413A05168CC306005556BD /* HitWho_Hammer.png */,
 			);
 			name = Frames;
 			sourceTree = "<group>";
@@ -1393,6 +1400,7 @@
 				C14139E41688FA74005556BD /* Choose_Connections_Bg.jpg */,
 				C14139D01688F3E4005556BD /* Main_Menu_Bg.png */,
 				C14139D41688F6D4005556BD /* Personal_Status_Bg.png */,
+				C1413A07168CC3C2005556BD /* HitWho_FullView.jpg */,
 			);
 			name = Background;
 			sourceTree = "<group>";
@@ -1408,6 +1416,7 @@
 				C14139CC1688F393005556BD /* Option_Button.png */,
 				C14139CD1688F393005556BD /* Play_Button.png */,
 				C14139D21688F50B005556BD /* Friends_Button.png */,
+				C1413A03168CC14D005556BD /* Invite_Button.png */,
 				C14139EF168CBD2E005556BD /* Battle_Button.png */,
 				C14139F9168CBD6D005556BD /* HitWho_Ok_But.png */,
 				C14139FB168CBD85005556BD /* HitWho_ScrollDown_Icon.png */,
@@ -2671,6 +2680,9 @@
 				C14139FE168CBD98005556BD /* HitWho_Shield_Icon.png in Resources */,
 				C1413A01168CBDC0005556BD /* HitWho_LeftArrow.png in Resources */,
 				C1413A02168CBDC0005556BD /* HitWho_RightArrow.png in Resources */,
+				C1413A04168CC14D005556BD /* Invite_Button.png in Resources */,
+				C1413A06168CC306005556BD /* HitWho_Hammer.png in Resources */,
+				C1413A08168CC3C3005556BD /* HitWho_FullView.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
