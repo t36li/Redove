@@ -71,24 +71,23 @@
 
 // viewdidload gets called before this
 -(void)viewWillAppear:(BOOL)animated {
-    
-    CGRect frame = table.frame;
-    frame.size = CGSizeMake(140, 228);
-    table.frame = frame;
     self.navigationController.navigationBarHidden = YES;
-    
-    [faceView setContentMode:UIViewContentModeScaleToFill];
-    [bodyView setContentMode:UIViewContentModeScaleToFill];
-    
-    faceView.image = nil;
-    bodyView.image = nil;
-}
-
--(void) viewDidAppear:(BOOL)animated{
-    
     [[FBSingletonNew sharedInstance] setDelegate:self];
     [tablepull setDelegate:self];
     
+    CGRect frame = table.frame;
+    frame.size = CGSizeMake(160, 240);
+    table.frame = frame;
+    
+    [faceView setContentMode:UIViewContentModeScaleAspectFit];
+    [bodyView setContentMode:UIViewContentModeScaleToFill];
+    
+    //set initial portrait to be empty
+    faceView.image = nil;
+    bodyView.image = nil;
+    hitNumber.image = nil;
+    
+    //if hammers are down, send them up
     if (isHammerDown) {
         [self sendHammersUpWithBlock:^(BOOL finished) {
             isHammerDown = NO;
@@ -121,22 +120,20 @@
     [self getFriendDBInfo:friendArray];
 }
 
-//-(void) FBSingletonHitWhoIDListLoaded:(NSArray *)friendUsingAppID{
-//    NSLog(@"%@",friendUsingAppID);
-//    
-//    //comment might be userful when cache the friendsArray [straighters remain the same unless pull to refresh]
-//    
-//    //if ([[[UserInfo sharedInstance] friendArray] friends] == nil){
-//        [self getFriendDBInfo:friendUsingAppID];
-//    //}
-//    //else{
-//    //    resultFriends = [NSArray arrayWithArray:[[[UserInfo sharedInstance] friendArray] friends]];
-//    //}
-//}
+/*-(void) FBSingletonHitWhoIDListLoaded:(NSArray *)friendUsingAppID{
+    NSLog(@"%@",friendUsingAppID);
+    
+    //comment might be userful when cache the friendsArray [straighters remain the same unless pull to refresh]
+    
+    if ([[[UserInfo sharedInstance] friendArray] friends] == nil){
+        [self getFriendDBInfo:friendUsingAppID];
+    }
+    else{
+        resultFriends = [NSArray arrayWithArray:[[[UserInfo sharedInstance] friendArray] friends]];
+    }
+}*/
 
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #pragma mark - UITableView Datasource and Delegate Methods
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 70;
 }
@@ -163,7 +160,7 @@
         cell = (hitFriendCell *)[nib objectAtIndex:0];
         cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:HitWhoFriendListCell]];
         [cell.backgroundView setClipsToBounds:YES];
-        [cell.backgroundView setContentMode:UIViewContentModeScaleAspectFill];
+        [cell.backgroundView setContentMode:UIViewContentModeScaleToFill];
         cell.spinner = [[SpinnerView alloc] initWithFrame:cell.containerView.bounds];
     }
         
@@ -227,7 +224,6 @@
     }
 }
 
-
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error{
     NSLog(@"Load Database Failed:%@",error);
     
@@ -262,7 +258,6 @@
 }
 
 //////pull the table///////////
-
 -(void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view{
     //**[[FBSingleton sharedInstance] setSavedFriendsUsingApp:nil];
     //might be userful:
@@ -289,13 +284,14 @@
 -(IBAction)cancelTouched:(id)sender {
     if (friendSelected == nil)
         return;
+    friendSelected = nil;
+    [selectedHits removeAllObjects];
+    //[selectedHits removeObject:friendSelected];
     
-    [selectedHits removeObject:friendSelected];
-    
-    if (selectedHits.count > 0)
-        friendSelected = [selectedHits lastObject];
-    else
-        friendSelected = nil;
+    //if (selectedHits.count > 0)
+      //  friendSelected = [selectedHits lastObject];
+    //else
+      //  friendSelected = nil;
     
     [self updateHitWindow];
     [self switchMainViewToIndex];
@@ -425,6 +421,7 @@
     if (selectedHits.count <= 0) {
         faceView.image = nil;
         bodyView.image = nil;
+        hitNumber.image = nil;
         return;
     }
     
@@ -444,11 +441,12 @@
             break;
     }
     
-    CurrentEquip *ce = friendSelected.currentEquip;
+    //CurrentEquip *ce = friendSelected.currentEquip;
     faceView.image = friendSelected.head.headImage;
-    bodyView.image = [UIImage imageNamed:ce.body];
+    bodyView.image = [UIImage imageNamed:standard_blue_body];
 }
 
+#pragma mark - hammer animations
 -(void) sendHammersDownWithBlock:(void(^)(BOOL finished))block {
     if (isHammerDown)
         return;
