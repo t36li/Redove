@@ -74,17 +74,6 @@
 		C14139FE168CBD98005556BD /* HitWho_Shield_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C14139FD168CBD98005556BD /* HitWho_Shield_Icon.png */; };
 		C1413A01168CBDC0005556BD /* HitWho_LeftArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = C14139FF168CBDC0005556BD /* HitWho_LeftArrow.png */; };
 		C1413A02168CBDC0005556BD /* HitWho_RightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A00168CBDC0005556BD /* HitWho_RightArrow.png */; };
-		C1413A04168CC14D005556BD /* Invite_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A03168CC14D005556BD /* Invite_Button.png */; };
-		C1413A06168CC306005556BD /* HitWho_Hammer.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A05168CC306005556BD /* HitWho_Hammer.png */; };
-		C1413A08168CC3C3005556BD /* HitWho_FullView.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1413A07168CC3C2005556BD /* HitWho_FullView.jpg */; };
-		C1413A20168CFACC005556BD /* hill_level_spritesheet-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1413A1C168CFAC9005556BD /* hill_level_spritesheet-hd.plist */; };
-		C1413A21168CFACC005556BD /* hill_level_spritesheet-hd.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = C1413A1D168CFACA005556BD /* hill_level_spritesheet-hd.pvr.ccz */; };
-		C1413A22168CFACC005556BD /* hill_level_spritesheet.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1413A1E168CFACA005556BD /* hill_level_spritesheet.plist */; };
-		C1413A23168CFACC005556BD /* hill_level_spritesheet.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = C1413A1F168CFACB005556BD /* hill_level_spritesheet.pvr.ccz */; };
-		C1413A27168CFD99005556BD /* hill_scoreboard.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A25168CFD98005556BD /* hill_scoreboard.png */; };
-		C1413A2B168D03DA005556BD /* hills_finalView.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1413A2A168D03D9005556BD /* hills_finalView.jpg */; };
-		C1413A2D168D03E6005556BD /* SeaLevel_finalView.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1413A2C168D03E5005556BD /* SeaLevel_finalView.jpg */; };
-		C1413A2F168D09C9005556BD /* hearts.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A2E168D09C8005556BD /* hearts.png */; };
 		C14385AB15C8C15A008D9AE7 /* LoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C14385AA15C8C15A008D9AE7 /* LoadViewController.m */; };
 		C147167A1594ACCA0002FF21 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14716791594ACCA0002FF21 /* QuartzCore.framework */; };
 		C147167C1594ACCA0002FF21 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C147167B1594ACCA0002FF21 /* OpenGLES.framework */; };
