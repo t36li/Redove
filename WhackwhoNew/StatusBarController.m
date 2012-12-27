@@ -7,16 +7,13 @@
 //
 
 #import "StatusBarController.h"
-#import "StatusViewLayer.h"
-#import "HelloWorldLayer.h"
 #import "FacebookShareViewController.h"
-#import "Dragbox.h"
-//#import "StatusViewLayer.h"
-//#import "HelloWorldLayer.h"
-//#import "Dragbox.h"
 #import "User.h"
 #import "HitUpdate.h"
 #import "UserInfo.h"
+//#import "StatusViewLayer.h"
+//#import "HelloWorldLayer.h"
+//#import "Dragbox.h"
 
 //define tags
 //#define helmet_Label 1

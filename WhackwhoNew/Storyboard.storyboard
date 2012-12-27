@@ -1346,7 +1346,7 @@
             <relationships>
                 <relationship kind="action" name="Back_Touched:"/>
                 <relationship kind="action" name="Ok_Pressed:"/>
-                <relationship kind="action" name="saveToDB_Touched:"/>
+                <relationship kind="action" name="publish_touched:"/>
                 <relationship kind="outlet" name="bodyView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="faceView" candidateClass="UIImageView"/>
