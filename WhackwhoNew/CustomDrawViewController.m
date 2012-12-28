@@ -62,41 +62,7 @@
     return toInterfaceOrientation == UIInterfaceOrientationPortrait;
 }
 
--(void) touchedLocation:(UITapGestureRecognizer *)recognizer {
-    UIImageView *markView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cancel.png"]];
-    markView.frame = CGRectMake(0, 0, 40, 40);
-    CGPoint location = [recognizer locationInView:containerView];
-    markView.center = location;
-    [containerView addSubview:markView];
-    
-    UserInfo *user = [UserInfo sharedInstance];
-    if (CGPointEqualToPoint(user.leftEyePosition, CGPointZero)) {
-        user.leftEyePosition = location;
-    } else if (CGPointEqualToPoint(user.rightEyePosition, CGPointZero)) {
-        user.rightEyePosition = location;
-    } else if (CGPointEqualToPoint(user.mouthPosition, CGPointZero)) {
-        user.mouthPosition = location;
-    }
-    
-    [containerView removeGestureRecognizer:recognizer];
-    [self setUserPoint];
-}
 
--(void) setUserPoint {
-    UserInfo *user = [UserInfo sharedInstance];
-    if (CGPointEqualToPoint(user.leftEyePosition, CGPointZero)) {
-        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchedLocation:)];
-        [containerView addGestureRecognizer:gesture];
-    } else if (CGPointEqualToPoint(user.rightEyePosition, CGPointZero)) {
-        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchedLocation:)];
-        [containerView addGestureRecognizer:gesture];
-    } else if (CGPointEqualToPoint(user.mouthPosition, CGPointZero)) {
-        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchedLocation:)];
-        [containerView addGestureRecognizer:gesture];
-    } else {
-        [self dismissModalViewControllerAnimated:YES];
-    }
-}
 
 -(NSUInteger) supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
@@ -112,11 +78,32 @@
 
 -(IBAction)done:(id)sender {
     UserInfo *user = [UserInfo sharedInstance];
-    [user setLeftEyePosition:CGPointZero];
-    [user setRightEyePosition:CGPointZero];
-    [user setMouthPosition:CGPointZero];
+    [user clearUserFacialFeaturePositions];
     
-    [self setUserPoint];
+    for (UIButton *btn in buttonSet) {
+        switch (btn.tag) {
+            case LEFT_EYE:
+                [user setLeftEyePosition:[btn convertPoint:btn.center toView:containerView]];
+                break;
+            case RIGHT_EYE:
+                [user setRightEyePosition:[btn convertPoint:btn.center toView:containerView]];
+                break;
+            case LIPS:
+                [user setMouthPosition:[btn convertPoint:btn.center toView:containerView]];
+                break;
+            case NOSE:
+                [user setNosePosition:[btn convertPoint:btn.center toView:containerView]];
+                break;
+            case LEFT_EAR:
+                [user setLeftEarPosition:[btn convertPoint:btn.center toView:containerView]];
+                break;
+            case RIGHT_EAR:
+                [user setRightEarPosition:[btn convertPoint:btn.center toView:containerView]];
+                break;
+        }
+    }
+    
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 -(void)didPanButton:(UIPanGestureRecognizer *)recognizer {
@@ -124,5 +111,18 @@
     recognizer.view.center = CGPointMake(recognizer.view.center.x + translation.x,
                                          recognizer.view.center.y + translation.y);
     [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
+}
+
+- (void) viewDidUnload {
+    for (UIButton *btn in buttonSet) {
+        while ([btn.gestureRecognizers count] > 0) {
+            [btn removeGestureRecognizer:[btn.gestureRecognizers objectAtIndex:0]];
+        }
+    }
+    
+    [buttonSet removeAllObjects];
+    buttonSet = nil;
+    
+    [super viewDidUnload];
 }
 @end

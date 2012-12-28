@@ -76,4 +76,5 @@ NSString *const UserChinPosition = @"ChinPosition";
 +(UIImage *)resizeImage:(UIImage *)image toSize:(CGSize)newSize;
 -(void)LogInTypeChanged:(LogInType) type;
 -(void)closeInstance;
+-(void)clearUserFacialFeaturePositions;
 @end
