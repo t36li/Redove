@@ -11,6 +11,7 @@
 @implementation UserInfo
 
 @synthesize userName, userId, currentLogInType, headId, whackWhoId, gender, leftEyePosition, rightEyePosition, mouthPosition, faceRect, croppedImage, usrImg, currentEquip, storageInv,friendArray,myFriendPlayers,popularity;//,profileImageView;
+@synthesize leftEarPosition, rightEarPosition, nosePosition;
 
 static UserInfo *sharedInstance = nil;
 
