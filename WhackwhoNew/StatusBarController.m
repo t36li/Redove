@@ -197,8 +197,9 @@
 -(void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response{
     //NSLog(@"request body:%@",[request HTTPBodyString]);
     //NSLog(@"request url:%@",[request URL]);
-    //NSLog(@"response statue: %d", [response statusCode]);
-    NSLog(@"response body:%@",[response bodyAsString]);
+    NSLog(@"request resourcePath: %@",[request resourcePath]);
+    NSLog(@"response statue: %d", [response statusCode]);
+    //NSLog(@"response body:%@",[response bodyAsString]);
     
     [popularity_lbl setText:[response bodyAsString]];
     NSInteger popular = [[response bodyAsString] intValue];

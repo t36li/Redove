@@ -256,14 +256,16 @@
     NSLog(@"request url:%@",[request URL]);
     NSLog(@"response statue: %d", [response statusCode]);
     NSLog(@"response body:%@",[response bodyAsString]);
+    
+    //GAME START WITHOUT CHECKING HITS UPDATE ERRORS.
+    if ([request resourcePath] == @"/hits/update"){
+        [[Game sharedGame] setReadyToStart:YES];
+    }
 }
 
 //////pull the table///////////
 -(void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view{
-    //**[[FBSingleton sharedInstance] setSavedFriendsUsingApp:nil];
-    //might be userful:
-    //[[[UserInfo sharedInstance] friendArray] setFriends:nil];
-    //**[[FBSingleton sharedInstance] RequestHitWhoList];
+
     [[FBSingletonNew sharedInstance] requestFriendsUsing];
 }
 
@@ -304,12 +306,12 @@
     void (^block)(BOOL) = ^(BOOL finished) {
         if (finished) {
             
-            Game *game = [Game sharedGame];
+            [self updateFriendsHit];
             
-            while (!game.readyToStart);
+            while (![Game sharedGame].readyToStart);
             [self performSegueWithIdentifier:ChooseToGame sender:sender];
             isHammerDown = YES;
-            game.readyToStart = NO;
+            [Game sharedGame].readyToStart = NO;
         }
     };
     
@@ -488,6 +490,19 @@
                      completion:block];
 }
 
-
+-(void)updateFriendsHit{
+    RKParams* params = [RKParams params];
+    NSMutableArray *requestArray = [[NSMutableArray alloc] init];
+    for (Friend *f in selectedHits){
+        [requestArray addObject:[NSString stringWithFormat:@"%@,%@",f.whackwho_id,f.mediaType_id]];
+    }
+    [params setValue:[requestArray componentsJoinedByString:@"|"] forParam:@"hitmembers"];//e.g "45,1|23,1|46,1" (whackID|mediatype_id)
+    NSLog(@"%@",[requestArray componentsJoinedByString:@"|"]);
+    
+    // Log info about the serialization
+    NSLog(@"RKParams HTTPHeaderValueForContentType = %@", [params HTTPHeaderValueForContentType]);
+    
+    [[RKObjectManager sharedManager].client post:@"/hits/update" params:params delegate:self];
+}
 
 @end

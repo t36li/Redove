@@ -87,7 +87,7 @@
     
     //friend mapping:
     RKObjectMapping *friendInfoMapping = [RKObjectMapping mappingForClass:[Friend class]];
-    [friendInfoMapping mapKeyPath:@"mediatype_id" toAttribute:@"mediatype_id"];
+    [friendInfoMapping mapKeyPath:@"mediatype_id" toAttribute:@"mediaType_id"];
     [friendInfoMapping mapKeyPath:@"whackwho_id" toAttribute:@"whackwho_id"];
     [friendInfoMapping mapKeyPath:@"media_key" toAttribute:@"user_id"];
     [friendInfoMapping mapKeyPath:@"name" toAttribute:@"name"];

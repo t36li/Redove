@@ -39,6 +39,7 @@
     copy.whackwho_id = [NSString stringWithString:self.whackwho_id];
     copy.user_id = [NSString stringWithString:self.user_id];
     copy.popularity = self.popularity;
+    copy.mediaType_id = self.mediaType_id;
     
     return copy;
 }
