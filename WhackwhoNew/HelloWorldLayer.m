@@ -325,6 +325,8 @@
     } while ([self checkLocation:CGPointMake(x.integerValue, y.integerValue)]);
     
     [head setZOrder:zOrder.integerValue];
+    [head setZOrder:-5];
+
     [head setPosition:CGPointMake(x.integerValue, y.integerValue)];
     [head convertToWorldSpace:head.position];
     
