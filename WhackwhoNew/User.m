@@ -11,7 +11,7 @@
 #import "Friend.h"
 
 @implementation User
-@synthesize mediaTypeId,whackWhoId,headId,mediaKey,leftEyePosition,rightEyePosition,mouthPosition,faceRect,registeredDate, userImgURL, currentEquip, storageInv;
+@synthesize mediaTypeId,whackWhoId,headId,mediaKey,leftEyePosition,rightEyePosition,mouthPosition,faceRect,registeredDate, userImgURL, currentEquip, storageInv,popularity;
 
 -(void)copyToUserInfo{
     UserInfo *usrInfo = [UserInfo sharedInstance];
@@ -25,6 +25,7 @@
     [usrInfo setFaceRect:CGRectFromString(faceRect)];
     [usrInfo setCurrentEquip:[currentEquip currentEquipInFileNames]];
     [usrInfo setStorageInv:[storageInv setStorageArrayInFileNames]];
+    [usrInfo setPopularity:popularity];
     usrInfo->usrImgURL = userImgURL;
     
     NSURL *url = [NSURL URLWithString:userImgURL];
@@ -46,6 +47,7 @@
     whackWhoId = usrInfo.whackWhoId;
     headId = usrInfo.headId;
     mediaKey = usrInfo.userId;
+    popularity = usrInfo.popularity;
     leftEyePosition = NSStringFromCGPoint(usrInfo.leftEyePosition);
     rightEyePosition = NSStringFromCGPoint(usrInfo.rightEyePosition);
     mouthPosition = NSStringFromCGPoint(usrInfo.mouthPosition);
@@ -85,13 +87,14 @@
     
     //friend mapping:
     RKObjectMapping *friendInfoMapping = [RKObjectMapping mappingForClass:[Friend class]];
-    [friendInfoMapping mapKeyPath:@"mediatype_id" toAttribute:@"mediatype_id"];
+    [friendInfoMapping mapKeyPath:@"mediatype_id" toAttribute:@"mediaType_id"];
     [friendInfoMapping mapKeyPath:@"whackwho_id" toAttribute:@"whackwho_id"];
     [friendInfoMapping mapKeyPath:@"media_key" toAttribute:@"user_id"];
     [friendInfoMapping mapKeyPath:@"name" toAttribute:@"name"];
     [friendInfoMapping mapKeyPath:@"isPlayer" toAttribute:@"isPlayer"];
     [friendInfoMapping mapKeyPath:@"head_id" toAttribute:@"head_id"];
     [friendInfoMapping mapKeyPath:@"gender" toAttribute:@"gender"];
+    [friendInfoMapping mapKeyPath:@"hits" toAttribute:@"popularity"];
     [friendInfoMapping mapKeyPath:@"head" toRelationship:@"head" withMapping:headMapping];
     [friendInfoMapping mapKeyPath:@"currentEquip" toRelationship:@"currentEquip" withMapping:curEquipMapping];
     [[RKObjectManager sharedManager].mappingProvider setMapping:friendInfoMapping forKeyPath:@"friend"];
@@ -122,6 +125,7 @@
     [userInfoMapping mapKeyPath:@"mouthPosition" toAttribute:@"mouthPosition"];
     [userInfoMapping mapKeyPath:@"faceRect" toAttribute:@"faceRect"];
     [userInfoMapping mapKeyPath:@"userImgURL" toAttribute:@"userImgURL"];
+    [userInfoMapping mapKeyPath:@"hits" toAttribute:@"popularity"];
     [userInfoMapping mapKeyPath:@"currentEquip" toRelationship:@"currentEquip" withMapping:curEquipMapping];
     [userInfoMapping mapKeyPath:@"storageInv" toRelationship:@"storageInv" withMapping:storageInvMapping];
     

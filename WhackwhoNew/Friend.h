@@ -19,6 +19,7 @@
     NSString *name;
     NSString *gender;
     NSString *head_id;
+    NSInteger popularity;
     Head *head;
     CurrentEquip *currentEquip;
     BOOL isPlayer;
@@ -28,6 +29,7 @@
 @property (nonatomic, strong) CurrentEquip *currentEquip;
 @property (nonatomic, strong) Head *head;
 @property (nonatomic, assign) BOOL isPlayer;
+@property (nonatomic, assign) NSInteger popularity;
 
 @end
 

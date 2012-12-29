@@ -35,6 +35,7 @@ NSString *const UserChinPosition = @"ChinPosition";
     // Avatar stuff
     NSInteger whackWhoId;
     NSInteger headId;
+    NSInteger popularity;
     
     //@private
     NSString *usrImgURL;
@@ -59,7 +60,7 @@ NSString *const UserChinPosition = @"ChinPosition";
 
 @property (nonatomic) CGRect faceRect;
 //@property (nonatomic) id<UserInfoDelegate> delegate;
-@property (nonatomic) NSInteger currentLogInType, whackWhoId, headId;
+@property (nonatomic) NSInteger currentLogInType, whackWhoId, headId,popularity;
 
 @property (nonatomic, strong) UIImage *croppedImage, *usrImg;
 @property (nonatomic, retain) CurrentEquip *currentEquip;

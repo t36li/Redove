@@ -24,6 +24,7 @@
 @property (nonatomic) NSString *identity;
 @property (nonatomic) IBOutlet UIView *containerView;
 @property (nonatomic, strong) SpinnerView *spinner;
+@property (strong, nonatomic) IBOutlet UILabel *popularity;
 
 
 @end
