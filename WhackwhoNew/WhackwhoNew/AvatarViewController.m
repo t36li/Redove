@@ -318,7 +318,7 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     
     CustomDrawViewController *drawController = [[CustomDrawViewController alloc] initWithNibName:@"CustomDrawViewController" bundle:nil];
     [self presentModalViewController:drawController animated:YES];
-    ((CustomDrawView *)drawController.view).drawImageView.image = tempPhoto;
+    drawController.containerView.drawImageView.image = tempPhoto;
 }
 
 @end

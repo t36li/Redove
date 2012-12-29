@@ -43,6 +43,7 @@ NSString *const UserChinPosition = @"ChinPosition";
     UIImage *usrImg;
     //UIImage *gameImage;
     CGPoint leftEyePosition, rightEyePosition, mouthPosition;
+    CGPoint nosePosition, leftEarPosition, rightEarPosition;
     CGRect faceRect;
     
     CurrentEquip *currentEquip;
@@ -54,7 +55,9 @@ NSString *const UserChinPosition = @"ChinPosition";
 }
 
 @property (nonatomic, strong) NSString *userId, *userName, *gender;
-@property (nonatomic) CGPoint leftEyePosition, rightEyePosition, mouthPosition;;
+@property (nonatomic) CGPoint leftEyePosition, rightEyePosition, mouthPosition;
+@property (nonatomic) CGPoint nosePosition, leftEarPosition, rightEarPosition;
+
 @property (nonatomic) CGRect faceRect;
 //@property (nonatomic) id<UserInfoDelegate> delegate;
 @property (nonatomic) NSInteger currentLogInType, whackWhoId, headId,popularity;
@@ -74,4 +77,5 @@ NSString *const UserChinPosition = @"ChinPosition";
 +(UIImage *)resizeImage:(UIImage *)image toSize:(CGSize)newSize;
 -(void)LogInTypeChanged:(LogInType) type;
 -(void)closeInstance;
+-(void)clearUserFacialFeaturePositions;
 @end

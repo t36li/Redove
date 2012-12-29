@@ -31,8 +31,18 @@ static UserInfo *sharedInstance = nil;
     return sharedInstance;
 }
 
--(void) clearUserInfo{
+-(void) clearUserInfo {
     sharedInstance = nil;
+}
+
+-(void) clearUserFacialFeaturePositions {
+    mouthPosition = CGPointZero;
+    leftEarPosition = CGPointZero;
+    rightEarPosition = CGPointZero;
+    leftEyePosition = CGPointZero;
+    rightEyePosition = CGPointZero;
+    nosePosition = CGPointZero;
+    faceRect = CGRectZero;
 }
 
 + (UIImage *) imageWithView:(UIView *)view
