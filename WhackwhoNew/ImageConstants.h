@@ -15,8 +15,18 @@
 //backgrounds
 #define MainPage_bg @"Main_Menu_Bg.png"
 #define SelectToLogIn_bg @"Choose_Connections_Bg.jpg"
-#define FriendList_bg @"friend list (background).png"
+#define hills_background @"hill_background.png"
+#define hill_topmid @"hill2.png"
+#define hill_topleft @"hill1.png"
+#define hill_topright @"hill3.png"
+#define hill_midmid @"hill4.png"
+#define hill_midleft @"hill5.png"
+#define hill_midright @"hill6.png"
+#define hill_botmid @"hill7.png"
+#define hill_botleft @"hill8.png"
+#define hill_botright @"hill9.png"
 
+#define FriendList_bg @"friend list (background).png"
 #define loading_bg @"loading page final background.png"
 #define store_bg @"store background.png"
 

@@ -136,29 +136,29 @@
         pauseMenu = [CCMenu menuWithItems:pause, nil];
         pauseMenu.anchorPoint = ccp(0,0);
         pauseMenu.position = ccp(20,20);
-        [self addChild:pauseMenu z:10];
+        [self addChild:pauseMenu z:101];
         
         //add "life" sprites
         for (int i = 0; i < lives; i++) {
             CCSprite *life = [CCSprite spriteWithFile:heartSp];
             life.anchorPoint = ccp(0,0);
-            life.position = ccp(winSize.width - (i + 1)*life.contentSize.width, winSize.height - life.contentSize.height);
+            life.position = ccp(winSize.width - (i + 1)*(life.contentSize.width+10), winSize.height - life.contentSize.height);
             [hearts addObject:life];
-            [self addChild:life z:103];
+            [self addChild:life z:101];
         }
         
         //add "Scoreboard"
         scoreboard = [CCSprite spriteWithFile:scoreboardSp];
         scoreboard.anchorPoint = ccp(0, 0);
         scoreboard.position = ccp(winSize.width/2 - scoreboard.contentSize.width/2, 0);
-        [self addChild:scoreboard z:-102];
+        [self addChild:scoreboard z:101];
         
         //add "score" label
         scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"chalkduster" fontSize:50];
         scoreLabel.anchorPoint = ccp(0.5, 0.5);
         scoreLabel.color = ccc3(255, 200, 0);
         scoreLabel.position = ccp(scoreboard.contentSize.width/2, 40);
-        [scoreboard addChild:scoreLabel z:104];
+        [scoreboard addChild:scoreLabel z:101];
         
         
         //add "hits" label
@@ -167,7 +167,7 @@
         hitsLabel.anchorPoint = ccp(0.5,1);
         hitsLabel.position = ccp(winSize.width/2, winSize.height - 10);
         //hitsLabel.scale = 0.1;
-        [self addChild:hitsLabel z:10];
+        [self addChild:hitsLabel z:101];
         hitsLabel.visible = FALSE;
         
         [self schedule:@selector(timerUpdate:) interval:0.5f];

@@ -364,9 +364,9 @@
         int randInt;
         
         //testing purposes
-        for (Friend *friend in resultStrangers) {
-            NSLog(@"%@", friend.name);
-        }
+        //for (Friend *friend in resultStrangers) {
+        //NSLog(@"%@", friend.name);
+        //}
         
         while (TRUE) {
             randInt = arc4random() % resultStrangers.count;

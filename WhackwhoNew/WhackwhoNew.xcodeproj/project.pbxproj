@@ -99,6 +99,11 @@
 		C147181C1594AF1E0002FF21 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C147181B1594AF1E0002FF21 /* Storyboard.storyboard */; };
 		C14718551594F0AE0002FF21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C14718541594F0AE0002FF21 /* AppDelegate.m */; };
 		C147185B1594F1AF0002FF21 /* CocosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C147185A1594F1AF0002FF21 /* CocosViewController.m */; };
+		C1482710168E1F9100C5680D /* Hills_Level_Background-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = C148270C168E1F9100C5680D /* Hills_Level_Background-hd.plist */; };
+		C1482711168E1F9100C5680D /* Hills_Level_Background-hd.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = C148270D168E1F9100C5680D /* Hills_Level_Background-hd.pvr.ccz */; };
+		C1482712168E1F9100C5680D /* Hills_Level_Background.plist in Resources */ = {isa = PBXBuildFile; fileRef = C148270E168E1F9100C5680D /* Hills_Level_Background.plist */; };
+		C1482713168E1F9100C5680D /* Hills_Level_Background.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = C148270F168E1F9100C5680D /* Hills_Level_Background.pvr.ccz */; };
+		C1482715168E207C00C5680D /* temp_upload.png in Resources */ = {isa = PBXBuildFile; fileRef = C1482714168E207C00C5680D /* temp_upload.png */; };
 		C14B63B715AF5C3700376C91 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = C14B63B615AF5C3700376C91 /* Game.m */; };
 		C14B63BD15AF5CE000376C91 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C14B63BC15AF5CE000376C91 /* HelloWorldLayer.m */; };
 		C151791C15C36D3E00A4378F /* hit effect.png in Resources */ = {isa = PBXBuildFile; fileRef = C151791B15C36D3E00A4378F /* hit effect.png */; };
@@ -656,10 +661,6 @@
 		C1413A03168CC14D005556BD /* Invite_Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Invite_Button.png; sourceTree = "<group>"; };
 		C1413A05168CC306005556BD /* HitWho_Hammer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_Hammer.png; sourceTree = "<group>"; };
 		C1413A07168CC3C2005556BD /* HitWho_FullView.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HitWho_FullView.jpg; sourceTree = "<group>"; };
-		C1413A1C168CFAC9005556BD /* hill_level_spritesheet-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "hill_level_spritesheet-hd.plist"; sourceTree = "<group>"; };
-		C1413A1D168CFACA005556BD /* hill_level_spritesheet-hd.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hill_level_spritesheet-hd.pvr.ccz"; sourceTree = "<group>"; };
-		C1413A1E168CFACA005556BD /* hill_level_spritesheet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hill_level_spritesheet.plist; sourceTree = "<group>"; };
-		C1413A1F168CFACB005556BD /* hill_level_spritesheet.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = hill_level_spritesheet.pvr.ccz; sourceTree = "<group>"; };
 		C1413A25168CFD98005556BD /* hill_scoreboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hill_scoreboard.png; sourceTree = "<group>"; };
 		C1413A2A168D03D9005556BD /* hills_finalView.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hills_finalView.jpg; sourceTree = "<group>"; };
 		C1413A2C168D03E5005556BD /* SeaLevel_finalView.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SeaLevel_finalView.jpg; sourceTree = "<group>"; };
@@ -695,6 +696,11 @@
 		C14718541594F0AE0002FF21 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = WhackwhoNew/AppDelegate.m; sourceTree = "<group>"; };
 		C14718591594F1AF0002FF21 /* CocosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocosViewController.h; path = WhackwhoNew/CocosViewController.h; sourceTree = "<group>"; };
 		C147185A1594F1AF0002FF21 /* CocosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CocosViewController.m; path = WhackwhoNew/CocosViewController.m; sourceTree = "<group>"; };
+		C148270C168E1F9100C5680D /* Hills_Level_Background-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Hills_Level_Background-hd.plist"; sourceTree = "<group>"; };
+		C148270D168E1F9100C5680D /* Hills_Level_Background-hd.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hills_Level_Background-hd.pvr.ccz"; sourceTree = "<group>"; };
+		C148270E168E1F9100C5680D /* Hills_Level_Background.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Hills_Level_Background.plist; sourceTree = "<group>"; };
+		C148270F168E1F9100C5680D /* Hills_Level_Background.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hills_Level_Background.pvr.ccz; sourceTree = "<group>"; };
+		C1482714168E207C00C5680D /* temp_upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temp_upload.png; sourceTree = "<group>"; };
 		C14B63B515AF5C3700376C91 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		C14B63B615AF5C3700376C91 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		C14B63BC15AF5CE000376C91 /* HelloWorldLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
@@ -1404,10 +1410,10 @@
 		69C95E94159A51E0009966DA /* Background */ = {
 			isa = PBXGroup;
 			children = (
-				C1413A1C168CFAC9005556BD /* hill_level_spritesheet-hd.plist */,
-				C1413A1D168CFACA005556BD /* hill_level_spritesheet-hd.pvr.ccz */,
-				C1413A1E168CFACA005556BD /* hill_level_spritesheet.plist */,
-				C1413A1F168CFACB005556BD /* hill_level_spritesheet.pvr.ccz */,
+				C148270C168E1F9100C5680D /* Hills_Level_Background-hd.plist */,
+				C148270D168E1F9100C5680D /* Hills_Level_Background-hd.pvr.ccz */,
+				C148270E168E1F9100C5680D /* Hills_Level_Background.plist */,
+				C148270F168E1F9100C5680D /* Hills_Level_Background.pvr.ccz */,
 				D08F7C661645BD25001FB9A3 /* seaLevelBackground.plist */,
 				D08F7C671645BD25001FB9A3 /* seaLevelBackground.pvr.ccz */,
 				D08F7C681645BD25001FB9A3 /* seaLevelBackground-hd.plist */,
@@ -1427,6 +1433,7 @@
 		69C95E95159A51EF009966DA /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				C1482714168E207C00C5680D /* temp_upload.png */,
 				C14139DE1688F813005556BD /* Ok_Button.png */,
 				C14139E01688F88D005556BD /* Undo_Button_1.png */,
 				C14139E11688F88D005556BD /* Undo_Button_2.png */,
@@ -2713,6 +2720,11 @@
 				D0442EC8168CE8EF00677CC3 /* camera_undo.png in Resources */,
 				D0442EC9168CE8EF00677CC3 /* camera_undo_depressed.png in Resources */,
 				D0442ECA168CE8EF00677CC3 /* camera_background.png in Resources */,
+				C1482710168E1F9100C5680D /* Hills_Level_Background-hd.plist in Resources */,
+				C1482711168E1F9100C5680D /* Hills_Level_Background-hd.pvr.ccz in Resources */,
+				C1482712168E1F9100C5680D /* Hills_Level_Background.plist in Resources */,
+				C1482713168E1F9100C5680D /* Hills_Level_Background.pvr.ccz in Resources */,
+				C1482715168E207C00C5680D /* temp_upload.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
