@@ -54,6 +54,8 @@
 -(void)copyToUserInfo{
     NSMutableArray *Rfriends = [[NSMutableArray alloc] init];
     NSMutableArray *Rstrangers = [[NSMutableArray alloc] init];
+
+     
     for (Friend *f in self.friends){
         f.currentEquip = [f.currentEquip currentEquipInFileNames];
         [Rfriends addObject:f];
@@ -62,6 +64,7 @@
         s.currentEquip = [s.currentEquip currentEquipInFileNames];
         [Rstrangers addObject:s];
     }
+     
     
     FriendArray *fa = [[FriendArray alloc]init];
     fa.friends = Rfriends;
@@ -73,6 +76,8 @@
     NSMutableArray *Rfriends = [[NSMutableArray alloc] init];
     NSMutableArray *Rstrangers = [[NSMutableArray alloc] init];
     
+   
+     
     for (Friend *f in [[[UserInfo sharedInstance] friendArray] friends]){
         f.currentEquip = [f.currentEquip currentEquipInIDs];
         [Rfriends addObject:f];
@@ -81,6 +86,7 @@
         s.currentEquip = [s.currentEquip currentEquipInIDs];
         [Rstrangers addObject:s];
     }
+    
     self.friends = nil;
     self.strangers = nil;
     self.friends = Rfriends;

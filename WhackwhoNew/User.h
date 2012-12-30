@@ -25,6 +25,7 @@
     NSString *rightEyePosition;
     NSString *mouthPosition;
     NSString *faceRect;
+    NSString *nosePosition, *leftEarPosition, *rightEarPosition;
     NSDate *registeredDate;
     CurrentEquip *currentEquip;//only id (redesign string as image filename when copying to userInfo
     StorageInv *storageInv;
@@ -39,6 +40,7 @@
 @property (nonatomic, retain) CurrentEquip *currentEquip;
 @property (nonatomic, retain) StorageInv *storageInv;
 @property (nonatomic) NSInteger popularity;
+@property (nonatomic) NSString *nosePosition, *leftEarPosition, *rightEarPosition;
 
 
 -(void)copyToUserInfo;

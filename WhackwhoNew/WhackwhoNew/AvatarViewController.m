@@ -219,6 +219,9 @@ PinchAxis pinchGestureRecognizerAxis(UIPinchGestureRecognizer *r) {
     [params setValue:user.rightEyePosition forParam:@"rightEyePosition"];
     [params setValue:user.mouthPosition forParam:@"mouthPosition"];
     [params setValue:user.faceRect forParam:@"faceRect"];
+    [params setValue:user.nosePosition forParam:@"nosePosition"];
+    [params setValue:user.leftEarPosition forParam:@"leftEarPosition"];
+    [params setValue:user.rightEarPosition forParam:@"rightEarPosition"];
     UIImage *uploadImage = usrInfo.croppedImage;
     NSData* imageData = UIImagePNGRepresentation(uploadImage);
     [params setData:imageData MIMEType:@"image/png" forParam:[NSString stringWithFormat:@"%d",user.headId]];

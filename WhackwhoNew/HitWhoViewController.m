@@ -231,7 +231,7 @@
 }
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object{
-    NSLog(@"loaded responses:%@",object);
+    //NSLog(@"loaded responses:%@",object);
     FriendArray *friendArray = object;
     [friendArray copyToUserInfo];
 
@@ -252,10 +252,10 @@
 }
 
 -(void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response{
-    NSLog(@"request body:%@",[request HTTPBodyString]);
-    NSLog(@"request url:%@",[request URL]);
+    //NSLog(@"request body:%@",[request HTTPBodyString]);
+    //NSLog(@"request url:%@",[request URL]);
     NSLog(@"response statue: %d", [response statusCode]);
-    NSLog(@"response body:%@",[response bodyAsString]);
+    //NSLog(@"response body:%@",[response bodyAsString]);
     
     //GAME START WITHOUT CHECKING HITS UPDATE ERRORS.
     if ([request resourcePath] == @"/hits/update"){
