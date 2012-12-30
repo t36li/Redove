@@ -125,4 +125,23 @@
     
     [super viewDidUnload];
 }
+
+-(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+    NSLog(@"didFailWithError: %@", error.description);
+    
+}
+
+-(void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response{
+    NSLog(@"request: '%@'",[request HTTPBodyString]);
+    NSLog(@"request Params: %@", [request params]);
+    NSLog(@"response code: %d",[response statusCode]);
+    
+    if ([request isPUT]) {
+        if ([response isOK]){
+            NSLog(@"image stored.");
+        }
+    }
+    
+    [self dismissModalViewControllerAnimated:YES];
+}
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomDrawView.h"
+#import <RestKit/RestKit.h>
 
 #define LEFT_EYE 1
 #define RIGHT_EYE 2
@@ -16,7 +17,7 @@
 #define LEFT_EAR 5
 #define RIGHT_EAR 6
 
-@interface CustomDrawViewController : UIViewController {
+@interface CustomDrawViewController : UIViewController <RKObjectLoaderDelegate> {
     IBOutlet CustomDrawView *containerView;
     IBOutlet UIButton *leftEyeButton, *rightEyeButton, *lipsButton, *noseButton, *leftEarButton, *rightEarButton;
     NSMutableSet *buttonSet;

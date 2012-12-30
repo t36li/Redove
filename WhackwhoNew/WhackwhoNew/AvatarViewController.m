@@ -27,6 +27,8 @@
 @implementation AvatarViewController
 @synthesize tempPhoto, tempCrop;
 @synthesize imageView, overlay, cameraController, wtfView, cameraOverlayView;
+
+
 /*
 typedef enum {
     PinchAxisNone,

@@ -45,7 +45,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="wZI-0E-4pI" kind="push" identifier="goToAvatar" id="gff-oY-V5c"/>
+                                    <action selector="pushCamera:" destination="vVV-bT-q6I" eventType="touchUpInside" id="ttF-qd-hgQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uQN-HI-g79" userLabel="Ok Button">
@@ -429,7 +429,7 @@
             <objects>
                 <viewController storyboardIdentifier="" title="Avatar" wantsFullScreenLayout="YES" id="wZI-0E-4pI" customClass="AvatarViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MKC-u7-6QS">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="W1T-gx-wNQ">
@@ -583,7 +583,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igT-g3-GWA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1006" y="-1064"/>
+            <point key="canvasLocation" x="-1198" y="-1084"/>
         </scene>
         <!--Options View Controller-->
         <scene sceneID="gWg-BX-wkF">
@@ -1348,6 +1348,7 @@
                 <relationship kind="action" name="Back_Touched:"/>
                 <relationship kind="action" name="Ok_Pressed:"/>
                 <relationship kind="action" name="publish_touched:"/>
+                <relationship kind="action" name="pushCamera:"/>
                 <relationship kind="outlet" name="bodyView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="faceView" candidateClass="UIImageView"/>

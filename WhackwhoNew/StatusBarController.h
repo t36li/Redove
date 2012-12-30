@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "StatusCocosDelegate.h"
 #import <RestKit/RestKit.h>
+#import "CameraOverlayControllerViewController.h"
+#import "CameraOverlayControllerViewControllerDelegate.h"
+#import "CustomDrawViewController.h"
 
-@interface StatusBarController : UIViewController<RKObjectLoaderDelegate, UIAlertViewDelegate> {
+@interface StatusBarController : UIViewController<RKObjectLoaderDelegate, UIAlertViewDelegate, CameraOverlayControllerViewControllerDelegate> {
+    
     IBOutlet UILabel *popularity_lbl;
     IBOutlet UILabel *high_score_lbl;
     IBOutlet UILabel *total_gp_lbl;
@@ -23,6 +27,16 @@
     
     //score storage
     NSMutableDictionary *dic;
+    
+    CameraOverlayControllerViewController *overlay;
+    //IBOutlet AvatarView *avatarView;
+    UIImagePickerController *cameraController;
+    UIImageView *cameraOverlayView;
+    
+    CGFloat _xlastScale;
+    CGFloat _ylastScale;
+    
+    UIImage *tempPhoto;
 }
 
 //define delegate
@@ -39,6 +53,11 @@
 @property (nonatomic) IBOutlet UILabel *high_score_lbl;
 @property (nonatomic) IBOutlet UILabel *total_gp_lbl;
 @property (nonatomic) IBOutlet UILabel *total_gold_lbl;
+@property (nonatomic, strong) CameraOverlayControllerViewController *overlay;
+@property (nonatomic, strong) UIImagePickerController *cameraController;
+@property (nonatomic, strong) UIImageView *cameraOverlayView;
+
+
 
 //class methods
 - (NSString *) dataFilepath;
@@ -46,7 +65,8 @@
 
 - (IBAction)Back_Touched:(id)sender;
 - (IBAction)Ok_Pressed:(id)sender;
-- (void)updateDB;
+//- (void)updateDB;
 - (IBAction)publish_touched:(id)sender;
+-(IBAction)pushCamera:(id)sender;
 
 @end

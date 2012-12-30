@@ -25,11 +25,24 @@
 #define gp_lbl 3
 #define pop_lbl 4
 
+// Transform values for full screen support:
+#define CAMERA_TRANSFORM_X 1
+//#define CAMERA_TRANSFORM_Y 1.12412 //use this is for iOS 3.x
+#define CAMERA_TRANSFORM_Y 1.24299 // use this is for iOS 4.x
+
+// iPhone screen dimensions:
+#define SCREEN_WIDTH  320
+#define SCREEN_HEIGTH 480
+
 @implementation StatusBarController
 
 @synthesize containerView;
 @synthesize faceView, bodyView;
 @synthesize popularity_lbl, total_gold_lbl, total_gp_lbl, high_score_lbl;
+@synthesize cameraController, cameraOverlayView, overlay;
+
+typedef enum { NA, FROM_CAMERA, FROM_CUSTOMDRAW } WhichTransition;
+WhichTransition transitionType;
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) {
@@ -42,6 +55,39 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    transitionType = NA;
+    
+    cameraController = [[UIImagePickerController alloc] init];
+    self.overlay = [[CameraOverlayControllerViewController alloc] initWithNibName:@"CameraOverlayControllerViewController" bundle:nil];
+    self.overlay.pickerReference = cameraController;
+    self.overlay.delegate = self;
+    cameraController.delegate = self.overlay;
+    cameraController.navigationBarHidden = YES;
+    cameraController.toolbarHidden = YES;
+    cameraController.wantsFullScreenLayout = YES;
+    
+    // Insert the overlay
+    
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        cameraController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        cameraController.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
+        cameraController.showsCameraControls = NO;
+        cameraController.wantsFullScreenLayout = YES;
+        cameraController.cameraViewTransform = CGAffineTransformScale(cameraController.cameraViewTransform, CAMERA_TRANSFORM_X, CAMERA_TRANSFORM_Y);
+        
+        if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
+            cameraController.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+        } else
+            cameraController.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+        cameraController.cameraOverlayView = self.overlay.view;
+        
+    } else {
+        [cameraController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    }
+    
+    self.navigationController.navigationBarHidden = NO;
     
     [faceView setContentMode:UIViewContentModeScaleAspectFit];
     [bodyView setContentMode:UIViewContentModeScaleToFill];
@@ -61,11 +107,23 @@
     }
 }
 
+
+-(NSUInteger) supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskLandscapeLeft;
+}
+
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return interfaceOrientation == UIInterfaceOrientationLandscapeLeft;
+}
+
 //newbie alert view
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (alertView.tag == 1){
         if (buttonIndex == 0){
-            [self performSegueWithIdentifier:@"goToAvatar" sender:nil];
+            //[self performSegueWithIdentifier:@"goToAvatar" sender:nil];
+            [self pushCamera:nil];
         }
     }
 }
@@ -73,18 +131,32 @@
 -(void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
     
-    UIImage *face_DB = [[UserInfo sharedInstance] croppedImage];
+    switch (transitionType) {
+        case NA: {
+            UIImage *face_DB = [[UserInfo sharedInstance] croppedImage];
+            
+            [faceView setImage:face_DB];
+            //[bodyView setImage:[UIImage imageNamed:standard_blue_body]];
+            
+            [high_score_lbl setText:[self readPlist:hs_lbl]];
+            [total_gold_lbl setText:[self readPlist:gold_lbl]];
+            [total_gp_lbl setText:[self readPlist:gp_lbl]];
+            
+            [RKClient clientWithBaseURL:[NSURL URLWithString:BaseURL]];
+            NSString *whackID = [NSString stringWithFormat:@"%i",[[UserInfo sharedInstance] whackWhoId]];
+            [[RKClient sharedClient] get:[NSString stringWithFormat:@"/hits/%@", whackID] delegate:self];
+            break;
+        }
+            
+        case FROM_CAMERA: {
+            break;
+        }
+        case FROM_CUSTOMDRAW:
+            //need to refresh user image and hits from database
+            break;
+    }
     
-    [faceView setImage:face_DB];
-    //[bodyView setImage:[UIImage imageNamed:standard_blue_body]];
-        
-    [high_score_lbl setText:[self readPlist:hs_lbl]];
-    [total_gold_lbl setText:[self readPlist:gold_lbl]];
-    [total_gp_lbl setText:[self readPlist:gp_lbl]];
-        
-    [RKClient clientWithBaseURL:[NSURL URLWithString:BaseURL]];
-    NSString *whackID = [NSString stringWithFormat:@"%i",[[UserInfo sharedInstance] whackWhoId]];
-    [[RKClient sharedClient] get:[NSString stringWithFormat:@"/hits/%@", whackID] delegate:self];
+
     
     //if (faceView.image == face_DB && face_DB != nil)
       //  return;
@@ -93,15 +165,32 @@
     //CurrentEquip *ce = usinfo.currentEquip;
 }
 
+
+-(void)viewDidAppear:(BOOL)animated {
+    switch (transitionType) {
+        case NA: {
+            break;
+        }
+            
+        case FROM_CAMERA: {
+            CustomDrawViewController *drawController = [[CustomDrawViewController alloc] initWithNibName:@"CustomDrawViewController" bundle:nil];
+            [self presentModalViewController:drawController animated:YES];
+            drawController.containerView.drawImageView.image = tempPhoto;
+            transitionType = FROM_CUSTOMDRAW;
+            break;
+        }
+        case FROM_CUSTOMDRAW:
+            //need to refresh user image and hits from database
+            
+            transitionType = NA;
+            break;
+    }
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
 //Plist methods
@@ -208,6 +297,13 @@
     }
 }
 
+-(void)validImageCaptured:(UIImage *)image croppedImage:(UIImage *)croppedImg{
+    if (image != nil){
+        tempPhoto = image;
+
+    }
+}
+
 #pragma mark - touch methods
 
 - (IBAction)Back_Touched:(id)sender {
@@ -223,6 +319,12 @@
     //else, update
     //[self updateDB];
     [self performSegueWithIdentifier:@"StatusToModeSegue" sender:self];
+}
+
+-(IBAction)pushCamera:(id)sender {
+    [self presentModalViewController:cameraController animated:YES];
+    self.navigationController.navigationBarHidden = YES;
+    transitionType = FROM_CAMERA;
 }
 
 @end

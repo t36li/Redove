@@ -9,7 +9,6 @@
 #import "RootViewController.h"
 #import "StatusBarController.h"
 #import "SelectToLoginViewController.h"
-#import "AvatarViewController.h"
 #import "GlobalMethods.h"
 #import "OptionsViewController.h"
 #import "FriendsViewController.h"
