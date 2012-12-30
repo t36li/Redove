@@ -150,8 +150,7 @@ NSString *const kPlaceholderPostMessage = @"My head got WHACKED![TESTING]";
 
 #pragma mark - Action methods
 - (IBAction)cancelButtonAction:(id)sender {
-    [[self presentingViewController]
-     dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)shareButtonAction:(id)sender {
