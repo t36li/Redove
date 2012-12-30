@@ -44,7 +44,6 @@
 
 //In-game buttons
 #define PauseButton @"pause.png"
-#define ResumeButton @"left button.png"
 #define RestartButton @"play again key.png"
 #define MainMenuButton @"home key.png"
 

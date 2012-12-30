@@ -174,6 +174,10 @@
 		D04D763E163769BE003C858F /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D04D763C163769BE003C858F /* GameViewController.xib */; };
 		D04D76521638CBAD003C858F /* splash_sheet.plist in Resources */ = {isa = PBXBuildFile; fileRef = D04D76501638CBAC003C858F /* splash_sheet.plist */; };
 		D04D76531638CBAD003C858F /* splash_sheet.png in Resources */ = {isa = PBXBuildFile; fileRef = D04D76511638CBAC003C858F /* splash_sheet.png */; };
+		D04FB35C1690A463009F97C9 /* SeaLevel_finalView.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D04FB35B1690A463009F97C9 /* SeaLevel_finalView.jpg */; };
+		D04FB35E1690A46D009F97C9 /* hills_finalView.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D04FB35D1690A46D009F97C9 /* hills_finalView.jpg */; };
+		D04FB7261690A6B6009F97C9 /* HitWho_Hammer.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A05168CC306005556BD /* HitWho_Hammer.png */; };
+		D04FB7271690A6B6009F97C9 /* HitWho_FullView.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1413A07168CC3C2005556BD /* HitWho_FullView.jpg */; };
 		D074BD6F1640941C00AF51EE /* CCAction.h in Headers */ = {isa = PBXBuildFile; fileRef = D074BC701640941C00AF51EE /* CCAction.h */; };
 		D074BD701640941C00AF51EE /* CCAction.m in Sources */ = {isa = PBXBuildFile; fileRef = D074BC711640941C00AF51EE /* CCAction.m */; };
 		D074BD711640941C00AF51EE /* CCActionCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = D074BC721640941C00AF51EE /* CCActionCamera.h */; };
@@ -460,7 +464,6 @@
 		D0B48899160E5371000B95A7 /* scar 3.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5804160BFFF90082BA4B /* scar 3.png */; };
 		D0B4889A160E5371000B95A7 /* scar2.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5805160BFFF90082BA4B /* scar2.png */; };
 		D0B4889B160E5371000B95A7 /* scar 1.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5806160BFFF90082BA4B /* scar 1.png */; };
-		D0B4889C160E5371000B95A7 /* eye2.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5807160BFFF90082BA4B /* eye2.png */; };
 		D0B4889D160E5371000B95A7 /* lip 1.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5808160BFFF90082BA4B /* lip 1.png */; };
 		D0B4889E160E5371000B95A7 /* eye1.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5809160BFFF90082BA4B /* eye1.png */; };
 		D0B4889F160E5371000B95A7 /* tear.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B580A160BFFF90082BA4B /* tear.png */; };
@@ -662,8 +665,6 @@
 		C1413A05168CC306005556BD /* HitWho_Hammer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_Hammer.png; sourceTree = "<group>"; };
 		C1413A07168CC3C2005556BD /* HitWho_FullView.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HitWho_FullView.jpg; sourceTree = "<group>"; };
 		C1413A25168CFD98005556BD /* hill_scoreboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hill_scoreboard.png; sourceTree = "<group>"; };
-		C1413A2A168D03D9005556BD /* hills_finalView.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hills_finalView.jpg; sourceTree = "<group>"; };
-		C1413A2C168D03E5005556BD /* SeaLevel_finalView.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SeaLevel_finalView.jpg; sourceTree = "<group>"; };
 		C1413A2E168D09C8005556BD /* hearts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hearts.png; sourceTree = "<group>"; };
 		C14385A915C8C15A008D9AE7 /* LoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadViewController.h; sourceTree = "<group>"; };
 		C14385AA15C8C15A008D9AE7 /* LoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadViewController.m; sourceTree = "<group>"; };
@@ -794,6 +795,8 @@
 		D04D763C163769BE003C858F /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GameViewController.xib; path = ../GameViewController.xib; sourceTree = "<group>"; };
 		D04D76501638CBAC003C858F /* splash_sheet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = splash_sheet.plist; sourceTree = "<group>"; };
 		D04D76511638CBAC003C858F /* splash_sheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_sheet.png; sourceTree = "<group>"; };
+		D04FB35B1690A463009F97C9 /* SeaLevel_finalView.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SeaLevel_finalView.jpg; sourceTree = "<group>"; };
+		D04FB35D1690A46D009F97C9 /* hills_finalView.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hills_finalView.jpg; sourceTree = "<group>"; };
 		D074BC701640941C00AF51EE /* CCAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAction.h; sourceTree = "<group>"; };
 		D074BC711640941C00AF51EE /* CCAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCAction.m; sourceTree = "<group>"; };
 		D074BC721640941C00AF51EE /* CCActionCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCActionCamera.h; sourceTree = "<group>"; };
@@ -1424,8 +1427,8 @@
 				C14139D01688F3E4005556BD /* Main_Menu_Bg.png */,
 				C14139D41688F6D4005556BD /* Personal_Status_Bg.png */,
 				C1413A07168CC3C2005556BD /* HitWho_FullView.jpg */,
-				C1413A2A168D03D9005556BD /* hills_finalView.jpg */,
-				C1413A2C168D03E5005556BD /* SeaLevel_finalView.jpg */,
+				D04FB35B1690A463009F97C9 /* SeaLevel_finalView.jpg */,
+				D04FB35D1690A46D009F97C9 /* hills_finalView.jpg */,
 			);
 			name = Background;
 			sourceTree = "<group>";
@@ -2561,13 +2564,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D04FB7261690A6B6009F97C9 /* HitWho_Hammer.png in Resources */,
+				D04FB7271690A6B6009F97C9 /* HitWho_FullView.jpg in Resources */,
 				D0B48896160E5371000B95A7 /* ear 2.png in Resources */,
 				D0B48897160E5371000B95A7 /* ear 1.png in Resources */,
 				D0B48898160E5371000B95A7 /* sworn1.png in Resources */,
 				D0B48899160E5371000B95A7 /* scar 3.png in Resources */,
 				D0B4889A160E5371000B95A7 /* scar2.png in Resources */,
 				D0B4889B160E5371000B95A7 /* scar 1.png in Resources */,
-				D0B4889C160E5371000B95A7 /* eye2.png in Resources */,
 				D0B4889D160E5371000B95A7 /* lip 1.png in Resources */,
 				D0B4889E160E5371000B95A7 /* eye1.png in Resources */,
 				D0B4889F160E5371000B95A7 /* tear.png in Resources */,
@@ -2725,6 +2729,8 @@
 				C1482712168E1F9100C5680D /* Hills_Level_Background.plist in Resources */,
 				C1482713168E1F9100C5680D /* Hills_Level_Background.pvr.ccz in Resources */,
 				C1482715168E207C00C5680D /* temp_upload.png in Resources */,
+				D04FB35C1690A463009F97C9 /* SeaLevel_finalView.jpg in Resources */,
+				D04FB35E1690A46D009F97C9 /* hills_finalView.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
