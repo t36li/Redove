@@ -8,6 +8,7 @@
 
 #import "CustomDrawViewController.h"
 #import "UserInfo.h"
+#import "User.h"
 
 @interface CustomDrawViewController ()
 
@@ -103,7 +104,7 @@
         }
     }
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self saveUsrImageToServer];
 }
 
 -(void)didPanButton:(UIPanGestureRecognizer *)recognizer {
@@ -144,4 +145,33 @@
     
     [self dismissModalViewControllerAnimated:YES];
 }
+
+-(void)saveUsrImageToServer{
+    //User: a static class for loading userInfo
+    User *user = [User alloc];
+    UserInfo *usrInfo = [UserInfo sharedInstance];
+    [user getFromUserInfo];
+    
+    RKParams* params = [RKParams params];
+    [params setValue:[NSString stringWithFormat:@"%d",user.whackWhoId] forParam:@"whackwho_id"];
+    [params setValue:[NSString stringWithFormat:@"%d",user.headId] forParam:@"head_id"];
+    [params setValue:user.leftEyePosition forParam:@"leftEyePosition"];
+    [params setValue:user.rightEyePosition forParam:@"rightEyePosition"];
+    [params setValue:user.mouthPosition forParam:@"mouthPosition"];
+    [params setValue:user.faceRect forParam:@"faceRect"];
+    [params setValue:user.nosePosition forParam:@"nosePosition"];
+    [params setValue:user.leftEarPosition forParam:@"leftEarPosition"];
+    [params setValue:user.rightEarPosition forParam:@"rightEarPosition"];
+    UIImage *uploadImage = usrInfo.croppedImage;
+    NSData* imageData = UIImagePNGRepresentation(uploadImage);
+    [params setData:imageData MIMEType:@"image/png" forParam:[NSString stringWithFormat:@"%d",user.headId]];
+    
+    // Log info about the serialization
+    NSLog(@"RKParams HTTPHeaderValueForContentType = %@", [params HTTPHeaderValueForContentType]);
+    
+    [[RKObjectManager sharedManager].client post:@"/user/head" params:params delegate:self];
+    //[[RKObjectManager sharedManager].client put:@"/userImage" params:params delegate:self];
+    
+}
+
 @end

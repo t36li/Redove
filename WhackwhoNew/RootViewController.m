@@ -7,7 +7,6 @@
 //
 
 #import "RootViewController.h"
-#import "StatusBarController.h"
 #import "SelectToLoginViewController.h"
 #import "GlobalMethods.h"
 #import "OptionsViewController.h"
