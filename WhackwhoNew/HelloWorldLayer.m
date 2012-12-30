@@ -56,7 +56,6 @@
     
     //level = hillLevel;
     level = [[Game sharedGame] difficulty];
-    level = hillLevel;
     
     switch (level) {
         case hillLevel:
@@ -75,7 +74,7 @@
     //!!!! initializing popups
     //use the array from game.h which contains all image names
     //int xpad = 50; //for testing
-    /*int i = 0;
+    int i = 0;
     for (UIImage *person in [[Game sharedGame] arrayOfAllPopups]) {
         Character *head = [Character spriteWithCGImage:[person CGImage] key:[NSString stringWithFormat:@"person%i", i]];
         
@@ -98,7 +97,7 @@
         //head.visible = TRUE;
     }
     
-    [self schedule:@selector(tryPopheads) interval:1.5];*/
+    [self schedule:@selector(tryPopheads) interval:1.5];
      
 }
 
@@ -111,14 +110,16 @@
     [CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
     
     CCSpriteBatchNode *spritesBgNode;
-    spritesBgNode = [CCSpriteBatchNode batchNodeWithFile:@"hill_level_spritesheet.pvr.ccz"];
+    spritesBgNode = [CCSpriteBatchNode batchNodeWithFile:@"Hills_Level_Background.pvr.ccz"];
     [self addChild:spritesBgNode];
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"hill_level_spritesheet.plist"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"Hills_Level_Background.plist"];
     
-    //L9 is the upper most level
-    NSArray *images = [NSArray arrayWithObjects:@"hill_background.png", @"hill1.png", @"hill2.png", @"hill3.png", @"hill4.png", @"hill5.png", @"hill6.png", @"hill7.png", @"hill8.png", @"hill9.png", nil];
-    for(int i = 0; i < images.count; ++i) {
-        NSString *image = [images objectAtIndex:i];
+    //background is the farthest back
+    //NSArray *imageNames = [NSArray arrayWithObjects: hills_background, hill_topmid, hill_topleft, hill_topright, hill_midmid, hill_midleft, hill_midright, hill_botmid, hill_botleft, hill_botright, nil];
+    NSArray *imageNames = [NSArray arrayWithObjects:hill_botright, hill_botleft, hill_botmid, hill_midright, hill_midleft, hill_midmid, hill_topright, hill_topleft, hill_topmid, hills_background, nil];
+    
+    for(int i = 0; i < imageNames.count; ++i) {
+        NSString *image = [imageNames objectAtIndex:i];
         CCSprite *sprite = [CCSprite spriteWithSpriteFrameName:image];
         sprite.anchorPoint = ccp(0.5,0.5);
         sprite.position = ccp(winSize.width/2, winSize.height/2);
@@ -242,7 +243,6 @@
             [self popSeaLevelHeads:head];
             break;
     }
-    
 }
 
 -(void) endSplashAction: (id)node {
@@ -252,6 +252,7 @@
 -(void) popSeaLevelHeads: (Character *) head {
     NSNumber *x, *y, *zOrder;
     
+    //if the position is not already occupied
     do {
         int index = (arc4random() % locations.count) + 1;
         NSDictionary *dict = [locations objectForKey:[NSString stringWithFormat:@"p%d", index]];
@@ -324,6 +325,8 @@
     } while ([self checkLocation:CGPointMake(x.integerValue, y.integerValue)]);
     
     [head setZOrder:zOrder.integerValue];
+    [head setZOrder:-5];
+
     [head setPosition:CGPointMake(x.integerValue, y.integerValue)];
     [head convertToWorldSpace:head.position];
     
