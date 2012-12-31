@@ -80,7 +80,6 @@
 }
 
 -(IBAction)Friend_touched:(id)sender{//change it to invite friends![button changed]
-        //[self performSegueWithIdentifier:PlayToFriendSegue sender:friend_but];
     if ([[FBSingletonNew sharedInstance] isLogin])
     [[FBSingletonNew sharedInstance] performSelector:@selector(sendRequest) withObject:nil afterDelay:0.5];
 }
