@@ -442,19 +442,6 @@
 		D09FD5DE159E4EB60079231D /* CameraOverlayControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D09FD5DC159E4EB60079231D /* CameraOverlayControllerViewController.xib */; };
 		D0A3F72515AF5E9A0027EFF9 /* AvatarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0948D3915AB6E9A00429477 /* AvatarView.xib */; };
 		D0A3F74715B266330027EFF9 /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A3F74615B266330027EFF9 /* SpinnerView.m */; };
-		D0AB827E1625212D00A0EF0B /* multipler.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB82731625212D00A0EF0B /* multipler.png */; };
-		D0AB827F1625212D00A0EF0B /* addition line.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB82741625212D00A0EF0B /* addition line.png */; };
-		D0AB82801625212D00A0EF0B /* little star.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB82751625212D00A0EF0B /* little star.png */; };
-		D0AB82811625212D00A0EF0B /* summary.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB82761625212D00A0EF0B /* summary.png */; };
-		D0AB82821625212D00A0EF0B /* total score.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB82771625212D00A0EF0B /* total score.png */; };
-		D0AB82831625212D00A0EF0B /* total gold.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB82781625212D00A0EF0B /* total gold.png */; };
-		D0AB82841625212D00A0EF0B /* golden right button.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB82791625212D00A0EF0B /* golden right button.png */; };
-		D0AB82851625212D00A0EF0B /* golden left button.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB827A1625212D00A0EF0B /* golden left button.png */; };
-		D0AB82861625212D00A0EF0B /* name box.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB827B1625212D00A0EF0B /* name box.png */; };
-		D0AB82871625212D00A0EF0B /* upload.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB827C1625212D00A0EF0B /* upload.png */; };
-		D0AB82881625212D00A0EF0B /* box frame.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB827D1625212D00A0EF0B /* box frame.png */; };
-		D0AB828B1625257E00A0EF0B /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB82891625257E00A0EF0B /* rock.png */; };
-		D0AB828C1625257E00A0EF0B /* wood background.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB828A1625257E00A0EF0B /* wood background.png */; };
 		D0AB828F1627BFD000A0EF0B /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AB828E1627BFD000A0EF0B /* ReviewViewController.m */; };
 		D0B2477015C204C300C206BA /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2476F15C204C300C206BA /* UIImage+fixOrientation.m */; };
 		D0B4849A160E2C77000B95A7 /* FaceEffectsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B48498160E2C77000B95A7 /* FaceEffectsController.m */; };
@@ -473,6 +460,12 @@
 		D0C2D5A116912CE700D02900 /* hearts.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A2E168D09C8005556BD /* hearts.png */; };
 		D0C2D5A216912CE700D02900 /* hill_scoreboard.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A25168CFD98005556BD /* hill_scoreboard.png */; };
 		D0C2D5A316912CE700D02900 /* Invite_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A03168CC14D005556BD /* Invite_Button.png */; };
+		D0C2D5BD169234D200D02900 /* Review_Upload_Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C2D5B7169234D200D02900 /* Review_Upload_Arrow.png */; };
+		D0C2D5BE169234D200D02900 /* Review_Name_Plate.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C2D5B8169234D200D02900 /* Review_Name_Plate.png */; };
+		D0C2D5BF169234D200D02900 /* Review_Background.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C2D5B9169234D200D02900 /* Review_Background.png */; };
+		D0C2D5C0169234D200D02900 /* Review_Frame.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C2D5BA169234D200D02900 /* Review_Frame.png */; };
+		D0C2D5C1169234D200D02900 /* Review_Right_Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C2D5BB169234D200D02900 /* Review_Right_Arrow.png */; };
+		D0C2D5C2169234D200D02900 /* Review_Left_Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C2D5BC169234D200D02900 /* Review_Left_Arrow.png */; };
 		D0D7C84615955D3400F51C6E /* AvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D7C84515955D3400F51C6E /* AvatarViewController.m */; };
 		D0D7C84915956E3D00F51C6E /* ModeSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D7C84815956E3D00F51C6E /* ModeSelectionViewController.m */; };
 		D0E30664159E4B1B0080D845 /* popoverArrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E30655159E4B1B0080D845 /* popoverArrowDown.png */; };
@@ -1088,19 +1081,6 @@
 		D09FD5DC159E4EB60079231D /* CameraOverlayControllerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlayControllerViewController.xib; path = ../CameraOverlayControllerViewController.xib; sourceTree = "<group>"; };
 		D0A3F74515B266330027EFF9 /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
 		D0A3F74615B266330027EFF9 /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
-		D0AB82731625212D00A0EF0B /* multipler.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multipler.png; sourceTree = "<group>"; };
-		D0AB82741625212D00A0EF0B /* addition line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addition line.png"; sourceTree = "<group>"; };
-		D0AB82751625212D00A0EF0B /* little star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "little star.png"; sourceTree = "<group>"; };
-		D0AB82761625212D00A0EF0B /* summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = summary.png; sourceTree = "<group>"; };
-		D0AB82771625212D00A0EF0B /* total score.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "total score.png"; sourceTree = "<group>"; };
-		D0AB82781625212D00A0EF0B /* total gold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "total gold.png"; sourceTree = "<group>"; };
-		D0AB82791625212D00A0EF0B /* golden right button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "golden right button.png"; sourceTree = "<group>"; };
-		D0AB827A1625212D00A0EF0B /* golden left button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "golden left button.png"; sourceTree = "<group>"; };
-		D0AB827B1625212D00A0EF0B /* name box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "name box.png"; sourceTree = "<group>"; };
-		D0AB827C1625212D00A0EF0B /* upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upload.png; sourceTree = "<group>"; };
-		D0AB827D1625212D00A0EF0B /* box frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "box frame.png"; sourceTree = "<group>"; };
-		D0AB82891625257E00A0EF0B /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
-		D0AB828A1625257E00A0EF0B /* wood background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wood background.png"; sourceTree = "<group>"; };
 		D0AB828D1627BFD000A0EF0B /* ReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewViewController.h; sourceTree = "<group>"; };
 		D0AB828E1627BFD000A0EF0B /* ReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewViewController.m; sourceTree = "<group>"; };
 		D0B2476E15C204C300C206BA /* UIImage+fixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+fixOrientation.h"; sourceTree = "<group>"; };
@@ -1110,6 +1090,12 @@
 		D0B48499160E2C77000B95A7 /* FaceEffectsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FaceEffectsController.xib; path = ../FaceEffectsController.xib; sourceTree = "<group>"; };
 		D0B9EECC159E6F0D005D2460 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		D0B9EECF159EA9D4005D2460 /* CameraOverlayControllerViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraOverlayControllerViewControllerDelegate.h; sourceTree = "<group>"; };
+		D0C2D5B7169234D200D02900 /* Review_Upload_Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Review_Upload_Arrow.png; sourceTree = "<group>"; };
+		D0C2D5B8169234D200D02900 /* Review_Name_Plate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Review_Name_Plate.png; sourceTree = "<group>"; };
+		D0C2D5B9169234D200D02900 /* Review_Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Review_Background.png; sourceTree = "<group>"; };
+		D0C2D5BA169234D200D02900 /* Review_Frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Review_Frame.png; sourceTree = "<group>"; };
+		D0C2D5BB169234D200D02900 /* Review_Right_Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Review_Right_Arrow.png; sourceTree = "<group>"; };
+		D0C2D5BC169234D200D02900 /* Review_Left_Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Review_Left_Arrow.png; sourceTree = "<group>"; };
 		D0D7C84415955D3400F51C6E /* AvatarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AvatarViewController.h; path = WhackwhoNew/AvatarViewController.h; sourceTree = "<group>"; };
 		D0D7C84515955D3400F51C6E /* AvatarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AvatarViewController.m; path = WhackwhoNew/AvatarViewController.m; sourceTree = "<group>"; };
 		D0D7C84715956E3D00F51C6E /* ModeSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModeSelectionViewController.h; path = WhackwhoNew/ModeSelectionViewController.h; sourceTree = "<group>"; };
@@ -2146,19 +2132,12 @@
 		D0AB827216251F1700A0EF0B /* Review Screen */ = {
 			isa = PBXGroup;
 			children = (
-				D0AB82891625257E00A0EF0B /* rock.png */,
-				D0AB828A1625257E00A0EF0B /* wood background.png */,
-				D0AB82731625212D00A0EF0B /* multipler.png */,
-				D0AB82741625212D00A0EF0B /* addition line.png */,
-				D0AB82751625212D00A0EF0B /* little star.png */,
-				D0AB82761625212D00A0EF0B /* summary.png */,
-				D0AB82771625212D00A0EF0B /* total score.png */,
-				D0AB82781625212D00A0EF0B /* total gold.png */,
-				D0AB82791625212D00A0EF0B /* golden right button.png */,
-				D0AB827A1625212D00A0EF0B /* golden left button.png */,
-				D0AB827B1625212D00A0EF0B /* name box.png */,
-				D0AB827C1625212D00A0EF0B /* upload.png */,
-				D0AB827D1625212D00A0EF0B /* box frame.png */,
+				D0C2D5B7169234D200D02900 /* Review_Upload_Arrow.png */,
+				D0C2D5B8169234D200D02900 /* Review_Name_Plate.png */,
+				D0C2D5B9169234D200D02900 /* Review_Background.png */,
+				D0C2D5BA169234D200D02900 /* Review_Frame.png */,
+				D0C2D5BB169234D200D02900 /* Review_Right_Arrow.png */,
+				D0C2D5BC169234D200D02900 /* Review_Left_Arrow.png */,
 			);
 			name = "Review Screen";
 			sourceTree = "<group>";
@@ -2669,19 +2648,6 @@
 				C19A3A64160E81B300C6E8F9 /* SA001.png in Resources */,
 				D0F37ECF161150D200E58F1E /* camera view overlay.png in Resources */,
 				C12114581616044300E3AAB1 /* Default-568h@2x.png in Resources */,
-				D0AB827E1625212D00A0EF0B /* multipler.png in Resources */,
-				D0AB827F1625212D00A0EF0B /* addition line.png in Resources */,
-				D0AB82801625212D00A0EF0B /* little star.png in Resources */,
-				D0AB82811625212D00A0EF0B /* summary.png in Resources */,
-				D0AB82821625212D00A0EF0B /* total score.png in Resources */,
-				D0AB82831625212D00A0EF0B /* total gold.png in Resources */,
-				D0AB82841625212D00A0EF0B /* golden right button.png in Resources */,
-				D0AB82851625212D00A0EF0B /* golden left button.png in Resources */,
-				D0AB82861625212D00A0EF0B /* name box.png in Resources */,
-				D0AB82871625212D00A0EF0B /* upload.png in Resources */,
-				D0AB82881625212D00A0EF0B /* box frame.png in Resources */,
-				D0AB828B1625257E00A0EF0B /* rock.png in Resources */,
-				D0AB828C1625257E00A0EF0B /* wood background.png in Resources */,
 				D04D763E163769BE003C858F /* GameViewController.xib in Resources */,
 				D04D76521638CBAD003C858F /* splash_sheet.plist in Resources */,
 				D04D76531638CBAD003C858F /* splash_sheet.png in Resources */,
@@ -2743,6 +2709,12 @@
 				D04FB35C1690A463009F97C9 /* SeaLevel_finalView.jpg in Resources */,
 				D04FB35E1690A46D009F97C9 /* hills_finalView.jpg in Resources */,
 				C102E205169113BA0074AB83 /* hill_cloud1.png in Resources */,
+				D0C2D5BD169234D200D02900 /* Review_Upload_Arrow.png in Resources */,
+				D0C2D5BE169234D200D02900 /* Review_Name_Plate.png in Resources */,
+				D0C2D5BF169234D200D02900 /* Review_Background.png in Resources */,
+				D0C2D5C0169234D200D02900 /* Review_Frame.png in Resources */,
+				D0C2D5C1169234D200D02900 /* Review_Right_Arrow.png in Resources */,
+				D0C2D5C2169234D200D02900 /* Review_Left_Arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

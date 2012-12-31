@@ -282,105 +282,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="wood background.png" id="dY2-VC-xge">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Review_Background.png" id="dY2-VC-xge">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rock.png" id="3j5-jM-zNJ">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="summary.png" id="P2b-gt-mAw">
-                                <rect key="frame" x="37" y="34" width="200" height="41"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="little star.png" id="zdT-Sz-s8o">
-                                <rect key="frame" x="0.0" y="113" width="19" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="little star.png" id="Dd8-qS-Ze5">
-                                <rect key="frame" x="0.0" y="160" width="19" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="little star.png" id="ZZg-jm-sU0">
-                                <rect key="frame" x="0.0" y="204" width="19" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="total score.png" id="dKk-mM-5uo">
-                                <rect key="frame" x="30" y="113" width="92" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="addition line.png" id="CHf-y0-q6g">
-                                <rect key="frame" x="25" y="242" width="212" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" id="KCy-ma-5ga">
-                                <rect key="frame" x="273" y="42" width="178" height="240"/>
+                                <rect key="frame" x="244" y="26" width="185" height="230"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="H8t-PN-hnM">
-                                        <rect key="frame" x="0.0" y="0.0" width="178" height="240"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Review_Frame.png" id="ClY-AM-ZMH">
+                                        <rect key="frame" x="0.0" y="0.0" width="185" height="230"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="H8t-PN-hnM">
+                                        <rect key="frame" x="10" y="17" width="165" height="193"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Review_Name_Plate.png" id="lrc-g2-m3B">
+                                        <rect key="frame" x="19" y="0.0" width="146" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="box frame.png" id="ClY-AM-ZMH">
-                                <rect key="frame" x="264" y="34" width="196" height="258"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="total gold.png" id="uBu-Io-IFy">
-                                <rect key="frame" x="30" y="160" width="92" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="multipler.png" id="qhP-oC-jX4">
-                                <rect key="frame" x="30" y="204" width="92" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="name box.png" id="lrc-g2-m3B">
-                                <rect key="frame" x="289" y="26" width="146" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="little star.png" id="pLm-gz-tjR">
-                                <rect key="frame" x="56" y="260" width="11" height="11"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="little star.png" id="btQ-TY-aD4">
-                                <rect key="frame" x="191" y="260" width="11" height="11"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uSZ-jd-3xZ">
                                 <rect key="frame" x="305" y="263" width="114" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Button" image="upload.png">
+                                <state key="normal" title="Button" image="Review_Upload_Arrow.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yQI-ni-O7a">
-                                <rect key="frame" x="0.0" y="294" width="35" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="redo icon.png">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="hitBack:" destination="hmH-w8-Zgh" eventType="touchUpInside" id="Gyx-cI-4WS"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cqw-G4-5Do">
-                                <rect key="frame" x="244" y="151" width="17" height="17"/>
+                                <rect key="frame" x="214" y="126" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Button" image="golden left button.png">
+                                <state key="normal" image="Review_Left_Arrow.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -391,11 +335,11 @@
                                     <action selector="hitLeft:" destination="hmH-w8-Zgh" eventType="touchUpInside" id="7Z8-qk-3fW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Fyr-FD-PlL">
-                                <rect key="frame" x="463" y="151" width="17" height="17"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jmx-IJ-o7M">
+                                <rect key="frame" x="424" y="126" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Button" image="golden right button.png">
+                                <state key="normal" image="Review_Right_Arrow.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -403,7 +347,22 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="hitRight:" destination="hmH-w8-Zgh" eventType="touchUpInside" id="E4D-e5-pQn"/>
+                                    <action selector="hitRight:" destination="hmH-w8-Zgh" eventType="touchUpInside" id="D0D-HY-4eS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="43q-N9-MR6">
+                                <rect key="frame" x="13" y="287" width="52" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hitBack:" destination="hmH-w8-Zgh" eventType="touchUpInside" id="IXi-yQ-ftL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -413,10 +372,10 @@
                     <navigationItem key="navigationItem" id="M7l-xF-GNE"/>
                     <connections>
                         <outlet property="avatarImageView" destination="H8t-PN-hnM" id="iu2-UY-gNn"/>
-                        <outlet property="backBtn" destination="yQI-ni-O7a" id="YG7-kH-uUM"/>
+                        <outlet property="backBtn" destination="43q-N9-MR6" id="89m-k6-2L0"/>
                         <outlet property="leftBtn" destination="cqw-G4-5Do" id="hSH-S1-rjM"/>
                         <outlet property="portraitView" destination="KCy-ma-5ga" id="UUg-pn-CrW"/>
-                        <outlet property="rightBtn" destination="Fyr-FD-PlL" id="hVW-Ms-3YV"/>
+                        <outlet property="rightBtn" destination="jmx-IJ-o7M" id="rbP-dS-fy8"/>
                         <outlet property="uploadBtn" destination="uSZ-jd-3xZ" id="ZuZ-E2-aYq"/>
                     </connections>
                 </viewController>
@@ -1182,28 +1141,27 @@
         <image name="Option_Button.png" width="220" height="101"/>
         <image name="Personal_Status_Bg.png" width="960" height="640"/>
         <image name="Play_Button.png" width="192" height="107"/>
+        <image name="Review_Background.png" width="960" height="640"/>
+        <image name="Review_Frame.png" width="367" height="492"/>
+        <image name="Review_Left_Arrow.png" width="62" height="64"/>
+        <image name="Review_Name_Plate.png" width="243" height="56"/>
+        <image name="Review_Right_Arrow.png" width="62" height="64"/>
+        <image name="Review_Upload_Arrow.png" width="244" height="79"/>
         <image name="Status_Popularity_Frame.png" width="403" height="85"/>
         <image name="Status_TotalScore_Frame.png" width="403" height="85"/>
         <image name="Status_Total_Gold_Frame.png" width="403" height="85"/>
         <image name="Status_Total_Gp_Frame.png" width="403" height="85"/>
-        <image name="addition line.png" width="481" height="6"/>
         <image name="back icon.png" width="198" height="74"/>
         <image name="blue board.png" width="350" height="115"/>
-        <image name="box frame.png" width="332" height="444"/>
         <image name="camera photo  frame.png" width="574" height="640"/>
         <image name="camera.png" width="57" height="47"/>
         <image name="friend b.png" width="16" height="16"/>
         <image name="gold stack.png" width="16" height="16"/>
-        <image name="golden left button.png" width="40" height="65"/>
-        <image name="golden right button.png" width="40" height="65"/>
         <image name="green board.png" width="349" height="115"/>
         <image name="left button.png" width="16" height="16"/>
-        <image name="little star.png" width="29" height="28"/>
         <image name="loading icon.png" width="329" height="171"/>
         <image name="lower shelf.png" width="960" height="120"/>
         <image name="mode_layer1.png" width="960" height="640"/>
-        <image name="multipler.png" width="137" height="29"/>
-        <image name="name box.png" width="241" height="53"/>
         <image name="navigator 2.png" width="229" height="104"/>
         <image name="ok icon.png" width="16" height="16"/>
         <image name="option b.png" width="16" height="16"/>
@@ -1211,18 +1169,157 @@
         <image name="play b.png" width="16" height="16"/>
         <image name="redo icon.png" width="16" height="16"/>
         <image name="right button.png" width="16" height="16"/>
-        <image name="rock.png" width="960" height="640"/>
         <image name="store background.png" width="16" height="16"/>
         <image name="store pin.png" width="116" height="77"/>
-        <image name="summary.png" width="398" height="78"/>
         <image name="temp_upload.png" width="256" height="256"/>
-        <image name="total gold.png" width="148" height="32"/>
-        <image name="total score.png" width="164" height="30"/>
-        <image name="upload.png" width="245" height="82"/>
         <image name="upper shelf.png" width="393" height="121"/>
-        <image name="wood background.png" width="960" height="640"/>
         <image name="yellow board.png" width="350" height="115"/>
     </resources>
+    <classes>
+        <class className="AvatarBaseController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AvatarBaseController.h"/>
+        </class>
+        <class className="AvatarViewController" superclassName="AvatarBaseController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AvatarViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="Back:"/>
+                <relationship kind="action" name="Change_Skin:"/>
+                <relationship kind="action" name="addPicture:"/>
+                <relationship kind="action" name="goToSample:"/>
+                <relationship kind="action" name="startCamera:"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="wtfView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="CocosViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CocosViewController.h"/>
+        </class>
+        <class className="FBProfilePictureView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FBProfilePictureView.h"/>
+        </class>
+        <class className="FriendsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="FriendListClick:"/>
+                <relationship kind="action" name="SendTouched:"/>
+                <relationship kind="action" name="back_Touched:"/>
+                <relationship kind="outlet" name="friendTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="inviteMessage" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="loadingView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="selectedFriendsView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="tableCell" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="HitWhoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HitWhoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="Back_Touched:"/>
+                <relationship kind="action" name="battleTouched:"/>
+                <relationship kind="action" name="cancelTouched:"/>
+                <relationship kind="outlet" name="bodyView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="characterReviewView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="faceView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="hit1" candidateClass="HitWindow"/>
+                <relationship kind="outlet" name="hit2" candidateClass="HitWindow"/>
+                <relationship kind="outlet" name="hit3" candidateClass="HitWindow"/>
+                <relationship kind="outlet" name="hit4" candidateClass="HitWindow"/>
+                <relationship kind="outlet" name="hitNumber" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="leftHammer" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="loadingView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="popupView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="rightHammer" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="HitWindow" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HitWindow.h"/>
+        </class>
+        <class className="LoadViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoadViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="myLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ModeSelectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ModeSelectionViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="Back_Touched:"/>
+                <relationship kind="action" name="leftButton_touched:"/>
+                <relationship kind="action" name="rightButton_touched:"/>
+                <relationship kind="outlet" name="background" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="rightButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="wholeView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="OptionsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OptionsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="back_touched:"/>
+                <relationship kind="action" name="logout_touched:"/>
+                <relationship kind="outlet" name="back" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="logout_but" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="ReviewViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ReviewViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="hitBack:"/>
+                <relationship kind="action" name="hitLeft:"/>
+                <relationship kind="action" name="hitRight:"/>
+                <relationship kind="outlet" name="avatarImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="backBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="leftBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="portraitView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="rightBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="uploadBtn" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="RootViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="opt_touched:"/>
+                <relationship kind="action" name="play_touched:"/>
+                <relationship kind="outlet" name="opt_but" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="play_but" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="profileImageView" candidateClass="FBProfilePictureView"/>
+            </relationships>
+        </class>
+        <class className="SelectToLoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectToLoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="FBTouched:"/>
+                <relationship kind="outlet" name="FBBut" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="StatusBarController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StatusBarController.h"/>
+            <relationships>
+                <relationship kind="action" name="Back_Touched:"/>
+                <relationship kind="action" name="Ok_Pressed:"/>
+                <relationship kind="action" name="publish_touched:"/>
+                <relationship kind="action" name="pushCamera:"/>
+                <relationship kind="outlet" name="bodyView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="faceView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="high_score_lbl" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="popularity_lbl" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="total_gold_lbl" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="total_gp_lbl" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="StoreViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StoreViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="Back_Touched:"/>
+                <relationship kind="action" name="Buy_Touched:"/>
+                <relationship kind="action" name="Undo_Touched:"/>
+                <relationship kind="outlet" name="mainItemsScroll" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="purchasedItemsScroll" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation" orientation="landscapeRight"/>
