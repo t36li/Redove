@@ -64,7 +64,6 @@
 		C14139E8168C9D29005556BD /* HitUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C14139E7168C9D28005556BD /* HitUpdate.m */; };
 		C14139EA168CA5D6005556BD /* ScorePlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = C14139E9168CA5D4005556BD /* ScorePlist.plist */; };
 		C14139EC168CB28F005556BD /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = C14139EB168CB28D005556BD /* camera.png */; };
-		C14139F0168CBD2E005556BD /* Battle_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = C14139EF168CBD2E005556BD /* Battle_Button.png */; };
 		C14139F3168CBD3A005556BD /* HitWho_FriendBox.png in Resources */ = {isa = PBXBuildFile; fileRef = C14139F1168CBD3A005556BD /* HitWho_FriendBox.png */; };
 		C14139F4168CBD3A005556BD /* HitWho_HitBox.png in Resources */ = {isa = PBXBuildFile; fileRef = C14139F2168CBD3A005556BD /* HitWho_HitBox.png */; };
 		C14139F6168CBD4F005556BD /* HitWho_NameTag.png in Resources */ = {isa = PBXBuildFile; fileRef = C14139F5168CBD4F005556BD /* HitWho_NameTag.png */; };
@@ -108,6 +107,14 @@
 		C14B63BD15AF5CE000376C91 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C14B63BC15AF5CE000376C91 /* HelloWorldLayer.m */; };
 		C14BC6211692380F0005EEBE /* Back_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = C14BC6201692380F0005EEBE /* Back_Button.png */; };
 		C14BC636169246E60005EEBE /* Personal_Status_Background.png in Resources */ = {isa = PBXBuildFile; fileRef = C14BC635169246E60005EEBE /* Personal_Status_Background.png */; };
+		C14BC63816924D300005EEBE /* HitWho_Background.png in Resources */ = {isa = PBXBuildFile; fileRef = C14BC63716924D300005EEBE /* HitWho_Background.png */; };
+		C14BC63A16924E2E0005EEBE /* Hitwho_LeftArrow_New.png in Resources */ = {isa = PBXBuildFile; fileRef = C14BC63916924E2E0005EEBE /* Hitwho_LeftArrow_New.png */; };
+		C14BC63F16924F490005EEBE /* HitWho_Number1.png in Resources */ = {isa = PBXBuildFile; fileRef = C14BC63B16924F490005EEBE /* HitWho_Number1.png */; };
+		C14BC64016924F490005EEBE /* HitWho_Number2.png in Resources */ = {isa = PBXBuildFile; fileRef = C14BC63C16924F490005EEBE /* HitWho_Number2.png */; };
+		C14BC64116924F490005EEBE /* HitWho_Number3.png in Resources */ = {isa = PBXBuildFile; fileRef = C14BC63D16924F490005EEBE /* HitWho_Number3.png */; };
+		C14BC64216924F490005EEBE /* HitWho_Number4.png in Resources */ = {isa = PBXBuildFile; fileRef = C14BC63E16924F490005EEBE /* HitWho_Number4.png */; };
+		C14BC6441692503D0005EEBE /* HitWho_Battle_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = C14BC6431692503D0005EEBE /* HitWho_Battle_Button.png */; };
+		C14BC646169250E30005EEBE /* HitWho_Hammer_Flipped.png in Resources */ = {isa = PBXBuildFile; fileRef = C14BC645169250E30005EEBE /* HitWho_Hammer_Flipped.png */; };
 		C151791C15C36D3E00A4378F /* hit effect.png in Resources */ = {isa = PBXBuildFile; fileRef = C151791B15C36D3E00A4378F /* hit effect.png */; };
 		C151793515C4B88D00A4378F /* coin front.png in Resources */ = {isa = PBXBuildFile; fileRef = C151793415C4B88D00A4378F /* coin front.png */; };
 		C15305C61688E239003D7D1B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C15305C51688E239003D7D1B /* Reachability.m */; };
@@ -179,7 +186,6 @@
 		D04FB35C1690A463009F97C9 /* SeaLevel_finalView.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D04FB35B1690A463009F97C9 /* SeaLevel_finalView.jpg */; };
 		D04FB35E1690A46D009F97C9 /* hills_finalView.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D04FB35D1690A46D009F97C9 /* hills_finalView.jpg */; };
 		D04FB7261690A6B6009F97C9 /* HitWho_Hammer.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A05168CC306005556BD /* HitWho_Hammer.png */; };
-		D04FB7271690A6B6009F97C9 /* HitWho_FullView.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1413A07168CC3C2005556BD /* HitWho_FullView.jpg */; };
 		D074BD6F1640941C00AF51EE /* CCAction.h in Headers */ = {isa = PBXBuildFile; fileRef = D074BC701640941C00AF51EE /* CCAction.h */; };
 		D074BD701640941C00AF51EE /* CCAction.m in Sources */ = {isa = PBXBuildFile; fileRef = D074BC711640941C00AF51EE /* CCAction.m */; };
 		D074BD711640941C00AF51EE /* CCActionCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = D074BC721640941C00AF51EE /* CCActionCamera.h */; };
@@ -638,7 +644,6 @@
 		C14139E7168C9D28005556BD /* HitUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HitUpdate.m; sourceTree = "<group>"; };
 		C14139E9168CA5D4005556BD /* ScorePlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ScorePlist.plist; sourceTree = "<group>"; };
 		C14139EB168CB28D005556BD /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
-		C14139EF168CBD2E005556BD /* Battle_Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Battle_Button.png; sourceTree = "<group>"; };
 		C14139F1168CBD3A005556BD /* HitWho_FriendBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_FriendBox.png; sourceTree = "<group>"; };
 		C14139F2168CBD3A005556BD /* HitWho_HitBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_HitBox.png; sourceTree = "<group>"; };
 		C14139F5168CBD4F005556BD /* HitWho_NameTag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_NameTag.png; sourceTree = "<group>"; };
@@ -650,7 +655,6 @@
 		C1413A00168CBDC0005556BD /* HitWho_RightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_RightArrow.png; sourceTree = "<group>"; };
 		C1413A03168CC14D005556BD /* Invite_Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Invite_Button.png; sourceTree = "<group>"; };
 		C1413A05168CC306005556BD /* HitWho_Hammer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_Hammer.png; sourceTree = "<group>"; };
-		C1413A07168CC3C2005556BD /* HitWho_FullView.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HitWho_FullView.jpg; sourceTree = "<group>"; };
 		C1413A25168CFD98005556BD /* hill_scoreboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hill_scoreboard.png; sourceTree = "<group>"; };
 		C1413A2E168D09C8005556BD /* hearts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hearts.png; sourceTree = "<group>"; };
 		C14385A915C8C15A008D9AE7 /* LoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadViewController.h; sourceTree = "<group>"; };
@@ -694,6 +698,14 @@
 		C14B63BC15AF5CE000376C91 /* HelloWorldLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		C14BC6201692380F0005EEBE /* Back_Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back_Button.png; sourceTree = "<group>"; };
 		C14BC635169246E60005EEBE /* Personal_Status_Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Personal_Status_Background.png; sourceTree = "<group>"; };
+		C14BC63716924D300005EEBE /* HitWho_Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_Background.png; sourceTree = "<group>"; };
+		C14BC63916924E2E0005EEBE /* Hitwho_LeftArrow_New.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hitwho_LeftArrow_New.png; sourceTree = "<group>"; };
+		C14BC63B16924F490005EEBE /* HitWho_Number1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_Number1.png; sourceTree = "<group>"; };
+		C14BC63C16924F490005EEBE /* HitWho_Number2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_Number2.png; sourceTree = "<group>"; };
+		C14BC63D16924F490005EEBE /* HitWho_Number3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_Number3.png; sourceTree = "<group>"; };
+		C14BC63E16924F490005EEBE /* HitWho_Number4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_Number4.png; sourceTree = "<group>"; };
+		C14BC6431692503D0005EEBE /* HitWho_Battle_Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_Battle_Button.png; sourceTree = "<group>"; };
+		C14BC645169250E30005EEBE /* HitWho_Hammer_Flipped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_Hammer_Flipped.png; sourceTree = "<group>"; };
 		C151791B15C36D3E00A4378F /* hit effect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hit effect.png"; sourceTree = "<group>"; };
 		C151793415C4B88D00A4378F /* coin front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coin front.png"; sourceTree = "<group>"; };
 		C15305C41688E239003D7D1B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -1213,6 +1225,8 @@
 				C14139FF168CBDC0005556BD /* HitWho_LeftArrow.png */,
 				C1413A00168CBDC0005556BD /* HitWho_RightArrow.png */,
 				C1413A05168CC306005556BD /* HitWho_Hammer.png */,
+				C14BC645169250E30005EEBE /* HitWho_Hammer_Flipped.png */,
+				C14BC63916924E2E0005EEBE /* Hitwho_LeftArrow_New.png */,
 			);
 			name = Frames;
 			sourceTree = "<group>";
@@ -1392,11 +1406,11 @@
 				C1691FF115AFB8F500F081AF /* mode_layer1.png */,
 				C14139E41688FA74005556BD /* Choose_Connections_Bg.jpg */,
 				C14139D01688F3E4005556BD /* Main_Menu_Bg.png */,
-				C1413A07168CC3C2005556BD /* HitWho_FullView.jpg */,
 				D04FB35B1690A463009F97C9 /* SeaLevel_finalView.jpg */,
 				D04FB35D1690A46D009F97C9 /* hills_finalView.jpg */,
 				C102E204169113BA0074AB83 /* hill_cloud1.png */,
 				C14BC635169246E60005EEBE /* Personal_Status_Background.png */,
+				C14BC63716924D300005EEBE /* HitWho_Background.png */,
 			);
 			name = Background;
 			sourceTree = "<group>";
@@ -1415,9 +1429,9 @@
 				C14139CD1688F393005556BD /* Play_Button.png */,
 				C14139D21688F50B005556BD /* Friends_Button.png */,
 				C1413A03168CC14D005556BD /* Invite_Button.png */,
-				C14139EF168CBD2E005556BD /* Battle_Button.png */,
 				C14139F9168CBD6D005556BD /* HitWho_Ok_But.png */,
 				C14139FB168CBD85005556BD /* HitWho_ScrollDown_Icon.png */,
+				C14BC6431692503D0005EEBE /* HitWho_Battle_Button.png */,
 			);
 			name = Buttons;
 			sourceTree = "<group>";
@@ -1730,6 +1744,10 @@
 				C1FE255B15AF688700DAF258 /* pinky.png */,
 				C1FE255C15AF688700DAF258 /* monk.png */,
 				C1FE255D15AF688700DAF258 /* blue.png */,
+				C14BC63B16924F490005EEBE /* HitWho_Number1.png */,
+				C14BC63C16924F490005EEBE /* HitWho_Number2.png */,
+				C14BC63D16924F490005EEBE /* HitWho_Number3.png */,
+				C14BC63E16924F490005EEBE /* HitWho_Number4.png */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -2520,7 +2538,6 @@
 				D0C2D5A216912CE700D02900 /* hill_scoreboard.png in Resources */,
 				D0C2D5A316912CE700D02900 /* Invite_Button.png in Resources */,
 				D04FB7261690A6B6009F97C9 /* HitWho_Hammer.png in Resources */,
-				D04FB7271690A6B6009F97C9 /* HitWho_FullView.jpg in Resources */,
 				D0B48896160E5371000B95A7 /* ear 2.png in Resources */,
 				D0B48897160E5371000B95A7 /* ear 1.png in Resources */,
 				D0B48898160E5371000B95A7 /* sworn1.png in Resources */,
@@ -2630,7 +2647,6 @@
 				C14139E51688FA74005556BD /* Choose_Connections_Bg.jpg in Resources */,
 				C14139EA168CA5D6005556BD /* ScorePlist.plist in Resources */,
 				C14139EC168CB28F005556BD /* camera.png in Resources */,
-				C14139F0168CBD2E005556BD /* Battle_Button.png in Resources */,
 				C14139F3168CBD3A005556BD /* HitWho_FriendBox.png in Resources */,
 				C14139F4168CBD3A005556BD /* HitWho_HitBox.png in Resources */,
 				C14139F6168CBD4F005556BD /* HitWho_NameTag.png in Resources */,
@@ -2670,6 +2686,14 @@
 				D0C2D5C2169234D200D02900 /* Review_Left_Arrow.png in Resources */,
 				C14BC6211692380F0005EEBE /* Back_Button.png in Resources */,
 				C14BC636169246E60005EEBE /* Personal_Status_Background.png in Resources */,
+				C14BC63816924D300005EEBE /* HitWho_Background.png in Resources */,
+				C14BC63A16924E2E0005EEBE /* Hitwho_LeftArrow_New.png in Resources */,
+				C14BC63F16924F490005EEBE /* HitWho_Number1.png in Resources */,
+				C14BC64016924F490005EEBE /* HitWho_Number2.png in Resources */,
+				C14BC64116924F490005EEBE /* HitWho_Number3.png in Resources */,
+				C14BC64216924F490005EEBE /* HitWho_Number4.png in Resources */,
+				C14BC6441692503D0005EEBE /* HitWho_Battle_Button.png in Resources */,
+				C14BC646169250E30005EEBE /* HitWho_Hammer_Flipped.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -62,10 +62,10 @@
 //Frames
 #define FriendListCell @"friend list (cell).png"
 #define HitWhoFriendListCell @"HitWho_FriendBox.png"
-#define hitNumberOne @"number1.png"
-#define hitNumberTwo @"number2.png"
-#define hitNumberThree @"number3.png"
-#define hitNumberFour @"number4.png"
+#define hitNumberOne @"HitWho_Number1.png"
+#define hitNumberTwo @"HitWho_Number2.png"
+#define hitNumberThree @"HitWho_Number3.png"
+#define hitNumberFour @"HitWho_Number4.png"
 
 //special effects
 #define mouthEffectOne @"mouth effect test1.png"
