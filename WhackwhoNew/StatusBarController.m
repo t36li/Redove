@@ -174,7 +174,7 @@ WhichTransition transitionType;
             
         case FROM_CAMERA: {
             CustomDrawViewController *drawController = [[CustomDrawViewController alloc] initWithNibName:@"CustomDrawViewController" bundle:nil];
-            [self presentModalViewController:drawController animated:YES];
+            [self presentViewController:drawController animated:YES completion:nil];
             drawController.containerView.drawImageView.image = tempPhoto;
             transitionType = FROM_CUSTOMDRAW;
             break;
@@ -322,7 +322,7 @@ WhichTransition transitionType;
 }
 
 -(IBAction)pushCamera:(id)sender {
-    [self presentModalViewController:cameraController animated:YES];
+    [self presentViewController:cameraController animated:YES completion:nil];
     self.navigationController.navigationBarHidden = YES;
     transitionType = FROM_CAMERA;
 }

@@ -229,8 +229,7 @@ NSString *const kPlaceholderPostMessage = @"My head got WHACKED![TESTING]";
 - (void) alertView:(UIAlertView *)alertView
 didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    [[self presentingViewController]
-     dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

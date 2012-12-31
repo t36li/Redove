@@ -102,11 +102,14 @@
 //    [director replaceScene:newScene];
 }
 
-- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
-    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft)
-        return YES;
-    
-    return NO;
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return interfaceOrientation == UIInterfaceOrientationLandscapeLeft;
 }
+
+-(NSUInteger) supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskLandscapeLeft;
+}
+
 
 @end
