@@ -468,6 +468,10 @@
 		D0B4889E160E5371000B95A7 /* eye1.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5809160BFFF90082BA4B /* eye1.png */; };
 		D0B4889F160E5371000B95A7 /* tear.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B580A160BFFF90082BA4B /* tear.png */; };
 		D0B9EECD159E6F0D005D2460 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0B9EECC159E6F0D005D2460 /* MobileCoreServices.framework */; };
+		D0C2D5A016912CE700D02900 /* eye2.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5807160BFFF90082BA4B /* eye2.png */; };
+		D0C2D5A116912CE700D02900 /* hearts.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A2E168D09C8005556BD /* hearts.png */; };
+		D0C2D5A216912CE700D02900 /* hill_scoreboard.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A25168CFD98005556BD /* hill_scoreboard.png */; };
+		D0C2D5A316912CE700D02900 /* Invite_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A03168CC14D005556BD /* Invite_Button.png */; };
 		D0D7C84615955D3400F51C6E /* AvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D7C84515955D3400F51C6E /* AvatarViewController.m */; };
 		D0D7C84915956E3D00F51C6E /* ModeSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D7C84815956E3D00F51C6E /* ModeSelectionViewController.m */; };
 		D0E30664159E4B1B0080D845 /* popoverArrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E30655159E4B1B0080D845 /* popoverArrowDown.png */; };
@@ -2564,6 +2568,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0C2D5A016912CE700D02900 /* eye2.png in Resources */,
+				D0C2D5A116912CE700D02900 /* hearts.png in Resources */,
+				D0C2D5A216912CE700D02900 /* hill_scoreboard.png in Resources */,
+				D0C2D5A316912CE700D02900 /* Invite_Button.png in Resources */,
 				D04FB7261690A6B6009F97C9 /* HitWho_Hammer.png in Resources */,
 				D04FB7271690A6B6009F97C9 /* HitWho_FullView.jpg in Resources */,
 				D0B48896160E5371000B95A7 /* ear 2.png in Resources */,
