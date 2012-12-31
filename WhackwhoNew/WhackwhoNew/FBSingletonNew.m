@@ -237,7 +237,7 @@ static FBSingletonNew *singletonDelegate = nil;
     BOOL trigger = NO;
     // Only trigger the prompt if the facebook session is valid and
     // the counter is greater than a certain value, 3 in this sample
-    if (FBSession.activeSession.isOpen && (appActiveCount >= 3)) {
+    if (FBSession.activeSession.isOpen && (appActiveCount >= 1)) {
         trigger = YES;
         appActiveCount = 0;
     }
