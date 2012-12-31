@@ -16,7 +16,7 @@
     CCLabelTTF *timeLabel, *scoreLabel, *hitsLabel;
     CCMenu *pauseMenu;
     BOOL gameOver;
-    CCSprite *scoreboard;
+    CCSprite *scoreboard, *cloud;
     ccTime myTime;
     int lives;
 }

@@ -121,7 +121,6 @@
     if ((self = [super init])) {
         [self setVariables];
         
-        
         CGSize winSize = [CCDirector sharedDirector].winSize;
         
         //add timer label
@@ -160,7 +159,6 @@
         scoreLabel.position = ccp(scoreboard.contentSize.width/2, 40);
         [scoreboard addChild:scoreLabel z:101];
         
-        
         //add "hits" label
         hitsLabel = [CCLabelTTF labelWithString:@"X" fontName:@"chalkduster" fontSize:35];
         hitsLabel.color = ccc3(255, 0, 0);
@@ -170,12 +168,33 @@
         [self addChild:hitsLabel z:101];
         hitsLabel.visible = FALSE;
         
+        //set cloud drifting animation
+        cloud = [CCSprite spriteWithFile:@"hill_cloud1.png"];
+        cloud.anchorPoint = ccp(0,1);
+        cloud.position = ccp(0, winSize.height - 10);
+        [self addChild:cloud z:90];
+        CCMoveTo *driftRight = [CCMoveTo actionWithDuration:15.0 position:ccp(winSize.width, winSize.height - 10)];
+        //CCMoveTo *easeDrift = [CCEaseInOut actionWithAction:driftRight rate:1.5];
+        CCDelayTime *delay = [CCDelayTime actionWithDuration:1.0];
+        CCCallFuncN *resetCloud = [CCCallFuncN actionWithTarget:self selector:@selector(resetCloud:)];
+        CCSequence *cloudSequence = [CCSequence actions:driftRight, delay, resetCloud, nil];
+        CCRepeatForever *repeat = [CCRepeatForever actionWithAction:cloudSequence];
+        [cloud runAction:repeat];
+        
         [self schedule:@selector(timerUpdate:) interval:0.5f];
     }
     return self;
 }
 
+-(void) resetCloud: (id) sender {
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    
+    CCSprite *temp_cloud = (CCSprite *) sender;
+    temp_cloud.position = ccp(0, winSize.height - 10);
+}
+
 -(void) pauseGame {
+    //show modal view controller
     [[HelloWorldScene gameOverDelegate] returnToMenu];
 }
 
@@ -251,6 +270,6 @@
 - (void)registerWithTouchDispatcher {
     [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
 }
- */
+*/
 
 @end
