@@ -59,6 +59,8 @@
     UIImage *img = [image fixOrientation];
     photoView.image = nil;
     
+    [[UserInfo sharedInstance] setUsrImg:image];
+    
     [self.delegate validImageCaptured:img croppedImage:nil];
     [self.pickerReference dismissModalViewControllerAnimated:YES];
 

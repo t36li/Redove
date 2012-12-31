@@ -13,12 +13,18 @@
     IBOutlet UIImageView *drawImageView;
     NSMutableArray *userPoints;
     CGFloat lineWidth;
+    
+    NSMutableArray *oneStrokePoints;
+    UIImage *cacheImage;
+    UIImage *photo;
 }
 
 @property (nonatomic,strong) IBOutlet UIImageView *drawImageView;
-@property (nonatomic, strong) NSMutableArray *userPoints;
+@property (nonatomic, strong) NSMutableArray *userPoints, *oneStrokePoints;
 @property (nonatomic) CGFloat lineWidth;
 @property (nonatomic,strong) UIColor *currentColor;
+
+@property (nonatomic, strong) UIImage *cacheImage, *photo;
 
 @property (nonatomic) CGPoint lastPoint;
 @property (nonatomic) CGPoint prePreviousPoint;
