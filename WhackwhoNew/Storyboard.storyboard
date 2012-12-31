@@ -34,7 +34,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WSc-I8-9za" userLabel="Camera Button">
-                                <rect key="frame" x="62" y="231" width="28" height="23"/>
+                                <rect key="frame" x="56" y="233" width="20" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="camera.png">
@@ -49,7 +49,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uQN-HI-g79" userLabel="Ok Button">
-                                <rect key="frame" x="98" y="222" width="79" height="55"/>
+                                <rect key="frame" x="100" y="222" width="79" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="Ok_Button.png">
@@ -64,7 +64,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="x48-GJ-2B3">
-                                <rect key="frame" x="185" y="220" width="35" height="35"/>
+                                <rect key="frame" x="189" y="234" width="31" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Publish" image="temp_upload.png">
@@ -122,11 +122,11 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vc1-p6-FQ0">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="33"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vc1-p6-FQ0">
+                                <rect key="frame" x="20" y="279" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="back">
+                                <state key="normal" image="Back_Button.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1050,11 +1050,11 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration" label=""/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IjU-m5-inK">
-                                <rect key="frame" x="6" y="290" width="48" height="23"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IjU-m5-inK">
+                                <rect key="frame" x="19" y="290" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                <state key="normal" title="Back">
+                                <state key="normal" title="Back" image="Back_Button.png">
                                     <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1173,6 +1173,7 @@
     </scenes>
     <resources>
         <image name="BO001.png" width="182" height="119"/>
+        <image name="Back_Button.png" width="63" height="64"/>
         <image name="Choose_Connections_Bg.jpg" width="960" height="640"/>
         <image name="FacebookButton30x34.png" width="176" height="31"/>
         <image name="HitWho_FullView.jpg" width="960" height="640"/>
@@ -1180,7 +1181,7 @@
         <image name="Invite_Button.png" width="220" height="105"/>
         <image name="Ok_Button.png" width="161" height="110"/>
         <image name="Option_Button.png" width="220" height="101"/>
-        <image name="Personal_Status_Bg.png" width="960" height="640"/>
+        <image name="Personal_Status_Bg.png" width="16" height="16"/>
         <image name="Play_Button.png" width="192" height="107"/>
         <image name="Status_Popularity_Frame.png" width="403" height="85"/>
         <image name="Status_TotalScore_Frame.png" width="403" height="85"/>

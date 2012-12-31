@@ -193,9 +193,34 @@
     temp_cloud.position = ccp(0, winSize.height - 10);
 }
 
--(void) pauseGame {
-    //show modal view controller
+-(void) quitTapped: (id) sender  {
     [[HelloWorldScene gameOverDelegate] returnToMenu];
+}
+
+- (void) resumeTapped:(id)sender {
+    [[CCDirector sharedDirector] resume];
+}
+
+-(void) pauseGame {
+    [[CCDirector sharedDirector] pause];
+    //show modal view controller
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    
+    CCLayerColor *colorLayer = [CCLayerColor layerWithColor:ccc4(0, 0, 0, 80)];
+    //[colorLayer setOpacity:80];
+    [self addChild:colorLayer z:20];
+    
+    //set "resume" label
+    CCMenuItemImage *image = [CCMenuItemImage itemWithNormalImage:@"Undo_Button_1.png" selectedImage:@"Undo_Button_1.png" target:self selector:@selector(resumeTapped:)];
+    CCMenu *resumeMenu = [CCMenu menuWithItems:image, nil];
+    resumeMenu.position = ccp(winSize.width/2 - 100, winSize.height/2);
+    [colorLayer addChild:resumeMenu z:10];
+    
+    //set "Main Page" label
+    CCMenuItemImage *image2 = [CCMenuItemImage itemWithNormalImage:@"Battle_Button.png" selectedImage:@"Battle_Button.png" target:self selector:@selector(quitTapped:)];
+    CCMenu *quit = [CCMenu menuWithItems:image2, nil];
+    quit.position = ccp(winSize.width/2 + 100, winSize.height/2);
+    [colorLayer addChild:quit z:10];
 }
 
 
