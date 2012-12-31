@@ -176,6 +176,7 @@ WhichTransition transitionType;
         case FROM_CAMERA: {
             CustomDrawViewController *drawController = [[CustomDrawViewController alloc] initWithNibName:@"CustomDrawViewController" bundle:nil];
             [self presentViewController:drawController animated:YES completion:nil];
+            drawController.containerView.photo = tempPhoto;
             drawController.containerView.drawImageView.image = tempPhoto;
             transitionType = FROM_CUSTOMDRAW;
             break;
@@ -301,7 +302,6 @@ WhichTransition transitionType;
 -(void)validImageCaptured:(UIImage *)image croppedImage:(UIImage *)croppedImg{
     if (image != nil){
         tempPhoto = image;
-
     }
 }
 
