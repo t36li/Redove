@@ -429,11 +429,6 @@
 		D092386B1668534000E1A231 /* CustomDrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09238691668534000E1A231 /* CustomDrawViewController.m */; };
 		D092386C1668534000E1A231 /* CustomDrawViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D092386A1668534000E1A231 /* CustomDrawViewController.xib */; };
 		D0948D4115ADFF0E00429477 /* AvatarBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0948D4015ADFF0E00429477 /* AvatarBaseController.m */; };
-		D09800CA1609621F009E97E8 /* green board.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800C61609621E009E97E8 /* green board.png */; };
-		D09800CB1609621F009E97E8 /* blue board.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800C71609621E009E97E8 /* blue board.png */; };
-		D09800CC1609621F009E97E8 /* yellow board.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800C81609621E009E97E8 /* yellow board.png */; };
-		D09800CD1609621F009E97E8 /* pink board.png in Resources */ = {isa = PBXBuildFile; fileRef = D09800C91609621E009E97E8 /* pink board.png */; };
-		D09D985D160A9F7A00014ADB /* white final.png in Resources */ = {isa = PBXBuildFile; fileRef = D09D9858160A9F7A00014ADB /* white final.png */; };
 		D09D985E160A9F7A00014ADB /* HE002.png in Resources */ = {isa = PBXBuildFile; fileRef = D09D9859160A9F7A00014ADB /* HE002.png */; };
 		D09D985F160A9F7A00014ADB /* HE003.png in Resources */ = {isa = PBXBuildFile; fileRef = D09D985A160A9F7A00014ADB /* HE003.png */; };
 		D09D9860160A9F7A00014ADB /* HE001.png in Resources */ = {isa = PBXBuildFile; fileRef = D09D985B160A9F7A00014ADB /* HE001.png */; };
@@ -442,19 +437,6 @@
 		D09FD5DE159E4EB60079231D /* CameraOverlayControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D09FD5DC159E4EB60079231D /* CameraOverlayControllerViewController.xib */; };
 		D0A3F72515AF5E9A0027EFF9 /* AvatarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0948D3915AB6E9A00429477 /* AvatarView.xib */; };
 		D0A3F74715B266330027EFF9 /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A3F74615B266330027EFF9 /* SpinnerView.m */; };
-		D0AB827E1625212D00A0EF0B /* multipler.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB82731625212D00A0EF0B /* multipler.png */; };
-		D0AB827F1625212D00A0EF0B /* addition line.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB82741625212D00A0EF0B /* addition line.png */; };
-		D0AB82801625212D00A0EF0B /* little star.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB82751625212D00A0EF0B /* little star.png */; };
-		D0AB82811625212D00A0EF0B /* summary.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB82761625212D00A0EF0B /* summary.png */; };
-		D0AB82821625212D00A0EF0B /* total score.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB82771625212D00A0EF0B /* total score.png */; };
-		D0AB82831625212D00A0EF0B /* total gold.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB82781625212D00A0EF0B /* total gold.png */; };
-		D0AB82841625212D00A0EF0B /* golden right button.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB82791625212D00A0EF0B /* golden right button.png */; };
-		D0AB82851625212D00A0EF0B /* golden left button.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB827A1625212D00A0EF0B /* golden left button.png */; };
-		D0AB82861625212D00A0EF0B /* name box.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB827B1625212D00A0EF0B /* name box.png */; };
-		D0AB82871625212D00A0EF0B /* upload.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB827C1625212D00A0EF0B /* upload.png */; };
-		D0AB82881625212D00A0EF0B /* box frame.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB827D1625212D00A0EF0B /* box frame.png */; };
-		D0AB828B1625257E00A0EF0B /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB82891625257E00A0EF0B /* rock.png */; };
-		D0AB828C1625257E00A0EF0B /* wood background.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AB828A1625257E00A0EF0B /* wood background.png */; };
 		D0AB828F1627BFD000A0EF0B /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AB828E1627BFD000A0EF0B /* ReviewViewController.m */; };
 		D0B2477015C204C300C206BA /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2476F15C204C300C206BA /* UIImage+fixOrientation.m */; };
 		D0B4849A160E2C77000B95A7 /* FaceEffectsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B48498160E2C77000B95A7 /* FaceEffectsController.m */; };
@@ -473,7 +455,12 @@
 		D0C2D5A116912CE700D02900 /* hearts.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A2E168D09C8005556BD /* hearts.png */; };
 		D0C2D5A216912CE700D02900 /* hill_scoreboard.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A25168CFD98005556BD /* hill_scoreboard.png */; };
 		D0C2D5A316912CE700D02900 /* Invite_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A03168CC14D005556BD /* Invite_Button.png */; };
-		D0D7C84615955D3400F51C6E /* AvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D7C84515955D3400F51C6E /* AvatarViewController.m */; };
+		D0C2D5BD169234D200D02900 /* Review_Upload_Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C2D5B7169234D200D02900 /* Review_Upload_Arrow.png */; };
+		D0C2D5BE169234D200D02900 /* Review_Name_Plate.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C2D5B8169234D200D02900 /* Review_Name_Plate.png */; };
+		D0C2D5BF169234D200D02900 /* Review_Background.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C2D5B9169234D200D02900 /* Review_Background.png */; };
+		D0C2D5C0169234D200D02900 /* Review_Frame.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C2D5BA169234D200D02900 /* Review_Frame.png */; };
+		D0C2D5C1169234D200D02900 /* Review_Right_Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C2D5BB169234D200D02900 /* Review_Right_Arrow.png */; };
+		D0C2D5C2169234D200D02900 /* Review_Left_Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C2D5BC169234D200D02900 /* Review_Left_Arrow.png */; };
 		D0D7C84915956E3D00F51C6E /* ModeSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D7C84815956E3D00F51C6E /* ModeSelectionViewController.m */; };
 		D0E30664159E4B1B0080D845 /* popoverArrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E30655159E4B1B0080D845 /* popoverArrowDown.png */; };
 		D0E30665159E4B1B0080D845 /* popoverArrowDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E30656159E4B1B0080D845 /* popoverArrowDown@2x.png */; };
@@ -490,15 +477,9 @@
 		D0E30670159E4B1B0080D845 /* popoverBg.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E30661159E4B1B0080D845 /* popoverBg.png */; };
 		D0E30671159E4B1B0080D845 /* popoverBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E30662159E4B1B0080D845 /* popoverBg@2x.png */; };
 		D0E30672159E4B1B0080D845 /* popoverBgSimple.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E30663159E4B1B0080D845 /* popoverBgSimple.png */; };
-		D0E59F6E160807EB00F73C9D /* big head overlay white.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F65160807EB00F73C9D /* big head overlay white.png */; };
-		D0E59F74160807EB00F73C9D /* navigator 2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F6B160807EB00F73C9D /* navigator 2.png */; };
-		D0E59F7816080E4F00F73C9D /* camera frame.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F7716080E4F00F73C9D /* camera frame.png */; };
-		D0E59F83160825D000F73C9D /* back icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F7A160825D000F73C9D /* back icon.png */; };
-		D0E59F8A160825D000F73C9D /* camera photo  frame.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E59F81160825D000F73C9D /* camera photo  frame.png */; };
 		D0EC140D1688D20000E24357 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EC140C1688D20000E24357 /* FacebookSDK.framework */; };
 		D0EC140F1688D24300E24357 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D0EC140E1688D24300E24357 /* FacebookSDKResources.bundle */; };
 		D0EC14111688D25D00E24357 /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D0EC14101688D25D00E24357 /* FBUserSettingsViewResources.bundle */; };
-		D0F37ECF161150D200E58F1E /* camera view overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = D0F37ECE161150D200E58F1E /* camera view overlay.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1074,11 +1055,6 @@
 		D0948D3915AB6E9A00429477 /* AvatarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AvatarView.xib; path = ../AvatarView.xib; sourceTree = "<group>"; };
 		D0948D3F15ADFF0E00429477 /* AvatarBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarBaseController.h; sourceTree = "<group>"; };
 		D0948D4015ADFF0E00429477 /* AvatarBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarBaseController.m; sourceTree = "<group>"; };
-		D09800C61609621E009E97E8 /* green board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green board.png"; sourceTree = "<group>"; };
-		D09800C71609621E009E97E8 /* blue board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue board.png"; sourceTree = "<group>"; };
-		D09800C81609621E009E97E8 /* yellow board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellow board.png"; sourceTree = "<group>"; };
-		D09800C91609621E009E97E8 /* pink board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pink board.png"; sourceTree = "<group>"; };
-		D09D9858160A9F7A00014ADB /* white final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white final.png"; sourceTree = "<group>"; };
 		D09D9859160A9F7A00014ADB /* HE002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HE002.png; sourceTree = "<group>"; };
 		D09D985A160A9F7A00014ADB /* HE003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HE003.png; sourceTree = "<group>"; };
 		D09D985B160A9F7A00014ADB /* HE001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HE001.png; sourceTree = "<group>"; };
@@ -1088,19 +1064,6 @@
 		D09FD5DC159E4EB60079231D /* CameraOverlayControllerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlayControllerViewController.xib; path = ../CameraOverlayControllerViewController.xib; sourceTree = "<group>"; };
 		D0A3F74515B266330027EFF9 /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
 		D0A3F74615B266330027EFF9 /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
-		D0AB82731625212D00A0EF0B /* multipler.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multipler.png; sourceTree = "<group>"; };
-		D0AB82741625212D00A0EF0B /* addition line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addition line.png"; sourceTree = "<group>"; };
-		D0AB82751625212D00A0EF0B /* little star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "little star.png"; sourceTree = "<group>"; };
-		D0AB82761625212D00A0EF0B /* summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = summary.png; sourceTree = "<group>"; };
-		D0AB82771625212D00A0EF0B /* total score.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "total score.png"; sourceTree = "<group>"; };
-		D0AB82781625212D00A0EF0B /* total gold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "total gold.png"; sourceTree = "<group>"; };
-		D0AB82791625212D00A0EF0B /* golden right button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "golden right button.png"; sourceTree = "<group>"; };
-		D0AB827A1625212D00A0EF0B /* golden left button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "golden left button.png"; sourceTree = "<group>"; };
-		D0AB827B1625212D00A0EF0B /* name box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "name box.png"; sourceTree = "<group>"; };
-		D0AB827C1625212D00A0EF0B /* upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upload.png; sourceTree = "<group>"; };
-		D0AB827D1625212D00A0EF0B /* box frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "box frame.png"; sourceTree = "<group>"; };
-		D0AB82891625257E00A0EF0B /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
-		D0AB828A1625257E00A0EF0B /* wood background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wood background.png"; sourceTree = "<group>"; };
 		D0AB828D1627BFD000A0EF0B /* ReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewViewController.h; sourceTree = "<group>"; };
 		D0AB828E1627BFD000A0EF0B /* ReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewViewController.m; sourceTree = "<group>"; };
 		D0B2476E15C204C300C206BA /* UIImage+fixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+fixOrientation.h"; sourceTree = "<group>"; };
@@ -1110,8 +1073,12 @@
 		D0B48499160E2C77000B95A7 /* FaceEffectsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FaceEffectsController.xib; path = ../FaceEffectsController.xib; sourceTree = "<group>"; };
 		D0B9EECC159E6F0D005D2460 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		D0B9EECF159EA9D4005D2460 /* CameraOverlayControllerViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraOverlayControllerViewControllerDelegate.h; sourceTree = "<group>"; };
-		D0D7C84415955D3400F51C6E /* AvatarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AvatarViewController.h; path = WhackwhoNew/AvatarViewController.h; sourceTree = "<group>"; };
-		D0D7C84515955D3400F51C6E /* AvatarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AvatarViewController.m; path = WhackwhoNew/AvatarViewController.m; sourceTree = "<group>"; };
+		D0C2D5B7169234D200D02900 /* Review_Upload_Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Review_Upload_Arrow.png; sourceTree = "<group>"; };
+		D0C2D5B8169234D200D02900 /* Review_Name_Plate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Review_Name_Plate.png; sourceTree = "<group>"; };
+		D0C2D5B9169234D200D02900 /* Review_Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Review_Background.png; sourceTree = "<group>"; };
+		D0C2D5BA169234D200D02900 /* Review_Frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Review_Frame.png; sourceTree = "<group>"; };
+		D0C2D5BB169234D200D02900 /* Review_Right_Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Review_Right_Arrow.png; sourceTree = "<group>"; };
+		D0C2D5BC169234D200D02900 /* Review_Left_Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Review_Left_Arrow.png; sourceTree = "<group>"; };
 		D0D7C84715956E3D00F51C6E /* ModeSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModeSelectionViewController.h; path = WhackwhoNew/ModeSelectionViewController.h; sourceTree = "<group>"; };
 		D0D7C84815956E3D00F51C6E /* ModeSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModeSelectionViewController.m; path = WhackwhoNew/ModeSelectionViewController.m; sourceTree = "<group>"; };
 		D0E30655159E4B1B0080D845 /* popoverArrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowDown.png; sourceTree = "<group>"; };
@@ -1146,11 +1113,6 @@
 		D0E30684159E4B4C0080D845 /* WEPopoverTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WEPopoverTableViewController.m; sourceTree = "<group>"; };
 		D0E30685159E4B4C0080D845 /* WEPopoverViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WEPopoverViewController.h; sourceTree = "<group>"; };
 		D0E30686159E4B4C0080D845 /* WEPopoverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WEPopoverViewController.m; sourceTree = "<group>"; };
-		D0E59F65160807EB00F73C9D /* big head overlay white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "big head overlay white.png"; sourceTree = "<group>"; };
-		D0E59F6B160807EB00F73C9D /* navigator 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigator 2.png"; sourceTree = "<group>"; };
-		D0E59F7716080E4F00F73C9D /* camera frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera frame.png"; sourceTree = "<group>"; };
-		D0E59F7A160825D000F73C9D /* back icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back icon.png"; sourceTree = "<group>"; };
-		D0E59F81160825D000F73C9D /* camera photo  frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera photo  frame.png"; sourceTree = "<group>"; };
 		D0EC140C1688D20000E24357 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK.framework; sourceTree = "<group>"; };
 		D0EC140E1688D24300E24357 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = ../FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
 		D0EC14101688D25D00E24357 /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBUserSettingsViewResources.bundle; path = ../FacebookSDK.framework/Versions/A/Resources/FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
@@ -1185,7 +1147,6 @@
 		D0EC142F1688D35700E24357 /* FBTestSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBTestSession.h; sourceTree = "<group>"; };
 		D0EC14301688D35700E24357 /* FBUserSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBUserSettingsViewController.h; sourceTree = "<group>"; };
 		D0EC14311688D35700E24357 /* FBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBViewController.h; sourceTree = "<group>"; };
-		D0F37ECE161150D200E58F1E /* camera view overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera view overlay.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1383,8 +1344,6 @@
 				C14385A815C8C13C008D9AE7 /* Load Scene */,
 				692AC3A215B24BB0001E4858 /* HitWhoGroup */,
 				C198EE2C15CF7AEB004D170C /* Personal Status View */,
-				D0D7C84415955D3400F51C6E /* AvatarViewController.h */,
-				D0D7C84515955D3400F51C6E /* AvatarViewController.m */,
 				D0903BEA1667219C00BB920B /* CustomDrawView.h */,
 				D0903BEB1667219C00BB920B /* CustomDrawView.m */,
 				D09238681668534000E1A231 /* CustomDrawViewController.h */,
@@ -2146,19 +2105,12 @@
 		D0AB827216251F1700A0EF0B /* Review Screen */ = {
 			isa = PBXGroup;
 			children = (
-				D0AB82891625257E00A0EF0B /* rock.png */,
-				D0AB828A1625257E00A0EF0B /* wood background.png */,
-				D0AB82731625212D00A0EF0B /* multipler.png */,
-				D0AB82741625212D00A0EF0B /* addition line.png */,
-				D0AB82751625212D00A0EF0B /* little star.png */,
-				D0AB82761625212D00A0EF0B /* summary.png */,
-				D0AB82771625212D00A0EF0B /* total score.png */,
-				D0AB82781625212D00A0EF0B /* total gold.png */,
-				D0AB82791625212D00A0EF0B /* golden right button.png */,
-				D0AB827A1625212D00A0EF0B /* golden left button.png */,
-				D0AB827B1625212D00A0EF0B /* name box.png */,
-				D0AB827C1625212D00A0EF0B /* upload.png */,
-				D0AB827D1625212D00A0EF0B /* box frame.png */,
+				D0C2D5B7169234D200D02900 /* Review_Upload_Arrow.png */,
+				D0C2D5B8169234D200D02900 /* Review_Name_Plate.png */,
+				D0C2D5B9169234D200D02900 /* Review_Background.png */,
+				D0C2D5BA169234D200D02900 /* Review_Frame.png */,
+				D0C2D5BB169234D200D02900 /* Review_Right_Arrow.png */,
+				D0C2D5BC169234D200D02900 /* Review_Left_Arrow.png */,
 			);
 			name = "Review Screen";
 			sourceTree = "<group>";
@@ -2234,17 +2186,6 @@
 				D0442EBA168CE8EF00677CC3 /* camera_undo.png */,
 				D0442EBB168CE8EF00677CC3 /* camera_undo_depressed.png */,
 				D0442EBC168CE8EF00677CC3 /* camera_background.png */,
-				D0F37ECE161150D200E58F1E /* camera view overlay.png */,
-				D09D9858160A9F7A00014ADB /* white final.png */,
-				D09800C61609621E009E97E8 /* green board.png */,
-				D09800C71609621E009E97E8 /* blue board.png */,
-				D09800C81609621E009E97E8 /* yellow board.png */,
-				D09800C91609621E009E97E8 /* pink board.png */,
-				D0E59F7A160825D000F73C9D /* back icon.png */,
-				D0E59F81160825D000F73C9D /* camera photo  frame.png */,
-				D0E59F7716080E4F00F73C9D /* camera frame.png */,
-				D0E59F65160807EB00F73C9D /* big head overlay white.png */,
-				D0E59F6B160807EB00F73C9D /* navigator 2.png */,
 			);
 			name = CameraView;
 			sourceTree = "<group>";
@@ -2645,16 +2586,6 @@
 				692E5BC216050FA200303A50 /* upper shelf.png in Resources */,
 				692E5BC416050FFA00303A50 /* store pin.png in Resources */,
 				692E5BC61605101C00303A50 /* lower shelf.png in Resources */,
-				D0E59F6E160807EB00F73C9D /* big head overlay white.png in Resources */,
-				D0E59F74160807EB00F73C9D /* navigator 2.png in Resources */,
-				D0E59F7816080E4F00F73C9D /* camera frame.png in Resources */,
-				D0E59F83160825D000F73C9D /* back icon.png in Resources */,
-				D0E59F8A160825D000F73C9D /* camera photo  frame.png in Resources */,
-				D09800CA1609621F009E97E8 /* green board.png in Resources */,
-				D09800CB1609621F009E97E8 /* blue board.png in Resources */,
-				D09800CC1609621F009E97E8 /* yellow board.png in Resources */,
-				D09800CD1609621F009E97E8 /* pink board.png in Resources */,
-				D09D985D160A9F7A00014ADB /* white final.png in Resources */,
 				D09D985E160A9F7A00014ADB /* HE002.png in Resources */,
 				D09D985F160A9F7A00014ADB /* HE003.png in Resources */,
 				D09D9860160A9F7A00014ADB /* HE001.png in Resources */,
@@ -2667,21 +2598,7 @@
 				C19A3A23160CD4FE00C6E8F9 /* HA002.png in Resources */,
 				D0B4849B160E2C77000B95A7 /* FaceEffectsController.xib in Resources */,
 				C19A3A64160E81B300C6E8F9 /* SA001.png in Resources */,
-				D0F37ECF161150D200E58F1E /* camera view overlay.png in Resources */,
 				C12114581616044300E3AAB1 /* Default-568h@2x.png in Resources */,
-				D0AB827E1625212D00A0EF0B /* multipler.png in Resources */,
-				D0AB827F1625212D00A0EF0B /* addition line.png in Resources */,
-				D0AB82801625212D00A0EF0B /* little star.png in Resources */,
-				D0AB82811625212D00A0EF0B /* summary.png in Resources */,
-				D0AB82821625212D00A0EF0B /* total score.png in Resources */,
-				D0AB82831625212D00A0EF0B /* total gold.png in Resources */,
-				D0AB82841625212D00A0EF0B /* golden right button.png in Resources */,
-				D0AB82851625212D00A0EF0B /* golden left button.png in Resources */,
-				D0AB82861625212D00A0EF0B /* name box.png in Resources */,
-				D0AB82871625212D00A0EF0B /* upload.png in Resources */,
-				D0AB82881625212D00A0EF0B /* box frame.png in Resources */,
-				D0AB828B1625257E00A0EF0B /* rock.png in Resources */,
-				D0AB828C1625257E00A0EF0B /* wood background.png in Resources */,
 				D04D763E163769BE003C858F /* GameViewController.xib in Resources */,
 				D04D76521638CBAD003C858F /* splash_sheet.plist in Resources */,
 				D04D76531638CBAD003C858F /* splash_sheet.png in Resources */,
@@ -2757,7 +2674,6 @@
 				C14718551594F0AE0002FF21 /* AppDelegate.m in Sources */,
 				C147185B1594F1AF0002FF21 /* CocosViewController.m in Sources */,
 				C1B4397D15951B4100D62C2B /* StatusBarController.m in Sources */,
-				D0D7C84615955D3400F51C6E /* AvatarViewController.m in Sources */,
 				D0D7C84915956E3D00F51C6E /* ModeSelectionViewController.m in Sources */,
 				69C95E8E159A4AAC009966DA /* RootViewController.m in Sources */,
 				69C95EAD159B63A9009966DA /* SelectToLoginViewController.m in Sources */,

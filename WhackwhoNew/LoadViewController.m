@@ -41,7 +41,11 @@
             //    [fbs populateUserDetails];
             //}
             //[[FBSingletonNew sharedInstance] openSession];
-            [[FBSingletonNew sharedInstance] populateUserDetails];
+            if ([[FBSingletonNew sharedInstance] isLogin]){
+                [[FBSingletonNew sharedInstance] populateUserDetails];
+            }else{
+                [[FBSingletonNew sharedInstance] openSession];
+            }
         }
             break;
         case LogInGmail:

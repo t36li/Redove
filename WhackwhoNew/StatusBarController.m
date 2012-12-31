@@ -153,6 +153,7 @@ WhichTransition transitionType;
         }
         case FROM_CUSTOMDRAW:
             //need to refresh user image and hits from database
+            [faceView setImage:[[UserInfo sharedInstance] croppedImage]];
             break;
     }
     

@@ -85,11 +85,12 @@
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     //[[CCDirector sharedDirector] resume];
     [FBSession.activeSession handleDidBecomeActive];
-    
+    /*
     if (FBSession.activeSession.isOpen) {
         // Check for any incoming notifications
         [[FBSingletonNew sharedInstance] checkIncomingNotification];
     }
+     */
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

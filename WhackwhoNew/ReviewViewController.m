@@ -69,7 +69,6 @@
 -(IBAction) hitLeft:(id)sender {
     if (selectedIndex > 0) {
         selectedIndex --;
-        [self clearImageViews];
         self.avatarImageView.image = [avatarArray objectAtIndex:selectedIndex];
         //[[UserInfo sharedInstance] performSelector:@selector(markFaces:withDelegate:) withObject:self.avatarImageView.image withObject:self];
     }
@@ -78,7 +77,6 @@
 -(IBAction) hitRight:(id)sender {
     if (selectedIndex < avatarArray.count - 1) {
         selectedIndex ++;
-        [self clearImageViews];
         self.avatarImageView.image = [avatarArray objectAtIndex:selectedIndex];
         //[[UserInfo sharedInstance] performSelector:@selector(markFaces:withDelegate:) withObject:self.avatarImageView.image withObject:self];
     }
