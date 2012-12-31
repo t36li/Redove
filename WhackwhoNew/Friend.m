@@ -32,7 +32,7 @@
     copy->gender = nil;
     copy->whackwho_id = nil;
     copy->head_id = nil;
-    copy->popularity = nil;
+    copy->popularity = 0;
     copy.user_id = [NSString stringWithString:self.user_id];
     copy.name = [NSString stringWithString:self.name];
     copy.gender = [NSString stringWithString:self.gender];

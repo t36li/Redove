@@ -227,7 +227,6 @@
     drawImageView.image = finalResizedImage;
     
     [user setCroppedImage:finalResizedImage];
-    [user setUsrImg:nil];
     user.faceRect = faceRect;
     
     [userPoints removeAllObjects];

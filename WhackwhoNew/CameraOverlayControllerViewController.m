@@ -51,7 +51,7 @@
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [pickerReference dismissModalViewControllerAnimated:YES];
+    [pickerReference dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo {

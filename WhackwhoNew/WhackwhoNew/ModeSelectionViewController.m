@@ -34,8 +34,13 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+    return interfaceOrientation == UIInterfaceOrientationLandscapeLeft;
 }
+
+-(NSUInteger) supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskLandscapeLeft;
+}
+
 
 -(void) viewWillAppear:(BOOL)animated {
     background.image = [UIImage imageNamed:[bg_list objectAtIndex:index]];
