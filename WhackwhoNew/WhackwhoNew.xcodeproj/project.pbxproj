@@ -42,6 +42,7 @@
 		69E9EB9C16028E4E00E52D4F /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 69E9EB9716028E4E00E52D4F /* arrow@2x.png */; };
 		69E9EB9D16028E4E00E52D4F /* PullToRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E9EB9916028E4E00E52D4F /* PullToRefreshView.m */; };
 		69E9EB9E16028E4E00E52D4F /* README in Resources */ = {isa = PBXBuildFile; fileRef = 69E9EB9A16028E4E00E52D4F /* README */; };
+		C102E205169113BA0074AB83 /* hill_cloud1.png in Resources */ = {isa = PBXBuildFile; fileRef = C102E204169113BA0074AB83 /* hill_cloud1.png */; };
 		C1053A0416582E6C0015B932 /* ItemsPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1053A0316582E6C0015B932 /* ItemsPList.plist */; };
 		C1053A191664213F0015B932 /* Level1.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1053A181664213F0015B932 /* Level1.plist */; };
 		C10D2FC215D060A6007B751B /* Dragbox.m in Sources */ = {isa = PBXBuildFile; fileRef = C10D2FC115D060A6007B751B /* Dragbox.m */; };
@@ -625,6 +626,7 @@
 		69E9EB9816028E4E00E52D4F /* PullToRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullToRefreshView.h; sourceTree = "<group>"; };
 		69E9EB9916028E4E00E52D4F /* PullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullToRefreshView.m; sourceTree = "<group>"; };
 		69E9EB9A16028E4E00E52D4F /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		C102E204169113BA0074AB83 /* hill_cloud1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hill_cloud1.png; sourceTree = "<group>"; };
 		C1053A0316582E6C0015B932 /* ItemsPList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ItemsPList.plist; sourceTree = "<group>"; };
 		C1053A181664213F0015B932 /* Level1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level1.plist; sourceTree = "<group>"; };
 		C10D2FC015D060A6007B751B /* Dragbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dragbox.h; sourceTree = "<group>"; };
@@ -1429,6 +1431,7 @@
 				C1413A07168CC3C2005556BD /* HitWho_FullView.jpg */,
 				D04FB35B1690A463009F97C9 /* SeaLevel_finalView.jpg */,
 				D04FB35D1690A46D009F97C9 /* hills_finalView.jpg */,
+				C102E204169113BA0074AB83 /* hill_cloud1.png */,
 			);
 			name = Background;
 			sourceTree = "<group>";
@@ -2731,6 +2734,7 @@
 				C1482715168E207C00C5680D /* temp_upload.png in Resources */,
 				D04FB35C1690A463009F97C9 /* SeaLevel_finalView.jpg in Resources */,
 				D04FB35E1690A46D009F97C9 /* hills_finalView.jpg in Resources */,
+				C102E205169113BA0074AB83 /* hill_cloud1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2995,7 +2999,7 @@
 					"'$(BUILT_PRODUCTS_DIR)/../../Headers'",
 				);
 				INFOPLIST_FILE = WhackwhoNew/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/WhackwhoNew/facebook-ios-sdk\"",
@@ -3037,7 +3041,7 @@
 					"'$(BUILT_PRODUCTS_DIR)/../../Headers'",
 				);
 				INFOPLIST_FILE = WhackwhoNew/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/WhackwhoNew/facebook-ios-sdk\"",
