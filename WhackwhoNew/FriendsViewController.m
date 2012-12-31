@@ -76,7 +76,7 @@
     [self.friendPickerController loadData];
     [self.friendPickerController clearSelection];
     
-    [self presentModalViewController:self.friendPickerController animated:YES];
+    [self presentViewController:self.friendPickerController animated:YES completion:nil];
 }
 
 - (void)facebookViewControllerDoneWasPressed:(id)sender {
@@ -101,7 +101,7 @@
 - (void)fillTextBoxAndDismiss:(NSString *)text {
     self.inviteMessage.text = text;
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -138,7 +138,7 @@
     Friend *friend = [resultData objectAtIndex:indexPath.row];
     cell.user_id = friend.user_id;
     cell.name.text = friend.name;
-    cell.name.lineBreakMode  = UILineBreakModeWordWrap;
+    cell.name.lineBreakMode  = NSLineBreakByWordWrapping;
     cell.gender.text = friend.gender;
     if (friend.isPlayer){
         cell.isPlayer.text = @"玩家";
@@ -201,8 +201,13 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+    return interfaceOrientation == UIInterfaceOrientationLandscapeLeft;
 }
+
+-(NSUInteger) supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskLandscapeLeft;
+}
+
 
 
 

@@ -104,8 +104,13 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+    return interfaceOrientation == UIInterfaceOrientationLandscapeLeft;
 }
+
+-(NSUInteger) supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskLandscapeLeft;
+}
+
 
 -(void)loadPlayersList{
     if ([[UserInfo sharedInstance] friendArray] == nil){
@@ -167,7 +172,7 @@
     Friend *friend = [resultFriends objectAtIndex:indexPath.row];
     cell.identity = friend.user_id;
     cell.name.text = (NSString *)friend.name;
-    cell.name.lineBreakMode  = UILineBreakModeWordWrap;
+    cell.name.lineBreakMode  = NSLineBreakByWordWrapping;
     cell.gender.text = friend.gender;
     cell.popularity.text = [NSString stringWithFormat:@"%d",friend.popularity];
     NSString *formatting = [NSString stringWithFormat:@"http://www.whackwho.com/userImages/%@.png", friend.head_id];

@@ -217,7 +217,6 @@
     location = [[CCDirector sharedDirector] convertToGL:location];
     
     if (CGRectContainsPoint(pauseMenu.boundingBox, location)) {
-        HelloWorldScene *scene = (HelloWorldScene *)self.parent;
         [[HelloWorldScene gameOverDelegate] returnToMenu];
         return YES;
     }
