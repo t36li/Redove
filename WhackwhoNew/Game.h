@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Friend.h"
 @class CocosViewController;
 
 @interface Game : NSObject {
@@ -24,6 +25,8 @@
     UIImage *head;
     
     UIViewController *gameView;
+    
+    NSArray *friendArray;
 }
 
 @property (nonatomic, readwrite) BOOL isGameOver;
@@ -42,6 +45,7 @@
 @property (nonatomic, strong) NSArray *arrayOfHits;
 @property (nonatomic) UIImage *head;
 @property (nonatomic, strong) UIViewController *gameView;
+@property (nonatomic) NSArray *friendArray;
 
 + (Game *) sharedGame;
 - (void) resetGameState;

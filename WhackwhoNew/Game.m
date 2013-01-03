@@ -26,6 +26,7 @@ static Game *sharedGame = nil;
 @synthesize head;
 @synthesize gameView;
 @synthesize readyToStart;
+@synthesize friendArray;
 
 #pragma mark -
 /////////////////////
@@ -45,6 +46,7 @@ static Game *sharedGame = nil;
         //selectedHeads = [[NSMutableArray alloc] init];
         selectHeadCount = 0;
         arrayOfAllPopups = [[NSMutableArray alloc] init];
+        friendArray = nil;
     }
     return self;
 }
@@ -98,6 +100,7 @@ static Game *sharedGame = nil;
     //[selectedHeads removeAllObjects];
     [self setSelectHeadCount:0];
     [arrayOfAllPopups removeAllObjects];
+    friendArray = nil;
 }
 
 @end

@@ -326,7 +326,7 @@
     drawImageView.image = finalResizedImage;
     
     [user setCroppedImage:finalResizedImage];
-    user.faceRect = faceRect;
+    user.faceRect = CGRectMake(0, 0, finalResizedImage.size.width, finalResizedImage.size.height);
     
     [userPoints removeAllObjects];
     

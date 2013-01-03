@@ -7,6 +7,7 @@
 //
 
 #import "ReviewViewController.h"
+#import "AvatarBaseController.h"
 
 @interface ReviewViewController ()
 
@@ -26,17 +27,65 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    NSArray *images = [[Game sharedGame] arrayOfAllPopups];
+    NSArray *friends = [[Game sharedGame] friendArray];
+
+    
+    for (int i = 0; i < friends.count; i ++) {
+        Friend *friend = [friends objectAtIndex:i];
+        
+        Head *head = friend.head;
+        
+        UIImage *pic = head.headImage;
+        
+        UIImage *leftEye = [UIImage imageNamed:@"eye1.png"];
+        UIImage *rightEye = [UIImage imageNamed:@"eye2.png"];
+        UIImage *lip = [UIImage imageNamed:@"lip 1.png"];
+        UIImage *nose = [UIImage imageNamed:@"sworn1.png"];
+        UIImage *leftEar = [UIImage imageNamed:@"ear 1.png"];
+        UIImage *rightEar = [UIImage imageNamed:@"ear 2.png"];
+        
+        CGSize screenSize = pic.size;
+        UIGraphicsBeginImageContext(screenSize);
+        CGContextRef currentContext = UIGraphicsGetCurrentContext();
+        CGPoint leftEyePosition = CGPointFromString(head.leftEyePosition);
+        [pic drawInRect:CGRectMake(0, 0, pic.size.width, pic.size.height)];
+        [leftEye drawInRect:CGRectMake(leftEyePosition.x, leftEyePosition.y, leftEye.size.width, leftEye.size.height)];        
+        
+        UIImage *ret = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+                
+        if (pic != defaultImage) {
+            [avatarArray addObject:[UserInfo resizeImage:ret toSize:portraitView.frame.size]];
+        }
+
+    }
+    /*
     for (UIImage *img in images) {
         if (img != defaultImage) {
             [avatarArray addObject:[UserInfo resizeImage:img toSize:portraitView.frame.size]];
+            
+            UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, img.size.width, img.size.height)];
+            UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
+            [containerView addSubview:imgView];
+            
+            Head *head = friends 
+            
+            UIGraphicsBeginImageContextWithOptions(containerView.bounds.size, NO, 1.0f);
+            
+            [containerView.layer renderInContext:UIGraphicsGetCurrentContext()];
+            
+            // Get the image out of the context
+            UIImage *copied = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
         }
-    }
+    }*/
     if (avatarArray.count > 0) {
         self.avatarImageView.image = [avatarArray objectAtIndex:0];
         //[user performSelector:@selector(markFaces:withDelegate:) withObject:self.avatarImageView.image withObject:self];
         selectedIndex = 0;
     }
+    
+    int n = [[Game sharedGame] selectHeadCount];
 }
 
 - (void)viewDidLoad

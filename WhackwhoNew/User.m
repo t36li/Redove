@@ -103,6 +103,9 @@
     [headMapping mapKeyPath:@"rightEyePosition" toAttribute:@"rightEyePosition"];
     [headMapping mapKeyPath:@"mouthPosition" toAttribute:@"mouthPosition"];
     [headMapping mapKeyPath:@"faceRect" toAttribute:@"faceRect"];
+    [headMapping mapKeyPath:@"nosePosition" toAttribute:@"nosePosition"];
+    [headMapping mapKeyPath:@"leftEarPosition" toAttribute:@"leftEarPosition"];
+    [headMapping mapKeyPath:@"rightEarPosition" toAttribute:@"rightEarPosition"];
     [[RKObjectManager sharedManager].mappingProvider setMapping:headMapping forKeyPath:@"head"];
     
     //friend mapping:

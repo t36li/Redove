@@ -18,9 +18,12 @@
     NSString *rightEyePosition;
     NSString *mouthPosition;
     NSString *faceRect;
+    NSString *nosePosition;
+    NSString *leftEarPosition;
+    NSString *rightEarPosition;
 }
 
-@property (nonatomic, strong) NSString *leftEyePosition, *rightEyePosition, *mouthPosition, *faceRect, *headId;
+@property (nonatomic, strong) NSString *leftEyePosition, *rightEyePosition, *mouthPosition, *faceRect, *headId, *nosePosition, *leftEarPosition, *rightEarPosition;
 @property (nonatomic, strong) UIImage *headImage;
 
 @end
