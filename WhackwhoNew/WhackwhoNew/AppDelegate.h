@@ -8,14 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "UserInfo.h"
+#import <AVFoundation/AVFoundation.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate, AVAudioPlayerDelegate> {
     UserInfo *usr;
+    
+    AVAudioPlayer *_backgroundMusicPlayer;
+	BOOL _backgroundMusicPlaying;
+	BOOL _backgroundMusicInterrupted;
+	UInt32 _otherMusicIsPlaying;
 }
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic) UserInfo *usr;
 @property (nonatomic,assign) BOOL appUsageCheckEnabled;
 
+- (void)tryPlayMusic;
 
 @end

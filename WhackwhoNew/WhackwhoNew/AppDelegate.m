@@ -22,6 +22,21 @@
 {
     // Override point for customization after application launch.
     
+    // Set up the audio session
+	// See handy chart on pg. 55 of the Audio Session Programming Guide for what the categories mean
+	// Not absolutely required in this example, but good to get into the habit of doing
+	// See pg. 11 of Audio Session Programming Guide for "Why a Default Session Usually Isn't What You Want"
+	NSError *setCategoryError = nil;
+	[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:&setCategoryError];
+	
+	// Create audio player with background music
+	NSString *backgroundMusicPath = [[NSBundle mainBundle] pathForResource:@"background_music" ofType:@"mp3"];
+	NSURL *backgroundMusicURL = [NSURL fileURLWithPath:backgroundMusicPath];
+	NSError *error;
+	_backgroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:backgroundMusicURL error:&error];
+	[_backgroundMusicPlayer setDelegate:self];  // We need this so we can restart after interruptions
+	[_backgroundMusicPlayer setNumberOfLoops:-1];	// Negative number means loop forever
+    
     usr = [UserInfo sharedInstance];
     
     RKURL *baseURL = [RKURL URLWithBaseURLString:BaseURL];
@@ -39,8 +54,7 @@
     
     [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
     
-    // We will remember the user's setting if they do not wish to
-    // send any more invites.
+    // We will remember the user's setting if they do not wish to send any more invites
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.appUsageCheckEnabled = YES;
     if ([defaults objectForKey:@"AppUsageCheck"]) {
@@ -83,7 +97,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    //[[CCDirector sharedDirector] resume];
+    [[CCDirector sharedDirector] resume];
     [FBSession.activeSession handleDidBecomeActive];
     /*
     if (FBSession.activeSession.isOpen) {
@@ -91,6 +105,34 @@
         [[FBSingletonNew sharedInstance] checkIncomingNotification];
     }
      */
+    [self tryPlayMusic];
+
+}
+
+- (void)tryPlayMusic {
+	
+	// Check to see if iPod music is already playing
+	UInt32 propertySize = sizeof(_otherMusicIsPlaying);
+	AudioSessionGetProperty(kAudioSessionProperty_OtherAudioIsPlaying, &propertySize, &_otherMusicIsPlaying);
+	
+	// Play the music if no other music is playing and we aren't playing already
+	if (_otherMusicIsPlaying != 1 && !_backgroundMusicPlaying) {
+		[_backgroundMusicPlayer prepareToPlay];
+		[_backgroundMusicPlayer play];
+		_backgroundMusicPlaying = YES;
+	}
+}
+
+- (void) audioPlayerBeginInterruption: (AVAudioPlayer *) player {
+	_backgroundMusicInterrupted = YES;
+	_backgroundMusicPlaying = NO;
+}
+
+- (void) audioPlayerEndInterruption: (AVAudioPlayer *) player {
+	if (_backgroundMusicInterrupted) {
+		[self tryPlayMusic];
+		_backgroundMusicInterrupted = NO;
+	}
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

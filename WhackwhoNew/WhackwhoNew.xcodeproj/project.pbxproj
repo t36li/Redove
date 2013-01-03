@@ -115,6 +115,7 @@
 		C14BC64216924F490005EEBE /* HitWho_Number4.png in Resources */ = {isa = PBXBuildFile; fileRef = C14BC63E16924F490005EEBE /* HitWho_Number4.png */; };
 		C14BC6441692503D0005EEBE /* HitWho_Battle_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = C14BC6431692503D0005EEBE /* HitWho_Battle_Button.png */; };
 		C14BC646169250E30005EEBE /* HitWho_Hammer_Flipped.png in Resources */ = {isa = PBXBuildFile; fileRef = C14BC645169250E30005EEBE /* HitWho_Hammer_Flipped.png */; };
+		C14BC64E169503550005EEBE /* background_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C14BC64D169503550005EEBE /* background_music.mp3 */; };
 		C151791C15C36D3E00A4378F /* hit effect.png in Resources */ = {isa = PBXBuildFile; fileRef = C151791B15C36D3E00A4378F /* hit effect.png */; };
 		C151793515C4B88D00A4378F /* coin front.png in Resources */ = {isa = PBXBuildFile; fileRef = C151793415C4B88D00A4378F /* coin front.png */; };
 		C15305C61688E239003D7D1B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C15305C51688E239003D7D1B /* Reachability.m */; };
@@ -706,6 +707,7 @@
 		C14BC63E16924F490005EEBE /* HitWho_Number4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_Number4.png; sourceTree = "<group>"; };
 		C14BC6431692503D0005EEBE /* HitWho_Battle_Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_Battle_Button.png; sourceTree = "<group>"; };
 		C14BC645169250E30005EEBE /* HitWho_Hammer_Flipped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_Hammer_Flipped.png; sourceTree = "<group>"; };
+		C14BC64D169503550005EEBE /* background_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background_music.mp3; sourceTree = "<group>"; };
 		C151791B15C36D3E00A4378F /* hit effect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hit effect.png"; sourceTree = "<group>"; };
 		C151793415C4B88D00A4378F /* coin front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coin front.png"; sourceTree = "<group>"; };
 		C15305C41688E239003D7D1B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -1336,6 +1338,7 @@
 		69C95E88159A462A009966DA /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				C14BC64D169503550005EEBE /* background_music.mp3 */,
 			);
 			name = Audio;
 			sourceTree = "<group>";
@@ -2694,6 +2697,7 @@
 				C14BC64216924F490005EEBE /* HitWho_Number4.png in Resources */,
 				C14BC6441692503D0005EEBE /* HitWho_Battle_Button.png in Resources */,
 				C14BC646169250E30005EEBE /* HitWho_Hammer_Flipped.png in Resources */,
+				C14BC64E169503550005EEBE /* background_music.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
