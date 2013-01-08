@@ -109,12 +109,21 @@
     [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
     [CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
     
+    splashFrames = [NSMutableArray array];
+    
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"splash_sheet.plist"];
+    splashSheet = [CCSpriteBatchNode batchNodeWithFile:@"splash_sheet.png"];
+    [self addChild:splashSheet z:100];
+    for (int i = 1; i <= 13; i ++) {
+        [splashFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"s%d.png", i]]];
+    }
+    
     CCSpriteBatchNode *spritesBgNode;
     spritesBgNode = [CCSpriteBatchNode batchNodeWithFile:@"Hills_Level_Background.pvr.ccz"];
     [self addChild:spritesBgNode];
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"Hills_Level_Background.plist"];
     
-    //background is the farthest back
+    //hills_background is the farthest back
     //NSArray *imageNames = [NSArray arrayWithObjects: hills_background, hill_topmid, hill_topleft, hill_topright, hill_midmid, hill_midleft, hill_midright, hill_botmid, hill_botleft, hill_botright, nil];
     NSArray *imageNames = [NSArray arrayWithObjects:hill_botright, hill_botleft, hill_botmid, hill_midright, hill_midleft, hill_midmid, hill_topright, hill_topleft, hill_topmid, hills_background, nil];
     
@@ -325,7 +334,7 @@
     } while ([self checkLocation:CGPointMake(x.integerValue, y.integerValue)]);
     
     [head setZOrder:zOrder.integerValue];
-    [head setZOrder:-5];
+    [head setZOrder:50];
 
     [head setPosition:CGPointMake(x.integerValue, y.integerValue)];
     [head convertToWorldSpace:head.position];
@@ -350,6 +359,17 @@
     x2 = [pt2 objectForKey:@"x"];
     y2 = [pt2 objectForKey:@"y"];
     CGPoint posTwo = CGPointMake(x2.integerValue, y2.integerValue);
+    
+    //returned angel is in radians
+    float rotationAngle = [self getAngleWithPts:head.position andPointTwo:posTwo];
+    
+    //head.rotation is always in degrees
+    head.rotation = CC_RADIANS_TO_DEGREES(rotationAngle);
+    
+    float height_now = head.contentSize.height * head.scaleY;
+    
+    //offset head by y = h * cos(theta), x = h*sin(theta)
+    head.position = ccp(head.position.x - height_now * sin(rotationAngle), head.position.y - height_now * cos(rotationAngle));
 
     //Collission checking code? Inefficient
     /*CGRect absrect1, absrect2;
@@ -390,16 +410,18 @@
      //   [testObj runAction:[CCSequence actions: rotateBomb, removeBomb, nil]];
     }*/
     
-    //returned angel is in radians
-    float rotationAngle = [self getAngleWithPts:head.position andPointTwo:posTwo];
+    //hill animation
+    CCSprite *splash = [CCSprite spriteWithSpriteFrameName:@"s1.png"];
+    CGPoint splashPosition = head.position;
+    splashPosition.y -= 30;
+    splash.position = splashPosition;
+    splash.rotation = CC_RADIANS_TO_DEGREES(rotationAngle);
+    [splashSheet addChild:splash z:head.zOrder+1];
     
-    //head.rotation is always in degrees
-    head.rotation = CC_RADIANS_TO_DEGREES(rotationAngle);
-    
-    float height_now = head.contentSize.height * head.scaleY;
-    
-    //offset head by y = h * cos(theta), x = h*sin(theta)
-    head.position = ccp(head.position.x - height_now * sin(rotationAngle), head.position.y - height_now * cos(rotationAngle));
+    CCAnimation *splashAnim = [CCAnimation animationWithSpriteFrames:splashFrames delay:0.1f];
+    CCRepeat *splashAction = [CCRepeat actionWithAction:[CCAnimate actionWithAnimation:splashAnim] times:1];
+    CCCallFuncN *endSplashAction = [CCCallFuncN actionWithTarget:self selector:@selector(endSplashAction:)];
+    [splash runAction:[CCSequence actions:splashAction, endSplashAction, nil]];
     
     //init all the actions
     //add the height of the body * 0.3 to the move: 59.5 * 0.3

@@ -11,6 +11,7 @@
 #import "User.h"
 #import "HitUpdate.h"
 #import "UserInfo.h"
+#import "StatusTutorialViewController.h"
 //#import "StatusViewLayer.h"
 //#import "HelloWorldLayer.h"
 //#import "Dragbox.h"
@@ -105,6 +106,9 @@ WhichTransition transitionType;
         takePicAlert.tag = 1;
         [takePicAlert show];
     }
+    
+    //StatusTutorialViewController *stvc = [[StatusTutorialViewController alloc] initWithNibName:@"StatusTutorialViewController" bundle:nil];
+    //[self presentViewController:stvc animated:YES completion:nil];
 }
 
 
