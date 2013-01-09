@@ -825,7 +825,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="02S-5y-Lg6" userLabel="faceView">
-                                        <rect key="frame" x="29" y="28" width="93" height="130"/>
+                                        <rect key="frame" x="29" y="35" width="93" height="130"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
@@ -924,7 +924,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gNf-kb-BLk">
-                                <rect key="frame" x="63" y="202" width="30" height="27"/>
+                                <rect key="frame" x="62" y="202" width="30" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="Undo_Button_1.png">
