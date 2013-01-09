@@ -10,7 +10,7 @@
 #import "Game.h"
 #import "UserInfo.h"
 
-@interface ReviewViewController : UIViewController<UserInfoDelegate> {
+@interface ReviewViewController : UIViewController {
     IBOutlet UIView *portraitView;
     
     IBOutlet UIButton *backBtn, *uploadBtn, *leftBtn, *rightBtn;

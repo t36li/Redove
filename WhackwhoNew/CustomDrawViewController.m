@@ -79,27 +79,26 @@
 
 -(IBAction)done:(id)sender {
     UserInfo *user = [UserInfo sharedInstance];
-    [user clearUserFacialFeaturePositions];
-    
+
     for (UIButton *btn in buttonSet) {
         switch (btn.tag) {
             case LEFT_EYE:
-                [user setLeftEyePosition:[btn convertPoint:btn.center toView:containerView]];
+                [user setLeftEyePosition:[self.view convertPoint:btn.center toView:containerView]];
                 break;
             case RIGHT_EYE:
-                [user setRightEyePosition:[btn convertPoint:btn.center toView:containerView]];
+                [user setRightEyePosition:[self.view convertPoint:btn.center toView:containerView]];
                 break;
             case LIPS:
-                [user setMouthPosition:[btn convertPoint:btn.center toView:containerView]];
+                [user setMouthPosition:[self.view convertPoint:btn.center toView:containerView]];
                 break;
             case NOSE:
-                [user setNosePosition:[btn convertPoint:btn.center toView:containerView]];
+                [user setNosePosition:[self.view convertPoint:btn.center toView:containerView]];
                 break;
             case LEFT_EAR:
-                [user setLeftEarPosition:[btn convertPoint:btn.center toView:containerView]];
+                [user setLeftEarPosition:[self.view convertPoint:btn.center toView:containerView]];
                 break;
             case RIGHT_EAR:
-                [user setRightEarPosition:[btn convertPoint:btn.center toView:containerView]];
+                [user setRightEarPosition:[self.view convertPoint:btn.center toView:containerView]];
                 break;
         }
     }

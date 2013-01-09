@@ -240,8 +240,8 @@
     FriendArray *friendArray = object;
     [friendArray copyToUserInfo];
 
-    self.resultFriends = [NSArray arrayWithArray:[[[UserInfo sharedInstance] friendArray] friends]];
-    self.resultStrangers = [NSMutableArray arrayWithArray:[[[UserInfo sharedInstance] friendArray] strangers]];
+    self.resultFriends = [NSArray arrayWithArray:[(FriendArray *)[[UserInfo sharedInstance] friendArray] friends]];
+    self.resultStrangers = [NSMutableArray arrayWithArray:[(FriendArray *)[[UserInfo sharedInstance] friendArray] strangers]];
     
     for (int i = 0; i < resultStrangers.count; i++) {
         Friend *tempFriend = [resultStrangers objectAtIndex:i];
@@ -317,6 +317,9 @@
             [self performSegueWithIdentifier:ChooseToGame sender:sender];
             isHammerDown = YES;
             [Game sharedGame].readyToStart = NO;
+            NSMutableArray *tempArray = [NSMutableArray arrayWithArray:selectedHits];
+            [tempArray addObjectsFromArray:selectedStrangers];
+            [[Game sharedGame] setFriendArray:tempArray];
         }
     };
     

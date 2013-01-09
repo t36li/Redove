@@ -231,10 +231,13 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+    return interfaceOrientation == UIInterfaceOrientationLandscapeLeft;
+}
+
+-(NSUInteger) supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskLandscapeLeft;
 }
 
 

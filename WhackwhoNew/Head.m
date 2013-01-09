@@ -10,6 +10,6 @@
 
 @implementation Head
 
-@synthesize headImage, headId, leftEyePosition, rightEyePosition,mouthPosition,faceRect;
+@synthesize headImage, headId, leftEyePosition, rightEyePosition,mouthPosition,faceRect, nosePosition, leftEarPosition, rightEarPosition;
 
 @end
