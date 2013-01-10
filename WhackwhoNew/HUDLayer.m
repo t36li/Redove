@@ -194,10 +194,12 @@
 }
 
 -(void) quitTapped: (id) sender  {
+    [[CCDirector sharedDirector] resume];
     [[HelloWorldScene gameOverDelegate] returnToMenu];
 }
 
 - (void) resumeTapped:(id)sender {
+    [self removeChildByTag:20 cleanup:YES];
     [[CCDirector sharedDirector] resume];
 }
 
@@ -208,7 +210,7 @@
     
     CCLayerColor *colorLayer = [CCLayerColor layerWithColor:ccc4(0, 0, 0, 80)];
     //[colorLayer setOpacity:80];
-    [self addChild:colorLayer z:20];
+    [self addChild:colorLayer z:100 tag:20];
     
     //set "resume" label
     CCMenuItemImage *image = [CCMenuItemImage itemWithNormalImage:@"Undo_Button_1.png" selectedImage:@"Undo_Button_1.png" target:self selector:@selector(resumeTapped:)];
