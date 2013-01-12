@@ -322,11 +322,11 @@
     
     
     //init all the actions
-    //add the height of the body * 0.3 to the move: 59.5 * 0.3
-    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp(0, 20)];
-    CCMoveBy *easeMoveUp = [CCEaseIn actionWithAction:moveUp rate:1.5];
+    //!!!!! NEED FOR THIS TIME TO MATCH THE ANIMATION TIME OF THE SPLASH!
+    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp(0, 25)];
+    CCMoveBy *easeMoveUp = [CCEaseIn actionWithAction:moveUp rate:3.5];
     CCAction *easeMoveDown = [easeMoveUp reverse];
-    CCDelayTime *delay = [CCDelayTime actionWithDuration:2.0];
+    CCDelayTime *delay = [CCDelayTime actionWithDuration:1.0];
     
     CCCallFuncN *setTappable = [CCCallFuncN actionWithTarget:self selector:@selector(setTappable:)];
     CCCallFuncN *setUntappable = [CCCallFuncN actionWithTarget:self selector:@selector(unSetTappable:)];
@@ -406,8 +406,6 @@
     
     //offset head by y = h * cos(theta), x = h*sin(theta)
     head.position = ccp(head.position.x - height_now * sin(rotationAngle), head.position.y - height_now * cos(rotationAngle));*/
-
-
     
     //No collission detected
     
@@ -443,8 +441,8 @@
     //init all the actions
     //add the height of the body * 0.3 to the move: 59.5 * 0.3
     //CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp((height_now+20) * sin(rotationAngle), (height_now+20) * cos(rotationAngle))];
-    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:1.0 position:ccp(0,20)];
-    CCMoveBy *easeMoveUp = [CCEaseIn actionWithAction:moveUp rate:2.0];
+    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:1.0 position:ccp(0,40)];
+    CCMoveBy *easeMoveUp = [CCEaseIn actionWithAction:moveUp rate:3.0];
     CCAction *easeMoveDown = [easeMoveUp reverse];
     CCCallFuncN *setTappable = [CCCallFuncN actionWithTarget:self selector:@selector(setTappable:)];
     CCCallFuncN *unsetTappable = [CCCallFuncN actionWithTarget:self selector:@selector(unSetTappable:)];

@@ -12,6 +12,7 @@
 #import "HitUpdate.h"
 #import "UserInfo.h"
 #import "StatusTutorialViewController.h"
+#import "SpinnerView.h"
 //#import "StatusViewLayer.h"
 //#import "HelloWorldLayer.h"
 //#import "Dragbox.h"
@@ -161,13 +162,8 @@ WhichTransition transitionType;
             break;
     }
     
-
+    [popularity_lbl setText:[NSString stringWithFormat:@"%d",[[UserInfo sharedInstance] popularity]]];
     
-    //if (faceView.image == face_DB && face_DB != nil)
-      //  return;
-        
-    //UserInfo *usinfo = [UserInfo sharedInstance];
-    //CurrentEquip *ce = usinfo.currentEquip;
 }
 
 
@@ -279,7 +275,9 @@ WhichTransition transitionType;
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error{
     NSLog(@"Load Database Failed:%@",error);
-    [popularity_lbl setText:[NSString stringWithFormat:@"%d",[[UserInfo sharedInstance] popularity]]];
+    
+    //moved below to ViewWillAppear
+    //[popularity_lbl setText:[NSString stringWithFormat:@"%d",[[UserInfo sharedInstance] popularity]]];
     
 }
 

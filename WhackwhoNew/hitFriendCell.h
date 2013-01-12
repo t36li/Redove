@@ -13,14 +13,14 @@
     IBOutlet UIView *containerView;
     UIImageView *profileImage;
     UILabel *name;
-    UILabel *gender;
+    //UILabel *gender;
     NSString *identity;
     SpinnerView *spinner;
 }
 
 @property (nonatomic) UIImageView *profileImage;
 @property (nonatomic) UILabel *name;
-@property (nonatomic) UILabel *gender;
+//@property (nonatomic) UILabel *gender;
 @property (nonatomic) NSString *identity;
 @property (nonatomic) IBOutlet UIView *containerView;
 @property (nonatomic, strong) SpinnerView *spinner;

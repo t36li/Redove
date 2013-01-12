@@ -169,7 +169,7 @@
         hitsLabel.visible = FALSE;
         
         //set cloud drifting animation
-        cloud = [CCSprite spriteWithFile:@"hill_cloud1.png"];
+        /*cloud = [CCSprite spriteWithFile:@"hill_cloud1.png"];
         cloud.anchorPoint = ccp(0,1);
         cloud.position = ccp(0, winSize.height - 10);
         [self addChild:cloud z:90];
@@ -179,7 +179,7 @@
         CCCallFuncN *resetCloud = [CCCallFuncN actionWithTarget:self selector:@selector(resetCloud:)];
         CCSequence *cloudSequence = [CCSequence actions:driftRight, delay, resetCloud, nil];
         CCRepeatForever *repeat = [CCRepeatForever actionWithAction:cloudSequence];
-        [cloud runAction:repeat];
+        [cloud runAction:repeat];*/
         
         [self schedule:@selector(timerUpdate:) interval:0.5f];
     }
@@ -212,16 +212,21 @@
     //[colorLayer setOpacity:80];
     [self addChild:colorLayer z:100 tag:20];
     
+    CCLabelTTF *paused = [CCLabelTTF labelWithString:@"Paused!" fontName:@"chalkduster" fontSize:30];
+    paused.position = ccp(winSize.width/2, winSize.height/2 + 50);
+    [colorLayer addChild:paused z:10];
+    
+    //temporary!!!!!
     //set "resume" label
     CCMenuItemImage *image = [CCMenuItemImage itemWithNormalImage:@"Undo_Button_1.png" selectedImage:@"Undo_Button_1.png" target:self selector:@selector(resumeTapped:)];
     CCMenu *resumeMenu = [CCMenu menuWithItems:image, nil];
-    resumeMenu.position = ccp(winSize.width/2 - 100, winSize.height/2);
+    resumeMenu.position = ccp(winSize.width/2 - 80, winSize.height/2);
     [colorLayer addChild:resumeMenu z:10];
     
     //set "Main Page" label
-    CCMenuItemImage *image2 = [CCMenuItemImage itemWithNormalImage:@"Battle_Button.png" selectedImage:@"Battle_Button.png" target:self selector:@selector(quitTapped:)];
+    CCMenuItemImage *image2 = [CCMenuItemImage itemWithNormalImage:@"Back_Button.png" selectedImage:@"Battle_Button.png" target:self selector:@selector(quitTapped:)];
     CCMenu *quit = [CCMenu menuWithItems:image2, nil];
-    quit.position = ccp(winSize.width/2 + 100, winSize.height/2);
+    quit.position = ccp(winSize.width/2 + 80, winSize.height/2);
     [colorLayer addChild:quit z:10];
 }
 

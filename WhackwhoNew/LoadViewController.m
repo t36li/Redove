@@ -61,8 +61,8 @@
             break;
     }
     
-    NSLog(@"load Background");
-    [gmethods setViewBackground:loading_bg viewSender:self.view];
+    //NSLog(@"load Background");
+    //[gmethods setViewBackground:loading_bg viewSender:self.view];
     
     NSLog(@"load Loading Background");
     [myLabel setText:@"Loading...."];

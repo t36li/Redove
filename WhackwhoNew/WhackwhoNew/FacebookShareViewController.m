@@ -10,7 +10,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 
 
-NSString *const kPlaceholderPostMessage = @"My head got WHACKED![TESTING]";
+NSString *const kPlaceholderPostMessage = @"My head got WHACKED![Enter your personalized message here!]";
 
 @interface FacebookShareViewController ()
 

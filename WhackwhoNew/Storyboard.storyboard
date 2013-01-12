@@ -19,7 +19,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" id="fhO-MD-d75" userLabel="Container View">
-                                <rect key="frame" x="80" y="75" width="127" height="163"/>
+                                <rect key="frame" x="79" y="67" width="120" height="163"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="BO001.png" id="e3j-Lw-1hF" userLabel="BodyView">
@@ -236,7 +236,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABn-0K-zfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1332" y="-2"/>
+            <point key="canvasLocation" x="-1386" y="-1224"/>
         </scene>
         <!--Cocos View Controller - Main Game Screen-->
         <scene sceneID="rZj-jY-lho">
@@ -375,12 +375,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lbw-xa-q6i">
-                                <rect key="frame" x="322" y="264" width="138" height="37"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Options_bg.jpg" id="4Lh-bk-xAL">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Logout">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lbw-xa-q6i">
+                                <rect key="frame" x="113" y="152" width="137" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -391,18 +395,11 @@
                                 </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="PzO-RV-9ko">
-                                <rect key="frame" x="381" y="146" width="79" height="27"/>
+                                <rect key="frame" x="283" y="92" width="79" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Sound" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Gr1-XQ-ekV">
-                                <rect key="frame" x="323" y="152" width="50" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GmL-ev-nqX">
-                                <rect key="frame" x="323" y="181" width="137" height="37"/>
+                                <rect key="frame" x="113" y="214" width="137" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="About Us">
@@ -413,11 +410,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gIU-Dd-Vc9">
-                                <rect key="frame" x="20" y="263" width="72" height="37"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gIU-Dd-Vc9">
+                                <rect key="frame" x="20" y="275" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Back">
+                                <state key="normal" image="Back_Button.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -440,28 +437,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A5K-lf-t03" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2071" y="-47"/>
+            <point key="canvasLocation" x="-2041" y="-45"/>
         </scene>
         <!--Load View Controller-->
         <scene sceneID="tVA-Ob-2kd">
             <objects>
                 <viewController id="Vj8-SE-OLF" customClass="LoadViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iQe-q5-hOJ">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Loading.jpg" id="upb-mg-QbS">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="yNN-57-wew">
-                                <rect key="frame" x="136" y="78" width="208" height="21"/>
+                                <rect key="frame" x="136" y="227" width="208" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="loading icon.png" id="s6V-tk-uYC">
-                                <rect key="frame" x="182" y="113" width="117" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -469,6 +466,7 @@
                     <navigationItem key="navigationItem" id="JlU-44-bMf"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="myLabel" destination="yNN-57-wew" id="VCc-WM-Pk5"/>
                         <segue destination="Nsl-EU-HzN" kind="push" identifier="GoToMenuSegue" id="TaV-sK-cbs"/>
@@ -924,14 +922,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gNf-kb-BLk">
-                                <rect key="frame" x="54" y="197" width="40" height="41"/>
+                                <rect key="frame" x="54" y="196" width="40" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="Undo_Button_1.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
+                                <state key="highlighted" image="Undo_Button_2.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -985,6 +983,7 @@
             <objects>
                 <navigationController navigationBarHidden="YES" id="V6n-XQ-h9E" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3fN-Yp-fKH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1012,8 +1011,10 @@
         <image name="HitWho_RightArrow.png" width="38" height="66"/>
         <image name="Hitwho_LeftArrow_New.png" width="38" height="66"/>
         <image name="Invite_Button.png" width="220" height="105"/>
+        <image name="Loading.jpg" width="960" height="640"/>
         <image name="Ok_Button.png" width="161" height="110"/>
         <image name="Option_Button.png" width="220" height="101"/>
+        <image name="Options_bg.jpg" width="960" height="640"/>
         <image name="Personal_Status_Background.png" width="960" height="640"/>
         <image name="Play_Button.png" width="192" height="107"/>
         <image name="Review_Background.png" width="960" height="640"/>
@@ -1023,10 +1024,10 @@
         <image name="Review_Right_Arrow.png" width="62" height="64"/>
         <image name="Review_Upload_Arrow.png" width="244" height="79"/>
         <image name="Undo_Button_1.png" width="124" height="127"/>
+        <image name="Undo_Button_2.png" width="124" height="127"/>
         <image name="camera.png" width="57" height="47"/>
         <image name="gold stack.png" width="16" height="16"/>
         <image name="left button.png" width="16" height="16"/>
-        <image name="loading icon.png" width="329" height="171"/>
         <image name="lower shelf.png" width="960" height="120"/>
         <image name="mode_layer1.png" width="960" height="640"/>
         <image name="right button.png" width="16" height="16"/>
@@ -1035,6 +1036,137 @@
         <image name="temp_upload.png" width="256" height="256"/>
         <image name="upper shelf.png" width="393" height="121"/>
     </resources>
+    <classes>
+        <class className="CocosViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CocosViewController.h"/>
+        </class>
+        <class className="FBProfilePictureView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FBProfilePictureView.h"/>
+        </class>
+        <class className="FriendsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="FriendListClick:"/>
+                <relationship kind="action" name="SendTouched:"/>
+                <relationship kind="action" name="back_Touched:"/>
+                <relationship kind="outlet" name="friendTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="inviteMessage" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="loadingView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="selectedFriendsView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="tableCell" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="HitWhoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HitWhoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="Back_Touched:"/>
+                <relationship kind="action" name="battleTouched:"/>
+                <relationship kind="action" name="cancelTouched:"/>
+                <relationship kind="outlet" name="bodyView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="characterReviewView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="faceView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="hit1" candidateClass="HitWindow"/>
+                <relationship kind="outlet" name="hit2" candidateClass="HitWindow"/>
+                <relationship kind="outlet" name="hit3" candidateClass="HitWindow"/>
+                <relationship kind="outlet" name="hit4" candidateClass="HitWindow"/>
+                <relationship kind="outlet" name="hitNumber" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="leftHammer" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="loadingView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="namelabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="popupView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="rightHammer" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="HitWindow" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HitWindow.h"/>
+        </class>
+        <class className="LoadViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoadViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="myLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ModeSelectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ModeSelectionViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="Back_Touched:"/>
+                <relationship kind="action" name="leftButton_touched:"/>
+                <relationship kind="action" name="rightButton_touched:"/>
+                <relationship kind="outlet" name="background" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="rightButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="wholeView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="OptionsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OptionsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="back_touched:"/>
+                <relationship kind="action" name="logout_touched:"/>
+                <relationship kind="outlet" name="back" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="logout_but" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="ReviewViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ReviewViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="hitBack:"/>
+                <relationship kind="action" name="hitLeft:"/>
+                <relationship kind="action" name="hitRight:"/>
+                <relationship kind="outlet" name="avatarImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="backBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="leftBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="portraitView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="rightBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="uploadBtn" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="RootViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="opt_touched:"/>
+                <relationship kind="action" name="play_touched:"/>
+                <relationship kind="outlet" name="opt_but" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="play_but" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="profileImageView" candidateClass="FBProfilePictureView"/>
+            </relationships>
+        </class>
+        <class className="SelectToLoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectToLoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="FBTouched:"/>
+                <relationship kind="outlet" name="FBBut" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="StatusBarController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StatusBarController.h"/>
+            <relationships>
+                <relationship kind="action" name="Back_Touched:"/>
+                <relationship kind="action" name="Ok_Pressed:"/>
+                <relationship kind="action" name="publish_touched:"/>
+                <relationship kind="action" name="pushCamera:"/>
+                <relationship kind="outlet" name="bodyView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="faceView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="high_score_lbl" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="popularity_lbl" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="total_gold_lbl" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="total_gp_lbl" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="StoreViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StoreViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="Back_Touched:"/>
+                <relationship kind="action" name="Buy_Touched:"/>
+                <relationship kind="action" name="Undo_Touched:"/>
+                <relationship kind="outlet" name="mainItemsScroll" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="purchasedItemsScroll" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation" orientation="landscapeRight"/>

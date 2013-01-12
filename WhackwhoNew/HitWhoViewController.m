@@ -172,9 +172,11 @@
         
     Friend *friend = [resultFriends objectAtIndex:indexPath.row];
     cell.identity = friend.user_id;
-    cell.name.text = (NSString *)friend.name;
+    NSArray *temp = [friend.name componentsSeparatedByString:@" "];
+    NSString *firstName = [temp objectAtIndex:0];
+    cell.name.text = firstName;
     cell.name.lineBreakMode  = NSLineBreakByWordWrapping;
-    cell.gender.text = friend.gender;
+    //cell.gender.text = friend.gender;
     cell.popularity.text = [NSString stringWithFormat:@"%d",friend.popularity];
     NSString *formatting = [NSString stringWithFormat:@"http://www.whackwho.com/userImages/%@.png", friend.head_id];
     
