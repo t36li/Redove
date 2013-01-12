@@ -20,6 +20,7 @@
 
 @implementation HitWhoViewController
 
+@synthesize namelabel;
 @synthesize hit1, hit2, hit3, hit4;
 //@synthesize defaultImage;
 
@@ -212,6 +213,10 @@
     }
     friendSelected = friend;
     
+    NSArray *temp = [friend.name componentsSeparatedByString:@" "];
+    NSString *firstName = [temp objectAtIndex:0];
+    namelabel.text = firstName;
+    
     [self switchMainViewToIndex];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -307,7 +312,7 @@
 
 -(IBAction)battleTouched:(id)sender {
     [self performSelectorInBackground:@selector(processImagesInBackground) withObject:nil];
-    //max_popups = 2;
+    
     void (^block)(BOOL) = ^(BOOL finished) {
         if (finished) {
             
@@ -336,7 +341,6 @@
         if (selectedHits.count > i) {
             [finalImages addObject:[self captureImageInHitBox:i withArray:0]];
         } else {
-            //[finalImages addObject:defaultImage];
             //going to decide in captureimagefunction stranger selection criteria
             [finalImages addObject:[self captureImageInHitBox:0 withArray:1]];
         }
@@ -366,6 +370,7 @@
     if (array == 0) {
         friend = [selectedHits objectAtIndex:number];
         faceView.image = friend.head.headImage;
+        bodyView.image = [UIImage imageNamed:standard_blue_body];
         
         //CurrentEquip *ce = friend.currentEquip;
         //faceView.image = friend.head.headImage;
@@ -379,7 +384,7 @@
         //NSLog(@"%@", friend.name);
         //}
         
-        /*while (TRUE) {
+        while (TRUE) {
             randInt = arc4random() % resultStrangers.count;
             friend = [resultStrangers objectAtIndex:randInt];
             
@@ -392,7 +397,9 @@
         if (!friend.head.headImage) {
             friend.head.headImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.whackwho.com/userImages/%@.png", friend.head_id]]]];
         }
-        faceView.image = friend.head.headImage;*/
+        faceView.image = friend.head.headImage;
+        bodyView.image = [UIImage imageNamed:standard_blue_body];
+        
         //CurrentEquip *ce = friend.currentEquip;
         //faceView.image = friend.head.headImage;
         //bodyView.image = [UIImage imageNamed:ce.body];
