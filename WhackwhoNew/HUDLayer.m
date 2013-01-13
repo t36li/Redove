@@ -153,10 +153,11 @@
         [self addChild:scoreboard z:101];
         
         //add "score" label
-        scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"chalkduster" fontSize:50];
+        scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"chalkduster" fontSize:30];
         scoreLabel.anchorPoint = ccp(0.5, 0.5);
         scoreLabel.color = ccc3(255, 200, 0);
-        scoreLabel.position = ccp(scoreboard.contentSize.width/2, 40);
+        scoreLabel.position = ccp(scoreboard.contentSize.width/2, 30);
+        [scoreLabel setString:[NSString stringWithFormat:@"%d", 0]];
         [scoreboard addChild:scoreLabel z:101];
         
         //add "hits" label

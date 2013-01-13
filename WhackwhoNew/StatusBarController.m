@@ -133,11 +133,16 @@ WhichTransition transitionType;
             UIImage *face_DB = [[UserInfo sharedInstance] croppedImage];
             
             [faceView setImage:face_DB];
-            //[bodyView setImage:[UIImage imageNamed:standard_blue_body]];
+            [bodyView setImage:[UIImage imageNamed:standard_blue_body]];
             
+            NSString *path = [self dataFilepath];
+            dic = [[NSDictionary alloc] initWithContentsOfFile:path];
+            
+            //if popularity changes... then what
             [high_score_lbl setText:[self readPlist:@"High_Score"]];
             [total_gold_lbl setText:[self readPlist:@"Total_Gold"]];
             [total_gp_lbl setText:[self readPlist:@"Games_Played"]];
+            [popularity_lbl setText:[NSString stringWithFormat:@"%d",[[UserInfo sharedInstance] popularity]]];
             
             [RKClient clientWithBaseURL:[NSURL URLWithString:BaseURL]];
             NSString *whackID = [NSString stringWithFormat:@"%i",[[UserInfo sharedInstance] whackWhoId]];
@@ -153,11 +158,6 @@ WhichTransition transitionType;
             [faceView setImage:[[UserInfo sharedInstance] croppedImage]];
             break;
     }
-    
-    NSString *path = [self dataFilepath];
-    dic = [[NSDictionary alloc] initWithContentsOfFile:path];
-    
-    [popularity_lbl setText:[NSString stringWithFormat:@"%d",[[UserInfo sharedInstance] popularity]]];
 }
 
 
