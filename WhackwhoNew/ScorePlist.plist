@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>Games_Played</key>
-	<integer>112345</integer>
+	<integer>0</integer>
 	<key>High_Score</key>
-	<integer>12342134</integer>
+	<integer>0</integer>
 	<key>Total_Gold</key>
-	<integer>12341234</integer>
+	<integer>0</integer>
 </dict>
 </plist>

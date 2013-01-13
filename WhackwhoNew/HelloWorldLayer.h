@@ -41,8 +41,7 @@
     CCSpriteBatchNode *splashSheet;
     NSMutableArray *splashFrames;
     
-    //score storage
-    NSMutableDictionary *dic;
+
 }
 
 @property (nonatomic, strong) NSDictionary *locations;
@@ -50,11 +49,6 @@
 @property (nonatomic, strong) NSMutableArray *splashFrames;
 
 -(void)setArrayForReview;
-
-//score methods
-- (NSString *) dataFilepath;
-- (void) writePlist: (NSString *) whichLbl withUpdate: (int) nmbr;
-- (int) readPlist: (NSString *) whichLbl;
 
 @end
 
@@ -66,10 +60,18 @@
     
     int lives;
     NSInteger consecHits, baseScore, moneyEarned;
+    
+    //score storage
+    NSMutableDictionary *dic;
 }
 
 @property (nonatomic, strong) HelloWorldLayer *layer;
 @property (nonatomic, strong) HUDLayer *hud;
+
+//score methods
+- (NSString *) dataFilepath;
+- (void) writePlist: (NSString *) whichLbl withUpdate: (int) nmbr;
+- (int) readPlist: (NSString *) whichLbl;
 
 
 -(void)gameOver:(BOOL)timeout;

@@ -92,9 +92,6 @@ WhichTransition transitionType;
     
     [self.containerView setBackgroundColor:[UIColor clearColor]];
     
-    NSString *path = [self dataFilepath];
-    dic = [[NSDictionary alloc] initWithContentsOfFile:path];
-    
     //need to cache user's previous image
     UserInfo *usr = [UserInfo sharedInstance];
     if (usr.usrImg == nil){
@@ -157,8 +154,10 @@ WhichTransition transitionType;
             break;
     }
     
-    [popularity_lbl setText:[NSString stringWithFormat:@"%d",[[UserInfo sharedInstance] popularity]]];
+    NSString *path = [self dataFilepath];
+    dic = [[NSDictionary alloc] initWithContentsOfFile:path];
     
+    [popularity_lbl setText:[NSString stringWithFormat:@"%d",[[UserInfo sharedInstance] popularity]]];
 }
 
 
@@ -192,17 +191,18 @@ WhichTransition transitionType;
 
 //Plist methods
 - (NSString *) dataFilepath {
-    //read the plist
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"ScorePlist" ofType:@"plist"];
+    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    destPath = [destPath stringByAppendingPathComponent:@"ScorePlist.plist"];
     
+    // If the file doesn't exist in the Documents Folder, copy it.
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    if ([fileManager fileExistsAtPath:path]) {
-        NSLog(@"The file exists");
-        return path;
-    } else {
-        NSLog(@"The file does not exist");
-        return nil;
+    
+    if (![fileManager fileExistsAtPath:destPath]) {
+        NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"ScorePlist" ofType:@"plist"];
+        [fileManager copyItemAtPath:sourcePath toPath:destPath error:nil];
     }
+    
+    return destPath;
 }
 
 - (NSString *) readPlist: (NSString *) whichLbl {
@@ -210,6 +210,8 @@ WhichTransition transitionType;
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    NSLog(@"%@: %i", whichLbl, [ret intValue]);
     
     return [numberFormatter stringFromNumber:ret];
 }
