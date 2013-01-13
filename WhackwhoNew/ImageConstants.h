@@ -27,7 +27,7 @@
 #define hill_botright @"hill9.png"
 
 #define FriendList_bg @"friend list (background).png"
-#define loading_bg @"loading page final background.png"
+#define loading_bg @"Loading.jpg"
 #define store_bg @"store background.png"
 
 //buttons

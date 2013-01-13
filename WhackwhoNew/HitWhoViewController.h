@@ -49,8 +49,12 @@
     PullToRefreshView *tablepull;
     Friend *friendSelected;
     
+    IBOutlet UILabel *namelabel;
+    
     BOOL isHammerDown;
 }
+
+@property (nonatomic) IBOutlet UILabel *namelabel;
 
 @property (nonatomic) IBOutlet HitWindow *hit1;
 @property (nonatomic) IBOutlet HitWindow *hit2;

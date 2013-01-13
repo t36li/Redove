@@ -10,7 +10,7 @@
 
 @implementation hitFriendCell
 
-@synthesize gender, name, profileImage;
+@synthesize name, profileImage;//gender, 
 @synthesize identity, containerView, spinner;
 
 

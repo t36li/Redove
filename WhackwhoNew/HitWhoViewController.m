@@ -20,6 +20,7 @@
 
 @implementation HitWhoViewController
 
+@synthesize namelabel;
 @synthesize hit1, hit2, hit3, hit4;
 //@synthesize defaultImage;
 
@@ -171,9 +172,11 @@
         
     Friend *friend = [resultFriends objectAtIndex:indexPath.row];
     cell.identity = friend.user_id;
-    cell.name.text = (NSString *)friend.name;
+    NSArray *temp = [friend.name componentsSeparatedByString:@" "];
+    NSString *firstName = [temp objectAtIndex:0];
+    cell.name.text = firstName;
     cell.name.lineBreakMode  = NSLineBreakByWordWrapping;
-    cell.gender.text = friend.gender;
+    //cell.gender.text = friend.gender;
     cell.popularity.text = [NSString stringWithFormat:@"%d",friend.popularity];
     NSString *formatting = [NSString stringWithFormat:@"http://www.whackwho.com/userImages/%@.png", friend.head_id];
     
@@ -211,6 +214,10 @@
         [selectedHits addObject:friend];
     }
     friendSelected = friend;
+    
+    NSArray *temp = [friend.name componentsSeparatedByString:@" "];
+    NSString *firstName = [temp objectAtIndex:0];
+    namelabel.text = firstName;
     
     [self switchMainViewToIndex];
     
@@ -307,7 +314,7 @@
 
 -(IBAction)battleTouched:(id)sender {
     [self performSelectorInBackground:@selector(processImagesInBackground) withObject:nil];
-    //max_popups = 2;
+    
     void (^block)(BOOL) = ^(BOOL finished) {
         if (finished) {
             
@@ -336,7 +343,6 @@
         if (selectedHits.count > i) {
             [finalImages addObject:[self captureImageInHitBox:i withArray:0]];
         } else {
-            //[finalImages addObject:defaultImage];
             //going to decide in captureimagefunction stranger selection criteria
             [finalImages addObject:[self captureImageInHitBox:0 withArray:1]];
         }
@@ -366,10 +372,11 @@
     if (array == 0) {
         friend = [selectedHits objectAtIndex:number];
         faceView.image = friend.head.headImage;
+        bodyView.image = [UIImage imageNamed:standard_blue_body];
         
-        CurrentEquip *ce = friend.currentEquip;
-        faceView.image = friend.head.headImage;
-        bodyView.image = [UIImage imageNamed:ce.body];
+        //CurrentEquip *ce = friend.currentEquip;
+        //faceView.image = friend.head.headImage;
+        //bodyView.image = [UIImage imageNamed:ce.body];
         
     } else {//capturing image from strangers
         /*

@@ -47,6 +47,10 @@
     speed = DEFAULT_HEAD_POP_SPEED;
     has_bomb = FALSE;
     
+    if ([[CCDirector sharedDirector] isPaused]) {
+        [[CCDirector sharedDirector] resume];
+    }
+    
     coins = [[NSMutableArray alloc] init];
     bomb = [[NSMutableArray alloc] init];
     heads = [[NSMutableArray alloc] init];
@@ -109,12 +113,21 @@
     [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
     [CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
     
+    splashFrames = [NSMutableArray array];
+    
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"splash_sheet.plist"];
+    splashSheet = [CCSpriteBatchNode batchNodeWithFile:@"splash_sheet.png"];
+    [self addChild:splashSheet z:100];
+    for (int i = 1; i <= 13; i ++) {
+        [splashFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"s%d.png", i]]];
+    }
+    
     CCSpriteBatchNode *spritesBgNode;
     spritesBgNode = [CCSpriteBatchNode batchNodeWithFile:@"Hills_Level_Background.pvr.ccz"];
     [self addChild:spritesBgNode];
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"Hills_Level_Background.plist"];
     
-    //background is the farthest back
+    //hills_background is the farthest back
     //NSArray *imageNames = [NSArray arrayWithObjects: hills_background, hill_topmid, hill_topleft, hill_topright, hill_midmid, hill_midleft, hill_midright, hill_botmid, hill_botleft, hill_botright, nil];
     NSArray *imageNames = [NSArray arrayWithObjects:hill_botright, hill_botleft, hill_botmid, hill_midright, hill_midleft, hill_midmid, hill_topright, hill_topleft, hill_topmid, hills_background, nil];
     
@@ -225,6 +238,29 @@
     }
 }
 
+-(BOOL) checkCollission: (Character *) head {
+    //Collission checking code? Inefficient
+    CGRect absrect1, absrect2;
+    absrect1 = CGRectMake(head.position.x, head.position.y, [head boundingBox].size.width, [head boundingBox].size.height);
+    for (Character *head2 in heads) {
+        //if this is itself, then skip it
+        if ([head2 isEqual:head]) {
+            continue;
+        } else {
+            //check for collision (i.e. overlap)
+            absrect2 = CGRectMake(head2.position.x, head2.position.y, [head2 boundingBox].size.width, [head2 boundingBox].size.height);
+            if (CGRectIntersectsRect(absrect1, absrect2)) {
+                //CCLOG(@"intersected!");
+                [head stopAllActions];
+                head.position = CGPointZero;
+                head.visible = FALSE;
+                return YES;
+            }
+        }
+    }
+    return NO;
+}
+
 -(BOOL) checkLocation:(CGPoint) point {
     for (Character *head in heads) {
         if (CGPointEqualToPoint(point, head.position))
@@ -265,6 +301,10 @@
     [head setPosition:CGPointMake(x.integerValue, y.integerValue)];
     [head convertToWorldSpace:head.position];
     
+    if ([self checkCollission:head]) {
+        return;
+    }
+    
     head.didMiss = TRUE;
     head.visible = TRUE;
     
@@ -282,11 +322,11 @@
     
     
     //init all the actions
-    //add the height of the body * 0.3 to the move: 59.5 * 0.3
-    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp(0, 40)];
-    CCMoveBy *easeMoveUp = [CCEaseIn actionWithAction:moveUp rate:3.0];
+    //!!!!! NEED FOR THIS TIME TO MATCH THE ANIMATION TIME OF THE SPLASH!
+    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp(0, 25)];
+    CCMoveBy *easeMoveUp = [CCEaseIn actionWithAction:moveUp rate:3.5];
     CCAction *easeMoveDown = [easeMoveUp reverse];
-    CCDelayTime *delay = [CCDelayTime actionWithDuration:3.0];
+    CCDelayTime *delay = [CCDelayTime actionWithDuration:1.0];
     
     CCCallFuncN *setTappable = [CCCallFuncN actionWithTarget:self selector:@selector(setTappable:)];
     CCCallFuncN *setUntappable = [CCCallFuncN actionWithTarget:self selector:@selector(unSetTappable:)];
@@ -310,6 +350,7 @@
     int randPt;
     NSArray *hillTop;
     
+    //this loop only checks if the current hill position is taken
     do {
         int randHill = (arc4random() % locations.count) + 1;
         
@@ -325,15 +366,19 @@
     } while ([self checkLocation:CGPointMake(x.integerValue, y.integerValue)]);
     
     [head setZOrder:zOrder.integerValue];
-    [head setZOrder:-5];
+    [head setZOrder:50];
 
     [head setPosition:CGPointMake(x.integerValue, y.integerValue)];
     [head convertToWorldSpace:head.position];
     
-    head.didMiss = TRUE;
-    head.visible = TRUE;
+    if ([self checkCollission:head]) {
+        return;
+    }
     
-    int randTilt;
+        head.didMiss = TRUE;
+        head.visible = TRUE;
+    
+    /*int randTilt;
     if (randPt ==0) { //if at beginning of hill, can only tilt to the right
         randTilt = 1;
     } else if (randPt == (hillTop.count-1)) {//if at end of hill, can only tilt to left
@@ -350,27 +395,17 @@
     x2 = [pt2 objectForKey:@"x"];
     y2 = [pt2 objectForKey:@"y"];
     CGPoint posTwo = CGPointMake(x2.integerValue, y2.integerValue);
-
-    //Collission checking code? Inefficient
-    /*CGRect absrect1, absrect2;
-    absrect1 = CGRectMake(head.position.x, head.position.y, [head boundingBox].size.width, [head boundingBox].size.height);
-    for (Character *head2 in heads) {
-        //if this is itself, then skip it
-        if ([head2 isEqual:head]) {
-            continue;
-        } else {
-            //check for collision (i.e. overlap)
-            absrect2 = CGRectMake(head2.position.x, head2.position.y, [head2 boundingBox].size.width, [head2 boundingBox].size.height);
-            if (CGRectIntersectsRect(absrect1, absrect2)) {
-                //CCLOG(@"intersected!");
-                head.position = ccp(0,0);
-                //head.scale = 0.2;
-                head.visible = FALSE;
-                [head stopAllActions];
-                return;
-            }
-        }
-    }*/
+    
+    //returned angel is in radians
+    float rotationAngle = [self getAngleWithPts:head.position andPointTwo:posTwo];
+    
+    //head.rotation is always in degrees
+    head.rotation = CC_RADIANS_TO_DEGREES(rotationAngle);
+    
+    float height_now = head.contentSize.height * head.scaleY;
+    
+    //offset head by y = h * cos(theta), x = h*sin(theta)
+    head.position = ccp(head.position.x - height_now * sin(rotationAngle), head.position.y - height_now * cos(rotationAngle));*/
     
     //No collission detected
     
@@ -390,28 +425,31 @@
      //   [testObj runAction:[CCSequence actions: rotateBomb, removeBomb, nil]];
     }*/
     
-    //returned angel is in radians
-    float rotationAngle = [self getAngleWithPts:head.position andPointTwo:posTwo];
+    //hill animation
+    CCSprite *splash = [CCSprite spriteWithSpriteFrameName:@"s1.png"];
+    CGPoint splashPosition = head.position;
+    splashPosition.y -= 30;
+    splash.position = splashPosition;
+    //splash.rotation = CC_RADIANS_TO_DEGREES(rotationAngle);
+    [splashSheet addChild:splash z:head.zOrder+1];
     
-    //head.rotation is always in degrees
-    head.rotation = CC_RADIANS_TO_DEGREES(rotationAngle);
-    
-    float height_now = head.contentSize.height * head.scaleY;
-    
-    //offset head by y = h * cos(theta), x = h*sin(theta)
-    head.position = ccp(head.position.x - height_now * sin(rotationAngle), head.position.y - height_now * cos(rotationAngle));
+    CCAnimation *splashAnim = [CCAnimation animationWithSpriteFrames:splashFrames delay:0.1f];
+    CCRepeat *splashAction = [CCRepeat actionWithAction:[CCAnimate actionWithAnimation:splashAnim] times:1];
+    CCCallFuncN *endSplashAction = [CCCallFuncN actionWithTarget:self selector:@selector(endSplashAction:)];
+    [splash runAction:[CCSequence actions:splashAction, endSplashAction, nil]];
     
     //init all the actions
     //add the height of the body * 0.3 to the move: 59.5 * 0.3
-    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp((height_now+20) * sin(rotationAngle), (height_now+20) * cos(rotationAngle))];
+    //CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp((height_now+20) * sin(rotationAngle), (height_now+20) * cos(rotationAngle))];
+    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:1.0 position:ccp(0,40)];
     CCMoveBy *easeMoveUp = [CCEaseIn actionWithAction:moveUp rate:3.0];
     CCAction *easeMoveDown = [easeMoveUp reverse];
     CCCallFuncN *setTappable = [CCCallFuncN actionWithTarget:self selector:@selector(setTappable:)];
     CCCallFuncN *unsetTappable = [CCCallFuncN actionWithTarget:self selector:@selector(unSetTappable:)];
     CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
-    CCDelayTime *delay = [CCDelayTime actionWithDuration:3.0];
+    CCDelayTime *delay = [CCDelayTime actionWithDuration:2.0];
     //id action = [CCLiquid actionWithWaves:10 amplitude:20 grid:ccg(10,10) duration:5 ];
-
+        
     [head runAction:[CCSequence actions: setTappable, easeMoveUp, delay, easeMoveDown,unsetTappable, checkCombo, nil]];
 }
 
@@ -751,6 +789,7 @@ static id<GameOverDelegate> gameOverDelegate = nil;
     [self.hud removeHeart];
     
     if (lives <= 0) {
+        [[CCDirector sharedDirector] pause];
         [self gameOver:NO];
     }
 }
