@@ -16,6 +16,7 @@
 @implementation ReviewViewController
 
 @synthesize portraitView, backBtn, uploadBtn, leftBtn, rightBtn, avatarImageView;
+@synthesize scorelbl, goldlbl;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -86,6 +87,14 @@
     }
     
     int n = [[Game sharedGame] selectHeadCount];
+    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    NSNumber *last_game_score = [NSNumber numberWithInt:[[Game sharedGame] baseScore]];
+    [scorelbl setText:[numberFormatter stringFromNumber:last_game_score]];
+    NSNumber *last_game_gold = [NSNumber numberWithInt:[[Game sharedGame] moneyEarned]];
+    [goldlbl setText:[numberFormatter stringFromNumber:last_game_gold]];
 }
 
 - (void)viewDidLoad

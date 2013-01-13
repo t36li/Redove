@@ -40,6 +40,9 @@
     NSDictionary *locations;
     CCSpriteBatchNode *splashSheet;
     NSMutableArray *splashFrames;
+    
+    //score storage
+    NSMutableDictionary *dic;
 }
 
 @property (nonatomic, strong) NSDictionary *locations;
@@ -48,6 +51,10 @@
 
 -(void)setArrayForReview;
 
+//score methods
+- (NSString *) dataFilepath;
+- (void) writePlist: (NSString *) whichLbl withUpdate: (int) nmbr;
+- (int) readPlist: (NSString *) whichLbl;
 
 @end
 

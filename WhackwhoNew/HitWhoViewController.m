@@ -215,10 +215,6 @@
     }
     friendSelected = friend;
     
-    NSArray *temp = [friend.name componentsSeparatedByString:@" "];
-    NSString *firstName = [temp objectAtIndex:0];
-    namelabel.text = firstName;
-    
     [self switchMainViewToIndex];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -442,6 +438,7 @@
         faceView.image = nil;
         bodyView.image = nil;
         hitNumber.image = nil;
+        [namelabel setText:nil];
         return;
     }
     
@@ -464,6 +461,10 @@
     //CurrentEquip *ce = friendSelected.currentEquip;
     faceView.image = friendSelected.head.headImage;
     bodyView.image = [UIImage imageNamed:standard_blue_body];
+    
+    NSArray *temp = [friendSelected.name componentsSeparatedByString:@" "];
+    NSString *firstName = [temp objectAtIndex:0];
+    namelabel.text = firstName;
 }
 
 #pragma mark - hammer animations

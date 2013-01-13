@@ -47,6 +47,10 @@
     speed = DEFAULT_HEAD_POP_SPEED;
     has_bomb = FALSE;
     
+    //score reading initializations
+    NSString *path = [self dataFilepath];
+    dic = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+    
     if ([[CCDirector sharedDirector] isPaused]) {
         [[CCDirector sharedDirector] resume];
     }
@@ -206,7 +210,53 @@
     locations = [dictionary objectForKey:@"points"];
 }
 
+//Plist methods
+- (NSString *) dataFilepath {
+    //read the plist
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"ScorePlist" ofType:@"plist"];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:path]) {
+        NSLog(@"The file exists");
+        return path;
+    } else {
+        NSLog(@"The file does not exist");
+        return nil;
+    }
+}
+
+- (void) writePlist: (NSString *) whichLbl withUpdate: (int) nmbr {
+    
+    [dic setObject:[NSNumber numberWithInt:nmbr] forKey:whichLbl];
+    
+    NSLog(@"New %@: %i", whichLbl, [[dic objectForKey:whichLbl] intValue]);
+}
+
+- (int) readPlist: (NSString *) whichLbl {
+    NSNumber *ret = [dic objectForKey:whichLbl];
+    
+    NSLog(@"%@: %i", whichLbl, [[dic objectForKey:whichLbl] intValue]);
+    
+    return [ret intValue];
+}
+
 -(void) onExit {
+    
+    //update scores
+    HelloWorldScene *scene = (HelloWorldScene *)self.parent;
+    int current_hs = [self readPlist:@"High_Score"];
+    int current_score = [scene baseScore];
+    if (current_score > current_hs) {
+        [self writePlist:@"High_Score" withUpdate:current_score];
+    }
+    
+    int current_gold = [self readPlist:@"Total_Gold"];
+    int gold_earned = [scene moneyEarned];
+    [self writePlist:@"Total_Gold" withUpdate:(current_gold + gold_earned)];
+    
+    int current_gp = [self readPlist:@"Games_Played"];
+    [self writePlist:@"Games_Played" withUpdate:(current_gp + 1)];
+    
     [coins removeAllObjects];
     [heads removeAllObjects];
     [bomb removeAllObjects];
@@ -649,8 +699,8 @@
                     [testObj runAction:[CCSequence actions: rotateCoin, removeCoin, nil]];
                 }
                 
-                head.hp -= 2;
-                head.numberOfHits ++;
+                //head.hp -= 2;
+                //head.numberOfHits ++;
                 //update scores - show little label sign beside
                 int score_added = 5 + scene.consecHits / 5;
                 [scene updateScore:score_added];
@@ -709,7 +759,6 @@
     
     return NO;
 }
-
 
 
 /*

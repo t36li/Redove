@@ -280,7 +280,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="H8t-PN-hnM">
-                                        <rect key="frame" x="10" y="17" width="165" height="193"/>
+                                        <rect key="frame" x="20" y="28" width="145" height="182"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </imageView>
@@ -293,7 +293,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uSZ-jd-3xZ">
-                                <rect key="frame" x="279" y="248" width="114" height="37"/>
+                                <rect key="frame" x="279" y="238" width="114" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button" image="Review_Upload_Arrow.png">
@@ -305,7 +305,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cqw-G4-5Do">
-                                <rect key="frame" x="214" y="126" width="30" height="30"/>
+                                <rect key="frame" x="240" y="126" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="Review_Left_Arrow.png">
@@ -320,7 +320,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jmx-IJ-o7M">
-                                <rect key="frame" x="424" y="126" width="30" height="30"/>
+                                <rect key="frame" x="400" y="126" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="Review_Right_Arrow.png">
@@ -349,6 +349,20 @@
                                     <action selector="hitBack:" destination="hmH-w8-Zgh" eventType="touchUpInside" id="IXi-yQ-ftL"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="99999999" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yco-dX-xl6">
+                                <rect key="frame" x="175" y="95" width="67" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="9999999" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rCb-VN-b7Y">
+                                <rect key="frame" x="175" y="135" width="67" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.27121489789999997" green="0.81338015050000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -357,9 +371,11 @@
                     <connections>
                         <outlet property="avatarImageView" destination="H8t-PN-hnM" id="iu2-UY-gNn"/>
                         <outlet property="backBtn" destination="43q-N9-MR6" id="89m-k6-2L0"/>
+                        <outlet property="goldlbl" destination="rCb-VN-b7Y" id="WzS-uT-4VQ"/>
                         <outlet property="leftBtn" destination="cqw-G4-5Do" id="hSH-S1-rjM"/>
                         <outlet property="portraitView" destination="KCy-ma-5ga" id="UUg-pn-CrW"/>
                         <outlet property="rightBtn" destination="jmx-IJ-o7M" id="rbP-dS-fy8"/>
+                        <outlet property="scorelbl" destination="Yco-dX-xl6" id="GPJ-MN-eiV"/>
                         <outlet property="uploadBtn" destination="uSZ-jd-3xZ" id="ZuZ-E2-aYq"/>
                     </connections>
                 </viewController>
@@ -451,12 +467,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="yNN-57-wew">
-                                <rect key="frame" x="136" y="227" width="208" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Loading [For BETA Only]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="yNN-57-wew">
+                                <rect key="frame" x="136" y="226" width="208" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1117,9 +1133,11 @@
                 <relationship kind="action" name="hitRight:"/>
                 <relationship kind="outlet" name="avatarImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="backBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="goldlbl" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="leftBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="portraitView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="rightBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="scorelbl" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="uploadBtn" candidateClass="UIButton"/>
             </relationships>
         </class>

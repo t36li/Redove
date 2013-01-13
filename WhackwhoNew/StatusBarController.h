@@ -26,7 +26,7 @@
     IBOutlet UIImageView *bodyView;
     
     //score storage
-    NSMutableDictionary *dic;
+    NSDictionary *dic;
     
     CameraOverlayControllerViewController *overlay;
     //IBOutlet AvatarView *avatarView;
@@ -58,10 +58,9 @@
 @property (nonatomic, strong) UIImageView *cameraOverlayView;
 
 
-
 //class methods
 - (NSString *) dataFilepath;
-- (NSString *) readPlist: (int) whichLbl;
+- (NSString *) readPlist: (NSString *) whichLbl;
 
 - (IBAction)Back_Touched:(id)sender;
 - (IBAction)Ok_Pressed:(id)sender;

@@ -15,6 +15,8 @@
     
     IBOutlet UIButton *backBtn, *uploadBtn, *leftBtn, *rightBtn;
     
+    IBOutlet UILabel *scorelbl, *goldlbl;
+    
     IBOutlet UIImageView *avatarImageView;
     
     NSMutableArray *avatarArray;
@@ -24,6 +26,7 @@
 
 @property (nonatomic, strong) IBOutlet UIView *portraitView;
 @property (nonatomic, strong) IBOutlet UIButton *backBtn, *uploadBtn, *leftBtn, *rightBtn;
+@property (nonatomic, strong) IBOutlet UILabel *scorelbl, *goldlbl;
 @property (nonatomic, strong) IBOutlet UIImageView *avatarImageView;
 
 -(IBAction) hitBack:(id)sender;

@@ -22,10 +22,6 @@
 //#define body_Label 2
 //#define hammerHand_Label 3
 //#define shieldHand_Label 4
-#define hs_lbl 1
-#define gold_lbl 2
-#define gp_lbl 3
-#define pop_lbl 4
 
 // Transform values for full screen support:
 #define CAMERA_TRANSFORM_X 1
@@ -97,8 +93,7 @@ WhichTransition transitionType;
     [self.containerView setBackgroundColor:[UIColor clearColor]];
     
     NSString *path = [self dataFilepath];
-    
-    dic = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+    dic = [[NSDictionary alloc] initWithContentsOfFile:path];
     
     //need to cache user's previous image
     UserInfo *usr = [UserInfo sharedInstance];
@@ -143,9 +138,9 @@ WhichTransition transitionType;
             [faceView setImage:face_DB];
             //[bodyView setImage:[UIImage imageNamed:standard_blue_body]];
             
-            [high_score_lbl setText:[self readPlist:hs_lbl]];
-            [total_gold_lbl setText:[self readPlist:gold_lbl]];
-            [total_gp_lbl setText:[self readPlist:gp_lbl]];
+            [high_score_lbl setText:[self readPlist:@"High_Score"]];
+            [total_gold_lbl setText:[self readPlist:@"Total_Gold"]];
+            [total_gp_lbl setText:[self readPlist:@"Games_Played"]];
             
             [RKClient clientWithBaseURL:[NSURL URLWithString:BaseURL]];
             NSString *whackID = [NSString stringWithFormat:@"%i",[[UserInfo sharedInstance] whackWhoId]];
@@ -210,26 +205,13 @@ WhichTransition transitionType;
     }
 }
 
-- (NSString *) readPlist: (int) whichLbl {
-    NSNumber *ret;
-    
-    switch (whichLbl) {
-        case hs_lbl:
-            ret = [dic objectForKey:@"High_Score"];
-            break;
-        case gold_lbl:
-            ret = [dic objectForKey:@"Total_Gold"];
-            break;
-        case gp_lbl:
-            ret = [dic objectForKey:@"Games_Played"];
-            break;
-    }
+- (NSString *) readPlist: (NSString *) whichLbl {
+    NSNumber *ret = [dic objectForKey:whichLbl];
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
     
     return [numberFormatter stringFromNumber:ret];
-    
 }
 
 
