@@ -379,7 +379,6 @@
         //bodyView.image = [UIImage imageNamed:ce.body];
         
     } else {//capturing image from strangers
-        /*
         int randInt;
         
         //testing purposes
@@ -401,10 +400,11 @@
             friend.head.headImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.whackwho.com/userImages/%@.png", friend.head_id]]]];
         }
         faceView.image = friend.head.headImage;
-        CurrentEquip *ce = friend.currentEquip;
-        faceView.image = friend.head.headImage;
-        bodyView.image = [UIImage imageNamed:ce.body];
-         */
+        bodyView.image = [UIImage imageNamed:standard_blue_body];
+        
+        //CurrentEquip *ce = friend.currentEquip;
+        //faceView.image = friend.head.headImage;
+        //bodyView.image = [UIImage imageNamed:ce.body];
     }
     
     // If scale is 0, it'll follows the screen scale for creating the bounds
