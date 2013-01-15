@@ -13,6 +13,8 @@
 #import "CameraOverlayControllerViewControllerDelegate.h"
 #import "CustomDrawViewController.h"
 
+@class WEPopoverController;
+
 @interface StatusBarController : UIViewController<RKObjectLoaderDelegate, UIAlertViewDelegate, CameraOverlayControllerViewControllerDelegate> {
     
     IBOutlet UILabel *popularity_lbl;
@@ -37,6 +39,8 @@
     CGFloat _ylastScale;
     
     UIImage *tempPhoto;
+    
+    WEPopoverController *popoverController;
 }
 
 //define delegate
@@ -56,7 +60,7 @@
 @property (nonatomic, strong) CameraOverlayControllerViewController *overlay;
 @property (nonatomic, strong) UIImagePickerController *cameraController;
 @property (nonatomic, strong) UIImageView *cameraOverlayView;
-
+@property (nonatomic, retain) WEPopoverController *popoverController;
 
 //class methods
 - (NSString *) dataFilepath;

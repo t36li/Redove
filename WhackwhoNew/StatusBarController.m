@@ -13,6 +13,9 @@
 #import "UserInfo.h"
 #import "StatusTutorialViewController.h"
 #import "SpinnerView.h"
+#import "WEPopoverContentViewController.h"
+#import "WEPopoverController.h"
+#import "StatusBarTutorialPopover.h"
 //#import "StatusViewLayer.h"
 //#import "HelloWorldLayer.h"
 //#import "Dragbox.h"
@@ -38,6 +41,7 @@
 @synthesize faceView, bodyView;
 @synthesize popularity_lbl, total_gold_lbl, total_gp_lbl, high_score_lbl;
 @synthesize cameraController, cameraOverlayView, overlay;
+@synthesize popoverController;
 
 typedef enum { NA, FROM_CAMERA, FROM_CUSTOMDRAW } WhichTransition;
 WhichTransition transitionType;
@@ -181,6 +185,13 @@ WhichTransition transitionType;
             transitionType = NA;
             break;
     }
+    
+    StatusBarTutorialPopover *contentViewController = [[StatusBarTutorialPopover alloc] initWithNibName:@"PopOver" bundle:nil];
+    self.popoverController = [[WEPopoverController alloc] initWithContentViewController:contentViewController];
+    [self.popoverController presentPopoverFromRect:CGRectZero
+                                            inView:self.view
+                          permittedArrowDirections:UIPopoverArrowDirectionAny
+                                          animated:YES];
 }
 
 - (void)viewDidUnload
