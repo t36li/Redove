@@ -79,7 +79,7 @@
 
 -(IBAction)done:(id)sender {
     UserInfo *user = [UserInfo sharedInstance];
-
+    
     for (UIButton *btn in buttonSet) {
         switch (btn.tag) {
             case LEFT_EYE:
@@ -102,7 +102,29 @@
                 break;
         }
     }
+    /*
+    UIImage *leftEye = [UIImage imageNamed:@"eye1.png"];
+    UIImage *rightEye = [UIImage imageNamed:@"eye2.png"];
+    UIImage *lip = [UIImage imageNamed:@"lip 1.png"];
+    UIImage *nose = [UIImage imageNamed:@"sworn1.png"];
+    UIImage *leftEar = [UIImage imageNamed:@"ear 1.png"];
+    UIImage *rightEar = [UIImage imageNamed:@"ear 2.png"];
     
+    CGPoint leftEyePos = user.leftEyePosition;
+    CGPoint mouthPos = user.mouthPosition;
+    CGRect faceRect = user.faceRect;
+    
+    CGSize mouthSize = lip.size;
+    
+    UIGraphicsBeginImageContext(user.faceRect.size);
+    [user.croppedImage drawInRect:CGRectMake(0, 0, user.faceRect.size.width, user.faceRect.size.height)];
+    [leftEye drawInRect:CGRectMake(user.leftEyePosition.x-leftEye.size.width/2, user.leftEyePosition.y-leftEye.size.height/2, leftEye.size.width, leftEye.size.height)];
+    [lip drawInRect:CGRectMake(user.mouthPosition.x-lip.size.width/2, user.mouthPosition.y-lip.size.height/2, lip.size.width, lip.size.height)];
+    UIImage *ret = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    self.containerView.drawImageView.image = ret;
+    */
     [self saveUsrImageToServer];
 }
 
