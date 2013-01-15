@@ -693,14 +693,14 @@
                 break;
             }
             
-            float height_now = head.contentSize.height * head.scaleY;
+            //float height_now = head.contentSize.height * head.scaleY;
             
-            float rotation = CC_DEGREES_TO_RADIANS(head.rotation);
-            CCMoveBy *moveDown = [CCMoveBy actionWithDuration:0.5 position:ccp(-(5+height_now) * sin(rotation), -(height_now+5) * cos(rotation))];
-            CCMoveBy *easeMoveDown = [CCEaseOut actionWithAction:moveDown rate:3.0];
+            //float rotation = CC_DEGREES_TO_RADIANS(head.rotation);
+            //CCMoveBy *moveDown = [CCMoveBy actionWithDuration:0.5 position:ccp(-(5+height_now) * sin(rotation), -(height_now+5) * cos(rotation))];
+            //CCMoveBy *easeMoveDown = [CCEaseOut actionWithAction:moveDown rate:3.0];
             CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
             
-            [head runAction:[CCSequence actions: easeMoveDown, checkCombo, nil]];
+            [head runAction:[CCSequence actions: checkCombo, nil]];
             
             //stop the loop as we are not support multi-touch anymore
             return YES;
