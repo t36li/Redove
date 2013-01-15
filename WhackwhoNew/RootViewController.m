@@ -19,7 +19,7 @@
 #define PlayToSelectLogInSegue @"PlayToSelectLogInSegue"
 #define PlayToStatusSegue @"PlayToStatusSegue"
 #define PlayToSegue @"PlayToSegue"
-#define PlayToFriendSegue @"PlayToFriendSegue"
+//#define PlayToFriendSegue @"PlayToFriendSegue"
 #define SelectToLoginToAvatar @"SelectToLoginToAvatar"
 
 #define networkErrorAlert 1
@@ -160,9 +160,9 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex {
     }
     else if ([segue.identifier isEqualToString:PlayToStatusSegue]){
     }
-    else if ([segue.identifier isEqualToString:PlayToFriendSegue]){
+    //else if ([segue.identifier isEqualToString:PlayToFriendSegue]){
         //self.friendVC = segue.destinationViewController;
-    }
+   // }
     else if ([segue.identifier isEqualToString:SelectToLoginToAvatar]){
     }
     

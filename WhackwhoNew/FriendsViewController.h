@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Waterloo. All rights reserved.
 //
 
+//As of Dec.21st, 2012 This view is decommissioned - Bob
+
 #import <UIKit/UIKit.h>
 #import "SpinnerView.h"
 #import "Friend.h"

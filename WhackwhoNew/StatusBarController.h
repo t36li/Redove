@@ -70,6 +70,7 @@
 - (IBAction)Ok_Pressed:(id)sender;
 //- (void)updateDB;
 - (IBAction)publish_touched:(id)sender;
--(IBAction)pushCamera:(id)sender;
+- (IBAction)pushCamera:(id)sender;
+- (IBAction)deletePlist:(id)sender;
 
 @end

@@ -97,6 +97,11 @@
     [scorelbl setText:[numberFormatter stringFromNumber:last_game_score]];
     NSNumber *last_game_gold = [NSNumber numberWithInt:[[Game sharedGame] moneyEarned]];
     [goldlbl setText:[numberFormatter stringFromNumber:last_game_gold]];
+    
+    if ([[Game sharedGame] levelsUnlocked] == 1) {
+        UIAlertView *unlock_alert = [[UIAlertView alloc] initWithTitle:nil message:@"Congratulations! You have unlocked a new game background!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [unlock_alert show];
+    }
 }
 
 - (void)viewDidLoad

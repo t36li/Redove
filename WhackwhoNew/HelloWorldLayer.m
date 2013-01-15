@@ -57,9 +57,12 @@
     
     //determine which background to load
     //if unlocked new level, then randomize
-    
-    //level = hillLevel;
-    level = [[Game sharedGame] difficulty];
+    int temp = [[Game sharedGame] bgs_to_random];
+    if (temp == 0) {
+        level = seaLevel;
+    } else {
+        level = arc4random() % temp;
+    }
     
     switch (level) {
         case hillLevel:
@@ -747,6 +750,7 @@ static id<GameOverDelegate> gameOverDelegate = nil;
         //score reading initializations
         NSString *path = [self dataFilepath];
         dic = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+        [[Game sharedGame] setBgs_to_random:[self readPlist:@"Bg_Unlocked"]];
 
         self.layer = [[HelloWorldLayer alloc] init];
         [self addChild:self.layer z:0];
@@ -773,6 +777,14 @@ static id<GameOverDelegate> gameOverDelegate = nil;
     
     int current_gp = [self readPlist:@"Games_Played"];
     [self writePlist:@"Games_Played" withUpdate:(current_gp + 1)];
+    
+    //unlock a new background for every 5 games played
+    if (current_gp >= 5) {
+        [[Game sharedGame] setLevelsUnlocked:1];
+        int current_bg_unlocked = [self readPlist:@"Bg_Unlocked"];
+        
+        [self writePlist:@"Bg_Unlocked" withUpdate:(current_bg_unlocked + 1)];
+    }
 
     [self cleanup];
     

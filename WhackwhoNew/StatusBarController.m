@@ -11,7 +11,6 @@
 #import "User.h"
 #import "HitUpdate.h"
 #import "UserInfo.h"
-#import "StatusTutorialViewController.h"
 #import "SpinnerView.h"
 #import "WEPopoverContentViewController.h"
 #import "WEPopoverController.h"
@@ -142,6 +141,8 @@ WhichTransition transitionType;
             NSString *path = [self dataFilepath];
             dic = [[NSDictionary alloc] initWithContentsOfFile:path];
             
+            //NSLog(@"%@: %i", @"Bg_Unlocked", [[dic objectForKey:@"Bg_Unlocked"] intValue]);
+            
             //if popularity changes... then what
             [high_score_lbl setText:[self readPlist:@"High_Score"]];
             [total_gold_lbl setText:[self readPlist:@"Total_Gold"]];
@@ -214,6 +215,23 @@ WhichTransition transitionType;
     }
     
     return destPath;
+}
+
+- (IBAction)deletePlist:(id)sender {
+    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    destPath = [destPath stringByAppendingPathComponent:@"ScorePlist.plist"];
+    
+    // If the file doesn't exist in the Documents Folder, copy it.
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if ([fileManager fileExistsAtPath:destPath]) {
+        [fileManager removeItemAtPath:destPath error:nil];
+    }
+    
+    [high_score_lbl setText:[self readPlist:@"High_Score"]];
+    [total_gold_lbl setText:[self readPlist:@"Total_Gold"]];
+    [total_gp_lbl setText:[self readPlist:@"Games_Played"]];
+
 }
 
 - (NSString *) readPlist: (NSString *) whichLbl {
@@ -316,7 +334,7 @@ WhichTransition transitionType;
     //if no records with current whackwho_id, then insert.
     //else, update
     //[self updateDB];
-    [self performSegueWithIdentifier:@"StatusToModeSegue" sender:self];
+    [self performSegueWithIdentifier:@"StatusToHitWhoSegue" sender:self];
 }
 
 -(IBAction)pushCamera:(id)sender {

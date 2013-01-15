@@ -115,8 +115,6 @@
 		C14BC6441692503D0005EEBE /* HitWho_Battle_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = C14BC6431692503D0005EEBE /* HitWho_Battle_Button.png */; };
 		C14BC646169250E30005EEBE /* HitWho_Hammer_Flipped.png in Resources */ = {isa = PBXBuildFile; fileRef = C14BC645169250E30005EEBE /* HitWho_Hammer_Flipped.png */; };
 		C14BC64E169503550005EEBE /* background_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C14BC64D169503550005EEBE /* background_music.mp3 */; };
-		C14BC65B169629210005EEBE /* StatusTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C14BC659169629200005EEBE /* StatusTutorialViewController.m */; };
-		C14BC65C169629210005EEBE /* StatusTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C14BC65A169629200005EEBE /* StatusTutorialViewController.xib */; };
 		C151791C15C36D3E00A4378F /* hit effect.png in Resources */ = {isa = PBXBuildFile; fileRef = C151791B15C36D3E00A4378F /* hit effect.png */; };
 		C151793515C4B88D00A4378F /* coin front.png in Resources */ = {isa = PBXBuildFile; fileRef = C151793415C4B88D00A4378F /* coin front.png */; };
 		C15305C61688E239003D7D1B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C15305C51688E239003D7D1B /* Reachability.m */; };
@@ -718,9 +716,6 @@
 		C14BC6431692503D0005EEBE /* HitWho_Battle_Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_Battle_Button.png; sourceTree = "<group>"; };
 		C14BC645169250E30005EEBE /* HitWho_Hammer_Flipped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_Hammer_Flipped.png; sourceTree = "<group>"; };
 		C14BC64D169503550005EEBE /* background_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background_music.mp3; sourceTree = "<group>"; };
-		C14BC658169629200005EEBE /* StatusTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusTutorialViewController.h; sourceTree = "<group>"; };
-		C14BC659169629200005EEBE /* StatusTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusTutorialViewController.m; sourceTree = "<group>"; };
-		C14BC65A169629200005EEBE /* StatusTutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusTutorialViewController.xib; sourceTree = "<group>"; };
 		C151791B15C36D3E00A4378F /* hit effect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hit effect.png"; sourceTree = "<group>"; };
 		C151793415C4B88D00A4378F /* coin front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coin front.png"; sourceTree = "<group>"; };
 		C15305C41688E239003D7D1B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -1297,10 +1292,10 @@
 				696F17FB15A4A81000DC849F /* OptionsViewController.m */,
 				694F34AB15A68355009BA1C5 /* FriendsViewController.h */,
 				694F34AC15A68355009BA1C5 /* FriendsViewController.m */,
-				69C95EAB159B63A9009966DA /* SelectToLoginViewController.h */,
-				69C95EAC159B63A9009966DA /* SelectToLoginViewController.m */,
 				694F34B015A76005009BA1C5 /* FriendsTableCell.h */,
 				694F34B115A76006009BA1C5 /* FriendsTableCell.m */,
+				69C95EAB159B63A9009966DA /* SelectToLoginViewController.h */,
+				69C95EAC159B63A9009966DA /* SelectToLoginViewController.m */,
 			);
 			name = "Mainpage Views";
 			sourceTree = "<group>";
@@ -1670,9 +1665,6 @@
 				D03D412516A4D24700C72E17 /* StatusBarTutorialPopover.h */,
 				D03D412616A4D24700C72E17 /* StatusBarTutorialPopover.m */,
 				D03D412316A4D1CF00C72E17 /* PopOver.xib */,
-				C14BC658169629200005EEBE /* StatusTutorialViewController.h */,
-				C14BC659169629200005EEBE /* StatusTutorialViewController.m */,
-				C14BC65A169629200005EEBE /* StatusTutorialViewController.xib */,
 				C1DCCBC415CB5143000CD722 /* StatusViewLayer.h */,
 				C1DCCBC515CB5143000CD722 /* StatusViewLayer.m */,
 				C10D2FCB15D09625007B751B /* StatusCocosDelegate.h */,
@@ -2704,7 +2696,6 @@
 				C14BC6441692503D0005EEBE /* HitWho_Battle_Button.png in Resources */,
 				C14BC646169250E30005EEBE /* HitWho_Hammer_Flipped.png in Resources */,
 				C14BC64E169503550005EEBE /* background_music.mp3 in Resources */,
-				C14BC65C169629210005EEBE /* StatusTutorialViewController.xib in Resources */,
 				C1B7BB2316A2149600E6F7A8 /* Loading.jpg in Resources */,
 				C1B7BB2516A214C400E6F7A8 /* Options_bg.jpg in Resources */,
 				C1B7BB2716A214D800E6F7A8 /* Personal_Upload.jpg in Resources */,
@@ -2774,7 +2765,6 @@
 				3D8BA1AA1688E69A00B731A1 /* FacebookShareViewController.m in Sources */,
 				C15305C61688E239003D7D1B /* Reachability.m in Sources */,
 				C14139E8168C9D29005556BD /* HitUpdate.m in Sources */,
-				C14BC65B169629210005EEBE /* StatusTutorialViewController.m in Sources */,
 				D03D411C16A4CC1800C72E17 /* UIBarButtonItem+WEPopover.m in Sources */,
 				D03D411D16A4CC1800C72E17 /* WEPopoverContainerView.m in Sources */,
 				D03D411E16A4CC1800C72E17 /* WEPopoverController.m in Sources */,
