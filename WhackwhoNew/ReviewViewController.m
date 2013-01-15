@@ -45,14 +45,15 @@
         UIImage *leftEar = [UIImage imageNamed:@"ear 1.png"];
         UIImage *rightEar = [UIImage imageNamed:@"ear 2.png"];
         
+        CGPoint leftEyePosition = CGPointFromString(head.leftEyePosition);
+        CGPoint mouthPosition = CGPointFromString(head.mouthPosition);
+        
         CGSize screenSize = pic.size;
         CGRect faceRectSize = CGRectFromString(head.faceRect);
-        UIGraphicsBeginImageContext(screenSize);
-        CGContextRef currentContext = UIGraphicsGetCurrentContext();
-        CGPoint leftEyePosition = CGPointFromString(head.leftEyePosition);
+        UIGraphicsBeginImageContext(faceRectSize.size);
         [pic drawInRect:CGRectMake(0, 0, pic.size.width, pic.size.height)];
-        [leftEye drawInRect:CGRectMake(leftEyePosition.x, screenSize.height - leftEyePosition.y, leftEye.size.width, leftEye.size.height)];
-        
+        [leftEye drawInRect:CGRectMake(leftEyePosition.x-leftEye.size.width/2, leftEyePosition.y-leftEye.size.height/2, leftEye.size.width, leftEye.size.height)];
+        [lip drawInRect:CGRectMake(mouthPosition.x-lip.size.width/2, mouthPosition.y-lip.size.height/2, lip.size.width, lip.size.height)];
         UIImage *ret = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
                 
