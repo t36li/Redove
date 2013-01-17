@@ -16,7 +16,8 @@ static Game *sharedGame = nil;
 @synthesize isGameOver;
 @synthesize isEnabledBackgroundMusic;
 @synthesize isEnabledSoundFX;
-@synthesize levelsUnlocked, bgs_to_random;
+@synthesize unlocked_new_bg;
+@synthesize bgs_to_random;
 @synthesize moneyEarned, baseScore;
 //@synthesize allHeads;
 
@@ -38,7 +39,7 @@ static Game *sharedGame = nil;
         self.isGameOver = NO;
         self.isEnabledBackgroundMusic = YES;
         self.isEnabledSoundFX = YES;
-        self.levelsUnlocked = 0;
+        self.unlocked_new_bg = NO;
         self.bgs_to_random = 0;
         self.moneyEarned = 0;
         self.multiplier = 0;

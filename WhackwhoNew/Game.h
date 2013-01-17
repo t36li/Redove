@@ -16,7 +16,8 @@
     BOOL isEnabledSoundFX;
     
     BOOL readyToStart;
-    int levelsUnlocked, bgs_to_random; //levelsunlocked used as bool
+    BOOL unlocked_new_bg;
+    int bgs_to_random; //levelsunlocked used as bool
     int moneyEarned, baseScore;
     
     int selectHeadCount;
@@ -32,7 +33,7 @@
 @property (nonatomic, readwrite) BOOL isGameOver;
 @property (nonatomic, readwrite) BOOL isEnabledBackgroundMusic;
 @property (nonatomic, readwrite) BOOL isEnabledSoundFX;
-@property (nonatomic, readwrite) int levelsUnlocked;
+@property (nonatomic, readwrite) BOOL unlocked_new_bg;
 @property (nonatomic, readwrite) int bgs_to_random;
 @property (nonatomic, readwrite) int moneyEarned;
 @property (nonatomic, readwrite) int multiplier;

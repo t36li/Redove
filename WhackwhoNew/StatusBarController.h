@@ -40,6 +40,7 @@
     
     UIImage *tempPhoto;
     
+    BOOL showOnce;
     WEPopoverController *popoverController;
 }
 

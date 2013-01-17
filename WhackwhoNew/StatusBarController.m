@@ -56,7 +56,7 @@ WhichTransition transitionType;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+        
     transitionType = NA;
     
     cameraController = [[UIImagePickerController alloc] init];
@@ -95,6 +95,11 @@ WhichTransition transitionType;
     
     [self.containerView setBackgroundColor:[UIColor clearColor]];
     
+    NSString *path = [self dataFilepath];
+    dic = [[NSDictionary alloc] initWithContentsOfFile:path];
+    
+    showOnce = YES;
+    
     //need to cache user's previous image
     UserInfo *usr = [UserInfo sharedInstance];
     if (usr.usrImg == nil){
@@ -102,9 +107,6 @@ WhichTransition transitionType;
         takePicAlert.tag = 1;
         [takePicAlert show];
     }
-    
-    //StatusTutorialViewController *stvc = [[StatusTutorialViewController alloc] initWithNibName:@"StatusTutorialViewController" bundle:nil];
-    //[self presentViewController:stvc animated:YES completion:nil];
 }
 
 
@@ -138,10 +140,6 @@ WhichTransition transitionType;
             [faceView setImage:face_DB];
             [bodyView setImage:[UIImage imageNamed:standard_blue_body]];
             
-            NSString *path = [self dataFilepath];
-            dic = [[NSDictionary alloc] initWithContentsOfFile:path];
-            
-            //NSLog(@"%@: %i", @"Bg_Unlocked", [[dic objectForKey:@"Bg_Unlocked"] intValue]);
             
             //if popularity changes... then what
             [high_score_lbl setText:[self readPlist:@"High_Score"]];
@@ -187,12 +185,17 @@ WhichTransition transitionType;
             break;
     }
     
-    StatusBarTutorialPopover *contentViewController = [[StatusBarTutorialPopover alloc] initWithNibName:@"PopOver" bundle:nil];
-    self.popoverController = [[WEPopoverController alloc] initWithContentViewController:contentViewController];
-    [self.popoverController presentPopoverFromRect:CGRectZero
-                                            inView:self.view
-                          permittedArrowDirections:UIPopoverArrowDirectionAny
-                                          animated:YES];
+    BOOL showTut = [[dic objectForKey:@"Tutorial"] boolValue];
+    if (showTut && showOnce) {
+        StatusBarTutorialPopover *contentViewController = [[StatusBarTutorialPopover alloc] initWithNibName:@"PopOver" bundle:nil];
+        self.popoverController = [[WEPopoverController alloc] initWithContentViewController:contentViewController];
+        [self.popoverController presentPopoverFromRect:CGRectZero
+                                                inView:self.view
+                              permittedArrowDirections:UIPopoverArrowDirectionAny
+                                              animated:YES];
+        showOnce = NO;
+    }
+
 }
 
 - (void)viewDidUnload

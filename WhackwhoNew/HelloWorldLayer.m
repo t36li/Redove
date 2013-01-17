@@ -779,11 +779,11 @@ static id<GameOverDelegate> gameOverDelegate = nil;
     [self writePlist:@"Games_Played" withUpdate:(current_gp + 1)];
     
     //unlock a new background for every 5 games played
-    if (current_gp >= 5) {
-        [[Game sharedGame] setLevelsUnlocked:1];
-        int current_bg_unlocked = [self readPlist:@"Bg_Unlocked"];
+    if ((current_gp + 1) % 5 == 0) {
+        [[Game sharedGame] setUnlocked_new_bg:YES];
+        int current_bgs_unlocked = [self readPlist:@"Bgs_Unlocked"];
         
-        [self writePlist:@"Bg_Unlocked" withUpdate:(current_bg_unlocked + 1)];
+        [self writePlist:@"Bgs_Unlocked" withUpdate:(current_bgs_unlocked + 1)];
     }
 
     [self cleanup];
