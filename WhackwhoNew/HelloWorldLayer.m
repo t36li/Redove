@@ -785,6 +785,10 @@ static id<GameOverDelegate> gameOverDelegate = nil;
         
         [self writePlist:@"Bgs_Unlocked" withUpdate:(current_bgs_unlocked + 1)];
     }
+    if ([dic objectForKey:@"Tutorial"]) {
+        [dic setObject:[NSNumber numberWithBool:NO] forKey:@"Tutorial"];
+        [dic writeToFile:[self dataFilepath] atomically:NO];
+    }
 
     [self cleanup];
     

@@ -155,6 +155,8 @@
 		C1CBDFF015952DC100A35E24 /* Email Envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEE15952DC100A35E24 /* Email Envelope.png */; };
 		C1CBDFF115952DC100A35E24 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEF15952DC100A35E24 /* facebook.png */; };
 		C1D342AD15FBD29C00B4CD2D /* bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = C1D342AC15FBD29C00B4CD2D /* bomb.png */; };
+		C1DC2D4E16A8B22C0063CBF7 /* HitWhoTutorialPopver.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DC2D4C16A8B22B0063CBF7 /* HitWhoTutorialPopver.m */; };
+		C1DC2D4F16A8B22C0063CBF7 /* HitWhoTutorialPopver.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2D4D16A8B22B0063CBF7 /* HitWhoTutorialPopver.xib */; };
 		C1DCCBC615CB5143000CD722 /* StatusViewLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DCCBC515CB5143000CD722 /* StatusViewLayer.m */; };
 		C1FE252315AF656E00DAF258 /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE252215AF656E00DAF258 /* HUDLayer.m */; };
 		C1FE252815AF65EF00DAF258 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE252615AF65EF00DAF258 /* pause.png */; };
@@ -774,6 +776,9 @@
 		C1CBDFEE15952DC100A35E24 /* Email Envelope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Email Envelope.png"; sourceTree = "<group>"; };
 		C1CBDFEF15952DC100A35E24 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
 		C1D342AC15FBD29C00B4CD2D /* bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bomb.png; sourceTree = "<group>"; };
+		C1DC2D4B16A8B22B0063CBF7 /* HitWhoTutorialPopver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HitWhoTutorialPopver.h; sourceTree = "<group>"; };
+		C1DC2D4C16A8B22B0063CBF7 /* HitWhoTutorialPopver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HitWhoTutorialPopver.m; sourceTree = "<group>"; };
+		C1DC2D4D16A8B22B0063CBF7 /* HitWhoTutorialPopver.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HitWhoTutorialPopver.xib; sourceTree = "<group>"; };
 		C1DCCBC415CB5143000CD722 /* StatusViewLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewLayer.h; sourceTree = "<group>"; };
 		C1DCCBC515CB5143000CD722 /* StatusViewLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewLayer.m; sourceTree = "<group>"; };
 		C1FE252115AF656E00DAF258 /* HUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDLayer.h; sourceTree = "<group>"; };
@@ -1271,6 +1276,9 @@
 				692AC3A515B24C0D001E4858 /* hitFriendCell.m */,
 				C155FE811608CE18007F254B /* Items.h */,
 				C155FE821608CE18007F254B /* Items.m */,
+				C1DC2D4B16A8B22B0063CBF7 /* HitWhoTutorialPopver.h */,
+				C1DC2D4C16A8B22B0063CBF7 /* HitWhoTutorialPopver.m */,
+				C1DC2D4D16A8B22B0063CBF7 /* HitWhoTutorialPopver.xib */,
 			);
 			name = HitWhoGroup;
 			sourceTree = "<group>";
@@ -2700,6 +2708,7 @@
 				C1B7BB2516A214C400E6F7A8 /* Options_bg.jpg in Resources */,
 				C1B7BB2716A214D800E6F7A8 /* Personal_Upload.jpg in Resources */,
 				D03D412416A4D1CF00C72E17 /* PopOver.xib in Resources */,
+				C1DC2D4F16A8B22C0063CBF7 /* HitWhoTutorialPopver.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2771,6 +2780,7 @@
 				D03D411F16A4CC1800C72E17 /* WETouchableView.m in Sources */,
 				D03D412216A4CE0700C72E17 /* WEPopoverContentViewController.m in Sources */,
 				D03D412716A4D24700C72E17 /* StatusBarTutorialPopover.m in Sources */,
+				C1DC2D4E16A8B22C0063CBF7 /* HitWhoTutorialPopver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
