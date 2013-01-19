@@ -48,7 +48,7 @@
 }
 
 -(void) viewWillDisappear:(BOOL)animated {
-    [[Game sharedGame] setDifficulty:index];
+    //[[Game sharedGame] setDifficulty:index];
 }
 
 - (IBAction)leftButton_touched:(id)sender {

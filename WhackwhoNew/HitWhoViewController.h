@@ -15,9 +15,11 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <RestKit/RestKit.h>
 #import "PullToRefreshView.h"
-#import "Items.h"
+//#import "Items.h"
 #import "HitWindow.h"
 #import "FBSingletonNewDelegate.h"
+
+@class WEPopoverController;
 
 @interface HitWhoViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,RKObjectLoaderDelegate,PullToRefreshViewDelegate,FBSingletonNewDelegate> {
    
@@ -25,18 +27,14 @@
     NSMutableArray *selectedStrangers;
     NSArray *hitWindows;
     
-    //UIImage *defaultImage;
-
     IBOutlet HitWindow *hit1;
     IBOutlet HitWindow *hit2;
     IBOutlet HitWindow *hit3;
     IBOutlet HitWindow *hit4;
     
     IBOutlet UIView *containerView;
-    
     IBOutlet UIImageView *faceView;
     IBOutlet UIImageView *bodyView;
-    
     IBOutlet UIImageView *hitNumber;
     IBOutlet UIImageView *leftHammer;
     IBOutlet UIImageView *rightHammer;
@@ -52,6 +50,11 @@
     IBOutlet UILabel *namelabel;
     
     BOOL isHammerDown;
+    
+    WEPopoverController *popoverController;
+    
+    //score storage
+    NSDictionary *dic;
 }
 
 @property (nonatomic) IBOutlet UILabel *namelabel;
@@ -63,8 +66,6 @@
 @property (nonatomic) IBOutlet UIImageView *hitNumber;
 @property (nonatomic) IBOutlet UIImageView *leftHammer;
 @property (nonatomic) IBOutlet UIImageView *rightHammer;
-
-//@property (nonatomic) UIImage *defaultImage;
 
 @property (nonatomic) IBOutlet UIView *containerView, *popupView, *characterReviewView;
 @property (nonatomic) IBOutlet UIImageView *faceView;
@@ -78,6 +79,10 @@
 @property (nonatomic) NSArray *hitWindows;
 
 @property (nonatomic) UIButton *uploadBtn, *dismissPopupBtn;
+
+@property (nonatomic, strong) WEPopoverController *popoverController;
+
+- (NSString *) dataFilepath;
 
 -(IBAction)Back_Touched:(id)sender;
 -(IBAction)cancelTouched:(id)sender;

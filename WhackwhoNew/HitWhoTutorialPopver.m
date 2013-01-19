@@ -1,18 +1,18 @@
 //
-//  StatusTutorialViewController.m
+//  HitWhoTutorialPopver.m
 //  WhackwhoNew
 //
-//  Created by Bob Li on 2013-01-03.
+//  Created by Bob Li on 2013-01-17.
 //  Copyright (c) 2013 Waterloo. All rights reserved.
 //
 
-#import "StatusTutorialViewController.h"
+#import "HitWhoTutorialPopver.h"
 
-@interface StatusTutorialViewController ()
+@interface HitWhoTutorialPopver ()
 
 @end
 
-@implementation StatusTutorialViewController
+@implementation HitWhoTutorialPopver
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,6 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -33,10 +35,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)dismissView:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

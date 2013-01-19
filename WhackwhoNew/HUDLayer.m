@@ -156,7 +156,7 @@
         scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"chalkduster" fontSize:30];
         scoreLabel.anchorPoint = ccp(0.5, 0.5);
         scoreLabel.color = ccc3(255, 200, 0);
-        scoreLabel.position = ccp(scoreboard.contentSize.width/2, 30);
+        scoreLabel.position = ccp(scoreboard.contentSize.width/2, 28);
         [scoreLabel setString:[NSString stringWithFormat:@"%d", 0]];
         [scoreboard addChild:scoreLabel z:101];
         
@@ -249,10 +249,10 @@
     CGPoint location = [touch locationInView:[touch view]];
     location = [[CCDirector sharedDirector] convertToGL:location];
     
-    if (CGRectContainsPoint(pauseMenu.boundingBox, location)) {
-        [[HelloWorldScene gameOverDelegate] returnToMenu];
-        return YES;
-    }
+    //if (CGRectContainsPoint(pauseMenu.boundingBox, location)) {
+      //  [[HelloWorldScene gameOverDelegate] returnToMenu];
+        //return YES;
+    //}
     
     return NO;
 }

@@ -12,9 +12,12 @@
 #import "FBSingletonNew.h"
 #import "cocos2d.h"
 #import "HelloWorldLayer.h"
+#import "WEPopoverContentViewController.h"
+#import "WEPopoverController.h"
+#import "HitWhoTutorialPopver.h"
 
 #define ChooseToGame @"chooseToGame"
-#define dummyString @"testobject"
+//#define dummyString @"testobject"
 #define pi 3.14159265359
 //#define MAX_HIT 2
 
@@ -22,7 +25,6 @@
 
 @synthesize namelabel;
 @synthesize hit1, hit2, hit3, hit4;
-//@synthesize defaultImage;
 
 @synthesize containerView;
 @synthesize faceView, bodyView;
@@ -31,6 +33,7 @@
 @synthesize table;
 @synthesize spinner, loadingView;
 @synthesize resultFriends, resultStrangers, hitWindows;
+@synthesize popoverController;
 
 - (void)viewDidLoad
 {
@@ -38,6 +41,10 @@
 	// Do any additional setup after loading the view.
     
     [self.containerView setBackgroundColor:[UIColor clearColor]];
+    
+    [faceView setContentMode:UIViewContentModeScaleAspectFit];
+    [bodyView setContentMode:UIViewContentModeScaleToFill];
+    
     friendSelected = nil;
     
     hitWindows = [[NSArray alloc] initWithObjects:hit1, hit2, hit3, hit4, nil];
@@ -53,9 +60,6 @@
     selectedHits = [[NSMutableArray alloc] init];
     selectedStrangers = [[NSMutableArray alloc] init];
     
-    //change this to something else later
-    //[self setDefaultImage:[UIImage imageNamed:@"vlad.png"]];
-    
     //**[[FBSingleton sharedInstance] setDelegate:self];
     //**[[FBSingleton sharedInstance] RequestHitWhoList];
     
@@ -68,9 +72,12 @@
     [self.table addSubview:tablepull];
     
     isHammerDown = NO;
+    
+    NSString *path = [self dataFilepath];
+    dic = [[NSDictionary alloc] initWithContentsOfFile:path];
+
 }
 
-// viewdidload gets called before this
 -(void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
     [[FBSingletonNew sharedInstance] setDelegate:self];
@@ -79,9 +86,6 @@
     CGRect frame = table.frame;
     frame.size = CGSizeMake(160, 240);
     table.frame = frame;
-    
-    [faceView setContentMode:UIViewContentModeScaleAspectFit];
-    [bodyView setContentMode:UIViewContentModeScaleToFill];
     
     //set initial portrait to be empty
     faceView.image = nil;
@@ -95,6 +99,18 @@
         }];
     }
     [self loadPlayersList];
+}
+
+-(void) viewDidAppear:(BOOL)animated {
+    BOOL showTut = [[dic objectForKey:@"Tutorial"] boolValue];
+    if (showTut) {
+        HitWhoTutorialPopver *contentViewController = [[HitWhoTutorialPopver alloc] initWithNibName:@"HitWhoTutorialPopver" bundle:nil];
+        self.popoverController = [[WEPopoverController alloc] initWithContentViewController:contentViewController];
+        [self.popoverController presentPopoverFromRect:CGRectZero
+                                                inView:self.view
+                              permittedArrowDirections:UIPopoverArrowDirectionAny
+                                              animated:YES];
+    }
 }
 
 - (void)viewDidUnload
@@ -521,6 +537,21 @@
     NSLog(@"RKParams HTTPHeaderValueForContentType = %@", [params HTTPHeaderValueForContentType]);
     
     [[RKObjectManager sharedManager].client post:@"/hits/update" params:params delegate:self];
+}
+
+- (NSString *) dataFilepath {
+    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    destPath = [destPath stringByAppendingPathComponent:@"ScorePlist.plist"];
+    
+    // If the file doesn't exist in the Documents Folder, copy it.
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath:destPath]) {
+        NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"ScorePlist" ofType:@"plist"];
+        [fileManager copyItemAtPath:sourcePath toPath:destPath error:nil];
+    }
+    
+    return destPath;
 }
 
 @end

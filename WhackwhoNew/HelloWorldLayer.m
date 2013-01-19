@@ -57,9 +57,12 @@
     
     //determine which background to load
     //if unlocked new level, then randomize
-    
-    //level = hillLevel;
-    level = [[Game sharedGame] difficulty];
+    int temp = [[Game sharedGame] bgs_to_random];
+    if (temp == 0) {
+        level = seaLevel;
+    } else {
+        level = arc4random() % temp;
+    }
     
     switch (level) {
         case hillLevel:
@@ -693,14 +696,14 @@
                 break;
             }
             
-            float height_now = head.contentSize.height * head.scaleY;
+            //float height_now = head.contentSize.height * head.scaleY;
             
-            float rotation = CC_DEGREES_TO_RADIANS(head.rotation);
-            CCMoveBy *moveDown = [CCMoveBy actionWithDuration:0.5 position:ccp(-(5+height_now) * sin(rotation), -(height_now+5) * cos(rotation))];
-            CCMoveBy *easeMoveDown = [CCEaseOut actionWithAction:moveDown rate:3.0];
+            //float rotation = CC_DEGREES_TO_RADIANS(head.rotation);
+            //CCMoveBy *moveDown = [CCMoveBy actionWithDuration:0.5 position:ccp(-(5+height_now) * sin(rotation), -(height_now+5) * cos(rotation))];
+            //CCMoveBy *easeMoveDown = [CCEaseOut actionWithAction:moveDown rate:3.0];
             CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
             
-            [head runAction:[CCSequence actions: easeMoveDown, checkCombo, nil]];
+            [head runAction:[CCSequence actions: checkCombo, nil]];
             
             //stop the loop as we are not support multi-touch anymore
             return YES;
@@ -747,6 +750,7 @@ static id<GameOverDelegate> gameOverDelegate = nil;
         //score reading initializations
         NSString *path = [self dataFilepath];
         dic = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+        [[Game sharedGame] setBgs_to_random:[self readPlist:@"Bg_Unlocked"]];
 
         self.layer = [[HelloWorldLayer alloc] init];
         [self addChild:self.layer z:0];
@@ -773,6 +777,18 @@ static id<GameOverDelegate> gameOverDelegate = nil;
     
     int current_gp = [self readPlist:@"Games_Played"];
     [self writePlist:@"Games_Played" withUpdate:(current_gp + 1)];
+    
+    //unlock a new background for every 5 games played
+    if ((current_gp + 1) % 5 == 0) {
+        [[Game sharedGame] setUnlocked_new_bg:YES];
+        int current_bgs_unlocked = [self readPlist:@"Bgs_Unlocked"];
+        
+        [self writePlist:@"Bgs_Unlocked" withUpdate:(current_bgs_unlocked + 1)];
+    }
+    if ([dic objectForKey:@"Tutorial"]) {
+        [dic setObject:[NSNumber numberWithBool:NO] forKey:@"Tutorial"];
+        [dic writeToFile:[self dataFilepath] atomically:NO];
+    }
 
     [self cleanup];
     

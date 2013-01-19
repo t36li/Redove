@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Tutorial</key>
+	<true/>
+	<key>Bgs_Unlocked</key>
+	<integer>0</integer>
 	<key>Games_Played</key>
 	<integer>0</integer>
 	<key>High_Score</key>

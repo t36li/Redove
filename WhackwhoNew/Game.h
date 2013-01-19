@@ -16,8 +16,9 @@
     BOOL isEnabledSoundFX;
     
     BOOL readyToStart;
-    int difficulty;
-    int moneyEarned, multiplier, baseScore;
+    BOOL unlocked_new_bg;
+    int bgs_to_random; //levelsunlocked used as bool
+    int moneyEarned, baseScore;
     
     int selectHeadCount;
     NSMutableArray *arrayOfAllPopups;
@@ -32,7 +33,8 @@
 @property (nonatomic, readwrite) BOOL isGameOver;
 @property (nonatomic, readwrite) BOOL isEnabledBackgroundMusic;
 @property (nonatomic, readwrite) BOOL isEnabledSoundFX;
-@property (nonatomic, readwrite) int difficulty;
+@property (nonatomic, readwrite) BOOL unlocked_new_bg;
+@property (nonatomic, readwrite) int bgs_to_random;
 @property (nonatomic, readwrite) int moneyEarned;
 @property (nonatomic, readwrite) int multiplier;
 @property (nonatomic, readwrite) int baseScore;

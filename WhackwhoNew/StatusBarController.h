@@ -40,6 +40,7 @@
     
     UIImage *tempPhoto;
     
+    BOOL showOnce;
     WEPopoverController *popoverController;
 }
 
@@ -60,7 +61,7 @@
 @property (nonatomic, strong) CameraOverlayControllerViewController *overlay;
 @property (nonatomic, strong) UIImagePickerController *cameraController;
 @property (nonatomic, strong) UIImageView *cameraOverlayView;
-@property (nonatomic, retain) WEPopoverController *popoverController;
+@property (nonatomic, strong) WEPopoverController *popoverController;
 
 //class methods
 - (NSString *) dataFilepath;
@@ -70,6 +71,7 @@
 - (IBAction)Ok_Pressed:(id)sender;
 //- (void)updateDB;
 - (IBAction)publish_touched:(id)sender;
--(IBAction)pushCamera:(id)sender;
+- (IBAction)pushCamera:(id)sender;
+- (IBAction)deletePlist:(id)sender;
 
 @end
