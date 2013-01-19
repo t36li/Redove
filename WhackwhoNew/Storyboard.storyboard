@@ -516,6 +516,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Main_Menu_Bg.png" id="eKv-V8-Bqf">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="DMo-2k-A4n">
                                 <rect key="frame" x="32" y="256" width="112" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -907,7 +911,7 @@
                                 <rect key="frame" x="189" y="13" width="54" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Kji-mq-CXg">
+                            <tableView clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Kji-mq-CXg">
                                 <rect key="frame" x="308" y="42" width="162" height="250"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1039,6 +1043,7 @@
         <image name="Hitwho_LeftArrow_New.png" width="38" height="66"/>
         <image name="Invite_Button.png" width="220" height="105"/>
         <image name="Loading.jpg" width="960" height="640"/>
+        <image name="Main_Menu_Bg.png" width="960" height="640"/>
         <image name="Ok_Button.png" width="161" height="110"/>
         <image name="Option_Button.png" width="220" height="101"/>
         <image name="Options_bg.jpg" width="960" height="640"/>

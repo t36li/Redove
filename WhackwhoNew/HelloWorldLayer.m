@@ -18,6 +18,7 @@
 
 #define hillLevel 0
 #define seaLevel 1
+#define spaceLevel 2
 
 #pragma mark - HelloWorldLayer
 
@@ -378,8 +379,8 @@
         return;
     }
     
-        head.didMiss = TRUE;
-        head.visible = TRUE;
+    head.didMiss = TRUE;
+    head.visible = TRUE;
     
     /*int randTilt;
     if (randPt ==0) { //if at beginning of hill, can only tilt to the right

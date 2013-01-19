@@ -259,8 +259,16 @@
     FriendArray *friendArray = object;
     [friendArray copyToUserInfo];
 
-    self.resultFriends = [NSArray arrayWithArray:[(FriendArray *)[[UserInfo sharedInstance] friendArray] friends]];
+    self.resultFriends = [NSMutableArray arrayWithArray:[(FriendArray *)[[UserInfo sharedInstance] friendArray] friends]];
     self.resultStrangers = [NSMutableArray arrayWithArray:[(FriendArray *)[[UserInfo sharedInstance] friendArray] strangers]];
+    
+    NSUInteger count = [resultFriends count];
+    for (NSUInteger i = 0; i < count; ++i) {
+        // Select a random element between i and end of array to swap with.
+        NSInteger nElements = count - i;
+        NSInteger n = (arc4random() % nElements) + i;
+        [resultFriends exchangeObjectAtIndex:i withObjectAtIndex:n];
+    }
     
     for (int i = 0; i < resultStrangers.count; i++) {
         Friend *tempFriend = [resultStrangers objectAtIndex:i];

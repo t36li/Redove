@@ -40,7 +40,7 @@
     IBOutlet UIImageView *rightHammer;
     
     UITableView *table;
-    NSArray *resultFriends;
+    NSMutableArray *resultFriends;
     NSMutableArray *resultStrangers;
     SpinnerView *spinner;
     IBOutlet UIView *loadingView;

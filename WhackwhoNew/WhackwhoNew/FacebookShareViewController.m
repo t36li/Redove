@@ -19,9 +19,9 @@ NSString *const kPlaceholderPostMessage = @"My head got WHACKED![Enter your pers
 @implementation FacebookShareViewController
 @synthesize postMessageTextView;
 @synthesize postImageView;
-@synthesize postNameLabel;
-@synthesize postCaptionLabel;
-@synthesize postDescriptionLabel;
+//@synthesize postNameLabel;
+//@synthesize postCaptionLabel;
+//@synthesize postDescriptionLabel;
 @synthesize postParams = _postParams;
 @synthesize imageData = _imageData;
 @synthesize imageConnection = _imageConnection;
@@ -29,13 +29,26 @@ NSString *const kPlaceholderPostMessage = @"My head got WHACKED![Enter your pers
 
 #pragma mark - Helper methods
 
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    //Assign new frame to your view
+    [self.view setFrame:CGRectMake(0,-60,320,460)]; //here taken -20 for example i.e. your view will be scrolled to -20. change its value according to your requirement.
+    
+}
+
+-(void)keyboardDidHide:(NSNotification *)notification
+{
+    [self.view setFrame:CGRectMake(0,0,320,460)];
+}
+
+
 /*
  * This sets up the placeholder text.
  */
 - (void)resetPostMessage
 {
     self.postMessageTextView.text = kPlaceholderPostMessage;
-    self.postMessageTextView.textColor = [UIColor lightGrayColor];
+    self.postMessageTextView.textColor = [UIColor blackColor];
 }
 
 /*
@@ -97,13 +110,13 @@ NSString *const kPlaceholderPostMessage = @"My head got WHACKED![Enter your pers
     // Show placeholder text
     [self resetPostMessage];
     // Set up the post information, hard-coded for this sample
-    self.postNameLabel.text = [self.postParams objectForKey:@"name"];
-    self.postCaptionLabel.text = [self.postParams
-                                  objectForKey:@"caption"];
-    [self.postCaptionLabel sizeToFit];
-    self.postDescriptionLabel.text = [self.postParams
-                                      objectForKey:@"description"];
-    [self.postDescriptionLabel sizeToFit];
+    //self.postNameLabel.text = [self.postParams objectForKey:@"name"];
+    //self.postCaptionLabel.text = [self.postParams
+    //                              objectForKey:@"caption"];
+    //[self.postCaptionLabel sizeToFit];
+    //self.postDescriptionLabel.text = [self.postParams
+    //                                  objectForKey:@"description"];
+    //[self.postDescriptionLabel sizeToFit];
     
     // Kick off loading of image data asynchronously so as not
     // to block the UI.
@@ -115,15 +128,18 @@ NSString *const kPlaceholderPostMessage = @"My head got WHACKED![Enter your pers
 //    self.imageConnection = [[NSURLConnection alloc] initWithRequest:
 //                            imageRequest delegate:self];
     self.postImageView.image = self.publishedImage;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
 }
 
 - (void)viewDidUnload
 {
     [self setPostMessageTextView:nil];
     [self setPostImageView:nil];
-    [self setPostNameLabel:nil];
-    [self setPostCaptionLabel:nil];
-    [self setPostDescriptionLabel:nil];
+    //[self setPostNameLabel:nil];
+    //[self setPostCaptionLabel:nil];
+    //[self setPostDescriptionLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -191,7 +207,7 @@ NSString *const kPlaceholderPostMessage = @"My head got WHACKED![Enter your pers
 {
     // Clear the message text when the user starts editing
     if ([textView.text isEqualToString:kPlaceholderPostMessage]) {
-        textView.text = @"";
+        textView.text = nil;
         textView.textColor = [UIColor blackColor];
     }
 }
@@ -200,7 +216,7 @@ NSString *const kPlaceholderPostMessage = @"My head got WHACKED![Enter your pers
 {
     // Reset to placeholder text if the user is done
     // editing and no message has been entered.
-    if ([textView.text isEqualToString:@""]) {
+    if ([textView.text isEqualToString:nil]) {
         [self resetPostMessage];
     }
 }

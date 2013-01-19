@@ -17,7 +17,7 @@
     
     BOOL readyToStart;
     BOOL unlocked_new_bg;
-    int bgs_to_random; //levelsunlocked used as bool
+    int bgs_to_random;
     int moneyEarned, baseScore;
     
     int selectHeadCount;

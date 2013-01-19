@@ -39,8 +39,8 @@
     usr = [UserInfo sharedInstance];
     fbs = [FBSingletonNew sharedInstance];
     
-    GlobalMethods *gmethods = [[GlobalMethods alloc] init];
-    [gmethods setViewBackground:MainPage_bg viewSender:self.view];
+    //GlobalMethods *gmethods = [[GlobalMethods alloc] init];
+    //[gmethods setViewBackground:MainPage_bg viewSender:self.view];
     //NSLog(@"RootViewController: Background loaded");
     [self performSelector:@selector(appInviteAlertActivate) withObject:nil afterDelay:1];
 }
@@ -54,6 +54,7 @@
     }else{
         profileImageView.profileID = nil;
     }
+    
 }
 
 

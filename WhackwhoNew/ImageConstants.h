@@ -43,7 +43,7 @@
 #define AccessRenrenIcon_HL @"RenRen_Login150X30.png"
 
 //In-game buttons
-#define PauseButton @"pause.png"
+#define PauseButton @"pause_button.png"
 #define RestartButton @"play again key.png"
 #define MainMenuButton @"home key.png"
 

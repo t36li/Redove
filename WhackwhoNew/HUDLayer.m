@@ -125,7 +125,7 @@
         
         //add timer label
         timeLabel = [CCLabelTTF labelWithString:@"0:0" fontName:@"chalkduster" fontSize:30];
-        timeLabel.color = ccc3(255, 249, 0);
+        timeLabel.color = ccc3(137, 244, 148);
         timeLabel.anchorPoint = ccp(0,0);
         timeLabel.position = ccp(15, winSize.height - timeLabel.contentSize.height);
         [self addChild:timeLabel z:101];
@@ -155,7 +155,7 @@
         //add "score" label
         scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"chalkduster" fontSize:30];
         scoreLabel.anchorPoint = ccp(0.5, 0.5);
-        scoreLabel.color = ccc3(255, 200, 0);
+        scoreLabel.color = ccc3(240, 150, 55);
         scoreLabel.position = ccp(scoreboard.contentSize.width/2, 28);
         [scoreLabel setString:[NSString stringWithFormat:@"%d", 0]];
         [scoreboard addChild:scoreLabel z:101];
@@ -172,13 +172,13 @@
         //set cloud drifting animation
         /*cloud = [CCSprite spriteWithFile:@"hill_cloud1.png"];
         cloud.anchorPoint = ccp(0,1);
-        cloud.position = ccp(0, winSize.height - 10);
+        cloud.position = ccp(winSize.width - 50, winSize.height - 10);
         [self addChild:cloud z:90];
-        CCMoveTo *driftRight = [CCMoveTo actionWithDuration:15.0 position:ccp(winSize.width, winSize.height - 10)];
+        CCMoveBy *driftRight = [CCMoveBy actionWithDuration:5.0 position:ccp(15,0)];
         //CCMoveTo *easeDrift = [CCEaseInOut actionWithAction:driftRight rate:1.5];
-        CCDelayTime *delay = [CCDelayTime actionWithDuration:1.0];
-        CCCallFuncN *resetCloud = [CCCallFuncN actionWithTarget:self selector:@selector(resetCloud:)];
-        CCSequence *cloudSequence = [CCSequence actions:driftRight, delay, resetCloud, nil];
+        //CCCallFuncN *resetCloud = [CCCallFuncN actionWithTarget:self selector:@selector(resetCloud:)];
+        CCAction *driftLeft = [driftRight reverse];
+        CCSequence *cloudSequence = [CCSequence actions:driftRight, driftLeft, nil];
         CCRepeatForever *repeat = [CCRepeatForever actionWithAction:cloudSequence];
         [cloud runAction:repeat];*/
         
