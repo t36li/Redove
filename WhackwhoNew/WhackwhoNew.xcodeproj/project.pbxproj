@@ -464,17 +464,7 @@
 		D0B2477015C204C300C206BA /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2476F15C204C300C206BA /* UIImage+fixOrientation.m */; };
 		D0B4849A160E2C77000B95A7 /* FaceEffectsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B48498160E2C77000B95A7 /* FaceEffectsController.m */; };
 		D0B4849B160E2C77000B95A7 /* FaceEffectsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0B48499160E2C77000B95A7 /* FaceEffectsController.xib */; };
-		D0B48896160E5371000B95A7 /* ear 2.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5801160BFFF90082BA4B /* ear 2.png */; };
-		D0B48897160E5371000B95A7 /* ear 1.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5802160BFFF90082BA4B /* ear 1.png */; };
-		D0B48898160E5371000B95A7 /* sworn1.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5803160BFFF90082BA4B /* sworn1.png */; };
-		D0B48899160E5371000B95A7 /* scar 3.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5804160BFFF90082BA4B /* scar 3.png */; };
-		D0B4889A160E5371000B95A7 /* scar2.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5805160BFFF90082BA4B /* scar2.png */; };
-		D0B4889B160E5371000B95A7 /* scar 1.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5806160BFFF90082BA4B /* scar 1.png */; };
-		D0B4889D160E5371000B95A7 /* lip 1.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5808160BFFF90082BA4B /* lip 1.png */; };
-		D0B4889E160E5371000B95A7 /* eye1.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5809160BFFF90082BA4B /* eye1.png */; };
-		D0B4889F160E5371000B95A7 /* tear.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B580A160BFFF90082BA4B /* tear.png */; };
 		D0B9EECD159E6F0D005D2460 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0B9EECC159E6F0D005D2460 /* MobileCoreServices.framework */; };
-		D0C2D5A016912CE700D02900 /* eye2.png in Resources */ = {isa = PBXBuildFile; fileRef = D08B5807160BFFF90082BA4B /* eye2.png */; };
 		D0C2D5A116912CE700D02900 /* hearts.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A2E168D09C8005556BD /* hearts.png */; };
 		D0C2D5A216912CE700D02900 /* hill_scoreboard.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A25168CFD98005556BD /* hill_scoreboard.png */; };
 		D0C2D5A316912CE700D02900 /* Invite_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A03168CC14D005556BD /* Invite_Button.png */; };
@@ -500,6 +490,21 @@
 		D0E30670159E4B1B0080D845 /* popoverBg.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E30661159E4B1B0080D845 /* popoverBg.png */; };
 		D0E30671159E4B1B0080D845 /* popoverBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E30662159E4B1B0080D845 /* popoverBg@2x.png */; };
 		D0E30672159E4B1B0080D845 /* popoverBgSimple.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E30663159E4B1B0080D845 /* popoverBgSimple.png */; };
+		D0E40DB316AB2AD0000E99B4 /* nose_effect_blood.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DA916AB2AD0000E99B4 /* nose_effect_blood.png */; };
+		D0E40DB416AB2AD0000E99B4 /* nose_effect_swell.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DAA16AB2AD0000E99B4 /* nose_effect_swell.png */; };
+		D0E40DB516AB2AD0000E99B4 /* ear_effect_bandage.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DAB16AB2AD0000E99B4 /* ear_effect_bandage.png */; };
+		D0E40DB616AB2AD0000E99B4 /* ear_effect_bruise.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DAC16AB2AD0000E99B4 /* ear_effect_bruise.png */; };
+		D0E40DB716AB2AD0000E99B4 /* cheek_effect_bandage.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DAD16AB2AD0000E99B4 /* cheek_effect_bandage.png */; };
+		D0E40DB816AB2AD0000E99B4 /* cheek_effect_cut.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DAE16AB2AD0000E99B4 /* cheek_effect_cut.png */; };
+		D0E40DB916AB2AD0000E99B4 /* head_effect_swell.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DAF16AB2AD0000E99B4 /* head_effect_swell.png */; };
+		D0E40DBA16AB2AD0000E99B4 /* head_effect_bandage.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DB016AB2AD0000E99B4 /* head_effect_bandage.png */; };
+		D0E40DBB16AB2AD0000E99B4 /* mouth_effect_teeth.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DB116AB2AD0000E99B4 /* mouth_effect_teeth.png */; };
+		D0E40DBC16AB2AD0000E99B4 /* mouth_effect_swell.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DB216AB2AD0000E99B4 /* mouth_effect_swell.png */; };
+		D0E40DD516AB3ECC000E99B4 /* camera_right_eye_depressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DD016AB3ECC000E99B4 /* camera_right_eye_depressed.png */; };
+		D0E40DD616AB3ECC000E99B4 /* camera_left_eye_depressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DD116AB3ECC000E99B4 /* camera_left_eye_depressed.png */; };
+		D0E40DD716AB3ECC000E99B4 /* camera_lip_depressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DD216AB3ECC000E99B4 /* camera_lip_depressed.png */; };
+		D0E40DD816AB3ECC000E99B4 /* camera_right_ear_depressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DD316AB3ECC000E99B4 /* camera_right_ear_depressed.png */; };
+		D0E40DD916AB3ECC000E99B4 /* camera_left_ear_depressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DD416AB3ECC000E99B4 /* camera_left_ear_depressed.png */; };
 		D0EC140D1688D20000E24357 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EC140C1688D20000E24357 /* FacebookSDK.framework */; };
 		D0EC140F1688D24300E24357 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D0EC140E1688D24300E24357 /* FacebookSDKResources.bundle */; };
 		D0EC14111688D25D00E24357 /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D0EC14101688D25D00E24357 /* FBUserSettingsViewResources.bundle */; };
@@ -1082,16 +1087,6 @@
 		D074BD6D1640941C00AF51EE /* LICENSE_CocosDenshion.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE_CocosDenshion.txt; path = libs/LICENSE_CocosDenshion.txt; sourceTree = "<group>"; };
 		D074BD6E1640941C00AF51EE /* LICENSE_Kazmath.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE_Kazmath.txt; path = libs/LICENSE_Kazmath.txt; sourceTree = "<group>"; };
 		D07F6FEF1599463A0085DF2B /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
-		D08B5801160BFFF90082BA4B /* ear 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ear 2.png"; sourceTree = "<group>"; };
-		D08B5802160BFFF90082BA4B /* ear 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ear 1.png"; sourceTree = "<group>"; };
-		D08B5803160BFFF90082BA4B /* sworn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sworn1.png; sourceTree = "<group>"; };
-		D08B5804160BFFF90082BA4B /* scar 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scar 3.png"; sourceTree = "<group>"; };
-		D08B5805160BFFF90082BA4B /* scar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scar2.png; sourceTree = "<group>"; };
-		D08B5806160BFFF90082BA4B /* scar 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scar 1.png"; sourceTree = "<group>"; };
-		D08B5807160BFFF90082BA4B /* eye2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye2.png; sourceTree = "<group>"; };
-		D08B5808160BFFF90082BA4B /* lip 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lip 1.png"; sourceTree = "<group>"; };
-		D08B5809160BFFF90082BA4B /* eye1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye1.png; sourceTree = "<group>"; };
-		D08B580A160BFFF90082BA4B /* tear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tear.png; sourceTree = "<group>"; };
 		D08CE2FD164213130073576B /* Level2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level2.plist; path = ../Level2.plist; sourceTree = "<group>"; };
 		D08D14A3167042F800F50BBF /* UINavigationController+OrientationFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+OrientationFix.h"; sourceTree = "<group>"; };
 		D08D14A4167042F800F50BBF /* UINavigationController+OrientationFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+OrientationFix.m"; sourceTree = "<group>"; };
@@ -1150,6 +1145,21 @@
 		D0E30661159E4B1B0080D845 /* popoverBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverBg.png; sourceTree = "<group>"; };
 		D0E30662159E4B1B0080D845 /* popoverBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverBg@2x.png"; sourceTree = "<group>"; };
 		D0E30663159E4B1B0080D845 /* popoverBgSimple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverBgSimple.png; sourceTree = "<group>"; };
+		D0E40DA916AB2AD0000E99B4 /* nose_effect_blood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nose_effect_blood.png; sourceTree = "<group>"; };
+		D0E40DAA16AB2AD0000E99B4 /* nose_effect_swell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nose_effect_swell.png; sourceTree = "<group>"; };
+		D0E40DAB16AB2AD0000E99B4 /* ear_effect_bandage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ear_effect_bandage.png; sourceTree = "<group>"; };
+		D0E40DAC16AB2AD0000E99B4 /* ear_effect_bruise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ear_effect_bruise.png; sourceTree = "<group>"; };
+		D0E40DAD16AB2AD0000E99B4 /* cheek_effect_bandage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cheek_effect_bandage.png; sourceTree = "<group>"; };
+		D0E40DAE16AB2AD0000E99B4 /* cheek_effect_cut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cheek_effect_cut.png; sourceTree = "<group>"; };
+		D0E40DAF16AB2AD0000E99B4 /* head_effect_swell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head_effect_swell.png; sourceTree = "<group>"; };
+		D0E40DB016AB2AD0000E99B4 /* head_effect_bandage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head_effect_bandage.png; sourceTree = "<group>"; };
+		D0E40DB116AB2AD0000E99B4 /* mouth_effect_teeth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouth_effect_teeth.png; sourceTree = "<group>"; };
+		D0E40DB216AB2AD0000E99B4 /* mouth_effect_swell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouth_effect_swell.png; sourceTree = "<group>"; };
+		D0E40DD016AB3ECC000E99B4 /* camera_right_eye_depressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_right_eye_depressed.png; sourceTree = "<group>"; };
+		D0E40DD116AB3ECC000E99B4 /* camera_left_eye_depressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_left_eye_depressed.png; sourceTree = "<group>"; };
+		D0E40DD216AB3ECC000E99B4 /* camera_lip_depressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_lip_depressed.png; sourceTree = "<group>"; };
+		D0E40DD316AB3ECC000E99B4 /* camera_right_ear_depressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_right_ear_depressed.png; sourceTree = "<group>"; };
+		D0E40DD416AB3ECC000E99B4 /* camera_left_ear_depressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_left_ear_depressed.png; sourceTree = "<group>"; };
 		D0EC140C1688D20000E24357 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK.framework; sourceTree = "<group>"; };
 		D0EC140E1688D24300E24357 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = ../FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
 		D0EC14101688D25D00E24357 /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBUserSettingsViewResources.bundle; path = ../FacebookSDK.framework/Versions/A/Resources/FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
@@ -2163,16 +2173,16 @@
 		D08B5800160BFFE10082BA4B /* FaceDecorations */ = {
 			isa = PBXGroup;
 			children = (
-				D08B5801160BFFF90082BA4B /* ear 2.png */,
-				D08B5802160BFFF90082BA4B /* ear 1.png */,
-				D08B5803160BFFF90082BA4B /* sworn1.png */,
-				D08B5804160BFFF90082BA4B /* scar 3.png */,
-				D08B5805160BFFF90082BA4B /* scar2.png */,
-				D08B5806160BFFF90082BA4B /* scar 1.png */,
-				D08B5807160BFFF90082BA4B /* eye2.png */,
-				D08B5808160BFFF90082BA4B /* lip 1.png */,
-				D08B5809160BFFF90082BA4B /* eye1.png */,
-				D08B580A160BFFF90082BA4B /* tear.png */,
+				D0E40DA916AB2AD0000E99B4 /* nose_effect_blood.png */,
+				D0E40DAA16AB2AD0000E99B4 /* nose_effect_swell.png */,
+				D0E40DAB16AB2AD0000E99B4 /* ear_effect_bandage.png */,
+				D0E40DAC16AB2AD0000E99B4 /* ear_effect_bruise.png */,
+				D0E40DAD16AB2AD0000E99B4 /* cheek_effect_bandage.png */,
+				D0E40DAE16AB2AD0000E99B4 /* cheek_effect_cut.png */,
+				D0E40DAF16AB2AD0000E99B4 /* head_effect_swell.png */,
+				D0E40DB016AB2AD0000E99B4 /* head_effect_bandage.png */,
+				D0E40DB116AB2AD0000E99B4 /* mouth_effect_teeth.png */,
+				D0E40DB216AB2AD0000E99B4 /* mouth_effect_swell.png */,
 			);
 			name = FaceDecorations;
 			sourceTree = "<group>";
@@ -2215,6 +2225,11 @@
 		D0E59F791608250200F73C9D /* CameraView */ = {
 			isa = PBXGroup;
 			children = (
+				D0E40DD016AB3ECC000E99B4 /* camera_right_eye_depressed.png */,
+				D0E40DD116AB3ECC000E99B4 /* camera_left_eye_depressed.png */,
+				D0E40DD216AB3ECC000E99B4 /* camera_lip_depressed.png */,
+				D0E40DD316AB3ECC000E99B4 /* camera_right_ear_depressed.png */,
+				D0E40DD416AB3ECC000E99B4 /* camera_left_ear_depressed.png */,
 				D0442EAF168CE8EE00677CC3 /* camera_lip.png */,
 				D0442EB0168CE8EE00677CC3 /* camera_right_eye.png */,
 				D0442EB1168CE8EE00677CC3 /* camera_left_eye.png */,
@@ -2555,20 +2570,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0C2D5A016912CE700D02900 /* eye2.png in Resources */,
 				D0C2D5A116912CE700D02900 /* hearts.png in Resources */,
 				D0C2D5A216912CE700D02900 /* hill_scoreboard.png in Resources */,
 				D0C2D5A316912CE700D02900 /* Invite_Button.png in Resources */,
 				D04FB7261690A6B6009F97C9 /* HitWho_Hammer.png in Resources */,
-				D0B48896160E5371000B95A7 /* ear 2.png in Resources */,
-				D0B48897160E5371000B95A7 /* ear 1.png in Resources */,
-				D0B48898160E5371000B95A7 /* sworn1.png in Resources */,
-				D0B48899160E5371000B95A7 /* scar 3.png in Resources */,
-				D0B4889A160E5371000B95A7 /* scar2.png in Resources */,
-				D0B4889B160E5371000B95A7 /* scar 1.png in Resources */,
-				D0B4889D160E5371000B95A7 /* lip 1.png in Resources */,
-				D0B4889E160E5371000B95A7 /* eye1.png in Resources */,
-				D0B4889F160E5371000B95A7 /* tear.png in Resources */,
 				C147168E1594ACCA0002FF21 /* Default.png in Resources */,
 				C14716901594ACCA0002FF21 /* fps_images.png in Resources */,
 				C14716921594ACCA0002FF21 /* fps_images-hd.png in Resources */,
@@ -2719,6 +2724,16 @@
 				C1B7BB2516A214C400E6F7A8 /* Options_bg.jpg in Resources */,
 				C1B7BB2716A214D800E6F7A8 /* Personal_Upload.jpg in Resources */,
 				D03D412416A4D1CF00C72E17 /* PopOver.xib in Resources */,
+				D0E40DB316AB2AD0000E99B4 /* nose_effect_blood.png in Resources */,
+				D0E40DB416AB2AD0000E99B4 /* nose_effect_swell.png in Resources */,
+				D0E40DB516AB2AD0000E99B4 /* ear_effect_bandage.png in Resources */,
+				D0E40DB616AB2AD0000E99B4 /* ear_effect_bruise.png in Resources */,
+				D0E40DB716AB2AD0000E99B4 /* cheek_effect_bandage.png in Resources */,
+				D0E40DB816AB2AD0000E99B4 /* cheek_effect_cut.png in Resources */,
+				D0E40DB916AB2AD0000E99B4 /* head_effect_swell.png in Resources */,
+				D0E40DBA16AB2AD0000E99B4 /* head_effect_bandage.png in Resources */,
+				D0E40DBB16AB2AD0000E99B4 /* mouth_effect_teeth.png in Resources */,
+				D0E40DBC16AB2AD0000E99B4 /* mouth_effect_swell.png in Resources */,
 				C1DC2D4F16A8B22C0063CBF7 /* HitWhoTutorialPopver.xib in Resources */,
 				C1DC2D5116AB3D1D0063CBF7 /* pause_button.png in Resources */,
 				C1DC2D5616AB429E0063CBF7 /* Upload_Cancel_1.png in Resources */,

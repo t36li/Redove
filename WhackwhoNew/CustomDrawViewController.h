@@ -21,10 +21,12 @@
     IBOutlet CustomDrawView *containerView;
     IBOutlet UIButton *leftEyeButton, *rightEyeButton, *lipsButton, *noseButton, *leftEarButton, *rightEarButton;
     NSMutableSet *buttonSet;
+    NSMutableArray *originalBtnPositions;
+    IBOutlet UIButton *redoBtn, *okBtn, *cropBtn;
 }
 
 @property (nonatomic, strong) IBOutlet CustomDrawView *containerView;
-@property (nonatomic, strong) IBOutlet UIButton *leftEyeButton, *rightEyeButton, *lipsButton, *noseButton, *leftEarButton, *rightEarButton;
+@property (nonatomic, strong) IBOutlet UIButton *leftEyeButton, *rightEyeButton, *lipsButton, *noseButton, *leftEarButton, *rightEarButton, *redoBtn, *okBtn, *cropBtn;
 @property (nonatomic, strong) NSMutableSet *buttonSet;
 
 -(IBAction)backTouched:(id)sender;
