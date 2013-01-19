@@ -2740,6 +2740,11 @@
 				C1DC2D5716AB429E0063CBF7 /* Upload_Cancel_2.png in Resources */,
 				C1DC2D5816AB429E0063CBF7 /* Upload_Publish_1.png in Resources */,
 				C1DC2D5916AB429E0063CBF7 /* Upload_Publish_2.png in Resources */,
+				D0E40DD516AB3ECC000E99B4 /* camera_right_eye_depressed.png in Resources */,
+				D0E40DD616AB3ECC000E99B4 /* camera_left_eye_depressed.png in Resources */,
+				D0E40DD716AB3ECC000E99B4 /* camera_lip_depressed.png in Resources */,
+				D0E40DD816AB3ECC000E99B4 /* camera_right_ear_depressed.png in Resources */,
+				D0E40DD916AB3ECC000E99B4 /* camera_left_ear_depressed.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
