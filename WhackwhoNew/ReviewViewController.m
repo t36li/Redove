@@ -38,22 +38,28 @@
         
         UIImage *pic = head.headImage;
         
-        UIImage *leftEye = [UIImage imageNamed:@"eye1.png"];
-        UIImage *rightEye = [UIImage imageNamed:@"eye2.png"];
-        UIImage *lip = [UIImage imageNamed:@"lip 1.png"];
-        UIImage *nose = [UIImage imageNamed:@"sworn1.png"];
-        UIImage *leftEar = [UIImage imageNamed:@"ear 1.png"];
-        UIImage *rightEar = [UIImage imageNamed:@"ear 2.png"];
+        //UIImage *leftEye = [UIImage imageNamed:@"eye1.png"];
+        //UIImage *rightEye = [UIImage imageNamed:@"eye2.png"];
+        UIImage *lip = [UIImage imageNamed:MOUTH_EFFECT_TEETH];
+        UIImage *nose = [UIImage imageNamed:NOSE_EFFECT_SWELL];
+        UIImage *leftEar = [UIImage imageNamed:EAR_EFFECT_BANDAGE];
+        UIImage *rightEar = [UIImage imageNamed:EAR_EFFECT_BRUISE];
         
         CGPoint leftEyePosition = CGPointFromString(head.leftEyePosition);
         CGPoint mouthPosition = CGPointFromString(head.mouthPosition);
+        CGPoint leftEarPosition = CGPointFromString(head.leftEarPosition);
+        CGPoint rightEarPosition = CGPointFromString(head.rightEarPosition);
+        CGPoint nosePosition = CGPointFromString(head.nosePosition);
         
         CGSize screenSize = pic.size;
         CGRect faceRectSize = CGRectFromString(head.faceRect);
         UIGraphicsBeginImageContext(faceRectSize.size);
         [pic drawInRect:CGRectMake(0, 0, pic.size.width, pic.size.height)];
-        [leftEye drawInRect:CGRectMake(leftEyePosition.x-leftEye.size.width/2, leftEyePosition.y-leftEye.size.height/2, leftEye.size.width, leftEye.size.height)];
+        //[leftEye drawInRect:CGRectMake(leftEyePosition.x-leftEye.size.width/2, leftEyePosition.y-leftEye.size.height/2, leftEye.size.width, leftEye.size.height)];
         [lip drawInRect:CGRectMake(mouthPosition.x-lip.size.width/2, mouthPosition.y-lip.size.height/2, lip.size.width, lip.size.height)];
+        [leftEar drawInRect:CGRectMake(leftEarPosition.x-leftEar.size.width/2, leftEarPosition.y-leftEar.size.height/2, leftEar.size.width, leftEar.size.height)];
+        [rightEar drawInRect:CGRectMake(rightEarPosition.x-rightEar.size.width/2, rightEarPosition.y-rightEar.size.height/2, rightEar.size.width, rightEar.size.height)];
+        [nose drawInRect:CGRectMake(nosePosition.x-nose.size.width/2, nosePosition.y-nose.size.height/2, nose.size.width, nose.size.height)];
         UIImage *ret = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
                 
