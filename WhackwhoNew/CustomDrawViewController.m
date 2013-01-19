@@ -18,6 +18,7 @@
 
 @synthesize containerView;
 @synthesize leftEarButton, leftEyeButton, lipsButton, noseButton, rightEarButton, rightEyeButton;
+@synthesize redoBtn, okBtn, cropBtn;
 @synthesize buttonSet;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -47,9 +48,15 @@
     [buttonSet addObject:leftEarButton];
     [buttonSet addObject:rightEarButton];
     
+    originalBtnPositions = [NSMutableArray arrayWithCapacity:[buttonSet count]];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
     for (UIButton *btn in buttonSet) {
         UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPanButton:)];
         [btn addGestureRecognizer:gestureRecognizer];
+        
+        [originalBtnPositions addObject:[NSValue valueWithCGPoint:btn.center]];
     }
 }
 
@@ -63,21 +70,48 @@
     return toInterfaceOrientation == UIInterfaceOrientationPortrait;
 }
 
-
-
 -(NSUInteger) supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
 }
 
 -(IBAction)backTouched:(id)sender {
-    [containerView resetPaths];
+    if ([containerView resetPaths] && cropBtn.enabled) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    int i = 0;
+    for (UIButton *btn in buttonSet) {
+        NSValue *val = [originalBtnPositions objectAtIndex:i];
+        btn.center = val.CGPointValue;
+        [btn setEnabled:NO];
+        i++;
+    }
+    
+    [cropBtn setEnabled:YES];
+    [okBtn setEnabled:NO];
+    [containerView setUserInteractionEnabled:YES];
 }
 
 -(IBAction)crop:(id)sender {
     [containerView commitPaths];
+    
+    [cropBtn setEnabled:NO];
+    [okBtn setEnabled:YES];
+    [containerView setUserInteractionEnabled:NO];
+    
+    for (UIButton *btn in buttonSet) {
+        [btn setEnabled:YES];
+    }
 }
 
 -(IBAction)done:(id)sender {
+    [okBtn setEnabled:NO];
+    [cropBtn setEnabled:YES];
+    [containerView setUserInteractionEnabled:YES];
+    
+    for (UIButton *btn in buttonSet) {
+        [btn setEnabled:NO];
+    }
+    
     UserInfo *user = [UserInfo sharedInstance];
     
     for (UIButton *btn in buttonSet) {

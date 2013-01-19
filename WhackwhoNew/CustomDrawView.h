@@ -30,7 +30,7 @@
 @property (nonatomic) CGPoint prePreviousPoint;
 @property (nonatomic) CGPoint previousPoint;
 
--(void) resetPaths;
+-(BOOL) resetPaths;
 -(void) commitPaths;
 
 @end

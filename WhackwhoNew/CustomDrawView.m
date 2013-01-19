@@ -265,16 +265,22 @@
     return ret;
 }
 
--(void) resetPaths {
+-(BOOL) resetPaths {
+    int counter = [userPoints count];
     [userPoints removeAllObjects];
     [oneStrokePoints removeAllObjects];
     cacheImage = photo;
     
     UserInfo *user = [UserInfo sharedInstance];
     self.drawImageView.image = user.usrImg;
+    
+    return (counter == 0) || (userPoints == nil);
 }
 
 -(void) commitPaths{
+    
+    if (userPoints.count <= 0)
+        return;
     
     UserInfo *user = [UserInfo sharedInstance];
     

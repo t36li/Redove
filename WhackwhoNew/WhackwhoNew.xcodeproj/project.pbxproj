@@ -496,6 +496,11 @@
 		D0E40DBA16AB2AD0000E99B4 /* head_effect_bandage.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DB016AB2AD0000E99B4 /* head_effect_bandage.png */; };
 		D0E40DBB16AB2AD0000E99B4 /* mouth_effect_teeth.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DB116AB2AD0000E99B4 /* mouth_effect_teeth.png */; };
 		D0E40DBC16AB2AD0000E99B4 /* mouth_effect_swell.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DB216AB2AD0000E99B4 /* mouth_effect_swell.png */; };
+		D0E40DD516AB3ECC000E99B4 /* camera_right_eye_depressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DD016AB3ECC000E99B4 /* camera_right_eye_depressed.png */; };
+		D0E40DD616AB3ECC000E99B4 /* camera_left_eye_depressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DD116AB3ECC000E99B4 /* camera_left_eye_depressed.png */; };
+		D0E40DD716AB3ECC000E99B4 /* camera_lip_depressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DD216AB3ECC000E99B4 /* camera_lip_depressed.png */; };
+		D0E40DD816AB3ECC000E99B4 /* camera_right_ear_depressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DD316AB3ECC000E99B4 /* camera_right_ear_depressed.png */; };
+		D0E40DD916AB3ECC000E99B4 /* camera_left_ear_depressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DD416AB3ECC000E99B4 /* camera_left_ear_depressed.png */; };
 		D0EC140D1688D20000E24357 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EC140C1688D20000E24357 /* FacebookSDK.framework */; };
 		D0EC140F1688D24300E24357 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D0EC140E1688D24300E24357 /* FacebookSDKResources.bundle */; };
 		D0EC14111688D25D00E24357 /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D0EC14101688D25D00E24357 /* FBUserSettingsViewResources.bundle */; };
@@ -1142,6 +1147,11 @@
 		D0E40DB016AB2AD0000E99B4 /* head_effect_bandage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head_effect_bandage.png; sourceTree = "<group>"; };
 		D0E40DB116AB2AD0000E99B4 /* mouth_effect_teeth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouth_effect_teeth.png; sourceTree = "<group>"; };
 		D0E40DB216AB2AD0000E99B4 /* mouth_effect_swell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouth_effect_swell.png; sourceTree = "<group>"; };
+		D0E40DD016AB3ECC000E99B4 /* camera_right_eye_depressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_right_eye_depressed.png; sourceTree = "<group>"; };
+		D0E40DD116AB3ECC000E99B4 /* camera_left_eye_depressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_left_eye_depressed.png; sourceTree = "<group>"; };
+		D0E40DD216AB3ECC000E99B4 /* camera_lip_depressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_lip_depressed.png; sourceTree = "<group>"; };
+		D0E40DD316AB3ECC000E99B4 /* camera_right_ear_depressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_right_ear_depressed.png; sourceTree = "<group>"; };
+		D0E40DD416AB3ECC000E99B4 /* camera_left_ear_depressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_left_ear_depressed.png; sourceTree = "<group>"; };
 		D0EC140C1688D20000E24357 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK.framework; sourceTree = "<group>"; };
 		D0EC140E1688D24300E24357 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = ../FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
 		D0EC14101688D25D00E24357 /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBUserSettingsViewResources.bundle; path = ../FacebookSDK.framework/Versions/A/Resources/FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
@@ -2203,6 +2213,11 @@
 		D0E59F791608250200F73C9D /* CameraView */ = {
 			isa = PBXGroup;
 			children = (
+				D0E40DD016AB3ECC000E99B4 /* camera_right_eye_depressed.png */,
+				D0E40DD116AB3ECC000E99B4 /* camera_left_eye_depressed.png */,
+				D0E40DD216AB3ECC000E99B4 /* camera_lip_depressed.png */,
+				D0E40DD316AB3ECC000E99B4 /* camera_right_ear_depressed.png */,
+				D0E40DD416AB3ECC000E99B4 /* camera_left_ear_depressed.png */,
 				D0442EAF168CE8EE00677CC3 /* camera_lip.png */,
 				D0442EB0168CE8EE00677CC3 /* camera_right_eye.png */,
 				D0442EB1168CE8EE00677CC3 /* camera_left_eye.png */,
@@ -2709,6 +2724,11 @@
 				D0E40DBB16AB2AD0000E99B4 /* mouth_effect_teeth.png in Resources */,
 				D0E40DBC16AB2AD0000E99B4 /* mouth_effect_swell.png in Resources */,
 				C1DC2D4F16A8B22C0063CBF7 /* HitWhoTutorialPopver.xib in Resources */,
+				D0E40DD516AB3ECC000E99B4 /* camera_right_eye_depressed.png in Resources */,
+				D0E40DD616AB3ECC000E99B4 /* camera_left_eye_depressed.png in Resources */,
+				D0E40DD716AB3ECC000E99B4 /* camera_lip_depressed.png in Resources */,
+				D0E40DD816AB3ECC000E99B4 /* camera_right_ear_depressed.png in Resources */,
+				D0E40DD916AB3ECC000E99B4 /* camera_left_ear_depressed.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
