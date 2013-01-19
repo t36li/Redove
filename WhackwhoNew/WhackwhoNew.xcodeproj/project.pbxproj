@@ -2708,6 +2708,7 @@
 				D0E40DBA16AB2AD0000E99B4 /* head_effect_bandage.png in Resources */,
 				D0E40DBB16AB2AD0000E99B4 /* mouth_effect_teeth.png in Resources */,
 				D0E40DBC16AB2AD0000E99B4 /* mouth_effect_swell.png in Resources */,
+				C1DC2D4F16A8B22C0063CBF7 /* HitWhoTutorialPopver.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
