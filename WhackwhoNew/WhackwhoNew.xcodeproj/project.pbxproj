@@ -162,6 +162,13 @@
 		C1DC2D5716AB429E0063CBF7 /* Upload_Cancel_2.png in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2D5316AB429E0063CBF7 /* Upload_Cancel_2.png */; };
 		C1DC2D5816AB429E0063CBF7 /* Upload_Publish_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2D5416AB429E0063CBF7 /* Upload_Publish_1.png */; };
 		C1DC2D5916AB429E0063CBF7 /* Upload_Publish_2.png in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2D5516AB429E0063CBF7 /* Upload_Publish_2.png */; };
+		C1DC2D7116AB54E70063CBF7 /* before_battle_tut.png in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2D6E16AB54E70063CBF7 /* before_battle_tut.png */; };
+		C1DC2D7216AB54E70063CBF7 /* camera_tutorial.png in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2D6F16AB54E70063CBF7 /* camera_tutorial.png */; };
+		C1DC2D7316AB54E70063CBF7 /* hitwho_tutorial.png in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2D7016AB54E70063CBF7 /* hitwho_tutorial.png */; };
+		C1DC2D7816AB557B0063CBF7 /* CameraTutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DC2D7616AB557B0063CBF7 /* CameraTutorial.m */; };
+		C1DC2D7916AB557B0063CBF7 /* CameraTutorial.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2D7716AB557B0063CBF7 /* CameraTutorial.xib */; };
+		C1DC2D7B16AB5B620063CBF7 /* personal_tutorial.png in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2D7A16AB5B620063CBF7 /* personal_tutorial.png */; };
+		C1DC2D9016AB65320063CBF7 /* red_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2D8F16AB65320063CBF7 /* red_screen.png */; };
 		C1DCCBC615CB5143000CD722 /* StatusViewLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DCCBC515CB5143000CD722 /* StatusViewLayer.m */; };
 		C1FE252315AF656E00DAF258 /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE252215AF656E00DAF258 /* HUDLayer.m */; };
 		C1FE255E15AF688700DAF258 /* baby.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE255715AF688700DAF258 /* baby.png */; };
@@ -793,6 +800,14 @@
 		C1DC2D5316AB429E0063CBF7 /* Upload_Cancel_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Upload_Cancel_2.png; sourceTree = "<group>"; };
 		C1DC2D5416AB429E0063CBF7 /* Upload_Publish_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Upload_Publish_1.png; sourceTree = "<group>"; };
 		C1DC2D5516AB429E0063CBF7 /* Upload_Publish_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Upload_Publish_2.png; sourceTree = "<group>"; };
+		C1DC2D6E16AB54E70063CBF7 /* before_battle_tut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = before_battle_tut.png; sourceTree = "<group>"; };
+		C1DC2D6F16AB54E70063CBF7 /* camera_tutorial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_tutorial.png; sourceTree = "<group>"; };
+		C1DC2D7016AB54E70063CBF7 /* hitwho_tutorial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitwho_tutorial.png; sourceTree = "<group>"; };
+		C1DC2D7516AB557B0063CBF7 /* CameraTutorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraTutorial.h; sourceTree = "<group>"; };
+		C1DC2D7616AB557B0063CBF7 /* CameraTutorial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraTutorial.m; sourceTree = "<group>"; };
+		C1DC2D7716AB557B0063CBF7 /* CameraTutorial.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraTutorial.xib; sourceTree = "<group>"; };
+		C1DC2D7A16AB5B620063CBF7 /* personal_tutorial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_tutorial.png; sourceTree = "<group>"; };
+		C1DC2D8F16AB65320063CBF7 /* red_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_screen.png; sourceTree = "<group>"; };
 		C1DCCBC415CB5143000CD722 /* StatusViewLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewLayer.h; sourceTree = "<group>"; };
 		C1DCCBC515CB5143000CD722 /* StatusViewLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewLayer.m; sourceTree = "<group>"; };
 		C1FE252115AF656E00DAF258 /* HUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDLayer.h; sourceTree = "<group>"; };
@@ -1354,6 +1369,7 @@
 		69C95E86159A461A009966DA /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				C1DC2D6D16AB54D90063CBF7 /* Tutorial */,
 				D0AB827216251F1700A0EF0B /* Review Screen */,
 				C1B26562161773EC0089A4FB /* Items */,
 				D08B5800160BFFE10082BA4B /* FaceDecorations */,
@@ -1394,14 +1410,10 @@
 		69C95E8B159A4A15009966DA /* Main Game */ = {
 			isa = PBXGroup;
 			children = (
+				C1DC2D7416AB55160063CBF7 /* Camera View */,
 				C14385A815C8C13C008D9AE7 /* Load Scene */,
 				692AC3A215B24BB0001E4858 /* HitWhoGroup */,
 				C198EE2C15CF7AEB004D170C /* Personal Status View */,
-				D0903BEA1667219C00BB920B /* CustomDrawView.h */,
-				D0903BEB1667219C00BB920B /* CustomDrawView.m */,
-				D09238681668534000E1A231 /* CustomDrawViewController.h */,
-				D09238691668534000E1A231 /* CustomDrawViewController.m */,
-				D092386A1668534000E1A231 /* CustomDrawViewController.xib */,
 				D0B48497160E2C77000B95A7 /* FaceEffectsController.h */,
 				D0B48498160E2C77000B95A7 /* FaceEffectsController.m */,
 				D0948D3F15ADFF0E00429477 /* AvatarBaseController.h */,
@@ -1431,6 +1443,7 @@
 		69C95E94159A51E0009966DA /* Background */ = {
 			isa = PBXGroup;
 			children = (
+				C1DC2D8F16AB65320063CBF7 /* red_screen.png */,
 				C1B7BB2216A2149600E6F7A8 /* Loading.jpg */,
 				C1B7BB2416A214C400E6F7A8 /* Options_bg.jpg */,
 				C1B7BB2616A214D800E6F7A8 /* Personal_Upload.jpg */,
@@ -1772,6 +1785,32 @@
 			);
 			name = "Facebook Scene";
 			path = WhackwhoNew;
+			sourceTree = "<group>";
+		};
+		C1DC2D6D16AB54D90063CBF7 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				C1DC2D6E16AB54E70063CBF7 /* before_battle_tut.png */,
+				C1DC2D6F16AB54E70063CBF7 /* camera_tutorial.png */,
+				C1DC2D7016AB54E70063CBF7 /* hitwho_tutorial.png */,
+				C1DC2D7A16AB5B620063CBF7 /* personal_tutorial.png */,
+			);
+			name = Tutorial;
+			sourceTree = "<group>";
+		};
+		C1DC2D7416AB55160063CBF7 /* Camera View */ = {
+			isa = PBXGroup;
+			children = (
+				D0903BEA1667219C00BB920B /* CustomDrawView.h */,
+				D0903BEB1667219C00BB920B /* CustomDrawView.m */,
+				D09238681668534000E1A231 /* CustomDrawViewController.h */,
+				D09238691668534000E1A231 /* CustomDrawViewController.m */,
+				D092386A1668534000E1A231 /* CustomDrawViewController.xib */,
+				C1DC2D7516AB557B0063CBF7 /* CameraTutorial.h */,
+				C1DC2D7616AB557B0063CBF7 /* CameraTutorial.m */,
+				C1DC2D7716AB557B0063CBF7 /* CameraTutorial.xib */,
+			);
+			name = "Camera View";
 			sourceTree = "<group>";
 		};
 		C1FE252915AF661200DAF258 /* Sprites */ = {
@@ -2745,6 +2784,12 @@
 				D0E40DD716AB3ECC000E99B4 /* camera_lip_depressed.png in Resources */,
 				D0E40DD816AB3ECC000E99B4 /* camera_right_ear_depressed.png in Resources */,
 				D0E40DD916AB3ECC000E99B4 /* camera_left_ear_depressed.png in Resources */,
+				C1DC2D7116AB54E70063CBF7 /* before_battle_tut.png in Resources */,
+				C1DC2D7216AB54E70063CBF7 /* camera_tutorial.png in Resources */,
+				C1DC2D7316AB54E70063CBF7 /* hitwho_tutorial.png in Resources */,
+				C1DC2D7916AB557B0063CBF7 /* CameraTutorial.xib in Resources */,
+				C1DC2D7B16AB5B620063CBF7 /* personal_tutorial.png in Resources */,
+				C1DC2D9016AB65320063CBF7 /* red_screen.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2817,6 +2862,7 @@
 				D03D412216A4CE0700C72E17 /* WEPopoverContentViewController.m in Sources */,
 				D03D412716A4D24700C72E17 /* StatusBarTutorialPopover.m in Sources */,
 				C1DC2D4E16A8B22C0063CBF7 /* HitWhoTutorialPopver.m in Sources */,
+				C1DC2D7816AB557B0063CBF7 /* CameraTutorial.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

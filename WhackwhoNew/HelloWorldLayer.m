@@ -678,7 +678,16 @@
                 
                 //if not hit correct "mole"
             } else {
-                
+                CGSize winSize = [CCDirector sharedDirector].winSize;
+
+                CCSprite *redscreen = [CCSprite spriteWithFile:@"red_screen.png"];
+                [self addChild:redscreen];
+                redscreen.anchorPoint = ccp(0.5,0.5);
+                redscreen.position = ccp(winSize.width/2, winSize.height/2);
+                redscreen.visible = TRUE;
+                CCDelayTime *delay = [CCDelayTime actionWithDuration:0.5];
+                CCCallFuncN *remove = [CCCallFuncN actionWithTarget:self selector:@selector(removeNode:)];
+                [redscreen runAction:[CCSequence actions:delay, remove, nil]];
                 //vibrate to indicate mis-hit
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                 

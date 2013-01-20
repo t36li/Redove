@@ -193,6 +193,7 @@ WhichTransition transitionType;
                                                 inView:self.view
                               permittedArrowDirections:UIPopoverArrowDirectionAny
                                               animated:YES];
+        [popoverController.view setFrame:CGRectMake(80, 60, 315, 200)];
         showOnce = NO;
     }
 

@@ -110,6 +110,7 @@
                                                 inView:self.view
                               permittedArrowDirections:UIPopoverArrowDirectionAny
                                               animated:YES];
+        [popoverController.view setFrame:CGRectMake(85, 50, 290, 200)];
     }
 }
 

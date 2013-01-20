@@ -9,6 +9,9 @@
 #import "CustomDrawViewController.h"
 #import "UserInfo.h"
 #import "User.h"
+#import "WEPopoverContentViewController.h"
+#import "WEPopoverController.h"
+#import "CameraTutorial.h"
 
 @interface CustomDrawViewController ()
 
@@ -20,6 +23,7 @@
 @synthesize leftEarButton, leftEyeButton, lipsButton, noseButton, rightEarButton, rightEyeButton;
 @synthesize redoBtn, okBtn, cropBtn;
 @synthesize buttonSet;
+@synthesize popoverController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,6 +52,11 @@
     [buttonSet addObject:leftEarButton];
     [buttonSet addObject:rightEarButton];
     
+    showOnce = YES;
+    
+    NSString *path = [self dataFilepath];
+    dic = [[NSDictionary alloc] initWithContentsOfFile:path];
+    
     originalBtnPositions = [NSMutableArray arrayWithCapacity:[buttonSet count]];
 }
 
@@ -57,6 +66,20 @@
         [btn addGestureRecognizer:gestureRecognizer];
         
         [originalBtnPositions addObject:[NSValue valueWithCGPoint:btn.center]];
+    }
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    BOOL showTut = [[dic objectForKey:@"Tutorial"] boolValue];
+    if (showTut && showOnce) {
+        CameraTutorial *contentViewController = [[CameraTutorial alloc] initWithNibName:@"CameraTutorial" bundle:nil];
+        self.popoverController = [[WEPopoverController alloc] initWithContentViewController:contentViewController];
+        [self.popoverController presentPopoverFromRect:CGRectZero
+                                                inView:self.view
+                              permittedArrowDirections:UIPopoverArrowDirectionAny
+                                              animated:YES];
+        [popoverController.view setFrame:CGRectMake(10, 168, 300, 230)];
+        showOnce = NO;
     }
 }
 
@@ -228,5 +251,34 @@
     //[[RKObjectManager sharedManager].client put:@"/userImage" params:params delegate:self];
     
 }
+
+//Plist methods
+- (NSString *) dataFilepath {
+    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    destPath = [destPath stringByAppendingPathComponent:@"ScorePlist.plist"];
+    
+    // If the file doesn't exist in the Documents Folder, copy it.
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath:destPath]) {
+        NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"ScorePlist" ofType:@"plist"];
+        [fileManager copyItemAtPath:sourcePath toPath:destPath error:nil];
+    }
+    
+    return destPath;
+}
+
+- (NSString *) readPlist: (NSString *) whichLbl {
+    NSNumber *ret = [dic objectForKey:whichLbl];
+    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    NSLog(@"%@: %i", whichLbl, [ret intValue]);
+    
+    return [numberFormatter stringFromNumber:ret];
+}
+
+
 
 @end

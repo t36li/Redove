@@ -196,6 +196,7 @@
 
 -(void) quitTapped: (id) sender  {
     [[CCDirector sharedDirector] resume];
+    [[Game sharedGame] resetGameState];
     [[HelloWorldScene gameOverDelegate] returnToMenu];
 }
 
