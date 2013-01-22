@@ -26,6 +26,7 @@
 @implementation HelloWorldLayer
 
 @synthesize locations, splashSheet, splashFrames;
+@synthesize stopAnimations;
 
 // on "init" you need to initialize your instance
 -(id) init
@@ -47,6 +48,7 @@
     //init variables
     speed = DEFAULT_HEAD_POP_SPEED;
     has_bomb = FALSE;
+    stopAnimations = NO;
     
     if ([[CCDirector sharedDirector] isPaused]) {
         [[CCDirector sharedDirector] resume];
@@ -232,6 +234,9 @@
 }
 
 -(void) tryPopheads{
+    if (stopAnimations) {
+        return;
+    }
     
     @synchronized(heads) {
     	for (Character *head in heads) {
@@ -776,6 +781,12 @@ static id<GameOverDelegate> gameOverDelegate = nil;
 }
 
 -(void)gameOver:(BOOL)timeout {
+    if (timeout) {
+        [self.hud showGameOverLabel:@"Time's Up!"];
+    } else {
+        [self.hud showGameOverLabel:@"Game Over!"];
+    }
+    
     //update scores
     int current_hs = [self readPlist:@"High_Score"];
     if (baseScore > current_hs) {
@@ -795,21 +806,13 @@ static id<GameOverDelegate> gameOverDelegate = nil;
         
         [self writePlist:@"Bgs_Unlocked" withUpdate:(current_bgs_unlocked + 1)];
     }
-    if ([dic objectForKey:@"Tutorial"]) {
+    
+    if ([[dic objectForKey:@"Tutorial"] boolValue]) {
         [dic setObject:[NSNumber numberWithBool:NO] forKey:@"Tutorial"];
         [dic writeToFile:[self dataFilepath] atomically:NO];
     }
 
     [self cleanup];
-    
-    //NSString *msg;
-    //if (timeout) {
-        //msg = @"Time's UP!";
-    //} else {
-      //  msg = @"Game OVER!";
-    //}
-    
-    //[self.hud showGameOverLabel:msg];
     
     [self performSelector:@selector(transitionToReview) withObject:nil afterDelay:2.0];
     
@@ -902,5 +905,11 @@ static id<GameOverDelegate> gameOverDelegate = nil;
 
 +(id<GameOverDelegate>)gameOverDelegate {
     return gameOverDelegate;
+}
+
+-(void)animationCoolDown {
+    CCNode *layer = self.layer;
+    HelloWorldLayer *helloLayer = (HelloWorldLayer *)layer;
+    [helloLayer setStopAnimations:YES];
 }
 @end

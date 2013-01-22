@@ -54,7 +54,38 @@
     }else{
         profileImageView.profileID = nil;
     }
+    [self startWalking];
+}
+
+- (void)startWalking {
+    NSArray * imageArray  = [[NSArray alloc] initWithObjects:
+                             [UIImage imageNamed:@"baby1.png"],
+                             [UIImage imageNamed:@"baby2.png"],
+                             [UIImage imageNamed:@"baby3.png"],
+                             [UIImage imageNamed:@"baby4.png"],
+                             [UIImage imageNamed:@"baby5.png"],
+                             [UIImage imageNamed:@"baby6.png"],
+                             nil];
+    UIImageView * ryuJump = [[UIImageView alloc] initWithFrame:
+                             CGRectMake(408, 233, 72, 81)];
+    ryuJump.animationImages = imageArray;
+    ryuJump.animationDuration = 2;
+    ryuJump.animationRepeatCount = 15;
+    CGPoint p = ryuJump.center;
+    p.x -= 408;
+    //ryuJump.center = p;
     
+    [UIView animateWithDuration:30
+                          delay:0
+                        options: UIViewAnimationOptionCurveLinear
+                     animations:^{
+                         ryuJump.center = CGPointMake(p.x, p.y);
+                     }
+                     completion:^(BOOL finished){
+                     }];
+    //ryuJump.contentMode = UIViewContentModeBottomLeft;
+    [self.view addSubview:ryuJump];
+    [ryuJump startAnimating];
 }
 
 

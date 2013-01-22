@@ -33,6 +33,7 @@
     float speed;
     
     BOOL has_bomb;//shake_once
+    BOOL stopAnimations;
     NSArray *botLeft, *botRight, *midLeft, *midRight, *topLeft, *topMid, *topRight;
 
     int level;
@@ -47,6 +48,7 @@
 @property (nonatomic, strong) NSDictionary *locations;
 @property (nonatomic, strong) CCSpriteBatchNode *splashSheet;
 @property (nonatomic, strong) NSMutableArray *splashFrames;
+@property (nonatomic, readwrite) BOOL stopAnimations;
 
 -(void)setArrayForReview;
 
@@ -73,7 +75,7 @@
 - (void) writePlist: (NSString *) whichLbl withUpdate: (int) nmbr;
 - (int) readPlist: (NSString *) whichLbl;
 
-
+-(void)animationCoolDown;
 -(void)gameOver:(BOOL)timeout;
 -(void)reduceHealth;
 -(void)updateScore:(int)score;

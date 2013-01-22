@@ -182,6 +182,13 @@
         CCRepeatForever *repeat = [CCRepeatForever actionWithAction:cloudSequence];
         [cloud runAction:repeat];*/
         
+        gameOverLabel = [CCLabelTTF labelWithString:@"0" fontName:@"chalkduster" fontSize:50];
+        gameOverLabel.anchorPoint = ccp(0.5, 0.5);
+        gameOverLabel.color = ccc3(240, 150, 55);
+        gameOverLabel.position = ccp(winSize.width/2, winSize.height/2);
+        gameOverLabel.visible = FALSE;
+        [self addChild:gameOverLabel z:10];
+        
         [self schedule:@selector(timerUpdate:) interval:0.5f];
     }
     return self;
@@ -215,20 +222,20 @@
     [self addChild:colorLayer z:100 tag:20];
     
     CCLabelTTF *paused = [CCLabelTTF labelWithString:@"Paused!" fontName:@"chalkduster" fontSize:30];
-    paused.position = ccp(winSize.width/2, winSize.height/2 + 50);
+    paused.position = ccp(winSize.width/2, winSize.height/2 + 100);
     [colorLayer addChild:paused z:10];
     
     //temporary!!!!!
     //set "resume" label
-    CCMenuItemImage *image = [CCMenuItemImage itemWithNormalImage:@"Undo_Button_1.png" selectedImage:@"Undo_Button_1.png" target:self selector:@selector(resumeTapped:)];
+    CCMenuItemImage *image = [CCMenuItemImage itemWithNormalImage:@"resume.png" selectedImage:@"resume.png" target:self selector:@selector(resumeTapped:)];
     CCMenu *resumeMenu = [CCMenu menuWithItems:image, nil];
-    resumeMenu.position = ccp(winSize.width/2 - 80, winSize.height/2);
+    resumeMenu.position = ccp(winSize.width/2, winSize.height/2 + 25);
     [colorLayer addChild:resumeMenu z:10];
     
     //set "Main Page" label
-    CCMenuItemImage *image2 = [CCMenuItemImage itemWithNormalImage:@"Back_Button.png" selectedImage:@"Battle_Button.png" target:self selector:@selector(quitTapped:)];
+    CCMenuItemImage *image2 = [CCMenuItemImage itemWithNormalImage:@"main menu.png" selectedImage:@"main menu.png" target:self selector:@selector(quitTapped:)];
     CCMenu *quit = [CCMenu menuWithItems:image2, nil];
-    quit.position = ccp(winSize.width/2 + 80, winSize.height/2);
+    quit.position = ccp(winSize.width/2, winSize.height/2 - 25);
     [colorLayer addChild:quit z:10];
 }
 
@@ -242,8 +249,11 @@
         HelloWorldScene *helloScene = (HelloWorldScene *)scene;
         [helloScene gameOver:YES];
         [self unschedule:@selector(timerUpdate)];
+    } else if (myTime <= 2) {
+        CCNode *scene = self.parent;
+        HelloWorldScene *helloScene = (HelloWorldScene *)scene;
+        [helloScene animationCoolDown];
     }
-    
 }
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
@@ -280,10 +290,8 @@
 }
 
 -(void)showGameOverLabel:(NSString *)msg {
-    CCLabelTTF *label = [CCLabelTTF labelWithString:msg fontName:@"chalkduster" fontSize:50];
-    label.color = ccc3(255, 249, 0);
-    label.position = ccp(150,200);
-    [self addChild:label z:10];
+    gameOverLabel.visible = TRUE;
+    [gameOverLabel setString:[NSString stringWithFormat:@"%@", msg]];
 }
 
 /*

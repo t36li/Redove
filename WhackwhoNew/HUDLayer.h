@@ -13,7 +13,7 @@
     //int baseScore, multiplier, coin;
     //id<GameOverDelegate> gameOverDelegate;
     NSMutableArray *hearts;
-    CCLabelTTF *timeLabel, *scoreLabel, *hitsLabel;
+    CCLabelTTF *timeLabel, *scoreLabel, *hitsLabel, *gameOverLabel;
     CCMenu *pauseMenu;
     BOOL gameOver;
     CCSprite *scoreboard, *cloud;
