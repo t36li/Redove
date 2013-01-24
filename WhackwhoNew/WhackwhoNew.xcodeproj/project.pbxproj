@@ -500,10 +500,10 @@
 		D0E30672159E4B1B0080D845 /* popoverBgSimple.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E30663159E4B1B0080D845 /* popoverBgSimple.png */; };
 		D0E40DB316AB2AD0000E99B4 /* nose_effect_blood.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DA916AB2AD0000E99B4 /* nose_effect_blood.png */; };
 		D0E40DB416AB2AD0000E99B4 /* nose_effect_swell.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DAA16AB2AD0000E99B4 /* nose_effect_swell.png */; };
-		D0E40DB516AB2AD0000E99B4 /* ear_effect_bandage.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DAB16AB2AD0000E99B4 /* ear_effect_bandage.png */; };
-		D0E40DB616AB2AD0000E99B4 /* ear_effect_bruise.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DAC16AB2AD0000E99B4 /* ear_effect_bruise.png */; };
-		D0E40DB716AB2AD0000E99B4 /* cheek_effect_bandage.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DAD16AB2AD0000E99B4 /* cheek_effect_bandage.png */; };
-		D0E40DB816AB2AD0000E99B4 /* cheek_effect_cut.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DAE16AB2AD0000E99B4 /* cheek_effect_cut.png */; };
+		D0E40DB516AB2AD0000E99B4 /* right_ear_effect_bandage.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DAB16AB2AD0000E99B4 /* right_ear_effect_bandage.png */; };
+		D0E40DB616AB2AD0000E99B4 /* right_ear_effect_bruise.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DAC16AB2AD0000E99B4 /* right_ear_effect_bruise.png */; };
+		D0E40DB716AB2AD0000E99B4 /* right_cheek_effect_bandage.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DAD16AB2AD0000E99B4 /* right_cheek_effect_bandage.png */; };
+		D0E40DB816AB2AD0000E99B4 /* right_cheek_effect_cut.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DAE16AB2AD0000E99B4 /* right_cheek_effect_cut.png */; };
 		D0E40DB916AB2AD0000E99B4 /* head_effect_swell.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DAF16AB2AD0000E99B4 /* head_effect_swell.png */; };
 		D0E40DBA16AB2AD0000E99B4 /* head_effect_bandage.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DB016AB2AD0000E99B4 /* head_effect_bandage.png */; };
 		D0E40DBB16AB2AD0000E99B4 /* mouth_effect_teeth.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E40DB116AB2AD0000E99B4 /* mouth_effect_teeth.png */; };
@@ -1164,10 +1164,10 @@
 		D0E30663159E4B1B0080D845 /* popoverBgSimple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverBgSimple.png; sourceTree = "<group>"; };
 		D0E40DA916AB2AD0000E99B4 /* nose_effect_blood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nose_effect_blood.png; sourceTree = "<group>"; };
 		D0E40DAA16AB2AD0000E99B4 /* nose_effect_swell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nose_effect_swell.png; sourceTree = "<group>"; };
-		D0E40DAB16AB2AD0000E99B4 /* ear_effect_bandage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ear_effect_bandage.png; sourceTree = "<group>"; };
-		D0E40DAC16AB2AD0000E99B4 /* ear_effect_bruise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ear_effect_bruise.png; sourceTree = "<group>"; };
-		D0E40DAD16AB2AD0000E99B4 /* cheek_effect_bandage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cheek_effect_bandage.png; sourceTree = "<group>"; };
-		D0E40DAE16AB2AD0000E99B4 /* cheek_effect_cut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cheek_effect_cut.png; sourceTree = "<group>"; };
+		D0E40DAB16AB2AD0000E99B4 /* right_ear_effect_bandage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_ear_effect_bandage.png; sourceTree = "<group>"; };
+		D0E40DAC16AB2AD0000E99B4 /* right_ear_effect_bruise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_ear_effect_bruise.png; sourceTree = "<group>"; };
+		D0E40DAD16AB2AD0000E99B4 /* right_cheek_effect_bandage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_cheek_effect_bandage.png; sourceTree = "<group>"; };
+		D0E40DAE16AB2AD0000E99B4 /* right_cheek_effect_cut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_cheek_effect_cut.png; sourceTree = "<group>"; };
 		D0E40DAF16AB2AD0000E99B4 /* head_effect_swell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head_effect_swell.png; sourceTree = "<group>"; };
 		D0E40DB016AB2AD0000E99B4 /* head_effect_bandage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head_effect_bandage.png; sourceTree = "<group>"; };
 		D0E40DB116AB2AD0000E99B4 /* mouth_effect_teeth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouth_effect_teeth.png; sourceTree = "<group>"; };
@@ -2217,10 +2217,10 @@
 			children = (
 				D0E40DA916AB2AD0000E99B4 /* nose_effect_blood.png */,
 				D0E40DAA16AB2AD0000E99B4 /* nose_effect_swell.png */,
-				D0E40DAB16AB2AD0000E99B4 /* ear_effect_bandage.png */,
-				D0E40DAC16AB2AD0000E99B4 /* ear_effect_bruise.png */,
-				D0E40DAD16AB2AD0000E99B4 /* cheek_effect_bandage.png */,
-				D0E40DAE16AB2AD0000E99B4 /* cheek_effect_cut.png */,
+				D0E40DAB16AB2AD0000E99B4 /* right_ear_effect_bandage.png */,
+				D0E40DAC16AB2AD0000E99B4 /* right_ear_effect_bruise.png */,
+				D0E40DAD16AB2AD0000E99B4 /* right_cheek_effect_bandage.png */,
+				D0E40DAE16AB2AD0000E99B4 /* right_cheek_effect_cut.png */,
 				D0E40DAF16AB2AD0000E99B4 /* head_effect_swell.png */,
 				D0E40DB016AB2AD0000E99B4 /* head_effect_bandage.png */,
 				D0E40DB116AB2AD0000E99B4 /* mouth_effect_teeth.png */,
@@ -2761,10 +2761,10 @@
 				D03D412416A4D1CF00C72E17 /* PopOver.xib in Resources */,
 				D0E40DB316AB2AD0000E99B4 /* nose_effect_blood.png in Resources */,
 				D0E40DB416AB2AD0000E99B4 /* nose_effect_swell.png in Resources */,
-				D0E40DB516AB2AD0000E99B4 /* ear_effect_bandage.png in Resources */,
-				D0E40DB616AB2AD0000E99B4 /* ear_effect_bruise.png in Resources */,
-				D0E40DB716AB2AD0000E99B4 /* cheek_effect_bandage.png in Resources */,
-				D0E40DB816AB2AD0000E99B4 /* cheek_effect_cut.png in Resources */,
+				D0E40DB516AB2AD0000E99B4 /* right_ear_effect_bandage.png in Resources */,
+				D0E40DB616AB2AD0000E99B4 /* right_ear_effect_bruise.png in Resources */,
+				D0E40DB716AB2AD0000E99B4 /* right_cheek_effect_bandage.png in Resources */,
+				D0E40DB816AB2AD0000E99B4 /* right_cheek_effect_cut.png in Resources */,
 				D0E40DB916AB2AD0000E99B4 /* head_effect_swell.png in Resources */,
 				D0E40DBA16AB2AD0000E99B4 /* head_effect_bandage.png in Resources */,
 				D0E40DBB16AB2AD0000E99B4 /* mouth_effect_teeth.png in Resources */,

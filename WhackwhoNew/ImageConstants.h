@@ -68,7 +68,16 @@
 #define hitNumberFour @"HitWho_Number4.png"
 
 //special effects
-#define mouthEffectOne @"mouth effect test1.png"
+#define NOSE_EFFECT_BLOOD @"nose_effect_blood.png"
+#define NOSE_EFFECT_SWELL @"nose_effect_swell.png"
+#define EAR_EFFECT_BANDAGE @"right_ear_effect_bandage.png"
+#define EAR_EFFECT_BRUISE @"right_ear_effect_bruise.png"
+#define CHEEK_EFFECT_BANDAGE @"right_cheek_effect_bandage.png"
+#define CHEEK_EFFECT_CUT @"right_cheek_effect_cut.png"
+#define HEAD_EFFECT_SWELL @"head_effect_swell.png"
+#define HEAD_EFFECT_BANDAGE @"head_effect_bandage.png"
+#define MOUTH_EFFECT_TEETH @"mouth_effect_teeth.png"
+#define MOUTH_EFECT_SWELL @"mouth_effect_swell.png"
 
 //items
     //hammers

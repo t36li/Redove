@@ -225,12 +225,9 @@
 
 -(void)setArrayForReview {
     Game *game = [Game sharedGame];
-
-    NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:game.selectHeadCount];
-    for (int i = 0; i < game.selectHeadCount; i ++) {
-        [array addObject:[heads objectAtIndex:i]];
-    }
-    [game setArrayOfHits:array];
+    
+    NSArray *hitsArray = [NSArray arrayWithArray:heads];
+    [game setArrayOfHits:hitsArray];
 }
 
 -(void) tryPopheads{
@@ -659,7 +656,7 @@
                 }
                 
                 //head.hp -= 2;
-                //head.numberOfHits ++;
+                head.numberOfHits ++;
                 //update scores - show little label sign beside
                 int score_added = 5 + scene.consecHits / 5;
                 [scene updateScore:score_added];
@@ -700,6 +697,8 @@
                 
                 //update lives
                 [scene reduceHealth];
+                
+                head.numberOfHits ++;
                 
                 //send all heads down
                 for (Character *head in heads) {
@@ -813,6 +812,7 @@ static id<GameOverDelegate> gameOverDelegate = nil;
     }
 
     [self cleanup];
+    [self.layer setArrayForReview];
     
     [self performSelector:@selector(transitionToReview) withObject:nil afterDelay:2.0];
     
