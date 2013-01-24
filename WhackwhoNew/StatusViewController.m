@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Waterloo. All rights reserved.
 //
 
-#import "StatusBarController.h"
+#import "StatusViewController.h"
 #import "FacebookShareViewController.h"
 #import "User.h"
 #import "HitUpdate.h"
@@ -14,7 +14,7 @@
 #import "SpinnerView.h"
 #import "WEPopoverContentViewController.h"
 #import "WEPopoverController.h"
-#import "StatusBarTutorialPopover.h"
+#import "StatusViewTutorialPopover.h"
 //#import "StatusViewLayer.h"
 //#import "HelloWorldLayer.h"
 //#import "Dragbox.h"
@@ -34,7 +34,7 @@
 #define SCREEN_WIDTH  320
 #define SCREEN_HEIGTH 480
 
-@implementation StatusBarController
+@implementation StatusViewController
 
 @synthesize containerView;
 @synthesize faceView, bodyView;
@@ -187,7 +187,7 @@ WhichTransition transitionType;
     
     BOOL showTut = [[dic objectForKey:@"Tutorial"] boolValue];
     if (showTut && showOnce) {
-        StatusBarTutorialPopover *contentViewController = [[StatusBarTutorialPopover alloc] initWithNibName:@"PopOver" bundle:nil];
+        StatusViewTutorialPopover *contentViewController = [[StatusViewTutorialPopover alloc] initWithNibName:@"PopOver" bundle:nil];
         self.popoverController = [[WEPopoverController alloc] initWithContentViewController:contentViewController];
         [self.popoverController presentPopoverFromRect:CGRectZero
                                                 inView:self.view

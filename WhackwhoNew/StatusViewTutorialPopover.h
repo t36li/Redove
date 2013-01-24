@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StatusBarTutorialPopover : UIViewController
+@interface StatusViewTutorialPopover : UIViewController
 
 @end

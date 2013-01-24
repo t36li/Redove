@@ -15,6 +15,7 @@
 #import "WEPopoverContentViewController.h"
 #import "WEPopoverController.h"
 #import "HitWhoTutorialPopver.h"
+#import "InBetweenViewController.h"
 
 #define ChooseToGame @"chooseToGame"
 //#define dummyString @"testobject"
@@ -68,6 +69,7 @@
     
     spinner = [SpinnerView loadSpinnerIntoView:loadingView];
     tablepull = [[PullToRefreshView alloc] initWithScrollView:(UIScrollView *) self.table];
+    self.popoverController = [[WEPopoverController alloc] init];
     
     [self.table addSubview:tablepull];
     
@@ -105,12 +107,12 @@
     BOOL showTut = [[dic objectForKey:@"Tutorial"] boolValue];
     if (showTut) {
         HitWhoTutorialPopver *contentViewController = [[HitWhoTutorialPopver alloc] initWithNibName:@"HitWhoTutorialPopver" bundle:nil];
-        self.popoverController = [[WEPopoverController alloc] initWithContentViewController:contentViewController];
+        [self.popoverController setContentViewController:contentViewController];
         [self.popoverController presentPopoverFromRect:CGRectZero
                                                 inView:self.view
                               permittedArrowDirections:UIPopoverArrowDirectionAny
                                               animated:YES];
-        [popoverController.view setFrame:CGRectMake(85, 50, 290, 200)];
+        [popoverController.view setFrame:CGRectMake(80, 60, 315, 200)];
     }
 }
 
@@ -334,6 +336,19 @@
 }
 
 -(IBAction)battleTouched:(id)sender {
+    InBetweenViewController *contentViewController = [[InBetweenViewController alloc] initWithNibName: @"InBetweenViewController" bundle:nil];
+    contentViewController.image1 = hit1.image;
+    contentViewController.image2 = hit2.image;
+    contentViewController.image3 = hit3.image;
+    contentViewController.image4 = hit4.image;
+
+    [self.popoverController setContentViewController:contentViewController];
+    [self.popoverController presentPopoverFromRect:CGRectZero
+                                            inView:self.view
+                          permittedArrowDirections:UIPopoverArrowDirectionAny
+                                          animated:YES];
+    [popoverController.view setFrame:CGRectMake(20, 0, 400, 300)];
+    
     [self performSelectorInBackground:@selector(processImagesInBackground) withObject:nil];
     
     void (^block)(BOOL) = ^(BOOL finished) {
@@ -342,17 +357,22 @@
             [self updateFriendsHit];
             
             while (![Game sharedGame].readyToStart);
-            [self performSegueWithIdentifier:ChooseToGame sender:sender];
             isHammerDown = YES;
             [Game sharedGame].readyToStart = NO;
             NSMutableArray *tempArray = [NSMutableArray arrayWithArray:selectedHits];
             [tempArray addObjectsFromArray:selectedStrangers];
             [[Game sharedGame] setFriendArray:tempArray];
+            [self performSelector:@selector(playgame) withObject:nil afterDelay:1.5f];
         }
     };
     
     [self sendHammersDownWithBlock:block];
     
+}
+
+-(void) playgame {
+    [self performSegueWithIdentifier:ChooseToGame sender:nil];
+    [self.popoverController dismissPopoverAnimated:YES];
 }
 
 -(void) processImagesInBackground {

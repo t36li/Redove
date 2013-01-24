@@ -6,13 +6,10 @@
 //  Copyright (c) 2013 Waterloo. All rights reserved.
 //
 
-#import "StatusBarTutorialPopover.h"
+#import "StatusViewTutorialPopover.h"
 
-@interface StatusBarTutorialPopover ()
 
-@end
-
-@implementation StatusBarTutorialPopover
+@implementation StatusViewTutorialPopover
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,7 +24,7 @@
 {
     [super viewDidLoad];
     
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+    [self.view setBackgroundColor:[UIColor blackColor]];
 	// Do any additional setup after loading the view.
 }
 

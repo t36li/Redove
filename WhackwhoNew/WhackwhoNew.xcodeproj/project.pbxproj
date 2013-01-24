@@ -140,6 +140,8 @@
 		C1691FF215AFB8F500F081AF /* mode_layer1.png in Resources */ = {isa = PBXBuildFile; fileRef = C1691FF115AFB8F500F081AF /* mode_layer1.png */; };
 		C169200C15AFC7A800F081AF /* HitWhoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C169200B15AFC7A700F081AF /* HitWhoViewController.m */; };
 		C1692E9115CE282C00C7D4C7 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1692E9015CE282C00C7D4C7 /* StoreViewController.m */; };
+		C18AAB3716B0B05B003F8F87 /* InBetweenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C18AAB3516B0B05A003F8F87 /* InBetweenViewController.m */; };
+		C18AAB3816B0B05B003F8F87 /* InBetweenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C18AAB3616B0B05A003F8F87 /* InBetweenViewController.xib */; };
 		C198EE2E15D0476E004D170C /* HA001.png in Resources */ = {isa = PBXBuildFile; fileRef = C198EE2D15D0476E004D170C /* HA001.png */; };
 		C19A3A1E160CD4FE00C6E8F9 /* HA007.png in Resources */ = {isa = PBXBuildFile; fileRef = C19A3A18160CD4FE00C6E8F9 /* HA007.png */; };
 		C19A3A1F160CD4FE00C6E8F9 /* HA006.png in Resources */ = {isa = PBXBuildFile; fileRef = C19A3A19160CD4FE00C6E8F9 /* HA006.png */; };
@@ -148,7 +150,7 @@
 		C19A3A22160CD4FE00C6E8F9 /* HA003.png in Resources */ = {isa = PBXBuildFile; fileRef = C19A3A1C160CD4FE00C6E8F9 /* HA003.png */; };
 		C19A3A23160CD4FE00C6E8F9 /* HA002.png in Resources */ = {isa = PBXBuildFile; fileRef = C19A3A1D160CD4FE00C6E8F9 /* HA002.png */; };
 		C19A3A64160E81B300C6E8F9 /* SA001.png in Resources */ = {isa = PBXBuildFile; fileRef = C19A3A5C160E81B300C6E8F9 /* SA001.png */; };
-		C1B4397D15951B4100D62C2B /* StatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B4397C15951B4100D62C2B /* StatusBarController.m */; };
+		C1B4397D15951B4100D62C2B /* StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B4397C15951B4100D62C2B /* StatusViewController.m */; };
 		C1B7BB2316A2149600E6F7A8 /* Loading.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1B7BB2216A2149600E6F7A8 /* Loading.jpg */; };
 		C1B7BB2516A214C400E6F7A8 /* Options_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1B7BB2416A214C400E6F7A8 /* Options_bg.jpg */; };
 		C1B7BB2716A214D800E6F7A8 /* Personal_Upload.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1B7BB2616A214D800E6F7A8 /* Personal_Upload.jpg */; };
@@ -188,7 +190,7 @@
 		D03D411F16A4CC1800C72E17 /* WETouchableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D411B16A4CC1800C72E17 /* WETouchableView.m */; };
 		D03D412216A4CE0700C72E17 /* WEPopoverContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D412116A4CE0600C72E17 /* WEPopoverContentViewController.m */; };
 		D03D412416A4D1CF00C72E17 /* PopOver.xib in Resources */ = {isa = PBXBuildFile; fileRef = D03D412316A4D1CF00C72E17 /* PopOver.xib */; };
-		D03D412716A4D24700C72E17 /* StatusBarTutorialPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D412616A4D24700C72E17 /* StatusBarTutorialPopover.m */; };
+		D03D412716A4D24700C72E17 /* StatusViewTutorialPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D412616A4D24700C72E17 /* StatusViewTutorialPopover.m */; };
 		D0442EBD168CE8EF00677CC3 /* camera_lip.png in Resources */ = {isa = PBXBuildFile; fileRef = D0442EAF168CE8EE00677CC3 /* camera_lip.png */; };
 		D0442EBE168CE8EF00677CC3 /* camera_right_eye.png in Resources */ = {isa = PBXBuildFile; fileRef = D0442EB0168CE8EE00677CC3 /* camera_right_eye.png */; };
 		D0442EBF168CE8EF00677CC3 /* camera_left_eye.png in Resources */ = {isa = PBXBuildFile; fileRef = D0442EB1168CE8EE00677CC3 /* camera_left_eye.png */; };
@@ -777,6 +779,9 @@
 		C169200B15AFC7A700F081AF /* HitWhoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HitWhoViewController.m; sourceTree = SOURCE_ROOT; };
 		C1692E8F15CE282B00C7D4C7 /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
 		C1692E9015CE282C00C7D4C7 /* StoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
+		C18AAB3416B0B05A003F8F87 /* InBetweenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InBetweenViewController.h; sourceTree = "<group>"; };
+		C18AAB3516B0B05A003F8F87 /* InBetweenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InBetweenViewController.m; sourceTree = "<group>"; };
+		C18AAB3616B0B05A003F8F87 /* InBetweenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InBetweenViewController.xib; sourceTree = "<group>"; };
 		C198EE2D15D0476E004D170C /* HA001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HA001.png; sourceTree = "<group>"; };
 		C19A3A18160CD4FE00C6E8F9 /* HA007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HA007.png; sourceTree = "<group>"; };
 		C19A3A19160CD4FE00C6E8F9 /* HA006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HA006.png; sourceTree = "<group>"; };
@@ -785,8 +790,8 @@
 		C19A3A1C160CD4FE00C6E8F9 /* HA003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HA003.png; sourceTree = "<group>"; };
 		C19A3A1D160CD4FE00C6E8F9 /* HA002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HA002.png; sourceTree = "<group>"; };
 		C19A3A5C160E81B300C6E8F9 /* SA001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SA001.png; sourceTree = "<group>"; };
-		C1B4397B15951B4100D62C2B /* StatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarController.h; sourceTree = "<group>"; };
-		C1B4397C15951B4100D62C2B /* StatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarController.m; sourceTree = "<group>"; };
+		C1B4397B15951B4100D62C2B /* StatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewController.h; sourceTree = "<group>"; };
+		C1B4397C15951B4100D62C2B /* StatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewController.m; sourceTree = "<group>"; };
 		C1B7BB2216A2149600E6F7A8 /* Loading.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Loading.jpg; sourceTree = "<group>"; };
 		C1B7BB2416A214C400E6F7A8 /* Options_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Options_bg.jpg; sourceTree = "<group>"; };
 		C1B7BB2616A214D800E6F7A8 /* Personal_Upload.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Personal_Upload.jpg; sourceTree = "<group>"; };
@@ -837,8 +842,8 @@
 		D03D412016A4CE0600C72E17 /* WEPopoverContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverContentViewController.h; sourceTree = SOURCE_ROOT; };
 		D03D412116A4CE0600C72E17 /* WEPopoverContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverContentViewController.m; sourceTree = SOURCE_ROOT; };
 		D03D412316A4D1CF00C72E17 /* PopOver.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopOver.xib; sourceTree = "<group>"; };
-		D03D412516A4D24700C72E17 /* StatusBarTutorialPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarTutorialPopover.h; sourceTree = "<group>"; };
-		D03D412616A4D24700C72E17 /* StatusBarTutorialPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarTutorialPopover.m; sourceTree = "<group>"; };
+		D03D412516A4D24700C72E17 /* StatusViewTutorialPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewTutorialPopover.h; sourceTree = "<group>"; };
+		D03D412616A4D24700C72E17 /* StatusViewTutorialPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewTutorialPopover.m; sourceTree = "<group>"; };
 		D0442EAF168CE8EE00677CC3 /* camera_lip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_lip.png; sourceTree = "<group>"; };
 		D0442EB0168CE8EE00677CC3 /* camera_right_eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_right_eye.png; sourceTree = "<group>"; };
 		D0442EB1168CE8EE00677CC3 /* camera_left_eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_left_eye.png; sourceTree = "<group>"; };
@@ -1314,6 +1319,9 @@
 				C1DC2D4B16A8B22B0063CBF7 /* HitWhoTutorialPopver.h */,
 				C1DC2D4C16A8B22B0063CBF7 /* HitWhoTutorialPopver.m */,
 				C1DC2D4D16A8B22B0063CBF7 /* HitWhoTutorialPopver.xib */,
+				C18AAB3416B0B05A003F8F87 /* InBetweenViewController.h */,
+				C18AAB3516B0B05A003F8F87 /* InBetweenViewController.m */,
+				C18AAB3616B0B05A003F8F87 /* InBetweenViewController.xib */,
 			);
 			name = HitWhoGroup;
 			sourceTree = "<group>";
@@ -1707,10 +1715,10 @@
 			children = (
 				C10D2FC015D060A6007B751B /* Dragbox.h */,
 				C10D2FC115D060A6007B751B /* Dragbox.m */,
-				C1B4397B15951B4100D62C2B /* StatusBarController.h */,
-				C1B4397C15951B4100D62C2B /* StatusBarController.m */,
-				D03D412516A4D24700C72E17 /* StatusBarTutorialPopover.h */,
-				D03D412616A4D24700C72E17 /* StatusBarTutorialPopover.m */,
+				C1B4397B15951B4100D62C2B /* StatusViewController.h */,
+				C1B4397C15951B4100D62C2B /* StatusViewController.m */,
+				D03D412516A4D24700C72E17 /* StatusViewTutorialPopover.h */,
+				D03D412616A4D24700C72E17 /* StatusViewTutorialPopover.m */,
 				D03D412316A4D1CF00C72E17 /* PopOver.xib */,
 				C1DCCBC415CB5143000CD722 /* StatusViewLayer.h */,
 				C1DCCBC515CB5143000CD722 /* StatusViewLayer.m */,
@@ -2794,6 +2802,7 @@
 				C1DC2DD716AF3F7D0063CBF7 /* baby4.png in Resources */,
 				C1DC2DD816AF3F7D0063CBF7 /* baby5.png in Resources */,
 				C1DC2DD916AF3F7D0063CBF7 /* baby6.png in Resources */,
+				C18AAB3816B0B05B003F8F87 /* InBetweenViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2807,7 +2816,7 @@
 				C14718001594ACD20002FF21 /* main.m in Sources */,
 				C14718551594F0AE0002FF21 /* AppDelegate.m in Sources */,
 				C147185B1594F1AF0002FF21 /* CocosViewController.m in Sources */,
-				C1B4397D15951B4100D62C2B /* StatusBarController.m in Sources */,
+				C1B4397D15951B4100D62C2B /* StatusViewController.m in Sources */,
 				D0D7C84915956E3D00F51C6E /* ModeSelectionViewController.m in Sources */,
 				69C95E8E159A4AAC009966DA /* RootViewController.m in Sources */,
 				69C95EAD159B63A9009966DA /* SelectToLoginViewController.m in Sources */,
@@ -2864,9 +2873,10 @@
 				D03D411E16A4CC1800C72E17 /* WEPopoverController.m in Sources */,
 				D03D411F16A4CC1800C72E17 /* WETouchableView.m in Sources */,
 				D03D412216A4CE0700C72E17 /* WEPopoverContentViewController.m in Sources */,
-				D03D412716A4D24700C72E17 /* StatusBarTutorialPopover.m in Sources */,
+				D03D412716A4D24700C72E17 /* StatusViewTutorialPopover.m in Sources */,
 				C1DC2D4E16A8B22C0063CBF7 /* HitWhoTutorialPopver.m in Sources */,
 				C1DC2D7816AB557B0063CBF7 /* CameraTutorial.m in Sources */,
+				C18AAB3716B0B05B003F8F87 /* InBetweenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

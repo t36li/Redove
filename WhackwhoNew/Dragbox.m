@@ -7,7 +7,7 @@
 //
 
 #import "Dragbox.h"
-#import "StatusBarController.h"
+#import "StatusViewController.h"
 
 @implementation Dragbox
 

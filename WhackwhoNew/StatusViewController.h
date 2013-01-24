@@ -15,7 +15,7 @@
 
 @class WEPopoverController;
 
-@interface StatusBarController : UIViewController<RKObjectLoaderDelegate, UIAlertViewDelegate, CameraOverlayControllerViewControllerDelegate> {
+@interface StatusViewController : UIViewController<RKObjectLoaderDelegate, UIAlertViewDelegate, CameraOverlayControllerViewControllerDelegate> {
     
     IBOutlet UILabel *popularity_lbl;
     IBOutlet UILabel *high_score_lbl;

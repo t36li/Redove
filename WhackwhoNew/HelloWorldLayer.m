@@ -553,30 +553,6 @@
     
 }*/
 
--(void) removeHitEffect: (id) sender {
-    CCSprite *hitEffect = (CCSprite *) sender;
-    [self removeChild:hitEffect cleanup:YES];
-}
-
-//-(void) removeBomb: (id) sender {
-  //  CCSprite *tempbomb = (CCSprite *) sender;
-    
-   // if (tempbomb.tag == 0) {
-     //   lives -= 1;
-       // if ([hearts count] > 0) {
-         //   [self removeChild:[hearts objectAtIndex:[hearts count] - 1] cleanup:YES];
-           // [hearts removeLastObject];
-        //}
-
-    //    baseScore -= 10;
-    //}
-    
-    //has_bomb = FALSE;
-    //[self removeChild:tempbomb cleanup:YES];
-//}
-
-
-
 - (void)registerWithTouchDispatcher {
     [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
 }
@@ -591,6 +567,20 @@
 -(void) removeNode: (id) node {
     [self removeChild:node cleanup:YES];
 }
+-(void) generateExplosion: (id) node {
+    CCSprite *temp = (CCSprite *)node;
+    
+    CCParticleSystem *emitter = [[CCParticleExplosion alloc] initWithTotalParticles:100];
+    //set the location of the emitter
+    emitter.position = ccp(temp.position.x - temp.contentSize.width, temp.position.y - 10);
+    //emitter.life = 0.2;
+    //emitter.duration = 0.5;
+    emitter.scale = 0.5;
+    //emitter.speed = 100;
+    emitter.texture = [[CCTextureCache sharedTextureCache] addImage: @"hit effect.png"];
+    //add to layer ofcourse(effect begins after this step)
+    [self addChild: emitter];
+}
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     
@@ -601,6 +591,19 @@
     HelloWorldScene *scene = (HelloWorldScene *)self.parent;
 
     //CCLOG(@"x: %f, y: %f", location.x, location.y);
+    
+    CCSprite *hammer = [CCSprite spriteWithFile:@"HitWho_Hammer_Flipped.png"];
+    hammer.position = ccp(location.x, location.y);
+    hammer.rotation = 45;
+    hammer.anchorPoint = ccp(1, 0); //bottom right
+    [self addChild:hammer];
+    CCRotateBy *smash = [CCRotateBy actionWithDuration:0.5f angle:-70];
+    CCRotateBy *easeSmash = [CCEaseInOut actionWithAction:smash rate:3.0f];
+    CCCallFuncN *remove = [CCCallFuncN actionWithTarget:self selector:@selector(removeNode:)];
+    CCCallFuncN *explode = [CCCallFuncN actionWithTarget:self selector:@selector(generateExplosion:)];
+    
+    [hammer runAction:[CCSequence actions:easeSmash, explode, remove, nil]];
+
     
     for (CCSprite *coin in coins) {
         if (coin.tag == 1) {
@@ -638,7 +641,7 @@
             [self addChild:hitEffect];
             CCScaleTo *scaleUp = [CCScaleTo actionWithDuration:0.1 scale:1.0];
             CCScaleTo *scaleDown = [CCScaleTo actionWithDuration:0.1 scale:0.01];
-            CCCallFuncN *removeHitEffect = [CCCallFuncN actionWithTarget:self selector:@selector(removeHitEffect:)];
+            CCCallFuncN *removeHitEffect = [CCCallFuncN actionWithTarget:self selector:@selector(removeNode:)];
             [hitEffect runAction:[CCSequence actions:scaleUp, scaleDown, removeHitEffect, nil]];
             
             //if hit the correct "mole"
@@ -728,20 +731,6 @@
     return NO;
 }
 
-
-/*
--(void) ccTouchCancelled:(UITouch *)touch withEvent:(UIEvent *)event {
-    
-}
-
--(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
-    
-}
-
--(void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
-    
-}
-*/
 // on "dealloc" you need to release all your retained objects
 @end
 

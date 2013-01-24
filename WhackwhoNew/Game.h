@@ -23,7 +23,7 @@
     int selectHeadCount;
     NSMutableArray *arrayOfAllPopups;
     NSArray *arrayOfHits;
-    UIImage *head;
+    //UIImage *head;
     
     UIViewController *gameView;
     
@@ -45,7 +45,7 @@
 //@property (nonatomic, copy) NSMutableArray *selectedHeads;
 @property (nonatomic, strong) NSMutableArray *arrayOfAllPopups;
 @property (nonatomic, strong) NSArray *arrayOfHits;
-@property (nonatomic) UIImage *head;
+//@property (nonatomic) UIImage *head;
 @property (nonatomic, strong) UIViewController *gameView;
 @property (nonatomic) NSArray *friendArray;
 
