@@ -8,6 +8,7 @@
 
 #import "ReviewViewController.h"
 #import "AvatarBaseController.h"
+#import "Character.h"
 
 @interface ReviewViewController ()
 
@@ -29,37 +30,92 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     NSArray *friends = [[Game sharedGame] friendArray];
-
+    NSArray *hits = [[Game sharedGame] arrayOfHits];
     
     for (int i = 0; i < friends.count; i ++) {
         Friend *friend = [friends objectAtIndex:i];
+        Character *character = [hits objectAtIndex:i];
         
         Head *head = friend.head;
         
-        UIImage *pic = head.headImage;
-        
-        //UIImage *leftEye = [UIImage imageNamed:@"eye1.png"];
-        //UIImage *rightEye = [UIImage imageNamed:@"eye2.png"];
-        UIImage *lip = [UIImage imageNamed:MOUTH_EFFECT_TEETH];
-        UIImage *nose = [UIImage imageNamed:NOSE_EFFECT_SWELL];
-        UIImage *leftEar = [UIImage imageNamed:EAR_EFFECT_BANDAGE];
-        UIImage *rightEar = [UIImage imageNamed:EAR_EFFECT_BRUISE];
-        
         CGPoint leftEyePosition = CGPointFromString(head.leftEyePosition);
+        CGPoint rightEyePosition = CGPointFromString(head.rightEyePosition);
         CGPoint mouthPosition = CGPointFromString(head.mouthPosition);
         CGPoint leftEarPosition = CGPointFromString(head.leftEarPosition);
         CGPoint rightEarPosition = CGPointFromString(head.rightEarPosition);
         CGPoint nosePosition = CGPointFromString(head.nosePosition);
+        CGPoint headPosition = CGPointMake(leftEyePosition.x + 100, leftEyePosition.y - 100);
+        CGPoint leftCheekPosition = CGPointMake(leftEyePosition.x, mouthPosition.y - nosePosition.y);
+        CGPoint rightCheekPosition = CGPointMake(rightEyePosition.x, mouthPosition.y - nosePosition.y);
         
-        CGSize screenSize = pic.size;
+        UIImage *pic = head.headImage;
+        
+        int numberOfEffects = character.numberOfHits;
+        
+        NSMutableDictionary *effectsDict = [[NSMutableDictionary alloc] initWithCapacity:numberOfEffects];
+        NSMutableArray *effectsArray = [NSMutableArray arrayWithArray:effects];
+        
+        for (int j = 0; j < numberOfEffects; ++j ) {
+            int index = arc4random() % effectsArray.count;
+            NSArray *individualEffect = [effectsArray objectAtIndex:index];
+            
+            if (individualEffect.count <= 0) {
+                j--;
+                [effectsArray removeObjectAtIndex:index];
+                continue;
+            } else {
+                [effectsArray removeObjectAtIndex:index];
+            }
+            
+            index = arc4random() % individualEffect.count;
+            NSString *imageName = [individualEffect objectAtIndex:index];
+            
+            UIImage *effectImage = [imagesOfEffects objectForKey:imageName];
+            if ( effectImage == nil) {
+                effectImage = [UIImage imageNamed:imageName];
+                [imagesOfEffects setObject:effectImage forKey:imageName];
+            }
+            
+            if ([imageName hasPrefix:@"head"]) {
+                [effectsDict setObject:effectImage forKey:[NSValue valueWithCGPoint:headPosition]];
+            } else if ([imageName hasPrefix:@"right_eye"]) {
+                [effectsDict setObject:effectImage forKey:[NSValue valueWithCGPoint:rightEyePosition]];
+            } else if ([imageName hasPrefix:@"left_eye"]) {
+                [effectsDict setObject:effectImage forKey:[NSValue valueWithCGPoint:leftEyePosition]];
+            } else if ([imageName hasPrefix:@"right_ear"]) {
+                [effectsDict setObject:effectImage forKey:[NSValue valueWithCGPoint:rightEarPosition]];
+            } else if ([imageName hasPrefix:@"left_ear"]) {
+                [effectsDict setObject:effectImage forKey:[NSValue valueWithCGPoint:leftEarPosition]];
+            } else if ([imageName hasPrefix:@"left_cheek"]) {
+                [effectsDict setObject:effectImage forKey:[NSValue valueWithCGPoint:leftCheekPosition]];
+            } else if ([imageName hasPrefix:@"right_cheek"]) {
+                [effectsDict setObject:effectImage forKey:[NSValue valueWithCGPoint:rightCheekPosition]];
+            } else if ([imageName hasPrefix:@"mouth"]) {
+                [effectsDict setObject:effectImage forKey:[NSValue valueWithCGPoint:mouthPosition]];
+            } else if ([imageName hasPrefix:@"nose"]) {
+                [effectsDict setObject:effectImage forKey:[NSValue valueWithCGPoint:nosePosition]];
+            } else {
+                NSLog(@"SHOULD NOT REACH HERE");
+            }
+        }
+        
         CGRect faceRectSize = CGRectFromString(head.faceRect);
         UIGraphicsBeginImageContext(faceRectSize.size);
         [pic drawInRect:CGRectMake(0, 0, pic.size.width, pic.size.height)];
         //[leftEye drawInRect:CGRectMake(leftEyePosition.x-leftEye.size.width/2, leftEyePosition.y-leftEye.size.height/2, leftEye.size.width, leftEye.size.height)];
+        
+        for (NSValue *val in effectsDict) {
+            UIImage *image = [effectsDict objectForKey:val];
+            CGPoint point = [val CGPointValue];
+            
+            [image drawInRect:CGRectMake(point.x-image.size.width/2, point.y-image.size.height/2, image.size.width, image.size.height)];
+        }
+        /*
         [lip drawInRect:CGRectMake(mouthPosition.x-lip.size.width/2, mouthPosition.y-lip.size.height/2, lip.size.width, lip.size.height)];
         [leftEar drawInRect:CGRectMake(leftEarPosition.x-leftEar.size.width/2, leftEarPosition.y-leftEar.size.height/2, leftEar.size.width, leftEar.size.height)];
         [rightEar drawInRect:CGRectMake(rightEarPosition.x-rightEar.size.width/2, rightEarPosition.y-rightEar.size.height/2, rightEar.size.width, rightEar.size.height)];
         [nose drawInRect:CGRectMake(nosePosition.x-nose.size.width/2, nosePosition.y-nose.size.height/2, nose.size.width, nose.size.height)];
+         */
         UIImage *ret = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
                 
@@ -117,6 +173,44 @@
     
     avatarArray = [[NSMutableArray alloc] init];
     defaultImage = [UIImage imageNamed:@"vlad.png"];
+    
+    //UIImage *leftEye = [UIImage imageNamed:@"eye1.png"];
+    //UIImage *rightEye = [UIImage imageNamed:@"eye2.png"];
+    NSMutableArray *temp = [NSMutableArray array];
+    [temp addObject:MOUTH_EFECT_SWELL];
+    [temp addObject:MOUTH_EFFECT_TEETH];
+    mouthEffects = temp;
+    
+    temp = [NSMutableArray array];
+    [temp addObject:NOSE_EFFECT_BLOOD];
+    [temp addObject:NOSE_EFFECT_SWELL];
+    noseEffects = temp;
+    
+    temp = [NSMutableArray array];
+    [temp addObject:EAR_EFFECT_BANDAGE];
+    [temp addObject:EAR_EFFECT_BRUISE];
+    rightEarEffects = temp;
+    
+    leftEarEffects = [NSArray arrayWithArray:rightEarEffects];
+    
+    temp = [NSMutableArray array];
+    [temp addObject:CHEEK_EFFECT_BANDAGE];
+    [temp addObject:CHEEK_EFFECT_CUT];
+    rightCheekEffects = temp;
+    
+    leftCheekEffects = [NSArray arrayWithArray:rightCheekEffects];
+    
+    temp = [NSMutableArray array];
+    [temp addObject:HEAD_EFFECT_BANDAGE];
+    [temp addObject:HEAD_EFFECT_SWELL];
+    headEffects = temp;
+    
+    leftEyeEffects = [NSArray array];
+    rightEyeEffects = [NSArray array];
+    
+    effects = [NSArray arrayWithObjects:leftEyeEffects, rightEyeEffects, noseEffects, mouthEffects, leftCheekEffects, rightCheekEffects, leftEarEffects, rightEarEffects, headEffects, nil];
+    
+    imagesOfEffects = [[NSMutableDictionary alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -153,7 +247,7 @@
         //[[UserInfo sharedInstance] performSelector:@selector(markFaces:withDelegate:) withObject:self.avatarImageView.image withObject:self];
     }
 }
-
+/*
 -(void)setUserPictureCompleted {
     UserInfo *user = [UserInfo sharedInstance];
     CGFloat faceWidth = user.faceRect.size.width;
@@ -176,6 +270,7 @@
     mouth.center = user.mouthPosition;
     [portraitView addSubview:mouth];
 }
+ */
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

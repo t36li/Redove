@@ -10,15 +10,6 @@
 #import "Game.h"
 #import "UserInfo.h"
 
-#define NOSE_EFFECT_BLOOD @"nose_effect_blood.png"
-#define NOSE_EFFECT_SWELL @"nose_effect_swell.png"
-#define EAR_EFFECT_BANDAGE @"ear_effect_bandage.png"
-#define EAR_EFFECT_BRUISE @"ear_effect_bruise.png"
-#define CHEEK_EFFECT_BANDAGE @"cheek_effect_bandage.png"
-#define HEAD_EFFECT_SWELL @"head_effect_swell.png"
-#define HEAD_EFFECT_BANDAGE @"head_effect_bandage.png"
-#define MOUTH_EFFECT_TEETH @"mouth_effect_teeth.png"
-#define MOUTH_EFECT_SWELL @"mouth_effect_swell.png"
 
 @interface ReviewViewController : UIViewController {
     IBOutlet UIView *portraitView;
@@ -32,6 +23,14 @@
     NSMutableArray *avatarArray;
     UIImage *defaultImage;
     NSInteger selectedIndex;
+    
+    UIImage *leftEye, *rightEye, *lip, *nose, *leftEar, *rightEar;
+    NSArray *leftEyeEffects, *rightEyeEffects, *mouthEffects, *noseEffects, *leftEarEffects, *rightEarEffects;
+    NSArray *leftCheekEffects, *rightCheekEffects, *headEffects;
+    
+    NSArray *effects;
+    
+    NSMutableDictionary *imagesOfEffects;
 }
 
 @property (nonatomic, strong) IBOutlet UIView *portraitView;
