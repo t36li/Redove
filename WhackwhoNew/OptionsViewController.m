@@ -38,6 +38,17 @@
     [[FBSingletonNew sharedInstance] setDelegate:self];
 }
 
+-(IBAction)tutSwitch_touched:(id)sender {
+    UISwitch *temp = (UISwitch *) sender;
+    
+    if ([temp isOn]) {
+        NSLog(@"Tutorial is on");
+    } else {
+        NSLog(@"Tutorial turned off");
+    }
+}
+
+
 -(IBAction)back_touched:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
 }

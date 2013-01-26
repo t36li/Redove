@@ -428,6 +428,9 @@
                             <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="PzO-RV-9ko">
                                 <rect key="frame" x="283" y="92" width="79" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="tutSwitch_touched:" destination="sqy-Cf-B9P" eventType="touchUpInside" id="ocq-nk-DTL"/>
+                                </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GmL-ev-nqX">
                                 <rect key="frame" x="113" y="214" width="137" height="37"/>
@@ -1069,6 +1072,141 @@
         <image name="temp_upload.png" width="256" height="256"/>
         <image name="upper shelf.png" width="393" height="121"/>
     </resources>
+    <classes>
+        <class className="CocosViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CocosViewController.h"/>
+        </class>
+        <class className="FBProfilePictureView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FBProfilePictureView.h"/>
+        </class>
+        <class className="FriendsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="FriendListClick:"/>
+                <relationship kind="action" name="SendTouched:"/>
+                <relationship kind="action" name="back_Touched:"/>
+                <relationship kind="outlet" name="friendTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="inviteMessage" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="loadingView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="selectedFriendsView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="tableCell" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="HitWhoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HitWhoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="Back_Touched:"/>
+                <relationship kind="action" name="battleTouched:"/>
+                <relationship kind="action" name="cancelTouched:"/>
+                <relationship kind="outlet" name="bodyView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="characterReviewView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="faceView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="hit1" candidateClass="HitWindow"/>
+                <relationship kind="outlet" name="hit2" candidateClass="HitWindow"/>
+                <relationship kind="outlet" name="hit3" candidateClass="HitWindow"/>
+                <relationship kind="outlet" name="hit4" candidateClass="HitWindow"/>
+                <relationship kind="outlet" name="hitNumber" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="leftHammer" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="loadingView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="namelabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="popupView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="rightHammer" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="HitWindow" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HitWindow.h"/>
+        </class>
+        <class className="LoadViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoadViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="myLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ModeSelectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ModeSelectionViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="Back_Touched:"/>
+                <relationship kind="action" name="leftButton_touched:"/>
+                <relationship kind="action" name="rightButton_touched:"/>
+                <relationship kind="outlet" name="background" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="rightButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="wholeView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="OptionsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OptionsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="back_touched:"/>
+                <relationship kind="action" name="logout_touched:"/>
+                <relationship kind="action" name="tutSwitch_touched:"/>
+                <relationship kind="outlet" name="back" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="logout_but" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="ReviewViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ReviewViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="hitBack:"/>
+                <relationship kind="action" name="hitLeft:"/>
+                <relationship kind="action" name="hitRight:"/>
+                <relationship kind="outlet" name="avatarImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="backBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="goldlbl" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="leftBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="portraitView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="rightBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="scorelbl" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="uploadBtn" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="RootViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="opt_touched:"/>
+                <relationship kind="action" name="play_touched:"/>
+                <relationship kind="outlet" name="opt_but" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="play_but" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="profileImageView" candidateClass="FBProfilePictureView"/>
+            </relationships>
+        </class>
+        <class className="SelectToLoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectToLoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="FBTouched:"/>
+                <relationship kind="outlet" name="FBBut" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="StatusViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StatusViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="Back_Touched:"/>
+                <relationship kind="action" name="Ok_Pressed:"/>
+                <relationship kind="action" name="deletePlist:"/>
+                <relationship kind="action" name="publish_touched:"/>
+                <relationship kind="action" name="pushCamera:"/>
+                <relationship kind="outlet" name="bodyView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="faceView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="high_score_lbl" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="popularity_lbl" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="total_gold_lbl" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="total_gp_lbl" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="StoreViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StoreViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="Back_Touched:"/>
+                <relationship kind="action" name="Buy_Touched:"/>
+                <relationship kind="action" name="Undo_Touched:"/>
+                <relationship kind="outlet" name="mainItemsScroll" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="purchasedItemsScroll" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation" orientation="landscapeRight"/>

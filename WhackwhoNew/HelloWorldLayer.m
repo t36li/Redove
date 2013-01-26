@@ -94,9 +94,13 @@
             head.isSelectedHit = FALSE;
         }
         
+        head.anchorPoint = ccp(0, 0); //bot mid anchorpoint
         head.visible = FALSE;
-        head.position = CGPointZero;
+        head.position = CGPointZero; //head width: 74.5/ head height: 107
         
+        //NSLog(@"head width: %f", head.contentSize.width);
+        //NSLog(@"head height: %f", head.contentSize.height);
+
         [self addChild:head];
         [heads addObject:head];
         i++; //for key purposes
@@ -329,7 +333,7 @@
     
     //init all the actions
     //!!!!! NEED FOR THIS TIME TO MATCH THE ANIMATION TIME OF THE SPLASH!
-    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp(0, 25)];
+    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp(0, 10)];
     CCMoveBy *easeMoveUp = [CCEaseIn actionWithAction:moveUp rate:3.5];
     CCAction *easeMoveDown = [easeMoveUp reverse];
     CCDelayTime *delay = [CCDelayTime actionWithDuration:1.0];
@@ -447,7 +451,7 @@
     //init all the actions
     //add the height of the body * 0.3 to the move: 59.5 * 0.3
     //CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.5 position:ccp((height_now+20) * sin(rotationAngle), (height_now+20) * cos(rotationAngle))];
-    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:1.0 position:ccp(0,40)];
+    CCMoveBy *moveUp = [CCMoveBy actionWithDuration:1.0 position:ccp(0,5)];
     CCMoveBy *easeMoveUp = [CCEaseIn actionWithAction:moveUp rate:3.0];
     CCAction *easeMoveDown = [easeMoveUp reverse];
     CCCallFuncN *setTappable = [CCCallFuncN actionWithTarget:self selector:@selector(setTappable:)];
@@ -589,19 +593,6 @@
 
     //CCLOG(@"x: %f, y: %f", location.x, location.y);
     
-    CCSprite *hammer = [CCSprite spriteWithFile:@"HitWho_Hammer_Flipped.png"];
-    hammer.position = ccp(location.x, location.y);
-    hammer.rotation = 45;
-    hammer.anchorPoint = ccp(1, 0); //bottom right
-    [self addChild:hammer];
-    CCRotateBy *smash = [CCRotateBy actionWithDuration:0.5f angle:-70];
-    CCRotateBy *easeSmash = [CCEaseInOut actionWithAction:smash rate:3.0f];
-    CCCallFuncN *remove = [CCCallFuncN actionWithTarget:self selector:@selector(removeNode:)];
-    CCCallFuncN *explode = [CCCallFuncN actionWithTarget:self selector:@selector(generateExplosion:)];
-    
-    [hammer runAction:[CCSequence actions:easeSmash, explode, remove, nil]];
-
-    
     for (CCSprite *coin in coins) {
         if (coin.tag == 1) {
             continue;
@@ -631,15 +622,39 @@
             head.didMiss = FALSE;
             head.tappable = FALSE;
             
+            CCSprite *hammer = [CCSprite spriteWithFile:@"HitWho_Hammer_Flipped.png"];
+            hammer.position = ccp(head.position.x + head.contentSize.width, head.position.y + head.contentSize.height/2);
+            hammer.rotation = 45;
+            hammer.anchorPoint = ccp(1, 0); //bottom right
+            [self addChild:hammer];
+            
+            CCRotateBy *smash = [CCRotateBy actionWithDuration:0.25f angle:-70];
+            CCRotateBy *easeSmash = [CCEaseInOut actionWithAction:smash rate:3.0f];
+            CCCallFuncN *remove = [CCCallFuncN actionWithTarget:self selector:@selector(removeNode:)];
+            CCCallFuncN *explode = [CCCallFuncN actionWithTarget:self selector:@selector(generateExplosion:)];
+            
+            [hammer runAction:[CCSequence actions:easeSmash, explode, remove, nil]];
+            
+            /*CCSprite *hammer = [CCSprite spriteWithFile:@"HitWho_Hammer_Flipped.png"];
+            hammer.anchorPoint = ccp(1, 0); //bottom right
+            hammer.position = ccp(head.position.x + 10, head.position.y + 30);
+            hammer.rotation = 45;
+            [self addChild:hammer];
+            CCRotateBy *smash = [CCRotateBy actionWithDuration:0.5f angle:-70];
+            CCRotateBy *easeSmash = [CCEaseInOut actionWithAction:smash rate:3.0f];
+            CCCallFuncN *remove = [CCCallFuncN actionWithTarget:self selector:@selector(removeNode:)];
+            CCCallFuncN *explode = [CCCallFuncN actionWithTarget:self selector:@selector(generateExplosion:)];
+            
+            [hammer runAction:[CCSequence actions:easeSmash, explode, remove, nil]];*/
             //need to remove hiteffect sprite just like the coins
-            CCSprite *hitEffect = [CCSprite spriteWithFile:@"hit effect.png"];
-            hitEffect.scale = 0.01;
-            hitEffect.position = ccp(head.position.x + head.contentSize.width * head.scaleX/2, head.position.y);
-            [self addChild:hitEffect];
-            CCScaleTo *scaleUp = [CCScaleTo actionWithDuration:0.1 scale:1.0];
-            CCScaleTo *scaleDown = [CCScaleTo actionWithDuration:0.1 scale:0.01];
-            CCCallFuncN *removeHitEffect = [CCCallFuncN actionWithTarget:self selector:@selector(removeNode:)];
-            [hitEffect runAction:[CCSequence actions:scaleUp, scaleDown, removeHitEffect, nil]];
+           // CCSprite *hitEffect = [CCSprite spriteWithFile:@"hit effect.png"];
+           // hitEffect.scale = 0.01;
+           // hitEffect.position = ccp(head.position.x + head.contentSize.width * head.scaleX/2, head.position.y);
+            //[self addChild:hitEffect];
+           // CCScaleTo *scaleUp = [CCScaleTo actionWithDuration:0.1 scale:1.0];
+           // CCScaleTo *scaleDown = [CCScaleTo actionWithDuration:0.1 scale:0.01];
+           // CCCallFuncN *removeHitEffect = [CCCallFuncN actionWithTarget:self selector:@selector(removeNode:)];
+            //[hitEffect runAction:[CCSequence actions:scaleUp, scaleDown, removeHitEffect, nil]];
             
             //if hit the correct "mole"
             if (head.isSelectedHit) {
