@@ -56,6 +56,9 @@
         NSMutableArray *effectsArray = [NSMutableArray arrayWithArray:effects];
         
         for (int j = 0; j < numberOfEffects; ++j ) {
+            if (effectsArray.count <= 0)
+                break;
+            
             int index = arc4random() % effectsArray.count;
             NSArray *individualEffect = [effectsArray objectAtIndex:index];
             
