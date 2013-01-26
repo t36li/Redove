@@ -94,22 +94,25 @@
             head.isSelectedHit = FALSE;
         }
         
-        head.anchorPoint = ccp(0, 0); //bot mid anchorpoint
+        head.anchorPoint = ccp(0.5, 0); //bot mid anchorpoint
         head.visible = FALSE;
         head.position = CGPointZero; //head width: 74.5/ head height: 107
         
         //NSLog(@"head width: %f", head.contentSize.width);
         //NSLog(@"head height: %f", head.contentSize.height);
-
+        //head.position = ccp(150, 150);
+        
         [self addChild:head];
         [heads addObject:head];
         i++; //for key purposes
         
         //for testing
         //head.position = ccp(xpad, winSize.height/2);
-        //xpad += 60;
+        //xpad += 60;=
         //head.visible = TRUE;
     }
+    
+    
     
     [self schedule:@selector(tryPopheads) interval:1.5];
      
@@ -623,10 +626,10 @@
             head.tappable = FALSE;
             
             CCSprite *hammer = [CCSprite spriteWithFile:@"HitWho_Hammer_Flipped.png"];
-            hammer.position = ccp(head.position.x + head.contentSize.width, head.position.y + head.contentSize.height/2);
+            hammer.position = ccp(head.position.x + head.contentSize.width - 15, head.position.y + head.contentSize.height - 15);
             hammer.rotation = 45;
             hammer.anchorPoint = ccp(1, 0); //bottom right
-            [self addChild:hammer];
+            [self addChild:hammer z:50];
             
             CCRotateBy *smash = [CCRotateBy actionWithDuration:0.25f angle:-70];
             CCRotateBy *easeSmash = [CCEaseInOut actionWithAction:smash rate:3.0f];
@@ -729,13 +732,15 @@
             }
             
             //float height_now = head.contentSize.height * head.scaleY;
-            
             //float rotation = CC_DEGREES_TO_RADIANS(head.rotation);
             //CCMoveBy *moveDown = [CCMoveBy actionWithDuration:0.5 position:ccp(-(5+height_now) * sin(rotation), -(height_now+5) * cos(rotation))];
             //CCMoveBy *easeMoveDown = [CCEaseOut actionWithAction:moveDown rate:3.0];
+            CCMoveBy *moveDown = [CCMoveBy actionWithDuration:0.25 position:ccp(0, -10)];
+            CCMoveBy *easeMoveDown = [CCEaseInOut actionWithAction:moveDown rate:3.5];
+            
             CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
             
-            [head runAction:[CCSequence actions: checkCombo, nil]];
+            [head runAction:[CCSequence actions: easeMoveDown, checkCombo, nil]];
             
             //stop the loop as we are not support multi-touch anymore
             return YES;
