@@ -97,24 +97,17 @@
         head.anchorPoint = ccp(0.5, 0); //bot mid anchorpoint
         head.visible = FALSE;
         head.position = CGPointZero; //head width: 74.5/ head height: 107
-        
-        //NSLog(@"head width: %f", head.contentSize.width);
-        //NSLog(@"head height: %f", head.contentSize.height);
-        //head.position = ccp(150, 150);
-        
         [self addChild:head];
         [heads addObject:head];
-        i++; //for key purposes
+        i++; //for key purpose
         
         //for testing
         //head.position = ccp(xpad, winSize.height/2);
         //xpad += 60;=
         //head.visible = TRUE;
     }
-    
-    
-    
-    [self schedule:@selector(tryPopheads) interval:1.5];
+
+    [self schedule:@selector(tryPopheads) interval:DEFAULT_HEAD_POP_SPEED];
      
 }
 
@@ -324,7 +317,7 @@
     //splash animation
     CCSprite *splash = [CCSprite spriteWithSpriteFrameName:@"s1.png"];
     CGPoint splashPosition = head.position;
-    splashPosition.y -= 30;
+    //splashPosition.y -= 5;
     splash.position = splashPosition;
     [splashSheet addChild:splash z:head.zOrder+1];
     
@@ -481,12 +474,15 @@
     Character *head = (Character *) sender;
 
     head.rotation = 0;
-    head.position = ccp(0,0);
-    //head.scale = 0.2;
+    head.position = CGPointZero;
     head.visible = NO;
 
     if (head.didMiss && head.isSelectedHit) {
         [scene resetConsecHits];
+    }
+    
+    if ([head children]) {
+        [head removeAllChildrenWithCleanup:YES];
     }
     
     //display rainbows according to hit streaks
@@ -571,19 +567,31 @@
 -(void) removeNode: (id) node {
     [self removeChild:node cleanup:YES];
 }
+
 -(void) generateExplosion: (id) node {
     CCSprite *temp = (CCSprite *)node;
     
     CCParticleSystem *emitter = [[CCParticleExplosion alloc] initWithTotalParticles:100];
     //set the location of the emitter
     emitter.position = ccp(temp.position.x - temp.contentSize.width, temp.position.y - 10);
-    //emitter.life = 0.2;
-    //emitter.duration = 0.5;
     emitter.scale = 0.5;
     //emitter.speed = 100;
     emitter.texture = [[CCTextureCache sharedTextureCache] addImage: @"hit effect.png"];
     //add to layer ofcourse(effect begins after this step)
     [self addChild: emitter];
+}
+
+-(void) overlayBurn: (id) node {
+    Character *head = (Character *) node;
+    
+    //head.visible = FALSE;
+    CCSprite *burntEffect = [CCSprite spriteWithFile:@"burnt_effect.png"];
+    burntEffect.anchorPoint = ccp(0,0);
+    burntEffect.position = ccp(0, 0);
+    burntEffect.scaleX = head.contentSize.width/burntEffect.contentSize.width;
+    burntEffect.scaleY = head.contentSize.height/burntEffect.contentSize.height;
+    [head addChild:burntEffect];
+
 }
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
@@ -637,27 +645,6 @@
             CCCallFuncN *explode = [CCCallFuncN actionWithTarget:self selector:@selector(generateExplosion:)];
             
             [hammer runAction:[CCSequence actions:easeSmash, explode, remove, nil]];
-            
-            /*CCSprite *hammer = [CCSprite spriteWithFile:@"HitWho_Hammer_Flipped.png"];
-            hammer.anchorPoint = ccp(1, 0); //bottom right
-            hammer.position = ccp(head.position.x + 10, head.position.y + 30);
-            hammer.rotation = 45;
-            [self addChild:hammer];
-            CCRotateBy *smash = [CCRotateBy actionWithDuration:0.5f angle:-70];
-            CCRotateBy *easeSmash = [CCEaseInOut actionWithAction:smash rate:3.0f];
-            CCCallFuncN *remove = [CCCallFuncN actionWithTarget:self selector:@selector(removeNode:)];
-            CCCallFuncN *explode = [CCCallFuncN actionWithTarget:self selector:@selector(generateExplosion:)];
-            
-            [hammer runAction:[CCSequence actions:easeSmash, explode, remove, nil]];*/
-            //need to remove hiteffect sprite just like the coins
-           // CCSprite *hitEffect = [CCSprite spriteWithFile:@"hit effect.png"];
-           // hitEffect.scale = 0.01;
-           // hitEffect.position = ccp(head.position.x + head.contentSize.width * head.scaleX/2, head.position.y);
-            //[self addChild:hitEffect];
-           // CCScaleTo *scaleUp = [CCScaleTo actionWithDuration:0.1 scale:1.0];
-           // CCScaleTo *scaleDown = [CCScaleTo actionWithDuration:0.1 scale:0.01];
-           // CCCallFuncN *removeHitEffect = [CCCallFuncN actionWithTarget:self selector:@selector(removeNode:)];
-            //[hitEffect runAction:[CCSequence actions:scaleUp, scaleDown, removeHitEffect, nil]];
             
             //if hit the correct "mole"
             if (head.isSelectedHit) {
@@ -723,10 +710,11 @@
                 
                 //send all heads down
                 for (Character *head in heads) {
-                    [head stopAllActions];
-                    head.visible = FALSE;
-                    head.tappable = FALSE;
-                    [head runAction:[CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)]];
+                    CCMoveBy *moveDown = [CCMoveBy actionWithDuration:0.25 position:ccp(0, -10)];
+                    CCMoveBy *easeMoveDown = [CCEaseInOut actionWithAction:moveDown rate:3.5];
+                    CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
+                    
+                    [head runAction:[CCSequence actions: easeMoveDown , checkCombo, nil]];
                 }
                 break;
             }
@@ -735,12 +723,16 @@
             //float rotation = CC_DEGREES_TO_RADIANS(head.rotation);
             //CCMoveBy *moveDown = [CCMoveBy actionWithDuration:0.5 position:ccp(-(5+height_now) * sin(rotation), -(height_now+5) * cos(rotation))];
             //CCMoveBy *easeMoveDown = [CCEaseOut actionWithAction:moveDown rate:3.0];
+            //need to remove hiteffect sprite just like the coins
+            
+            CCDelayTime *delay = [CCDelayTime actionWithDuration:0.25];
             CCMoveBy *moveDown = [CCMoveBy actionWithDuration:0.25 position:ccp(0, -10)];
             CCMoveBy *easeMoveDown = [CCEaseInOut actionWithAction:moveDown rate:3.5];
             
             CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
+            CCCallFuncN *overlayBurnt = [CCCallFuncN actionWithTarget:self selector:@selector(overlayBurn:)];
             
-            [head runAction:[CCSequence actions: easeMoveDown, checkCombo, nil]];
+            [head runAction:[CCSequence actions: overlayBurnt, easeMoveDown , checkCombo, nil]];
             
             //stop the loop as we are not support multi-touch anymore
             return YES;

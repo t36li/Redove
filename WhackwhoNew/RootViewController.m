@@ -31,6 +31,7 @@
 @implementation RootViewController
 @synthesize play_but,opt_but;
 @synthesize profileImageView;
+@synthesize baby, whack_label, poster;
 
 -(void) viewDidLoad
 {
@@ -54,7 +55,45 @@
     }else{
         profileImageView.profileID = nil;
     }
+    
     [self startWalking];
+    //[self startLabelAnimation];
+    [self startPosterAnimation];
+}
+
+- (void) startPosterAnimation {
+    NSArray * imageArray  = [[NSArray alloc] initWithObjects:
+                             [UIImage imageNamed:@"Main_Poster1.png"],
+                             [UIImage imageNamed:@"Main_Poster2.png"],
+                             nil];
+    poster.animationImages = imageArray;
+    poster.animationDuration = 0.25;
+    poster.animationRepeatCount = 0;
+    [poster startAnimating];
+}
+
+- (void) startLabelAnimation {
+    NSArray * imageArray  = [[NSArray alloc] initWithObjects:
+                             [UIImage imageNamed:@"whackwho1.png"],
+                             [UIImage imageNamed:@"whackwho2.png"],
+                             [UIImage imageNamed:@"whgackwho3.png"],
+                             nil];
+    whack_label.animationImages = imageArray;
+    whack_label.animationDuration = 1;
+    whack_label.animationRepeatCount = 0;
+    //CGPoint p = whack_label.center;
+    //p.x -= 408;
+    //ryuJump.center = p;
+    
+    //[UIView animateWithDuration:30
+      //                    delay:0
+        //                options: UIViewAnimationOptionCurveLinear
+          //           animations:^{
+            //             baby.center = CGPointMake(p.x, p.y);
+              //       }
+                //     completion:^(BOOL finished){
+                  //   }];
+    [whack_label startAnimating];
 }
 
 - (void)startWalking {
@@ -66,12 +105,10 @@
                              [UIImage imageNamed:@"baby5.png"],
                              [UIImage imageNamed:@"baby6.png"],
                              nil];
-    UIImageView * ryuJump = [[UIImageView alloc] initWithFrame:
-                             CGRectMake(408, 233, 72, 81)];
-    ryuJump.animationImages = imageArray;
-    ryuJump.animationDuration = 2;
-    ryuJump.animationRepeatCount = 15;
-    CGPoint p = ryuJump.center;
+    baby.animationImages = imageArray;
+    baby.animationDuration = 2;
+    baby.animationRepeatCount = 0;
+    CGPoint p = baby.center;
     p.x -= 408;
     //ryuJump.center = p;
     
@@ -79,13 +116,11 @@
                           delay:0
                         options: UIViewAnimationOptionCurveLinear
                      animations:^{
-                         ryuJump.center = CGPointMake(p.x, p.y);
+                         baby.center = CGPointMake(p.x, p.y);
                      }
                      completion:^(BOOL finished){
                      }];
-    //ryuJump.contentMode = UIViewContentModeBottomLeft;
-    [self.view addSubview:ryuJump];
-    [ryuJump startAnimating];
+    [baby startAnimating];
 }
 
 
