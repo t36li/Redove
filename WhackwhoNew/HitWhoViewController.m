@@ -80,6 +80,10 @@
 
 }
 
+-(void) scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+}
+
 -(void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
     [[FBSingletonNew sharedInstance] setDelegate:self];

@@ -67,7 +67,7 @@
                              [UIImage imageNamed:@"Main_Poster2.png"],
                              nil];
     poster.animationImages = imageArray;
-    poster.animationDuration = 0.25;
+    poster.animationDuration = 0.5;
     poster.animationRepeatCount = 0;
     [poster startAnimating];
 }
