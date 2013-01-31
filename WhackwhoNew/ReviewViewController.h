@@ -41,5 +41,6 @@
 -(IBAction) hitBack:(id)sender;
 -(IBAction) hitLeft:(id)sender;
 -(IBAction) hitRight:(id)sender;
+-(IBAction) shareToFacebook:(id)sender;
 
 @end

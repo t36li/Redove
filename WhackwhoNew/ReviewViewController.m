@@ -9,6 +9,7 @@
 #import "ReviewViewController.h"
 #import "AvatarBaseController.h"
 #import "Character.h"
+#import "FacebookShareViewController.h"
 
 @interface ReviewViewController ()
 
@@ -282,6 +283,26 @@
 
 -(NSUInteger) supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskLandscapeLeft;
+}
+
+- (IBAction) shareToFacebook:(id)sender {
+    int width = self.portraitView.frame.size.width * avatarArray.count;
+    int counter = 0;
+    UIGraphicsBeginImageContext(CGSizeMake(width, portraitView.frame.size.height));
+    for (UIImage *pic in avatarArray) {
+        [pic drawInRect:CGRectMake(portraitView.frame.size.width*counter, 0, pic.size.width, pic.size.height)];
+    }
+    UIImage *ret = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+
+    FacebookShareViewController *fbshare = [[FacebookShareViewController alloc]
+                                            initWithNibName:@"FacebookShareViewController"
+                                            bundle:nil];
+    [fbshare setPublishedImage:ret];
+    //[fbshare setPostImageView:imageView];
+    //[self presentViewController:fbshare animated:YES completion:nil];
+    [self.navigationController pushViewController:fbshare animated:YES];
 }
 
 @end
