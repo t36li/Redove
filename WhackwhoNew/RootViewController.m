@@ -58,7 +58,7 @@
     
     [self startWalking];
     //[self startLabelAnimation];
-    [self startPosterAnimation];
+    //[self startPosterAnimation];
 }
 
 - (void) startPosterAnimation {

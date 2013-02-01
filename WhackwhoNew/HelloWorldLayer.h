@@ -24,31 +24,34 @@
 @interface HelloWorldLayer : CCLayer
 {
     NSMutableArray *heads;
-    NSMutableArray *rainbows;
-    NSMutableArray *coins;
-    NSMutableArray *bomb;
+    //NSMutableArray *rainbows;
+    //NSMutableArray *coins;
+    //NSMutableArray *bomb;
     
-    //CCLabelTTF *hitsLabel;
-
     float speed;
-    
-    BOOL has_bomb;//shake_once
-    BOOL stopAnimations;
-    NSArray *botLeft, *botRight, *midLeft, *midRight, *topLeft, *topMid, *topRight;
-
     int level;
+    int x_min, x_max, y_min, y_max;
+
+    //BOOL has_bomb;
     
     NSDictionary *locations;
-    CCSpriteBatchNode *splashSheet;
+    CCSpriteBatchNode *baselayer;
     NSMutableArray *splashFrames;
-    
+    NSMutableArray *objectsCantCollide;
 
+    
+    CCSprite *spritePosTest;
 }
 
 @property (nonatomic, strong) NSDictionary *locations;
-@property (nonatomic, strong) CCSpriteBatchNode *splashSheet;
+@property (nonatomic, strong) CCSpriteBatchNode *baselayer;
 @property (nonatomic, strong) NSMutableArray *splashFrames;
 @property (nonatomic, readwrite) BOOL stopAnimations;
+
+@property (nonatomic, readwrite) int x_min;
+@property (nonatomic, readwrite) int x_max;
+@property (nonatomic, readwrite) int y_min;
+@property (nonatomic, readwrite) int y_max;
 
 -(void)setArrayForReview;
 
@@ -63,8 +66,7 @@
     int lives;
     NSInteger consecHits, baseScore, moneyEarned;
     
-    //score storage
-    NSMutableDictionary *dic;
+    NSMutableDictionary *dic;     //score storage
 }
 
 @property (nonatomic, strong) HelloWorldLayer *layer;
@@ -75,7 +77,6 @@
 - (void) writePlist: (NSString *) whichLbl withUpdate: (int) nmbr;
 - (int) readPlist: (NSString *) whichLbl;
 
--(void)animationCoolDown;
 -(void)gameOver:(BOOL)timeout;
 -(void)reduceHealth;
 -(void)updateScore:(int)score;

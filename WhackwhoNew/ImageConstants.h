@@ -15,49 +15,22 @@
 //backgrounds
 #define MainPage_bg @"Main_Menu_Bg.png"
 #define SelectToLogIn_bg @"Choose_Connections_Bg.jpg"
-#define hills_background @"hill_background.png"
-#define hill_topmid @"hill2.png"
-#define hill_topleft @"hill1.png"
-#define hill_topright @"hill3.png"
-#define hill_midmid @"hill4.png"
-#define hill_midleft @"hill5.png"
-#define hill_midright @"hill6.png"
-#define hill_botmid @"hill7.png"
-#define hill_botleft @"hill8.png"
-#define hill_botright @"hill9.png"
-
 #define FriendList_bg @"friend list (background).png"
 #define loading_bg @"Loading.jpg"
 #define store_bg @"store background.png"
 
 //buttons
-//#define Play_but @"Play_Button.png"
-//#define Play_but_touched @"play b.png"
-//#define Option_but @"Option_Button.png"
-//#define Option_but_touched @"option b.png"
-//#define friend_but @"Friends_Button.png"
-//#define friend_but_touched @"friend b.png"
 #define AccessFacebookIcon @"FacebookButton30x34.png"
 #define AccessFacebookIcon_HL @"FacebookButton30x34.png"
 #define AccessRenrenIcon @"RenRen_Login150X30.png"
 #define AccessRenrenIcon_HL @"RenRen_Login150X30.png"
 
-//In-game buttons
+//HUD
 #define PauseButton @"pause_button.png"
-#define RestartButton @"play again key.png"
-#define MainMenuButton @"home key.png"
-
-//Sprites
-#define heartSp @"hearts.png"
-#define scoreboardSp @"hill_scoreboard.png"
-#define Monk @"monk.png"
-#define Vald @"vald.png"
-#define Olaf @"olaf.png"
-#define Baby @"baby.png"
-#define Mice @"mice.png"
-#define Pinky @"pinky.png"
-#define Blue @"blue.png"
-#define Loading @"loading icon.png"
+#define ResumeButton @"resume.png"
+#define MainMenuButton @"main menu.png"
+#define heartSp @"new_heart.png"
+#define clockSp @"timer_clock.png"
 
 //Frames
 #define FriendListCell @"friend list (cell).png"

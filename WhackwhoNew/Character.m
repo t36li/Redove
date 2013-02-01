@@ -10,7 +10,7 @@
 
 @implementation Character
 
-@synthesize hp;
+//@synthesize hp;
 @synthesize whackID;
 @synthesize tappable, isSelectedHit;
 @synthesize didMiss;

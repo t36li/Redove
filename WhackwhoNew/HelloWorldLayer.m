@@ -25,17 +25,14 @@
 // HelloWorldLayer implementation
 @implementation HelloWorldLayer
 
-@synthesize locations, splashSheet, splashFrames;
-@synthesize stopAnimations;
+@synthesize locations, baselayer, splashFrames;
+@synthesize x_min, x_max, y_min, y_max; //the min/max for the splash sprite, not head
 
 // on "init" you need to initialize your instance
--(id) init
-{
-
+-(id) init {
 	if( (self=[super init]) ) {
         
 	}
-    
 	return self;
 }
 
@@ -47,32 +44,40 @@
     
     //init variables
     speed = DEFAULT_HEAD_POP_SPEED;
-    has_bomb = FALSE;
-    stopAnimations = NO;
+    //has_bomb = FALSE;
     
     if ([[CCDirector sharedDirector] isPaused]) {
         [[CCDirector sharedDirector] resume];
     }
     
-    coins = [[NSMutableArray alloc] init];
-    bomb = [[NSMutableArray alloc] init];
+    //coins = [[NSMutableArray alloc] init];
+    //bomb = [[NSMutableArray alloc] init];
     heads = [[NSMutableArray alloc] init];
     
     //determine which background to load
     //if unlocked new level, then randomize
     int temp = [[Game sharedGame] bgs_to_random];
-    if (temp == 0) {
-        level = seaLevel;
-    } else {
-        level = arc4random() % temp;
-    }
+    level = arc4random() % (temp+1);
+    glClearColor(255, 255, 255, 255);
+    splashFrames = [NSMutableArray array];
+    objectsCantCollide = [NSMutableArray array];
     
+    [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
+    [CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
+    
+    level = hillLevel;
     switch (level) {
-        case hillLevel:
-            [self performSelector:@selector(setHillsLevel)];
+        case 0:
+            [self performSelector:@selector(setLevelOne)];
+
             break;
-        case seaLevel:
-            [self performSelector:@selector(setSeaLevel)];
+        case 1:
+            [self performSelector:@selector(setLevelTwo)];
+
+            break;
+        case 2:
+            [self performSelector:@selector(setLevelThree)];
+
             break;
     }
     
@@ -81,9 +86,6 @@
     //[[UIAccelerometer sharedAccelerometer] setUpdateInterval:1/60];
     //shake_once = false;
     
-    //!!!! initializing popups
-    //use the array from game.h which contains all image names
-    //int xpad = 50; //for testing
     int i = 0;
     for (UIImage *person in [[Game sharedGame] arrayOfAllPopups]) {
         Character *head = [Character spriteWithCGImage:[person CGImage] key:[NSString stringWithFormat:@"person%i", i]];
@@ -94,24 +96,157 @@
             head.isSelectedHit = FALSE;
         }
         
-        head.anchorPoint = ccp(0.5, 0); //bot mid anchorpoint
+        head.anchorPoint = ccp(0.5, 0.5);
         head.visible = FALSE;
-        head.position = CGPointZero; //head width: 74.5/ head height: 107
-        [self addChild:head];
+        head.position = CGPointZero;
+        [self addChild:head z:10];
         [heads addObject:head];
         i++; //for key purpose
-        
-        //for testing
-        //head.position = ccp(xpad, winSize.height/2);
-        //xpad += 60;=
-        //head.visible = TRUE;
     }
 
     [self schedule:@selector(tryPopheads) interval:DEFAULT_HEAD_POP_SPEED];
      
 }
 
--(void) setHillsLevel {
+-(void) setLevelOne {
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"level1_sprites.plist"];
+    baselayer = [CCSpriteBatchNode batchNodeWithFile:@"level1_sprites.pvr.ccz"];
+    [self addChild:baselayer];
+    
+    CCSprite *sprite = [CCSprite spriteWithSpriteFrameName:@"level1.png"];
+    sprite.anchorPoint = ccp(0.5,0.5);
+    sprite.position = ccp(winSize.width/2, winSize.height/2);
+    [baselayer addChild:sprite];
+    
+    for (int i = 1; i <= 10; i ++) {
+        [splashFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"mudsplash%i.png", i]]];
+    }
+    
+    self.x_min = 30;
+    self.x_max = 450;
+    self.y_min = 14;
+    self.y_max = 200;
+    
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Level1" ofType:@"plist"];
+    NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:filePath];
+    locations = [dictionary objectForKey:@"points"];
+    
+    NSArray *temparray = [NSArray arrayWithObjects:@"hill_cloud1.png", @"hill_cloud2.png", @"hill_rainbow1.png", @"hill_rainbow2.png", @"hill_rainbow3.png", @"hill_flower1.png", @"hill_flower2.png", @"hill_flower3.png", @"hill_flower4.png", @"hill_scoreboard.png", @"grass1.png", @"grass2.png", nil];
+    NSNumber *x, *y;
+
+    for (int i = 0; i < [temparray count]; i++) {
+        NSString *imageName = [temparray objectAtIndex:i];
+        CCSprite *tempSprite = [CCSprite spriteWithSpriteFrameName:imageName];
+        NSString *dicKey = [[imageName componentsSeparatedByString:@"."] objectAtIndex:0];
+        NSDictionary *dict = [locations objectForKey:dicKey];
+        x = [dict objectForKey:@"x"];
+        y = [dict objectForKey:@"y"];
+        [tempSprite setPosition:CGPointMake(x.integerValue, y.integerValue)];
+        [tempSprite convertToWorldSpace:tempSprite.position];
+        [baselayer addChild:tempSprite];
+        if (i > 5) {
+            [objectsCantCollide addObject:tempSprite];
+        }
+    }
+    
+    //UIImage *person = [[[Game sharedGame]arrayOfAllPopups] objectAtIndex:0];
+    //spriteForHead = [CCSprite spriteWithCGImage:[person CGImage] key:@"person1"];
+    //spriteForHead.anchorPoint = ccp(0.5,0.5);
+    //spriteForHead.position = ccp(winSize.width/2, winSize.height/2);
+    //[self addChild:spriteForHead z:10];
+}
+
+-(void) setLevelTwo {
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"level2_sprites.plist"];
+    baselayer = [CCSpriteBatchNode batchNodeWithFile:@"level2_sprites.pvr.ccz"];
+    [self addChild:baselayer];
+    
+    CCSprite *sprite = [CCSprite spriteWithSpriteFrameName:@"level2.png"];
+    sprite.anchorPoint = ccp(0.5,0.5);
+    sprite.position = ccp(winSize.width/2, winSize.height/2);
+    [baselayer addChild:sprite];
+    
+    for (int i = 1; i <= 11; i ++) {
+        [splashFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"watersplash%d.png", i]]];
+    }
+    
+    self.x_min = 30;
+    self.x_max = 450;
+    self.y_min = 47;
+    self.y_max = 226;
+    
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Level2" ofType:@"plist"];
+    NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:filePath];
+    locations = [dictionary objectForKey:@"points"];
+    
+    NSArray *temparray = [NSArray arrayWithObjects:@"beach.png", @"coral1_1.png", @"coral2_1.png", @"crab1.png", @"rock1.png", @"rock2.png", @"sea_scoreboard.png", @"purplestar1.png", @"sea_fish1.png", @"sea_fish2.png", @"sea_fish3.png",  @"sea_shell.png", @"seaconch.png", @"seaweed1.png", @"starsgrouped.png", nil];
+    NSNumber *x, *y;
+    
+    for (int i = 0; i < [temparray count]; i++) {
+        NSString *imageName = [temparray objectAtIndex:i];
+        CCSprite *tempSprite = [CCSprite spriteWithSpriteFrameName:imageName];
+        NSString *dicKey = [[imageName componentsSeparatedByString:@"."] objectAtIndex:0];
+        NSDictionary *dict = [locations objectForKey:dicKey];
+        x = [dict objectForKey:@"x"];
+        y = [dict objectForKey:@"y"];
+        [tempSprite setPosition:CGPointMake(x.integerValue, y.integerValue)];
+        [tempSprite convertToWorldSpace:tempSprite.position];
+        [baselayer addChild:tempSprite];
+        if (i <= 7) {
+            [objectsCantCollide addObject:tempSprite];
+        }
+    }
+}
+
+-(void) setLevelThree {
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"level3_sprites.plist"];
+    baselayer = [CCSpriteBatchNode batchNodeWithFile:@"level3_sprites.pvr.ccz"];
+    [self addChild:baselayer];
+    
+    CCSprite *sprite = [CCSprite spriteWithSpriteFrameName:@"level3.png"];
+    sprite.anchorPoint = ccp(0.5,0.5);
+    sprite.position = ccp(winSize.width/2, winSize.height/2);
+    [baselayer addChild:sprite];
+    
+    for (int i = 1; i <= 10; i ++) {
+        [splashFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"spacesplash%d.png", i]]];
+    }
+    
+    self.x_min = 40;
+    self.x_max = 445;
+    self.y_min = 54;
+    self.y_max = 280;
+    
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Level3" ofType:@"plist"];
+    NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:filePath];
+    locations = [dictionary objectForKey:@"points"];
+    
+    NSArray *temparray = [NSArray arrayWithObjects:@"space_scoreboard.png", nil];
+    NSNumber *x, *y;
+    
+    for (int i = 0; i < [temparray count]; i++) {
+        NSString *imageName = [temparray objectAtIndex:i];
+        CCSprite *tempSprite = [CCSprite spriteWithSpriteFrameName:imageName];
+        NSString *dicKey = [[imageName componentsSeparatedByString:@"."] objectAtIndex:0];
+        NSDictionary *dict = [locations objectForKey:dicKey];
+        x = [dict objectForKey:@"x"];
+        y = [dict objectForKey:@"y"];
+        [tempSprite setPosition:CGPointMake(x.integerValue, y.integerValue)];
+        [tempSprite convertToWorldSpace:tempSprite.position];
+        [baselayer addChild:tempSprite];
+        if (i <= 1) {
+            [objectsCantCollide addObject:tempSprite];
+        }
+    }
+}
+
+/*-(void) setHillsLevel {
     CGSize winSize = [CCDirector sharedDirector].winSize;
 
     glClearColor(255, 255, 255, 255);
@@ -135,7 +270,6 @@
     
     //hills_background is the farthest back
     //NSArray *imageNames = [NSArray arrayWithObjects: hills_background, hill_topmid, hill_topleft, hill_topright, hill_midmid, hill_midleft, hill_midright, hill_botmid, hill_botleft, hill_botright, nil];
-    NSArray *imageNames = [NSArray arrayWithObjects:hill_botright, hill_botleft, hill_botmid, hill_midright, hill_midleft, hill_midmid, hill_topright, hill_topleft, hill_topmid, hills_background, nil];
     
     for(int i = 0; i < imageNames.count; ++i) {
         NSString *image = [imageNames objectAtIndex:i];
@@ -150,7 +284,7 @@
     locations = [dictionary objectForKey:@"points"];
     
     //add "rainbows" !!! do this in spritesheet later on
-    /*rainbows = [[NSMutableArray alloc] init];
+    rainbows = [[NSMutableArray alloc] init];
     CCSprite *rainbow = [CCSprite spriteWithFile:@"rainbow4.png"];
     rainbow.position = ccp(156, 192);
     rainbow.visible = FALSE;
@@ -173,7 +307,7 @@
     [self addChild:rainbow4 z:-95];
     [self addChild:rainbow3 z:-95];
     [self addChild:rainbow2 z:-95];
-    [self addChild:rainbow z:-95];*/
+    [self addChild:rainbow z:-95];
 }
 
 -(void) setSeaLevel {
@@ -210,31 +344,9 @@
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Level2" ofType:@"plist"];
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:filePath];
     locations = [dictionary objectForKey:@"points"];
-}
-
--(void) onExit {
-    [coins removeAllObjects];
-    [heads removeAllObjects];
-    [bomb removeAllObjects];
-    [rainbows removeAllObjects];
-    
-    //CGSize winsize = [[CCDirector sharedDirector] winSize];
-    
-    [super onExit];
- }
-
--(void)setArrayForReview {
-    Game *game = [Game sharedGame];
-    
-    NSArray *hitsArray = [NSArray arrayWithArray:heads];
-    [game setArrayOfHits:hitsArray];
-}
+}*/
 
 -(void) tryPopheads{
-    if (stopAnimations) {
-        return;
-    }
-    
     @synchronized(heads) {
     	for (Character *head in heads) {
             if (CGPointEqualToPoint(head.position, CGPointZero)) {
@@ -267,31 +379,142 @@
     return NO;
 }
 
--(BOOL) checkLocation:(CGPoint) point {
-    for (Character *head in heads) {
-        if (CGPointEqualToPoint(point, head.position))
+//-(BOOL) checkLocation:(CGPoint) point {
+  //  for (Character *head in heads) {
+    //    if (CGPointEqualToPoint(point, head.position))
+      //      return YES;
+   // }
+    //return NO;
+//}
+
+-(BOOL) checkSplashCollission: (CCSprite *) splash {
+    for (CCSprite *object in objectsCantCollide) {
+        if (CGRectIntersectsRect(object.boundingBox, splash.boundingBox)) {
+            //CCLOG(@"INTERSECTED!");
             return YES;
+        }
     }
     return NO;
-}
-
-- (void) popHeadNew: (Character *) head {
-    
-    switch (level) {
-        case hillLevel:
-            [self popHillLevelHead:head];
-            break;
-        case seaLevel:
-            [self popSeaLevelHeads:head];
-            break;
-    }
 }
 
 -(void) endSplashAction: (id)node {
     [[node parent] removeChild:node cleanup:YES];
 }
 
--(void) popSeaLevelHeads: (Character *) head {
+- (void) popHeadNew: (Character *) head {
+    
+    //switch (level) {
+        //case hillLevel:
+            //[self popHillLevelHead:head];
+          //  break;
+        //case seaLevel:
+        //    [self popSeaLevelHeads:head];
+      //      break;
+    //}
+    
+    //NSNumber *x, *y, *zOrder;
+    CCSprite *splash;
+    float delayTime;
+    switch (level) {
+        case hillLevel:
+            splash = [CCSprite spriteWithSpriteFrameName:@"mudsplash1.png"];
+            delayTime = 0.6;
+            break;
+        case seaLevel:
+            splash = [CCSprite spriteWithSpriteFrameName:@"watersplash1.png"];
+            delayTime = 0.3;
+            break;
+        case spaceLevel:
+            splash = [CCSprite spriteWithSpriteFrameName:@"spacesplash1.png"];
+            delayTime = 0;
+            break;
+    }
+    [baselayer addChild:splash];
+    
+    do {
+        int x = (arc4random() % (x_max - x_min + 1)) + x_min;
+        int y = (arc4random() % (y_max - y_min + 1)) + y_min;
+        
+        [splash setPosition:CGPointMake(x, y)];
+        [splash convertToWorldSpace:splash.position];
+        
+    } while ([self checkSplashCollission:splash]);
+    
+    //first check if splash collides with any of the objects
+    //then set head position and check if head collides with any other heads
+    //!!! NEED TO SCALE SPRITE HERE BASED ON Y_POSITION
+    switch (level) {
+        case hillLevel:
+            head.position = ccp(splash.position.x - 5, splash.position.y + 40);
+            break;
+        case seaLevel:
+            head.position = ccp(splash.position.x, splash.position.y + 30);
+            break;
+        case spaceLevel:
+            head.position = ccp(splash.position.x, splash.position.y);
+            break;
+    }
+    
+    if ([self checkCollission:head]) {
+        [self endSplashAction:splash];
+        return; //do this so 3 heads doesnt pop at once
+    }
+    
+    /*do {
+        int index = (arc4random() % locations.count) + 1;
+        NSDictionary *dict = [locations objectForKey:[NSString stringWithFormat:@"p%d", index]];
+        x = [dict objectForKey:@"x"];
+        y = [dict objectForKey:@"y"];
+        zOrder = [dict objectForKey:@"z"];
+    } while ([self checkLocation:CGPointMake(x.integerValue, y.integerValue)]);
+    
+    [head setZOrder:zOrder.integerValue];
+    [head setPosition:CGPointMake(x.integerValue, y.integerValue)];
+    [head convertToWorldSpace:head.position];
+    
+    if ([self checkCollission:head]) {
+        return;
+    }*/
+    
+    CCAnimation *splashAnim = [CCAnimation animationWithSpriteFrames:splashFrames delay:0.1f];
+    CCRepeat *splashAction = [CCRepeat actionWithAction:[CCAnimate actionWithAnimation:splashAnim] times:1];
+    CCCallFuncN *endSplashAction = [CCCallFuncN actionWithTarget:self selector:@selector(endSplashAction:)];
+    [splash runAction:[CCSequence actions:splashAction, endSplashAction, nil]];
+    
+    if (level == spaceLevel) {
+        //time scaling of head with the space splash animation
+        head.scale = 0.1;
+        CCScaleBy *scaleUp = [CCScaleBy actionWithDuration:0.5f scale:10];
+        CCScaleBy *easeScaleUp = [CCEaseIn actionWithAction:scaleUp rate:10.0f];
+        CCAction *easeScaleDown = [easeScaleUp reverse];
+        CCDelayTime *delay_sprite = [CCDelayTime actionWithDuration:0.5];
+        
+        CCCallFuncN *setTappable = [CCCallFuncN actionWithTarget:self selector:@selector(setTappable:)];
+        CCCallFuncN *setUntappable = [CCCallFuncN actionWithTarget:self selector:@selector(unSetTappable:)];
+        CCCallFuncN *resetHead = [CCCallFuncN actionWithTarget:self selector:@selector(resetHead:)];
+        //id action = [CCLiquid actionWithWaves:10 amplitude:20 grid:ccg(10,10) duration:5 ];
+        
+        [head runAction:[CCSequence actions: setTappable, easeScaleUp, delay_sprite, easeScaleDown, setUntappable, resetHead, nil]];
+        
+    } else {
+        //need to delay the popping of head until the middle of mud animation
+        CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.3f position:ccp(0, 60)];
+        CCMoveBy *easeMoveUp = [CCEaseIn actionWithAction:moveUp rate:10.0f];
+        CCAction *easeMoveDown = [easeMoveUp reverse];
+        CCDelayTime *delay_splash = [CCDelayTime actionWithDuration:delayTime];
+        CCDelayTime *delay_sprite = [CCDelayTime actionWithDuration:0.5];
+        
+        CCCallFuncN *setTappable = [CCCallFuncN actionWithTarget:self selector:@selector(setTappable:)];
+        CCCallFuncN *setUntappable = [CCCallFuncN actionWithTarget:self selector:@selector(unSetTappable:)];
+        CCCallFuncN *resetHead = [CCCallFuncN actionWithTarget:self selector:@selector(resetHead:)];
+        //id action = [CCLiquid actionWithWaves:10 amplitude:20 grid:ccg(10,10) duration:5 ];
+        
+        [head runAction:[CCSequence actions: delay_splash, setTappable, easeMoveUp, delay_sprite, easeMoveDown, setUntappable, resetHead, nil]];
+    }
+}
+
+//OLD POPHEADS INCLUDE BOMB CODE
+/*-(void) popSeaLevelHeads: (Character *) head {
     NSNumber *x, *y, *zOrder;
     
     //if the position is not already occupied
@@ -384,7 +607,7 @@
     head.didMiss = TRUE;
     head.visible = TRUE;
     
-    /*int randTilt;
+    int randTilt;
     if (randPt ==0) { //if at beginning of hill, can only tilt to the right
         randTilt = 1;
     } else if (randPt == (hillTop.count-1)) {//if at end of hill, can only tilt to left
@@ -411,12 +634,12 @@
     float height_now = head.contentSize.height * head.scaleY;
     
     //offset head by y = h * cos(theta), x = h*sin(theta)
-    head.position = ccp(head.position.x - height_now * sin(rotationAngle), head.position.y - height_now * cos(rotationAngle));*/
+    head.position = ccp(head.position.x - height_now * sin(rotationAngle), head.position.y - height_now * cos(rotationAngle));
     
     //No collission detected
     
     //pop bomb code
-    /*10% chance for a bomb to popup
+    10% chance for a bomb to popup
     //if (arc4random() % 100 < 10 && !has_bomb) {
       //  has_bomb = TRUE;
         //CCSprite *testObj = [CCSprite spriteWithFile:@"bomb.png"];
@@ -429,7 +652,7 @@
      //   CCRotateBy *rotateBomb = [CCRotateBy actionWithDuration:2.0f angle:(360*7)];
      //   CCCallFuncN *removeBomb = [CCCallFuncN actionWithTarget:self selector:@selector(removeBomb:)];
      //   [testObj runAction:[CCSequence actions: rotateBomb, removeBomb, nil]];
-    }*/
+    }
     
     //hill animation
     CCSprite *splash = [CCSprite spriteWithSpriteFrameName:@"s1.png"];
@@ -457,11 +680,13 @@
     //id action = [CCLiquid actionWithWaves:10 amplitude:20 grid:ccg(10,10) duration:5 ];
         
     [head runAction:[CCSequence actions: setTappable, easeMoveUp, delay, easeMoveDown,unsetTappable, checkCombo, nil]];
-}
+}*/
 
 -(void) setTappable: (id) sender {
     Character *head = (Character *) sender;
+    [head setDidMiss:TRUE];
     [head setTappable:TRUE];
+    [head setVisible:TRUE];
 }
 
 -(void) unSetTappable: (id) sender {
@@ -469,14 +694,14 @@
     [head setTappable:FALSE];
 }
 
--(void) checkCombo: (id) sender {
+-(void) resetHead: (id) sender {
     HelloWorldScene *scene = (HelloWorldScene *)self.parent;
     Character *head = (Character *) sender;
-
-    head.rotation = 0;
+    
+    [head setVisible:FALSE];
+    head.scale = 1;
     head.position = CGPointZero;
-    head.visible = NO;
-
+    
     if (head.didMiss && head.isSelectedHit) {
         [scene resetConsecHits];
     }
@@ -514,7 +739,6 @@
         speed *= 0.5;
         [self unschedule:@selector(tryPopheads)];
         [self schedule:@selector(tryPopheads) interval:speed];
-
     }
 }
 
@@ -553,19 +777,15 @@
     
 }*/
 
-- (void)registerWithTouchDispatcher {
-    [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
-}
-
 -(void) removeCoin: (id) sender {
     CCSprite *coin = (CCSprite *) sender;
     
-    [coins removeObject:coin];
+    //[coins removeObject:coin];
     [self removeChild:coin cleanup:YES];
 }
 
 -(void) removeNode: (id) node {
-    [self removeChild:node cleanup:YES];
+    [[node parent] removeChild:node cleanup:YES];
 }
 
 -(void) generateExplosion: (id) node {
@@ -594,17 +814,54 @@
 
 }
 
--(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+/*- (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
+    [self ccTouchMoved:touch withEvent:event];
     
+    CCLOG(@"dragbox center: (x: %f, y: %f)", spriteForTesting.position.x, spriteForTesting.position.y);
+}
+
+- (void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
+    CGPoint touchLocation = [self convertTouchToNodeSpace:touch];
+    
+    CGPoint oldTouchLocation = [touch previousLocationInView:touch.view];
+    oldTouchLocation = [[CCDirector sharedDirector] convertToGL:oldTouchLocation];
+    oldTouchLocation = [self convertToNodeSpace:oldTouchLocation];
+    
+    CGPoint translation = ccpSub(touchLocation, oldTouchLocation);
+    CGPoint newPos = ccpAdd(spriteForTesting.position, translation);
+    spriteForTesting.position = newPos;
+}*/
+- (void)registerWithTouchDispatcher {
+    [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+}
+
+/*-(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
+    CGPoint location = [touch locationInView:[touch view]];
+    location = [[CCDirector sharedDirector] convertToGL:location];
+    
+    CCLOG(@"(x: %f, y: %f)", location.x, location.y);
+}
+
+-(void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
+    CGPoint location = [touch locationInView:[touch view]];
+    location = [[CCDirector sharedDirector] convertToGL:location];
+    
+    spritePosTest.position = ccp(location.x, location.y);
+    
+    //CCLOG(@"CURSOR MOVED!");
+}*/
+
+-(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+
     //if (gamePaused) return;
     
     CGPoint location = [touch locationInView:[touch view]];
     location = [[CCDirector sharedDirector] convertToGL:location];
     HelloWorldScene *scene = (HelloWorldScene *)self.parent;
-
-    //CCLOG(@"x: %f, y: %f", location.x, location.y);
     
-    for (CCSprite *coin in coins) {
+    //spritePosTest.position = ccp(location.x, location.y);
+
+    /*for (CCSprite *coin in coins) {
         if (coin.tag == 1) {
             continue;
         }
@@ -620,7 +877,7 @@
             
             return YES;
         }
-    }
+    }*/
     
     for (Character *head in heads) {
         if (head.tappable == FALSE) {
@@ -633,39 +890,37 @@
             head.didMiss = FALSE;
             head.tappable = FALSE;
             
-            CCSprite *hammer = [CCSprite spriteWithFile:@"HitWho_Hammer_Flipped.png"];
+            CCSprite *hammer = [CCSprite spriteWithSpriteFrameName:@"hit_hammer.png"];
             hammer.position = ccp(head.position.x + head.contentSize.width - 15, head.position.y + head.contentSize.height - 15);
             hammer.rotation = 45;
             hammer.anchorPoint = ccp(1, 0); //bottom right
-            [self addChild:hammer z:50];
+            [baselayer addChild:hammer z:50];
             
             CCRotateBy *smash = [CCRotateBy actionWithDuration:0.25f angle:-70];
             CCRotateBy *easeSmash = [CCEaseInOut actionWithAction:smash rate:3.0f];
             CCCallFuncN *remove = [CCCallFuncN actionWithTarget:self selector:@selector(removeNode:)];
-            CCCallFuncN *explode = [CCCallFuncN actionWithTarget:self selector:@selector(generateExplosion:)];
+            //CCCallFuncN *explode = [CCCallFuncN actionWithTarget:self selector:@selector(generateExplosion:)];
             
-            [hammer runAction:[CCSequence actions:easeSmash, explode, remove, nil]];
+            [hammer runAction:[CCSequence actions:easeSmash, remove, nil]];
             
             //if hit the correct "mole"
             if (head.isSelectedHit) {
                 
                 //10% chance for a coin to popup
-                if (arc4random() % 100 < 10) {
-                    CCSprite *testObj = [CCSprite spriteWithFile:@"coin front.png"];
-                    testObj.position = ccp(location.x, location.y);
-                    testObj.scale = 0.4;
-                    testObj.tag = 0;
-                    [self addChild:testObj];
-                    [coins addObject:testObj];
+               // if (arc4random() % 100 < 10) {
+                 //   CCSprite *testObj = [CCSprite spriteWithFile:@"coin front.png"];
+                   // testObj.position = ccp(location.x, location.y);
+                   // testObj.scale = 0.4;
+                   // testObj.tag = 0;
+                   // [self addChild:testObj];
+                   // [coins addObject:testObj];
                     
-                    CCRotateBy *rotateCoin = [CCRotateBy actionWithDuration:1.9 angle:(360*7)];
-                    CCCallFuncN *removeCoin = [CCCallFuncN actionWithTarget:self selector:@selector(removeCoin:)];
-                    [testObj runAction:[CCSequence actions: rotateCoin, removeCoin, nil]];
-                }
+                    //CCRotateBy *rotateCoin = [CCRotateBy actionWithDuration:1.9 angle:(360*7)];
+                    //CCCallFuncN *removeCoin = [CCCallFuncN actionWithTarget:self selector:@selector(removeCoin:)];
+                    //[testObj runAction:[CCSequence actions: rotateCoin, removeCoin, nil]];
+                //}
                 
-                //head.hp -= 2;
                 head.numberOfHits ++;
-                //update scores - show little label sign beside
                 int score_added = 5 + scene.consecHits / 5;
                 [scene updateScore:score_added];
                 
@@ -677,27 +932,31 @@
                 [self addChild:ctLabel z:10];
                 [ctLabel setString:[NSString stringWithFormat:@"+%i", score_added]];
                 ctLabel.visible = TRUE;
-                ctLabel.position = ccp(head.position.x, head.position.y);
+                ctLabel.position = ccp(location.x, location.y);
                 CCDelayTime *delay = [CCDelayTime actionWithDuration:1.0];
-                CCCallFuncN *remove = [CCCallFuncN actionWithTarget:self selector:@selector(removeNode:)];
                 [ctLabel runAction:[CCSequence actions:delay, remove, nil]];
-                
 
                 [scene updateConsecHits];
-
                 
-                //if not hit correct "mole"
+                //CCDelayTime *delay = [CCDelayTime actionWithDuration:0.25];
+                CCMoveBy *moveDown = [CCMoveBy actionWithDuration:0.25 position:ccp(0, -60)];
+                CCMoveBy *easeMoveDown = [CCEaseInOut actionWithAction:moveDown rate:3.5];
+                CCCallFuncN *resetHead = [CCCallFuncN actionWithTarget:self selector:@selector(resetHead:)];
+                CCCallFuncN *overlayBurnt = [CCCallFuncN actionWithTarget:self selector:@selector(overlayBurn:)];
+                
+                [head runAction:[CCSequence actions: overlayBurnt, easeMoveDown, resetHead, nil]];
             } else {
                 CGSize winSize = [CCDirector sharedDirector].winSize;
 
-                CCSprite *redscreen = [CCSprite spriteWithFile:@"red_screen.png"];
-                [self addChild:redscreen];
+                CCSprite *redscreen = [CCSprite spriteWithSpriteFrameName:@"red_screen.png"];
+                [baselayer addChild:redscreen];
                 redscreen.anchorPoint = ccp(0.5,0.5);
                 redscreen.position = ccp(winSize.width/2, winSize.height/2);
                 redscreen.visible = TRUE;
                 CCDelayTime *delay = [CCDelayTime actionWithDuration:0.5];
                 CCCallFuncN *remove = [CCCallFuncN actionWithTarget:self selector:@selector(removeNode:)];
                 [redscreen runAction:[CCSequence actions:delay, remove, nil]];
+                
                 //vibrate to indicate mis-hit
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                 
@@ -709,12 +968,11 @@
                 head.numberOfHits ++;
                 
                 //send all heads down
-                for (Character *head in heads) {
-                    CCMoveBy *moveDown = [CCMoveBy actionWithDuration:0.25 position:ccp(0, -10)];
-                    CCMoveBy *easeMoveDown = [CCEaseInOut actionWithAction:moveDown rate:3.5];
-                    CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
+                for (Character *head2 in heads) {
+                    //[head2 stopAllActions];
+                    CCCallFuncN *resetHead = [CCCallFuncN actionWithTarget:self selector:@selector(resetHead:)];
                     
-                    [head runAction:[CCSequence actions: easeMoveDown , checkCombo, nil]];
+                    [head runAction:[CCSequence actions: resetHead, nil]];
                 }
                 break;
             }
@@ -725,21 +983,30 @@
             //CCMoveBy *easeMoveDown = [CCEaseOut actionWithAction:moveDown rate:3.0];
             //need to remove hiteffect sprite just like the coins
             
-            CCDelayTime *delay = [CCDelayTime actionWithDuration:0.25];
-            CCMoveBy *moveDown = [CCMoveBy actionWithDuration:0.25 position:ccp(0, -10)];
-            CCMoveBy *easeMoveDown = [CCEaseInOut actionWithAction:moveDown rate:3.5];
-            
-            CCCallFuncN *checkCombo = [CCCallFuncN actionWithTarget:self selector:@selector(checkCombo:)];
-            CCCallFuncN *overlayBurnt = [CCCallFuncN actionWithTarget:self selector:@selector(overlayBurn:)];
-            
-            [head runAction:[CCSequence actions: overlayBurnt, easeMoveDown , checkCombo, nil]];
-            
             //stop the loop as we are not support multi-touch anymore
             return YES;
         }
-    } //end heads loop*/
+    } //end heads loop
+
+    return YES;
+}
+
+-(void) onExit {
+    //[coins removeAllObjects];
+    [heads removeAllObjects];
+    //[bomb removeAllObjects];
+    //[rainbows removeAllObjects];
     
-    return NO;
+    //CGSize winsize = [[CCDirector sharedDirector] winSize];
+    
+    [super onExit];
+}
+
+-(void)setArrayForReview {
+    Game *game = [Game sharedGame];
+    
+    NSArray *hitsArray = [NSArray arrayWithArray:heads];
+    [game setArrayOfHits:hitsArray];
 }
 
 // on "dealloc" you need to release all your retained objects
@@ -792,10 +1059,8 @@ static id<GameOverDelegate> gameOverDelegate = nil;
     if (baseScore > current_hs) {
         [self writePlist:@"High_Score" withUpdate:baseScore];
     }
-    
     int current_gold = [self readPlist:@"Total_Gold"];
     [self writePlist:@"Total_Gold" withUpdate:(current_gold + moneyEarned)];
-    
     int current_gp = [self readPlist:@"Games_Played"];
     [self writePlist:@"Games_Played" withUpdate:(current_gp + 1)];
     
@@ -807,6 +1072,7 @@ static id<GameOverDelegate> gameOverDelegate = nil;
         [self writePlist:@"Bgs_Unlocked" withUpdate:(current_bgs_unlocked + 1)];
     }
     
+    //turn off tutorial if successfully played 1 round of games
     if ([[dic objectForKey:@"Tutorial"] boolValue]) {
         [dic setObject:[NSNumber numberWithBool:NO] forKey:@"Tutorial"];
         [dic writeToFile:[self dataFilepath] atomically:NO];
@@ -816,7 +1082,6 @@ static id<GameOverDelegate> gameOverDelegate = nil;
     [self.layer setArrayForReview];
     
     [self performSelector:@selector(transitionToReview) withObject:nil afterDelay:2.0];
-    
     
     Game *game = [Game sharedGame];
     [game setBaseScore:baseScore];
@@ -908,9 +1173,4 @@ static id<GameOverDelegate> gameOverDelegate = nil;
     return gameOverDelegate;
 }
 
--(void)animationCoolDown {
-    CCNode *layer = self.layer;
-    HelloWorldLayer *helloLayer = (HelloWorldLayer *)layer;
-    [helloLayer setStopAnimations:YES];
-}
 @end

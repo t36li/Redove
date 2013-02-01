@@ -24,7 +24,7 @@
     //3. swipe bomb to go away (temp. removed bomb)
     //4. I think need to hit each guy 2-3 times for it to go away
     
-    int hp;
+    //int hp;
     NSString *whackID;
 
     BOOL tappable;

@@ -16,7 +16,7 @@
     CCLabelTTF *timeLabel, *scoreLabel, *hitsLabel, *gameOverLabel;
     CCMenu *pauseMenu;
     BOOL gameOver;
-    CCSprite *scoreboard, *cloud;
+    CCSpriteBatchNode *hud_spritesheet;
     ccTime myTime;
     int lives;
 }
