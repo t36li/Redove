@@ -11,14 +11,14 @@
 @class CocosViewController;
 
 @interface Game : NSObject {
-    BOOL isGameOver;
-    BOOL isEnabledBackgroundMusic;
-    BOOL isEnabledSoundFX;
+   // BOOL isGameOver;
+   // BOOL isEnabledBackgroundMusic;
+   // BOOL isEnabledSoundFX;
     
     BOOL readyToStart;
     BOOL unlocked_new_bg;
     int bgs_to_random;
-    int moneyEarned, baseScore;
+    int baseScore; //moneyEarned
     
     int selectHeadCount;
     NSMutableArray *arrayOfAllPopups;
@@ -30,13 +30,13 @@
     NSArray *friendArray;
 }
 
-@property (nonatomic, readwrite) BOOL isGameOver;
-@property (nonatomic, readwrite) BOOL isEnabledBackgroundMusic;
-@property (nonatomic, readwrite) BOOL isEnabledSoundFX;
+//@property (nonatomic, readwrite) BOOL isGameOver;
+//@property (nonatomic, readwrite) BOOL isEnabledBackgroundMusic;
+//@property (nonatomic, readwrite) BOOL isEnabledSoundFX;
 @property (nonatomic, readwrite) BOOL unlocked_new_bg;
 @property (nonatomic, readwrite) int bgs_to_random;
-@property (nonatomic, readwrite) int moneyEarned;
-@property (nonatomic, readwrite) int multiplier;
+//@property (nonatomic, readwrite) int moneyEarned;
+//@property (nonatomic, readwrite) int multiplier;
 @property (nonatomic, readwrite) int baseScore;
 @property (nonatomic, readwrite) BOOL readyToStart;
 

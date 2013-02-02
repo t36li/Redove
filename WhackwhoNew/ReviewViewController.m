@@ -154,15 +154,15 @@
         selectedIndex = 0;
     }
     
-    int n = [[Game sharedGame] selectHeadCount];
+    //int n = [[Game sharedGame] selectHeadCount];
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
     
     NSNumber *last_game_score = [NSNumber numberWithInt:[[Game sharedGame] baseScore]];
     [scorelbl setText:[numberFormatter stringFromNumber:last_game_score]];
-    NSNumber *last_game_gold = [NSNumber numberWithInt:[[Game sharedGame] moneyEarned]];
-    [goldlbl setText:[numberFormatter stringFromNumber:last_game_gold]];
+    //NSNumber *last_game_gold = [NSNumber numberWithInt:[[Game sharedGame] moneyEarned]];
+    [goldlbl setText:@"0"];
     
     if ([[Game sharedGame]unlocked_new_bg]) {
         UIAlertView *unlock_alert = [[UIAlertView alloc] initWithTitle:nil message:@"Congratulations! You have unlocked a new game background!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];

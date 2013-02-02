@@ -34,6 +34,7 @@
         timeLabel.color = ccc3(90, 178, 143);
         timeLabel.anchorPoint = ccp(0,0);
         timeLabel.position = ccp(15 + clock.contentSize.width, winSize.height - clock.contentSize.height - 10);
+        //timeLabel.string = nil;
         [self addChild:timeLabel z:100];
         
         //add "pause" label
@@ -47,7 +48,7 @@
         for (int i = 0; i < lives; i++) {
             CCSprite *life = [CCSprite spriteWithFile:heartSp];
             life.anchorPoint = ccp(0,0);
-            life.position = ccp(winSize.width - (i + 1)*(life.contentSize.width+10), winSize.height - life.contentSize.height - 10);
+            life.position = ccp(winSize.width - (i + 1)*(life.contentSize.width+5), winSize.height - life.contentSize.height - 10);
             [hearts addObject:life];
             [self addChild:life z:100];
         }
@@ -57,7 +58,7 @@
         scoreLabel.anchorPoint = ccp(0.5, 0.5);
         scoreLabel.color = ccc3(240, 150, 55);
         scoreLabel.position = ccp(245, 20);
-        [scoreLabel setString:[NSString stringWithFormat:@"%i", 0]];
+        //scoreLabel.string = nil;
         [self addChild:scoreLabel z:100];
         
         gameOverLabel = [CCLabelTTF labelWithString:@"0" fontName:@"chalkduster" fontSize:50];

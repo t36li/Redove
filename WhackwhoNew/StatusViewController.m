@@ -143,7 +143,7 @@ WhichTransition transitionType;
             
             //if popularity changes... then what
             [high_score_lbl setText:[self readPlist:@"High_Score"]];
-            [total_gold_lbl setText:[self readPlist:@"Total_Gold"]];
+            [total_gold_lbl setText:[self readPlist:@"Bgs_Unlocked"]];
             [total_gp_lbl setText:[self readPlist:@"Games_Played"]];
             [popularity_lbl setText:[NSString stringWithFormat:@"%d",[[UserInfo sharedInstance] popularity]]];
             
@@ -233,7 +233,7 @@ WhichTransition transitionType;
     }
     
     [high_score_lbl setText:[self readPlist:@"High_Score"]];
-    [total_gold_lbl setText:[self readPlist:@"Total_Gold"]];
+    [total_gold_lbl setText:[self readPlist:@"Bgs_Unlocked"]];
     [total_gp_lbl setText:[self readPlist:@"Games_Played"]];
 
 }

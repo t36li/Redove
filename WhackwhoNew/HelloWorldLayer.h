@@ -24,13 +24,14 @@
 @interface HelloWorldLayer : CCLayer
 {
     NSMutableArray *heads;
-    //NSMutableArray *rainbows;
+    NSMutableArray *sve; //special visual effects after certain consec hits
     //NSMutableArray *coins;
     //NSMutableArray *bomb;
     
     float speed;
     int level;
     int x_min, x_max, y_min, y_max;
+    int sve_displayed;
 
     //BOOL has_bomb;
     

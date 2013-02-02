@@ -13,12 +13,12 @@ static Game *sharedGame = nil;
 
 @implementation Game
 
-@synthesize isGameOver;
-@synthesize isEnabledBackgroundMusic;
-@synthesize isEnabledSoundFX;
+//@synthesize isGameOver;
+//@synthesize isEnabledBackgroundMusic;
+//@synthesize isEnabledSoundFX;
 @synthesize unlocked_new_bg;
 @synthesize bgs_to_random;
-@synthesize moneyEarned, baseScore;
+@synthesize baseScore; //moneyEarned
 //@synthesize allHeads;
 
 @synthesize selectHeadCount;
@@ -36,18 +36,19 @@ static Game *sharedGame = nil;
 - (id)init {
     self = [super init];
     if (self != nil) {
-        self.isGameOver = NO;
-        self.isEnabledBackgroundMusic = YES;
-        self.isEnabledSoundFX = YES;
+        //self.isGameOver = NO;
+        //self.isEnabledBackgroundMusic = YES;
+        //self.isEnabledSoundFX = YES;
         self.unlocked_new_bg = NO;
         self.bgs_to_random = 0;
-        self.moneyEarned = 0;
-        self.multiplier = 0;
+        //self.moneyEarned = 0;
+        //self.multiplier = 0;
         self.baseScore = 0;
         //allHeads = [[NSMutableArray alloc] init];
         //selectedHeads = [[NSMutableArray alloc] init];
         selectHeadCount = 0;
         arrayOfAllPopups = [[NSMutableArray alloc] init];
+        readyToStart = NO;
         friendArray = nil;
     }
     return self;
@@ -91,17 +92,13 @@ static Game *sharedGame = nil;
 #pragma mark Reset
 
 - (void) resetGameState {
-    [self setIsGameOver:NO];
-    [self setIsEnabledBackgroundMusic:YES];
-    [self setIsEnabledSoundFX:YES];
-    //[self setDifficulty:0];
-    [self setMoneyEarned:0];
-    [self setMultiplier:0];
-    [self setBaseScore:0];
-    //[allHeads removeAllObjects];
-    //[selectedHeads removeAllObjects];
-    [self setSelectHeadCount:0];
+    //self.isGameOver = NO;
+    self.unlocked_new_bg = NO;
+    self.bgs_to_random = 0;
+    self.baseScore = 0;
+    selectHeadCount = 0;
     [arrayOfAllPopups removeAllObjects];
+    readyToStart = NO;
     friendArray = nil;
 }
 

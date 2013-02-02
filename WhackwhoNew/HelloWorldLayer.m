@@ -53,11 +53,14 @@
     //coins = [[NSMutableArray alloc] init];
     //bomb = [[NSMutableArray alloc] init];
     heads = [[NSMutableArray alloc] init];
+    sve = [[NSMutableArray alloc] init];
+    sve_displayed = 0;
     
     //determine which background to load
     //if unlocked new level, then randomize
     int temp = [[Game sharedGame] bgs_to_random];
     level = arc4random() % (temp+1);
+    
     glClearColor(255, 255, 255, 255);
     splashFrames = [NSMutableArray array];
     objectsCantCollide = [NSMutableArray array];
@@ -65,20 +68,23 @@
     [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
     [CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
     
-    level = hillLevel;
+    level = spaceLevel;
     switch (level) {
         case 0:
+        {
             [self performSelector:@selector(setLevelOne)];
-
             break;
+        }
         case 1:
+        {
             [self performSelector:@selector(setLevelTwo)];
-
             break;
+        }
         case 2:
+        {
             [self performSelector:@selector(setLevelThree)];
-
             break;
+        }
     }
     
     //initialize shake handler
@@ -133,7 +139,7 @@
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:filePath];
     locations = [dictionary objectForKey:@"points"];
     
-    NSArray *temparray = [NSArray arrayWithObjects:@"hill_cloud1.png", @"hill_cloud2.png", @"hill_rainbow1.png", @"hill_rainbow2.png", @"hill_rainbow3.png", @"hill_flower1.png", @"hill_flower2.png", @"hill_flower3.png", @"hill_flower4.png", @"hill_scoreboard.png", @"grass1.png", @"grass2.png", nil];
+    NSArray *temparray = [NSArray arrayWithObjects:@"hill_rainbow1.png", @"hill_rainbow2.png", @"hill_rainbow3.png", @"hill_cloud1.png", @"hill_cloud2.png", @"hill_flower1.png", @"hill_flower2.png", @"hill_flower3.png", @"hill_flower4.png", @"hill_scoreboard.png", @"grass1.png", @"grass2.png", nil];
     NSNumber *x, *y;
 
     for (int i = 0; i < [temparray count]; i++) {
@@ -146,7 +152,10 @@
         [tempSprite setPosition:CGPointMake(x.integerValue, y.integerValue)];
         [tempSprite convertToWorldSpace:tempSprite.position];
         [baselayer addChild:tempSprite];
-        if (i > 5) {
+        if (i < 3) {
+            tempSprite.visible = FALSE;
+            [sve addObject:tempSprite];
+        } else if (i >= 5) {
             [objectsCantCollide addObject:tempSprite];
         }
     }
@@ -183,7 +192,7 @@
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:filePath];
     locations = [dictionary objectForKey:@"points"];
     
-    NSArray *temparray = [NSArray arrayWithObjects:@"beach.png", @"coral1_1.png", @"coral2_1.png", @"crab1.png", @"rock1.png", @"rock2.png", @"sea_scoreboard.png", @"purplestar1.png", @"sea_fish1.png", @"sea_fish2.png", @"sea_fish3.png",  @"sea_shell.png", @"seaconch.png", @"seaweed1.png", @"starsgrouped.png", nil];
+    NSArray *temparray = [NSArray arrayWithObjects:@"beach.png", @"coral1_1.png", @"coral2_1.png", @"crab1.png", @"rock1.png", @"rock2.png", @"sea_scoreboard.png", @"purplestar1.png",  @"sea_shell.png", @"seaconch.png", @"seaweed1.png", @"starsgrouped.png", @"sea_fish1.png", @"sea_fish2.png", @"sea_fish3.png", nil];
     NSNumber *x, *y;
     
     for (int i = 0; i < [temparray count]; i++) {
@@ -196,8 +205,11 @@
         [tempSprite setPosition:CGPointMake(x.integerValue, y.integerValue)];
         [tempSprite convertToWorldSpace:tempSprite.position];
         [baselayer addChild:tempSprite];
-        if (i <= 7) {
+        if (i <= 6) {
             [objectsCantCollide addObject:tempSprite];
+        } else if (i >= 12) {
+            tempSprite.visible = FALSE;
+            [sve addObject:tempSprite];
         }
     }
 }
@@ -246,107 +258,9 @@
     }
 }
 
-/*-(void) setHillsLevel {
-    CGSize winSize = [CCDirector sharedDirector].winSize;
-
-    glClearColor(255, 255, 255, 255);
-    
-    [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
-    [CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
-    
-    splashFrames = [NSMutableArray array];
-    
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"splash_sheet.plist"];
-    splashSheet = [CCSpriteBatchNode batchNodeWithFile:@"splash_sheet.png"];
-    [self addChild:splashSheet z:100];
-    for (int i = 1; i <= 13; i ++) {
-        [splashFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"s%d.png", i]]];
-    }
-    
-    CCSpriteBatchNode *spritesBgNode;
-    spritesBgNode = [CCSpriteBatchNode batchNodeWithFile:@"Hills_Level_Background.pvr.ccz"];
-    [self addChild:spritesBgNode];
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"Hills_Level_Background.plist"];
-    
-    //hills_background is the farthest back
-    //NSArray *imageNames = [NSArray arrayWithObjects: hills_background, hill_topmid, hill_topleft, hill_topright, hill_midmid, hill_midleft, hill_midright, hill_botmid, hill_botleft, hill_botright, nil];
-    
-    for(int i = 0; i < imageNames.count; ++i) {
-        NSString *image = [imageNames objectAtIndex:i];
-        CCSprite *sprite = [CCSprite spriteWithSpriteFrameName:image];
-        sprite.anchorPoint = ccp(0.5,0.5);
-        sprite.position = ccp(winSize.width/2, winSize.height/2);
-        [spritesBgNode addChild:sprite z:(i*-10)];
-    }
-    
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Level1" ofType:@"plist"];
-    NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:filePath];
-    locations = [dictionary objectForKey:@"points"];
-    
-    //add "rainbows" !!! do this in spritesheet later on
-    rainbows = [[NSMutableArray alloc] init];
-    CCSprite *rainbow = [CCSprite spriteWithFile:@"rainbow4.png"];
-    rainbow.position = ccp(156, 192);
-    rainbow.visible = FALSE;
-    [rainbows addObject:rainbow];
-    CCSprite *rainbow2 = [CCSprite spriteWithTexture:[rainbow texture]];
-    rainbow2.position = ccp(14, 247);
-    rainbow2.scale = 0.5;
-    rainbow2.visible = FALSE;
-    [rainbows addObject:rainbow2];
-    CCSprite *rainbow3 = [CCSprite spriteWithTexture:[rainbow texture]];
-    rainbow3.position = ccp(443, 214);
-    rainbow3.scale = 0.8;
-    rainbow3.visible = FALSE;
-    [rainbows addObject:rainbow3];
-    CCSprite *rainbow4 = [CCSprite spriteWithTexture:[rainbow texture]];
-    rainbow4.position = ccp(305, 220);
-    rainbow4.scale = 0.3;
-    rainbow4.visible = FALSE;
-    [rainbows addObject:rainbow4];
-    [self addChild:rainbow4 z:-95];
-    [self addChild:rainbow3 z:-95];
-    [self addChild:rainbow2 z:-95];
-    [self addChild:rainbow z:-95];
-}
-
--(void) setSeaLevel {
-    CGSize winSize = [CCDirector sharedDirector].winSize;
-    
-    glClearColor(255, 255, 255, 255);
-    
-    [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
-    [CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
-    
-    splashFrames = [NSMutableArray array];
-    
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"splash_sheet.plist"];
-    splashSheet = [CCSpriteBatchNode batchNodeWithFile:@"splash_sheet.png"];
-    [self addChild:splashSheet z:100];
-    for (int i = 1; i <= 13; i ++) {
-        [splashFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"s%d.png", i]]];
-    }
-    
-    CCSpriteBatchNode *spritesBgNode;
-    spritesBgNode = [CCSpriteBatchNode batchNodeWithFile:@"seaLevelBackground.pvr.ccz"];
-    [self addChild:spritesBgNode];
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"seaLevelBackground.plist"];
-    
-    NSArray *images = [NSArray arrayWithObjects:@"L1.png", @"L2.png", @"L3.png", @"L4.png", @"L5.png", @"L6.png", nil];
-    for(int i = 0; i < images.count; ++i) {
-        NSString *image = [images objectAtIndex:i];
-        CCSprite *sprite = [CCSprite spriteWithSpriteFrameName:image];
-        sprite.anchorPoint = ccp(0.5,0.5);
-        sprite.position = ccp(winSize.width/2, winSize.height/2);
-        [spritesBgNode addChild:sprite z:(i*10)];
-    }
-    
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Level2" ofType:@"plist"];
-    NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:filePath];
-    locations = [dictionary objectForKey:@"points"];
-}*/
-
 -(void) tryPopheads{
+
+    
     @synchronized(heads) {
     	for (Character *head in heads) {
             if (CGPointEqualToPoint(head.position, CGPointZero)) {
@@ -357,17 +271,16 @@
 }
 
 -(BOOL) checkCollission: (Character *) head {
-    //Collission checking code? Inefficient
-    CGRect absrect1, absrect2;
-    absrect1 = CGRectMake(head.position.x, head.position.y, [head boundingBox].size.width, [head boundingBox].size.height);
+    //CGRect absrect1, absrect2;
+    //absrect1 = CGRectMake(head.position.x, head.position.y, [head boundingBox].size.width, [head boundingBox].size.height);
     for (Character *head2 in heads) {
         //if this is itself, then skip it
         if ([head2 isEqual:head]) {
             continue;
         } else {
             //check for collision (i.e. overlap)
-            absrect2 = CGRectMake(head2.position.x, head2.position.y, [head2 boundingBox].size.width, [head2 boundingBox].size.height);
-            if (CGRectIntersectsRect(absrect1, absrect2)) {
+            //absrect2 = CGRectMake(head2.position.x, head2.position.y, [head2 boundingBox].size.width, [head2 boundingBox].size.height);
+            if (CGRectIntersectsRect(head.boundingBox, head2.boundingBox)) {
                 //CCLOG(@"intersected!");
                 [head stopAllActions];
                 head.position = CGPointZero;
@@ -417,17 +330,23 @@
     float delayTime;
     switch (level) {
         case hillLevel:
+        {
             splash = [CCSprite spriteWithSpriteFrameName:@"mudsplash1.png"];
             delayTime = 0.6;
             break;
+        }
         case seaLevel:
+        {
             splash = [CCSprite spriteWithSpriteFrameName:@"watersplash1.png"];
             delayTime = 0.3;
             break;
+        }
         case spaceLevel:
+        {
             splash = [CCSprite spriteWithSpriteFrameName:@"spacesplash1.png"];
             delayTime = 0;
             break;
+        }
     }
     [baselayer addChild:splash];
     
@@ -445,14 +364,20 @@
     //!!! NEED TO SCALE SPRITE HERE BASED ON Y_POSITION
     switch (level) {
         case hillLevel:
+        {
             head.position = ccp(splash.position.x - 5, splash.position.y + 40);
             break;
+        }
         case seaLevel:
+        {
             head.position = ccp(splash.position.x, splash.position.y + 30);
             break;
+        }
         case spaceLevel:
+        {
             head.position = ccp(splash.position.x, splash.position.y);
             break;
+        }
     }
     
     if ([self checkCollission:head]) {
@@ -712,29 +637,69 @@
     
     //display rainbows according to hit streaks
     if (scene.consecHits == 0 && speed != DEFAULT_HEAD_POP_SPEED) {
+        switch (level) {
+            case hillLevel:
+            {
+                for (CCSprite *rainbow in sve) {
+                    [rainbow stopAllActions];
+                    rainbow.visible = FALSE;
+                }
+                break;
+            }
+            case seaLevel:
+            {
+                for (CCSprite *fish in sve) {
+                    [fish stopAllActions];
+                    fish.visible = FALSE;
+                }
+                break;
+            }
+            case spaceLevel:
+            {
+                
+            }
+                
+                break;
+        }
         
-        //set all rainbows to not visible
-       // for (CCSprite *rainbow in rainbows) {
-         //   rainbow.visible = FALSE;
-        //}
-        
+        sve_displayed = 0;
         speed = DEFAULT_HEAD_POP_SPEED;
         [self unschedule:@selector(tryPopheads)];
         [self schedule:@selector(tryPopheads) interval:speed];
         
-    } else if (scene.consecHits % 5 == 0){
+    } else if (scene.consecHits != 0 && scene.consecHits % 5 == 0 && head.isSelectedHit){
+        if (sve_displayed > [sve count]) {
+            sve_displayed = [sve count];
+        }
+        CCSprite *sve_unit = [sve objectAtIndex:sve_displayed];
+        switch (level) {
+            case hillLevel:
+            {
+                sve_unit.visible = TRUE;
+                CCFadeTo *fadeOut = [CCFadeTo actionWithDuration:0.5 opacity:80];
+                CCFadeTo *fadeIn = [CCFadeTo actionWithDuration:0.5 opacity:255];
+                CCRepeatForever *repeat = [CCRepeatForever actionWithAction:[CCSequence actionOne:fadeOut two:fadeIn]];
+                [sve_unit runAction:repeat];
+                break;
+            }
+            case seaLevel:
+            {
+                sve_unit.visible = TRUE;
+                CCMoveBy *moveleft = [CCMoveBy actionWithDuration:5.0 position:ccp(-40,0)];
+                CCMoveBy *moveright = [CCMoveBy actionWithDuration:5.0 position:ccp(40,0)];
+                CCRepeatForever *repeat = [CCRepeatForever actionWithAction:[CCSequence actionOne:moveleft two:moveright]];
+                [sve_unit runAction:repeat];
+                break;
+            }
+            case spaceLevel:
+            {
+                
+            }
+                
+                break;
+        }
         
-        //show rainbows every 5 hit combos
-        //for (CCSprite *rainbow in rainbows) {
-          //  if (rainbow.visible == FALSE) {
-            //    [rainbow setVisible:TRUE];
-              //  CCFadeTo *fadeOut = [CCFadeTo actionWithDuration:0.5 opacity:80];
-               // CCFadeTo *fadeIn = [CCFadeTo actionWithDuration:0.5 opacity:255];
-               // CCRepeatForever *repeat = [CCRepeatForever actionWithAction:[CCSequence actionOne:fadeOut two:fadeIn]];
-                //[rainbow runAction:repeat];
-                //break;
-            //}
-        //}
+        sve_displayed++;
         //update speed accordingly with combo times
         speed *= 0.5;
         [self unschedule:@selector(tryPopheads)];
@@ -994,8 +959,8 @@
 -(void) onExit {
     //[coins removeAllObjects];
     [heads removeAllObjects];
+    [sve removeAllObjects];
     //[bomb removeAllObjects];
-    //[rainbows removeAllObjects];
     
     //CGSize winsize = [[CCDirector sharedDirector] winSize];
     
@@ -1032,7 +997,8 @@ static id<GameOverDelegate> gameOverDelegate = nil;
         //score reading initializations
         NSString *path = [self dataFilepath];
         dic = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
-        [[Game sharedGame] setBgs_to_random:[self readPlist:@"Bg_Unlocked"]];
+        int bgs = [self readPlist:@"Bgs_Unlocked"];
+        [[Game sharedGame] setBgs_to_random:bgs];
 
         self.layer = [[HelloWorldLayer alloc] init];
         [self addChild:self.layer z:0];
@@ -1054,13 +1020,15 @@ static id<GameOverDelegate> gameOverDelegate = nil;
         [self.hud showGameOverLabel:@"Game Over!"];
     }
     
-    //update scores
+    //update local storage
     int current_hs = [self readPlist:@"High_Score"];
     if (baseScore > current_hs) {
         [self writePlist:@"High_Score" withUpdate:baseScore];
     }
+    
     int current_gold = [self readPlist:@"Total_Gold"];
     [self writePlist:@"Total_Gold" withUpdate:(current_gold + moneyEarned)];
+    
     int current_gp = [self readPlist:@"Games_Played"];
     [self writePlist:@"Games_Played" withUpdate:(current_gp + 1)];
     
@@ -1068,7 +1036,6 @@ static id<GameOverDelegate> gameOverDelegate = nil;
     if ((current_gp + 1) % 5 == 0) {
         [[Game sharedGame] setUnlocked_new_bg:YES];
         int current_bgs_unlocked = [self readPlist:@"Bgs_Unlocked"];
-        
         [self writePlist:@"Bgs_Unlocked" withUpdate:(current_bgs_unlocked + 1)];
     }
     
@@ -1077,16 +1044,16 @@ static id<GameOverDelegate> gameOverDelegate = nil;
         [dic setObject:[NSNumber numberWithBool:NO] forKey:@"Tutorial"];
         [dic writeToFile:[self dataFilepath] atomically:NO];
     }
-
+    
+    Game *game = [Game sharedGame];
+    [game setBaseScore:baseScore];
+    //[game setMoneyEarned:moneyEarned];
+    //[game setMultiplier:consecHits];
+    
     [self cleanup];
     [self.layer setArrayForReview];
     
     [self performSelector:@selector(transitionToReview) withObject:nil afterDelay:2.0];
-    
-    Game *game = [Game sharedGame];
-    [game setBaseScore:baseScore];
-    [game setMoneyEarned:moneyEarned];
-    [game setMultiplier:consecHits];
 }
 
 //Plist methods
@@ -1122,6 +1089,7 @@ static id<GameOverDelegate> gameOverDelegate = nil;
 
 -(void)transitionToReview {
     [gameOverDelegate proceedToReview];
+    //[self removeAllChildrenWithCleanup:YES];
 }
 
 -(void)reduceHealth {
