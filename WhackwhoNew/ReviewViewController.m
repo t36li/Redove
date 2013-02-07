@@ -224,8 +224,10 @@
 }
 
 -(void)hitBack:(id)sender {
-    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count - 6] animated:YES];
-    //[self.navigationController popToRootViewControllerAnimated:YES];
+    [[Game sharedGame] resetGameState];
+
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count - 5] animated:YES];
+    
 }
 
 -(void) clearImageViews {

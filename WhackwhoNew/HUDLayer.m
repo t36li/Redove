@@ -67,10 +67,15 @@
         gameOverLabel.position = ccp(winSize.width/2, winSize.height/2);
         gameOverLabel.visible = FALSE;
         [self addChild:gameOverLabel z:100];
-        
-        [self schedule:@selector(timerUpdate:) interval:0.5f];
     }
     return self;
+}
+
+-(void)onEnterTransitionDidFinish {
+    [self schedule:@selector(timerUpdate:) interval:0.5f];
+
+    [timeLabel setString:[NSString stringWithFormat:@"%d:%02d", (int)myTime/60, (int)myTime%60]];
+    [scoreLabel setString:[NSString stringWithFormat:@"%d", 0]];
 }
 
 -(void) resetCloud: (id) sender {
@@ -83,6 +88,8 @@
 -(void) quitTapped: (id) sender  {
     [[CCDirector sharedDirector] resume];
     [[Game sharedGame] resetGameState];
+    
+    [((HelloWorldScene *)self.parent) finalCleanup];
     [[HelloWorldScene gameOverDelegate] returnToMenu];
 }
 
@@ -169,4 +176,11 @@
     [gameOverLabel setString:[NSString stringWithFormat:@"%@", msg]];
 }
 
+-(void)finalCleanup {
+    hearts = nil;
+    hud_spritesheet = nil;
+    
+    [self removeAllChildrenWithCleanup:YES];
+    [self unscheduleAllSelectors];
+}
 @end

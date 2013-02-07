@@ -26,6 +26,7 @@
 -(void)updateScore:(NSInteger)score;
 -(void)updateHits:(NSInteger)hits;
 -(void)showGameOverLabel:(NSString *)msg;
+-(void)finalCleanup;
 
 //- (void)showPauseMenu:(id<GameOverDelegate>)delegate;
 //@property (nonatomic, retain) id<GameOverDelegate> gameOverDelegate;

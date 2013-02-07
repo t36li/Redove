@@ -55,6 +55,7 @@
 @property (nonatomic, readwrite) int y_max;
 
 -(void)setArrayForReview;
+-(void)finalCleanup;
 
 @end
 
@@ -87,6 +88,7 @@
 -(NSInteger)consecHits;
 -(NSInteger)moneyEarned;
 -(NSInteger)baseScore;
+-(void)finalCleanup;
 
 +(void)setGameOverDelegate:(id<GameOverDelegate>)delegate;
 +(id<GameOverDelegate>)gameOverDelegate;

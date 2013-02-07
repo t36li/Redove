@@ -114,6 +114,23 @@
      
 }
 
+-(void)finalCleanup {
+    for (Character *head in heads) {
+        [[CCTextureCache sharedTextureCache] removeTexture:[head texture]];
+    }
+    
+    heads=nil;
+    sve = nil;
+    
+    locations = nil;
+    baselayer = nil;
+    splashFrames = nil;
+    objectsCantCollide = nil;
+    
+    [self removeAllChildrenWithCleanup:YES];
+    [self unscheduleAllSelectors];
+}
+
 -(void) setLevelOne {
     CGSize winSize = [CCDirector sharedDirector].winSize;
     
@@ -1053,7 +1070,16 @@ static id<GameOverDelegate> gameOverDelegate = nil;
     [self cleanup];
     [self.layer setArrayForReview];
     
+    [self finalCleanup];
     [self performSelector:@selector(transitionToReview) withObject:nil afterDelay:2.0];
+}
+
+-(void)finalCleanup {
+    [self.layer finalCleanup];
+    [self.hud finalCleanup];
+    [self removeAllChildrenWithCleanup:YES];
+    [self unscheduleUpdate];
+    [self unscheduleAllSelectors];
 }
 
 //Plist methods
