@@ -8,7 +8,6 @@
 
 #import "ModeSelectionViewController.h"
 #import "cocos2d.h"
-#import "StatusViewLayer.h"
 #import "Game.h"
 
 @implementation ModeSelectionViewController

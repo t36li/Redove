@@ -15,9 +15,7 @@
 #import "WEPopoverContentViewController.h"
 #import "WEPopoverController.h"
 #import "StatusViewTutorialPopover.h"
-//#import "StatusViewLayer.h"
-//#import "HelloWorldLayer.h"
-//#import "Dragbox.h"
+#import "Game.h"
 
 //define tags
 //#define helmet_Label 1
@@ -138,8 +136,9 @@ WhichTransition transitionType;
             UIImage *face_DB = [[UserInfo sharedInstance] croppedImage];
             
             [faceView setImage:face_DB];
-            [bodyView setImage:[UIImage imageNamed:standard_blue_body]];
-            
+            int whichBody = (arc4random() % 5) + 1;
+            [[Game sharedGame] setRandomed_body:whichBody];
+            [bodyView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"body%i_1.png", whichBody]]];
             
             //if popularity changes... then what
             [high_score_lbl setText:[self readPlist:@"High_Score"]];

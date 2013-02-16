@@ -18,13 +18,11 @@ static Game *sharedGame = nil;
 //@synthesize isEnabledSoundFX;
 @synthesize unlocked_new_bg;
 @synthesize bgs_to_random;
-@synthesize baseScore; //moneyEarned
-//@synthesize allHeads;
+@synthesize baseScore;
+@synthesize randomed_body;
 
 @synthesize selectHeadCount;
-//@synthesize selectedHeads;
 @synthesize arrayOfAllPopups, arrayOfHits;
-//@synthesize head;
 @synthesize gameView;
 @synthesize readyToStart;
 @synthesize friendArray;

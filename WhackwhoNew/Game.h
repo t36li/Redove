@@ -19,6 +19,7 @@
     BOOL unlocked_new_bg;
     int bgs_to_random;
     int baseScore; //moneyEarned
+    int randomed_body;
     
     int selectHeadCount;
     NSMutableArray *arrayOfAllPopups;
@@ -35,17 +36,14 @@
 //@property (nonatomic, readwrite) BOOL isEnabledSoundFX;
 @property (nonatomic, readwrite) BOOL unlocked_new_bg;
 @property (nonatomic, readwrite) int bgs_to_random;
-//@property (nonatomic, readwrite) int moneyEarned;
-//@property (nonatomic, readwrite) int multiplier;
 @property (nonatomic, readwrite) int baseScore;
+@property (nonatomic, readwrite) int randomed_body;
+
 @property (nonatomic, readwrite) BOOL readyToStart;
 
 @property (nonatomic, readwrite) int selectHeadCount;
-//@property (nonatomic, copy) NSMutableArray *allHeads;
-//@property (nonatomic, copy) NSMutableArray *selectedHeads;
 @property (nonatomic, strong) NSMutableArray *arrayOfAllPopups;
 @property (nonatomic, strong) NSArray *arrayOfHits;
-//@property (nonatomic) UIImage *head;
 @property (nonatomic, strong) UIViewController *gameView;
 @property (nonatomic) NSArray *friendArray;
 

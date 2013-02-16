@@ -142,6 +142,9 @@
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
+    [[CCTextureCache sharedTextureCache] removeAllTextures];
+    [[CCDirector sharedDirector] purgeCachedData];
+    
     NSLog(@"Out of Memory!");
 }
 

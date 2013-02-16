@@ -19,13 +19,15 @@
 #define hillLevel 0
 #define seaLevel 1
 #define spaceLevel 2
+#define bodyTag 808
+#define burntTag 909
 
 #pragma mark - HelloWorldLayer
 
 // HelloWorldLayer implementation
 @implementation HelloWorldLayer
 
-@synthesize locations, baselayer, splashFrames;
+@synthesize locations, baselayer, splashFrames, bodyFrames;
 @synthesize x_min, x_max, y_min, y_max; //the min/max for the splash sprite, not head
 
 // on "init" you need to initialize your instance
@@ -59,28 +61,37 @@
     //determine which background to load
     //if unlocked new level, then randomize
     int temp = [[Game sharedGame] bgs_to_random];
-    level = arc4random() % (temp+1);
+    level = arc4random() % (temp+1); //generates 0,1,2,.,temp
     
     glClearColor(255, 255, 255, 255);
     splashFrames = [NSMutableArray array];
+    bodyFrames = [[NSMutableArray alloc] initWithCapacity:5];
     objectsCantCollide = [NSMutableArray array];
     
     [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
     [CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
-    
-    level = spaceLevel;
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bodyAnimations.plist"];
+
+    for (int i = 1; i <= 5; i ++) {
+        NSMutableArray *tempArray = [[NSMutableArray alloc] initWithCapacity:3];
+        for (int j = 1; j <= 3; j++) {
+            [tempArray addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"body%i_%i.png", i, j]]];
+        }
+        [bodyFrames addObject:tempArray];
+    }
+
     switch (level) {
-        case 0:
+        case hillLevel:
         {
             [self performSelector:@selector(setLevelOne)];
             break;
         }
-        case 1:
+        case seaLevel:
         {
             [self performSelector:@selector(setLevelTwo)];
             break;
         }
-        case 2:
+        case spaceLevel:
         {
             [self performSelector:@selector(setLevelThree)];
             break;
@@ -108,8 +119,20 @@
         [self addChild:head z:10];
         [heads addObject:head];
         i++; //for key purpose
+        
+        CCSprite *tempBody = [CCSprite spriteWithSpriteFrameName:@"body1_1.png"];
+        tempBody.anchorPoint = ccp(0.5,1);
+        tempBody.position = ccp(24, 10);
+        tempBody.scale = 0.5;
+        [head addChild:tempBody z:-10];
+        
+        int randomBody = arc4random() % 5;
+        CCAnimation *bodyAnim = [CCAnimation animationWithSpriteFrames:[bodyFrames objectAtIndex:randomBody] delay:0.2f];
+        CCRepeat *bodyAction = [CCRepeat actionWithAction:[CCAnimate actionWithAnimation:bodyAnim] times:-1];
+        CCCallFuncN *endSplashAction = [CCCallFuncN actionWithTarget:self selector:@selector(endSplashAction:)];
+        [tempBody runAction:[CCSequence actions:bodyAction, endSplashAction, nil]];
     }
-
+    
     [self schedule:@selector(tryPopheads) interval:DEFAULT_HEAD_POP_SPEED];
      
 }
@@ -276,8 +299,6 @@
 }
 
 -(void) tryPopheads{
-
-    
     @synchronized(heads) {
     	for (Character *head in heads) {
             if (CGPointEqualToPoint(head.position, CGPointZero)) {
@@ -332,19 +353,9 @@
 }
 
 - (void) popHeadNew: (Character *) head {
-    
-    //switch (level) {
-        //case hillLevel:
-            //[self popHillLevelHead:head];
-          //  break;
-        //case seaLevel:
-        //    [self popSeaLevelHeads:head];
-      //      break;
-    //}
-    
-    //NSNumber *x, *y, *zOrder;
     CCSprite *splash;
     float delayTime;
+    
     switch (level) {
         case hillLevel:
         {
@@ -399,8 +410,8 @@
     
     if ([self checkCollission:head]) {
         [self endSplashAction:splash];
-        return; //do this so 3 heads doesnt pop at once
-    }
+        return; //do this because don't want 3 heads at same time
+   }
     
     /*do {
         int index = (arc4random() % locations.count) + 1;
@@ -640,16 +651,16 @@
     HelloWorldScene *scene = (HelloWorldScene *)self.parent;
     Character *head = (Character *) sender;
     
-    [head setVisible:FALSE];
-    head.scale = 1;
+    head.visible = FALSE;
+    head.scale = 1.0f;
     head.position = CGPointZero;
     
     if (head.didMiss && head.isSelectedHit) {
         [scene resetConsecHits];
     }
     
-    if ([head children]) {
-        [head removeAllChildrenWithCleanup:YES];
+    if ([head getChildByTag:burntTag]) {
+        [head removeChildByTag:burntTag cleanup:YES];
     }
     
     //display rainbows according to hit streaks
@@ -710,10 +721,8 @@
             }
             case spaceLevel:
             {
-                
-            }
-                
                 break;
+            }
         }
         
         sve_displayed++;
@@ -792,46 +801,12 @@
     burntEffect.position = ccp(0, 0);
     burntEffect.scaleX = head.contentSize.width/burntEffect.contentSize.width;
     burntEffect.scaleY = head.contentSize.height/burntEffect.contentSize.height;
-    [head addChild:burntEffect];
-
+    [head addChild:burntEffect z:0 tag:burntTag];
 }
 
-/*- (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
-    [self ccTouchMoved:touch withEvent:event];
-    
-    CCLOG(@"dragbox center: (x: %f, y: %f)", spriteForTesting.position.x, spriteForTesting.position.y);
-}
-
-- (void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
-    CGPoint touchLocation = [self convertTouchToNodeSpace:touch];
-    
-    CGPoint oldTouchLocation = [touch previousLocationInView:touch.view];
-    oldTouchLocation = [[CCDirector sharedDirector] convertToGL:oldTouchLocation];
-    oldTouchLocation = [self convertToNodeSpace:oldTouchLocation];
-    
-    CGPoint translation = ccpSub(touchLocation, oldTouchLocation);
-    CGPoint newPos = ccpAdd(spriteForTesting.position, translation);
-    spriteForTesting.position = newPos;
-}*/
 - (void)registerWithTouchDispatcher {
     [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
 }
-
-/*-(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
-    CGPoint location = [touch locationInView:[touch view]];
-    location = [[CCDirector sharedDirector] convertToGL:location];
-    
-    CCLOG(@"(x: %f, y: %f)", location.x, location.y);
-}
-
--(void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
-    CGPoint location = [touch locationInView:[touch view]];
-    location = [[CCDirector sharedDirector] convertToGL:location];
-    
-    spritePosTest.position = ccp(location.x, location.y);
-    
-    //CCLOG(@"CURSOR MOVED!");
-}*/
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
 
@@ -873,7 +848,7 @@
             head.tappable = FALSE;
             
             CCSprite *hammer = [CCSprite spriteWithSpriteFrameName:@"hit_hammer.png"];
-            hammer.position = ccp(head.position.x + head.contentSize.width - 15, head.position.y + head.contentSize.height - 15);
+            hammer.position = ccp(head.position.x + head.contentSize.width/2, head.position.y + head.contentSize.height/2);
             hammer.rotation = 45;
             hammer.anchorPoint = ccp(1, 0); //bottom right
             [baselayer addChild:hammer z:50];

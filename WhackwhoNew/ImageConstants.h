@@ -64,7 +64,6 @@
     //shields
 #define starting_shield @"SA001.png"
     //body
-#define standard_blue_body @"BO001.png"
     //helmets
 #define transparent_helmet @"white final.png"
 #define standard_blue_head @"HE001.png"

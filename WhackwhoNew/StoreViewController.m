@@ -8,7 +8,6 @@
 
 #import "StoreViewController.h"
 #import "cocos2d.h"
-#import "StatusViewLayer.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface StoreViewController ()

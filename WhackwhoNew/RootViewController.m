@@ -14,7 +14,6 @@
 #import "UserInfo.h"
 #import "User.h"
 #import "cocos2d.h"
-#import "StatusViewLayer.h"
 
 #define PlayToSelectLogInSegue @"PlayToSelectLogInSegue"
 #define PlayToStatusSegue @"PlayToStatusSegue"

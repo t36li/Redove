@@ -10,7 +10,6 @@
 #import "cocos2d.h"
 #import "HelloWorldLayer.h"
 #import "GameOverDelegate.h"
-#import "StatusViewLayer.h"
 
 @interface CocosViewController : UIViewController {
     BOOL goingBackToMenu;

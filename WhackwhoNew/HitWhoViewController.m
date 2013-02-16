@@ -417,7 +417,8 @@
     if (array == 0) {
         friend = [selectedHits objectAtIndex:number];
         faceView.image = friend.head.headImage;
-        bodyView.image = [UIImage imageNamed:standard_blue_body];
+        int randomBody = (arc4random() % 5) + 1;
+        bodyView.image = [UIImage imageNamed:[NSString stringWithFormat:@"body%i_1.png", randomBody]];
         
         //CurrentEquip *ce = friend.currentEquip;
         //faceView.image = friend.head.headImage;
@@ -445,7 +446,8 @@
             friend.head.headImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.whackwho.com/userImages/%@.png", friend.head_id]]]];
         }
         faceView.image = friend.head.headImage;
-        bodyView.image = [UIImage imageNamed:standard_blue_body];
+        int whichBody = [[Game sharedGame] randomed_body];
+        bodyView.image = [UIImage imageNamed:[NSString stringWithFormat:@"body%i_1.png", whichBody]];
         
         //CurrentEquip *ce = friend.currentEquip;
         //faceView.image = friend.head.headImage;
@@ -453,9 +455,9 @@
     }
     
     // If scale is 0, it'll follows the screen scale for creating the bounds
-    UIGraphicsBeginImageContextWithOptions(self.containerView.bounds.size, NO, 1.0f);
+    UIGraphicsBeginImageContextWithOptions(self.faceView.bounds.size, NO, 1.0f);
     
-    [self.containerView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    [self.faceView.layer renderInContext:UIGraphicsGetCurrentContext()];
     
     // Get the image out of the context
     UIImage *copied = UIGraphicsGetImageFromCurrentImageContext();
@@ -509,7 +511,8 @@
     
     //CurrentEquip *ce = friendSelected.currentEquip;
     faceView.image = friendSelected.head.headImage;
-    bodyView.image = [UIImage imageNamed:standard_blue_body];
+    int randomBody = (arc4random() % 5) + 1;
+    bodyView.image = [UIImage imageNamed:[NSString stringWithFormat:@"body%i_1.png", randomBody]];
     
     NSArray *temp = [friendSelected.name componentsSeparatedByString:@" "];
     NSString *firstName = [temp objectAtIndex:0];

@@ -37,7 +37,7 @@
     
     NSDictionary *locations;
     CCSpriteBatchNode *baselayer;
-    NSMutableArray *splashFrames;
+    NSMutableArray *splashFrames, *bodyFrames;
     NSMutableArray *objectsCantCollide;
 
     
@@ -47,6 +47,7 @@
 @property (nonatomic, strong) NSDictionary *locations;
 @property (nonatomic, strong) CCSpriteBatchNode *baselayer;
 @property (nonatomic, strong) NSMutableArray *splashFrames;
+@property (nonatomic, strong) NSMutableArray *bodyFrames;
 @property (nonatomic, readwrite) BOOL stopAnimations;
 
 @property (nonatomic, readwrite) int x_min;
