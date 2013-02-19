@@ -200,6 +200,7 @@
 		D00600A815B5F3080079626F /* libSDWebImageARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D00600A115B5F29A0079626F /* libSDWebImageARC.a */; };
 		D006F6A915B4FB7D0079626F /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = D006F6A815B4FB7D0079626F /* Friend.m */; };
 		D006FCE615B51DC10079626F /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D006FCE515B51DC10079626F /* ImageIO.framework */; };
+		D015288E16D311ED00481464 /* review_upload_background.png in Resources */ = {isa = PBXBuildFile; fileRef = D015288D16D311EC00481464 /* review_upload_background.png */; };
 		D03D411C16A4CC1800C72E17 /* UIBarButtonItem+WEPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D411416A4CC1800C72E17 /* UIBarButtonItem+WEPopover.m */; };
 		D03D411D16A4CC1800C72E17 /* WEPopoverContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D411616A4CC1800C72E17 /* WEPopoverContainerView.m */; };
 		D03D411E16A4CC1800C72E17 /* WEPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D411816A4CC1800C72E17 /* WEPopoverController.m */; };
@@ -849,6 +850,7 @@
 		D006F6A715B4FB7D0079626F /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
 		D006F6A815B4FB7D0079626F /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
 		D006FCE515B51DC10079626F /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		D015288D16D311EC00481464 /* review_upload_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = review_upload_background.png; sourceTree = "<group>"; };
 		D03D411316A4CC1800C72E17 /* UIBarButtonItem+WEPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+WEPopover.h"; sourceTree = "<group>"; };
 		D03D411416A4CC1800C72E17 /* UIBarButtonItem+WEPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+WEPopover.m"; sourceTree = "<group>"; };
 		D03D411516A4CC1800C72E17 /* WEPopoverContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverContainerView.h; sourceTree = "<group>"; };
@@ -1484,6 +1486,7 @@
 		69C95E94159A51E0009966DA /* Background */ = {
 			isa = PBXGroup;
 			children = (
+				D015288D16D311EC00481464 /* review_upload_background.png */,
 				C18AAB5C16B4DD4C003F8F87 /* Main_menu_baselayer.png */,
 				C1B7BB2216A2149600E6F7A8 /* Loading.jpg */,
 				C1B7BB2416A214C400E6F7A8 /* Options_bg.jpg */,
@@ -2834,6 +2837,7 @@
 				C1F6CAF416CEDE20004C71D9 /* bodyAnimations-hd.pvr.ccz in Resources */,
 				C1F6CAF516CEDE20004C71D9 /* bodyAnimations.plist in Resources */,
 				C1F6CAF616CEDE20004C71D9 /* bodyAnimations.pvr.ccz in Resources */,
+				D015288E16D311ED00481464 /* review_upload_background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

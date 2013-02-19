@@ -18,6 +18,7 @@
 #define FriendList_bg @"friend list (background).png"
 #define loading_bg @"Loading.jpg"
 #define store_bg @"store background.png"
+#define review_upload_bg @"review_upload_background.png"
 
 //buttons
 #define AccessFacebookIcon @"FacebookButton30x34.png"

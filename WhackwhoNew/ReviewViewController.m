@@ -30,6 +30,13 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    
+    if (!once) {
+        once = true;
+    } else {
+        return;
+    }
+    
     NSArray *friends = [[Game sharedGame] friendArray];
     NSArray *hits = [[Game sharedGame] arrayOfHits];
     
@@ -215,6 +222,8 @@
     effects = [NSArray arrayWithObjects:leftEyeEffects, rightEyeEffects, noseEffects, mouthEffects, leftCheekEffects, rightCheekEffects, leftEarEffects, rightEarEffects, headEffects, nil];
     
     imagesOfEffects = [[NSMutableDictionary alloc] init];
+    
+    once = false;
 }
 
 - (void)didReceiveMemoryWarning
@@ -288,12 +297,20 @@
 }
 
 - (IBAction) shareToFacebook:(id)sender {
-    int width = self.portraitView.frame.size.width * avatarArray.count;
     int counter = 0;
-    UIGraphicsBeginImageContext(CGSizeMake(width, portraitView.frame.size.height));
+    
+    UIImage *bg = [UIImage imageNamed:review_upload_bg];
+    
+    int headWidth = bg.size.width / avatarArray.count;
+    
+    UIGraphicsBeginImageContext(CGSizeMake(bg.size.width, bg.size.height));
+    [bg drawInRect:CGRectMake(0, 0, bg.size.width, bg.size.height)];
+    
     for (UIImage *pic in avatarArray) {
-        [pic drawInRect:CGRectMake(portraitView.frame.size.width*counter, 0, pic.size.width, pic.size.height)];
+        [pic drawInRect:CGRectMake(headWidth*counter, 0, headWidth, pic.size.height)];
+        counter ++;
     }
+
     UIImage *ret = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     

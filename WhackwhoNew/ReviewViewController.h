@@ -31,6 +31,8 @@
     NSArray *effects;
     
     NSMutableDictionary *imagesOfEffects;
+    
+    bool once;
 }
 
 @property (nonatomic, strong) IBOutlet UIView *portraitView;
