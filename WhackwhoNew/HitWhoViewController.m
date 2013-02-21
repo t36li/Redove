@@ -164,7 +164,7 @@
 
 #pragma mark - UITableView Datasource and Delegate Methods
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 70;
+    return 50;
 }
 
 // Customize the number of sections in the table view.
@@ -288,6 +288,8 @@
     [self.table reloadData];
     [spinner removeSpinner];
     [tablepull finishedLoading];
+    
+    [self.table setContentSize:CGSizeMake(160, 50*resultFriends.count)];
 }
 
 -(void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response{
