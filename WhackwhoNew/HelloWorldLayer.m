@@ -19,7 +19,7 @@
 #define hillLevel 0
 #define seaLevel 1
 #define spaceLevel 2
-#define bodyTag 808
+#define fireTag 808
 #define burntTag 909
 
 #pragma mark - HelloWorldLayer
@@ -459,7 +459,7 @@
         
     } else {
         //need to delay the popping of head until the middle of mud animation
-        CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.3f position:ccp(0, 60)];
+        CCMoveBy *moveUp = [CCMoveBy actionWithDuration:0.3f position:ccp(0, 60*3/4)];
         CCMoveBy *easeMoveUp = [CCEaseIn actionWithAction:moveUp rate:10.0f];
         CCAction *easeMoveDown = [easeMoveUp reverse];
         CCDelayTime *delay_splash = [CCDelayTime actionWithDuration:delayTime];
@@ -671,6 +671,10 @@
         [head removeChildByTag:burntTag cleanup:YES];
     }
     
+    if ([head getChildByTag:fireTag]) {
+        [head removeChildByTag:fireTag cleanup:YES];
+    }
+    
     //display rainbows according to hit streaks
     if (scene.consecHits == 0 && speed != DEFAULT_HEAD_POP_SPEED) {
         switch (level) {
@@ -795,17 +799,31 @@
     emitter.autoRemoveOnFinish = YES;
     emitter.position = ccp(temp.position.x - temp.contentSize.width, temp.position.y - 10);
     emitter.scale = 0.5;
-    //emitter.speed = 100;
-    emitter.texture = [[CCTextureCache sharedTextureCache] addImage: @"hit effect.png"];
     //add to layer ofcourse(effect begins after this step)
     [self addChild: emitter];
+}
+
+-(void) generateFire: (id) node {
+    CCSprite *temp = (CCSprite *)node;
+    
+    CCParticleSystem *emitter = [[CCParticleFire alloc] initWithTotalParticles:200];
+    //set the location of the emitter
+    emitter.anchorPoint = ccp(0,0);
+    emitter.position = ccp(0,15);
+    emitter.scale = 0.5;
+    emitter.life = 0.5f;
+    emitter.speed = 300;
+    emitter.speedVar = 10;
+    
+    //add to layer ofcourse(effect begins after this step)
+    [temp addChild: emitter z:0 tag:fireTag];
 }
 
 -(void) overlayBurn: (id) node {
     Character *head = (Character *) node;
     
     //head.visible = FALSE;
-    CCSprite *burntEffect = [CCSprite spriteWithFile:@"burnt_effect.png"];
+    CCSprite *burntEffect = [CCSprite spriteWithFile:@"burnt_effect2.png"];
     burntEffect.anchorPoint = ccp(0,0);
     burntEffect.position = ccp(0, 0);
     burntEffect.scaleX = head.contentSize.width/burntEffect.contentSize.width;
@@ -857,12 +875,12 @@
             head.tappable = FALSE;
             
             CCSprite *hammer = [CCSprite spriteWithSpriteFrameName:@"hit_hammer.png"];
-            hammer.position = ccp(head.position.x + head.contentSize.width/2, head.position.y + head.contentSize.height/2);
+            hammer.position = ccp(head.position.x + head.contentSize.width/2 + 20, head.position.y + head.contentSize.height/2 - 20);
             hammer.rotation = 45;
             hammer.anchorPoint = ccp(1, 0); //bottom right
             [baselayer addChild:hammer z:50];
             
-            CCRotateBy *smash = [CCRotateBy actionWithDuration:0.25f angle:-70];
+            CCRotateBy *smash = [CCRotateBy actionWithDuration:0.10f angle:-70];
             CCRotateBy *easeSmash = [CCEaseInOut actionWithAction:smash rate:3.0f];
             CCCallFuncN *remove = [CCCallFuncN actionWithTarget:self selector:@selector(removeNode:)];
             CCCallFuncN *explode = [CCCallFuncN actionWithTarget:self selector:@selector(generateExplosion:)];
@@ -910,9 +928,10 @@
                 CCMoveBy *moveDown = [CCMoveBy actionWithDuration:0.25 position:ccp(0, -60)];
                 CCMoveBy *easeMoveDown = [CCEaseInOut actionWithAction:moveDown rate:3.5];
                 CCCallFuncN *resetHead = [CCCallFuncN actionWithTarget:self selector:@selector(resetHead:)];
+                CCCallFuncN *fire = [CCCallFuncN actionWithTarget:self selector:@selector(generateFire:)];
                 CCCallFuncN *overlayBurnt = [CCCallFuncN actionWithTarget:self selector:@selector(overlayBurn:)];
                 
-                [head runAction:[CCSequence actions: overlayBurnt, easeMoveDown, resetHead, nil]];
+                [head runAction:[CCSequence actions: fire, overlayBurnt, easeMoveDown, resetHead, nil]];
             } else {
                 CGSize winSize = [CCDirector sharedDirector].winSize;
                 

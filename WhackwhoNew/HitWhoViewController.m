@@ -89,9 +89,7 @@
     [[FBSingletonNew sharedInstance] setDelegate:self];
     [tablepull setDelegate:self];
     
-    CGRect frame = table.frame;
-    frame.size = CGSizeMake(160, 240);
-    table.frame = frame;
+    [table setFrame:CGRectMake(308, 42, 162, 250)];
     
     //set initial portrait to be empty
     faceView.image = nil;

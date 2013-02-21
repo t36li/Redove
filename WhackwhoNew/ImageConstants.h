@@ -55,7 +55,7 @@
 
 //items
     //hammers
-#define starting_hammer @"HA001.png"
+/*#define starting_hammer @"HA001.png"
 #define devil_hammer @"HA002.png"
 #define bandage_hammer @"HA003.png"
 #define rabbit_hammer @"HA004.png"
@@ -75,4 +75,4 @@
 //store frames
 #define UpperShelf @"upper shelf.png"
 #define StorePin @"store pin.png"
-#define LowerShelf @"lower shelf.png"
+#define LowerShelf @"lower shelf.png"*/
