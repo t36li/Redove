@@ -162,6 +162,8 @@
 		C1DC2D7916AB557B0063CBF7 /* CameraTutorial.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2D7716AB557B0063CBF7 /* CameraTutorial.xib */; };
 		C1DC2DCC16AF3D730063CBF7 /* main menu.png in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2DCA16AF3D730063CBF7 /* main menu.png */; };
 		C1DC2DCD16AF3D730063CBF7 /* resume.png in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2DCB16AF3D730063CBF7 /* resume.png */; };
+		C1EC4AE016D6A3AA00DF7EA9 /* hammer1.caf in Resources */ = {isa = PBXBuildFile; fileRef = C1EC4ADE16D6A3AA00DF7EA9 /* hammer1.caf */; };
+		C1EC4AE116D6A3AA00DF7EA9 /* hammer2.caf in Resources */ = {isa = PBXBuildFile; fileRef = C1EC4ADF16D6A3AA00DF7EA9 /* hammer2.caf */; };
 		C1F3D6A816B8FE0B00FED3E6 /* bomb1.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F3D6A516B8FE0B00FED3E6 /* bomb1.png */; };
 		C1F3D6A916B8FE0B00FED3E6 /* bomb2.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F3D6A616B8FE0B00FED3E6 /* bomb2.png */; };
 		C1F3D6AA16B8FE0B00FED3E6 /* burnt_effect.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F3D6A716B8FE0B00FED3E6 /* burnt_effect.png */; };
@@ -812,6 +814,8 @@
 		C1DC2D7716AB557B0063CBF7 /* CameraTutorial.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraTutorial.xib; sourceTree = "<group>"; };
 		C1DC2DCA16AF3D730063CBF7 /* main menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main menu.png"; sourceTree = "<group>"; };
 		C1DC2DCB16AF3D730063CBF7 /* resume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resume.png; sourceTree = "<group>"; };
+		C1EC4ADE16D6A3AA00DF7EA9 /* hammer1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = hammer1.caf; sourceTree = "<group>"; };
+		C1EC4ADF16D6A3AA00DF7EA9 /* hammer2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = hammer2.caf; sourceTree = "<group>"; };
 		C1F3D6A516B8FE0B00FED3E6 /* bomb1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bomb1.png; sourceTree = "<group>"; };
 		C1F3D6A616B8FE0B00FED3E6 /* bomb2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bomb2.png; sourceTree = "<group>"; };
 		C1F3D6A716B8FE0B00FED3E6 /* burnt_effect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = burnt_effect.png; sourceTree = "<group>"; };
@@ -1436,6 +1440,8 @@
 			isa = PBXGroup;
 			children = (
 				C14BC64D169503550005EEBE /* background_music.mp3 */,
+				C1EC4ADE16D6A3AA00DF7EA9 /* hammer1.caf */,
+				C1EC4ADF16D6A3AA00DF7EA9 /* hammer2.caf */,
 			);
 			name = Audio;
 			sourceTree = "<group>";

@@ -8,6 +8,7 @@
 
 
 #import <GameKit/GameKit.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
@@ -39,9 +40,11 @@
     CCSpriteBatchNode *baselayer;
     NSMutableArray *splashFrames, *bodyFrames;
     NSMutableArray *objectsCantCollide;
-
     
     CCSprite *spritePosTest;
+    
+    SystemSoundID _rightHammerSound;
+    SystemSoundID _wrongHammerSound;
 }
 
 @property (nonatomic, strong) NSDictionary *locations;
