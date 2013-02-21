@@ -2850,6 +2850,8 @@
 				C1F6CAF516CEDE20004C71D9 /* bodyAnimations.plist in Resources */,
 				C1F6CAF616CEDE20004C71D9 /* bodyAnimations.pvr.ccz in Resources */,
 				D015288E16D311ED00481464 /* review_upload_background.png in Resources */,
+				C1EC4AE016D6A3AA00DF7EA9 /* hammer1.caf in Resources */,
+				C1EC4AE116D6A3AA00DF7EA9 /* hammer2.caf in Resources */,
 				D088560416D6AC10002666D9 /* Default@2x.png in Resources */,
 				D088560516D6AC17002666D9 /* Default.png in Resources */,
 			);
