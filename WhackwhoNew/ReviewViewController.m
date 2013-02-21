@@ -291,7 +291,7 @@
         UIGraphicsBeginImageContext(CGSizeMake(bg.size.width, bg.size.height));
         [bg drawInRect:CGRectMake(0, 0, bg.size.width, bg.size.height)];
         
-        int height = 150;
+        int height = 130;
         int gap = 10;
         
         int x_offset = (bg.size.width - (headWidth + gap) * avatarArray.count) / 2;
@@ -312,7 +312,7 @@
             [pic drawInRect:CGRectMake(x_offset + (headWidth + gap) * counter, height, headWidth, pic.size.height)];
             
             counter ++;
-            height += 5;
+            height += 12;
         }
         
         UIImage *ret = UIGraphicsGetImageFromCurrentImageContext();
