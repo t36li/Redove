@@ -465,6 +465,8 @@
 		D074BE5B1640941C00AF51EE /* vec3.c in Sources */ = {isa = PBXBuildFile; fileRef = D074BD6A1640941C00AF51EE /* vec3.c */; };
 		D074BE5C1640941C00AF51EE /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = D074BD6B1640941C00AF51EE /* vec4.c */; };
 		D07F6FF01599463A0085DF2B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F6FEF1599463A0085DF2B /* CoreImage.framework */; };
+		D088560416D6AC10002666D9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D08855FA16D6AB3C002666D9 /* Default@2x.png */; };
+		D088560516D6AC17002666D9 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D088560216D6AB9C002666D9 /* Default.png */; };
 		D08CE2FE164213130073576B /* Level2.plist in Resources */ = {isa = PBXBuildFile; fileRef = D08CE2FD164213130073576B /* Level2.plist */; };
 		D08D14A5167042F800F50BBF /* UINavigationController+OrientationFix.m in Sources */ = {isa = PBXBuildFile; fileRef = D08D14A4167042F800F50BBF /* UINavigationController+OrientationFix.m */; };
 		D0903BEC1667219C00BB920B /* CustomDrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0903BEB1667219C00BB920B /* CustomDrawView.m */; };
@@ -1128,6 +1130,8 @@
 		D074BD6D1640941C00AF51EE /* LICENSE_CocosDenshion.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE_CocosDenshion.txt; path = libs/LICENSE_CocosDenshion.txt; sourceTree = "<group>"; };
 		D074BD6E1640941C00AF51EE /* LICENSE_Kazmath.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE_Kazmath.txt; path = libs/LICENSE_Kazmath.txt; sourceTree = "<group>"; };
 		D07F6FEF1599463A0085DF2B /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		D08855FA16D6AB3C002666D9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		D088560216D6AB9C002666D9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		D08CE2FD164213130073576B /* Level2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level2.plist; sourceTree = "<group>"; };
 		D08D14A3167042F800F50BBF /* UINavigationController+OrientationFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+OrientationFix.h"; sourceTree = "<group>"; };
 		D08D14A4167042F800F50BBF /* UINavigationController+OrientationFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+OrientationFix.m"; sourceTree = "<group>"; };
@@ -1557,6 +1561,8 @@
 		C147166A1594ACCA0002FF21 = {
 			isa = PBXGroup;
 			children = (
+				D088560216D6AB9C002666D9 /* Default.png */,
+				D08855FA16D6AB3C002666D9 /* Default@2x.png */,
 				C12114571616044300E3AAB1 /* Default-568h@2x.png */,
 				69164C5C15D9F8DF003FD8A8 /* Classes */,
 				69A1964A15C356670079DC99 /* RestKit.xcodeproj */,
@@ -2838,6 +2844,8 @@
 				C1F6CAF516CEDE20004C71D9 /* bodyAnimations.plist in Resources */,
 				C1F6CAF616CEDE20004C71D9 /* bodyAnimations.pvr.ccz in Resources */,
 				D015288E16D311ED00481464 /* review_upload_background.png in Resources */,
+				D088560416D6AC10002666D9 /* Default@2x.png in Resources */,
+				D088560516D6AC17002666D9 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
