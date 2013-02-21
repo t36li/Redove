@@ -56,21 +56,6 @@
      }];
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-        self.postParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-                           @"MY WHACK WHO HEAD",@"message",
-                           @"Whack Who for iOS [testing]", @"name",
-                           @"You got WHACK! ", @"caption",
-                           @"description....", @"description",
-                           nil];
-    }
-    return self;
-}
-
 #pragma mark - View lifecycle
 - (void)viewDidLoad
 {
@@ -78,6 +63,13 @@
     // Do any additional setup after loading the view from its nib.
     
     self.postImageView.image = self.publishedImage;
+    
+    self.postParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                       @"MY WHACK WHO HEAD",@"message",
+                       @"Whack Who for iOS [testing]", @"name",
+                       @"You got WHACK! ", @"caption",
+                       @"description....", @"description",
+                       nil];
 }
 
 - (void)viewDidUnload
@@ -151,7 +143,7 @@
 #pragma mark - UIAlertViewDelegate methods
 - (void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count - 5] animated:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
