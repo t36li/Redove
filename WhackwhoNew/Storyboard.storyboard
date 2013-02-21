@@ -144,6 +144,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="bodyView" destination="e3j-Lw-1hF" id="RZ4-R8-o7M"/>
                         <outlet property="containerView" destination="fhO-MD-d75" id="dvh-WX-wbG"/>

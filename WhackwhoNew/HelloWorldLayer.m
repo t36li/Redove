@@ -41,6 +41,14 @@
 -(void) onEnter {
     [super onEnter];
     
+    NSString *rightHammerPath = [[NSBundle mainBundle] pathForResource:@"hammer1" ofType:@"caf"];
+	NSURL *rightHammerURL = [NSURL fileURLWithPath:rightHammerPath];
+	AudioServicesCreateSystemSoundID((__bridge CFURLRef)rightHammerURL, &_rightHammerSound);
+    
+    NSString *wrongHammerPath = [[NSBundle mainBundle] pathForResource:@"hammer2" ofType:@"caf"];
+	NSURL *wrongHammerURL = [NSURL fileURLWithPath:wrongHammerPath];
+	AudioServicesCreateSystemSoundID((__bridge CFURLRef)wrongHammerURL, &_wrongHammerSound);
+    
     self.isTouchEnabled = YES;
     //CGSize winSize = [CCDirector sharedDirector].winSize;
     
@@ -784,6 +792,7 @@
     
     CCParticleSystem *emitter = [[CCParticleExplosion alloc] initWithTotalParticles:100];
     //set the location of the emitter
+    emitter.autoRemoveOnFinish = YES;
     emitter.position = ccp(temp.position.x - temp.contentSize.width, temp.position.y - 10);
     emitter.scale = 0.5;
     //emitter.speed = 100;
@@ -856,13 +865,15 @@
             CCRotateBy *smash = [CCRotateBy actionWithDuration:0.25f angle:-70];
             CCRotateBy *easeSmash = [CCEaseInOut actionWithAction:smash rate:3.0f];
             CCCallFuncN *remove = [CCCallFuncN actionWithTarget:self selector:@selector(removeNode:)];
-            //CCCallFuncN *explode = [CCCallFuncN actionWithTarget:self selector:@selector(generateExplosion:)];
+            CCCallFuncN *explode = [CCCallFuncN actionWithTarget:self selector:@selector(generateExplosion:)];
             
-            [hammer runAction:[CCSequence actions:easeSmash, remove, nil]];
+            [hammer runAction:[CCSequence actions:easeSmash, explode, remove, nil]];
             
             //if hit the correct "mole"
             if (head.isSelectedHit) {
                 
+                AudioServicesPlaySystemSound(_rightHammerSound);
+
                 //10% chance for a coin to popup
                // if (arc4random() % 100 < 10) {
                  //   CCSprite *testObj = [CCSprite spriteWithFile:@"coin front.png"];
@@ -904,7 +915,9 @@
                 [head runAction:[CCSequence actions: overlayBurnt, easeMoveDown, resetHead, nil]];
             } else {
                 CGSize winSize = [CCDirector sharedDirector].winSize;
-
+                
+                AudioServicesPlaySystemSound(_wrongHammerSound);
+                
                 CCSprite *redscreen = [CCSprite spriteWithSpriteFrameName:@"red_screen.png"];
                 [baselayer addChild:redscreen];
                 redscreen.anchorPoint = ccp(0.5,0.5);
