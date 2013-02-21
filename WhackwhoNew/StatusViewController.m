@@ -36,7 +36,7 @@
 
 @synthesize containerView;
 @synthesize faceView, bodyView;
-@synthesize popularity_lbl, total_gold_lbl, total_gp_lbl, high_score_lbl;
+@synthesize popularity_lbl, total_gp_lbl, high_score_lbl, high_combo_lbl;
 @synthesize cameraController, cameraOverlayView, overlay;
 @synthesize popoverController;
 
@@ -142,7 +142,7 @@ WhichTransition transitionType;
             
             //if popularity changes... then what
             [high_score_lbl setText:[self readPlist:@"High_Score"]];
-            [total_gold_lbl setText:[self readPlist:@"Bgs_Unlocked"]];
+            [high_combo_lbl setText:[self readPlist:@"Highest_Combo"]];
             [total_gp_lbl setText:[self readPlist:@"Games_Played"]];
             [popularity_lbl setText:[NSString stringWithFormat:@"%d",[[UserInfo sharedInstance] popularity]]];
             
@@ -232,7 +232,7 @@ WhichTransition transitionType;
     }
     
     [high_score_lbl setText:[self readPlist:@"High_Score"]];
-    [total_gold_lbl setText:[self readPlist:@"Bgs_Unlocked"]];
+    [high_combo_lbl setText:[self readPlist:@"Highest_Combo"]];
     [total_gp_lbl setText:[self readPlist:@"Games_Played"]];
 
 }

@@ -20,7 +20,7 @@
     IBOutlet UILabel *popularity_lbl;
     IBOutlet UILabel *high_score_lbl;
     IBOutlet UILabel *total_gp_lbl;
-    IBOutlet UILabel *total_gold_lbl;
+    IBOutlet UILabel *high_combo_lbl;
     
     //define containerView subviews
     IBOutlet UIView *containerView;
@@ -57,7 +57,7 @@
 @property (nonatomic) IBOutlet UILabel *popularity_lbl;
 @property (nonatomic) IBOutlet UILabel *high_score_lbl;
 @property (nonatomic) IBOutlet UILabel *total_gp_lbl;
-@property (nonatomic) IBOutlet UILabel *total_gold_lbl;
+@property (nonatomic) IBOutlet UILabel *high_combo_lbl;
 @property (nonatomic, strong) CameraOverlayControllerViewController *overlay;
 @property (nonatomic, strong) UIImagePickerController *cameraController;
 @property (nonatomic, strong) UIImageView *cameraOverlayView;

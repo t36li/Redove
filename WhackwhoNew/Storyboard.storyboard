@@ -14,7 +14,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Personal_Status_Background.png" id="TTt-aR-O01">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Personal_Status_Background.png" id="Gke-I8-txg">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -149,10 +149,10 @@
                         <outlet property="bodyView" destination="e3j-Lw-1hF" id="RZ4-R8-o7M"/>
                         <outlet property="containerView" destination="fhO-MD-d75" id="dvh-WX-wbG"/>
                         <outlet property="faceView" destination="HwD-qV-LY0" id="2bU-Uv-t0d"/>
-                        <outlet property="high_score_lbl" destination="fEf-kx-IGs" id="kqs-AP-541"/>
-                        <outlet property="popularity_lbl" destination="49F-EY-C4V" id="Y3Q-Gw-BnJ"/>
-                        <outlet property="total_gold_lbl" destination="ykr-g1-BNA" id="r9H-Lv-0HV"/>
-                        <outlet property="total_gp_lbl" destination="Gwb-yU-CCx" id="6Ni-lo-A6G"/>
+                        <outlet property="high_combo_lbl" destination="ykr-g1-BNA" id="em2-MW-OMW"/>
+                        <outlet property="high_score_lbl" destination="fEf-kx-IGs" id="IfY-8z-cPZ"/>
+                        <outlet property="popularity_lbl" destination="49F-EY-C4V" id="TAW-um-OkL"/>
+                        <outlet property="total_gp_lbl" destination="Gwb-yU-CCx" id="4Wa-AV-TJv"/>
                         <segue destination="Ti9-j0-bAz" kind="push" identifier="StatusToHitWhoSegue" id="AN2-Md-oac"/>
                     </connections>
                 </viewController>
@@ -1296,9 +1296,9 @@
                 <relationship kind="outlet" name="bodyView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="faceView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="high_combo_lbl" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="high_score_lbl" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="popularity_lbl" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="total_gold_lbl" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="total_gp_lbl" candidateClass="UILabel"/>
             </relationships>
         </class>

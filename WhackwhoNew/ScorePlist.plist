@@ -10,7 +10,7 @@
 	<integer>0</integer>
 	<key>High_Score</key>
 	<integer>0</integer>
-	<key>Total_Gold</key>
+	<key>Highest_Combo</key>
 	<integer>0</integer>
 </dict>
 </plist>
