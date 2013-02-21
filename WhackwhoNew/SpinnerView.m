@@ -20,7 +20,7 @@
         
         backgroundView = [[UIImageView alloc] initWithImage:[self addBackground]];
         // Make a little bit of the superView show through
-        backgroundView.alpha = 0.7;
+        backgroundView.alpha = 0;
         [self addSubview:backgroundView];
         
         
