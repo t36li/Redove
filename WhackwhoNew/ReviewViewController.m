@@ -297,12 +297,20 @@
         int x_offset = (bg.size.width - (headWidth + gap) * avatarArray.count) / 2;
         
         for (UIImage *pic in avatarArray) {
-            [pic drawInRect:CGRectMake(x_offset + (headWidth + gap) * counter, height, headWidth, pic.size.height)];
             
             int whichBody = (arc4random() % 5) + 1;
             UIImage *bodyImage = [UIImage imageNamed:[NSString stringWithFormat:@"body%i_1.png", whichBody]];
 
-            [bodyImage drawInRect:CGRectMake(x_offset + (headWidth + gap) * counter + (headWidth - bodyImage.size.width)/2, height + pic.size.height - 10, bodyImage.size.width, bodyImage.size.height)];
+            if (whichBody == 2) {
+                [bodyImage drawInRect:CGRectMake(x_offset + (headWidth + gap) * counter + (headWidth - bodyImage.size.width)/2 + 30, height + pic.size.height - 30, bodyImage.size.width, bodyImage.size.height)];
+            } else if (whichBody == 1) {
+                [bodyImage drawInRect:CGRectMake(x_offset + (headWidth + gap) * counter + (headWidth - bodyImage.size.width)/2, height + pic.size.height - 50, bodyImage.size.width, bodyImage.size.height)];
+            } else {
+                [bodyImage drawInRect:CGRectMake(x_offset + (headWidth + gap) * counter + (headWidth - bodyImage.size.width)/2, height + pic.size.height - 10, bodyImage.size.width, bodyImage.size.height)];
+            }
+            
+            [pic drawInRect:CGRectMake(x_offset + (headWidth + gap) * counter, height, headWidth, pic.size.height)];
+            
             counter ++;
             height += 5;
         }
