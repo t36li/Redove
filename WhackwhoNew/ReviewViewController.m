@@ -275,7 +275,6 @@
 
 - (IBAction) shareToFacebook:(id)sender {
     [self performSegueWithIdentifier:@"ReviewToUpload" sender:self];
-    
 }
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

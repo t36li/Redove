@@ -41,7 +41,7 @@
     
     [containerView setPrePreviousPoint:CGPointZero];
     [containerView setPreviousPoint:CGPointZero];
-    [containerView setLineWidth:1.0f];
+    [containerView setLineWidth:10.0f];
     [containerView setCurrentColor:[UIColor blackColor]];
     
     buttonSet = [[NSMutableSet alloc] init];
