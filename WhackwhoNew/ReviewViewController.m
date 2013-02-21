@@ -10,6 +10,7 @@
 #import "AvatarBaseController.h"
 #import "Character.h"
 #import "FacebookShareViewController.h"
+#import "ReviewUploadViewController.h"
 
 @interface ReviewViewController ()
 
@@ -262,30 +263,6 @@
         //[[UserInfo sharedInstance] performSelector:@selector(markFaces:withDelegate:) withObject:self.avatarImageView.image withObject:self];
     }
 }
-/*
--(void)setUserPictureCompleted {
-    UserInfo *user = [UserInfo sharedInstance];
-    CGFloat faceWidth = user.faceRect.size.width;
-    
-    UIImageView *leftEye = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"eye1.png"]];
-    CGRect leftEyeFrame = CGRectMake(user.leftEyePosition.x-faceWidth*0.15, user.leftEyePosition.y-faceWidth*0.15, faceWidth*0.3, faceWidth*0.3);
-    leftEye.frame = leftEyeFrame;
-    leftEye.center = user.leftEyePosition;
-    [portraitView addSubview:leftEye];
-    
-    UIImageView *rightEye = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"eye2.png"]];
-    CGRect rightEyeFrame = CGRectMake(user.rightEyePosition.x-faceWidth*0.15, user.rightEyePosition.y-faceWidth*0.15, faceWidth*0.3, faceWidth*0.3);
-    rightEye.frame = rightEyeFrame;
-    rightEye.center = user.rightEyePosition;
-    [portraitView addSubview:rightEye];
-    
-    UIImageView *mouth = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lip 1.png"]];
-    CGRect mouthFrame = CGRectMake(user.mouthPosition.x-faceWidth*0.2, user.mouthPosition.y-faceWidth*0.15, faceWidth*0.4, faceWidth*0.3);
-    mouth.frame = mouthFrame;
-    mouth.center = user.mouthPosition;
-    [portraitView addSubview:mouth];
-}
- */
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -297,31 +274,44 @@
 }
 
 - (IBAction) shareToFacebook:(id)sender {
-    int counter = 0;
+    [self performSegueWithIdentifier:@"ReviewToUpload" sender:self];
     
-    UIImage *bg = [UIImage imageNamed:review_upload_bg];
-    
-    int headWidth = bg.size.width / avatarArray.count;
-    
-    UIGraphicsBeginImageContext(CGSizeMake(bg.size.width, bg.size.height));
-    [bg drawInRect:CGRectMake(0, 0, bg.size.width, bg.size.height)];
-    
-    for (UIImage *pic in avatarArray) {
-        [pic drawInRect:CGRectMake(headWidth*counter, 0, headWidth, pic.size.height)];
-        counter ++;
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"ReviewToUpload"]) {
+        ReviewUploadViewController *vc = [segue destinationViewController];
+        
+        int counter = 0;
+        
+        UIImage *bg = [UIImage imageNamed:review_upload_bg];
+        
+        int headWidth = 150;
+        
+        UIGraphicsBeginImageContext(CGSizeMake(bg.size.width, bg.size.height));
+        [bg drawInRect:CGRectMake(0, 0, bg.size.width, bg.size.height)];
+        
+        int height = 150;
+        int gap = 10;
+        
+        int x_offset = (bg.size.width - (headWidth + gap) * avatarArray.count) / 2;
+        
+        for (UIImage *pic in avatarArray) {
+            [pic drawInRect:CGRectMake(x_offset + (headWidth + gap) * counter, height, headWidth, pic.size.height)];
+            
+            int whichBody = (arc4random() % 5) + 1;
+            UIImage *bodyImage = [UIImage imageNamed:[NSString stringWithFormat:@"body%i_1.png", whichBody]];
+
+            [bodyImage drawInRect:CGRectMake(x_offset + (headWidth + gap) * counter + (headWidth - bodyImage.size.width)/2, height + pic.size.height - 10, bodyImage.size.width, bodyImage.size.height)];
+            counter ++;
+            height += 5;
+        }
+        
+        UIImage *ret = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        [vc setPublishedImage:ret];
     }
-
-    UIImage *ret = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-
-    FacebookShareViewController *fbshare = [[FacebookShareViewController alloc]
-                                            initWithNibName:@"FacebookShareViewController"
-                                            bundle:nil];
-    [fbshare setPublishedImage:ret];
-    //[fbshare setPostImageView:imageView];
-    //[self presentViewController:fbshare animated:YES completion:nil];
-    [self.navigationController pushViewController:fbshare animated:YES];
 }
 
 @end

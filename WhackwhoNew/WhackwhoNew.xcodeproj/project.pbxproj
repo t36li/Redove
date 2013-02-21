@@ -201,6 +201,7 @@
 		D006F6A915B4FB7D0079626F /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = D006F6A815B4FB7D0079626F /* Friend.m */; };
 		D006FCE615B51DC10079626F /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D006FCE515B51DC10079626F /* ImageIO.framework */; };
 		D015288E16D311ED00481464 /* review_upload_background.png in Resources */ = {isa = PBXBuildFile; fileRef = D015288D16D311EC00481464 /* review_upload_background.png */; };
+		D015289716D4563200481464 /* ReviewUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D015289616D4563200481464 /* ReviewUploadViewController.m */; };
 		D03D411C16A4CC1800C72E17 /* UIBarButtonItem+WEPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D411416A4CC1800C72E17 /* UIBarButtonItem+WEPopover.m */; };
 		D03D411D16A4CC1800C72E17 /* WEPopoverContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D411616A4CC1800C72E17 /* WEPopoverContainerView.m */; };
 		D03D411E16A4CC1800C72E17 /* WEPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D411816A4CC1800C72E17 /* WEPopoverController.m */; };
@@ -481,7 +482,6 @@
 		D0A3F74715B266330027EFF9 /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A3F74615B266330027EFF9 /* SpinnerView.m */; };
 		D0AB828F1627BFD000A0EF0B /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AB828E1627BFD000A0EF0B /* ReviewViewController.m */; };
 		D0B2477015C204C300C206BA /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2476F15C204C300C206BA /* UIImage+fixOrientation.m */; };
-		D0B4849A160E2C77000B95A7 /* FaceEffectsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B48498160E2C77000B95A7 /* FaceEffectsController.m */; };
 		D0B4849B160E2C77000B95A7 /* FaceEffectsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0B48499160E2C77000B95A7 /* FaceEffectsController.xib */; };
 		D0B9EECD159E6F0D005D2460 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0B9EECC159E6F0D005D2460 /* MobileCoreServices.framework */; };
 		D0C2D5A316912CE700D02900 /* Invite_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = C1413A03168CC14D005556BD /* Invite_Button.png */; };
@@ -851,6 +851,8 @@
 		D006F6A815B4FB7D0079626F /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
 		D006FCE515B51DC10079626F /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		D015288D16D311EC00481464 /* review_upload_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = review_upload_background.png; sourceTree = "<group>"; };
+		D015289516D4563200481464 /* ReviewUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewUploadViewController.h; sourceTree = "<group>"; };
+		D015289616D4563200481464 /* ReviewUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewUploadViewController.m; sourceTree = "<group>"; };
 		D03D411316A4CC1800C72E17 /* UIBarButtonItem+WEPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+WEPopover.h"; sourceTree = "<group>"; };
 		D03D411416A4CC1800C72E17 /* UIBarButtonItem+WEPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+WEPopover.m"; sourceTree = "<group>"; };
 		D03D411516A4CC1800C72E17 /* WEPopoverContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverContainerView.h; sourceTree = "<group>"; };
@@ -1152,8 +1154,6 @@
 		D0AB828E1627BFD000A0EF0B /* ReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewViewController.m; sourceTree = "<group>"; };
 		D0B2476E15C204C300C206BA /* UIImage+fixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+fixOrientation.h"; sourceTree = "<group>"; };
 		D0B2476F15C204C300C206BA /* UIImage+fixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+fixOrientation.m"; sourceTree = "<group>"; };
-		D0B48497160E2C77000B95A7 /* FaceEffectsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceEffectsController.h; sourceTree = "<group>"; };
-		D0B48498160E2C77000B95A7 /* FaceEffectsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceEffectsController.m; sourceTree = "<group>"; };
 		D0B48499160E2C77000B95A7 /* FaceEffectsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FaceEffectsController.xib; path = ../FaceEffectsController.xib; sourceTree = "<group>"; };
 		D0B9EECC159E6F0D005D2460 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		D0B9EECF159EA9D4005D2460 /* CameraOverlayControllerViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraOverlayControllerViewControllerDelegate.h; sourceTree = "<group>"; };
@@ -1457,8 +1457,6 @@
 				C14385A815C8C13C008D9AE7 /* Load Scene */,
 				692AC3A215B24BB0001E4858 /* HitWhoGroup */,
 				C198EE2C15CF7AEB004D170C /* Personal Status View */,
-				D0B48497160E2C77000B95A7 /* FaceEffectsController.h */,
-				D0B48498160E2C77000B95A7 /* FaceEffectsController.m */,
 				D0948D3F15ADFF0E00429477 /* AvatarBaseController.h */,
 				D0948D4015ADFF0E00429477 /* AvatarBaseController.m */,
 				D0A3F74515B266330027EFF9 /* SpinnerView.h */,
@@ -1666,6 +1664,8 @@
 				C147185A1594F1AF0002FF21 /* CocosViewController.m */,
 				D04D763A163769BE003C858F /* GameViewController.h */,
 				D04D763B163769BE003C858F /* GameViewController.m */,
+				D015289516D4563200481464 /* ReviewUploadViewController.h */,
+				D015289616D4563200481464 /* ReviewUploadViewController.m */,
 				D0AB828D1627BFD000A0EF0B /* ReviewViewController.h */,
 				D0AB828E1627BFD000A0EF0B /* ReviewViewController.m */,
 				C14B63B515AF5C3700376C91 /* Game.h */,
@@ -2888,7 +2888,6 @@
 				69E9EB9D16028E4E00E52D4F /* PullToRefreshView.m in Sources */,
 				C155FE831608CE19007F254B /* Items.m in Sources */,
 				C155FE9E160968A6007F254B /* Character.m in Sources */,
-				D0B4849A160E2C77000B95A7 /* FaceEffectsController.m in Sources */,
 				3DDA87B816127B23005349D1 /* CurrentEquip.m in Sources */,
 				3DDA87B916127B23005349D1 /* Head.m in Sources */,
 				3DDA87BA16127B23005349D1 /* StorageInv.m in Sources */,
@@ -2911,6 +2910,7 @@
 				C1DC2D4E16A8B22C0063CBF7 /* HitWhoTutorialPopver.m in Sources */,
 				C1DC2D7816AB557B0063CBF7 /* CameraTutorial.m in Sources */,
 				C18AAB3716B0B05B003F8F87 /* InBetweenViewController.m in Sources */,
+				D015289716D4563200481464 /* ReviewUploadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
