@@ -57,6 +57,8 @@
     UIGraphicsBeginImageContext(self.drawImageView.frame.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
     
+    CGContextSetLineWidth(context, self.lineWidth);
+    
     [[self currentColor] setStroke];
     
     CGContextSetAllowsAntialiasing(UIGraphicsGetCurrentContext(), true);
@@ -69,7 +71,7 @@
     CGContextAddQuadCurveToPoint(context, self.previousPoint.x, self.previousPoint.y, mid2.x, mid2.y);
     
     CGContextSetLineCap(context, kCGLineCapRound);
-    
+    /*
     CGFloat xDist = (previousPoint.x - currentPoint.x); //[2]
     CGFloat yDist = (previousPoint.y - currentPoint.y); //[3]
     CGFloat distance = sqrt((xDist * xDist) + (yDist * yDist)); //[4]
@@ -90,7 +92,7 @@
     }
     
     CGContextSetLineWidth(context, self.lineWidth);
-    
+    */
     //    CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 1.0);
     CGContextStrokePath(context);
     
@@ -236,12 +238,13 @@
     [image drawInRect:CGRectMake(0, 0, screenSize.width, screenSize.height)];
     
     CGContextSetLineCap(currentContext, kCGLineCapRound);
-    CGContextSetLineWidth(currentContext, self.lineWidth);
     CGContextSetRGBStrokeColor(currentContext, 0, 0, 1, 1);
     CGContextSetFillColorWithColor(currentContext, [[UIColor blackColor] CGColor]);
     
     CGMutablePathRef pathRef = CGPathCreateMutable();
     
+    CGContextSetLineWidth(currentContext, self.lineWidth);
+    CGContextSetStrokeColorWithColor(currentContext, [UIColor blackColor].CGColor);
     //CGContextBeginPath(currentContext);
     
     int count = [points count];
@@ -255,8 +258,11 @@
     }
     //CGContextStrokePath(currentContext);
     CGPathCloseSubpath(pathRef);
+    
     CGContextAddPath(currentContext, pathRef);
-    CGContextEOFillPath(currentContext);
+    
+    CGContextDrawPath(currentContext, kCGPathFillStroke);
+    //CGContextEOFillPath(currentContext);
     
     CGPathRelease(pathRef);
     
