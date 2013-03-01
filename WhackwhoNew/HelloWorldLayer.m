@@ -788,7 +788,7 @@
 }
 
 -(void) removeNode: (id) node {
-    [[node parent] removeChild:node cleanup:YES];
+    [node removeFromParentAndCleanup:YES];
 }
 
 -(void) generateExplosion: (id) node {
