@@ -31,7 +31,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self.view setBackgroundColor:[UIColor blackColor]];
-    
+    [head1 setContentMode:UIViewContentModeScaleAspectFit];
+    [head2 setContentMode:UIViewContentModeScaleAspectFit];
+    [head3 setContentMode:UIViewContentModeScaleAspectFit];
+    [head4 setContentMode:UIViewContentModeScaleAspectFit];
+
     head1.image = self.image1;
     head2.image = self.image2;
     head3.image = self.image3;

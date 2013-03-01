@@ -647,7 +647,7 @@
 		lifeVar = 0;
         
 		// size, in pixels
-		startSize = 15.0f;
+		startSize = 20.0f;
 		startSizeVar = 10.0f;
 		endSize = kCCParticleStartSizeEqualToEndSize;
         

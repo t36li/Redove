@@ -53,26 +53,3 @@
 #define MOUTH_EFFECT_TEETH @"mouth_effect_teeth.png"
 #define MOUTH_EFECT_SWELL @"mouth_effect_swell.png"
 
-//items
-    //hammers
-/*#define starting_hammer @"HA001.png"
-#define devil_hammer @"HA002.png"
-#define bandage_hammer @"HA003.png"
-#define rabbit_hammer @"HA004.png"
-#define rocket_hammer @"HA005.png"
-#define candy_hammer @"HA006.png"
-#define spike_hammer @"HA007.png"
-    //shields
-#define starting_shield @"SA001.png"
-    //body
-    //helmets
-#define transparent_helmet @"white final.png"
-#define standard_blue_head @"HE001.png"
-#define standard_pink_head @"HE002.png"
-#define standard_yellow_head @"HE003.png"
-#define standard_green_head @"HE004.png"
-
-//store frames
-#define UpperShelf @"upper shelf.png"
-#define StorePin @"store pin.png"
-#define LowerShelf @"lower shelf.png"*/

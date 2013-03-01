@@ -55,6 +55,7 @@
         profileImageView.profileID = nil;
     }
     
+    [baby setFrame:CGRectMake(405, 237, 75, 83)];
     [self startWalking];
     //[self startLabelAnimation];
     //[self startPosterAnimation];
@@ -107,21 +108,22 @@
     baby.animationImages = imageArray;
     baby.animationDuration = 2;
     baby.animationRepeatCount = 0;
-    CGPoint p = baby.center;
-    p.x -= 408;
-    //ryuJump.center = p;
+    
+    CGRect tempFrame = baby.frame;
+    tempFrame.origin.x -= 420;
     
     [UIView animateWithDuration:30
                           delay:0
                         options: UIViewAnimationOptionCurveLinear
                      animations:^{
-                         baby.center = CGPointMake(p.x, p.y);
+                         baby.frame = tempFrame;
                      }
                      completion:^(BOOL finished){
+                         baby.frame = CGRectMake(405, 237, 75, 83);
+                         [self startWalking];
                      }];
     [baby startAnimating];
 }
-
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.

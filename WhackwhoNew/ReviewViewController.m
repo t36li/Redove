@@ -11,6 +11,7 @@
 #import "Character.h"
 #import "FacebookShareViewController.h"
 #import "ReviewUploadViewController.h"
+#import "AppDelegate.h"
 
 @interface ReviewViewController ()
 
@@ -31,6 +32,8 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    AppDelegate *blah = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    [blah switchToNormalBGM];
     
     if (!once) {
         once = true;
@@ -169,13 +172,15 @@
     
     NSNumber *last_game_score = [NSNumber numberWithInt:[[Game sharedGame] baseScore]];
     [scorelbl setText:[numberFormatter stringFromNumber:last_game_score]];
-    //NSNumber *last_game_gold = [NSNumber numberWithInt:[[Game sharedGame] moneyEarned]];
-    [goldlbl setText:@"0"];
+    NSNumber *highest_combo = [NSNumber numberWithInt:[[Game sharedGame] max_combo]];
+    [goldlbl setText:[numberFormatter stringFromNumber:highest_combo]];
     
     if ([[Game sharedGame]unlocked_new_bg]) {
         UIAlertView *unlock_alert = [[UIAlertView alloc] initWithTitle:nil message:@"Congratulations! You have unlocked a new game background!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [unlock_alert show];
     }
+    
+    [[Game sharedGame] resetGameState];
 }
 
 - (void)viewDidLoad

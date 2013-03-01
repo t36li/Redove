@@ -7,6 +7,7 @@
 //
 
 #import "hitFriendCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation hitFriendCell
 

@@ -8,6 +8,7 @@
 
 #import "CocosViewController.h"
 #import "GameViewController.h"
+#import "AppDelegate.h"
 
 @implementation CocosViewController
 
@@ -40,6 +41,9 @@
     } else {        
         [self.navigationController pushViewController:game.gameView animated:NO];
     }
+    
+    AppDelegate *blah = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    [blah switchToBGM];
 }
 
 - (void)viewDidUnload

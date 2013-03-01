@@ -16,6 +16,7 @@
 #import "WEPopoverController.h"
 #import "HitWhoTutorialPopver.h"
 #import "InBetweenViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define ChooseToGame @"chooseToGame"
 //#define dummyString @"testobject"
@@ -41,7 +42,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self.containerView setBackgroundColor:[UIColor clearColor]];
+    //[self.containerView setBackgroundColor:[UIColor clearColor]];
     
     [faceView setContentMode:UIViewContentModeScaleAspectFit];
     [bodyView setContentMode:UIViewContentModeScaleToFill];
@@ -162,7 +163,7 @@
 
 #pragma mark - UITableView Datasource and Delegate Methods
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50;
+    return 70;
 }
 
 // Customize the number of sections in the table view.
@@ -193,10 +194,15 @@
         
     Friend *friend = [resultFriends objectAtIndex:indexPath.row];
     cell.identity = friend.user_id;
+    
     NSArray *temp = [friend.name componentsSeparatedByString:@" "];
     NSString *firstName = [temp objectAtIndex:0];
-    cell.name.text = firstName;
+    NSString *lastName = [temp objectAtIndex:1];
+    NSString *firstInitial = [lastName substringToIndex:1];
+    NSString *fullName = [NSString stringWithFormat:@"%@ %@.", firstName, firstInitial];
+    cell.name.text = fullName;
     cell.name.lineBreakMode  = NSLineBreakByWordWrapping;
+    
     //cell.gender.text = friend.gender;
     cell.popularity.text = [NSString stringWithFormat:@"%d",friend.popularity];
     NSString *formatting = [NSString stringWithFormat:@"http://www.whackwho.com/userImages/%@.png", friend.head_id];
@@ -208,8 +214,10 @@
         [cell.spinner removeSpinner];
     }];
 
-    [cell.profileImage setClipsToBounds:YES];
-    [cell.profileImage setContentMode:UIViewContentModeScaleAspectFill];
+    //[cell.profileImage setClipsToBounds:YES];
+    [cell.profileImage setContentMode:UIViewContentModeScaleAspectFit];
+    [cell.profileImage.layer setBorderColor:[[UIColor brownColor] CGColor]];
+    [cell.profileImage.layer setBorderWidth:2.0];
     
     return cell;
 }
@@ -287,7 +295,7 @@
     [spinner removeSpinner];
     [tablepull finishedLoading];
     
-    [self.table setContentSize:CGSizeMake(160, 50*resultFriends.count)];
+    [self.table setContentSize:CGSizeMake(160, 70*resultFriends.count)];
 }
 
 -(void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response{
@@ -516,7 +524,9 @@
     
     NSArray *temp = [friendSelected.name componentsSeparatedByString:@" "];
     NSString *firstName = [temp objectAtIndex:0];
-    namelabel.text = firstName;
+    NSString *lastName = [temp objectAtIndex:1];
+    NSString *firstInitial = [lastName substringToIndex:1];
+    namelabel.text = [NSString stringWithFormat:@"%@ %@.", firstName, firstInitial];
 }
 
 #pragma mark - hammer animations

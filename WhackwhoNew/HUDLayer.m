@@ -96,10 +96,12 @@
 - (void) resumeTapped:(id)sender {
     [self removeChildByTag:20 cleanup:YES];
     [[CCDirector sharedDirector] resume];
+    [Game sharedGame].isPaused = NO;
 }
 
 -(void) pauseGame {
     [[CCDirector sharedDirector] pause];
+    [Game sharedGame].isPaused = YES;
     //show modal view controller
     CGSize winSize = [CCDirector sharedDirector].winSize;
     

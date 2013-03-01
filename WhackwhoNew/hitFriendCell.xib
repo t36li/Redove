@@ -51,8 +51,12 @@
 										<string key="NSFrameSize">{35, 35}</string>
 										<reference key="NSSuperview" ref="772176263"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="492393982"/>
+										<reference key="NSNextKeyView" ref="939002878"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
+										<object class="NSColor" key="IBUIBackgroundColor" id="120910621">
+											<int key="NSColorSpace">3</int>
+											<bytes key="NSWhite">MCAwAA</bytes>
+										</object>
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 									</object>
@@ -74,10 +78,10 @@
 							<object class="IBUILabel" id="492393982">
 								<reference key="NSNextResponder" ref="899231684"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{71, 0}, {69, 21}}</string>
+								<string key="NSFrame">{{71, 10}, {84, 32}}</string>
 								<reference key="NSSuperview" ref="899231684"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="939002878"/>
+								<reference key="NSNextKeyView" ref="445506961"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -95,14 +99,14 @@
 								</object>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<float key="IBUIMinimumFontSize">10</float>
-								<object class="IBUIFontDescription" key="IBUIFontDescription">
-									<string key="name">Helvetica</string>
-									<string key="family">Helvetica</string>
+								<object class="IBUIFontDescription" key="IBUIFontDescription" id="260241571">
+									<string key="name">Chalkduster</string>
+									<string key="family">Chalkduster</string>
 									<int key="traits">0</int>
 									<double key="pointSize">14</double>
 								</object>
-								<object class="NSFont" key="IBUIFont">
-									<string key="NSName">Helvetica</string>
+								<object class="NSFont" key="IBUIFont" id="731612100">
+									<string key="NSName">Chalkduster</string>
 									<double key="NSSize">14</double>
 									<int key="NSfFlags">16</int>
 								</object>
@@ -110,46 +114,46 @@
 							<object class="IBUILabel" id="939002878">
 								<reference key="NSNextResponder" ref="899231684"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{71, 21}, {61, 27}}</string>
+								<string key="NSFrame">{{20, 37}, {101, 32}}</string>
 								<reference key="NSSuperview" ref="899231684"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="445506961"/>
+								<reference key="NSNextKeyView" ref="492393982"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">Whacked:</string>
-								<object class="NSColor" key="IBUITextColor">
+								<string key="IBUIText">Popularity:</string>
+								<object class="NSColor" key="IBUITextColor" id="941201458">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MCAwIDAAA</bytes>
-									<string key="IBUIColorCocoaTouchKeyPath">darkTextColor</string>
+									<bytes key="NSRGB">MSAwIDAAA</bytes>
 								</object>
 								<reference key="IBUIHighlightedColor" ref="446077781"/>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<int key="IBUINumberOfLines">2</int>
 								<int key="IBUILineBreakMode">0</int>
-								<object class="IBUIFontDescription" key="IBUIFontDescription" id="1021220965">
-									<string key="name">Helvetica</string>
-									<string key="family">Helvetica</string>
+								<object class="IBUIFontDescription" key="IBUIFontDescription">
+									<string key="name">Chalkduster</string>
+									<string key="family">Chalkduster</string>
 									<int key="traits">0</int>
-									<double key="pointSize">13</double>
+									<double key="pointSize">15</double>
 								</object>
-								<object class="NSFont" key="IBUIFont" id="627252971">
-									<string key="NSName">Helvetica</string>
-									<double key="NSSize">13</double>
+								<object class="NSFont" key="IBUIFont">
+									<string key="NSName">Chalkduster</string>
+									<double key="NSSize">15</double>
 									<int key="NSfFlags">16</int>
 								</object>
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-								<double key="preferredMaxLayoutWidth">61</double>
+								<double key="preferredMaxLayoutWidth">101</double>
 							</object>
 							<object class="IBUILabel" id="445506961">
 								<reference key="NSNextResponder" ref="899231684"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{129, 21}, {31, 28}}</string>
+								<string key="NSFrame">{{121, 39}, {40, 30}}</string>
 								<reference key="NSSuperview" ref="899231684"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -157,27 +161,21 @@
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">5</string>
-								<object class="NSColor" key="IBUITextColor">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MSAwIDAAA</bytes>
-								</object>
+								<reference key="IBUITextColor" ref="941201458"/>
 								<reference key="IBUIHighlightedColor" ref="446077781"/>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<int key="IBUITextAlignment">1</int>
-								<reference key="IBUIFontDescription" ref="1021220965"/>
-								<reference key="IBUIFont" ref="627252971"/>
+								<reference key="IBUIFontDescription" ref="260241571"/>
+								<reference key="IBUIFont" ref="731612100"/>
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 							</object>
 						</array>
-						<string key="NSFrameSize">{160, 49}</string>
+						<string key="NSFrameSize">{160, 69}</string>
 						<reference key="NSSuperview" ref="677989397"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="772176263"/>
 						<string key="NSReuseIdentifierKey">_NS:11</string>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MCAwAA</bytes>
-						</object>
+						<reference key="IBUIBackgroundColor" ref="120910621"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">4</int>
@@ -185,7 +183,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</array>
-				<string key="NSFrameSize">{160, 50}</string>
+				<string key="NSFrameSize">{160, 70}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="899231684"/>
@@ -255,9 +253,9 @@
 						<reference key="object" ref="677989397"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="772176263"/>
-							<reference ref="492393982"/>
-							<reference ref="445506961"/>
 							<reference ref="939002878"/>
+							<reference ref="445506961"/>
+							<reference ref="492393982"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>

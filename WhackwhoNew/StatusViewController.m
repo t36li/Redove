@@ -54,7 +54,7 @@ WhichTransition transitionType;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        
+    
     transitionType = NA;
     
     cameraController = [[UIImagePickerController alloc] init];
@@ -139,16 +139,6 @@ WhichTransition transitionType;
             int whichBody = (arc4random() % 5) + 1;
             [[Game sharedGame] setRandomed_body:whichBody];
             [bodyView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"body%i_1.png", whichBody]]];
-            
-            //if popularity changes... then what
-            [high_score_lbl setText:[self readPlist:@"High_Score"]];
-            [high_combo_lbl setText:[self readPlist:@"Highest_Combo"]];
-            [total_gp_lbl setText:[self readPlist:@"Games_Played"]];
-            [popularity_lbl setText:[NSString stringWithFormat:@"%d",[[UserInfo sharedInstance] popularity]]];
-            
-            [RKClient clientWithBaseURL:[NSURL URLWithString:BaseURL]];
-            NSString *whackID = [NSString stringWithFormat:@"%i",[[UserInfo sharedInstance] whackWhoId]];
-            [[RKClient sharedClient] get:[NSString stringWithFormat:@"/hits/%@", whackID] delegate:self];
             break;
         }
             
@@ -160,6 +150,15 @@ WhichTransition transitionType;
             [faceView setImage:[[UserInfo sharedInstance] croppedImage]];
             break;
     }
+    //if popularity changes... then what
+    [high_score_lbl setText:[self readPlist:@"High_Score"]];
+    [high_combo_lbl setText:[self readPlist:@"Highest_Combo"]];
+    [total_gp_lbl setText:[self readPlist:@"Games_Played"]];
+    [popularity_lbl setText:[NSString stringWithFormat:@"%d",[[UserInfo sharedInstance] popularity]]];
+    
+    [RKClient clientWithBaseURL:[NSURL URLWithString:BaseURL]];
+    NSString *whackID = [NSString stringWithFormat:@"%i",[[UserInfo sharedInstance] whackWhoId]];
+    [[RKClient sharedClient] get:[NSString stringWithFormat:@"/hits/%@", whackID] delegate:self];
 }
 
 
