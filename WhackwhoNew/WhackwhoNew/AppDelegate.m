@@ -12,6 +12,7 @@
 #import "User.h"
 #import "Friend.h"
 #import "FBSingletonNew.h"
+#import "Game.h"
 
 @implementation AppDelegate
 
@@ -80,7 +81,7 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    //[[CCDirector sharedDirector] pause];
+    //[[FBSingletonNew sharedInstance] closeSession];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -97,7 +98,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    [[CCDirector sharedDirector] resume];
+    //[[FBSingletonNew sharedInstance] openSession];
     [FBSession.activeSession handleDidBecomeActive];
     /*
     if (FBSession.activeSession.isOpen) {
@@ -123,6 +124,30 @@
 	}
 }
 
+- (void)switchToBGM {
+    NSString *backgroundMusicPath = [[NSBundle mainBundle] pathForResource:@"Ingame_bgm" ofType:@"wav"];
+	NSURL *backgroundMusicURL = [NSURL fileURLWithPath:backgroundMusicPath];
+    
+    AVAudioPlayer *newPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: backgroundMusicURL error: nil];
+    [_backgroundMusicPlayer stop];
+    
+    _backgroundMusicPlayer = newPlayer;
+    //[self tryPlayMusic];
+    [_backgroundMusicPlayer play];
+}
+
+- (void)switchToNormalBGM {
+    NSString *backgroundMusicPath = [[NSBundle mainBundle] pathForResource:@"background_music" ofType:@"mp3"];
+	NSURL *backgroundMusicURL = [NSURL fileURLWithPath:backgroundMusicPath];
+    
+    AVAudioPlayer *newPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: backgroundMusicURL error: nil];
+    [_backgroundMusicPlayer stop];
+    
+    _backgroundMusicPlayer = newPlayer;
+    //[self tryPlayMusic];
+    [_backgroundMusicPlayer play];
+}
+
 - (void) audioPlayerBeginInterruption: (AVAudioPlayer *) player {
 	_backgroundMusicInterrupted = YES;
 	_backgroundMusicPlaying = NO;
@@ -138,7 +163,9 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    [FBSession.activeSession close];
+    //[FBSession.activeSession close];
+    [[FBSingletonNew sharedInstance] closeSession];
+
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {

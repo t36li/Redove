@@ -38,16 +38,29 @@
 	return self;
 }
 
+
+void endHammerSound (SystemSoundID  mySSID, void *myself)
+{    
+    NSString *fireSoundPath = [[NSBundle mainBundle] pathForResource:@"Fire_sound" ofType:@"caf"];
+	NSURL *fireSoundURL = [NSURL fileURLWithPath:fireSoundPath];
+    SystemSoundID soundID;
+	AudioServicesCreateSystemSoundID((__bridge CFURLRef)fireSoundURL, &soundID);
+    AudioServicesPlaySystemSound(soundID);
+}
+
 -(void) onEnter {
     [super onEnter];
     
-    NSString *rightHammerPath = [[NSBundle mainBundle] pathForResource:@"hammer1" ofType:@"caf"];
+    NSString *rightHammerPath = [[NSBundle mainBundle] pathForResource:@"hit_sound_final" ofType:@"caf"];
 	NSURL *rightHammerURL = [NSURL fileURLWithPath:rightHammerPath];
 	AudioServicesCreateSystemSoundID((__bridge CFURLRef)rightHammerURL, &_rightHammerSound);
-    
-    NSString *wrongHammerPath = [[NSBundle mainBundle] pathForResource:@"hammer2" ofType:@"caf"];
+    AudioServicesAddSystemSoundCompletion(_rightHammerSound, NULL, NULL, endHammerSound, NULL);
+
+    NSString *wrongHammerPath = [[NSBundle mainBundle] pathForResource:@"miss_sound_final" ofType:@"caf"];
 	NSURL *wrongHammerURL = [NSURL fileURLWithPath:wrongHammerPath];
 	AudioServicesCreateSystemSoundID((__bridge CFURLRef)wrongHammerURL, &_wrongHammerSound);
+    
+   
     
     self.isTouchEnabled = YES;
     //CGSize winSize = [CCDirector sharedDirector].winSize;
@@ -111,7 +124,7 @@
     //[[UIAccelerometer sharedAccelerometer] setUpdateInterval:1/60];
     //shake_once = false;
     
-    int i = 0;
+    int i = 0; //for key purpose
     for (UIImage *person in [[Game sharedGame] arrayOfAllPopups]) {
         Character *head = [Character spriteWithCGImage:[person CGImage] key:[NSString stringWithFormat:@"person%i", i]];
         
@@ -126,12 +139,12 @@
         head.position = CGPointZero;
         [self addChild:head z:10];
         [heads addObject:head];
-        i++; //for key purpose
+        i++;
         
         CCSprite *tempBody = [CCSprite spriteWithSpriteFrameName:@"body1_1.png"];
         tempBody.anchorPoint = ccp(0.5,1);
-        tempBody.position = ccp(24, 10);
-        tempBody.scale = 0.5;
+        tempBody.position = ccp(24, 8);
+        tempBody.scale = 0.6;
         [head addChild:tempBody z:-10];
         
         int randomBody = arc4random() % 5;
@@ -448,7 +461,7 @@
         CCScaleBy *scaleUp = [CCScaleBy actionWithDuration:0.5f scale:10];
         CCScaleBy *easeScaleUp = [CCEaseIn actionWithAction:scaleUp rate:10.0f];
         CCAction *easeScaleDown = [easeScaleUp reverse];
-        CCDelayTime *delay_sprite = [CCDelayTime actionWithDuration:0.5];
+        CCDelayTime *delay_sprite = [CCDelayTime actionWithDuration:1.2];
         
         CCCallFuncN *setTappable = [CCCallFuncN actionWithTarget:self selector:@selector(setTappable:)];
         CCCallFuncN *setUntappable = [CCCallFuncN actionWithTarget:self selector:@selector(unSetTappable:)];
@@ -463,7 +476,7 @@
         CCMoveBy *easeMoveUp = [CCEaseIn actionWithAction:moveUp rate:10.0f];
         CCAction *easeMoveDown = [easeMoveUp reverse];
         CCDelayTime *delay_splash = [CCDelayTime actionWithDuration:delayTime];
-        CCDelayTime *delay_sprite = [CCDelayTime actionWithDuration:0.5];
+        CCDelayTime *delay_sprite = [CCDelayTime actionWithDuration:1.2];
         
         CCCallFuncN *setTappable = [CCCallFuncN actionWithTarget:self selector:@selector(setTappable:)];
         CCCallFuncN *setUntappable = [CCCallFuncN actionWithTarget:self selector:@selector(unSetTappable:)];
@@ -655,6 +668,10 @@
     [head setTappable:FALSE];
 }
 
+-(void) removeFire {    
+    [self removeChildByTag:fireTag cleanup:YES];
+}
+
 -(void) resetHead: (id) sender {
     HelloWorldScene *scene = (HelloWorldScene *)self.parent;
     Character *head = (Character *) sender;
@@ -663,16 +680,16 @@
     head.scale = 1.0f;
     head.position = CGPointZero;
     
+    if ([head isSelectedHit] && !head.didMiss) {
+        [self performSelector:@selector(removeFire) withObject:nil afterDelay:1.0f];
+    }
+    
     if (head.didMiss && head.isSelectedHit) {
         [scene resetConsecHits];
     }
     
     if ([head getChildByTag:burntTag]) {
         [head removeChildByTag:burntTag cleanup:YES];
-    }
-    
-    if ([head getChildByTag:fireTag]) {
-        [head removeChildByTag:fireTag cleanup:YES];
     }
     
     //display rainbows according to hit streaks
@@ -708,9 +725,8 @@
         [self schedule:@selector(tryPopheads) interval:speed];
         
     } else if (scene.consecHits != 0 && scene.consecHits % 5 == 0 && head.isSelectedHit){
-        if (sve_displayed > [sve count]) {
-            sve_displayed = [sve count];
-        }
+        if (sve_displayed < [sve count]) {
+            
         CCSprite *sve_unit = [sve objectAtIndex:sve_displayed];
         switch (level) {
             case hillLevel:
@@ -738,6 +754,8 @@
         }
         
         sve_displayed++;
+        }
+        
         //update speed accordingly with combo times
         speed *= 0.5;
         [self unschedule:@selector(tryPopheads)];
@@ -797,8 +815,9 @@
     CCParticleSystem *emitter = [[CCParticleExplosion alloc] initWithTotalParticles:100];
     //set the location of the emitter
     emitter.autoRemoveOnFinish = YES;
-    emitter.position = ccp(temp.position.x - temp.contentSize.width, temp.position.y - 10);
+    emitter.position = ccp(temp.position.x - temp.contentSize.width/2, temp.position.y - temp.contentSize.height/2);
     emitter.scale = 0.5;
+    emitter.life = 0.5f;
     //add to layer ofcourse(effect begins after this step)
     [self addChild: emitter];
 }
@@ -809,14 +828,14 @@
     CCParticleSystem *emitter = [[CCParticleFire alloc] initWithTotalParticles:200];
     //set the location of the emitter
     emitter.anchorPoint = ccp(0,0);
-    emitter.position = ccp(0,15);
+    emitter.position = ccp(temp.position.x - temp.contentSize.width/2, temp.position.y - temp.contentSize.height/2 - 30);
     emitter.scale = 0.5;
-    emitter.life = 0.5f;
+    emitter.life = 0.3f;
     emitter.speed = 300;
     emitter.speedVar = 10;
     
     //add to layer ofcourse(effect begins after this step)
-    [temp addChild: emitter z:0 tag:fireTag];
+    [self addChild: emitter z:0 tag:fireTag];
 }
 
 -(void) overlayBurn: (id) node {
@@ -825,9 +844,9 @@
     //head.visible = FALSE;
     CCSprite *burntEffect = [CCSprite spriteWithFile:@"burnt_effect2.png"];
     burntEffect.anchorPoint = ccp(0,0);
-    burntEffect.position = ccp(0, 0);
-    burntEffect.scaleX = head.contentSize.width/burntEffect.contentSize.width;
-    burntEffect.scaleY = head.contentSize.height/burntEffect.contentSize.height;
+    burntEffect.position = ccp(-10, -20);
+    burntEffect.scaleX = head.contentSize.width/burntEffect.contentSize.width * 1.4;
+    burntEffect.scaleY = head.contentSize.height/burntEffect.contentSize.height * 1.4;
     [head addChild:burntEffect z:0 tag:burntTag];
 }
 
@@ -891,7 +910,7 @@
             if (head.isSelectedHit) {
                 
                 AudioServicesPlaySystemSound(_rightHammerSound);
-
+                
                 //10% chance for a coin to popup
                // if (arc4random() % 100 < 10) {
                  //   CCSprite *testObj = [CCSprite spriteWithFile:@"coin front.png"];
@@ -932,6 +951,7 @@
                 CCCallFuncN *overlayBurnt = [CCCallFuncN actionWithTarget:self selector:@selector(overlayBurn:)];
                 
                 [head runAction:[CCSequence actions: fire, overlayBurnt, easeMoveDown, resetHead, nil]];
+                //[head runAction:[CCSequence actions: overlayBurnt, easeMoveDown, resetHead, nil]];
             } else {
                 CGSize winSize = [CCDirector sharedDirector].winSize;
                 
@@ -949,6 +969,7 @@
                 //vibrate to indicate mis-hit
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                 
+                [scene compareConsecHits];
                 [scene resetConsecHits];
                 
                 //update lives
@@ -957,12 +978,11 @@
                 head.numberOfHits ++;
                 
                 //send all heads down
-                for (Character *head2 in heads) {
+                //for (Character *head2 in heads) {
                     //[head2 stopAllActions];
-                    CCCallFuncN *resetHead = [CCCallFuncN actionWithTarget:self selector:@selector(resetHead:)];
-                    
-                    [head runAction:[CCSequence actions: resetHead, nil]];
-                }
+                CCCallFuncN *resetHead = [CCCallFuncN actionWithTarget:self selector:@selector(resetHead:)];
+                [head runAction:[CCSequence actions: resetHead, nil]];
+                //}
                 break;
             }
             
@@ -1015,8 +1035,9 @@ static id<GameOverDelegate> gameOverDelegate = nil;
         
         lives = 3;
         consecHits = 0;
+        max_consecHits = 0;
         baseScore = 0;
-        moneyEarned = 0;
+        //moneyEarned = 0;
         
         //score reading initializations
         NSString *path = [self dataFilepath];
@@ -1050,8 +1071,10 @@ static id<GameOverDelegate> gameOverDelegate = nil;
         [self writePlist:@"High_Score" withUpdate:baseScore];
     }
     
-    int current_gold = [self readPlist:@"Total_Gold"];
-    [self writePlist:@"Total_Gold" withUpdate:(current_gold + moneyEarned)];
+    int current_combo = [self readPlist:@"Highest_Combo"];
+    if (max_consecHits > current_combo) {
+        [self writePlist:@"Highest_Combo" withUpdate:max_consecHits];
+    }
     
     int current_gp = [self readPlist:@"Games_Played"];
     [self writePlist:@"Games_Played" withUpdate:(current_gp + 1)];
@@ -1072,7 +1095,7 @@ static id<GameOverDelegate> gameOverDelegate = nil;
     Game *game = [Game sharedGame];
     [game setBaseScore:baseScore];
     //[game setMoneyEarned:moneyEarned];
-    //[game setMultiplier:consecHits];
+    [game setMax_combo:max_consecHits];
     
     [self cleanup];
     [self.layer setArrayForReview];
@@ -1150,17 +1173,23 @@ static id<GameOverDelegate> gameOverDelegate = nil;
     consecHits = 0;
 }
 
--(void)updateGold:(int)gold {
-    moneyEarned += gold;
+-(void)compareConsecHits {
+    if (consecHits > max_consecHits) {
+        max_consecHits = consecHits;
+    }
 }
+
+//-(void)updateGold:(int)gold {
+  //  moneyEarned += gold;
+//}
 
 -(NSInteger)consecHits {
     return consecHits;
 }
 
--(NSInteger)moneyEarned {
-    return moneyEarned;
-}
+//-(NSInteger)moneyEarned {
+  //  return moneyEarned;
+//}
 
 -(NSInteger)baseScore {
     return baseScore;

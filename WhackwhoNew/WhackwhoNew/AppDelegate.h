@@ -25,5 +25,7 @@
 @property (nonatomic,assign) BOOL appUsageCheckEnabled;
 
 - (void)tryPlayMusic;
+- (void)switchToBGM;
+- (void)switchToNormalBGM;
 
 @end

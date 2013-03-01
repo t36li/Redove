@@ -43,8 +43,7 @@
     
     CCSprite *spritePosTest;
     
-    SystemSoundID _rightHammerSound;
-    SystemSoundID _wrongHammerSound;
+    SystemSoundID _rightHammerSound, _wrongHammerSound, _fireSound;
 }
 
 @property (nonatomic, strong) NSDictionary *locations;
@@ -70,7 +69,8 @@
     HelloWorldLayer *_layer;
     
     int lives;
-    NSInteger consecHits, baseScore, moneyEarned;
+    NSInteger consecHits, baseScore; //moneyEarned;
+    NSInteger max_consecHits;
     
     NSMutableDictionary *dic;     //score storage
 }
@@ -88,9 +88,10 @@
 -(void)updateScore:(int)score;
 -(void)updateConsecHits;
 -(void)resetConsecHits;
--(void)updateGold:(int)gold;
+-(void)compareConsecHits;
+//-(void)updateGold:(int)gold;
 -(NSInteger)consecHits;
--(NSInteger)moneyEarned;
+//-(NSInteger)moneyEarned;
 -(NSInteger)baseScore;
 -(void)finalCleanup;
 
