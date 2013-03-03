@@ -93,9 +93,6 @@ WhichTransition transitionType;
     
     [self.containerView setBackgroundColor:[UIColor clearColor]];
     
-    NSString *path = [self dataFilepath];
-    dic = [[NSDictionary alloc] initWithContentsOfFile:path];
-    
     //showOnce = YES;
     
     //need to cache user's previous image
@@ -149,6 +146,14 @@ WhichTransition transitionType;
             [faceView setImage:[[UserInfo sharedInstance] croppedImage]];
             break;
     }
+}
+
+
+-(void)viewDidAppear:(BOOL)animated {
+    
+    NSString *path = [self dataFilepath];
+    NSDictionary *newDic = [[NSDictionary alloc] initWithContentsOfFile:path];
+    dic = newDic;
     
     //if popularity changes... then what
     [high_score_lbl setText:[self readPlist:@"High_Score"]];
@@ -159,10 +164,7 @@ WhichTransition transitionType;
     [RKClient clientWithBaseURL:[NSURL URLWithString:BaseURL]];
     NSString *whackID = [NSString stringWithFormat:@"%i",[[UserInfo sharedInstance] whackWhoId]];
     [[RKClient sharedClient] get:[NSString stringWithFormat:@"/hits/%@", whackID] delegate:self];
-}
-
-
--(void)viewDidAppear:(BOOL)animated {
+    
     switch (transitionType) {
         case NA: {
             break;
