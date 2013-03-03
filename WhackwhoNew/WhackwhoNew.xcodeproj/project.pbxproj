@@ -149,7 +149,6 @@
 		C18AAB7316B4DEF7003F8F87 /* whackwho3.png in Resources */ = {isa = PBXBuildFile; fileRef = C18AAB7016B4DEF6003F8F87 /* whackwho3.png */; };
 		C1B4397D15951B4100D62C2B /* StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B4397C15951B4100D62C2B /* StatusViewController.m */; };
 		C1B7BB2316A2149600E6F7A8 /* Loading.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1B7BB2216A2149600E6F7A8 /* Loading.jpg */; };
-		C1B7BB2516A214C400E6F7A8 /* Options_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1B7BB2416A214C400E6F7A8 /* Options_bg.jpg */; };
 		C1B7BB2716A214D800E6F7A8 /* Personal_Upload.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1B7BB2616A214D800E6F7A8 /* Personal_Upload.jpg */; };
 		C1CBDFF015952DC100A35E24 /* Email Envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEE15952DC100A35E24 /* Email Envelope.png */; };
 		C1CBDFF115952DC100A35E24 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEF15952DC100A35E24 /* facebook.png */; };
@@ -204,6 +203,8 @@
 		D006FCE615B51DC10079626F /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D006FCE515B51DC10079626F /* ImageIO.framework */; };
 		D015288E16D311ED00481464 /* review_upload_background.png in Resources */ = {isa = PBXBuildFile; fileRef = D015288D16D311EC00481464 /* review_upload_background.png */; };
 		D015289716D4563200481464 /* ReviewUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D015289616D4563200481464 /* ReviewUploadViewController.m */; };
+		D017DF8916E401D800F812A4 /* about us.png in Resources */ = {isa = PBXBuildFile; fileRef = D017DF8816E401D800F812A4 /* about us.png */; };
+		D017DF9116E40B3400F812A4 /* Options_background.png in Resources */ = {isa = PBXBuildFile; fileRef = D017DF9016E40B3300F812A4 /* Options_background.png */; };
 		D03D411C16A4CC1800C72E17 /* UIBarButtonItem+WEPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D411416A4CC1800C72E17 /* UIBarButtonItem+WEPopover.m */; };
 		D03D411D16A4CC1800C72E17 /* WEPopoverContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D411616A4CC1800C72E17 /* WEPopoverContainerView.m */; };
 		D03D411E16A4CC1800C72E17 /* WEPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D411816A4CC1800C72E17 /* WEPopoverController.m */; };
@@ -793,7 +794,6 @@
 		C1B4397B15951B4100D62C2B /* StatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewController.h; sourceTree = "<group>"; };
 		C1B4397C15951B4100D62C2B /* StatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewController.m; sourceTree = "<group>"; };
 		C1B7BB2216A2149600E6F7A8 /* Loading.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Loading.jpg; sourceTree = "<group>"; };
-		C1B7BB2416A214C400E6F7A8 /* Options_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Options_bg.jpg; sourceTree = "<group>"; };
 		C1B7BB2616A214D800E6F7A8 /* Personal_Upload.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Personal_Upload.jpg; sourceTree = "<group>"; };
 		C1CBDFEE15952DC100A35E24 /* Email Envelope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Email Envelope.png"; sourceTree = "<group>"; };
 		C1CBDFEF15952DC100A35E24 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
@@ -853,6 +853,8 @@
 		D015288D16D311EC00481464 /* review_upload_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = review_upload_background.png; sourceTree = "<group>"; };
 		D015289516D4563200481464 /* ReviewUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewUploadViewController.h; sourceTree = "<group>"; };
 		D015289616D4563200481464 /* ReviewUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewUploadViewController.m; sourceTree = "<group>"; };
+		D017DF8816E401D800F812A4 /* about us.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about us.png"; sourceTree = "<group>"; };
+		D017DF9016E40B3300F812A4 /* Options_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Options_background.png; sourceTree = "<group>"; };
 		D03D411316A4CC1800C72E17 /* UIBarButtonItem+WEPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+WEPopover.h"; sourceTree = "<group>"; };
 		D03D411416A4CC1800C72E17 /* UIBarButtonItem+WEPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+WEPopover.m"; sourceTree = "<group>"; };
 		D03D411516A4CC1800C72E17 /* WEPopoverContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverContainerView.h; sourceTree = "<group>"; };
@@ -1486,11 +1488,12 @@
 			isa = PBXGroup;
 			children = (
 				C1011B2F16D83E3E00C09F53 /* Main_Menu_baselayer2.png */,
+				D017DF9016E40B3300F812A4 /* Options_background.png */,
+				D017DF8816E401D800F812A4 /* about us.png */,
 				D015288D16D311EC00481464 /* review_upload_background.png */,
 				C16EB71916E4023B007DC43D /* Review_Background2.png */,
 				C16EB71D16E405B2007DC43D /* Personal_Status_Bg_Final.png */,
 				C1B7BB2216A2149600E6F7A8 /* Loading.jpg */,
-				C1B7BB2416A214C400E6F7A8 /* Options_bg.jpg */,
 				C1B7BB2616A214D800E6F7A8 /* Personal_Upload.jpg */,
 				C14139E41688FA74005556BD /* Choose_Connections_Bg.jpg */,
 				C1EC4AFA16D6EB7C00DF7EA9 /* Personal_Status_Background.png */,
@@ -2742,7 +2745,6 @@
 				C14BC646169250E30005EEBE /* HitWho_Hammer_Flipped.png in Resources */,
 				C14BC64E169503550005EEBE /* background_music.mp3 in Resources */,
 				C1B7BB2316A2149600E6F7A8 /* Loading.jpg in Resources */,
-				C1B7BB2516A214C400E6F7A8 /* Options_bg.jpg in Resources */,
 				C1B7BB2716A214D800E6F7A8 /* Personal_Upload.jpg in Resources */,
 				D03D412416A4D1CF00C72E17 /* PopOver.xib in Resources */,
 				D0E40DB316AB2AD0000E99B4 /* nose_effect_blood.png in Resources */,

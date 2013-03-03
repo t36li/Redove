@@ -476,7 +476,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Options_bg.jpg" id="4Lh-bk-xAL">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Options_background.png" id="4Lh-bk-xAL">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -513,6 +513,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="about_touched:" destination="sqy-Cf-B9P" eventType="touchUpInside" id="B70-jP-eom"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gIU-Dd-Vc9">
                                 <rect key="frame" x="20" y="275" width="35" height="35"/>
@@ -1226,6 +1229,7 @@
         <class className="OptionsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OptionsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="about_touched:"/>
                 <relationship kind="action" name="back_touched:"/>
                 <relationship kind="action" name="logout_touched:"/>
                 <relationship kind="action" name="tutSwitch_touched:"/>

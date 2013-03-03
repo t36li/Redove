@@ -292,7 +292,7 @@
         UIGraphicsBeginImageContext(CGSizeMake(bg.size.width, bg.size.height));
         [bg drawInRect:CGRectMake(0, 0, bg.size.width, bg.size.height)];
         
-        int height = 130;
+        int height = 150;
         int gap = 10;
         
         int x_offset = (bg.size.width - (headWidth + gap) * avatarArray.count) / 2;
@@ -305,7 +305,7 @@
             if (whichBody == 2) {
                 [bodyImage drawInRect:CGRectMake(x_offset + (headWidth + gap) * counter + (headWidth - bodyImage.size.width)/2 + 30, height + pic.size.height - 30, bodyImage.size.width, bodyImage.size.height)];
             } else if (whichBody == 1) {
-                [bodyImage drawInRect:CGRectMake(x_offset + (headWidth + gap) * counter + (headWidth - bodyImage.size.width)/2, height + pic.size.height - 50, bodyImage.size.width, bodyImage.size.height)];
+                [bodyImage drawInRect:CGRectMake(x_offset + (headWidth + gap) * counter + (headWidth - bodyImage.size.width)/2, height + pic.size.height - 60, bodyImage.size.width, bodyImage.size.height)];
             } else {
                 [bodyImage drawInRect:CGRectMake(x_offset + (headWidth + gap) * counter + (headWidth - bodyImage.size.width)/2, height + pic.size.height - 10, bodyImage.size.width, bodyImage.size.height)];
             }
