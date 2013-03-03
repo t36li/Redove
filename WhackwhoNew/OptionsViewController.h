@@ -16,6 +16,8 @@
     UIButton *logout_but;
     //IBOutlet UISwitch *tutorial;
     
+    UIView *popUp;
+    
 @private
     UserInfo *usr;
     FBSingletonNew *fbs;
@@ -29,4 +31,5 @@
 -(IBAction)tutSwitch_touched:(id)sender;
 -(IBAction)back_touched:(id)sender;
 -(IBAction)logout_touched:(id)sender;
+-(IBAction)about_touched:(id)sender;
 @end

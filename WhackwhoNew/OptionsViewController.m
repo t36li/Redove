@@ -87,6 +87,43 @@
     return UIInterfaceOrientationMaskLandscapeLeft;
 }
 
+-(void)closedAboutPage:(UIButton *)sender {
+    [UIView animateWithDuration:0.3/1.5 animations:^{
+        popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+    } completion:^(BOOL finished) {
+        [popUp removeFromSuperview];
+    }];
+}
+
+-(IBAction)about_touched:(id)sender {
+    popUp = [[UIView alloc] initWithFrame:self.view.frame];
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"about us.png"]];
+    imgView.frame = popUp.frame;
+    
+    UIButton *okBtn = [[UIButton alloc] initWithFrame:self.view.frame];
+    [okBtn addTarget:self action:@selector(closedAboutPage:) forControlEvents:UIControlEventTouchUpInside];
+    [popUp addSubview:imgView];
+    [popUp addSubview:okBtn];
+    
+    
+    
+    popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.001, 0.001);
+    
+    [self.view addSubview:popUp];
+    
+    [UIView animateWithDuration:0.3/1.5 animations:^{
+        popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.3/2 animations:^{
+            popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.3/2 animations:^{
+                popUp.transform = CGAffineTransformIdentity;
+            }];
+        }];
+    }];
+}
+
 
 
 

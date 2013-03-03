@@ -197,6 +197,7 @@
 		D006FCE615B51DC10079626F /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D006FCE515B51DC10079626F /* ImageIO.framework */; };
 		D015288E16D311ED00481464 /* review_upload_background.png in Resources */ = {isa = PBXBuildFile; fileRef = D015288D16D311EC00481464 /* review_upload_background.png */; };
 		D015289716D4563200481464 /* ReviewUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D015289616D4563200481464 /* ReviewUploadViewController.m */; };
+		D017DF8916E401D800F812A4 /* about us.png in Resources */ = {isa = PBXBuildFile; fileRef = D017DF8816E401D800F812A4 /* about us.png */; };
 		D03D411C16A4CC1800C72E17 /* UIBarButtonItem+WEPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D411416A4CC1800C72E17 /* UIBarButtonItem+WEPopover.m */; };
 		D03D411D16A4CC1800C72E17 /* WEPopoverContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D411616A4CC1800C72E17 /* WEPopoverContainerView.m */; };
 		D03D411E16A4CC1800C72E17 /* WEPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D411816A4CC1800C72E17 /* WEPopoverController.m */; };
@@ -839,6 +840,7 @@
 		D015288D16D311EC00481464 /* review_upload_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = review_upload_background.png; sourceTree = "<group>"; };
 		D015289516D4563200481464 /* ReviewUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewUploadViewController.h; sourceTree = "<group>"; };
 		D015289616D4563200481464 /* ReviewUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewUploadViewController.m; sourceTree = "<group>"; };
+		D017DF8816E401D800F812A4 /* about us.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about us.png"; sourceTree = "<group>"; };
 		D03D411316A4CC1800C72E17 /* UIBarButtonItem+WEPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+WEPopover.h"; sourceTree = "<group>"; };
 		D03D411416A4CC1800C72E17 /* UIBarButtonItem+WEPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+WEPopover.m"; sourceTree = "<group>"; };
 		D03D411516A4CC1800C72E17 /* WEPopoverContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverContainerView.h; sourceTree = "<group>"; };
@@ -1472,6 +1474,7 @@
 			isa = PBXGroup;
 			children = (
 				C1011B2F16D83E3E00C09F53 /* Main_Menu_baselayer2.png */,
+				D017DF8816E401D800F812A4 /* about us.png */,
 				D015288D16D311EC00481464 /* review_upload_background.png */,
 				C1B7BB2216A2149600E6F7A8 /* Loading.jpg */,
 				C1B7BB2416A214C400E6F7A8 /* Options_bg.jpg */,
@@ -2806,6 +2809,7 @@
 				C16EB71516E01FA3007DC43D /* hit_sound_final.caf in Resources */,
 				C16EB71616E01FA3007DC43D /* miss_sound_final.caf in Resources */,
 				C16EB71816E01FAD007DC43D /* Ingame_bgm.wav in Resources */,
+				D017DF8916E401D800F812A4 /* about us.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
