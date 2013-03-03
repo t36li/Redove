@@ -1100,11 +1100,12 @@ static id<GameOverDelegate> gameOverDelegate = nil;
     //[game setMoneyEarned:moneyEarned];
     [game setMax_combo:max_consecHits];
     
-    [self cleanup];
     [self.layer setArrayForReview];
+
+    [self performSelector:@selector(transitionToReview) withObject:nil];
     
+    [self cleanup];
     [self finalCleanup];
-    [self performSelector:@selector(transitionToReview) withObject:nil afterDelay:2.0];
 }
 
 -(void)finalCleanup {

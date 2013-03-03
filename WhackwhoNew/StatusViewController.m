@@ -57,35 +57,6 @@ WhichTransition transitionType;
     
     transitionType = NA;
     
-    cameraController = [[UIImagePickerController alloc] init];
-    self.overlay = [[CameraOverlayControllerViewController alloc] initWithNibName:@"CameraOverlayControllerViewController" bundle:nil];
-    self.overlay.pickerReference = cameraController;
-    self.overlay.delegate = self;
-    cameraController.delegate = self.overlay;
-    cameraController.navigationBarHidden = YES;
-    cameraController.toolbarHidden = YES;
-    cameraController.wantsFullScreenLayout = YES;
-    
-    // Insert the overlay
-    
-    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-    {
-        cameraController.sourceType = UIImagePickerControllerSourceTypeCamera;
-        cameraController.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
-        cameraController.showsCameraControls = NO;
-        cameraController.wantsFullScreenLayout = YES;
-        cameraController.cameraViewTransform = CGAffineTransformScale(cameraController.cameraViewTransform, CAMERA_TRANSFORM_X, CAMERA_TRANSFORM_Y);
-        
-        if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
-            cameraController.cameraDevice = UIImagePickerControllerCameraDeviceFront;
-        } else
-            cameraController.cameraDevice = UIImagePickerControllerCameraDeviceRear;
-        cameraController.cameraOverlayView = self.overlay.view;
-        
-    } else {
-        [cameraController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-    }
-    
     self.navigationController.navigationBarHidden = NO;
     
     [faceView setContentMode:UIViewContentModeScaleAspectFit];
