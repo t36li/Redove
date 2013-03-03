@@ -15,7 +15,7 @@
     NSMutableArray *hearts;
     CCLabelTTF *timeLabel, *scoreLabel, *hitsLabel, *gameOverLabel;
     CCMenu *pauseMenu;
-    BOOL gameOver;
+    BOOL gameOver, gamePaused;
     CCSpriteBatchNode *hud_spritesheet;
     ccTime myTime;
     int lives;

@@ -15,6 +15,7 @@
 #import "CocosViewController.h"
 #import <AudioToolbox/AudioServices.h>
 #import "Items.h"
+#import "AppDelegate.h"
 
 #define hillLevel 0
 #define seaLevel 1
@@ -1005,6 +1006,8 @@ void endHammerSound (SystemSoundID  mySSID, void *myself)
     [heads removeAllObjects];
     [sve removeAllObjects];
     //[bomb removeAllObjects];
+    AppDelegate *blah = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    [blah switchToNormalBGM];
     
     //CGSize winsize = [[CCDirector sharedDirector] winSize];
     

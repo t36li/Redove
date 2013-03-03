@@ -32,9 +32,6 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    AppDelegate *blah = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-    [blah switchToNormalBGM];
-    
     if (!once) {
         once = true;
     } else {

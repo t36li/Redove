@@ -16,6 +16,7 @@
     hearts = [NSMutableArray array];
     lives = 3;
     self.isTouchEnabled = YES;
+    gamePaused = NO;
 }
 
 -(id) init {
@@ -54,10 +55,11 @@
         }
         
         //add "score" label
-        scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"chalkduster" fontSize:30];
+        scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"chalkduster" fontSize:25];
         scoreLabel.anchorPoint = ccp(0.5, 0.5);
         scoreLabel.color = ccc3(240, 150, 55);
-        scoreLabel.position = ccp(245, 20);
+        scoreLabel.position = ccp(245, 27);
+        scoreLabel.visible = FALSE;
         //scoreLabel.string = nil;
         [self addChild:scoreLabel z:100];
         
@@ -94,12 +96,17 @@
 }
 
 - (void) resumeTapped:(id)sender {
+    gamePaused = NO;
     [self removeChildByTag:20 cleanup:YES];
     [[CCDirector sharedDirector] resume];
     [Game sharedGame].isPaused = NO;
 }
 
 -(void) pauseGame {
+    if (gamePaused) {
+        return;
+    }
+    
     [[CCDirector sharedDirector] pause];
     [Game sharedGame].isPaused = YES;
     //show modal view controller
@@ -125,6 +132,7 @@
     CCMenu *quit = [CCMenu menuWithItems:image2, nil];
     quit.position = ccp(winSize.width/2, winSize.height/2 - 25);
     [colorLayer addChild:quit];
+    gamePaused = YES;
 }
 
 
@@ -166,6 +174,7 @@
 }
 
 -(void)updateScore:(NSInteger)score {
+    scoreLabel.visible = TRUE;
     [scoreLabel setString:[NSString stringWithFormat:@"%d", score]];
 }
 
