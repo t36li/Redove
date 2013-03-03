@@ -19,8 +19,8 @@
     
     IBOutlet UILabel *popularity_lbl;
     IBOutlet UILabel *high_score_lbl;
-    IBOutlet UILabel *total_gp_lbl;
-    IBOutlet UILabel *high_combo_lbl;
+    IBOutlet UILabel *games_played_lbl;
+    IBOutlet UILabel *unlocks_lbl;
     
     //define containerView subviews
     IBOutlet UIView *containerView;
@@ -56,8 +56,8 @@
 
 @property (nonatomic) IBOutlet UILabel *popularity_lbl;
 @property (nonatomic) IBOutlet UILabel *high_score_lbl;
-@property (nonatomic) IBOutlet UILabel *total_gp_lbl;
-@property (nonatomic) IBOutlet UILabel *high_combo_lbl;
+@property (nonatomic) IBOutlet UILabel *games_played_lbl;
+@property (nonatomic) IBOutlet UILabel *unlocks_lbl;
 @property (nonatomic, strong) CameraOverlayControllerViewController *overlay;
 @property (nonatomic, strong) UIImagePickerController *cameraController;
 @property (nonatomic, strong) UIImageView *cameraOverlayView;
@@ -65,7 +65,7 @@
 
 //class methods
 - (NSString *) dataFilepath;
-- (NSString *) readPlist: (NSString *) whichLbl;
+- (NSNumber *) readPlist: (NSString *) whichLbl;
 
 - (IBAction)Back_Touched:(id)sender;
 - (IBAction)Ok_Pressed:(id)sender;

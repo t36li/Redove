@@ -172,8 +172,8 @@
     NSNumber *highest_combo = [NSNumber numberWithInt:[[Game sharedGame] max_combo]];
     [goldlbl setText:[numberFormatter stringFromNumber:highest_combo]];
     
-    if ([[Game sharedGame]unlocked_new_bg]) {
-        UIAlertView *unlock_alert = [[UIAlertView alloc] initWithTitle:nil message:@"Congratulations! You have unlocked a new game background!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    if ([[Game sharedGame]unlocked_new_bg] || [[Game sharedGame] unlocked_new_hammer]) {
+        UIAlertView *unlock_alert = [[UIAlertView alloc] initWithTitle:nil message:@"Congratulations! You have unlocked a new background and/or hammer! There will now be a random chance for you to experience this! Play more games and achieve higher scores to unlock more!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [unlock_alert show];
     }
     

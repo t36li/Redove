@@ -61,8 +61,6 @@ void endHammerSound (SystemSoundID  mySSID, void *myself)
 	NSURL *wrongHammerURL = [NSURL fileURLWithPath:wrongHammerPath];
 	AudioServicesCreateSystemSoundID((__bridge CFURLRef)wrongHammerURL, &_wrongHammerSound);
     
-   
-    
     self.isTouchEnabled = YES;
     //CGSize winSize = [CCDirector sharedDirector].winSize;
     
@@ -84,6 +82,13 @@ void endHammerSound (SystemSoundID  mySSID, void *myself)
     //if unlocked new level, then randomize
     int temp = [[Game sharedGame] bgs_to_random];
     level = arc4random() % (temp+1); //generates 0,1,2,.,temp
+    int hms = [[Game sharedGame] hammers_to_random];
+    int rand_hms = (arc4random() % (hms+1)) + 1;
+    //if (rand_hms == 0) {
+      //  hammer_name = @"hit_hammer.png";
+    //} else {
+        hammer_name = [NSString stringWithFormat:@"Hammer%i.png", rand_hms];
+    //}
     
     glClearColor(255, 255, 255, 255);
     splashFrames = [NSMutableArray array];
@@ -829,12 +834,24 @@ void endHammerSound (SystemSoundID  mySSID, void *myself)
     CCParticleSystem *emitter = [[CCParticleFire alloc] initWithTotalParticles:200];
     //set the location of the emitter
     emitter.anchorPoint = ccp(0,0);
-    emitter.position = ccp(temp.position.x - temp.contentSize.width/2, temp.position.y - temp.contentSize.height/2 - 30);
+    emitter.position = ccp(temp.position.x - temp.contentSize.width/2 - 20, temp.position.y - temp.contentSize.height/2 - 30);
     emitter.scale = 0.5;
     emitter.life = 0.3f;
     emitter.speed = 300;
     emitter.speedVar = 10;
-    
+    if ([hammer_name isEqualToString:@"hit_hammer.png"]) {
+        emitter.startColor = ccc4f(0.75f, 0.5f, 0.2f, 1.0f);
+        emitter.endColor = ccc4f(0.75f, 0.5f, 0.2f, 1.0f);
+    } else if ([hammer_name isEqualToString:@"Hammer1.png"]) {
+        emitter.startColor = ccc4f(0.5f, 0.3f, 0.2f, 1.0f);
+        emitter.endColor = ccc4f(0.5f, 0.3f, 0.2f, 1.0f);
+    } else if ([hammer_name isEqualToString:@"Hammer1.png"]) {
+        emitter.startColor = ccc4f(0.2f, 0.6f, 0.2f, 1.0f);
+        emitter.endColor = ccc4f(0.2f, 0.6f, 0.2f, 1.0f);
+    } else {
+        emitter.startColor = ccc4f(0.75f, 0.5f, 0.75f, 1.0f);
+        emitter.endColor = ccc4f(0.75f, 0.5f, 0.75f, 1.0f);
+    }
     //add to layer ofcourse(effect begins after this step)
     [self addChild: emitter z:0 tag:fireTag];
 }
@@ -894,11 +911,11 @@ void endHammerSound (SystemSoundID  mySSID, void *myself)
             head.didMiss = FALSE;
             head.tappable = FALSE;
             
-            CCSprite *hammer = [CCSprite spriteWithSpriteFrameName:@"hit_hammer.png"];
+            CCSprite *hammer = [CCSprite spriteWithFile:hammer_name];
             hammer.position = ccp(head.position.x + head.contentSize.width/2 + 20, head.position.y + head.contentSize.height/2 - 20);
             hammer.rotation = 45;
             hammer.anchorPoint = ccp(1, 0); //bottom right
-            [baselayer addChild:hammer z:50];
+            [self addChild:hammer z:50];
             
             CCRotateBy *smash = [CCRotateBy actionWithDuration:0.10f angle:-70];
             CCRotateBy *easeSmash = [CCEaseInOut actionWithAction:smash rate:3.0f];
@@ -1046,6 +1063,8 @@ static id<GameOverDelegate> gameOverDelegate = nil;
         NSString *path = [self dataFilepath];
         dic = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
         int bgs = [self readPlist:@"Bgs_Unlocked"];
+        int hammers = [self readPlist:@"Hammers_Unlocked"];
+        [[Game sharedGame] setHammers_to_random:hammers];
         [[Game sharedGame] setBgs_to_random:bgs];
 
         self.layer = [[HelloWorldLayer alloc] init];
@@ -1081,12 +1100,17 @@ static id<GameOverDelegate> gameOverDelegate = nil;
     
     int current_gp = [self readPlist:@"Games_Played"];
     [self writePlist:@"Games_Played" withUpdate:(current_gp + 1)];
-    
     //unlock a new background for every 5 games played
     if ((current_gp + 1) % 5 == 0) {
         [[Game sharedGame] setUnlocked_new_bg:YES];
         int current_bgs_unlocked = [self readPlist:@"Bgs_Unlocked"];
         [self writePlist:@"Bgs_Unlocked" withUpdate:(current_bgs_unlocked + 1)];
+    }
+    
+    if (baseScore > 500) {
+        [[Game sharedGame] setUnlocked_new_hammer:YES];
+        int current_hmr = [self readPlist:@"Hammers_Unlocked"];
+        [self writePlist:@"Hammers_Unlocked" withUpdate:(current_hmr + 1)];
     }
     
     //turn off tutorial if successfully played 1 round of games

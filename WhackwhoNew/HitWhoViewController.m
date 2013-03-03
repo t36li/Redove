@@ -68,6 +68,9 @@
     table.delegate = self;
     table.dataSource = self;
     
+    namelabel.numberOfLines = 1;
+    namelabel.adjustsFontSizeToFitWidth = YES;
+    
     spinner = [SpinnerView loadSpinnerIntoView:loadingView];
     tablepull = [[PullToRefreshView alloc] initWithScrollView:(UIScrollView *) self.table];
     self.popoverController = [[WEPopoverController alloc] init];

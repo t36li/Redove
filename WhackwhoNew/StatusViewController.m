@@ -36,7 +36,7 @@
 
 @synthesize containerView;
 @synthesize faceView, bodyView;
-@synthesize popularity_lbl, total_gp_lbl, high_score_lbl, high_combo_lbl;
+@synthesize popularity_lbl, games_played_lbl, high_score_lbl, unlocks_lbl;
 @synthesize cameraController, cameraOverlayView, overlay;
 @synthesize popoverController;
 
@@ -119,22 +119,32 @@ WhichTransition transitionType;
     }
 }
 
-
--(void)viewDidAppear:(BOOL)animated {
-    
+-(void)setLabels {
     NSString *path = [self dataFilepath];
     NSDictionary *newDic = [[NSDictionary alloc] initWithContentsOfFile:path];
     dic = newDic;
     
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
     //if popularity changes... then what
-    [high_score_lbl setText:[self readPlist:@"High_Score"]];
-    [high_combo_lbl setText:[self readPlist:@"Highest_Combo"]];
-    [total_gp_lbl setText:[self readPlist:@"Games_Played"]];
-    //[popularity_lbl setText:[NSString stringWithFormat:@"%d",[[UserInfo sharedInstance] popularity]]];
+    [high_score_lbl setText:[numberFormatter stringFromNumber:[self readPlist:@"High_Score"]]];
+    
+    int hammers_unlocked = [[self readPlist:@"Hammers_Unlocked"] intValue];
+    int bgs_unlocked = [[self readPlist:@"Bgs_Unlocked"] intValue];
+    NSString *unlocked = [numberFormatter stringFromNumber:[NSNumber numberWithInt:(hammers_unlocked + bgs_unlocked)]];
+    [unlocks_lbl setText:[NSString stringWithFormat:@"%@ / 5", unlocked]];
+    
+    [games_played_lbl setText:[numberFormatter stringFromNumber:[self readPlist:@"Games_Played"] ]];
     
     [RKClient clientWithBaseURL:[NSURL URLWithString:BaseURL]];
     NSString *whackID = [NSString stringWithFormat:@"%i",[[UserInfo sharedInstance] whackWhoId]];
     [[RKClient sharedClient] get:[NSString stringWithFormat:@"/hits/%@", whackID] delegate:self];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    
+    [self setLabels];
     
     switch (transitionType) {
         case NA: {
@@ -202,22 +212,17 @@ WhichTransition transitionType;
     if ([fileManager fileExistsAtPath:destPath]) {
         [fileManager removeItemAtPath:destPath error:nil];
     }
-    
-    [high_score_lbl setText:[self readPlist:@"High_Score"]];
-    [high_combo_lbl setText:[self readPlist:@"Highest_Combo"]];
-    [total_gp_lbl setText:[self readPlist:@"Games_Played"]];
-
 }
 
-- (NSString *) readPlist: (NSString *) whichLbl {
+- (NSNumber *)readPlist: (NSString *) whichLbl {
     NSNumber *ret = [dic objectForKey:whichLbl];
     
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    //NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    //[numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
     
     NSLog(@"%@: %i", whichLbl, [ret intValue]);
     
-    return [numberFormatter stringFromNumber:ret];
+    return ret;
 }
 
 

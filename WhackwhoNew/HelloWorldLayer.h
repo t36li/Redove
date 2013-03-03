@@ -28,6 +28,7 @@
     NSMutableArray *sve; //special visual effects after certain consec hits
     //NSMutableArray *coins;
     //NSMutableArray *bomb;
+    NSString *hammer_name;
     
     float speed;
     int level;

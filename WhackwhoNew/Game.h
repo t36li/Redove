@@ -16,9 +16,9 @@
    // BOOL isEnabledSoundFX;
     
     BOOL readyToStart;
-    BOOL unlocked_new_bg;
+    BOOL unlocked_new_bg, unlocked_new_hammer;
     BOOL isPaused;
-    int bgs_to_random;
+    int bgs_to_random, hammers_to_random;
     int baseScore;
     int randomed_body;
     int max_combo;
@@ -37,8 +37,10 @@
 //@property (nonatomic, readwrite) BOOL isEnabledBackgroundMusic;
 //@property (nonatomic, readwrite) BOOL isEnabledSoundFX;
 @property (nonatomic, readwrite) BOOL unlocked_new_bg;
+@property (nonatomic, readwrite) BOOL unlocked_new_hammer;
 @property (nonatomic, readwrite) BOOL isPaused;
 @property (nonatomic, readwrite) int bgs_to_random;
+@property (nonatomic, readwrite) int hammers_to_random;
 @property (nonatomic, readwrite) int baseScore;
 @property (nonatomic, readwrite) int randomed_body;
 @property (nonatomic, readwrite) int max_combo;
