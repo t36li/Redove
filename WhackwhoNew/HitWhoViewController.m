@@ -233,6 +233,8 @@
     // the user can check-in to.
     if (![resultFriends count] || [selectedHits count] >= 4) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"You have selected maximum number of hits! Press undo to clear your selections!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
         return;
     }
         
@@ -301,11 +303,11 @@
 -(void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response{
     //NSLog(@"request body:%@",[request HTTPBodyString]);
     //NSLog(@"request url:%@",[request URL]);
-    NSLog(@"response statue: %d", [response statusCode]);
+    //NSLog(@"response statue: %d", [response statusCode]);
     //NSLog(@"response body:%@",[response bodyAsString]);
     
     //GAME START WITHOUT CHECKING HITS UPDATE ERRORS.
-    if ([request resourcePath] == @"/hits/update"){
+    if ([[request resourcePath] isEqual: @"/hits/update"]){
         [[Game sharedGame] setReadyToStart:YES];
     }
 }
@@ -348,6 +350,12 @@
 }
 
 -(IBAction)battleTouched:(id)sender {
+    if ([selectedHits count] == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"You cannot start game without selecting anyone to whack!" delegate:self cancelButtonTitle:@"Whack!" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
     InBetweenViewController *contentViewController = [[InBetweenViewController alloc] initWithNibName: @"InBetweenViewController" bundle:nil];
     contentViewController.image1 = hit1.image;
     contentViewController.image2 = hit2.image;
