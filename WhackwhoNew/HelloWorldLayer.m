@@ -806,7 +806,7 @@ void endHammerSound (SystemSoundID  mySSID, void *myself)
 }
 
 -(void) removeNode: (id) node {
-    [[node parent] removeChild:node cleanup:YES];
+    [node removeFromParentAndCleanup:YES];
 }
 
 -(void) generateExplosion: (id) node {
