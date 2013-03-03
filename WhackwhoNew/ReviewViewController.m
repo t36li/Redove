@@ -292,7 +292,7 @@
         UIGraphicsBeginImageContext(CGSizeMake(bg.size.width, bg.size.height));
         [bg drawInRect:CGRectMake(0, 0, bg.size.width, bg.size.height)];
         
-        int height = 130;
+        int height = 150;
         int gap = 10;
         
         int x_offset = (bg.size.width - (headWidth + gap) * avatarArray.count) / 2;
