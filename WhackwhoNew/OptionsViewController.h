@@ -28,7 +28,6 @@
 @property (nonatomic) IBOutlet UIButton *back;
 @property (nonatomic) IBOutlet UIButton *logout_but;
 
--(IBAction)tutSwitch_touched:(id)sender;
 -(IBAction)back_touched:(id)sender;
 -(IBAction)logout_touched:(id)sender;
 -(IBAction)about_touched:(id)sender;

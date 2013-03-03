@@ -497,13 +497,6 @@
                                     <action selector="logout_touched:" destination="sqy-Cf-B9P" eventType="touchUpInside" id="dfx-gb-QL9"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="PzO-RV-9ko">
-                                <rect key="frame" x="278" y="92" width="79" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="tutSwitch_touched:" destination="sqy-Cf-B9P" eventType="touchUpInside" id="ocq-nk-DTL"/>
-                                </connections>
-                            </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GmL-ev-nqX">
                                 <rect key="frame" x="113" y="214" width="137" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
