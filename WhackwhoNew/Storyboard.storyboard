@@ -483,7 +483,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lbw-xa-q6i">
-                                <rect key="frame" x="113" y="152" width="137" height="37"/>
+                                <rect key="frame" x="113" y="149" width="137" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal" title="Log Out">
@@ -498,7 +498,7 @@
                                 </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="PzO-RV-9ko">
-                                <rect key="frame" x="283" y="92" width="79" height="27"/>
+                                <rect key="frame" x="278" y="92" width="79" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="tutSwitch_touched:" destination="sqy-Cf-B9P" eventType="touchUpInside" id="ocq-nk-DTL"/>
@@ -600,7 +600,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="DMo-2k-A4n">
-                                <rect key="frame" x="57" y="256" width="100" height="56"/>
+                                <rect key="frame" x="53" y="256" width="106" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="Invite_Button2.png">

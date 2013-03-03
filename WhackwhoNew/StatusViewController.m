@@ -96,7 +96,7 @@ WhichTransition transitionType;
     NSString *path = [self dataFilepath];
     dic = [[NSDictionary alloc] initWithContentsOfFile:path];
     
-    showOnce = YES;
+    //showOnce = YES;
     
     //need to cache user's previous image
     UserInfo *usr = [UserInfo sharedInstance];
@@ -106,7 +106,6 @@ WhichTransition transitionType;
         [takePicAlert show];
     }
 }
-
 
 -(NSUInteger) supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskLandscapeLeft;
@@ -150,11 +149,12 @@ WhichTransition transitionType;
             [faceView setImage:[[UserInfo sharedInstance] croppedImage]];
             break;
     }
+    
     //if popularity changes... then what
     [high_score_lbl setText:[self readPlist:@"High_Score"]];
     [high_combo_lbl setText:[self readPlist:@"Highest_Combo"]];
     [total_gp_lbl setText:[self readPlist:@"Games_Played"]];
-    [popularity_lbl setText:[NSString stringWithFormat:@"%d",[[UserInfo sharedInstance] popularity]]];
+    //[popularity_lbl setText:[NSString stringWithFormat:@"%d",[[UserInfo sharedInstance] popularity]]];
     
     [RKClient clientWithBaseURL:[NSURL URLWithString:BaseURL]];
     NSString *whackID = [NSString stringWithFormat:@"%i",[[UserInfo sharedInstance] whackWhoId]];
@@ -184,7 +184,7 @@ WhichTransition transitionType;
     }
     
     BOOL showTut = [[dic objectForKey:@"Tutorial"] boolValue];
-    if (showTut && showOnce) {
+    if (showTut) {
         StatusViewTutorialPopover *contentViewController = [[StatusViewTutorialPopover alloc] initWithNibName:@"PopOver" bundle:nil];
         self.popoverController = [[WEPopoverController alloc] initWithContentViewController:contentViewController];
         [self.popoverController presentPopoverFromRect:CGRectZero
@@ -192,7 +192,7 @@ WhichTransition transitionType;
                               permittedArrowDirections:UIPopoverArrowDirectionAny
                                               animated:YES];
         [popoverController.view setFrame:CGRectMake(80, 60, 315, 200)];
-        showOnce = NO;
+        //showOnce = NO;
     }
 
 }
@@ -305,12 +305,15 @@ WhichTransition transitionType;
 -(void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response{
     //NSLog(@"request body:%@",[request HTTPBodyString]);
     //NSLog(@"request url:%@",[request URL]);
-    NSLog(@"request resourcePath: %@",[request resourcePath]);
-    NSLog(@"response statue: %d", [response statusCode]);
+    //NSLog(@"request resourcePath: %@",[request resourcePath]);
+    //NSLog(@"response statue: %d", [response statusCode]);
     //NSLog(@"response body:%@",[response bodyAsString]);
+    int popular = [[response bodyAsString] intValue];
+    int old_popular = [[UserInfo sharedInstance] popularity];
+    int difference = popular - old_popular;
     
-    [popularity_lbl setText:[response bodyAsString]];
-    NSInteger popular = [[response bodyAsString] intValue];
+    [popularity_lbl setText:[NSString stringWithFormat:@" %@ / +%i", [response bodyAsString], difference]];
+    
     if ([[UserInfo sharedInstance] popularity] != popular){
         [[UserInfo sharedInstance] setPopularity:popular];
     }
