@@ -305,7 +305,7 @@
             if (whichBody == 2) {
                 [bodyImage drawInRect:CGRectMake(x_offset + (headWidth + gap) * counter + (headWidth - bodyImage.size.width)/2 + 30, height + pic.size.height - 30, bodyImage.size.width, bodyImage.size.height)];
             } else if (whichBody == 1) {
-                [bodyImage drawInRect:CGRectMake(x_offset + (headWidth + gap) * counter + (headWidth - bodyImage.size.width)/2, height + pic.size.height - 50, bodyImage.size.width, bodyImage.size.height)];
+                [bodyImage drawInRect:CGRectMake(x_offset + (headWidth + gap) * counter + (headWidth - bodyImage.size.width)/2, height + pic.size.height - 60, bodyImage.size.width, bodyImage.size.height)];
             } else {
                 [bodyImage drawInRect:CGRectMake(x_offset + (headWidth + gap) * counter + (headWidth - bodyImage.size.width)/2, height + pic.size.height - 10, bodyImage.size.width, bodyImage.size.height)];
             }
