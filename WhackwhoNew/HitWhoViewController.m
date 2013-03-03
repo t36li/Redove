@@ -350,17 +350,39 @@
 }
 
 -(IBAction)battleTouched:(id)sender {
-    if ([selectedHits count] == 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"You cannot start game without selecting anyone to whack!" delegate:self cancelButtonTitle:@"Whack!" otherButtonTitles:nil, nil];
-        [alert show];
-        return;
+    if (selectedHits.count == 0) {
+        NSMutableArray *array = [NSMutableArray arrayWithArray:resultFriends];
+        [array addObjectsFromArray:resultStrangers];
+        int numberOfStrangers = arc4random() % 4 + 1;
+        for (int i = 0; i < numberOfStrangers; ++i) {
+            while (true) {
+                int index = arc4random() % array.count;
+                Friend *fr = [array objectAtIndex:index];
+                if (![selectedHits containsObject:fr]) {
+                    if (fr.head.headImage == nil) {
+                        NSString *MyURL = [NSString stringWithFormat:@"http://www.whackwho.com/userImages/%@.png", fr.head_id];
+                        fr.head.headImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:MyURL]]];
+                    }
+                    [selectedHits addObject:fr];
+                    break;
+                }
+            }
+        }
     }
     
+    
     InBetweenViewController *contentViewController = [[InBetweenViewController alloc] initWithNibName: @"InBetweenViewController" bundle:nil];
-    contentViewController.image1 = hit1.image;
-    contentViewController.image2 = hit2.image;
-    contentViewController.image3 = hit3.image;
-    contentViewController.image4 = hit4.image;
+    switch (selectedHits.count) {
+        case 4:
+            contentViewController.image4 = [[[selectedHits objectAtIndex:3] head] headImage];
+        case 3:
+            contentViewController.image3 = [[[selectedHits objectAtIndex:2] head] headImage];
+        case 2:
+            contentViewController.image2 = [[[selectedHits objectAtIndex:1] head] headImage];
+        case 1:
+            contentViewController.image1 = [[[selectedHits objectAtIndex:0] head] headImage];
+            break;
+    }
 
     [self.popoverController setContentViewController:contentViewController];
     [self.popoverController presentPopoverFromRect:CGRectZero
@@ -368,7 +390,8 @@
                           permittedArrowDirections:UIPopoverArrowDirectionAny
                                           animated:YES];
     [popoverController.view setFrame:CGRectMake(20, 0, 400, 300)];
-    
+
+
     [self performSelectorInBackground:@selector(processImagesInBackground) withObject:nil];
     
     void (^block)(BOOL) = ^(BOOL finished) {
@@ -452,7 +475,7 @@
             randInt = arc4random() % resultStrangers.count;
             friend = [resultStrangers objectAtIndex:randInt];
             
-            if (![selectedStrangers containsObject:friend]) {
+            if (![selectedStrangers containsObject:friend] && ![selectedHits containsObject:friend]) {
                 [selectedStrangers addObject:friend];
                 break;
             }
