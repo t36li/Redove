@@ -88,8 +88,8 @@
 }
 
 -(void)closedAboutPage:(UIButton *)sender {
-    [UIView animateWithDuration:0.3/1.5 animations:^{
-        popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+    [UIView animateWithDuration:0.3 animations:^{
+        popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.001, 0.001);
     } completion:^(BOOL finished) {
         [popUp removeFromSuperview];
     }];
