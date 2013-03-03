@@ -1136,7 +1136,7 @@
         <image name="Main_Poster1.png" width="282" height="300"/>
         <image name="Ok_Button.png" width="161" height="110"/>
         <image name="Option_Button2.png" width="220" height="101"/>
-        <image name="Options_bg.jpg" width="960" height="640"/>
+        <image name="Options_background.png" width="960" height="640"/>
         <image name="Personal_Status_Bg_Final.png" width="960" height="640"/>
         <image name="Play_Button2.png" width="192" height="107"/>
         <image name="Review_Background2.png" width="960" height="640"/>
@@ -1232,7 +1232,6 @@
                 <relationship kind="action" name="about_touched:"/>
                 <relationship kind="action" name="back_touched:"/>
                 <relationship kind="action" name="logout_touched:"/>
-                <relationship kind="action" name="tutSwitch_touched:"/>
                 <relationship kind="outlet" name="back" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="logout_but" candidateClass="UIButton"/>
             </relationships>
