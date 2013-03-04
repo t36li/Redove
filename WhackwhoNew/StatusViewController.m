@@ -168,9 +168,21 @@ WhichTransition transitionType;
     }
     
     [self setLabels];
-    
+    UserInfo *usr = [UserInfo sharedInstance];
+
     switch (transitionType) {
         case NA: {
+            BOOL showTut = [[dic objectForKey:@"Tutorial"] boolValue];
+            if (showTut && usr.usrImg != nil) {
+                StatusViewTutorialPopover *contentViewController = [[StatusViewTutorialPopover alloc] initWithNibName:@"PopOver" bundle:nil];
+                self.popoverController = [[WEPopoverController alloc] initWithContentViewController:contentViewController];
+                [self.popoverController presentPopoverFromRect:CGRectZero
+                                                        inView:self.view
+                                      permittedArrowDirections:UIPopoverArrowDirectionAny
+                                                      animated:YES];
+                [popoverController.view setFrame:CGRectMake(80, 60, 315, 200)];
+                //showOnce = NO;
+            }
             break;
         }
             
@@ -189,25 +201,11 @@ WhichTransition transitionType;
             break;
     }
     
-    UserInfo *usr = [UserInfo sharedInstance];
     if (usr.usrImg == nil){
         UIAlertView *takePicAlert = [[UIAlertView alloc] initWithTitle:@"Newbie?" message:@"Take a photo" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         takePicAlert.tag = 1;
         [takePicAlert show];
     }
-    
-    BOOL showTut = [[dic objectForKey:@"Tutorial"] boolValue];
-    if (showTut) {
-        StatusViewTutorialPopover *contentViewController = [[StatusViewTutorialPopover alloc] initWithNibName:@"PopOver" bundle:nil];
-        self.popoverController = [[WEPopoverController alloc] initWithContentViewController:contentViewController];
-        [self.popoverController presentPopoverFromRect:CGRectZero
-                                                inView:self.view
-                              permittedArrowDirections:UIPopoverArrowDirectionAny
-                                              animated:YES];
-        [popoverController.view setFrame:CGRectMake(80, 60, 315, 200)];
-        //showOnce = NO;
-    }
-
 }
 
 - (void)viewDidUnload
