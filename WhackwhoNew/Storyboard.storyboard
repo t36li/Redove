@@ -353,7 +353,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="99999" textAlignment="right" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yco-dX-xl6">
-                                <rect key="frame" x="169" y="135" width="80" height="23"/>
+                                <rect key="frame" x="168" y="135" width="80" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="16"/>
                                 <color key="textColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -362,7 +362,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="99999" textAlignment="right" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rCb-VN-b7Y">
                                 <rect key="frame" x="156" y="92" width="93" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="16"/>
                                 <color key="textColor" red="0.27121489789999997" green="0.81338015050000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -406,6 +406,9 @@
                         <outlet property="portraitView" destination="KCy-ma-5ga" id="UUg-pn-CrW"/>
                         <outlet property="rightBtn" destination="jmx-IJ-o7M" id="rbP-dS-fy8"/>
                         <outlet property="scorelbl" destination="Yco-dX-xl6" id="GPJ-MN-eiV"/>
+                        <outlet property="star1" destination="WDR-QF-GLd" id="MDa-or-Z8R"/>
+                        <outlet property="star2" destination="1iU-Ur-3cm" id="cQF-hD-9oP"/>
+                        <outlet property="star3" destination="Jot-ZU-HDh" id="03e-ra-8Ry"/>
                         <segue destination="pfk-AT-qsg" kind="push" identifier="ReviewToUpload" id="Q2t-tu-lVB"/>
                     </connections>
                 </viewController>
@@ -495,13 +498,6 @@
                                     <action selector="logout_touched:" destination="sqy-Cf-B9P" eventType="touchUpInside" id="dfx-gb-QL9"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="PzO-RV-9ko">
-                                <rect key="frame" x="278" y="92" width="79" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="tutSwitch_touched:" destination="sqy-Cf-B9P" eventType="touchUpInside" id="ocq-nk-DTL"/>
-                                </connections>
-                            </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GmL-ev-nqX">
                                 <rect key="frame" x="113" y="214" width="137" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1256,6 +1252,9 @@
                 <relationship kind="outlet" name="portraitView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="rightBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="scorelbl" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="star1" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="star2" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="star3" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="uploadBtn" candidateClass="UIButton"/>
             </relationships>
         </class>

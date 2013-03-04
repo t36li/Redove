@@ -20,6 +20,7 @@
 @implementation ReviewViewController
 
 @synthesize portraitView, backBtn, uploadBtn, leftBtn, rightBtn, avatarImageView;
+@synthesize star1, star2, star3;
 @synthesize scorelbl, goldlbl;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -175,6 +176,20 @@
     if ([[Game sharedGame]unlocked_new_bg] || [[Game sharedGame] unlocked_new_hammer]) {
         UIAlertView *unlock_alert = [[UIAlertView alloc] initWithTitle:nil message:@"Congratulations! You have unlocked a new background and/or hammer! There will now be a random chance for you to experience this! Play more games and achieve higher scores to unlock more!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [unlock_alert show];
+    }
+    
+    if ([last_game_score intValue] > 500) {
+        star1.hidden = NO;
+        star2.hidden = NO;
+        star3.hidden = NO;
+    } else if ([last_game_score intValue] > 250) {
+        star1.hidden = NO;
+        star2.hidden = NO;
+        star3.hidden = YES;
+    } else {
+        star1.hidden = NO;
+        star2.hidden = YES;
+        star3.hidden = YES;
     }
     
     [[Game sharedGame] resetGameState];

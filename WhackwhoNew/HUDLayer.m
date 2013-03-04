@@ -32,7 +32,7 @@
         
         //add timer label
         timeLabel = [CCLabelTTF labelWithString:@"0:0" fontName:@"chalkduster" fontSize:20];
-        timeLabel.color = ccc3(90, 178, 143);
+        timeLabel.color = ccc3(173, 46, 43);
         timeLabel.anchorPoint = ccp(0,0);
         timeLabel.position = ccp(15 + clock.contentSize.width, winSize.height - clock.contentSize.height - 10);
         //timeLabel.string = nil;

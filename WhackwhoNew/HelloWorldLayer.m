@@ -834,7 +834,7 @@ void endHammerSound (SystemSoundID  mySSID, void *myself)
     CCParticleSystem *emitter = [[CCParticleFire alloc] initWithTotalParticles:200];
     //set the location of the emitter
     emitter.anchorPoint = ccp(0,0);
-    emitter.position = ccp(temp.position.x - temp.contentSize.width/2 - 20, temp.position.y - temp.contentSize.height/2 - 30);
+    emitter.position = ccp(temp.position.x + temp.contentSize.width/2 - 20, temp.position.y - temp.contentSize.height/2 - 40);
     emitter.scale = 0.5;
     emitter.life = 0.3f;
     emitter.speed = 300;
@@ -853,7 +853,7 @@ void endHammerSound (SystemSoundID  mySSID, void *myself)
         emitter.endColor = ccc4f(0.75f, 0.5f, 0.75f, 1.0f);
     }
     //add to layer ofcourse(effect begins after this step)
-    [self addChild: emitter z:0 tag:fireTag];
+    [self addChild: emitter z:20 tag:fireTag];
 }
 
 -(void) overlayBurn: (id) node {

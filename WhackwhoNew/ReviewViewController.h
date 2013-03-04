@@ -13,12 +13,11 @@
 
 @interface ReviewViewController : UIViewController {
     IBOutlet UIView *portraitView;
-    
     IBOutlet UIButton *backBtn, *uploadBtn, *leftBtn, *rightBtn;
-    
     IBOutlet UILabel *scorelbl, *goldlbl;
-    
     IBOutlet UIImageView *avatarImageView;
+    
+    IBOutlet UIImageView *star1, *star2, *star3;
     
     NSMutableArray *avatarArray;
     UIImage *defaultImage;
@@ -39,6 +38,7 @@
 @property (nonatomic, strong) IBOutlet UIButton *backBtn, *uploadBtn, *leftBtn, *rightBtn;
 @property (nonatomic, strong) IBOutlet UILabel *scorelbl, *goldlbl;
 @property (nonatomic, strong) IBOutlet UIImageView *avatarImageView;
+@property (nonatomic, strong) IBOutlet UIImageView *star1, *star2, *star3;
 
 -(IBAction) hitBack:(id)sender;
 -(IBAction) hitLeft:(id)sender;
