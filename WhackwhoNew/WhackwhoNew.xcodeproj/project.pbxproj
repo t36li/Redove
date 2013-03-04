@@ -3091,8 +3091,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: TIANBO LI (5BB7UGRU36)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos5.1]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: TIANBO LI";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: TIANBO LI";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos5.1]" = "iPhone Distribution: TIANBO LI";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3122,6 +3123,8 @@
 					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=*]" = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos5.1]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"WhackwhoNew/libs/kazmath/include\" ”$(TARGET_BUILD_DIR)/usr/local/lib/include” ”$(OBJROOT)/UninstalledProducts/include” '$(BUILT_PRODUCTS_DIR)/../../Headers' \"WhackwhoNew/libs/cocos2d/";
@@ -3134,7 +3137,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: TIANBO LI (5BB7UGRU36)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: TIANBO LI";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3164,7 +3167,7 @@
 					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2A3A3CB5-3567-463A-B708-BA60487D1C68";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"WhackwhoNew/libs/kazmath/include\" ”$(TARGET_BUILD_DIR)/usr/local/lib/include” ”$(OBJROOT)/UninstalledProducts/include” '$(BUILT_PRODUCTS_DIR)/../../Headers' \"WhackwhoNew/libs/cocos2d/";
 				VALIDATE_PRODUCT = YES;
