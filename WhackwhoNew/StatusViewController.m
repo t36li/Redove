@@ -67,12 +67,6 @@ WhichTransition transitionType;
     //showOnce = YES;
     
     //need to cache user's previous image
-    UserInfo *usr = [UserInfo sharedInstance];
-    if (usr.usrImg == nil){
-        UIAlertView *takePicAlert = [[UIAlertView alloc] initWithTitle:@"Newbie?" message:@"Take a photo" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        takePicAlert.tag = 1;
-        [takePicAlert show];
-    }
 }
 
 -(NSUInteger) supportedInterfaceOrientations {
@@ -144,6 +138,35 @@ WhichTransition transitionType;
 
 -(void)viewDidAppear:(BOOL)animated {
     
+    cameraController = [[UIImagePickerController alloc] init];
+    self.overlay = [[CameraOverlayControllerViewController alloc] initWithNibName:@"CameraOverlayControllerViewController" bundle:nil];
+    self.overlay.pickerReference = cameraController;
+    self.overlay.delegate = self;
+    cameraController.delegate = self.overlay;
+    cameraController.navigationBarHidden = YES;
+    cameraController.toolbarHidden = YES;
+    cameraController.wantsFullScreenLayout = YES;
+    
+    // Insert the overlay
+    
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        cameraController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        cameraController.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
+        cameraController.showsCameraControls = NO;
+        cameraController.wantsFullScreenLayout = YES;
+        cameraController.cameraViewTransform = CGAffineTransformScale(cameraController.cameraViewTransform, CAMERA_TRANSFORM_X, CAMERA_TRANSFORM_Y);
+        
+        if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
+            cameraController.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+        } else
+            cameraController.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+        cameraController.cameraOverlayView = self.overlay.view;
+        
+    } else {
+        [cameraController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    }
+    
     [self setLabels];
     
     switch (transitionType) {
@@ -164,6 +187,13 @@ WhichTransition transitionType;
             
             transitionType = NA;
             break;
+    }
+    
+    UserInfo *usr = [UserInfo sharedInstance];
+    if (usr.usrImg == nil){
+        UIAlertView *takePicAlert = [[UIAlertView alloc] initWithTitle:@"Newbie?" message:@"Take a photo" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        takePicAlert.tag = 1;
+        [takePicAlert show];
     }
     
     BOOL showTut = [[dic objectForKey:@"Tutorial"] boolValue];
