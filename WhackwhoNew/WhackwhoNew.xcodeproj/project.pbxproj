@@ -3101,9 +3101,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: TIANBO LI";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: TIANBO LI";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos5.1]" = "iPhone Distribution: TIANBO LI";
+				CODE_SIGN_IDENTITY = "iPhone Developer: TIANBO LI (5BB7UGRU36)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos5.1]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3148,7 +3147,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: TIANBO LI";
+				CODE_SIGN_IDENTITY = "iPhone Developer: TIANBO LI (5BB7UGRU36)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
