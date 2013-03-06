@@ -28,7 +28,6 @@
 		696F17FC15A4A81000DC849F /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 696F17FB15A4A81000DC849F /* OptionsViewController.m */; };
 		696F180115A52A3600DC849F /* FacebookButton30x34.png in Resources */ = {isa = PBXBuildFile; fileRef = 696F180015A52A3600DC849F /* FacebookButton30x34.png */; };
 		696F180615A52EF000DC849F /* GlobalMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 696F180515A52EF000DC849F /* GlobalMethods.m */; };
-		69A1966115C3598E0079DC99 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A1965615C356670079DC99 /* libRestKit.a */; };
 		69A1966315C359A40079DC99 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A1966215C359A40079DC99 /* CFNetwork.framework */; };
 		69A1966515C359B00079DC99 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A1966415C359B00079DC99 /* CoreData.framework */; };
 		69A1966715C359B90079DC99 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A1966615C359B90079DC99 /* libxml2.dylib */; };
@@ -118,7 +117,6 @@
 		C159326F15B5DE5A009B7955 /* FTCParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C159326715B5DE5A009B7955 /* FTCParser.m */; };
 		C159327015B5DE5A009B7955 /* FTCSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = C159326915B5DE5A009B7955 /* FTCSprite.m */; };
 		C159329015B60185009B7955 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14716851594ACCA0002FF21 /* Foundation.framework */; };
-		C159329A15B6029C009B7955 /* libcocos2d-library.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C159328F15B60185009B7955 /* libcocos2d-library.a */; };
 		C159347615B60B09009B7955 /* CCRobot.m in Sources */ = {isa = PBXBuildFile; fileRef = C159347515B60B08009B7955 /* CCRobot.m */; };
 		C169200C15AFC7A800F081AF /* HitWhoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C169200B15AFC7A700F081AF /* HitWhoViewController.m */; };
 		C1692E9115CE282C00C7D4C7 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1692E9015CE282C00C7D4C7 /* StoreViewController.m */; };
@@ -198,7 +196,6 @@
 		C1F6CAF516CEDE20004C71D9 /* bodyAnimations.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1F6CAF116CEDE20004C71D9 /* bodyAnimations.plist */; };
 		C1F6CAF616CEDE20004C71D9 /* bodyAnimations.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = C1F6CAF216CEDE20004C71D9 /* bodyAnimations.pvr.ccz */; };
 		C1FE252315AF656E00DAF258 /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE252215AF656E00DAF258 /* HUDLayer.m */; };
-		D00600A815B5F3080079626F /* libSDWebImageARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D00600A115B5F29A0079626F /* libSDWebImageARC.a */; };
 		D006F6A915B4FB7D0079626F /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = D006F6A815B4FB7D0079626F /* Friend.m */; };
 		D006FCE615B51DC10079626F /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D006FCE515B51DC10079626F /* ImageIO.framework */; };
 		D015288E16D311ED00481464 /* review_upload_background.png in Resources */ = {isa = PBXBuildFile; fileRef = D015288D16D311EC00481464 /* review_upload_background.png */; };
@@ -212,6 +209,9 @@
 		D03D412216A4CE0700C72E17 /* WEPopoverContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D412116A4CE0600C72E17 /* WEPopoverContentViewController.m */; };
 		D03D412416A4D1CF00C72E17 /* PopOver.xib in Resources */ = {isa = PBXBuildFile; fileRef = D03D412316A4D1CF00C72E17 /* PopOver.xib */; };
 		D03D412716A4D24700C72E17 /* StatusViewTutorialPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D412616A4D24700C72E17 /* StatusViewTutorialPopover.m */; };
+		D03F8C8016E6E6900083CF7A /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A1965615C356670079DC99 /* libRestKit.a */; };
+		D03F8C8116E6E6900083CF7A /* libSDWebImageARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D00600A115B5F29A0079626F /* libSDWebImageARC.a */; };
+		D03F8C8216E6EC5B0083CF7A /* libcocos2d-library.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C159328F15B60185009B7955 /* libcocos2d-library.a */; };
 		D0442EBD168CE8EF00677CC3 /* camera_lip.png in Resources */ = {isa = PBXBuildFile; fileRef = D0442EAF168CE8EE00677CC3 /* camera_lip.png */; };
 		D0442EBE168CE8EF00677CC3 /* camera_right_eye.png in Resources */ = {isa = PBXBuildFile; fileRef = D0442EB0168CE8EE00677CC3 /* camera_right_eye.png */; };
 		D0442EBF168CE8EF00677CC3 /* camera_left_eye.png in Resources */ = {isa = PBXBuildFile; fileRef = D0442EB1168CE8EE00677CC3 /* camera_left_eye.png */; };
@@ -1236,6 +1236,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D03F8C8216E6EC5B0083CF7A /* libcocos2d-library.a in Frameworks */,
+				D03F8C8016E6E6900083CF7A /* libRestKit.a in Frameworks */,
+				D03F8C8116E6E6900083CF7A /* libSDWebImageARC.a in Frameworks */,
 				3DE7A7ED1658228600891E1B /* Social.framework in Frameworks */,
 				3DE7A7EB1658227E00891E1B /* Accounts.framework in Frameworks */,
 				3DE7A7E91658227700891E1B /* AdSupport.framework in Frameworks */,
@@ -1246,9 +1249,6 @@
 				69A1966715C359B90079DC99 /* libxml2.dylib in Frameworks */,
 				69A1966515C359B00079DC99 /* CoreData.framework in Frameworks */,
 				69A1966315C359A40079DC99 /* CFNetwork.framework in Frameworks */,
-				69A1966115C3598E0079DC99 /* libRestKit.a in Frameworks */,
-				C159329A15B6029C009B7955 /* libcocos2d-library.a in Frameworks */,
-				D00600A815B5F3080079626F /* libSDWebImageARC.a in Frameworks */,
 				D006FCE615B51DC10079626F /* ImageIO.framework in Frameworks */,
 				C159287515B4E2DE009B7955 /* libz.dylib in Frameworks */,
 				D07F6FF01599463A0085DF2B /* CoreImage.framework in Frameworks */,
@@ -2552,7 +2552,7 @@
 		C147166C1594ACCA0002FF21 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Waterloo;
 			};
 			buildConfigurationList = C147166F1594ACCA0002FF21 /* Build configuration list for PBXProject "WhackwhoNew" */;
@@ -3046,6 +3046,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: TIANBO LI (5BB7UGRU36)";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3057,6 +3061,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PROVISIONING_PROFILE = "025AC804-7692-4764-B185-DB18832E0524";
@@ -3070,6 +3075,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: TIANBO LI (5BB7UGRU36)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -3078,6 +3087,7 @@
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PROVISIONING_PROFILE = "025AC804-7692-4764-B185-DB18832E0524";
@@ -3104,9 +3114,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WhackwhoNew/Prefix.pch;
 				HEADER_SEARCH_PATHS = (
-					"\"WhackwhoNew/libs/kazmath/include\"",
-					"”$(TARGET_BUILD_DIR)/usr/local/lib/include”",
-					"'$(BUILT_PRODUCTS_DIR)/../../Headers'",
+					"\"$(SRCROOT)/../SDWebImage\"",
+					"\"${SRCROOT}\"/**",
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
 				);
 				INFOPLIST_FILE = WhackwhoNew/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -3122,9 +3132,12 @@
 					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2A3A3CB5-3567-463A-B708-BA60487D1C68";
 				"PROVISIONING_PROFILE[sdk=iphoneos5.1]" = "";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "\"WhackwhoNew/libs/kazmath/include\" ”$(TARGET_BUILD_DIR)/usr/local/lib/include” ”$(OBJROOT)/UninstalledProducts/include” '$(BUILT_PRODUCTS_DIR)/../../Headers' \"WhackwhoNew/libs/cocos2d/";
+				USER_HEADER_SEARCH_PATHS = "\"${SRCROOT}\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3145,10 +3158,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WhackwhoNew/Prefix.pch;
 				HEADER_SEARCH_PATHS = (
-					"\"WhackwhoNew/libs/kazmath/include\"",
-					"”$(TARGET_BUILD_DIR)/usr/local/lib/include”",
-					"”$(OBJROOT)/UninstalledProducts/include”",
-					"'$(BUILT_PRODUCTS_DIR)/../../Headers'",
+					"\"${SRCROOT}\"/**",
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
+					"\"$(SRCROOT)/../SDWebImage\"",
 				);
 				INFOPLIST_FILE = WhackwhoNew/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -3165,8 +3177,10 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2A3A3CB5-3567-463A-B708-BA60487D1C68";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "\"WhackwhoNew/libs/kazmath/include\" ”$(TARGET_BUILD_DIR)/usr/local/lib/include” ”$(OBJROOT)/UninstalledProducts/include” '$(BUILT_PRODUCTS_DIR)/../../Headers' \"WhackwhoNew/libs/cocos2d/";
+				USER_HEADER_SEARCH_PATHS = "\"${SRCROOT}\"/**";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

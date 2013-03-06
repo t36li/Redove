@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <RestKit/RestKit.h>
+//#import <RestKit/RestKit.h>
 
 @interface CurrentEquip : NSObject{
     NSString *helmet, *hammerArm, *shieldArm, *body;
