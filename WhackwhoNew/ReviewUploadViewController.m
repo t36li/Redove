@@ -8,8 +8,7 @@
 
 
 #import "ReviewUploadViewController.h"
-#import <FacebookSDK/FacebookSDK.h>
-
+#import <FacebookSDK.h>
 
 @interface ReviewUploadViewController ()
 

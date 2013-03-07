@@ -7,8 +7,7 @@
 //
 
 #import "FacebookShareViewController.h"
-#import <FacebookSDK/FacebookSDK.h>
-
+#include <FacebookSDK.h>
 
 NSString *const kPlaceholderPostMessage = @"This is my WhackWho Avatar![Enter your personalized message here!]";
 
