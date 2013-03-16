@@ -106,7 +106,7 @@ void endHammerSound (SystemSoundID  mySSID, void *myself)
         }
         [bodyFrames addObject:tempArray];
     }
-
+    
     switch (level) {
         case hillLevel:
         {
@@ -149,11 +149,27 @@ void endHammerSound (SystemSoundID  mySSID, void *myself)
         
         CCSprite *tempBody = [CCSprite spriteWithSpriteFrameName:@"body1_1.png"];
         tempBody.anchorPoint = ccp(0.5,1);
-        tempBody.position = ccp(24, 8);
         tempBody.scale = 0.6;
         [head addChild:tempBody z:-10];
         
         int randomBody = arc4random() % 5;
+        switch (randomBody) {
+            case 0:
+                tempBody.position = ccp(24, 15);
+                break;
+            case 1:
+                tempBody.position = ccp(24, 20);
+                break;
+            case 2:
+                tempBody.position = ccp(24, 8);
+                break;
+            case 3:
+                tempBody.position = ccp(24, 10);
+                break;
+            case 4:
+                tempBody.position = ccp(24, 10);
+                break;
+        }
         CCAnimation *bodyAnim = [CCAnimation animationWithSpriteFrames:[bodyFrames objectAtIndex:randomBody] delay:0.2f];
         CCRepeat *bodyAction = [CCRepeat actionWithAction:[CCAnimate actionWithAnimation:bodyAnim] times:-1];
         CCCallFuncN *endSplashAction = [CCCallFuncN actionWithTarget:self selector:@selector(endSplashAction:)];
@@ -873,7 +889,6 @@ void endHammerSound (SystemSoundID  mySSID, void *myself)
 }
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-
     //if (gamePaused) return;
     
     CGPoint location = [touch locationInView:[touch view]];
@@ -1011,11 +1026,11 @@ void endHammerSound (SystemSoundID  mySSID, void *myself)
             //need to remove hiteffect sprite just like the coins
             
             //stop the loop as we are not support multi-touch anymore
-            return YES;
+            return NO;
         }
     } //end heads loop
 
-    return YES;
+    return NO;
 }
 
 -(void) onExit {
@@ -1027,6 +1042,7 @@ void endHammerSound (SystemSoundID  mySSID, void *myself)
     [blah switchToNormalBGM];
     
     //CGSize winsize = [[CCDirector sharedDirector] winSize];
+    [[CCDirector sharedDirector].touchDispatcher removeDelegate:self];
     
     [super onExit];
 }
@@ -1104,7 +1120,7 @@ static id<GameOverDelegate> gameOverDelegate = nil;
     if ((current_gp + 1) % 5 == 0) {
         [[Game sharedGame] setUnlocked_new_bg:YES];
         int current_bgs_unlocked = [self readPlist:@"Bgs_Unlocked"];
-        [self writePlist:@"Bgs_Unlocked" withUpdate:(current_bgs_unlocked + 1)];
+        [self writePlist:@"Bgs_Unlocked" withUpdate:MAX(3, (current_bgs_unlocked + 1))];
     }
     
     if (baseScore > 500) {

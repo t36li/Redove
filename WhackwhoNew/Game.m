@@ -40,6 +40,7 @@ static Game *sharedGame = nil;
         //self.isEnabledBackgroundMusic = YES;
         //self.isEnabledSoundFX = YES;
         self.unlocked_new_bg = NO;
+        self.unlocked_new_hammer = NO;
         self.isPaused = NO;
         self.bgs_to_random = 0;
         self.hammers_to_random = 0;
@@ -96,6 +97,8 @@ static Game *sharedGame = nil;
 - (void) resetGameState {
     //self.isGameOver = NO;
     self.unlocked_new_bg = NO;
+    self.unlocked_new_hammer = NO;
+    self.isPaused = NO;
     self.bgs_to_random = 0;
     self.hammers_to_random = 0;
     self.baseScore = 0;

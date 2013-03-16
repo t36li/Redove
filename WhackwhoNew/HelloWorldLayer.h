@@ -65,7 +65,7 @@
 
 @interface HelloWorldScene : CCScene
 {
-    HUDLayer * _hud;
+    HUDLayer *_hud;
 
     HelloWorldLayer *_layer;
     

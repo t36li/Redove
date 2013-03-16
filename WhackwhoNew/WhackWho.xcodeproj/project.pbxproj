@@ -3112,6 +3112,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../FacebookSDK\"",
+					"\"$(SRCTOOR)/../RestKit",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -3133,6 +3134,7 @@
 					"-ObjC",
 					"-all_load",
 					"-lsqlite3.0",
+					"-v",
 				);
 				PRODUCT_NAME = WhackWho;
 				PROVISIONING_PROFILE = "2A3A3CB5-3567-463A-B708-BA60487D1C68";
@@ -3142,6 +3144,7 @@
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"${SRCROOT}\"/**";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3156,6 +3159,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../FacebookSDK\"",
+					"\"$(SRCTOOR)/../RestKit",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WhackwhoNew/Prefix.pch;
@@ -3176,6 +3180,7 @@
 					"-ObjC",
 					"-all_load",
 					"-lsqlite3.0",
+					"-v",
 				);
 				PRODUCT_NAME = WhackWho;
 				PROVISIONING_PROFILE = "90FFF987-64B8-475A-967E-B8AAAD3FCBC5";
@@ -3184,6 +3189,7 @@
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"${SRCROOT}\"/**";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
