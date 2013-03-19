@@ -51,7 +51,7 @@
     [director setAnimationInterval:1.0f/60.0f];
     if (![director enableRetinaDisplay:YES])
         CCLOG(@"retina not supported");
-    [director setDisplayStats:YES];
+    [director setDisplayStats:NO];
     // Add the director as a child view controller of this view controller.
     [self addChildViewController:director];
     

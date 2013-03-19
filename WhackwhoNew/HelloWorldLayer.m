@@ -989,6 +989,7 @@ void endHammerSound (SystemSoundID  mySSID, void *myself)
                 CGSize winSize = [CCDirector sharedDirector].winSize;
                 
                 AudioServicesPlaySystemSound(_wrongHammerSound);
+                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                 
                 CCSprite *redscreen = [CCSprite spriteWithSpriteFrameName:@"red_screen.png"];
                 [baselayer addChild:redscreen];
@@ -998,9 +999,6 @@ void endHammerSound (SystemSoundID  mySSID, void *myself)
                 CCDelayTime *delay = [CCDelayTime actionWithDuration:0.5];
                 CCCallFuncN *remove = [CCCallFuncN actionWithTarget:self selector:@selector(removeNode:)];
                 [redscreen runAction:[CCSequence actions:delay, remove, nil]];
-                
-                //vibrate to indicate mis-hit
-                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                 
                 [scene compareConsecHits];
                 [scene resetConsecHits];
