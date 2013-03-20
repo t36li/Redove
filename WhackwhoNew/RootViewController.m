@@ -43,6 +43,17 @@
     //[gmethods setViewBackground:MainPage_bg viewSender:self.view];
     //NSLog(@"RootViewController: Background loaded");
     [self performSelector:@selector(appInviteAlertActivate) withObject:nil afterDelay:1];
+    
+    babyFrames  = [[NSArray alloc] initWithObjects:
+                             [UIImage imageNamed:@"baby1.png"],
+                             [UIImage imageNamed:@"baby2.png"],
+                             [UIImage imageNamed:@"baby3.png"],
+                             [UIImage imageNamed:@"baby4.png"],
+                             [UIImage imageNamed:@"baby5.png"],
+                             [UIImage imageNamed:@"baby6.png"],
+                             nil];
+    [baby setFrame:CGRectMake(405, 237, 75, 83)];
+    [self startWalking];
 }
 
 
@@ -55,8 +66,6 @@
         profileImageView.profileID = nil;
     }
     
-    [baby setFrame:CGRectMake(405, 237, 75, 83)];
-    [self startWalking];
     //[self startLabelAnimation];
     //[self startPosterAnimation];
 }
@@ -97,15 +106,7 @@
 }
 
 - (void)startWalking {
-    NSArray * imageArray  = [[NSArray alloc] initWithObjects:
-                             [UIImage imageNamed:@"baby1.png"],
-                             [UIImage imageNamed:@"baby2.png"],
-                             [UIImage imageNamed:@"baby3.png"],
-                             [UIImage imageNamed:@"baby4.png"],
-                             [UIImage imageNamed:@"baby5.png"],
-                             [UIImage imageNamed:@"baby6.png"],
-                             nil];
-    baby.animationImages = imageArray;
+    baby.animationImages = babyFrames;
     baby.animationDuration = 2;
     baby.animationRepeatCount = 0;
     

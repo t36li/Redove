@@ -21,6 +21,8 @@
     IBOutlet UIImageView *baby;
     IBOutlet UIImageView *whack_label;
     IBOutlet UIImageView *poster;
+    
+    NSArray *babyFrames;
 
     
 @private
