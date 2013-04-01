@@ -78,6 +78,7 @@
     [self.table addSubview:tablepull];
     
     isHammerDown = NO;
+    isTableLoaded = NO;
     
     NSString *path = [self dataFilepath];
     dic = [[NSDictionary alloc] initWithContentsOfFile:path];
@@ -288,6 +289,7 @@
         [resultFriends exchangeObjectAtIndex:i withObjectAtIndex:n];
     }
     
+    //remove urself from the list of strangers
     for (int i = 0; i < resultStrangers.count; i++) {
         Friend *tempFriend = [resultStrangers objectAtIndex:i];
         if ([tempFriend.whackwho_id isEqualToString:[NSString stringWithFormat:@"%i", [[UserInfo sharedInstance] whackWhoId]]]) {
@@ -299,6 +301,7 @@
     [self.table reloadData];
     [spinner removeSpinner];
     [tablepull finishedLoading];
+    isTableLoaded = YES;
     
     [self.table setContentSize:CGSizeMake(160, 70*resultFriends.count)];
 }
@@ -353,6 +356,12 @@
 }
 
 -(IBAction)battleTouched:(id)sender {
+    if (!isTableLoaded) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Please wait for list to be loaded" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
     if (selectedHits.count == 0) {
         NSMutableArray *array = [NSMutableArray arrayWithArray:resultFriends];
         [array addObjectsFromArray:resultStrangers];

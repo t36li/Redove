@@ -49,7 +49,7 @@
     
     IBOutlet UILabel *namelabel;
     
-    BOOL isHammerDown;
+    BOOL isHammerDown, isTableLoaded;
     
     WEPopoverController *popoverController;
     
