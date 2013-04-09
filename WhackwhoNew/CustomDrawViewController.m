@@ -127,6 +127,20 @@
 }
 
 -(IBAction)done:(id)sender {
+    int i = 0;
+    bool match = true;
+    for (UIButton *btn in buttonSet) {
+        NSValue *val = [originalBtnPositions objectAtIndex:i];
+        if (!CGPointEqualToPoint(btn.center, val.CGPointValue)) {
+            match = false;
+            break;
+        }
+        i++;
+    }
+    
+    if (!match)
+        return;
+    
     [okBtn setEnabled:NO];
     [cropBtn setEnabled:YES];
     [containerView setUserInteractionEnabled:YES];
