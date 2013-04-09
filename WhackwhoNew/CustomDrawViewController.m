@@ -98,7 +98,7 @@
 }
 
 -(IBAction)backTouched:(id)sender {
-    if ([containerView resetPaths] && cropBtn.enabled) {
+    if ([containerView resetPaths] && cropBtn.enabled && [[UserInfo sharedInstance] croppedImage] != nil) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
     int i = 0;
@@ -136,6 +136,8 @@
     }
     
     UserInfo *user = [UserInfo sharedInstance];
+    
+    user.croppedImage = containerView.drawImageView.image;
     
     for (UIButton *btn in buttonSet) {
         switch (btn.tag) {

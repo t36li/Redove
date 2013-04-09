@@ -172,6 +172,12 @@ WhichTransition transitionType;
 
     switch (transitionType) {
         case NA: {
+            if (usr.croppedImage == nil){
+                UIAlertView *takePicAlert = [[UIAlertView alloc] initWithTitle:@"New?" message:@"Take a photo!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                takePicAlert.tag = 1;
+                [takePicAlert show];
+            }
+            
             BOOL showTut = [[dic objectForKey:@"Tutorial"] boolValue];
             if (showTut && usr.usrImg != nil) {
                 StatusViewTutorialPopover *contentViewController = [[StatusViewTutorialPopover alloc] initWithNibName:@"PopOver" bundle:nil];
@@ -199,12 +205,6 @@ WhichTransition transitionType;
             
             transitionType = NA;
             break;
-    }
-    
-    if (usr.usrImg == nil){
-        UIAlertView *takePicAlert = [[UIAlertView alloc] initWithTitle:@"Newbie?" message:@"Take a photo" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        takePicAlert.tag = 1;
-        [takePicAlert show];
     }
 }
 
