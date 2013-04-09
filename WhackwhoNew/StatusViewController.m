@@ -38,7 +38,7 @@
 @synthesize faceView, bodyView;
 @synthesize popularity_lbl, games_played_lbl, high_score_lbl, unlocks_lbl;
 @synthesize cameraController, cameraOverlayView, overlay;
-@synthesize popoverController;
+//@synthesize popoverController;
 
 typedef enum { NA, FROM_CAMERA, FROM_CUSTOMDRAW } WhichTransition;
 WhichTransition transitionType;
@@ -64,7 +64,7 @@ WhichTransition transitionType;
     
     [self.containerView setBackgroundColor:[UIColor clearColor]];
     
-    //showOnce = YES;
+    shown = NO;
     
     //need to cache user's previous image
 }
@@ -179,15 +179,9 @@ WhichTransition transitionType;
             }
             
             BOOL showTut = [[dic objectForKey:@"Tutorial"] boolValue];
-            if (showTut && usr.usrImg != nil) {
-                StatusViewTutorialPopover *contentViewController = [[StatusViewTutorialPopover alloc] initWithNibName:@"PopOver" bundle:nil];
-                self.popoverController = [[WEPopoverController alloc] initWithContentViewController:contentViewController];
-                [self.popoverController presentPopoverFromRect:CGRectZero
-                                                        inView:self.view
-                                      permittedArrowDirections:UIPopoverArrowDirectionAny
-                                                      animated:YES];
-                [popoverController.view setFrame:CGRectMake(80, 60, 315, 200)];
-                //showOnce = NO;
+            if (showTut && !shown) {
+                [self popTutorial];
+                shown = YES;
             }
             break;
         }
@@ -206,6 +200,43 @@ WhichTransition transitionType;
             transitionType = NA;
             break;
     }
+}
+
+-(void)closedAboutPage:(UIButton *)sender {
+    [UIView animateWithDuration:0.3 animations:^{
+        popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.001, 0.001);
+    } completion:^(BOOL finished) {
+        [popUp removeFromSuperview];
+    }];
+}
+
+- (void) popTutorial {
+    popUp = [[UIView alloc] initWithFrame:self.view.frame];
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tutorial_personal.png"]];
+    imgView.frame = popUp.frame;
+    
+    UIButton *okBtn = [[UIButton alloc] initWithFrame:self.view.frame];
+    [okBtn addTarget:self action:@selector(closedAboutPage:) forControlEvents:UIControlEventTouchUpInside];
+    [popUp addSubview:imgView];
+    [popUp addSubview:okBtn];
+    
+    
+    
+    popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.001, 0.001);
+    
+    [self.view addSubview:popUp];
+    
+    [UIView animateWithDuration:0.3/1.5 animations:^{
+        popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.3/2 animations:^{
+            popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.3/2 animations:^{
+                popUp.transform = CGAffineTransformIdentity;
+            }];
+        }];
+    }];
 }
 
 - (void)viewDidUnload
@@ -352,6 +383,10 @@ WhichTransition transitionType;
     [self presentViewController:cameraController animated:YES completion:nil];
     self.navigationController.navigationBarHidden = YES;
     transitionType = FROM_CAMERA;
+}
+
+- (IBAction)Help_Pressed:(id)sender {
+    [self popTutorial];
 }
 
 @end

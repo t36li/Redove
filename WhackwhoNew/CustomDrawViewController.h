@@ -17,7 +17,7 @@
 #define LEFT_EAR 5
 #define RIGHT_EAR 6
 
-@class WEPopoverController;
+//@class WEPopoverController;
 
 @interface CustomDrawViewController : UIViewController <RKObjectLoaderDelegate> {
     IBOutlet CustomDrawView *containerView;
@@ -29,14 +29,16 @@
     //score storage
     NSDictionary *dic;
     
-    BOOL showOnce;
-    WEPopoverController *popoverController;
+    //BOOL showOnce;
+    //WEPopoverController *popoverController;
+    UIView *popUp;
+
 }
 
 @property (nonatomic, strong) IBOutlet CustomDrawView *containerView;
 @property (nonatomic, strong) IBOutlet UIButton *leftEyeButton, *rightEyeButton, *lipsButton, *noseButton, *leftEarButton, *rightEarButton, *redoBtn, *okBtn, *cropBtn;
 @property (nonatomic, strong) NSMutableSet *buttonSet;
-@property (nonatomic, strong) WEPopoverController *popoverController;
+//@property (nonatomic, strong) WEPopoverController *popoverController;
 
 -(IBAction)backTouched:(id)sender;
 -(IBAction)crop:(id)sender;

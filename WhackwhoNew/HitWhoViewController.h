@@ -52,6 +52,7 @@
     BOOL isHammerDown, isTableLoaded;
     
     WEPopoverController *popoverController;
+    UIView *popUp;
     
     //score storage
     NSDictionary *dic;
@@ -87,4 +88,6 @@
 -(IBAction)Back_Touched:(id)sender;
 -(IBAction)cancelTouched:(id)sender;
 -(IBAction)battleTouched:(id)sender;
+- (IBAction)Help_Pressed:(id)sender;
+
 @end

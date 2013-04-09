@@ -43,6 +43,8 @@
 		C10D2FC215D060A6007B751B /* Dragbox.m in Sources */ = {isa = PBXBuildFile; fileRef = C10D2FC115D060A6007B751B /* Dragbox.m */; };
 		C12114581616044300E3AAB1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12114571616044300E3AAB1 /* Default-568h@2x.png */; };
 		C12114611616967E00E3AAB1 /* HitWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C121145F1616967E00E3AAB1 /* HitWindow.m */; };
+		C13117E41713EA7D00E7B0EC /* Options_bg_v2.png in Resources */ = {isa = PBXBuildFile; fileRef = C13117E31713EA7D00E7B0EC /* Options_bg_v2.png */; };
+		C13117E61713ECA400E7B0EC /* Help_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = C13117E51713ECA400E7B0EC /* Help_Button.png */; };
 		C14139DA1688F725005556BD /* Status_Popularity_Frame.png in Resources */ = {isa = PBXBuildFile; fileRef = C14139D61688F723005556BD /* Status_Popularity_Frame.png */; };
 		C14139DB1688F725005556BD /* Status_Total_Gold_Frame.png in Resources */ = {isa = PBXBuildFile; fileRef = C14139D71688F723005556BD /* Status_Total_Gold_Frame.png */; };
 		C14139DC1688F725005556BD /* Status_Total_Gp_Frame.png in Resources */ = {isa = PBXBuildFile; fileRef = C14139D81688F724005556BD /* Status_Total_Gp_Frame.png */; };
@@ -202,7 +204,6 @@
 		D015288E16D311ED00481464 /* review_upload_background.png in Resources */ = {isa = PBXBuildFile; fileRef = D015288D16D311EC00481464 /* review_upload_background.png */; };
 		D015289716D4563200481464 /* ReviewUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D015289616D4563200481464 /* ReviewUploadViewController.m */; };
 		D017DF8916E401D800F812A4 /* about us.png in Resources */ = {isa = PBXBuildFile; fileRef = D017DF8816E401D800F812A4 /* about us.png */; };
-		D017DF9116E40B3400F812A4 /* Options_background.png in Resources */ = {isa = PBXBuildFile; fileRef = D017DF9016E40B3300F812A4 /* Options_background.png */; };
 		D03D411C16A4CC1800C72E17 /* UIBarButtonItem+WEPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D411416A4CC1800C72E17 /* UIBarButtonItem+WEPopover.m */; };
 		D03D411D16A4CC1800C72E17 /* WEPopoverContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D411616A4CC1800C72E17 /* WEPopoverContainerView.m */; };
 		D03D411E16A4CC1800C72E17 /* WEPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D411816A4CC1800C72E17 /* WEPopoverController.m */; };
@@ -664,6 +665,8 @@
 		C12114571616044300E3AAB1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C121145F1616967E00E3AAB1 /* HitWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HitWindow.m; sourceTree = "<group>"; };
 		C12114601616967E00E3AAB1 /* HitWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HitWindow.h; sourceTree = "<group>"; };
+		C13117E31713EA7D00E7B0EC /* Options_bg_v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Options_bg_v2.png; sourceTree = "<group>"; };
+		C13117E51713ECA400E7B0EC /* Help_Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Help_Button.png; sourceTree = "<group>"; };
 		C14139D61688F723005556BD /* Status_Popularity_Frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Status_Popularity_Frame.png; sourceTree = "<group>"; };
 		C14139D71688F723005556BD /* Status_Total_Gold_Frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Status_Total_Gold_Frame.png; sourceTree = "<group>"; };
 		C14139D81688F724005556BD /* Status_Total_Gp_Frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Status_Total_Gp_Frame.png; sourceTree = "<group>"; };
@@ -854,7 +857,6 @@
 		D015289516D4563200481464 /* ReviewUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewUploadViewController.h; sourceTree = "<group>"; };
 		D015289616D4563200481464 /* ReviewUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewUploadViewController.m; sourceTree = "<group>"; };
 		D017DF8816E401D800F812A4 /* about us.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about us.png"; sourceTree = "<group>"; };
-		D017DF9016E40B3300F812A4 /* Options_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Options_background.png; sourceTree = "<group>"; };
 		D03D411316A4CC1800C72E17 /* UIBarButtonItem+WEPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+WEPopover.h"; sourceTree = "<group>"; };
 		D03D411416A4CC1800C72E17 /* UIBarButtonItem+WEPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+WEPopover.m"; sourceTree = "<group>"; };
 		D03D411516A4CC1800C72E17 /* WEPopoverContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverContainerView.h; sourceTree = "<group>"; };
@@ -1489,7 +1491,7 @@
 			isa = PBXGroup;
 			children = (
 				C1011B2F16D83E3E00C09F53 /* Main_Menu_baselayer2.png */,
-				D017DF9016E40B3300F812A4 /* Options_background.png */,
+				C13117E31713EA7D00E7B0EC /* Options_bg_v2.png */,
 				D017DF8816E401D800F812A4 /* about us.png */,
 				D015288D16D311EC00481464 /* review_upload_background.png */,
 				C16EB71916E4023B007DC43D /* Review_Background2.png */,
@@ -1507,6 +1509,7 @@
 			isa = PBXGroup;
 			children = (
 				C14BC6201692380F0005EEBE /* Back_Button.png */,
+				C13117E51713ECA400E7B0EC /* Help_Button.png */,
 				C1482714168E207C00C5680D /* temp_upload.png */,
 				C14139DE1688F813005556BD /* Ok_Button.png */,
 				C14139E01688F88D005556BD /* Undo_Button_1.png */,
@@ -2824,7 +2827,6 @@
 				C16EB71616E01FA3007DC43D /* miss_sound_final.caf in Resources */,
 				C16EB71816E01FAD007DC43D /* Ingame_bgm.wav in Resources */,
 				D017DF8916E401D800F812A4 /* about us.png in Resources */,
-				D017DF9116E40B3400F812A4 /* Options_background.png in Resources */,
 				C16EB71A16E4023B007DC43D /* Review_Background2.png in Resources */,
 				C16EB71C16E402E5007DC43D /* Star.png in Resources */,
 				C16EB71E16E405B3007DC43D /* Personal_Status_Bg_Final.png in Resources */,
@@ -2838,6 +2840,8 @@
 				C100C02E16F9106E00DE1E10 /* iTunesArtwork in Resources */,
 				D0711DD81713BD1700CDB4B5 /* FacebookSDKResources.bundle in Resources */,
 				D0711DD91713BD1700CDB4B5 /* FBUserSettingsViewResources.bundle in Resources */,
+				C13117E41713EA7D00E7B0EC /* Options_bg_v2.png in Resources */,
+				C13117E61713ECA400E7B0EC /* Help_Button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

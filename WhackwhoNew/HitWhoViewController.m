@@ -113,13 +113,7 @@
 -(void) viewDidAppear:(BOOL)animated {
     BOOL showTut = [[dic objectForKey:@"Tutorial"] boolValue];
     if (showTut) {
-        HitWhoTutorialPopver *contentViewController = [[HitWhoTutorialPopver alloc] initWithNibName:@"HitWhoTutorialPopver" bundle:nil];
-        [self.popoverController setContentViewController:contentViewController];
-        [self.popoverController presentPopoverFromRect:CGRectZero
-                                                inView:self.view
-                              permittedArrowDirections:UIPopoverArrowDirectionAny
-                                              animated:YES];
-        [popoverController.view setFrame:CGRectMake(80, 60, 315, 200)];
+        [self popTutorial];
     }
 }
 
@@ -164,6 +158,41 @@
         resultFriends = [NSArray arrayWithArray:[[[UserInfo sharedInstance] friendArray] friends]];
     }
 }*/
+
+-(void)closedAboutPage:(UIButton *)sender {
+    [UIView animateWithDuration:0.3 animations:^{
+        popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.001, 0.001);
+    } completion:^(BOOL finished) {
+        [popUp removeFromSuperview];
+    }];
+}
+
+- (void) popTutorial {
+    popUp = [[UIView alloc] initWithFrame:self.view.frame];
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tutorial_hitWho.png"]];
+    imgView.frame = popUp.frame;
+    
+    UIButton *okBtnTut = [[UIButton alloc] initWithFrame:self.view.frame];
+    [okBtnTut addTarget:self action:@selector(closedAboutPage:) forControlEvents:UIControlEventTouchUpInside];
+    [popUp addSubview:imgView];
+    [popUp addSubview:okBtnTut];
+    
+    popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.001, 0.001);
+    
+    [self.view addSubview:popUp];
+    
+    [UIView animateWithDuration:0.3/1.5 animations:^{
+        popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.3/2 animations:^{
+            popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.3/2 animations:^{
+                popUp.transform = CGAffineTransformIdentity;
+            }];
+        }];
+    }];
+}
 
 #pragma mark - UITableView Datasource and Delegate Methods
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -570,6 +599,10 @@
     NSString *lastName = [temp objectAtIndex:1];
     NSString *firstInitial = [lastName substringToIndex:1];
     namelabel.text = [NSString stringWithFormat:@"%@ %@.", firstName, firstInitial];
+}
+
+- (IBAction)Help_Pressed:(id)sender {
+    [self popTutorial];
 }
 
 #pragma mark - hammer animations

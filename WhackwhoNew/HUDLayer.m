@@ -12,7 +12,7 @@
 @implementation HUDLayer
 
 -(void) setVariables {
-    myTime = 90;
+    myTime = 45;
     hearts = [NSMutableArray array];
     lives = 3;
     self.isTouchEnabled = YES;

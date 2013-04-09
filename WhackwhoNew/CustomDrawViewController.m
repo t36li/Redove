@@ -23,7 +23,7 @@
 @synthesize leftEarButton, leftEyeButton, lipsButton, noseButton, rightEarButton, rightEyeButton;
 @synthesize redoBtn, okBtn, cropBtn;
 @synthesize buttonSet;
-@synthesize popoverController;
+//@synthesize popoverController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -52,7 +52,7 @@
     [buttonSet addObject:leftEarButton];
     [buttonSet addObject:rightEarButton];
     
-    showOnce = YES;
+    //showOnce = YES;
     
     NSString *path = [self dataFilepath];
     dic = [[NSDictionary alloc] initWithContentsOfFile:path];
@@ -71,15 +71,8 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     BOOL showTut = [[dic objectForKey:@"Tutorial"] boolValue];
-    if (showTut && showOnce) {
-        CameraTutorial *contentViewController = [[CameraTutorial alloc] initWithNibName:@"CameraTutorial" bundle:nil];
-        self.popoverController = [[WEPopoverController alloc] initWithContentViewController:contentViewController];
-        [self.popoverController presentPopoverFromRect:CGRectZero
-                                                inView:self.view
-                              permittedArrowDirections:UIPopoverArrowDirectionAny
-                                              animated:YES];
-        [popoverController.view setFrame:CGRectMake(10, 168, 300, 230)];
-        showOnce = NO;
+    if (showTut) {
+        [self popTutorial];
     }
 }
 
@@ -252,6 +245,41 @@
     [[RKObjectManager sharedManager].client post:@"/user/head" params:params delegate:self];
     //[[RKObjectManager sharedManager].client put:@"/userImage" params:params delegate:self];
     
+}
+
+-(void)closedAboutPage:(UIButton *)sender {
+    [UIView animateWithDuration:0.3 animations:^{
+        popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.001, 0.001);
+    } completion:^(BOOL finished) {
+        [popUp removeFromSuperview];
+    }];
+}
+
+- (void) popTutorial {
+    popUp = [[UIView alloc] initWithFrame:self.view.frame];
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tutorial_camera.png"]];
+    imgView.frame = popUp.frame;
+    
+    UIButton *okBtnTut = [[UIButton alloc] initWithFrame:self.view.frame];
+    [okBtnTut addTarget:self action:@selector(closedAboutPage:) forControlEvents:UIControlEventTouchUpInside];
+    [popUp addSubview:imgView];
+    [popUp addSubview:okBtnTut];
+    
+    popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.001, 0.001);
+    
+    [self.view addSubview:popUp];
+    
+    [UIView animateWithDuration:0.3/1.5 animations:^{
+        popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.3/2 animations:^{
+            popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.3/2 animations:^{
+                popUp.transform = CGAffineTransformIdentity;
+            }];
+        }];
+    }];
 }
 
 //Plist methods

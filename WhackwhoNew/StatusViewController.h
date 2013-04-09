@@ -13,7 +13,7 @@
 #import "CameraOverlayControllerViewControllerDelegate.h"
 #import "CustomDrawViewController.h"
 
-@class WEPopoverController;
+//@class WEPopoverController;
 
 @interface StatusViewController : UIViewController<RKObjectLoaderDelegate, UIAlertViewDelegate, CameraOverlayControllerViewControllerDelegate> {
     
@@ -40,8 +40,9 @@
     
     UIImage *tempPhoto;
     
-    //BOOL showOnce;
-    WEPopoverController *popoverController;
+    //WEPopoverController *popoverController;
+    UIView *popUp;
+    BOOL shown;
 }
 
 //define delegate
@@ -61,7 +62,7 @@
 @property (nonatomic, strong) CameraOverlayControllerViewController *overlay;
 @property (nonatomic, strong) UIImagePickerController *cameraController;
 @property (nonatomic, strong) UIImageView *cameraOverlayView;
-@property (nonatomic, strong) WEPopoverController *popoverController;
+//@property (nonatomic, strong) WEPopoverController *popoverController;
 
 //class methods
 - (NSString *) dataFilepath;
@@ -69,6 +70,7 @@
 
 - (IBAction)Back_Touched:(id)sender;
 - (IBAction)Ok_Pressed:(id)sender;
+- (IBAction)Help_Pressed:(id)sender;
 //- (void)updateDB;
 - (IBAction)publish_touched:(id)sender;
 - (IBAction)pushCamera:(id)sender;

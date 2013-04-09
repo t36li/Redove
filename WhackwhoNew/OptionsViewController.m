@@ -12,7 +12,7 @@
 #import "UserInfo.h"
 
 @implementation OptionsViewController
-@synthesize back, logout_but;
+@synthesize back, logout_but, tutSwitch;
 
 - (void)viewDidLoad
 {
@@ -26,6 +26,8 @@
     else {
         logout_but.hidden = YES;
     }
+    NSString *path = [self dataFilepath];
+    dic = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
 }
 
 - (void)viewDidUnload
@@ -36,6 +38,11 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [[FBSingletonNew sharedInstance] setDelegate:self];
+    if ([self readPlist]) {
+        [tutSwitch setOn:YES animated:NO];
+    } else {
+        [tutSwitch setOn:NO animated:NO];
+    }
 }
 
 -(IBAction)back_touched:(id)sender{
@@ -48,9 +55,8 @@
             if ([fbs isLogin]){
                 [fbs performLogout];
             }
-                }
             break;
-            
+        }
         default:
             break;
     }
@@ -113,7 +119,40 @@
     }];
 }
 
+-(IBAction)tutorial_touched:(id)sender {
+    if (tutSwitch.on) {
+        //NSLog(@"switch is on");
+        [self writePlist:YES];
+    } else {
+        //NSLog(@"switch is off");
+        [self writePlist:NO];
+    }
+}
 
+- (NSString *) dataFilepath {
+    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    destPath = [destPath stringByAppendingPathComponent:@"ScorePlist.plist"];
+    
+    // If the file doesn't exist in the Documents Folder, copy it.
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath:destPath]) {
+        NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"ScorePlist" ofType:@"plist"];
+        [fileManager copyItemAtPath:sourcePath toPath:destPath error:nil];
+    }
+    
+    return destPath;
+}
 
+- (void) writePlist: (BOOL) onOff {
+    [dic setObject: [NSNumber numberWithBool:onOff] forKey:@"Tutorial"];
+    [dic writeToFile:[self dataFilepath] atomically:NO];
+    
+}
+
+- (int) readPlist {
+    NSNumber *ret = [dic objectForKey:@"Tutorial"];
+    return [ret intValue];
+}
 
 @end
