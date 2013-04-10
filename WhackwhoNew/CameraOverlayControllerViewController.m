@@ -15,7 +15,7 @@
 @implementation CameraOverlayControllerViewController
 
 @synthesize pickerReference, takePicBtn;
-@synthesize validPhoto, delegate, croppedImage, outfitView;
+@synthesize validPhoto, delegate, outfitView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,8 +58,6 @@
     
     UIImage *img = [image fixOrientation];
     photoView.image = nil;
-    
-    [[UserInfo sharedInstance] setUsrImg:image];
     
     [self.delegate validImageCaptured:img croppedImage:nil];
     [self.pickerReference dismissModalViewControllerAnimated:YES];

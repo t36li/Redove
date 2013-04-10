@@ -25,6 +25,9 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     if (userPoints == nil) {
         userPoints = [NSMutableArray array];
+    }
+    
+    if (userPoints.count == 0) {
         cacheImage = photo;
     }
     
@@ -277,9 +280,6 @@
     [oneStrokePoints removeAllObjects];
     cacheImage = photo;
     
-    UserInfo *user = [UserInfo sharedInstance];
-    self.drawImageView.image = user.usrImg;
-    
     return (counter == 0) || (userPoints == nil);
 }
 
@@ -337,7 +337,6 @@
     
     drawImageView.image = finalResizedImage;
     
-    //[user setCroppedImage:finalResizedImage];
     user.faceRect = CGRectMake(0, 0, finalResizedImage.size.width, finalResizedImage.size.height);
     
     [userPoints removeAllObjects];

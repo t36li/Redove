@@ -23,10 +23,7 @@
 //#define hammerHand_Label 3
 //#define shieldHand_Label 4
 
-// Transform values for full screen support:
-#define CAMERA_TRANSFORM_X 1
-//#define CAMERA_TRANSFORM_Y 1.12412 //use this is for iOS 3.x
-#define CAMERA_TRANSFORM_Y 1.24299 // use this is for iOS 4.x
+
 
 // iPhone screen dimensions:
 #define SCREEN_WIDTH  320
@@ -37,11 +34,9 @@
 @synthesize containerView;
 @synthesize faceView, bodyView;
 @synthesize popularity_lbl, games_played_lbl, high_score_lbl, unlocks_lbl;
-@synthesize cameraController, cameraOverlayView, overlay;
 //@synthesize popoverController;
 
-typedef enum { NA, FROM_CAMERA, FROM_CUSTOMDRAW } WhichTransition;
-WhichTransition transitionType;
+
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) {
@@ -54,8 +49,6 @@ WhichTransition transitionType;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    transitionType = NA;
     
     self.navigationController.navigationBarHidden = NO;
     
@@ -92,25 +85,13 @@ WhichTransition transitionType;
 -(void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
     
-    switch (transitionType) {
-        case NA: {
-            UIImage *face_DB = [[UserInfo sharedInstance] croppedImage];
+
+    UIImage *face_DB = [[UserInfo sharedInstance] croppedImage];
             
-            [faceView setImage:face_DB];
-            int whichBody = (arc4random() % 5) + 1;
-            [[Game sharedGame] setRandomed_body:whichBody];
-            [bodyView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"body%i_1.png", whichBody]]];
-            break;
-        }
-            
-        case FROM_CAMERA: {
-            break;
-        }
-        case FROM_CUSTOMDRAW:
-            //need to refresh user image and hits from database
-            [faceView setImage:[[UserInfo sharedInstance] croppedImage]];
-            break;
-    }
+    [faceView setImage:face_DB];
+    int whichBody = (arc4random() % 5) + 1;
+    [[Game sharedGame] setRandomed_body:whichBody];
+    [bodyView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"body%i_1.png", whichBody]]];
 }
 
 -(void)setLabels {
@@ -137,69 +118,7 @@ WhichTransition transitionType;
 }
 
 -(void)viewDidAppear:(BOOL)animated {
-    
-    cameraController = [[UIImagePickerController alloc] init];
-    self.overlay = [[CameraOverlayControllerViewController alloc] initWithNibName:@"CameraOverlayControllerViewController" bundle:nil];
-    self.overlay.pickerReference = cameraController;
-    self.overlay.delegate = self;
-    cameraController.delegate = self.overlay;
-    cameraController.navigationBarHidden = YES;
-    cameraController.toolbarHidden = YES;
-    cameraController.wantsFullScreenLayout = YES;
-    
-    // Insert the overlay
-    
-    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-    {
-        cameraController.sourceType = UIImagePickerControllerSourceTypeCamera;
-        cameraController.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
-        cameraController.showsCameraControls = NO;
-        cameraController.wantsFullScreenLayout = YES;
-        cameraController.cameraViewTransform = CGAffineTransformScale(cameraController.cameraViewTransform, CAMERA_TRANSFORM_X, CAMERA_TRANSFORM_Y);
-        
-        if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
-            cameraController.cameraDevice = UIImagePickerControllerCameraDeviceFront;
-        } else
-            cameraController.cameraDevice = UIImagePickerControllerCameraDeviceRear;
-        cameraController.cameraOverlayView = self.overlay.view;
-        
-    } else {
-        [cameraController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-    }
-    
     [self setLabels];
-    UserInfo *usr = [UserInfo sharedInstance];
-
-    switch (transitionType) {
-        case NA: {
-            if (usr.croppedImage == nil){
-                UIAlertView *takePicAlert = [[UIAlertView alloc] initWithTitle:@"New?" message:@"Take a photo!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                takePicAlert.tag = 1;
-                [takePicAlert show];
-            }
-            
-            BOOL showTut = [[dic objectForKey:@"Tutorial"] boolValue];
-            if (showTut && !shown) {
-                [self popTutorial];
-                shown = YES;
-            }
-            break;
-        }
-            
-        case FROM_CAMERA: {
-            CustomDrawViewController *drawController = [[CustomDrawViewController alloc] initWithNibName:@"CustomDrawViewController" bundle:nil];
-            [self presentViewController:drawController animated:YES completion:nil];
-            drawController.containerView.photo = tempPhoto;
-            drawController.containerView.drawImageView.image = tempPhoto;
-            transitionType = FROM_CUSTOMDRAW;
-            break;
-        }
-        case FROM_CUSTOMDRAW:
-            //need to refresh user image and hits from database
-            
-            transitionType = NA;
-            break;
-    }
 }
 
 -(void)closedAboutPage:(UIButton *)sender {
@@ -356,12 +275,6 @@ WhichTransition transitionType;
     }
 }
 
--(void)validImageCaptured:(UIImage *)image croppedImage:(UIImage *)croppedImg{
-    if (image != nil){
-        tempPhoto = image;
-    }
-}
-
 #pragma mark - touch methods
 
 - (IBAction)Back_Touched:(id)sender {
@@ -380,9 +293,10 @@ WhichTransition transitionType;
 }
 
 -(IBAction)pushCamera:(id)sender {
-    [self presentViewController:cameraController animated:YES completion:nil];
-    self.navigationController.navigationBarHidden = YES;
-    transitionType = FROM_CAMERA;
+    CustomDrawViewController *drawController = [[CustomDrawViewController alloc] initWithNibName:@"CustomDrawViewController" bundle:nil];
+    [self presentViewController:drawController animated:YES completion:nil];
+    drawController.containerView.photo = [[UserInfo sharedInstance] croppedImage];
+    drawController.containerView.drawImageView.image = [[UserInfo sharedInstance] croppedImage];
 }
 
 - (IBAction)Help_Pressed:(id)sender {

@@ -15,7 +15,7 @@
 
 //@class WEPopoverController;
 
-@interface StatusViewController : UIViewController<RKObjectLoaderDelegate, UIAlertViewDelegate, CameraOverlayControllerViewControllerDelegate> {
+@interface StatusViewController : UIViewController<RKObjectLoaderDelegate, UIAlertViewDelegate> {
     
     IBOutlet UILabel *popularity_lbl;
     IBOutlet UILabel *high_score_lbl;
@@ -30,16 +30,9 @@
     //score storage
     NSDictionary *dic;
     
-    CameraOverlayControllerViewController *overlay;
-    //IBOutlet AvatarView *avatarView;
-    UIImagePickerController *cameraController;
-    UIImageView *cameraOverlayView;
-    
     CGFloat _xlastScale;
     CGFloat _ylastScale;
-    
-    UIImage *tempPhoto;
-    
+        
     //WEPopoverController *popoverController;
     UIView *popUp;
     BOOL shown;
@@ -59,9 +52,7 @@
 @property (nonatomic) IBOutlet UILabel *high_score_lbl;
 @property (nonatomic) IBOutlet UILabel *games_played_lbl;
 @property (nonatomic) IBOutlet UILabel *unlocks_lbl;
-@property (nonatomic, strong) CameraOverlayControllerViewController *overlay;
-@property (nonatomic, strong) UIImagePickerController *cameraController;
-@property (nonatomic, strong) UIImageView *cameraOverlayView;
+
 //@property (nonatomic, strong) WEPopoverController *popoverController;
 
 //class methods

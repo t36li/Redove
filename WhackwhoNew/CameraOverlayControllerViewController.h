@@ -13,7 +13,7 @@
 
 @interface CameraOverlayControllerViewController : AvatarBaseController <UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
     UIImagePickerController *pickerReference;
-    UIImage *validPhoto, *croppedImage;
+    UIImage *validPhoto;
     
     IBOutlet UIView *outfitView;
     IBOutlet UIButton *takePicBtn;
@@ -23,7 +23,7 @@
 @property (nonatomic) UIImagePickerController *pickerReference;
 @property (nonatomic) IBOutlet UIView *outfitView;
 @property (nonatomic) IBOutlet UIButton *takePicBtn;
-@property (nonatomic) UIImage *validPhoto, *croppedImage;
+@property (nonatomic) UIImage *validPhoto;
 @property (nonatomic) id<CameraOverlayControllerViewControllerDelegate> delegate;
 
 -(IBAction)takePicture:(id)sender;
