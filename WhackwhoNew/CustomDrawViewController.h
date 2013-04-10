@@ -56,6 +56,7 @@
 -(IBAction)crop:(id)sender;
 -(IBAction)done:(id)sender;
 -(IBAction)takePicture:(id)sender;
+-(IBAction)help:(id)sender;
 
 //class methods
 - (NSString *) dataFilepath;

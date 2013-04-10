@@ -151,8 +151,6 @@
 		C1CBDFF115952DC100A35E24 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CBDFEF15952DC100A35E24 /* facebook.png */; };
 		C1D3FC8D16E9259100F4F96E /* icon_57.png in Resources */ = {isa = PBXBuildFile; fileRef = C1D3FC8B16E9259100F4F96E /* icon_57.png */; };
 		C1D3FC8E16E9259100F4F96E /* icon_114.png in Resources */ = {isa = PBXBuildFile; fileRef = C1D3FC8C16E9259100F4F96E /* icon_114.png */; };
-		C1DC2D4E16A8B22C0063CBF7 /* HitWhoTutorialPopver.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DC2D4C16A8B22B0063CBF7 /* HitWhoTutorialPopver.m */; };
-		C1DC2D4F16A8B22C0063CBF7 /* HitWhoTutorialPopver.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2D4D16A8B22B0063CBF7 /* HitWhoTutorialPopver.xib */; };
 		C1DC2D5116AB3D1D0063CBF7 /* pause_button.png in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2D5016AB3D1D0063CBF7 /* pause_button.png */; };
 		C1DC2D5616AB429E0063CBF7 /* Upload_Cancel_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2D5216AB429E0063CBF7 /* Upload_Cancel_1.png */; };
 		C1DC2D5716AB429E0063CBF7 /* Upload_Cancel_2.png in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2D5316AB429E0063CBF7 /* Upload_Cancel_2.png */; };
@@ -208,8 +206,6 @@
 		D03D411E16A4CC1800C72E17 /* WEPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D411816A4CC1800C72E17 /* WEPopoverController.m */; };
 		D03D411F16A4CC1800C72E17 /* WETouchableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D411B16A4CC1800C72E17 /* WETouchableView.m */; };
 		D03D412216A4CE0700C72E17 /* WEPopoverContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D412116A4CE0600C72E17 /* WEPopoverContentViewController.m */; };
-		D03D412416A4D1CF00C72E17 /* PopOver.xib in Resources */ = {isa = PBXBuildFile; fileRef = D03D412316A4D1CF00C72E17 /* PopOver.xib */; };
-		D03D412716A4D24700C72E17 /* StatusViewTutorialPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = D03D412616A4D24700C72E17 /* StatusViewTutorialPopover.m */; };
 		D03F8C8116E6E6900083CF7A /* libSDWebImageARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D00600A115B5F29A0079626F /* libSDWebImageARC.a */; };
 		D03F8C8216E6EC5B0083CF7A /* libcocos2d-library.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C159328F15B60185009B7955 /* libcocos2d-library.a */; };
 		D0442EBD168CE8EF00677CC3 /* camera_lip.png in Resources */ = {isa = PBXBuildFile; fileRef = D0442EAF168CE8EE00677CC3 /* camera_lip.png */; };
@@ -680,7 +676,7 @@
 		C14139E41688FA74005556BD /* Choose_Connections_Bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Choose_Connections_Bg.jpg; sourceTree = "<group>"; };
 		C14139E6168C9D27005556BD /* HitUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HitUpdate.h; sourceTree = "<group>"; };
 		C14139E7168C9D28005556BD /* HitUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HitUpdate.m; sourceTree = "<group>"; };
-		C14139E9168CA5D4005556BD /* ScorePlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ScorePlist.plist; sourceTree = "<group>"; };
+		C14139E9168CA5D4005556BD /* ScorePlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ScorePlist.plist; path = ../ScorePlist.plist; sourceTree = "<group>"; };
 		C14139EB168CB28D005556BD /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		C14139F1168CBD3A005556BD /* HitWho_FriendBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_FriendBox.png; sourceTree = "<group>"; };
 		C14139F2168CBD3A005556BD /* HitWho_HitBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HitWho_HitBox.png; sourceTree = "<group>"; };
@@ -802,9 +798,6 @@
 		C1CBDFEF15952DC100A35E24 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
 		C1D3FC8B16E9259100F4F96E /* icon_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_57.png; sourceTree = "<group>"; };
 		C1D3FC8C16E9259100F4F96E /* icon_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_114.png; sourceTree = "<group>"; };
-		C1DC2D4B16A8B22B0063CBF7 /* HitWhoTutorialPopver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HitWhoTutorialPopver.h; sourceTree = "<group>"; };
-		C1DC2D4C16A8B22B0063CBF7 /* HitWhoTutorialPopver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HitWhoTutorialPopver.m; sourceTree = "<group>"; };
-		C1DC2D4D16A8B22B0063CBF7 /* HitWhoTutorialPopver.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HitWhoTutorialPopver.xib; sourceTree = "<group>"; };
 		C1DC2D5016AB3D1D0063CBF7 /* pause_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause_button.png; sourceTree = "<group>"; };
 		C1DC2D5216AB429E0063CBF7 /* Upload_Cancel_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Upload_Cancel_1.png; sourceTree = "<group>"; };
 		C1DC2D5316AB429E0063CBF7 /* Upload_Cancel_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Upload_Cancel_2.png; sourceTree = "<group>"; };
@@ -867,9 +860,6 @@
 		D03D411B16A4CC1800C72E17 /* WETouchableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WETouchableView.m; sourceTree = "<group>"; };
 		D03D412016A4CE0600C72E17 /* WEPopoverContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverContentViewController.h; sourceTree = SOURCE_ROOT; };
 		D03D412116A4CE0600C72E17 /* WEPopoverContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverContentViewController.m; sourceTree = SOURCE_ROOT; };
-		D03D412316A4D1CF00C72E17 /* PopOver.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopOver.xib; sourceTree = "<group>"; };
-		D03D412516A4D24700C72E17 /* StatusViewTutorialPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewTutorialPopover.h; sourceTree = "<group>"; };
-		D03D412616A4D24700C72E17 /* StatusViewTutorialPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewTutorialPopover.m; sourceTree = "<group>"; };
 		D0442EAF168CE8EE00677CC3 /* camera_lip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_lip.png; sourceTree = "<group>"; };
 		D0442EB0168CE8EE00677CC3 /* camera_right_eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_right_eye.png; sourceTree = "<group>"; };
 		D0442EB1168CE8EE00677CC3 /* camera_left_eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_left_eye.png; sourceTree = "<group>"; };
@@ -1330,9 +1320,6 @@
 				692AC3A515B24C0D001E4858 /* hitFriendCell.m */,
 				C155FE811608CE18007F254B /* Items.h */,
 				C155FE821608CE18007F254B /* Items.m */,
-				C1DC2D4B16A8B22B0063CBF7 /* HitWhoTutorialPopver.h */,
-				C1DC2D4C16A8B22B0063CBF7 /* HitWhoTutorialPopver.m */,
-				C1DC2D4D16A8B22B0063CBF7 /* HitWhoTutorialPopver.xib */,
 				C18AAB3416B0B05A003F8F87 /* InBetweenViewController.h */,
 				C18AAB3516B0B05A003F8F87 /* InBetweenViewController.m */,
 				C18AAB3616B0B05A003F8F87 /* InBetweenViewController.xib */,
@@ -1633,6 +1620,7 @@
 		C147168C1594ACCA0002FF21 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C14139E9168CA5D4005556BD /* ScorePlist.plist */,
 				D04D763C163769BE003C858F /* GameViewController.xib */,
 				D0B48499160E2C77000B95A7 /* FaceEffectsController.xib */,
 				D0948D3915AB6E9A00429477 /* AvatarView.xib */,
@@ -1735,11 +1723,7 @@
 				C10D2FC115D060A6007B751B /* Dragbox.m */,
 				C1B4397B15951B4100D62C2B /* StatusViewController.h */,
 				C1B4397C15951B4100D62C2B /* StatusViewController.m */,
-				D03D412516A4D24700C72E17 /* StatusViewTutorialPopover.h */,
-				D03D412616A4D24700C72E17 /* StatusViewTutorialPopover.m */,
-				D03D412316A4D1CF00C72E17 /* PopOver.xib */,
 				C10D2FCB15D09625007B751B /* StatusCocosDelegate.h */,
-				C14139E9168CA5D4005556BD /* ScorePlist.plist */,
 			);
 			name = "Personal Status View";
 			sourceTree = "<group>";
@@ -2743,7 +2727,6 @@
 				C14BC64E169503550005EEBE /* background_music.mp3 in Resources */,
 				C1B7BB2316A2149600E6F7A8 /* Loading.jpg in Resources */,
 				C1B7BB2716A214D800E6F7A8 /* Personal_Upload.jpg in Resources */,
-				D03D412416A4D1CF00C72E17 /* PopOver.xib in Resources */,
 				D0E40DB316AB2AD0000E99B4 /* nose_effect_blood.png in Resources */,
 				D0E40DB416AB2AD0000E99B4 /* nose_effect_swell.png in Resources */,
 				D0E40DB516AB2AD0000E99B4 /* right_ear_effect_bandage.png in Resources */,
@@ -2754,7 +2737,6 @@
 				D0E40DBA16AB2AD0000E99B4 /* head_effect_bandage.png in Resources */,
 				D0E40DBB16AB2AD0000E99B4 /* mouth_effect_teeth.png in Resources */,
 				D0E40DBC16AB2AD0000E99B4 /* mouth_effect_swell.png in Resources */,
-				C1DC2D4F16A8B22C0063CBF7 /* HitWhoTutorialPopver.xib in Resources */,
 				C1DC2D5116AB3D1D0063CBF7 /* pause_button.png in Resources */,
 				C1DC2D5616AB429E0063CBF7 /* Upload_Cancel_1.png in Resources */,
 				C1DC2D5716AB429E0063CBF7 /* Upload_Cancel_2.png in Resources */,
@@ -2908,8 +2890,6 @@
 				D03D411E16A4CC1800C72E17 /* WEPopoverController.m in Sources */,
 				D03D411F16A4CC1800C72E17 /* WETouchableView.m in Sources */,
 				D03D412216A4CE0700C72E17 /* WEPopoverContentViewController.m in Sources */,
-				D03D412716A4D24700C72E17 /* StatusViewTutorialPopover.m in Sources */,
-				C1DC2D4E16A8B22C0063CBF7 /* HitWhoTutorialPopver.m in Sources */,
 				C1DC2D7816AB557B0063CBF7 /* CameraTutorial.m in Sources */,
 				C18AAB3716B0B05B003F8F87 /* InBetweenViewController.m in Sources */,
 				D015289716D4563200481464 /* ReviewUploadViewController.m in Sources */,

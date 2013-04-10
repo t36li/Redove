@@ -38,9 +38,12 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [[FBSingletonNew sharedInstance] setDelegate:self];
-    if ([self readPlist]) {
+    int onOff = [self readPlist];
+    if (onOff) {
+        NSLog(@"Tutorial is on");
         [tutSwitch setOn:YES animated:NO];
     } else {
+        NSLog(@"Tutorial is off");
         [tutSwitch setOn:NO animated:NO];
     }
 }
@@ -121,10 +124,10 @@
 
 -(IBAction)tutorial_touched:(id)sender {
     if (tutSwitch.on) {
-        //NSLog(@"switch is on");
+        NSLog(@"Switching on tutorial...");
         [self writePlist:YES];
     } else {
-        //NSLog(@"switch is off");
+        NSLog(@"Switching off tutorial...");
         [self writePlist:NO];
     }
 }
@@ -147,7 +150,6 @@
 - (void) writePlist: (BOOL) onOff {
     [dic setObject: [NSNumber numberWithBool:onOff] forKey:@"Tutorial"];
     [dic writeToFile:[self dataFilepath] atomically:NO];
-    
 }
 
 - (int) readPlist {

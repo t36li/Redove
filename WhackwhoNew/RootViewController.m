@@ -59,7 +59,7 @@
 
 -(void) viewDidAppear:(BOOL)animated{
     fbs.delegate = self;
-    NSLog(@"RootViewController: load Profile Image");
+    //NSLog(@"RootViewController: load Profile Image");
     if ([fbs isLogin] == YES){
         self.profileImageView.profileID = [usr userId];
     }else{
@@ -135,7 +135,7 @@
 
 
 -(IBAction)play_touched:(id)sender{
-    NSLog(@"Play Button Touched");
+    //NSLog(@"Play Button Touched");
     if ([fbs isLogin]==YES){
         [self performSegueWithIdentifier:PlayToStatusSegue sender:sender];
     }else{

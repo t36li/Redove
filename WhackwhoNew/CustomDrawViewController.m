@@ -282,6 +282,12 @@ WhichTransition transitionType;
     [containerView setUserInteractionEnabled:YES];
 }
 
+-(IBAction)help:(id)sender {
+    if (![self.view.subviews containsObject:popUp]) {
+        [self popTutorial];
+    }
+}
+
 -(void)didPanButton:(UIPanGestureRecognizer *)recognizer {
     CGPoint translation = [recognizer translationInView:self.view];
     recognizer.view.center = CGPointMake(recognizer.view.center.x + translation.x,
@@ -378,7 +384,7 @@ WhichTransition transitionType;
             popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:0.3/2 animations:^{
-                popUp.transform = CGAffineTransformIdentity;
+                popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.7, 0.7);
             }];
         }];
     }];

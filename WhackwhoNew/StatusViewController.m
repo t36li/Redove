@@ -14,7 +14,6 @@
 #import "SpinnerView.h"
 #import "WEPopoverContentViewController.h"
 #import "WEPopoverController.h"
-#import "StatusViewTutorialPopover.h"
 #import "Game.h"
 
 //define tags
@@ -59,24 +58,16 @@
     
     shown = NO;
     
+    NSString *path = [self dataFilepath];
+    dic = [[NSDictionary alloc] initWithContentsOfFile:path];
+    
     //need to cache user's previous image
-}
-
--(NSUInteger) supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskLandscapeLeft;
-}
-
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return interfaceOrientation == UIInterfaceOrientationLandscapeLeft;
 }
 
 //newbie alert view
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (alertView.tag == 1){
         if (buttonIndex == 0){
-            //[self performSegueWithIdentifier:@"goToAvatar" sender:nil];
             [self pushCamera:nil];
         }
     }
@@ -85,13 +76,29 @@
 -(void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
     
-
     UIImage *face_DB = [[UserInfo sharedInstance] croppedImage];
-            
-    [faceView setImage:face_DB];
-    int whichBody = (arc4random() % 5) + 1;
-    [[Game sharedGame] setRandomed_body:whichBody];
-    [bodyView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"body%i_1.png", whichBody]]];
+    
+    if (face_DB == nil){
+        UIAlertView *takePicAlert = [[UIAlertView alloc] initWithTitle:@"First Time User?" message:@"Take a Photo!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        takePicAlert.tag = 1;
+        [takePicAlert show];
+        
+    } else {
+        [faceView setImage:face_DB];
+        int whichBody = (arc4random() % 5) + 1;
+        [[Game sharedGame] setRandomed_body:whichBody];
+        [bodyView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"body%i_1.png", whichBody]]];
+        
+        int showTut = [[self readPlist:@"Tutorial"] intValue];
+        if (showTut && !shown) {
+            [self popTutorial];
+            shown = YES;
+        }
+    }
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [self setLabels];
 }
 
 -(void)setLabels {
@@ -117,10 +124,6 @@
     [[RKClient sharedClient] get:[NSString stringWithFormat:@"/hits/%@", whackID] delegate:self];
 }
 
--(void)viewDidAppear:(BOOL)animated {
-    [self setLabels];
-}
-
 -(void)closedAboutPage:(UIButton *)sender {
     [UIView animateWithDuration:0.3 animations:^{
         popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.001, 0.001);
@@ -144,13 +147,13 @@
     [self.view addSubview:popUp];
     
     [UIView animateWithDuration:0.3/1.5 animations:^{
-        popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
+        popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.3/2 animations:^{
-            popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.4, 0.4);
+            popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.6, 0.6);
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:0.3/2 animations:^{
-                popUp.transform = CGAffineTransformIdentity;
+                popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.8, 0.8);
             }];
         }];
     }];
@@ -298,7 +301,20 @@
 }
 
 - (IBAction)Help_Pressed:(id)sender {
-    [self popTutorial];
+    if (![self.view.subviews containsObject:popUp]) {
+        [self popTutorial];
+    }
+}
+
+
+-(NSUInteger) supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskLandscapeLeft;
+}
+
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return interfaceOrientation == UIInterfaceOrientationLandscapeLeft;
 }
 
 @end

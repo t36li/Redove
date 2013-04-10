@@ -1,5 +1,4 @@
 //
-//  ModeSelectionViewController.m
 //  WhackwhoNew
 //
 //  Created by Bob Li on 12-07-12.
@@ -14,7 +13,6 @@
 #import "HelloWorldLayer.h"
 #import "WEPopoverContentViewController.h"
 #import "WEPopoverController.h"
-#import "HitWhoTutorialPopver.h"
 #import "InBetweenViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -35,7 +33,7 @@
 @synthesize table;
 @synthesize spinner, loadingView;
 @synthesize resultFriends, resultStrangers, hitWindows;
-//@synthesize popoverController;
+@synthesize popoverController;
 
 - (void)viewDidLoad
 {
@@ -73,7 +71,7 @@
     
     spinner = [SpinnerView loadSpinnerIntoView:loadingView];
     tablepull = [[PullToRefreshView alloc] initWithScrollView:(UIScrollView *) self.table];
-    //self.popoverController = [[WEPopoverController alloc] init];
+    self.popoverController = [[WEPopoverController alloc] init];
     
     [self.table addSubview:tablepull];
     
@@ -185,10 +183,10 @@
         popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.3/2 animations:^{
-            popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+            popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.6, 0.6);
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:0.3/2 animations:^{
-                popUp.transform = CGAffineTransformIdentity;
+                popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.8, 0.8);
             }];
         }];
     }];
@@ -411,7 +409,6 @@
         }
     }
     
-    
     InBetweenViewController *contentViewController = [[InBetweenViewController alloc] initWithNibName: @"InBetweenViewController" bundle:nil];
     switch (selectedHits.count) {
         case 4:
@@ -424,9 +421,15 @@
             contentViewController.image1 = [[[selectedHits objectAtIndex:0] head] headImage];
             break;
     }
-
-    [self presentModalViewController:contentViewController animated:YES];
-
+    
+    [self.popoverController setContentViewController:contentViewController];
+    [self.popoverController presentPopoverFromRect:CGRectZero
+                                            inView:self.view
+                          permittedArrowDirections:UIPopoverArrowDirectionAny
+                                          animated:YES];
+    [self.popoverController.view setFrame:self.view.frame];
+    self.popoverController.view.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+    
     [self performSelectorInBackground:@selector(processImagesInBackground) withObject:nil];
     
     void (^block)(BOOL) = ^(BOOL finished) {
@@ -445,12 +448,11 @@
     };
     
     [self sendHammersDownWithBlock:block];
-    
 }
 
 -(void) playgame {
     [self performSegueWithIdentifier:ChooseToGame sender:nil];
-    [self dismissModalViewControllerAnimated:YES];
+    [self.popoverController dismissPopoverAnimated:YES];
 }
 
 -(void) processImagesInBackground {
@@ -601,12 +603,20 @@
 }
 
 - (IBAction)Help_Pressed:(id)sender {
-    [self popTutorial];
+    if (!isTableLoaded) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Please wait for list to be loaded. Be patient!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
+    if (![self.view.subviews containsObject:popUp]) {
+        [self popTutorial];
+    }
 }
 
 #pragma mark - hammer animations
 -(void) sendHammersDownWithBlock:(void(^)(BOOL finished))block {
-    /*if (isHammerDown)
+    if (isHammerDown)
         return;
     
     [self.view bringSubviewToFront:leftHammer];
@@ -622,11 +632,11 @@
                          leftHammer.center = CGPointMake(origPt_l.x, origPt_l.y + 100);
                          rightHammer.center = CGPointMake(origPt_r.x, origPt_r.y + 100);
                      }
-                     completion:block];*/
+                     completion:block];
 }
 
 -(void) sendHammersUpWithBlock:(void(^)(BOOL finished))block {
-    /*if (!isHammerDown)
+    if (!isHammerDown)
         return;
     
     [self.view bringSubviewToFront:leftHammer];
@@ -642,7 +652,7 @@
                          leftHammer.center = CGPointMake(origPt_l.x, origPt_l.y - 100);
                          rightHammer.center = CGPointMake(origPt_r.x, origPt_r.y - 100);
                      }
-                     completion:block];*/
+                     completion:block];
 }
 
 -(void)updateFriendsHit{
