@@ -23,7 +23,14 @@
 @synthesize leftEarButton, leftEyeButton, lipsButton, noseButton, rightEarButton, rightEyeButton;
 @synthesize redoBtn, okBtn, cropBtn;
 @synthesize buttonSet;
+@synthesize overlay, cameraController, cameraOverlayView;
 //@synthesize popoverController;
+typedef enum { NA, FROM_CAMERA, FROM_CUSTOMDRAW } WhichTransition;
+WhichTransition transitionType;
+// Transform values for full screen support:
+#define CAMERA_TRANSFORM_X 1
+//#define CAMERA_TRANSFORM_Y 1.12412 //use this is for iOS 3.x
+#define CAMERA_TRANSFORM_Y 1.24299 // use this is for iOS 4.x
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,6 +65,8 @@
     dic = [[NSDictionary alloc] initWithContentsOfFile:path];
     
     originalBtnPositions = [NSMutableArray arrayWithCapacity:[buttonSet count]];
+    
+    showtut = [[dic objectForKey:@"Tutorial"] boolValue];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -67,12 +76,53 @@
         
         [originalBtnPositions addObject:[NSValue valueWithCGPoint:btn.center]];
     }
+    
+    cameraController = [[UIImagePickerController alloc] init];
+    self.overlay = [[CameraOverlayControllerViewController alloc] initWithNibName:@"CameraOverlayControllerViewController" bundle:nil];
+    self.overlay.pickerReference = cameraController;
+    self.overlay.delegate = self;
+    cameraController.delegate = self.overlay;
+    cameraController.navigationBarHidden = YES;
+    cameraController.toolbarHidden = YES;
+    cameraController.wantsFullScreenLayout = YES;
+    
+    // Insert the overlay
+    
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        cameraController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        cameraController.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
+        cameraController.showsCameraControls = NO;
+        cameraController.wantsFullScreenLayout = YES;
+        cameraController.cameraViewTransform = CGAffineTransformScale(cameraController.cameraViewTransform, CAMERA_TRANSFORM_X, CAMERA_TRANSFORM_Y);
+        
+        if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
+            cameraController.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+        } else
+            cameraController.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+        cameraController.cameraOverlayView = self.overlay.view;
+        
+    } else {
+        [cameraController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    }
+}
+
+-(void)validImageCaptured:(UIImage *)image croppedImage:(UIImage *)croppedImg{
+    self.containerView.photo = image;
+    self.containerView.drawImageView.image = image;
+    cameraImage = image;
 }
 
 -(void)viewDidAppear:(BOOL)animated {
-    BOOL showTut = [[dic objectForKey:@"Tutorial"] boolValue];
-    if (showTut) {
+    if (showtut) {
         [self popTutorial];
+        showtut = false;
+    }
+    
+    UserInfo *usr = [UserInfo sharedInstance];
+
+    if (usr.croppedImage == nil && cameraImage == nil) {
+        [self takePicture:nil];
     }
 }
 
@@ -91,20 +141,39 @@
 }
 
 -(IBAction)backTouched:(id)sender {
-    if ([containerView resetPaths] && cropBtn.enabled && [[UserInfo sharedInstance] croppedImage] != nil) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+    UserInfo *user = [UserInfo sharedInstance];
+    if (![containerView resetPaths] || containerView.drawImageView.image != user.croppedImage) {
+        int i = 0;
+        for (UIButton *btn in buttonSet) {
+            NSValue *val = [originalBtnPositions objectAtIndex:i];
+            btn.center = val.CGPointValue;
+            [btn setEnabled:NO];
+            i++;
+        }
+        
+        [cropBtn setEnabled:YES];
+        [okBtn setEnabled:NO];
+        [containerView setUserInteractionEnabled:YES];
+        
+        if (cameraImage != nil && containerView.drawImageView.image != cameraImage && containerView.drawImageView.image != user.croppedImage) {
+            self.containerView.photo = cameraImage;
+            self.containerView.drawImageView.image = cameraImage;
+        } else {
+            self.containerView.photo = user.croppedImage;
+            self.containerView.drawImageView.image = user.croppedImage;
+        }
+        
+        return;
+    } else if (self.containerView.drawImageView.image == cameraImage) {
+        self.containerView.photo = user.croppedImage;
+        self.containerView.drawImageView.image = user.croppedImage;
+        return;
+    } else {
+        if (user.croppedImage != nil) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+            return;
+        }
     }
-    int i = 0;
-    for (UIButton *btn in buttonSet) {
-        NSValue *val = [originalBtnPositions objectAtIndex:i];
-        btn.center = val.CGPointValue;
-        [btn setEnabled:NO];
-        i++;
-    }
-    
-    [cropBtn setEnabled:YES];
-    [okBtn setEnabled:NO];
-    [containerView setUserInteractionEnabled:YES];
 }
 
 -(IBAction)crop:(id)sender {
@@ -131,7 +200,7 @@
         i++;
     }
     
-    if (!match)
+    if (match)
         return;
     
     [okBtn setEnabled:NO];
@@ -192,6 +261,25 @@
     self.containerView.drawImageView.image = ret;
     */
     [self saveUsrImageToServer];
+}
+
+-(IBAction)takePicture:(id)sender {
+    [self presentViewController:cameraController animated:YES completion:nil];
+    self.navigationController.navigationBarHidden = YES;
+    
+    [containerView resetPaths];
+    
+    int i = 0;
+    for (UIButton *btn in buttonSet) {
+        NSValue *val = [originalBtnPositions objectAtIndex:i];
+        btn.center = val.CGPointValue;
+        [btn setEnabled:NO];
+        i++;
+    }
+    
+    [cropBtn setEnabled:YES];
+    [okBtn setEnabled:NO];
+    [containerView setUserInteractionEnabled:YES];
 }
 
 -(void)didPanButton:(UIPanGestureRecognizer *)recognizer {
