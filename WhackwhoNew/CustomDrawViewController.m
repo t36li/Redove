@@ -359,7 +359,7 @@ WhichTransition transitionType;
 
 - (void) popTutorial {
     popUp = [[UIView alloc] initWithFrame:self.view.frame];
-    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tutorial_camera.png"]];
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tut_camera_v2.png"]];
     imgView.frame = popUp.frame;
     
     UIButton *okBtnTut = [[UIButton alloc] initWithFrame:self.view.frame];

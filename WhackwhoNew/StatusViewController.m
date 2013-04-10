@@ -131,7 +131,7 @@
 
 - (void) popTutorial {
     popUp = [[UIView alloc] initWithFrame:self.view.frame];
-    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tutorial_personal.png"]];
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tut_personal_v2.png"]];
     imgView.frame = popUp.frame;
     
     UIButton *okBtn = [[UIButton alloc] initWithFrame:self.view.frame];
@@ -139,17 +139,15 @@
     [popUp addSubview:imgView];
     [popUp addSubview:okBtn];
     
-    
-    
     popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.001, 0.001);
     
     [self.view addSubview:popUp];
     
     [UIView animateWithDuration:0.3/1.5 animations:^{
-        popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
+        popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.3/2 animations:^{
-            popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+            popUp.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.4, 0.4);
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:0.3/2 animations:^{
                 popUp.transform = CGAffineTransformIdentity;

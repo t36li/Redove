@@ -19,7 +19,7 @@
 #import "HitWindow.h"
 #import "FBSingletonNewDelegate.h"
 
-@class WEPopoverController;
+//@class WEPopoverController;
 
 @interface HitWhoViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,RKObjectLoaderDelegate,PullToRefreshViewDelegate,FBSingletonNewDelegate> {
    
@@ -51,7 +51,7 @@
     
     BOOL isHammerDown, isTableLoaded;
     
-    WEPopoverController *popoverController;
+    //WEPopoverController *popoverController;
     UIView *popUp;
     
     //score storage
@@ -81,7 +81,7 @@
 
 @property (nonatomic) UIButton *uploadBtn, *dismissPopupBtn;
 
-@property (nonatomic, strong) WEPopoverController *popoverController;
+//@property (nonatomic, strong) WEPopoverController *popoverController;
 
 - (NSString *) dataFilepath;
 

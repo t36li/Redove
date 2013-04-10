@@ -8,14 +8,10 @@
 
 #import "InBetweenViewController.h"
 
-#define center_x 189
-#define center_y 144
-
 @implementation InBetweenViewController
 
 @synthesize head1, head2, head3, head4;
 @synthesize image1, image2, image3, image4;
-@synthesize num_of_hits;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,29 +36,17 @@
     head2.image = self.image2;
     head3.image = self.image3;
     head4.image = self.image4;
-    
-    /*
-    switch (num_of_hits) {
-        case 1:
-            [head1 setCenter:CGPointMake(winSize.width/2, winSize.height/2)];
-            break;
-        case 2:
-            
-            break;
-        case 3:
-            
-            break;
-        case 4:
-            
-            break;
-    }*/
-    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return interfaceOrientation == UIInterfaceOrientationLandscapeLeft;
 }
 
 @end

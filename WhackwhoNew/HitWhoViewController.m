@@ -35,7 +35,7 @@
 @synthesize table;
 @synthesize spinner, loadingView;
 @synthesize resultFriends, resultStrangers, hitWindows;
-@synthesize popoverController;
+//@synthesize popoverController;
 
 - (void)viewDidLoad
 {
@@ -73,7 +73,7 @@
     
     spinner = [SpinnerView loadSpinnerIntoView:loadingView];
     tablepull = [[PullToRefreshView alloc] initWithScrollView:(UIScrollView *) self.table];
-    self.popoverController = [[WEPopoverController alloc] init];
+    //self.popoverController = [[WEPopoverController alloc] init];
     
     [self.table addSubview:tablepull];
     
@@ -169,7 +169,7 @@
 
 - (void) popTutorial {
     popUp = [[UIView alloc] initWithFrame:self.view.frame];
-    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tutorial_hitWho.png"]];
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tut_hitWho_v2.png"]];
     imgView.frame = popUp.frame;
     
     UIButton *okBtnTut = [[UIButton alloc] initWithFrame:self.view.frame];
@@ -425,13 +425,7 @@
             break;
     }
 
-    [self.popoverController setContentViewController:contentViewController];
-    [self.popoverController presentPopoverFromRect:CGRectZero
-                                            inView:self.view
-                          permittedArrowDirections:UIPopoverArrowDirectionAny
-                                          animated:YES];
-    [popoverController.view setFrame:CGRectMake(20, 0, 400, 300)];
-
+    [self presentModalViewController:contentViewController animated:YES];
 
     [self performSelectorInBackground:@selector(processImagesInBackground) withObject:nil];
     
@@ -456,7 +450,7 @@
 
 -(void) playgame {
     [self performSegueWithIdentifier:ChooseToGame sender:nil];
-    [self.popoverController dismissPopoverAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 -(void) processImagesInBackground {
@@ -485,7 +479,10 @@
 }
 
 - (IBAction)Back_Touched:(id)sender {
-    if (isTableLoaded){
+    if (!isTableLoaded) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Please wait for list to be loaded. Be patient!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+    } else {
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
@@ -609,7 +606,7 @@
 
 #pragma mark - hammer animations
 -(void) sendHammersDownWithBlock:(void(^)(BOOL finished))block {
-    if (isHammerDown)
+    /*if (isHammerDown)
         return;
     
     [self.view bringSubviewToFront:leftHammer];
@@ -625,11 +622,11 @@
                          leftHammer.center = CGPointMake(origPt_l.x, origPt_l.y + 100);
                          rightHammer.center = CGPointMake(origPt_r.x, origPt_r.y + 100);
                      }
-                     completion:block];
+                     completion:block];*/
 }
 
 -(void) sendHammersUpWithBlock:(void(^)(BOOL finished))block {
-    if (!isHammerDown)
+    /*if (!isHammerDown)
         return;
     
     [self.view bringSubviewToFront:leftHammer];
@@ -645,7 +642,7 @@
                          leftHammer.center = CGPointMake(origPt_l.x, origPt_l.y - 100);
                          rightHammer.center = CGPointMake(origPt_r.x, origPt_r.y - 100);
                      }
-                     completion:block];
+                     completion:block];*/
 }
 
 -(void)updateFriendsHit{

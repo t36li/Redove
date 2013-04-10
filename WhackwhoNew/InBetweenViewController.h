@@ -22,6 +22,5 @@
 @property (nonatomic, strong) UIImage *image3;
 @property (nonatomic, strong) UIImage *image4;
 
-@property (nonatomic, readwrite) int num_of_hits;
 
 @end
