@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C14716741594ACCA0002FF21"
-            BuildableName = "WhackwhoNew.app"
-            BlueprintName = "WhackwhoNew"
-            ReferencedContainer = "container:WhackwhoNew.xcodeproj">
+            BuildableName = "WhackWho.app"
+            BlueprintName = "WhackWho"
+            ReferencedContainer = "container:WhackWho.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -52,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C14716741594ACCA0002FF21"
-            BuildableName = "WhackwhoNew.app"
-            BlueprintName = "WhackwhoNew"
-            ReferencedContainer = "container:WhackwhoNew.xcodeproj">
+            BuildableName = "WhackWho.app"
+            BlueprintName = "WhackWho"
+            ReferencedContainer = "container:WhackWho.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>

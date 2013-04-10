@@ -485,7 +485,9 @@
 }
 
 - (IBAction)Back_Touched:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (isTableLoaded){
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark - capture image
