@@ -22,6 +22,7 @@
     NSMutableArray *avatarArray;
     UIImage *defaultImage;
     NSInteger selectedIndex;
+    NSString *sendToFBMsg;
     
     UIImage *leftEye, *rightEye, *lip, *nose, *leftEar, *rightEar;
     NSArray *leftEyeEffects, *rightEyeEffects, *mouthEffects, *noseEffects, *leftEarEffects, *rightEarEffects;
@@ -37,6 +38,7 @@
 @property (nonatomic, strong) IBOutlet UIView *portraitView;
 @property (nonatomic, strong) IBOutlet UIButton *backBtn, *uploadBtn, *leftBtn, *rightBtn;
 @property (nonatomic, strong) IBOutlet UILabel *scorelbl, *goldlbl;
+@property (nonatomic, strong) NSString *sendToFBMsg;
 @property (nonatomic, strong) IBOutlet UIImageView *avatarImageView;
 @property (nonatomic, strong) IBOutlet UIImageView *star1, *star2, *star3;
 

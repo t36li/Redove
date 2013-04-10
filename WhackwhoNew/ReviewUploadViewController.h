@@ -17,5 +17,6 @@
 @property (strong, nonatomic) NSMutableData *imageData;
 @property (strong, nonatomic) NSURLConnection *imageConnection;
 @property (strong, nonatomic) UIImage *publishedImage;
+@property (strong, nonatomic) NSString *publishedMsg;
 
 @end

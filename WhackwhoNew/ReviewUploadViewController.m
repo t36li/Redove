@@ -23,7 +23,7 @@
 @synthesize imageData = _imageData;
 @synthesize imageConnection = _imageConnection;
 @synthesize publishedImage;
-
+@synthesize publishedMsg;
 
 /*
  * Publish the story
@@ -65,7 +65,7 @@
     
     self.postParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                        @"MY WHACK WHO HEAD",@"message",
-                       @"Whack Who for iOS [testing]", @"name",
+                       publishedMsg, @"name",
                        @"You got WHACK! ", @"caption",
                        @"description....", @"description",
                        nil];

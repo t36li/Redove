@@ -22,6 +22,7 @@
 @synthesize portraitView, backBtn, uploadBtn, leftBtn, rightBtn, avatarImageView;
 @synthesize star1, star2, star3;
 @synthesize scorelbl, goldlbl;
+@synthesize sendToFBMsg;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -293,7 +294,23 @@
 }
 
 - (IBAction) shareToFacebook:(id)sender {
-    [self performSegueWithIdentifier:@"ReviewToUpload" sender:self];
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Message" message:@"Post on Facebook" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Send",nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alert show];
+    
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0){
+        NSLog(@"Send to Facebook Cancelled");
+    }else{
+        sendToFBMsg = [[alertView textFieldAtIndex:0] text];
+        NSLog(@"Entered: %@",[[alertView textFieldAtIndex:0] text]);
+        [self performSegueWithIdentifier:@"ReviewToUpload" sender:self];
+    }
+    
+    
 }
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -337,6 +354,7 @@
         UIGraphicsEndImageContext();
         
         [vc setPublishedImage:ret];
+        [vc setPublishedMsg:sendToFBMsg];
     }
 }
 
