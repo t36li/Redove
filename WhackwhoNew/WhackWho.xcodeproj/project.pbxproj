@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3D8BA1AA1688E69A00B731A1 /* FacebookShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8BA1A81688E69900B731A1 /* FacebookShareViewController.m */; };
 		3D8BA1AB1688E69A00B731A1 /* FacebookShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D8BA1A91688E69900B731A1 /* FacebookShareViewController.xib */; };
+		3DC5F68517164E1C00EB7485 /* Options_bg_v2.5.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DC5F68417164E1C00EB7485 /* Options_bg_v2.5.png */; };
+		3DC5F68717164FE700EB7485 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DC5F68617164FE700EB7485 /* logout.png */; };
 		3DDA87B816127B23005349D1 /* CurrentEquip.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDA87B316127B23005349D1 /* CurrentEquip.m */; };
 		3DDA87B916127B23005349D1 /* Head.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDA87B516127B23005349D1 /* Head.m */; };
 		3DDA87BA16127B23005349D1 /* StorageInv.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDA87B716127B23005349D1 /* StorageInv.m */; };
@@ -46,7 +48,6 @@
 		C10D2FC215D060A6007B751B /* Dragbox.m in Sources */ = {isa = PBXBuildFile; fileRef = C10D2FC115D060A6007B751B /* Dragbox.m */; };
 		C12114581616044300E3AAB1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12114571616044300E3AAB1 /* Default-568h@2x.png */; };
 		C12114611616967E00E3AAB1 /* HitWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C121145F1616967E00E3AAB1 /* HitWindow.m */; };
-		C13117E41713EA7D00E7B0EC /* Options_bg_v2.png in Resources */ = {isa = PBXBuildFile; fileRef = C13117E31713EA7D00E7B0EC /* Options_bg_v2.png */; };
 		C13117E61713ECA400E7B0EC /* Help_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = C13117E51713ECA400E7B0EC /* Help_Button.png */; };
 		C14139DA1688F725005556BD /* Status_Popularity_Frame.png in Resources */ = {isa = PBXBuildFile; fileRef = C14139D61688F723005556BD /* Status_Popularity_Frame.png */; };
 		C14139DB1688F725005556BD /* Status_Total_Gold_Frame.png in Resources */ = {isa = PBXBuildFile; fileRef = C14139D71688F723005556BD /* Status_Total_Gold_Frame.png */; };
@@ -601,6 +602,8 @@
 		3D8BA1A71688E69900B731A1 /* FacebookShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookShareViewController.h; sourceTree = "<group>"; };
 		3D8BA1A81688E69900B731A1 /* FacebookShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookShareViewController.m; sourceTree = "<group>"; };
 		3D8BA1A91688E69900B731A1 /* FacebookShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FacebookShareViewController.xib; sourceTree = "<group>"; };
+		3DC5F68417164E1C00EB7485 /* Options_bg_v2.5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Options_bg_v2.5.png; sourceTree = "<group>"; };
+		3DC5F68617164FE700EB7485 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
 		3DDA87B216127B23005349D1 /* CurrentEquip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentEquip.h; sourceTree = "<group>"; };
 		3DDA87B316127B23005349D1 /* CurrentEquip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentEquip.m; sourceTree = "<group>"; };
 		3DDA87B416127B23005349D1 /* Head.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Head.h; sourceTree = "<group>"; };
@@ -664,7 +667,6 @@
 		C12114571616044300E3AAB1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C121145F1616967E00E3AAB1 /* HitWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HitWindow.m; sourceTree = "<group>"; };
 		C12114601616967E00E3AAB1 /* HitWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HitWindow.h; sourceTree = "<group>"; };
-		C13117E31713EA7D00E7B0EC /* Options_bg_v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Options_bg_v2.png; sourceTree = "<group>"; };
 		C13117E51713ECA400E7B0EC /* Help_Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Help_Button.png; sourceTree = "<group>"; };
 		C14139D61688F723005556BD /* Status_Popularity_Frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Status_Popularity_Frame.png; sourceTree = "<group>"; };
 		C14139D71688F723005556BD /* Status_Total_Gold_Frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Status_Total_Gold_Frame.png; sourceTree = "<group>"; };
@@ -1477,9 +1479,9 @@
 			isa = PBXGroup;
 			children = (
 				C1011B2F16D83E3E00C09F53 /* Main_Menu_baselayer2.png */,
-				C13117E31713EA7D00E7B0EC /* Options_bg_v2.png */,
 				D017DF8816E401D800F812A4 /* about us.png */,
 				D015288D16D311EC00481464 /* review_upload_background.png */,
+				3DC5F68417164E1C00EB7485 /* Options_bg_v2.5.png */,
 				C16EB71916E4023B007DC43D /* Review_Background2.png */,
 				C16EB71D16E405B2007DC43D /* Personal_Status_Bg_Final.png */,
 				C1B7BB2216A2149600E6F7A8 /* Loading.jpg */,
@@ -1494,6 +1496,7 @@
 		69C95E95159A51EF009966DA /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				3DC5F68617164FE700EB7485 /* logout.png */,
 				C14BC6201692380F0005EEBE /* Back_Button.png */,
 				C13117E51713ECA400E7B0EC /* Help_Button.png */,
 				C1482714168E207C00C5680D /* temp_upload.png */,
@@ -2816,12 +2819,13 @@
 				C1D3FC8E16E9259100F4F96E /* icon_114.png in Resources */,
 				D0711DD81713BD1700CDB4B5 /* FacebookSDKResources.bundle in Resources */,
 				D0711DD91713BD1700CDB4B5 /* FBUserSettingsViewResources.bundle in Resources */,
-				C13117E41713EA7D00E7B0EC /* Options_bg_v2.png in Resources */,
 				C13117E61713ECA400E7B0EC /* Help_Button.png in Resources */,
 				C109A9EE1715C9B100151CA2 /* in_between_v2.png in Resources */,
 				C109A9EF1715C9B100151CA2 /* tut_camera_v2.png in Resources */,
 				C109A9F01715C9B100151CA2 /* tut_hitWho_v2.png in Resources */,
 				C109A9F11715C9B100151CA2 /* tut_personal_v2.png in Resources */,
+				3DC5F68517164E1C00EB7485 /* Options_bg_v2.5.png in Resources */,
+				3DC5F68717164FE700EB7485 /* logout.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3085,9 +3089,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: TIANBO LI (5BB7UGRU36)";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: TIANBO LI (5BB7UGRU36)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos5.1]" = "iPhone Developer: TIANBO LI (5BB7UGRU36)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: chun su (4DPK992YM8)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: chun su (4DPK992YM8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos5.1]" = "iPhone Developer: chun su (4DPK992YM8)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3120,9 +3124,9 @@
 					"-v",
 				);
 				PRODUCT_NAME = WhackWho;
-				PROVISIONING_PROFILE = "236BD65A-6299-49A4-9532-D7FA48F256C1";
-				"PROVISIONING_PROFILE[sdk=*]" = "236BD65A-6299-49A4-9532-D7FA48F256C1";
-				"PROVISIONING_PROFILE[sdk=iphoneos5.1]" = "236BD65A-6299-49A4-9532-D7FA48F256C1";
+				PROVISIONING_PROFILE = "DE230621-8B3F-4B2A-AA78-3D6660FB87C4";
+				"PROVISIONING_PROFILE[sdk=*]" = "DE230621-8B3F-4B2A-AA78-3D6660FB87C4";
+				"PROVISIONING_PROFILE[sdk=iphoneos5.1]" = "DE230621-8B3F-4B2A-AA78-3D6660FB87C4";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3137,7 +3141,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Redove Gaming Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: chun su (4DPK992YM8)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3169,7 +3173,7 @@
 					"-v",
 				);
 				PRODUCT_NAME = WhackWho;
-				PROVISIONING_PROFILE = "90FFF987-64B8-475A-967E-B8AAAD3FCBC5";
+				PROVISIONING_PROFILE = "DE230621-8B3F-4B2A-AA78-3D6660FB87C4";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;

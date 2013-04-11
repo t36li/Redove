@@ -20,7 +20,7 @@
 	// Do any additional setup after loading the view.
     usr = [UserInfo sharedInstance];
     fbs = [FBSingletonNew sharedInstance];
-    if ((int)[[UserInfo sharedInstance] currentLogInType] != NotLogIn) {
+    if ([fbs isLogin]) {
         logout_but.hidden = NO;
     }
     else {
