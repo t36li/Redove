@@ -29,7 +29,9 @@
 //@property (nonatomic) IBOutlet UISwitch *tutorial;
 @property (nonatomic) IBOutlet UIButton *back;
 @property (nonatomic) IBOutlet UIButton *logout_but;
+@property (nonatomic) IBOutlet UIButton *login_but;
 @property (nonatomic) IBOutlet UISwitch *tutSwitch;
+- (IBAction)login_touch:(id)sender;
 
 - (NSString *) dataFilepath;
 - (void) writePlist: (BOOL) onOff;

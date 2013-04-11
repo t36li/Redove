@@ -13,6 +13,7 @@
 
 @implementation OptionsViewController
 @synthesize back, logout_but, tutSwitch;
+@synthesize login_but;
 
 - (void)viewDidLoad
 {
@@ -22,9 +23,11 @@
     fbs = [FBSingletonNew sharedInstance];
     if ([fbs isLogin]) {
         logout_but.hidden = NO;
+        login_but.hidden = YES;
     }
     else {
         logout_but.hidden = YES;
+        login_but.hidden = NO;
     }
     NSString *path = [self dataFilepath];
     dic = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
@@ -32,6 +35,7 @@
 
 - (void)viewDidUnload
 {
+    [self setLogin_but:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -129,6 +133,12 @@
     } else {
         NSLog(@"Switching off tutorial...");
         [self writePlist:NO];
+    }
+}
+
+- (IBAction)login_touch:(id)sender {
+    if (![[FBSingletonNew sharedInstance] isLogin]){
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
     }
 }
 
