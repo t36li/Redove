@@ -87,8 +87,9 @@ void endHammerSound (SystemSoundID  mySSID, void *myself)
     //if (rand_hms == 0) {
       //  hammer_name = @"hit_hammer.png";
     //} else {
-        hammer_name = [NSString stringWithFormat:@"Hammer%i.png", rand_hms];
+    hammer_name = [NSString stringWithFormat:@"Hammer%i.png", rand_hms];
     //}
+    hammer_name = @"Hammer2.png";
     
     glClearColor(255, 255, 255, 255);
     splashFrames = [NSMutableArray array];
@@ -855,13 +856,13 @@ void endHammerSound (SystemSoundID  mySSID, void *myself)
     emitter.life = 0.3f;
     emitter.speed = 300;
     emitter.speedVar = 10;
-    if ([hammer_name isEqualToString:@"hit_hammer.png"]) {
+    if ([hammer_name isEqualToString:@"Hammer1.png"]) {
         emitter.startColor = ccc4f(0.75f, 0.5f, 0.2f, 1.0f);
         emitter.endColor = ccc4f(0.75f, 0.5f, 0.2f, 1.0f);
-    } else if ([hammer_name isEqualToString:@"Hammer1.png"]) {
+    } else if ([hammer_name isEqualToString:@"Hammer2.png"]) {
         emitter.startColor = ccc4f(0.5f, 0.3f, 0.2f, 1.0f);
         emitter.endColor = ccc4f(0.5f, 0.3f, 0.2f, 1.0f);
-    } else if ([hammer_name isEqualToString:@"Hammer1.png"]) {
+    } else if ([hammer_name isEqualToString:@"Hammer3.png"]) {
         emitter.startColor = ccc4f(0.2f, 0.6f, 0.2f, 1.0f);
         emitter.endColor = ccc4f(0.2f, 0.6f, 0.2f, 1.0f);
     } else {
