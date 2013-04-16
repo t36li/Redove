@@ -27,6 +27,20 @@
 	// See handy chart on pg. 55 of the Audio Session Programming Guide for what the categories mean
 	// Not absolutely required in this example, but good to get into the habit of doing
 	// See pg. 11 of Audio Session Programming Guide for "Why a Default Session Usually Isn't What You Want"
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+        UIStoryboard *storyBoard;
+        
+        CGSize result = [[UIScreen mainScreen] bounds].size;
+        CGFloat scale = [UIScreen mainScreen].scale;
+        result = CGSizeMake(result.width * scale, result.height * scale);
+        
+        if(result.height == 1136){
+            storyBoard = [UIStoryboard storyboardWithName:@"Storyboard_iphone5" bundle:nil];
+            UIViewController *initViewController = [storyBoard instantiateInitialViewController];
+            [self.window setRootViewController:initViewController];
+        }
+    }
+    
 	NSError *setCategoryError = nil;
 	[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:&setCategoryError];
 	

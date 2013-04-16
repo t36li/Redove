@@ -294,7 +294,15 @@
 }
 
 -(IBAction)pushCamera:(id)sender {
-    CustomDrawViewController *drawController = [[CustomDrawViewController alloc] initWithNibName:@"CustomDrawViewController" bundle:nil];
+    CGSize result = [[UIScreen mainScreen] bounds].size;
+    CGFloat scale = [UIScreen mainScreen].scale;
+    result = CGSizeMake(result.width * scale, result.height * scale);
+    NSString *nib = @"CustomDrawViewController";
+    
+    if(result.height == 1136){
+        nib = @"CustomDrawView_iphone5";
+    }
+    CustomDrawViewController *drawController = [[CustomDrawViewController alloc] initWithNibName:nib bundle:nil];
     [self presentViewController:drawController animated:YES completion:nil];
     drawController.containerView.photo = [[UserInfo sharedInstance] croppedImage];
     drawController.containerView.drawImageView.image = [[UserInfo sharedInstance] croppedImage];

@@ -10,7 +10,6 @@
 		3D6A5A5A1716553E008BF612 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D6A5A591716553E008BF612 /* login.png */; };
 		3D8BA1AA1688E69A00B731A1 /* FacebookShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8BA1A81688E69900B731A1 /* FacebookShareViewController.m */; };
 		3D8BA1AB1688E69A00B731A1 /* FacebookShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D8BA1A91688E69900B731A1 /* FacebookShareViewController.xib */; };
-		3DC5F68517164E1C00EB7485 /* Options_bg_v2.5.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DC5F68417164E1C00EB7485 /* Options_bg_v2.5.png */; };
 		3DC5F68717164FE700EB7485 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DC5F68617164FE700EB7485 /* logout.png */; };
 		3DDA87B816127B23005349D1 /* CurrentEquip.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDA87B316127B23005349D1 /* CurrentEquip.m */; };
 		3DDA87B916127B23005349D1 /* Head.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDA87B516127B23005349D1 /* Head.m */; };
@@ -46,6 +45,9 @@
 		C109A9EF1715C9B100151CA2 /* tut_camera_v2.png in Resources */ = {isa = PBXBuildFile; fileRef = C109A9EB1715C9B100151CA2 /* tut_camera_v2.png */; };
 		C109A9F01715C9B100151CA2 /* tut_hitWho_v2.png in Resources */ = {isa = PBXBuildFile; fileRef = C109A9EC1715C9B100151CA2 /* tut_hitWho_v2.png */; };
 		C109A9F11715C9B100151CA2 /* tut_personal_v2.png in Resources */ = {isa = PBXBuildFile; fileRef = C109A9ED1715C9B100151CA2 /* tut_personal_v2.png */; };
+		C109AA001718A45300151CA2 /* Storyboard_iphone5.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C109A9FF1718A45300151CA2 /* Storyboard_iphone5.storyboard */; };
+		C109AA021718BDF700151CA2 /* CustomDrawView_iphone5.xib in Resources */ = {isa = PBXBuildFile; fileRef = C109AA011718BDF700151CA2 /* CustomDrawView_iphone5.xib */; };
+		C109AA041718C0C300151CA2 /* Options_bg_v3.png in Resources */ = {isa = PBXBuildFile; fileRef = C109AA031718C0C300151CA2 /* Options_bg_v3.png */; };
 		C10D2FC215D060A6007B751B /* Dragbox.m in Sources */ = {isa = PBXBuildFile; fileRef = C10D2FC115D060A6007B751B /* Dragbox.m */; };
 		C12114581616044300E3AAB1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12114571616044300E3AAB1 /* Default-568h@2x.png */; };
 		C12114611616967E00E3AAB1 /* HitWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C121145F1616967E00E3AAB1 /* HitWindow.m */; };
@@ -119,7 +121,6 @@
 		C159326F15B5DE5A009B7955 /* FTCParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C159326715B5DE5A009B7955 /* FTCParser.m */; };
 		C159327015B5DE5A009B7955 /* FTCSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = C159326915B5DE5A009B7955 /* FTCSprite.m */; };
 		C159329015B60185009B7955 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14716851594ACCA0002FF21 /* Foundation.framework */; };
-		C159347615B60B09009B7955 /* CCRobot.m in Sources */ = {isa = PBXBuildFile; fileRef = C159347515B60B08009B7955 /* CCRobot.m */; };
 		C169200C15AFC7A800F081AF /* HitWhoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C169200B15AFC7A700F081AF /* HitWhoViewController.m */; };
 		C1692E9115CE282C00C7D4C7 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1692E9015CE282C00C7D4C7 /* StoreViewController.m */; };
 		C16EB71416E01FA3007DC43D /* Fire_sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = C16EB71116E01FA3007DC43D /* Fire_sound.caf */; };
@@ -158,8 +159,6 @@
 		C1DC2D5716AB429E0063CBF7 /* Upload_Cancel_2.png in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2D5316AB429E0063CBF7 /* Upload_Cancel_2.png */; };
 		C1DC2D5816AB429E0063CBF7 /* Upload_Publish_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2D5416AB429E0063CBF7 /* Upload_Publish_1.png */; };
 		C1DC2D5916AB429E0063CBF7 /* Upload_Publish_2.png in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2D5516AB429E0063CBF7 /* Upload_Publish_2.png */; };
-		C1DC2D7816AB557B0063CBF7 /* CameraTutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DC2D7616AB557B0063CBF7 /* CameraTutorial.m */; };
-		C1DC2D7916AB557B0063CBF7 /* CameraTutorial.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2D7716AB557B0063CBF7 /* CameraTutorial.xib */; };
 		C1DC2DCC16AF3D730063CBF7 /* main menu.png in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2DCA16AF3D730063CBF7 /* main menu.png */; };
 		C1DC2DCD16AF3D730063CBF7 /* resume.png in Resources */ = {isa = PBXBuildFile; fileRef = C1DC2DCB16AF3D730063CBF7 /* resume.png */; };
 		C1E4256116E9474F0025C7DF /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A1965615C356670079DC99 /* libRestKit.a */; };
@@ -604,7 +603,6 @@
 		3D8BA1A71688E69900B731A1 /* FacebookShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookShareViewController.h; sourceTree = "<group>"; };
 		3D8BA1A81688E69900B731A1 /* FacebookShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookShareViewController.m; sourceTree = "<group>"; };
 		3D8BA1A91688E69900B731A1 /* FacebookShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FacebookShareViewController.xib; sourceTree = "<group>"; };
-		3DC5F68417164E1C00EB7485 /* Options_bg_v2.5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Options_bg_v2.5.png; sourceTree = "<group>"; };
 		3DC5F68617164FE700EB7485 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
 		3DDA87B216127B23005349D1 /* CurrentEquip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentEquip.h; sourceTree = "<group>"; };
 		3DDA87B316127B23005349D1 /* CurrentEquip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentEquip.m; sourceTree = "<group>"; };
@@ -663,6 +661,9 @@
 		C109A9EB1715C9B100151CA2 /* tut_camera_v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tut_camera_v2.png; sourceTree = "<group>"; };
 		C109A9EC1715C9B100151CA2 /* tut_hitWho_v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tut_hitWho_v2.png; sourceTree = "<group>"; };
 		C109A9ED1715C9B100151CA2 /* tut_personal_v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tut_personal_v2.png; sourceTree = "<group>"; };
+		C109A9FF1718A45300151CA2 /* Storyboard_iphone5.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard_iphone5.storyboard; sourceTree = "<group>"; };
+		C109AA011718BDF700151CA2 /* CustomDrawView_iphone5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomDrawView_iphone5.xib; sourceTree = "<group>"; };
+		C109AA031718C0C300151CA2 /* Options_bg_v3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Options_bg_v3.png; sourceTree = "<group>"; };
 		C10D2FC015D060A6007B751B /* Dragbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dragbox.h; sourceTree = "<group>"; };
 		C10D2FC115D060A6007B751B /* Dragbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dragbox.m; sourceTree = "<group>"; };
 		C10D2FCB15D09625007B751B /* StatusCocosDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatusCocosDelegate.h; sourceTree = "<group>"; };
@@ -761,8 +762,6 @@
 		C159326815B5DE5A009B7955 /* FTCSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTCSprite.h; sourceTree = "<group>"; };
 		C159326915B5DE5A009B7955 /* FTCSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTCSprite.m; sourceTree = "<group>"; };
 		C159328F15B60185009B7955 /* libcocos2d-library.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libcocos2d-library.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C159347415B60B07009B7955 /* CCRobot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCRobot.h; sourceTree = "<group>"; };
-		C159347515B60B08009B7955 /* CCRobot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCRobot.m; sourceTree = "<group>"; };
 		C159349915B64988009B7955 /* GameOverDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameOverDelegate.h; sourceTree = "<group>"; };
 		C1691FF515AFBA7C00F081AF /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
 		C169200A15AFC7A600F081AF /* HitWhoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HitWhoViewController.h; sourceTree = "<group>"; };
@@ -807,9 +806,6 @@
 		C1DC2D5316AB429E0063CBF7 /* Upload_Cancel_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Upload_Cancel_2.png; sourceTree = "<group>"; };
 		C1DC2D5416AB429E0063CBF7 /* Upload_Publish_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Upload_Publish_1.png; sourceTree = "<group>"; };
 		C1DC2D5516AB429E0063CBF7 /* Upload_Publish_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Upload_Publish_2.png; sourceTree = "<group>"; };
-		C1DC2D7516AB557B0063CBF7 /* CameraTutorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraTutorial.h; sourceTree = "<group>"; };
-		C1DC2D7616AB557B0063CBF7 /* CameraTutorial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraTutorial.m; sourceTree = "<group>"; };
-		C1DC2D7716AB557B0063CBF7 /* CameraTutorial.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraTutorial.xib; sourceTree = "<group>"; };
 		C1DC2DCA16AF3D730063CBF7 /* main menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main menu.png"; sourceTree = "<group>"; };
 		C1DC2DCB16AF3D730063CBF7 /* resume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resume.png; sourceTree = "<group>"; };
 		C1EC4AEE16D6DD4000DF7EA9 /* fire_particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire_particle.png; sourceTree = "<group>"; };
@@ -1481,9 +1477,9 @@
 			isa = PBXGroup;
 			children = (
 				C1011B2F16D83E3E00C09F53 /* Main_Menu_baselayer2.png */,
+				C109AA031718C0C300151CA2 /* Options_bg_v3.png */,
 				D017DF8816E401D800F812A4 /* about us.png */,
 				D015288D16D311EC00481464 /* review_upload_background.png */,
-				3DC5F68417164E1C00EB7485 /* Options_bg_v2.5.png */,
 				C16EB71916E4023B007DC43D /* Review_Background2.png */,
 				C16EB71D16E405B2007DC43D /* Personal_Status_Bg_Final.png */,
 				C1B7BB2216A2149600E6F7A8 /* Loading.jpg */,
@@ -1567,6 +1563,7 @@
 				69A1964A15C356670079DC99 /* RestKit.xcodeproj */,
 				D006009515B5F29A0079626F /* SDWebImage.xcodeproj */,
 				C147181B1594AF1E0002FF21 /* Storyboard.storyboard */,
+				C109A9FF1718A45300151CA2 /* Storyboard_iphone5.storyboard */,
 				C159325B15B5DE5A009B7955 /* FlashToCocosARC */,
 				D03D411216A4CC1800C72E17 /* Popover */,
 				C159324F15B5DE51009B7955 /* TBXML */,
@@ -1663,8 +1660,6 @@
 		C14B63B015AF5B5400376C91 /* Actual Game Scene(Cocos2d) */ = {
 			isa = PBXGroup;
 			children = (
-				C159347415B60B07009B7955 /* CCRobot.h */,
-				C159347515B60B08009B7955 /* CCRobot.m */,
 				C14718591594F1AF0002FF21 /* CocosViewController.h */,
 				C147185A1594F1AF0002FF21 /* CocosViewController.m */,
 				D04D763A163769BE003C858F /* GameViewController.h */,
@@ -1820,9 +1815,7 @@
 				D09238681668534000E1A231 /* CustomDrawViewController.h */,
 				D09238691668534000E1A231 /* CustomDrawViewController.m */,
 				D092386A1668534000E1A231 /* CustomDrawViewController.xib */,
-				C1DC2D7516AB557B0063CBF7 /* CameraTutorial.h */,
-				C1DC2D7616AB557B0063CBF7 /* CameraTutorial.m */,
-				C1DC2D7716AB557B0063CBF7 /* CameraTutorial.xib */,
+				C109AA011718BDF700151CA2 /* CustomDrawView_iphone5.xib */,
 			);
 			name = "Camera View";
 			sourceTree = "<group>";
@@ -2753,7 +2746,6 @@
 				D0E40DD716AB3ECC000E99B4 /* camera_lip_depressed.png in Resources */,
 				D0E40DD816AB3ECC000E99B4 /* camera_right_ear_depressed.png in Resources */,
 				D0E40DD916AB3ECC000E99B4 /* camera_left_ear_depressed.png in Resources */,
-				C1DC2D7916AB557B0063CBF7 /* CameraTutorial.xib in Resources */,
 				C1DC2DCC16AF3D730063CBF7 /* main menu.png in Resources */,
 				C1DC2DCD16AF3D730063CBF7 /* resume.png in Resources */,
 				C18AAB3816B0B05B003F8F87 /* InBetweenViewController.xib in Resources */,
@@ -2827,9 +2819,11 @@
 				C109A9EF1715C9B100151CA2 /* tut_camera_v2.png in Resources */,
 				C109A9F01715C9B100151CA2 /* tut_hitWho_v2.png in Resources */,
 				C109A9F11715C9B100151CA2 /* tut_personal_v2.png in Resources */,
-				3DC5F68517164E1C00EB7485 /* Options_bg_v2.5.png in Resources */,
 				3DC5F68717164FE700EB7485 /* logout.png in Resources */,
 				3D6A5A5A1716553E008BF612 /* login.png in Resources */,
+				C109AA001718A45300151CA2 /* Storyboard_iphone5.storyboard in Resources */,
+				C109AA021718BDF700151CA2 /* CustomDrawView_iphone5.xib in Resources */,
+				C109AA041718C0C300151CA2 /* Options_bg_v3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2871,7 +2865,6 @@
 				C159326E15B5DE5A009B7955 /* FTCFrameInfo.m in Sources */,
 				C159326F15B5DE5A009B7955 /* FTCParser.m in Sources */,
 				C159327015B5DE5A009B7955 /* FTCSprite.m in Sources */,
-				C159347615B60B09009B7955 /* CCRobot.m in Sources */,
 				D0B2477015C204C300C206BA /* UIImage+fixOrientation.m in Sources */,
 				C14385AB15C8C15A008D9AE7 /* LoadViewController.m in Sources */,
 				C1692E9115CE282C00C7D4C7 /* StoreViewController.m in Sources */,
@@ -2898,7 +2891,6 @@
 				D03D411E16A4CC1800C72E17 /* WEPopoverController.m in Sources */,
 				D03D411F16A4CC1800C72E17 /* WETouchableView.m in Sources */,
 				D03D412216A4CE0700C72E17 /* WEPopoverContentViewController.m in Sources */,
-				C1DC2D7816AB557B0063CBF7 /* CameraTutorial.m in Sources */,
 				C18AAB3716B0B05B003F8F87 /* InBetweenViewController.m in Sources */,
 				D015289716D4563200481464 /* ReviewUploadViewController.m in Sources */,
 			);

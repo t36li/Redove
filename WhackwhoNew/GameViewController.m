@@ -83,7 +83,16 @@
 }
 
 -(void)proceedToReview {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+    CGSize result = [[UIScreen mainScreen] bounds].size;
+    CGFloat scale = [UIScreen mainScreen].scale;
+    result = CGSizeMake(result.width * scale, result.height * scale);
+    NSString *nib = @"Storyboard";
+    
+    if(result.height == 1136){
+        nib = @"Storyboard_iphone5";
+    }
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:nib bundle:nil];
     ReviewViewController *rvController = [storyboard instantiateViewControllerWithIdentifier:@"ReviewViewController"];
     [self.navigationController pushViewController:rvController animated:YES];
 //    CCDirector *director = [CCDirector sharedDirector];

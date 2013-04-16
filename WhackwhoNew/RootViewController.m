@@ -52,8 +52,6 @@
                              [UIImage imageNamed:@"baby5.png"],
                              [UIImage imageNamed:@"baby6.png"],
                              nil];
-    [baby setFrame:CGRectMake(405, 237, 75, 83)];
-    [self startWalking];
 }
 
 
@@ -66,44 +64,12 @@
         profileImageView.profileID = nil;
     }
     
+    [baby setFrame:CGRectMake(self.view.bounds.size.width, 237, 75, 83)];
+    [self startWalking];
     //[self startLabelAnimation];
     //[self startPosterAnimation];
 }
 
-- (void) startPosterAnimation {
-    NSArray * imageArray  = [[NSArray alloc] initWithObjects:
-                             [UIImage imageNamed:@"Main_Poster1.png"],
-                             [UIImage imageNamed:@"Main_Poster2.png"],
-                             nil];
-    poster.animationImages = imageArray;
-    poster.animationDuration = 0.5;
-    poster.animationRepeatCount = 0;
-    [poster startAnimating];
-}
-
-- (void) startLabelAnimation {
-    NSArray * imageArray  = [[NSArray alloc] initWithObjects:
-                             [UIImage imageNamed:@"whackwho1.png"],
-                             [UIImage imageNamed:@"whackwho2.png"],
-                             [UIImage imageNamed:@"whgackwho3.png"],
-                             nil];
-    whack_label.animationImages = imageArray;
-    whack_label.animationDuration = 1;
-    whack_label.animationRepeatCount = 0;
-    //CGPoint p = whack_label.center;
-    //p.x -= 408;
-    //ryuJump.center = p;
-    
-    //[UIView animateWithDuration:30
-      //                    delay:0
-        //                options: UIViewAnimationOptionCurveLinear
-          //           animations:^{
-            //             baby.center = CGPointMake(p.x, p.y);
-              //       }
-                //     completion:^(BOOL finished){
-                  //   }];
-    [whack_label startAnimating];
-}
 
 - (void)startWalking {
     baby.animationImages = babyFrames;
@@ -111,7 +77,7 @@
     baby.animationRepeatCount = 0;
     
     CGRect tempFrame = baby.frame;
-    tempFrame.origin.x -= 420;
+    tempFrame.origin.x -= self.view.bounds.size.width;
     
     [UIView animateWithDuration:30
                           delay:0
@@ -120,7 +86,7 @@
                          baby.frame = tempFrame;
                      }
                      completion:^(BOOL finished){
-                         baby.frame = CGRectMake(405, 237, 75, 83);
+                         baby.frame = CGRectMake(self.view.bounds.size.width, 237, 75, 83);
                          [self startWalking];
                      }];
     [baby startAnimating];
